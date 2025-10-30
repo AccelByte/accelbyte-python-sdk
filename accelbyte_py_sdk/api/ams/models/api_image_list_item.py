@@ -52,6 +52,8 @@ class ApiImageListItem(Model):
 
         tags: (tags) REQUIRED List[str]
 
+        target_architecture: (targetArchitecture) REQUIRED str
+
         uploaded_at: (uploadedAt) REQUIRED str
 
         uploaded_by: (uploadedBy) REQUIRED str
@@ -71,6 +73,7 @@ class ApiImageListItem(Model):
     size_in_byte: int  # REQUIRED
     status: str  # REQUIRED
     tags: List[str]  # REQUIRED
+    target_architecture: str  # REQUIRED
     uploaded_at: str  # REQUIRED
     uploaded_by: str  # REQUIRED
     delete_at: str  # OPTIONAL
@@ -117,6 +120,10 @@ class ApiImageListItem(Model):
 
     def with_tags(self, value: List[str]) -> ApiImageListItem:
         self.tags = value
+        return self
+
+    def with_target_architecture(self, value: str) -> ApiImageListItem:
+        self.target_architecture = value
         return self
 
     def with_uploaded_at(self, value: str) -> ApiImageListItem:
@@ -177,6 +184,10 @@ class ApiImageListItem(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
+        if hasattr(self, "target_architecture"):
+            result["targetArchitecture"] = str(self.target_architecture)
+        elif include_empty:
+            result["targetArchitecture"] = ""
         if hasattr(self, "uploaded_at"):
             result["uploadedAt"] = str(self.uploaded_at)
         elif include_empty:
@@ -208,6 +219,7 @@ class ApiImageListItem(Model):
         size_in_byte: int,
         status: str,
         tags: List[str],
+        target_architecture: str,
         uploaded_at: str,
         uploaded_by: str,
         delete_at: Optional[str] = None,
@@ -224,6 +236,7 @@ class ApiImageListItem(Model):
         instance.size_in_byte = size_in_byte
         instance.status = status
         instance.tags = tags
+        instance.target_architecture = target_architecture
         instance.uploaded_at = uploaded_at
         instance.uploaded_by = uploaded_by
         if delete_at is not None:
@@ -277,6 +290,10 @@ class ApiImageListItem(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
+        if "targetArchitecture" in dict_ and dict_["targetArchitecture"] is not None:
+            instance.target_architecture = str(dict_["targetArchitecture"])
+        elif include_empty:
+            instance.target_architecture = ""
         if "uploadedAt" in dict_ and dict_["uploadedAt"] is not None:
             instance.uploaded_at = str(dict_["uploadedAt"])
         elif include_empty:
@@ -338,6 +355,7 @@ class ApiImageListItem(Model):
             "sizeInByte": "size_in_byte",
             "status": "status",
             "tags": "tags",
+            "targetArchitecture": "target_architecture",
             "uploadedAt": "uploaded_at",
             "uploadedBy": "uploaded_by",
             "deleteAt": "delete_at",
@@ -356,6 +374,7 @@ class ApiImageListItem(Model):
             "sizeInByte": True,
             "status": True,
             "tags": True,
+            "targetArchitecture": True,
             "uploadedAt": True,
             "uploadedBy": True,
             "deleteAt": False,

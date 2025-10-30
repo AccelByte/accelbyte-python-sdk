@@ -587,7 +587,7 @@ $ python -m accelbyte_py_sdk_cli 'social-reset-user-stat-item-value-1' \
 ### Operation `bulk_update_user_stat_item_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'social-bulk-update-user-stat-item-v2' \
-    '[{"additionalData": {"string": {}}, "additionalKey": "string", "statCode": "string", "updateStrategy": "INCREMENT", "userId": "string", "value": 3.14}]' \
+    '[{"additionalData": {"string": {}}, "additionalKey": "string", "requestId": "string", "statCode": "string", "updateStrategy": "INCREMENT", "userId": "string", "value": 3.14}]' \
     'string' \
     > result.txt
 ```
@@ -616,7 +616,7 @@ $ python -m accelbyte_py_sdk_cli 'social-admin-list-users-stat-items' \
 ### Operation `bulk_update_user_stat_item`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'social-bulk-update-user-stat-item' \
-    '[{"additionalData": {"string": {}}, "statCode": "string", "updateStrategy": "INCREMENT", "value": 3.14}]' \
+    '[{"additionalData": {"string": {}}, "requestId": "string", "statCode": "string", "updateStrategy": "INCREMENT", "value": 3.14}]' \
     'string' \
     'string' \
     --additional_key 'string' \
@@ -667,7 +667,7 @@ $ python -m accelbyte_py_sdk_cli 'social-update-user-stat-item-value' \
 ### Operation `bulk_update_user_stat_item_1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'social-bulk-update-user-stat-item-1' \
-    '[{"additionalData": {"string": {}}, "additionalKey": "string", "statCode": "string", "updateStrategy": "INCREMENT", "userId": "string", "value": 3.14}]' \
+    '[{"additionalData": {"string": {}}, "additionalKey": "string", "requestId": "string", "statCode": "string", "updateStrategy": "INCREMENT", "userId": "string", "value": 3.14}]' \
     'string' \
     > result.txt
 ```
@@ -686,7 +686,7 @@ $ python -m accelbyte_py_sdk_cli 'social-public-query-user-stat-items-2' \
 ### Operation `bulk_update_user_stat_item_2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'social-bulk-update-user-stat-item-2' \
-    '[{"additionalData": {"string": {}}, "statCode": "string", "updateStrategy": "INCREMENT", "value": 3.14}]' \
+    '[{"additionalData": {"string": {}}, "requestId": "string", "statCode": "string", "updateStrategy": "INCREMENT", "value": 3.14}]' \
     'string' \
     'string' \
     --additional_key 'string' \

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.8.0"
+__version__ = "6.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,7 @@ from .admin_get_iap_order_line_items import AdminGetIAPOrderLineItems
 from .admin_get_steam_job_info import AdminGetSteamJobInfo
 from .admin_refund_iap_order import AdminRefundIAPOrder
 from .admin_reset_steam_job_time import AdminResetSteamJobTime
+from .admin_sync_oculus_subsc_25b739 import AdminSyncOculusSubscriptions
 from .admin_sync_steam_abnorm_be4791 import AdminSyncSteamAbnormalTransaction
 from .admin_sync_steam_iap_by_48029c import AdminSyncSteamIAPByTransaction
 from .delete_apple_iap_config import DeleteAppleIAPConfig
@@ -67,6 +68,7 @@ from .query_user_iap_orders import (
 )
 from .sync_epic_games_inventory import SyncEpicGamesInventory
 from .sync_oculus_consumable__f6c91d import SyncOculusConsumableEntitlements
+from .sync_oculus_subscriptions import SyncOculusSubscriptions
 from .sync_steam_abnormal_tra_4db4c2 import SyncSteamAbnormalTransaction
 from .sync_steam_iap_by_transaction import SyncSteamIAPByTransaction
 from .sync_steam_inventory import SyncSteamInventory

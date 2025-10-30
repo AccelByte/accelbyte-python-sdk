@@ -116,6 +116,8 @@ class ApimodelsPublicConfiguration(Model):
 
         native_session_setting: (nativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
 
+        party_code_generator_string: (partyCodeGeneratorString) OPTIONAL str
+
         party_code_length: (partyCodeLength) OPTIONAL int
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
@@ -162,6 +164,7 @@ class ApimodelsPublicConfiguration(Model):
     manual_rejoin: bool  # OPTIONAL
     max_active_session: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
+    party_code_generator_string: str  # OPTIONAL
     party_code_length: int  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
     psn_base_url: str  # OPTIONAL
@@ -302,6 +305,12 @@ class ApimodelsPublicConfiguration(Model):
         self, value: ModelsNativeSessionSetting
     ) -> ApimodelsPublicConfiguration:
         self.native_session_setting = value
+        return self
+
+    def with_party_code_generator_string(
+        self, value: str
+    ) -> ApimodelsPublicConfiguration:
+        self.party_code_generator_string = value
         return self
 
     def with_party_code_length(self, value: int) -> ApimodelsPublicConfiguration:
@@ -466,6 +475,10 @@ class ApimodelsPublicConfiguration(Model):
             )
         elif include_empty:
             result["nativeSessionSetting"] = ModelsNativeSessionSetting()
+        if hasattr(self, "party_code_generator_string"):
+            result["partyCodeGeneratorString"] = str(self.party_code_generator_string)
+        elif include_empty:
+            result["partyCodeGeneratorString"] = ""
         if hasattr(self, "party_code_length"):
             result["partyCodeLength"] = int(self.party_code_length)
         elif include_empty:
@@ -532,6 +545,7 @@ class ApimodelsPublicConfiguration(Model):
         manual_rejoin: Optional[bool] = None,
         max_active_session: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
+        party_code_generator_string: Optional[str] = None,
         party_code_length: Optional[int] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         psn_base_url: Optional[str] = None,
@@ -588,6 +602,8 @@ class ApimodelsPublicConfiguration(Model):
             instance.max_active_session = max_active_session
         if native_session_setting is not None:
             instance.native_session_setting = native_session_setting
+        if party_code_generator_string is not None:
+            instance.party_code_generator_string = party_code_generator_string
         if party_code_length is not None:
             instance.party_code_length = party_code_length
         if preferred_claim_keys is not None:
@@ -758,6 +774,15 @@ class ApimodelsPublicConfiguration(Model):
             )
         elif include_empty:
             instance.native_session_setting = ModelsNativeSessionSetting()
+        if (
+            "partyCodeGeneratorString" in dict_
+            and dict_["partyCodeGeneratorString"] is not None
+        ):
+            instance.party_code_generator_string = str(
+                dict_["partyCodeGeneratorString"]
+            )
+        elif include_empty:
+            instance.party_code_generator_string = ""
         if "partyCodeLength" in dict_ and dict_["partyCodeLength"] is not None:
             instance.party_code_length = int(dict_["partyCodeLength"])
         elif include_empty:
@@ -863,6 +888,7 @@ class ApimodelsPublicConfiguration(Model):
             "manualRejoin": "manual_rejoin",
             "maxActiveSession": "max_active_session",
             "nativeSessionSetting": "native_session_setting",
+            "partyCodeGeneratorString": "party_code_generator_string",
             "partyCodeLength": "party_code_length",
             "preferredClaimKeys": "preferred_claim_keys",
             "PSNBaseURL": "psn_base_url",
@@ -904,6 +930,7 @@ class ApimodelsPublicConfiguration(Model):
             "manualRejoin": False,
             "maxActiveSession": False,
             "nativeSessionSetting": False,
+            "partyCodeGeneratorString": False,
             "partyCodeLength": False,
             "preferredClaimKeys": False,
             "PSNBaseURL": False,

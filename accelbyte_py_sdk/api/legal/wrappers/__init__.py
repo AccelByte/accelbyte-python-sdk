@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "4.4.1"
+__version__ = "4.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,56 +26,56 @@ from ._agreement import bulk_accept_versioned_policy
 from ._agreement import bulk_accept_versioned_policy_async
 from ._agreement import change_preference_consent
 from ._agreement import change_preference_consent_async
-from ._agreement import change_preference_consent_1
-from ._agreement import change_preference_consent_1_async
-from ._agreement import indirect_bulk_accept_versioned_policy_1
-from ._agreement import indirect_bulk_accept_versioned_policy_1_async
 from ._agreement import indirect_bulk_accept_versioned_policy_v2
 from ._agreement import indirect_bulk_accept_versioned_policy_v2_async
-from ._agreement import retrieve_accepted_agreements
-from ._agreement import retrieve_accepted_agreements_async
+from ._agreement import old_retrieve_accepted_agreements
+from ._agreement import old_retrieve_accepted_agreements_async
+from ._agreement import old_retrieve_all_users_by_policy_version
+from ._agreement import old_retrieve_all_users_by_policy_version_async
+from ._agreement import public_change_preference_consent
+from ._agreement import public_change_preference_consent_async
+from ._agreement import public_indirect_bulk_accept_versioned_policy
+from ._agreement import public_indirect_bulk_accept_versioned_policy_async
 from ._agreement import retrieve_agreements_public
 from ._agreement import retrieve_agreements_public_async
-from ._agreement import retrieve_all_users_by_policy_version
-from ._agreement import retrieve_all_users_by_policy_version_async
 
 from ._agreement_with_namespace import download_exported_agreements_in_csv
 from ._agreement_with_namespace import download_exported_agreements_in_csv_async
 from ._agreement_with_namespace import initiate_export_agreements_to_csv
 from ._agreement_with_namespace import initiate_export_agreements_to_csv_async
-from ._agreement_with_namespace import retrieve_accepted_agreements_1
-from ._agreement_with_namespace import retrieve_accepted_agreements_1_async
+from ._agreement_with_namespace import retrieve_accepted_agreements
+from ._agreement_with_namespace import retrieve_accepted_agreements_async
 from ._agreement_with_namespace import retrieve_accepted_agreements_for_multi_users
 from ._agreement_with_namespace import (
     retrieve_accepted_agreements_for_multi_users_async,
 )
-from ._agreement_with_namespace import retrieve_all_users_by_policy_version_1
-from ._agreement_with_namespace import retrieve_all_users_by_policy_version_1_async
+from ._agreement_with_namespace import retrieve_all_users_by_policy_version
+from ._agreement_with_namespace import retrieve_all_users_by_policy_version_async
 
 from ._anonymization import anonymize_user_agreement
 from ._anonymization import anonymize_user_agreement_async
 
-from ._base_legal_policies import create_policy
-from ._base_legal_policies import create_policy_async
-from ._base_legal_policies import partial_update_policy
-from ._base_legal_policies import partial_update_policy_async
+from ._base_legal_policies import old_create_policy
+from ._base_legal_policies import old_create_policy_async
+from ._base_legal_policies import old_partial_update_policy
+from ._base_legal_policies import old_partial_update_policy_async
+from ._base_legal_policies import old_retrieve_all_policy_types
+from ._base_legal_policies import old_retrieve_all_policy_types_async
+from ._base_legal_policies import old_retrieve_policy_country
+from ._base_legal_policies import old_retrieve_policy_country_async
+from ._base_legal_policies import old_retrieve_single_policy
+from ._base_legal_policies import old_retrieve_single_policy_async
 from ._base_legal_policies import retrieve_all_legal_policies
 from ._base_legal_policies import retrieve_all_legal_policies_async
-from ._base_legal_policies import retrieve_all_policy_types
-from ._base_legal_policies import retrieve_all_policy_types_async
-from ._base_legal_policies import retrieve_policy_country
-from ._base_legal_policies import retrieve_policy_country_async
-from ._base_legal_policies import retrieve_single_policy
-from ._base_legal_policies import retrieve_single_policy_async
 
-from ._base_legal_policies_with_namespace import create_policy_1
-from ._base_legal_policies_with_namespace import create_policy_1_async
+from ._base_legal_policies_with_namespace import create_policy
+from ._base_legal_policies_with_namespace import create_policy_async
 from ._base_legal_policies_with_namespace import create_policy_under_base_policy
 from ._base_legal_policies_with_namespace import create_policy_under_base_policy_async
 from ._base_legal_policies_with_namespace import delete_base_policy
 from ._base_legal_policies_with_namespace import delete_base_policy_async
-from ._base_legal_policies_with_namespace import partial_update_policy_1
-from ._base_legal_policies_with_namespace import partial_update_policy_1_async
+from ._base_legal_policies_with_namespace import partial_update_policy
+from ._base_legal_policies_with_namespace import partial_update_policy_async
 from ._base_legal_policies_with_namespace import (
     retrieve_all_legal_policies_by_namespace,
 )
@@ -86,116 +86,126 @@ from ._base_legal_policies_with_namespace import retrieve_all_policies_from_base
 from ._base_legal_policies_with_namespace import (
     retrieve_all_policies_from_base_policy_async,
 )
-from ._base_legal_policies_with_namespace import retrieve_all_policy_types_1
-from ._base_legal_policies_with_namespace import retrieve_all_policy_types_1_async
-from ._base_legal_policies_with_namespace import retrieve_policy_country_1
-from ._base_legal_policies_with_namespace import retrieve_policy_country_1_async
-from ._base_legal_policies_with_namespace import retrieve_single_policy_1
-from ._base_legal_policies_with_namespace import retrieve_single_policy_1_async
+from ._base_legal_policies_with_namespace import retrieve_all_policy_types
+from ._base_legal_policies_with_namespace import retrieve_all_policy_types_async
+from ._base_legal_policies_with_namespace import retrieve_policy_country
+from ._base_legal_policies_with_namespace import retrieve_policy_country_async
+from ._base_legal_policies_with_namespace import retrieve_single_policy
+from ._base_legal_policies_with_namespace import retrieve_single_policy_async
 
 from ._eligibilities import retrieve_eligibilities_public
 from ._eligibilities import retrieve_eligibilities_public_async
 from ._eligibilities import retrieve_eligibilities_public_indirect
 from ._eligibilities import retrieve_eligibilities_public_indirect_async
 
-from ._localized_policy_versions import create_localized_policy_version
-from ._localized_policy_versions import create_localized_policy_version_async
-from ._localized_policy_versions import request_presigned_url
-from ._localized_policy_versions import request_presigned_url_async
-from ._localized_policy_versions import retrieve_localized_policy_versions
-from ._localized_policy_versions import retrieve_localized_policy_versions_async
-from ._localized_policy_versions import retrieve_single_localized_policy_version
-from ._localized_policy_versions import retrieve_single_localized_policy_version_async
-from ._localized_policy_versions import retrieve_single_localized_policy_version_2
-from ._localized_policy_versions import retrieve_single_localized_policy_version_2_async
-from ._localized_policy_versions import set_default_policy
-from ._localized_policy_versions import set_default_policy_async
-from ._localized_policy_versions import update_localized_policy_version
-from ._localized_policy_versions import update_localized_policy_version_async
+from ._localized_policy_versions import old_create_localized_policy_version
+from ._localized_policy_versions import old_create_localized_policy_version_async
+from ._localized_policy_versions import (
+    old_public_retrieve_single_localized_policy_version,
+)
+from ._localized_policy_versions import (
+    old_public_retrieve_single_localized_policy_version_async,
+)
+from ._localized_policy_versions import old_request_presigned_url
+from ._localized_policy_versions import old_request_presigned_url_async
+from ._localized_policy_versions import old_retrieve_localized_policy_versions
+from ._localized_policy_versions import old_retrieve_localized_policy_versions_async
+from ._localized_policy_versions import old_retrieve_single_localized_policy_version
+from ._localized_policy_versions import (
+    old_retrieve_single_localized_policy_version_async,
+)
+from ._localized_policy_versions import old_set_default_localized_policy
+from ._localized_policy_versions import old_set_default_localized_policy_async
+from ._localized_policy_versions import old_update_localized_policy_version
+from ._localized_policy_versions import old_update_localized_policy_version_async
 
-from ._localized_policy_versions_with_namespace import create_localized_policy_version_1
+from ._localized_policy_versions_with_namespace import create_localized_policy_version
 from ._localized_policy_versions_with_namespace import (
-    create_localized_policy_version_1_async,
+    create_localized_policy_version_async,
 )
 from ._localized_policy_versions_with_namespace import delete_localized_policy
 from ._localized_policy_versions_with_namespace import delete_localized_policy_async
-from ._localized_policy_versions_with_namespace import request_presigned_url_1
-from ._localized_policy_versions_with_namespace import request_presigned_url_1_async
 from ._localized_policy_versions_with_namespace import (
-    retrieve_localized_policy_versions_1,
+    public_retrieve_single_localized_policy_version,
 )
 from ._localized_policy_versions_with_namespace import (
-    retrieve_localized_policy_versions_1_async,
+    public_retrieve_single_localized_policy_version_async,
+)
+from ._localized_policy_versions_with_namespace import request_presigned_url
+from ._localized_policy_versions_with_namespace import request_presigned_url_async
+from ._localized_policy_versions_with_namespace import (
+    retrieve_localized_policy_versions,
 )
 from ._localized_policy_versions_with_namespace import (
-    retrieve_single_localized_policy_version_1,
+    retrieve_localized_policy_versions_async,
 )
 from ._localized_policy_versions_with_namespace import (
-    retrieve_single_localized_policy_version_1_async,
+    retrieve_single_localized_policy_version,
 )
 from ._localized_policy_versions_with_namespace import (
-    retrieve_single_localized_policy_version_3,
+    retrieve_single_localized_policy_version_async,
 )
+from ._localized_policy_versions_with_namespace import set_default_localized_policy
 from ._localized_policy_versions_with_namespace import (
-    retrieve_single_localized_policy_version_3_async,
+    set_default_localized_policy_async,
 )
-from ._localized_policy_versions_with_namespace import set_default_policy_1
-from ._localized_policy_versions_with_namespace import set_default_policy_1_async
-from ._localized_policy_versions_with_namespace import update_localized_policy_version_1
+from ._localized_policy_versions_with_namespace import update_localized_policy_version
 from ._localized_policy_versions_with_namespace import (
-    update_localized_policy_version_1_async,
+    update_localized_policy_version_async,
 )
 
+from ._policies import old_retrieve_latest_policies_by_namespace_and_country_public
+from ._policies import (
+    old_retrieve_latest_policies_by_namespace_and_country_public_async,
+)
+from ._policies import old_set_default_policy
+from ._policies import old_set_default_policy_async
+from ._policies import old_update_policy
+from ._policies import old_update_policy_async
 from ._policies import retrieve_country_list_with_policies
 from ._policies import retrieve_country_list_with_policies_async
 from ._policies import retrieve_latest_policies
 from ._policies import retrieve_latest_policies_async
-from ._policies import retrieve_latest_policies_by_namespace_and_country_public
-from ._policies import retrieve_latest_policies_by_namespace_and_country_public_async
 from ._policies import retrieve_latest_policies_public
 from ._policies import retrieve_latest_policies_public_async
 from ._policies import retrieve_policies
 from ._policies import retrieve_policies_async
-from ._policies import set_default_policy_2
-from ._policies import set_default_policy_2_async
-from ._policies import update_policy
-from ._policies import update_policy_async
 
 from ._policies_with_namespace import delete_policy
 from ._policies_with_namespace import delete_policy_async
-from ._policies_with_namespace import set_default_policy_3
-from ._policies_with_namespace import set_default_policy_3_async
-from ._policies_with_namespace import update_policy_1
-from ._policies_with_namespace import update_policy_1_async
+from ._policies_with_namespace import set_default_policy
+from ._policies_with_namespace import set_default_policy_async
+from ._policies_with_namespace import update_policy
+from ._policies_with_namespace import update_policy_async
 
 from ._policies_with_namespace_v2 import (
-    retrieve_latest_policies_by_namespace_and_country_public_1,
+    retrieve_latest_policies_by_namespace_and_country_public,
 )
 from ._policies_with_namespace_v2 import (
-    retrieve_latest_policies_by_namespace_and_country_public_1_async,
+    retrieve_latest_policies_by_namespace_and_country_public_async,
 )
 
-from ._policy_versions import create_policy_version
-from ._policy_versions import create_policy_version_async
-from ._policy_versions import publish_policy_version
-from ._policy_versions import publish_policy_version_async
-from ._policy_versions import retrieve_single_policy_version
-from ._policy_versions import retrieve_single_policy_version_async
-from ._policy_versions import update_policy_version
-from ._policy_versions import update_policy_version_async
+from ._policy_versions import old_create_policy_version
+from ._policy_versions import old_create_policy_version_async
+from ._policy_versions import old_publish_policy_version
+from ._policy_versions import old_publish_policy_version_async
+from ._policy_versions import old_retrieve_single_policy_version
+from ._policy_versions import old_retrieve_single_policy_version_async
+from ._policy_versions import old_update_policy_version
+from ._policy_versions import old_update_policy_version_async
 
-from ._policy_versions_with_namespace import create_policy_version_1
-from ._policy_versions_with_namespace import create_policy_version_1_async
+from ._policy_versions_with_namespace import create_policy_version
+from ._policy_versions_with_namespace import create_policy_version_async
 from ._policy_versions_with_namespace import delete_policy_version
 from ._policy_versions_with_namespace import delete_policy_version_async
-from ._policy_versions_with_namespace import publish_policy_version_1
-from ._policy_versions_with_namespace import publish_policy_version_1_async
-from ._policy_versions_with_namespace import retrieve_single_policy_version_1
-from ._policy_versions_with_namespace import retrieve_single_policy_version_1_async
+from ._policy_versions_with_namespace import publish_policy_version
+from ._policy_versions_with_namespace import publish_policy_version_async
+from ._policy_versions_with_namespace import retrieve_single_policy_version
+from ._policy_versions_with_namespace import retrieve_single_policy_version_async
 from ._policy_versions_with_namespace import unpublish_policy_version
 from ._policy_versions_with_namespace import unpublish_policy_version_async
-from ._policy_versions_with_namespace import update_policy_version_1
-from ._policy_versions_with_namespace import update_policy_version_1_async
+from ._policy_versions_with_namespace import update_policy_version
+from ._policy_versions_with_namespace import update_policy_version_async
 
 from ._user_info import get_user_info_status
 from ._user_info import get_user_info_status_async

@@ -39,12 +39,12 @@ from ..models import RetrieveAcceptedAgreementResponse
 from ..operations.agreement import AcceptVersionedPolicy
 from ..operations.agreement import BulkAcceptVersionedPolicy
 from ..operations.agreement import ChangePreferenceConsent
-from ..operations.agreement import ChangePreferenceConsent1
-from ..operations.agreement import IndirectBulkAcceptVersionedPolicy1
 from ..operations.agreement import IndirectBulkAcceptVersionedPolicyV2
-from ..operations.agreement import RetrieveAcceptedAgreements
+from ..operations.agreement import OldRetrieveAcceptedAgreements
+from ..operations.agreement import OldRetrieveAllUsersByPolicyVersion
+from ..operations.agreement import PublicChangePreferenceConsent
+from ..operations.agreement import PublicIndirectBulkAcceptVersionedPolicy
 from ..operations.agreement import RetrieveAgreementsPublic
-from ..operations.agreement import RetrieveAllUsersByPolicyVersion
 
 
 @same_doc_as(AcceptVersionedPolicy)
@@ -293,164 +293,6 @@ async def change_preference_consent_async(
     )
 
 
-@same_doc_as(ChangePreferenceConsent1)
-def change_preference_consent_1(
-    body: Optional[List[AcceptAgreementRequest]] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
-
-    Change marketing preference consent.
-
-    Properties:
-        url: /agreement/public/agreements/localized-policy-versions/preferences
-
-        method: PATCH
-
-        tags: ["Agreement"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
-
-    Responses:
-        200: OK - (Successful operation)
-
-        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
-    """
-    request = ChangePreferenceConsent1.create(
-        body=body,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(ChangePreferenceConsent1)
-async def change_preference_consent_1_async(
-    body: Optional[List[AcceptAgreementRequest]] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
-
-    Change marketing preference consent.
-
-    Properties:
-        url: /agreement/public/agreements/localized-policy-versions/preferences
-
-        method: PATCH
-
-        tags: ["Agreement"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
-
-    Responses:
-        200: OK - (Successful operation)
-
-        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
-    """
-    request = ChangePreferenceConsent1.create(
-        body=body,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@deprecated
-@same_doc_as(IndirectBulkAcceptVersionedPolicy1)
-def indirect_bulk_accept_versioned_policy_1(
-    user_id: str,
-    body: Optional[List[AcceptAgreementRequest]] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
-
-    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-
-    Properties:
-        url: /agreement/public/agreements/policies/users/{userId}
-
-        method: POST
-
-        tags: ["Agreement"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
-
-        user_id: (userId) REQUIRED str in path
-
-    Responses:
-        201: Created - AcceptAgreementResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
-    """
-    request = IndirectBulkAcceptVersionedPolicy1.create(
-        user_id=user_id,
-        body=body,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@deprecated
-@same_doc_as(IndirectBulkAcceptVersionedPolicy1)
-async def indirect_bulk_accept_versioned_policy_1_async(
-    user_id: str,
-    body: Optional[List[AcceptAgreementRequest]] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
-
-    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-
-    Properties:
-        url: /agreement/public/agreements/policies/users/{userId}
-
-        method: POST
-
-        tags: ["Agreement"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
-
-        user_id: (userId) REQUIRED str in path
-
-    Responses:
-        201: Created - AcceptAgreementResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
-    """
-    request = IndirectBulkAcceptVersionedPolicy1.create(
-        user_id=user_id,
-        body=body,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @deprecated
 @same_doc_as(IndirectBulkAcceptVersionedPolicyV2)
 def indirect_bulk_accept_versioned_policy_v2(
@@ -563,11 +405,11 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
     )
 
 
-@same_doc_as(RetrieveAcceptedAgreements)
-def retrieve_accepted_agreements(
+@same_doc_as(OldRetrieveAcceptedAgreements)
+def old_retrieve_accepted_agreements(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
+    """Retrieve Accepted Legal Agreements (oldRetrieveAcceptedAgreements)
 
     This API will return all accepted Legal Agreements for specified user
 
@@ -589,17 +431,17 @@ def retrieve_accepted_agreements(
     Responses:
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
-    request = RetrieveAcceptedAgreements.create(
+    request = OldRetrieveAcceptedAgreements.create(
         user_id=user_id,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveAcceptedAgreements)
-async def retrieve_accepted_agreements_async(
+@same_doc_as(OldRetrieveAcceptedAgreements)
+async def old_retrieve_accepted_agreements_async(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
+    """Retrieve Accepted Legal Agreements (oldRetrieveAcceptedAgreements)
 
     This API will return all accepted Legal Agreements for specified user
 
@@ -621,8 +463,264 @@ async def retrieve_accepted_agreements_async(
     Responses:
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
-    request = RetrieveAcceptedAgreements.create(
+    request = OldRetrieveAcceptedAgreements.create(
         user_id=user_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(OldRetrieveAllUsersByPolicyVersion)
+def old_retrieve_all_users_by_policy_version(
+    policy_version_id: str,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Users Accepting Legal Agreements (oldRetrieveAllUsersByPolicyVersion)
+
+    This API will return users who has accepted a specific policy version.
+
+    Properties:
+        url: /agreement/admin/agreements/policy-versions/users
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        keyword: (keyword) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        policy_version_id: (policyVersionId) REQUIRED str in query
+
+    Responses:
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
+    request = OldRetrieveAllUsersByPolicyVersion.create(
+        policy_version_id=policy_version_id,
+        keyword=keyword,
+        limit=limit,
+        offset=offset,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldRetrieveAllUsersByPolicyVersion)
+async def old_retrieve_all_users_by_policy_version_async(
+    policy_version_id: str,
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Users Accepting Legal Agreements (oldRetrieveAllUsersByPolicyVersion)
+
+    This API will return users who has accepted a specific policy version.
+
+    Properties:
+        url: /agreement/admin/agreements/policy-versions/users
+
+        method: GET
+
+        tags: ["Agreement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        keyword: (keyword) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        policy_version_id: (policyVersionId) REQUIRED str in query
+
+    Responses:
+        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
+    request = OldRetrieveAllUsersByPolicyVersion.create(
+        policy_version_id=policy_version_id,
+        keyword=keyword,
+        limit=limit,
+        offset=offset,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicChangePreferenceConsent)
+def public_change_preference_consent(
+    body: Optional[List[AcceptAgreementRequest]] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Accept/Revoke Marketing Preference Consent (publicChangePreferenceConsent)
+
+    Change marketing preference consent.
+
+    Properties:
+        url: /agreement/public/agreements/localized-policy-versions/preferences
+
+        method: PATCH
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
+    request = PublicChangePreferenceConsent.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicChangePreferenceConsent)
+async def public_change_preference_consent_async(
+    body: Optional[List[AcceptAgreementRequest]] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Accept/Revoke Marketing Preference Consent (publicChangePreferenceConsent)
+
+    Change marketing preference consent.
+
+    Properties:
+        url: /agreement/public/agreements/localized-policy-versions/preferences
+
+        method: PATCH
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+    Responses:
+        200: OK - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40017: Policy with id : [{policyId}] is not marketing preference | 40045: errors.net.accelbyte.platform.legal.user_id_needed)
+    """
+    request = PublicChangePreferenceConsent.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
+@same_doc_as(PublicIndirectBulkAcceptVersionedPolicy)
+def public_indirect_bulk_accept_versioned_policy(
+    user_id: str,
+    body: Optional[List[AcceptAgreementRequest]] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk Accept Policy Versions (Indirect) (publicIndirectBulkAcceptVersionedPolicy)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+
+    Properties:
+        url: /agreement/public/agreements/policies/users/{userId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
+    request = PublicIndirectBulkAcceptVersionedPolicy.create(
+        user_id=user_id,
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@deprecated
+@same_doc_as(PublicIndirectBulkAcceptVersionedPolicy)
+async def public_indirect_bulk_accept_versioned_policy_async(
+    user_id: str,
+    body: Optional[List[AcceptAgreementRequest]] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk Accept Policy Versions (Indirect) (publicIndirectBulkAcceptVersionedPolicy)
+
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+
+    Properties:
+        url: /agreement/public/agreements/policies/users/{userId}
+
+        method: POST
+
+        tags: ["Agreement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL List[AcceptAgreementRequest] in body
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        201: Created - AcceptAgreementResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
+    request = PublicIndirectBulkAcceptVersionedPolicy.create(
+        user_id=user_id,
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -686,104 +784,6 @@ async def retrieve_agreements_public_async(
         400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
     request = RetrieveAgreementsPublic.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveAllUsersByPolicyVersion)
-def retrieve_all_users_by_policy_version(
-    policy_version_id: str,
-    keyword: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
-
-    This API will return users who has accepted a specific policy version.
-
-    Properties:
-        url: /agreement/admin/agreements/policy-versions/users
-
-        method: GET
-
-        tags: ["Agreement"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        keyword: (keyword) OPTIONAL str in query
-
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
-        policy_version_id: (policyVersionId) REQUIRED str in query
-
-    Responses:
-        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
-    """
-    request = RetrieveAllUsersByPolicyVersion.create(
-        policy_version_id=policy_version_id,
-        keyword=keyword,
-        limit=limit,
-        offset=offset,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrieveAllUsersByPolicyVersion)
-async def retrieve_all_users_by_policy_version_async(
-    policy_version_id: str,
-    keyword: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
-
-    This API will return users who has accepted a specific policy version.
-
-    Properties:
-        url: /agreement/admin/agreements/policy-versions/users
-
-        method: GET
-
-        tags: ["Agreement"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        keyword: (keyword) OPTIONAL str in query
-
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
-        policy_version_id: (policyVersionId) REQUIRED str in query
-
-    Responses:
-        200: OK - PagedRetrieveUserAcceptedAgreementResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
-    """
-    request = RetrieveAllUsersByPolicyVersion.create(
-        policy_version_id=policy_version_id,
-        keyword=keyword,
-        limit=limit,
-        offset=offset,
-    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

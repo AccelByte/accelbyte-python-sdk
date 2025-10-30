@@ -52,11 +52,6 @@ class PublicQueryGameSessionsByAttributes(Operation):
     DSInformation has 2 fields for DS status: "status" and "statusV2". The "status" is there for backward-compatibility, therefore we encourage to just rely on "statusV2" for the more updated statuses.
     DS Source can be DSMC, AMS or custom. In DSMC, a DS request will be put in queue if they dont have available buffers, and DSMC will let the service knows when they finished spinning it up. While AMS doesn't have a concept of queue. Therefore some "DSInformation.statusV2" only applicable for DSMC.
 
-    query parameter "availability" to filter sessions' availability:
-    all: return all sessions regardless it's full
-    full: only return active sessions
-    default behavior (unset or else): return only available sessions (not full)
-
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions
 

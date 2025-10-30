@@ -9,16 +9,16 @@ $ python -m accelbyte_py_sdk_cli 'legal-change-preference-consent' \
     > result.txt
 ```
 
-### Operation `retrieve_accepted_agreements`
+### Operation `old_retrieve_accepted_agreements`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-accepted-agreements' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-accepted-agreements' \
     'string' \
     > result.txt
 ```
 
-### Operation `retrieve_all_users_by_policy_version`
+### Operation `old_retrieve_all_users_by_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-users-by-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-all-users-by-policy-version' \
     'string' \
     --keyword 'string' \
     --limit 1 \
@@ -33,77 +33,77 @@ $ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-legal-policies' \
     > result.txt
 ```
 
-### Operation `create_policy`
+### Operation `old_create_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-create-policy' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-create-policy' \
     --body '{"affectedClientIds": ["string"], "affectedCountries": ["string"], "basePolicyName": "string", "countryGroupName": "string", "countryType": "COUNTRY", "description": "string", "isHidden": false, "isHiddenPublic": false, "namespace": "string", "tags": ["string"], "typeId": "string"}' \
     > result.txt
 ```
 
-### Operation `retrieve_single_policy`
+### Operation `old_retrieve_single_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-policy' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-single-policy' \
     'string' \
     > result.txt
 ```
 
-### Operation `partial_update_policy`
+### Operation `old_partial_update_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-partial-update-policy' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-partial-update-policy' \
     'string' \
     --body '{"affectedClientIds": ["string"], "affectedCountries": ["string"], "basePolicyName": "string", "countryGroupName": "string", "countryType": "COUNTRY", "description": "string", "isHidden": false, "isHiddenPublic": false, "namespace": "string", "tags": ["string"]}' \
     > result.txt
 ```
 
-### Operation `retrieve_policy_country`
+### Operation `old_retrieve_policy_country`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-policy-country' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-policy-country' \
     'string' \
     'string' \
     > result.txt
 ```
 
-### Operation `retrieve_localized_policy_versions`
+### Operation `old_retrieve_localized_policy_versions`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-localized-policy-versions' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-localized-policy-versions' \
     'string' \
     > result.txt
 ```
 
-### Operation `create_localized_policy_version`
+### Operation `old_create_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-create-localized-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-create-localized-policy-version' \
     'string' \
     --body '{"contentType": "string", "description": "string", "localeCode": "string"}' \
     > result.txt
 ```
 
-### Operation `retrieve_single_localized_policy_version`
+### Operation `old_retrieve_single_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-localized-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-single-localized-policy-version' \
     'string' \
     > result.txt
 ```
 
-### Operation `update_localized_policy_version`
+### Operation `old_update_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-update-localized-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-update-localized-policy-version' \
     'string' \
     --body '{"attachmentChecksum": "string", "attachmentLocation": "string", "attachmentVersionIdentifier": "string", "contentType": "string", "description": "string"}' \
     > result.txt
 ```
 
-### Operation `request_presigned_url`
+### Operation `old_request_presigned_url`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-request-presigned-url' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-request-presigned-url' \
     'string' \
     --body '{"contentMD5": "string", "contentType": "string"}' \
     > result.txt
 ```
 
-### Operation `set_default_policy`
+### Operation `old_set_default_localized_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-set-default-policy' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-set-default-localized-policy' \
     'string' \
     > result.txt
 ```
@@ -116,18 +116,18 @@ $ python -m accelbyte_py_sdk_cli 'legal-retrieve-accepted-agreements-for-multi-u
     > result.txt
 ```
 
-### Operation `retrieve_accepted_agreements_1`
+### Operation `retrieve_accepted_agreements`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-accepted-agreements-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-accepted-agreements' \
     'string' \
     'string' \
     --exclude_other_namespaces_policies false \
     > result.txt
 ```
 
-### Operation `retrieve_all_users_by_policy_version_1`
+### Operation `retrieve_all_users_by_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-users-by-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-users-by-policy-version' \
     'string' \
     'string' \
     --convert_game_user_id false \
@@ -163,17 +163,17 @@ $ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-legal-policies-by-namespace
     > result.txt
 ```
 
-### Operation `create_policy_1`
+### Operation `create_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-create-policy-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-create-policy' \
     'string' \
     --body '{"affectedClientIds": ["string"], "affectedCountries": ["string"], "basePolicyName": "string", "countryGroupName": "string", "countryType": "COUNTRY", "description": "string", "isHidden": false, "isHiddenPublic": false, "tags": ["string"], "typeId": "string"}' \
     > result.txt
 ```
 
-### Operation `retrieve_single_policy_1`
+### Operation `retrieve_single_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-policy-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-policy' \
     'string' \
     'string' \
     > result.txt
@@ -187,18 +187,18 @@ $ python -m accelbyte_py_sdk_cli 'legal-delete-base-policy' \
     > result.txt
 ```
 
-### Operation `partial_update_policy_1`
+### Operation `partial_update_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-partial-update-policy-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-partial-update-policy' \
     'string' \
     'string' \
     --body '{"affectedClientIds": ["string"], "affectedCountries": ["string"], "basePolicyName": "string", "countryGroupName": "string", "countryType": "COUNTRY", "description": "string", "isHidden": false, "isHiddenPublic": false, "tags": ["string"]}' \
     > result.txt
 ```
 
-### Operation `retrieve_policy_country_1`
+### Operation `retrieve_policy_country`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-policy-country-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-policy-country' \
     'string' \
     'string' \
     'string' \
@@ -230,52 +230,52 @@ $ python -m accelbyte_py_sdk_cli 'legal-delete-localized-policy' \
     > result.txt
 ```
 
-### Operation `retrieve_localized_policy_versions_1`
+### Operation `retrieve_localized_policy_versions`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-localized-policy-versions-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-localized-policy-versions' \
     'string' \
     'string' \
     > result.txt
 ```
 
-### Operation `create_localized_policy_version_1`
+### Operation `create_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-create-localized-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-create-localized-policy-version' \
     'string' \
     'string' \
     --body '{"contentType": "string", "description": "string", "localeCode": "string"}' \
     > result.txt
 ```
 
-### Operation `retrieve_single_localized_policy_version_1`
+### Operation `retrieve_single_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-localized-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-localized-policy-version' \
     'string' \
     'string' \
     > result.txt
 ```
 
-### Operation `update_localized_policy_version_1`
+### Operation `update_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-update-localized-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-update-localized-policy-version' \
     'string' \
     'string' \
     --body '{"attachmentChecksum": "string", "attachmentLocation": "string", "attachmentVersionIdentifier": "string", "contentType": "string", "description": "string"}' \
     > result.txt
 ```
 
-### Operation `request_presigned_url_1`
+### Operation `request_presigned_url`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-request-presigned-url-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-request-presigned-url' \
     'string' \
     'string' \
     --body '{"contentMD5": "string", "contentType": "string"}' \
     > result.txt
 ```
 
-### Operation `set_default_policy_1`
+### Operation `set_default_localized_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-set-default-policy-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-set-default-localized-policy' \
     'string' \
     'string' \
     > result.txt
@@ -289,18 +289,18 @@ $ python -m accelbyte_py_sdk_cli 'legal-delete-policy-version' \
     > result.txt
 ```
 
-### Operation `update_policy_version_1`
+### Operation `update_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-update-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-update-policy-version' \
     'string' \
     'string' \
     --body '{"description": "string", "displayVersion": "string", "isCommitted": false}' \
     > result.txt
 ```
 
-### Operation `publish_policy_version_1`
+### Operation `publish_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-publish-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-publish-policy-version' \
     'string' \
     'string' \
     --should_notify false \
@@ -323,44 +323,44 @@ $ python -m accelbyte_py_sdk_cli 'legal-delete-policy' \
     > result.txt
 ```
 
-### Operation `update_policy_1`
+### Operation `update_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-update-policy-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-update-policy' \
     'string' \
     'string' \
     --body '{"countries": ["string"], "countryGroupName": "string", "description": "string", "isDefaultOpted": false, "isMandatory": false, "policyName": "string", "readableId": "string", "shouldNotifyOnUpdate": false}' \
     > result.txt
 ```
 
-### Operation `set_default_policy_3`
+### Operation `set_default_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-set-default-policy-3' \
+$ python -m accelbyte_py_sdk_cli 'legal-set-default-policy' \
     'string' \
     'string' \
     > result.txt
 ```
 
-### Operation `retrieve_single_policy_version_1`
+### Operation `retrieve_single_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-policy-version' \
     'string' \
     'string' \
     --version_id 'string' \
     > result.txt
 ```
 
-### Operation `create_policy_version_1`
+### Operation `create_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-create-policy-version-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-create-policy-version' \
     'string' \
     'string' \
     --body '{"description": "string", "displayVersion": "string", "isCommitted": false}' \
     > result.txt
 ```
 
-### Operation `retrieve_all_policy_types_1`
+### Operation `retrieve_all_policy_types`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-policy-types-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-policy-types' \
     'string' \
     1 \
     --offset 1 \
@@ -397,56 +397,56 @@ $ python -m accelbyte_py_sdk_cli 'legal-retrieve-policies' \
     > result.txt
 ```
 
-### Operation `update_policy_version`
+### Operation `old_update_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-update-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-update-policy-version' \
     'string' \
     --body '{"description": "string", "displayVersion": "string", "isCommitted": false}' \
     > result.txt
 ```
 
-### Operation `publish_policy_version`
+### Operation `old_publish_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-publish-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-publish-policy-version' \
     'string' \
     --should_notify false \
     > result.txt
 ```
 
-### Operation `update_policy`
+### Operation `old_update_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-update-policy' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-update-policy' \
     'string' \
     --body '{"countries": ["string"], "countryGroupName": "string", "description": "string", "isDefaultOpted": false, "isMandatory": false, "policyName": "string", "readableId": "string", "shouldNotifyOnUpdate": false}' \
     > result.txt
 ```
 
-### Operation `set_default_policy_2`
+### Operation `old_set_default_policy`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-set-default-policy-2' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-set-default-policy' \
     'string' \
     > result.txt
 ```
 
-### Operation `retrieve_single_policy_version`
+### Operation `old_retrieve_single_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-single-policy-version' \
     'string' \
     --version_id 'string' \
     > result.txt
 ```
 
-### Operation `create_policy_version`
+### Operation `old_create_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-create-policy-version' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-create-policy-version' \
     'string' \
     --body '{"description": "string", "displayVersion": "string", "isCommitted": false}' \
     > result.txt
 ```
 
-### Operation `retrieve_all_policy_types`
+### Operation `old_retrieve_all_policy_types`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-policy-types' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-all-policy-types' \
     1 \
     --offset 1 \
     > result.txt
@@ -466,9 +466,9 @@ $ python -m accelbyte_py_sdk_cli 'legal-anonymize-user-agreement' \
     > result.txt
 ```
 
-### Operation `change_preference_consent_1`
+### Operation `public_change_preference_consent`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-change-preference-consent-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-public-change-preference-consent' \
     --body '[{"isAccepted": false, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "string", "policyId": "string", "policyVersionId": "string"}]' \
     > result.txt
 ```
@@ -510,16 +510,16 @@ $ python -m accelbyte_py_sdk_cli 'legal-retrieve-eligibilities-public-indirect' 
     > result.txt
 ```
 
-### Operation `retrieve_single_localized_policy_version_2`
+### Operation `old_public_retrieve_single_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-localized-policy-version-2' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-public-retrieve-single-localized-policy-version' \
     'string' \
     > result.txt
 ```
 
-### Operation `retrieve_single_localized_policy_version_3`
+### Operation `public_retrieve_single_localized_policy_version`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-single-localized-policy-version-3' \
+$ python -m accelbyte_py_sdk_cli 'legal-public-retrieve-single-localized-policy-version' \
     'string' \
     'string' \
     > result.txt
@@ -554,9 +554,9 @@ $ python -m accelbyte_py_sdk_cli 'legal-retrieve-latest-policies-public' \
     > result.txt
 ```
 
-### Operation `retrieve_latest_policies_by_namespace_and_country_public`
+### Operation `old_retrieve_latest_policies_by_namespace_and_country_public`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-latest-policies-by-namespace-and-country-public' \
+$ python -m accelbyte_py_sdk_cli 'legal-old-retrieve-latest-policies-by-namespace-and-country-public' \
     'string' \
     'string' \
     --always_include_default false \
@@ -573,9 +573,9 @@ $ python -m accelbyte_py_sdk_cli 'legal-check-readiness' \
     > result.txt
 ```
 
-### Operation `retrieve_latest_policies_by_namespace_and_country_public_1`
+### Operation `retrieve_latest_policies_by_namespace_and_country_public`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'legal-retrieve-latest-policies-by-namespace-and-country-public-1' \
+$ python -m accelbyte_py_sdk_cli 'legal-retrieve-latest-policies-by-namespace-and-country-public' \
     'string' \
     'string' \
     'string' \

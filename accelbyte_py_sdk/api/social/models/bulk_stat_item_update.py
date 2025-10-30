@@ -47,6 +47,8 @@ class BulkStatItemUpdate(Model):
         value: (value) REQUIRED float
 
         additional_data: (additionalData) OPTIONAL Dict[str, Any]
+
+        request_id: (requestId) OPTIONAL str
     """
 
     # region fields
@@ -55,6 +57,7 @@ class BulkStatItemUpdate(Model):
     update_strategy: Union[str, UpdateStrategyEnum]  # REQUIRED
     value: float  # REQUIRED
     additional_data: Dict[str, Any]  # OPTIONAL
+    request_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,6 +79,10 @@ class BulkStatItemUpdate(Model):
 
     def with_additional_data(self, value: Dict[str, Any]) -> BulkStatItemUpdate:
         self.additional_data = value
+        return self
+
+    def with_request_id(self, value: str) -> BulkStatItemUpdate:
+        self.request_id = value
         return self
 
     # endregion with_x methods
@@ -102,6 +109,10 @@ class BulkStatItemUpdate(Model):
             }
         elif include_empty:
             result["additionalData"] = {}
+        if hasattr(self, "request_id"):
+            result["requestId"] = str(self.request_id)
+        elif include_empty:
+            result["requestId"] = ""
         return result
 
     # endregion to methods
@@ -115,6 +126,7 @@ class BulkStatItemUpdate(Model):
         update_strategy: Union[str, UpdateStrategyEnum],
         value: float,
         additional_data: Optional[Dict[str, Any]] = None,
+        request_id: Optional[str] = None,
         **kwargs,
     ) -> BulkStatItemUpdate:
         instance = cls()
@@ -123,6 +135,8 @@ class BulkStatItemUpdate(Model):
         instance.value = value
         if additional_data is not None:
             instance.additional_data = additional_data
+        if request_id is not None:
+            instance.request_id = request_id
         return instance
 
     @classmethod
@@ -150,6 +164,10 @@ class BulkStatItemUpdate(Model):
             }
         elif include_empty:
             instance.additional_data = {}
+        if "requestId" in dict_ and dict_["requestId"] is not None:
+            instance.request_id = str(dict_["requestId"])
+        elif include_empty:
+            instance.request_id = ""
         return instance
 
     @classmethod
@@ -195,6 +213,7 @@ class BulkStatItemUpdate(Model):
             "updateStrategy": "update_strategy",
             "value": "value",
             "additionalData": "additional_data",
+            "requestId": "request_id",
         }
 
     @staticmethod
@@ -204,6 +223,7 @@ class BulkStatItemUpdate(Model):
             "updateStrategy": True,
             "value": True,
             "additionalData": False,
+            "requestId": False,
         }
 
     @staticmethod

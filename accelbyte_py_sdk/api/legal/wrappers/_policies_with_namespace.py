@@ -33,8 +33,8 @@ from ..models import ErrorEntity
 from ..models import UpdatePolicyRequest
 
 from ..operations.policies_with_namespace import DeletePolicy
-from ..operations.policies_with_namespace import SetDefaultPolicy3
-from ..operations.policies_with_namespace import UpdatePolicy1
+from ..operations.policies_with_namespace import SetDefaultPolicy
+from ..operations.policies_with_namespace import UpdatePolicy
 
 
 @same_doc_as(DeletePolicy)
@@ -135,14 +135,14 @@ async def delete_policy_async(
     )
 
 
-@same_doc_as(SetDefaultPolicy3)
-def set_default_policy_3(
+@same_doc_as(SetDefaultPolicy)
+def set_default_policy(
     policy_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set Default Policy (setDefaultPolicy_3)
+    """Set Default Policy (setDefaultPolicy)
 
     Update a policy to be the default.
 
@@ -172,21 +172,21 @@ def set_default_policy_3(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = SetDefaultPolicy3.create(
+    request = SetDefaultPolicy.create(
         policy_id=policy_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(SetDefaultPolicy3)
-async def set_default_policy_3_async(
+@same_doc_as(SetDefaultPolicy)
+async def set_default_policy_async(
     policy_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set Default Policy (setDefaultPolicy_3)
+    """Set Default Policy (setDefaultPolicy)
 
     Update a policy to be the default.
 
@@ -216,7 +216,7 @@ async def set_default_policy_3_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = SetDefaultPolicy3.create(
+    request = SetDefaultPolicy.create(
         policy_id=policy_id,
         namespace=namespace,
     )
@@ -225,15 +225,15 @@ async def set_default_policy_3_async(
     )
 
 
-@same_doc_as(UpdatePolicy1)
-def update_policy_1(
+@same_doc_as(UpdatePolicy)
+def update_policy(
     policy_id: str,
     body: Optional[UpdatePolicyRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Country-Specific Policy (updatePolicy_1)
+    """Update Country-Specific Policy (updatePolicy)
 
     Update country-specific and country-group policy.
 
@@ -265,7 +265,7 @@ def update_policy_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = UpdatePolicy1.create(
+    request = UpdatePolicy.create(
         policy_id=policy_id,
         body=body,
         namespace=namespace,
@@ -273,15 +273,15 @@ def update_policy_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(UpdatePolicy1)
-async def update_policy_1_async(
+@same_doc_as(UpdatePolicy)
+async def update_policy_async(
     policy_id: str,
     body: Optional[UpdatePolicyRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Country-Specific Policy (updatePolicy_1)
+    """Update Country-Specific Policy (updatePolicy)
 
     Update country-specific and country-group policy.
 
@@ -313,7 +313,7 @@ async def update_policy_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = UpdatePolicy1.create(
+    request = UpdatePolicy.create(
         policy_id=policy_id,
         body=body,
         namespace=namespace,

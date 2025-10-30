@@ -35,12 +35,14 @@ from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
-@click.argument("localized_policy_version_id", type=str)
+@click.argument("policy_id", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def set_default_policy(
-    localized_policy_version_id: str,
+    policy_id: str,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -54,7 +56,8 @@ def set_default_policy(
     else:
         login_as_internal(login_as)
     result, error = set_default_policy_internal(
-        localized_policy_version_id=localized_policy_version_id,
+        policy_id=policy_id,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

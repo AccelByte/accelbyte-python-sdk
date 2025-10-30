@@ -1,3 +1,11 @@
+<a name="v0.80.0"></a>
+## [v0.80.0]
+### chore
+- **:** add renovate.json
+### fix
+- **coverity:** fix issues detected by coverity
+
+
 <a name="v0.79.0"></a>
 ## [v0.79.0]
 ### feat

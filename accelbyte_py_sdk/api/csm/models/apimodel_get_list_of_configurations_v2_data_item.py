@@ -40,6 +40,8 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
 
         deployment_status: (deploymentStatus) REQUIRED str
 
+        editable: (editable) REQUIRED bool
+
         is_hidden: (isHidden) REQUIRED bool
 
         value: (value) REQUIRED str
@@ -47,8 +49,6 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
         apply_mask: (applyMask) OPTIONAL bool
 
         description: (description) OPTIONAL str
-
-        editable: (editable) OPTIONAL bool
 
         source: (source) OPTIONAL str
     """
@@ -59,11 +59,11 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
     config_name: str  # REQUIRED
     config_type: str  # REQUIRED
     deployment_status: str  # REQUIRED
+    editable: bool  # REQUIRED
     is_hidden: bool  # REQUIRED
     value: str  # REQUIRED
     apply_mask: bool  # OPTIONAL
     description: str  # OPTIONAL
-    editable: bool  # OPTIONAL
     source: str  # OPTIONAL
 
     # endregion fields
@@ -88,6 +88,10 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
         self.deployment_status = value
         return self
 
+    def with_editable(self, value: bool) -> ApimodelGetListOfConfigurationsV2DataItem:
+        self.editable = value
+        return self
+
     def with_is_hidden(self, value: bool) -> ApimodelGetListOfConfigurationsV2DataItem:
         self.is_hidden = value
         return self
@@ -102,10 +106,6 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
 
     def with_description(self, value: str) -> ApimodelGetListOfConfigurationsV2DataItem:
         self.description = value
-        return self
-
-    def with_editable(self, value: bool) -> ApimodelGetListOfConfigurationsV2DataItem:
-        self.editable = value
         return self
 
     def with_source(self, value: str) -> ApimodelGetListOfConfigurationsV2DataItem:
@@ -134,6 +134,10 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
             result["deploymentStatus"] = str(self.deployment_status)
         elif include_empty:
             result["deploymentStatus"] = ""
+        if hasattr(self, "editable"):
+            result["editable"] = bool(self.editable)
+        elif include_empty:
+            result["editable"] = False
         if hasattr(self, "is_hidden"):
             result["isHidden"] = bool(self.is_hidden)
         elif include_empty:
@@ -150,10 +154,6 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "editable"):
-            result["editable"] = bool(self.editable)
-        elif include_empty:
-            result["editable"] = False
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
@@ -171,11 +171,11 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
         config_name: str,
         config_type: str,
         deployment_status: str,
+        editable: bool,
         is_hidden: bool,
         value: str,
         apply_mask: Optional[bool] = None,
         description: Optional[str] = None,
-        editable: Optional[bool] = None,
         source: Optional[str] = None,
         **kwargs,
     ) -> ApimodelGetListOfConfigurationsV2DataItem:
@@ -184,14 +184,13 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
         instance.config_name = config_name
         instance.config_type = config_type
         instance.deployment_status = deployment_status
+        instance.editable = editable
         instance.is_hidden = is_hidden
         instance.value = value
         if apply_mask is not None:
             instance.apply_mask = apply_mask
         if description is not None:
             instance.description = description
-        if editable is not None:
-            instance.editable = editable
         if source is not None:
             instance.source = source
         return instance
@@ -219,6 +218,10 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
             instance.deployment_status = str(dict_["deploymentStatus"])
         elif include_empty:
             instance.deployment_status = ""
+        if "editable" in dict_ and dict_["editable"] is not None:
+            instance.editable = bool(dict_["editable"])
+        elif include_empty:
+            instance.editable = False
         if "isHidden" in dict_ and dict_["isHidden"] is not None:
             instance.is_hidden = bool(dict_["isHidden"])
         elif include_empty:
@@ -235,10 +238,6 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "editable" in dict_ and dict_["editable"] is not None:
-            instance.editable = bool(dict_["editable"])
-        elif include_empty:
-            instance.editable = False
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
@@ -290,11 +289,11 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
             "configName": "config_name",
             "configType": "config_type",
             "deploymentStatus": "deployment_status",
+            "editable": "editable",
             "isHidden": "is_hidden",
             "value": "value",
             "applyMask": "apply_mask",
             "description": "description",
-            "editable": "editable",
             "source": "source",
         }
 
@@ -305,11 +304,11 @@ class ApimodelGetListOfConfigurationsV2DataItem(Model):
             "configName": True,
             "configType": True,
             "deploymentStatus": True,
+            "editable": True,
             "isHidden": True,
             "value": True,
             "applyMask": False,
             "description": False,
-            "editable": False,
             "source": False,
         }
 

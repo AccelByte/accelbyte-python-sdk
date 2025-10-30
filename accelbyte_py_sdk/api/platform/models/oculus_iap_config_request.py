@@ -35,12 +35,15 @@ class OculusIAPConfigRequest(Model):
         app_id: (appId) REQUIRED str
 
         app_secret: (appSecret) OPTIONAL str
+
+        webhook_verify_token: (webhookVerifyToken) OPTIONAL str
     """
 
     # region fields
 
     app_id: str  # REQUIRED
     app_secret: str  # OPTIONAL
+    webhook_verify_token: str  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class OculusIAPConfigRequest(Model):
 
     def with_app_secret(self, value: str) -> OculusIAPConfigRequest:
         self.app_secret = value
+        return self
+
+    def with_webhook_verify_token(self, value: str) -> OculusIAPConfigRequest:
+        self.webhook_verify_token = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class OculusIAPConfigRequest(Model):
             result["appSecret"] = str(self.app_secret)
         elif include_empty:
             result["appSecret"] = ""
+        if hasattr(self, "webhook_verify_token"):
+            result["webhookVerifyToken"] = str(self.webhook_verify_token)
+        elif include_empty:
+            result["webhookVerifyToken"] = ""
         return result
 
     # endregion to methods
@@ -76,12 +87,18 @@ class OculusIAPConfigRequest(Model):
 
     @classmethod
     def create(
-        cls, app_id: str, app_secret: Optional[str] = None, **kwargs
+        cls,
+        app_id: str,
+        app_secret: Optional[str] = None,
+        webhook_verify_token: Optional[str] = None,
+        **kwargs,
     ) -> OculusIAPConfigRequest:
         instance = cls()
         instance.app_id = app_id
         if app_secret is not None:
             instance.app_secret = app_secret
+        if webhook_verify_token is not None:
+            instance.webhook_verify_token = webhook_verify_token
         return instance
 
     @classmethod
@@ -99,6 +116,10 @@ class OculusIAPConfigRequest(Model):
             instance.app_secret = str(dict_["appSecret"])
         elif include_empty:
             instance.app_secret = ""
+        if "webhookVerifyToken" in dict_ and dict_["webhookVerifyToken"] is not None:
+            instance.webhook_verify_token = str(dict_["webhookVerifyToken"])
+        elif include_empty:
+            instance.webhook_verify_token = ""
         return instance
 
     @classmethod
@@ -144,6 +165,7 @@ class OculusIAPConfigRequest(Model):
         return {
             "appId": "app_id",
             "appSecret": "app_secret",
+            "webhookVerifyToken": "webhook_verify_token",
         }
 
     @staticmethod
@@ -151,6 +173,7 @@ class OculusIAPConfigRequest(Model):
         return {
             "appId": True,
             "appSecret": False,
+            "webhookVerifyToken": False,
         }
 
     # endregion static methods

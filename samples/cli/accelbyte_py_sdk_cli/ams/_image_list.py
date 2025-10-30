@@ -45,6 +45,7 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.option("--sort_direction", "sort_direction", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--tag", "tag", type=str)
+@click.option("--target_architecture", "target_architecture", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -59,6 +60,7 @@ def image_list(
     sort_direction: Optional[str] = None,
     status: Optional[str] = None,
     tag: Optional[str] = None,
+    target_architecture: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -82,6 +84,7 @@ def image_list(
         sort_direction=sort_direction,
         status=status,
         tag=tag,
+        target_architecture=target_architecture,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

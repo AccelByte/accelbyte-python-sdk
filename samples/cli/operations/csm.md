@@ -86,6 +86,40 @@ $ python -m accelbyte_py_sdk_cli 'csm-delete-app-images-v2' \
     > result.txt
 ```
 
+### Operation `create_no_sql_database_credential_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-no-sql-database-credential-v2' \
+    '{"password": "string", "username": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_no_sql_database_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-database-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_no_sql_database_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-no-sql-database-v2' \
+    '{"dbName": "string", "password": "string", "username": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_no_sql_database_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-no-sql-database-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `update_app_resources_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-update-app-resources-v2' \
@@ -279,6 +313,43 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-deployment-v2' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-delete-deployment-v2' \
     'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_no_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `update_no_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-update-no-sql-cluster-v2' \
+    '{"maxDCU": 3.14, "minDCU": 3.14, "profileName": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_no_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-no-sql-cluster-v2' \
+    '{"maxDCU": 3.14, "minDCU": 3.14, "profileName": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_no_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-no-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_no_sql_access_tunnel_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-access-tunnel-v2' \
     'string' \
     > result.txt
 ```

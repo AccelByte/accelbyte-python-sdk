@@ -42,33 +42,33 @@ from ..models import UpdateBasePolicyRequestV2
 from ..models import UpdateBasePolicyResponse
 from ..models import ValidationErrorEntity
 
-from ..operations.base_legal_policies_with_namespace import CreatePolicy1
+from ..operations.base_legal_policies_with_namespace import CreatePolicy
 from ..operations.base_legal_policies_with_namespace import CreatePolicyUnderBasePolicy
 from ..operations.base_legal_policies_with_namespace import DeleteBasePolicy
-from ..operations.base_legal_policies_with_namespace import PartialUpdatePolicy1
+from ..operations.base_legal_policies_with_namespace import PartialUpdatePolicy
 from ..operations.base_legal_policies_with_namespace import (
     RetrieveAllLegalPoliciesByNamespace,
 )
 from ..operations.base_legal_policies_with_namespace import (
     RetrieveAllPoliciesFromBasePolicy,
 )
-from ..operations.base_legal_policies_with_namespace import RetrieveAllPolicyTypes1
-from ..operations.base_legal_policies_with_namespace import RetrievePolicyCountry1
-from ..operations.base_legal_policies_with_namespace import RetrieveSinglePolicy1
+from ..operations.base_legal_policies_with_namespace import RetrieveAllPolicyTypes
+from ..operations.base_legal_policies_with_namespace import RetrievePolicyCountry
+from ..operations.base_legal_policies_with_namespace import RetrieveSinglePolicy
 from ..models import CreateBasePolicyRequestV2CountryTypeEnum
 from ..models import CreateBasePolicyResponseCountryTypeEnum
 from ..models import CreatePolicyRequestCountryTypeEnum
 from ..models import UpdateBasePolicyRequestV2CountryTypeEnum
 
 
-@same_doc_as(CreatePolicy1)
-def create_policy_1(
+@same_doc_as(CreatePolicy)
+def create_policy(
     body: Optional[CreateBasePolicyRequestV2] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Base Legal Policy (createPolicy_1)
+    """Create a Base Legal Policy (createPolicy)
 
     Create a legal policy.
     Note:
@@ -110,21 +110,21 @@ def create_policy_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = CreatePolicy1.create(
+    request = CreatePolicy.create(
         body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(CreatePolicy1)
-async def create_policy_1_async(
+@same_doc_as(CreatePolicy)
+async def create_policy_async(
     body: Optional[CreateBasePolicyRequestV2] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Base Legal Policy (createPolicy_1)
+    """Create a Base Legal Policy (createPolicy)
 
     Create a legal policy.
     Note:
@@ -166,7 +166,7 @@ async def create_policy_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = CreatePolicy1.create(
+    request = CreatePolicy.create(
         body=body,
         namespace=namespace,
     )
@@ -387,15 +387,15 @@ async def delete_base_policy_async(
     )
 
 
-@same_doc_as(PartialUpdatePolicy1)
-def partial_update_policy_1(
+@same_doc_as(PartialUpdatePolicy)
+def partial_update_policy(
     base_policy_id: str,
     body: Optional[UpdateBasePolicyRequestV2] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Base Legal Policy (partialUpdatePolicy_1)
+    """Update Base Legal Policy (partialUpdatePolicy)
 
     Update an existing base policy.
     Note:
@@ -435,7 +435,7 @@ def partial_update_policy_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = PartialUpdatePolicy1.create(
+    request = PartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
         namespace=namespace,
@@ -443,15 +443,15 @@ def partial_update_policy_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(PartialUpdatePolicy1)
-async def partial_update_policy_1_async(
+@same_doc_as(PartialUpdatePolicy)
+async def partial_update_policy_async(
     base_policy_id: str,
     body: Optional[UpdateBasePolicyRequestV2] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Base Legal Policy (partialUpdatePolicy_1)
+    """Update Base Legal Policy (partialUpdatePolicy)
 
     Update an existing base policy.
     Note:
@@ -491,7 +491,7 @@ async def partial_update_policy_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = PartialUpdatePolicy1.create(
+    request = PartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
         namespace=namespace,
@@ -677,15 +677,15 @@ async def retrieve_all_policies_from_base_policy_async(
     )
 
 
-@same_doc_as(RetrieveAllPolicyTypes1)
-def retrieve_all_policy_types_1(
+@same_doc_as(RetrieveAllPolicyTypes)
+def retrieve_all_policy_types(
     limit: int,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Policy Type (retrieveAllPolicyTypes_1)
+    """Retrieve All Policy Type (retrieveAllPolicyTypes)
 
     Retrieve all supported policy types.
 
@@ -715,7 +715,7 @@ def retrieve_all_policy_types_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveAllPolicyTypes1.create(
+    request = RetrieveAllPolicyTypes.create(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -723,15 +723,15 @@ def retrieve_all_policy_types_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveAllPolicyTypes1)
-async def retrieve_all_policy_types_1_async(
+@same_doc_as(RetrieveAllPolicyTypes)
+async def retrieve_all_policy_types_async(
     limit: int,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Policy Type (retrieveAllPolicyTypes_1)
+    """Retrieve All Policy Type (retrieveAllPolicyTypes)
 
     Retrieve all supported policy types.
 
@@ -761,7 +761,7 @@ async def retrieve_all_policy_types_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveAllPolicyTypes1.create(
+    request = RetrieveAllPolicyTypes.create(
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -771,15 +771,15 @@ async def retrieve_all_policy_types_1_async(
     )
 
 
-@same_doc_as(RetrievePolicyCountry1)
-def retrieve_policy_country_1(
+@same_doc_as(RetrievePolicyCountry)
+def retrieve_policy_country(
     base_policy_id: str,
     country_code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
 
     Retrieve a Base Legal Policy based on a Particular Country.
 
@@ -811,7 +811,7 @@ def retrieve_policy_country_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrievePolicyCountry1.create(
+    request = RetrievePolicyCountry.create(
         base_policy_id=base_policy_id,
         country_code=country_code,
         namespace=namespace,
@@ -819,15 +819,15 @@ def retrieve_policy_country_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrievePolicyCountry1)
-async def retrieve_policy_country_1_async(
+@same_doc_as(RetrievePolicyCountry)
+async def retrieve_policy_country_async(
     base_policy_id: str,
     country_code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
+    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
 
     Retrieve a Base Legal Policy based on a Particular Country.
 
@@ -859,7 +859,7 @@ async def retrieve_policy_country_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrievePolicyCountry1.create(
+    request = RetrievePolicyCountry.create(
         base_policy_id=base_policy_id,
         country_code=country_code,
         namespace=namespace,
@@ -869,14 +869,14 @@ async def retrieve_policy_country_1_async(
     )
 
 
-@same_doc_as(RetrieveSinglePolicy1)
-def retrieve_single_policy_1(
+@same_doc_as(RetrieveSinglePolicy)
+def retrieve_single_policy(
     base_policy_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
+    """Retrieve a Base Legal Policy (retrieveSinglePolicy)
 
     Retrieve a base policy.
 
@@ -906,21 +906,21 @@ def retrieve_single_policy_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveSinglePolicy1.create(
+    request = RetrieveSinglePolicy.create(
         base_policy_id=base_policy_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveSinglePolicy1)
-async def retrieve_single_policy_1_async(
+@same_doc_as(RetrieveSinglePolicy)
+async def retrieve_single_policy_async(
     base_policy_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
+    """Retrieve a Base Legal Policy (retrieveSinglePolicy)
 
     Retrieve a base policy.
 
@@ -950,7 +950,7 @@ async def retrieve_single_policy_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveSinglePolicy1.create(
+    request = RetrieveSinglePolicy.create(
         base_policy_id=base_policy_id,
         namespace=namespace,
     )

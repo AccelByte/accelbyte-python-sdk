@@ -36,20 +36,20 @@ from ..models import RetrievePolicyVersionResponse
 from ..models import UpdatePolicyVersionRequest
 from ..models import UpdatePolicyVersionResponse
 
-from ..operations.policy_versions import CreatePolicyVersion
-from ..operations.policy_versions import PublishPolicyVersion
-from ..operations.policy_versions import RetrieveSinglePolicyVersion
-from ..operations.policy_versions import UpdatePolicyVersion
+from ..operations.policy_versions import OldCreatePolicyVersion
+from ..operations.policy_versions import OldPublishPolicyVersion
+from ..operations.policy_versions import OldRetrieveSinglePolicyVersion
+from ..operations.policy_versions import OldUpdatePolicyVersion
 
 
-@same_doc_as(CreatePolicyVersion)
-def create_policy_version(
+@same_doc_as(OldCreatePolicyVersion)
+def old_create_policy_version(
     policy_id: str,
     body: Optional[CreatePolicyVersionRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Version from Country-Specific Policy (createPolicyVersion)
+    """Create a Version from Country-Specific Policy (oldCreatePolicyVersion)
 
     Create a version of a particular country-specific policy.
 
@@ -75,21 +75,21 @@ def create_policy_version(
 
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
     """
-    request = CreatePolicyVersion.create(
+    request = OldCreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(CreatePolicyVersion)
-async def create_policy_version_async(
+@same_doc_as(OldCreatePolicyVersion)
+async def old_create_policy_version_async(
     policy_id: str,
     body: Optional[CreatePolicyVersionRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Version from Country-Specific Policy (createPolicyVersion)
+    """Create a Version from Country-Specific Policy (oldCreatePolicyVersion)
 
     Create a version of a particular country-specific policy.
 
@@ -115,7 +115,7 @@ async def create_policy_version_async(
 
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
     """
-    request = CreatePolicyVersion.create(
+    request = OldCreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
     )
@@ -124,14 +124,14 @@ async def create_policy_version_async(
     )
 
 
-@same_doc_as(PublishPolicyVersion)
-def publish_policy_version(
+@same_doc_as(OldPublishPolicyVersion)
+def old_publish_policy_version(
     policy_version_id: str,
     should_notify: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion)
+    """Manually Publish a Version from Country-Specific Policy (oldPublishPolicyVersion)
 
     Manually publish a version of a particular country-specific policy.
 
@@ -159,21 +159,21 @@ def publish_policy_version(
 
         409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
     """
-    request = PublishPolicyVersion.create(
+    request = OldPublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(PublishPolicyVersion)
-async def publish_policy_version_async(
+@same_doc_as(OldPublishPolicyVersion)
+async def old_publish_policy_version_async(
     policy_version_id: str,
     should_notify: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion)
+    """Manually Publish a Version from Country-Specific Policy (oldPublishPolicyVersion)
 
     Manually publish a version of a particular country-specific policy.
 
@@ -201,7 +201,7 @@ async def publish_policy_version_async(
 
         409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
     """
-    request = PublishPolicyVersion.create(
+    request = OldPublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
     )
@@ -210,14 +210,14 @@ async def publish_policy_version_async(
     )
 
 
-@same_doc_as(RetrieveSinglePolicyVersion)
-def retrieve_single_policy_version(
+@same_doc_as(OldRetrieveSinglePolicyVersion)
+def old_retrieve_single_policy_version(
     policy_id: str,
     version_id: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
+    """Retrieve a Version from Country-Specific Policy (oldRetrieveSinglePolicyVersion)
 
     Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
 
@@ -243,21 +243,21 @@ def retrieve_single_policy_version(
 
         404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
     """
-    request = RetrieveSinglePolicyVersion.create(
+    request = OldRetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveSinglePolicyVersion)
-async def retrieve_single_policy_version_async(
+@same_doc_as(OldRetrieveSinglePolicyVersion)
+async def old_retrieve_single_policy_version_async(
     policy_id: str,
     version_id: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
+    """Retrieve a Version from Country-Specific Policy (oldRetrieveSinglePolicyVersion)
 
     Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
 
@@ -283,7 +283,7 @@ async def retrieve_single_policy_version_async(
 
         404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
     """
-    request = RetrieveSinglePolicyVersion.create(
+    request = OldRetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
     )
@@ -292,14 +292,14 @@ async def retrieve_single_policy_version_async(
     )
 
 
-@same_doc_as(UpdatePolicyVersion)
-def update_policy_version(
+@same_doc_as(OldUpdatePolicyVersion)
+def old_update_policy_version(
     policy_version_id: str,
     body: Optional[UpdatePolicyVersionRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a Version of Policy (updatePolicyVersion)
+    """Update a Version of Policy (oldUpdatePolicyVersion)
 
     Update a particular policy version.
 
@@ -327,21 +327,21 @@ def update_policy_version(
 
         409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
-    request = UpdatePolicyVersion.create(
+    request = OldUpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(UpdatePolicyVersion)
-async def update_policy_version_async(
+@same_doc_as(OldUpdatePolicyVersion)
+async def old_update_policy_version_async(
     policy_version_id: str,
     body: Optional[UpdatePolicyVersionRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a Version of Policy (updatePolicyVersion)
+    """Update a Version of Policy (oldUpdatePolicyVersion)
 
     Update a particular policy version.
 
@@ -369,7 +369,7 @@ async def update_policy_version_async(
 
         409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
-    request = UpdatePolicyVersion.create(
+    request = OldUpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
     )

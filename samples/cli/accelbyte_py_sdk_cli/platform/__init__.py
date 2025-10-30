@@ -99,6 +99,14 @@ from ._delete_iap_item_config import delete_iap_item_config
 from ._get_oculus_iap_config import get_oculus_iap_config
 from ._update_oculus_iap_config import update_oculus_iap_config
 from ._delete_oculus_iap_config import delete_oculus_iap_config
+from ._list_oculus_subscription_groups import list_oculus_subscription_groups
+from ._create_oculus_subscription_group import create_oculus_subscription_group
+from ._delete_oculus_subscription_group import delete_oculus_subscription_group
+from ._list_oculus_subscription_group_tier import list_oculus_subscription_group_tier
+from ._add_tier_into_meta_quest_subscription_group import (
+    add_tier_into_meta_quest_subscription_group,
+)
+from ._delete_oculus_subscription_tier import delete_oculus_subscription_tier
 from ._get_play_station_iap_config import get_play_station_iap_config
 from ._update_playstation_iap_config import update_playstation_iap_config
 from ._delete_playstation_iap_config import delete_playstation_iap_config
@@ -313,6 +321,7 @@ from ._query_user_iap_orders import query_user_iap_orders
 from ._query_all_user_iap_orders import query_all_user_iap_orders
 from ._query_user_iap_consume_history import query_user_iap_consume_history
 from ._mock_fulfill_iap_item import mock_fulfill_iap_item
+from ._admin_sync_oculus_subscriptions import admin_sync_oculus_subscriptions
 from ._admin_get_iap_order_line_items import admin_get_iap_order_line_items
 from ._admin_sync_steam_abnormal_transaction import (
     admin_sync_steam_abnormal_transaction,
@@ -536,6 +545,7 @@ from ._public_redeem_code import public_redeem_code
 from ._public_fulfill_apple_iap_item import public_fulfill_apple_iap_item
 from ._sync_epic_games_inventory import sync_epic_games_inventory
 from ._public_fulfill_google_iap_item import public_fulfill_google_iap_item
+from ._sync_oculus_subscriptions import sync_oculus_subscriptions
 from ._sync_oculus_consumable_entitlements import sync_oculus_consumable_entitlements
 from ._public_reconcile_play_station_store import public_reconcile_play_station_store
 from ._public_reconcile_play_station_store_with_multiple_service_labels import (
@@ -682,6 +692,12 @@ commands = [
     get_oculus_iap_config,
     update_oculus_iap_config,
     delete_oculus_iap_config,
+    list_oculus_subscription_groups,
+    create_oculus_subscription_group,
+    delete_oculus_subscription_group,
+    list_oculus_subscription_group_tier,
+    add_tier_into_meta_quest_subscription_group,
+    delete_oculus_subscription_tier,
     get_play_station_iap_config,
     update_playstation_iap_config,
     delete_playstation_iap_config,
@@ -878,6 +894,7 @@ commands = [
     query_all_user_iap_orders,
     query_user_iap_consume_history,
     mock_fulfill_iap_item,
+    admin_sync_oculus_subscriptions,
     admin_get_iap_order_line_items,
     admin_sync_steam_abnormal_transaction,
     admin_sync_steam_iap_by_transaction,
@@ -1047,6 +1064,7 @@ commands = [
     public_fulfill_apple_iap_item,
     sync_epic_games_inventory,
     public_fulfill_google_iap_item,
+    sync_oculus_subscriptions,
     sync_oculus_consumable_entitlements,
     public_reconcile_play_station_store,
     public_reconcile_play_station_store_with_multiple_service_labels,

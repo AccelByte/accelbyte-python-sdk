@@ -38,19 +38,11 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseV1
 
 
 @click.command()
-@click.option("--end_time", "end_time", type=int)
-@click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=int)
-@click.option("--start_time", "start_time", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_my_offline_notifications(
-    end_time: Optional[int] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    start_time: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -65,10 +57,6 @@ def get_my_offline_notifications(
     else:
         login_as_internal(login_as)
     result, error = get_my_offline_notifications_internal(
-        end_time=end_time,
-        limit=limit,
-        offset=offset,
-        start_time=start_time,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

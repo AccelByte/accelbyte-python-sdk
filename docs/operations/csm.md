@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.27.0)
+# Custom Service Manager Index (1.29.1)
 
 
 ## Operations
@@ -84,6 +84,19 @@
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/images | DELETE | DeleteAppImagesV2 | `false` | [DeleteAppImagesV2](../../accelbyte_py_sdk/api/csm/operations/image_v2/delete_app_images_v2.py) | [delete_app_images_v2](../../accelbyte_py_sdk/api/csm/wrappers/_image_v2.py) | [accelbyte_py_sdk_cli csm-delete-app-images-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_app_images_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/images | GET | GetAppImageListV2 | `false` | [GetAppImageListV2](../../accelbyte_py_sdk/api/csm/operations/image_v2/get_app_image_list_v2.py) | [get_app_image_list_v2](../../accelbyte_py_sdk/api/csm/wrappers/_image_v2.py) | [accelbyte_py_sdk_cli csm-get-app-image-list-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_app_image_list_v2.py) |
 
+### Managed Resources
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v2/admin/namespaces/{namespace}/nosql/clusters | POST | CreateNoSQLClusterV2 | `false` | [CreateNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_cluster_v2.py) | [create_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/crendentials | POST | CreateNoSQLDatabaseCredentialV2 | `false` | [CreateNoSQLDatabaseCredentialV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_database__189b02.py) | [create_no_sql_database_credential_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-database-credential-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_database_credential_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | POST | CreateNoSQLDatabaseV2 | `false` | [CreateNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_database_v2.py) | [create_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/nosql/clusters | DELETE | DeleteNoSQLClusterV2 | `false` | [DeleteNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/delete_no_sql_cluster_v2.py) | [delete_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-delete-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_no_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | DELETE | DeleteNoSQLDatabaseV2 | `false` | [DeleteNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/delete_no_sql_database_v2.py) | [delete_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-delete-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_no_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/nosql/tunnels | GET | GetNoSQLAccessTunnelV2 | `false` | [GetNoSQLAccessTunnelV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_access_tunnel_v2.py) | [get_no_sql_access_tunnel_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-access-tunnel-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_access_tunnel_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/nosql/clusters | GET | GetNoSQLClusterV2 | `false` | [GetNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_cluster_v2.py) | [get_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | GET | GetNoSQLDatabaseV2 | `false` | [GetNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_database_v2.py) | [get_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/nosql/clusters | PUT | UpdateNoSQLClusterV2 | `false` | [UpdateNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/update_no_sql_cluster_v2.py) | [update_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-update-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_no_sql_cluster_v2.py) |
+
 ### Messages
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -126,7 +139,10 @@
 | apimodel.CreateAppV2Request | [ApimodelCreateAppV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_app_v2_request.py) |
 | apimodel.CreateDeploymentV2Request | [ApimodelCreateDeploymentV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_request.py) |
 | apimodel.CreateDeploymentV2Response | [ApimodelCreateDeploymentV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_response.py) |
+| apimodel.CreateNoSQLAppDatabaseRequest | [ApimodelCreateNoSQLAppDatabaseRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_app_database_request.py) |
+| apimodel.CreateNoSQLDatabaseCredentialRequest | [ApimodelCreateNoSQLDatabaseCredentialRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_database_credential_request.py) |
 | apimodel.CSMAppLimitsResponse | [ApimodelCSMAppLimitsResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_csm_app_limits_response.py) |
+| apimodel.DeleteNoSQLResourceResponse | [ApimodelDeleteNoSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_delete_no_sql_resource_response.py) |
 | apimodel.GetAppImageListV2DataItem | [ApimodelGetAppImageListV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item.py) |
 | apimodel.GetAppImageListV2DataItemImageScanResult | [ApimodelGetAppImageListV2DataItemImageScanResult](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item_image_scan_result.py) |
 | apimodel.GetAppImageListV2DataItemImageScanStatus | [ApimodelGetAppImageListV2DataItemImageScanStatus](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item_image_scan_status.py) |
@@ -146,6 +162,10 @@
 | apimodel.IncreaseLimitFormRequest | [ApimodelIncreaseLimitFormRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_increase_limit_form_request.py) |
 | apimodel.MemoryRequest | [ApimodelMemoryRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_request.py) |
 | apimodel.MemoryResponse | [ApimodelMemoryResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_response.py) |
+| apimodel.NoSQLDatabaseCredentialResponse | [ApimodelNoSQLDatabaseCredentialResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_credential_response.py) |
+| apimodel.NoSQLDatabaseDeleteResponse | [ApimodelNoSQLDatabaseDeleteResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_delete_response.py) |
+| apimodel.NoSQLDatabaseResponse | [ApimodelNoSQLDatabaseResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_response.py) |
+| apimodel.NoSQLResourceResponse | [ApimodelNoSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_resource_response.py) |
 | apimodel.NotificationType | [ApimodelNotificationType](../../accelbyte_py_sdk/api/csm/models/apimodel_notification_type.py) |
 | apimodel.ReplicaRequest | [ApimodelReplicaRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_request.py) |
 | apimodel.ReplicaResponse | [ApimodelReplicaResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_response.py) |
@@ -157,6 +177,7 @@
 | apimodel.SubscribeNotificationResponse | [ApimodelSubscribeNotificationResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_subscribe_notification_response.py) |
 | apimodel.SubscriberItemRequest | [ApimodelSubscriberItemRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_subscriber_item_request.py) |
 | apimodel.SubscriberItemResponse | [ApimodelSubscriberItemResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_subscriber_item_response.py) |
+| apimodel.TunnelInfoResponse | [ApimodelTunnelInfoResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_tunnel_info_response.py) |
 | apimodel.UpdateAppResourceRequest | [ApimodelUpdateAppResourceRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_update_app_resource_request.py) |
 | apimodel.UpdateAppV2Request | [ApimodelUpdateAppV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_app_v2_request.py) |
 | apimodel.UpdateConfigurationV2Request | [ApimodelUpdateConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_configuration_v2_request.py) |
@@ -195,4 +216,6 @@
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/csm/models/log_app_message_declaration.py) |
 | model.CSMAutoscalingDefaults | [ModelCSMAutoscalingDefaults](../../accelbyte_py_sdk/api/csm/models/model_csm_autoscaling_defaults.py) |
 | model.ImageScanFinding | [ModelImageScanFinding](../../accelbyte_py_sdk/api/csm/models/model_image_scan_finding.py) |
+| nosqlresource.NoSQLResourceConfiguration | [NosqlresourceNoSQLResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/nosqlresource_no_sql_resource_configuration.py) |
+| resourceaccesstunnel.TunnelInfo | [ResourceaccesstunnelTunnelInfo](../../accelbyte_py_sdk/api/csm/models/resourceaccesstunnel_tunnel_info.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/csm/models/response_error_response.py) |

@@ -8,12 +8,16 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.8.0"
+__version__ = "6.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .add_tier_into_meta_ques_3b9946 import AddTierIntoMetaQuestSubscriptionGroup
+from .create_oculus_subscript_a9cccf import CreateOculusSubscriptionGroup
+from .delete_oculus_subscript_671183 import DeleteOculusSubscriptionGroup
+from .delete_oculus_subscript_b30083 import DeleteOculusSubscriptionTier
 from .get_subscription_history import GetSubscriptionHistory
 from .get_third_party_platfor_a863f8 import (
     GetThirdPartyPlatformSubscriptionOwnershipByGroupId,
@@ -29,6 +33,8 @@ from .get_third_party_platfor_62d92f import (
 )
 from .get_third_party_subscri_c77bab import GetThirdPartySubscriptionDetails
 from .get_third_party_user_su_0efa78 import GetThirdPartyUserSubscriptionDetails
+from .list_oculus_subscriptio_bb42e9 import ListOculusSubscriptionGroupTier
+from .list_oculus_subscriptio_9d9ab8 import ListOculusSubscriptionGroups
 from .public_query_user_third_9368be import PublicQueryUserThirdPartySubscription
 from .public_query_user_third_9368be import (
     PlatformEnum as PublicQueryUserThirdPartySubscriptionPlatformEnum,

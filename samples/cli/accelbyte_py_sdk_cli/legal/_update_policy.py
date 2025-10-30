@@ -38,12 +38,14 @@ from accelbyte_py_sdk.api.legal.models import UpdatePolicyRequest
 @click.command()
 @click.argument("policy_id", type=str)
 @click.option("--body", "body", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_policy(
     policy_id: str,
     body: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -65,6 +67,7 @@ def update_policy(
     result, error = update_policy_internal(
         policy_id=policy_id,
         body=body,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

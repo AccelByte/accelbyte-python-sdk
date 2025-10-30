@@ -34,19 +34,21 @@ from accelbyte_py_sdk.api.legal import (
     partial_update_policy as partial_update_policy_internal,
 )
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
-from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyRequest
+from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyRequestV2
 from accelbyte_py_sdk.api.legal.models import UpdateBasePolicyResponse
 
 
 @click.command()
 @click.argument("base_policy_id", type=str)
 @click.option("--body", "body", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def partial_update_policy(
     base_policy_id: str,
     body: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -62,12 +64,13 @@ def partial_update_policy(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = UpdateBasePolicyRequest.create_from_dict(body_json)
+            body = UpdateBasePolicyRequestV2.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = partial_update_policy_internal(
         base_policy_id=base_policy_id,
         body=body,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

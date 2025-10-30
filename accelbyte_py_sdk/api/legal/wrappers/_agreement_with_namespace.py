@@ -39,11 +39,11 @@ from ..models import UsersAgreementsRequest
 
 from ..operations.agreement_with_namespace import DownloadExportedAgreementsInCSV
 from ..operations.agreement_with_namespace import InitiateExportAgreementsToCSV
-from ..operations.agreement_with_namespace import RetrieveAcceptedAgreements1
+from ..operations.agreement_with_namespace import RetrieveAcceptedAgreements
 from ..operations.agreement_with_namespace import (
     RetrieveAcceptedAgreementsForMultiUsers,
 )
-from ..operations.agreement_with_namespace import RetrieveAllUsersByPolicyVersion1
+from ..operations.agreement_with_namespace import RetrieveAllUsersByPolicyVersion
 
 
 @same_doc_as(DownloadExportedAgreementsInCSV)
@@ -258,15 +258,15 @@ async def initiate_export_agreements_to_csv_async(
     )
 
 
-@same_doc_as(RetrieveAcceptedAgreements1)
-def retrieve_accepted_agreements_1(
+@same_doc_as(RetrieveAcceptedAgreements)
+def retrieve_accepted_agreements(
     user_id: str,
     exclude_other_namespaces_policies: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements_1)
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
     This API will return all accepted Legal Agreements for specified user.
 
@@ -296,7 +296,7 @@ def retrieve_accepted_agreements_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveAcceptedAgreements1.create(
+    request = RetrieveAcceptedAgreements.create(
         user_id=user_id,
         exclude_other_namespaces_policies=exclude_other_namespaces_policies,
         namespace=namespace,
@@ -304,15 +304,15 @@ def retrieve_accepted_agreements_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveAcceptedAgreements1)
-async def retrieve_accepted_agreements_1_async(
+@same_doc_as(RetrieveAcceptedAgreements)
+async def retrieve_accepted_agreements_async(
     user_id: str,
     exclude_other_namespaces_policies: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements_1)
+    """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
     This API will return all accepted Legal Agreements for specified user.
 
@@ -342,7 +342,7 @@ async def retrieve_accepted_agreements_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveAcceptedAgreements1.create(
+    request = RetrieveAcceptedAgreements.create(
         user_id=user_id,
         exclude_other_namespaces_policies=exclude_other_namespaces_policies,
         namespace=namespace,
@@ -438,8 +438,8 @@ async def retrieve_accepted_agreements_for_multi_users_async(
     )
 
 
-@same_doc_as(RetrieveAllUsersByPolicyVersion1)
-def retrieve_all_users_by_policy_version_1(
+@same_doc_as(RetrieveAllUsersByPolicyVersion)
+def retrieve_all_users_by_policy_version(
     policy_version_id: str,
     convert_game_user_id: Optional[bool] = None,
     keyword: Optional[str] = None,
@@ -449,7 +449,7 @@ def retrieve_all_users_by_policy_version_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion_1)
+    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
     This API will return all users who has accepted a specific policy version.
 
@@ -487,7 +487,7 @@ def retrieve_all_users_by_policy_version_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveAllUsersByPolicyVersion1.create(
+    request = RetrieveAllUsersByPolicyVersion.create(
         policy_version_id=policy_version_id,
         convert_game_user_id=convert_game_user_id,
         keyword=keyword,
@@ -498,8 +498,8 @@ def retrieve_all_users_by_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveAllUsersByPolicyVersion1)
-async def retrieve_all_users_by_policy_version_1_async(
+@same_doc_as(RetrieveAllUsersByPolicyVersion)
+async def retrieve_all_users_by_policy_version_async(
     policy_version_id: str,
     convert_game_user_id: Optional[bool] = None,
     keyword: Optional[str] = None,
@@ -509,7 +509,7 @@ async def retrieve_all_users_by_policy_version_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion_1)
+    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
     This API will return all users who has accepted a specific policy version.
 
@@ -547,7 +547,7 @@ async def retrieve_all_users_by_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveAllUsersByPolicyVersion1.create(
+    request = RetrieveAllUsersByPolicyVersion.create(
         policy_version_id=policy_version_id,
         convert_game_user_id=convert_game_user_id,
         keyword=keyword,

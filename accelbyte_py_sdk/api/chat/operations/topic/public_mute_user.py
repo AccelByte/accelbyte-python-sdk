@@ -66,6 +66,8 @@ class PublicMuteUser(Operation):
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
 
@@ -195,6 +197,8 @@ class PublicMuteUser(Operation):
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -217,6 +221,8 @@ class PublicMuteUser(Operation):
         if code == 401:
             return None, RestapiErrorResponseBody.create_from_dict(content)
         if code == 403:
+            return None, RestapiErrorResponseBody.create_from_dict(content)
+        if code == 404:
             return None, RestapiErrorResponseBody.create_from_dict(content)
         if code == 500:
             return None, RestapiErrorResponseBody.create_from_dict(content)

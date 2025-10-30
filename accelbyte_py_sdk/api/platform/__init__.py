@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.8.0"
+__version__ = "6.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -357,6 +357,8 @@ from .wrappers import admin_refund_iap_order
 from .wrappers import admin_refund_iap_order_async
 from .wrappers import admin_reset_steam_job_time
 from .wrappers import admin_reset_steam_job_time_async
+from .wrappers import admin_sync_oculus_subscriptions
+from .wrappers import admin_sync_oculus_subscriptions_async
 from .wrappers import admin_sync_steam_abnormal_transaction
 from .wrappers import admin_sync_steam_abnormal_transaction_async
 from .wrappers import admin_sync_steam_iap_by_transaction
@@ -429,6 +431,8 @@ from .wrappers import sync_epic_games_inventory
 from .wrappers import sync_epic_games_inventory_async
 from .wrappers import sync_oculus_consumable_entitlements
 from .wrappers import sync_oculus_consumable_entitlements_async
+from .wrappers import sync_oculus_subscriptions
+from .wrappers import sync_oculus_subscriptions_async
 from .wrappers import sync_steam_abnormal_transaction
 from .wrappers import sync_steam_abnormal_transaction_async
 from .wrappers import sync_steam_iap_by_transaction
@@ -477,6 +481,14 @@ from .wrappers import query_third_party_notifications
 from .wrappers import query_third_party_notifications_async
 
 # iap_subscription
+from .wrappers import add_tier_into_meta_quest_subscription_group
+from .wrappers import add_tier_into_meta_quest_subscription_group_async
+from .wrappers import create_oculus_subscription_group
+from .wrappers import create_oculus_subscription_group_async
+from .wrappers import delete_oculus_subscription_group
+from .wrappers import delete_oculus_subscription_group_async
+from .wrappers import delete_oculus_subscription_tier
+from .wrappers import delete_oculus_subscription_tier_async
 from .wrappers import get_subscription_history
 from .wrappers import get_subscription_history_async
 from .wrappers import get_third_party_platform_subscription_ownership_by_group_id
@@ -489,6 +501,10 @@ from .wrappers import get_third_party_subscription_details
 from .wrappers import get_third_party_subscription_details_async
 from .wrappers import get_third_party_user_subscription_details
 from .wrappers import get_third_party_user_subscription_details_async
+from .wrappers import list_oculus_subscription_group_tier
+from .wrappers import list_oculus_subscription_group_tier_async
+from .wrappers import list_oculus_subscription_groups
+from .wrappers import list_oculus_subscription_groups_async
 from .wrappers import public_query_user_third_party_subscription
 from .wrappers import public_query_user_third_party_subscription_async
 from .wrappers import query_third_party_subscription

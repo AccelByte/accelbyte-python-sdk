@@ -1327,10 +1327,6 @@ async def get_my_notifications_async(
 
 @same_doc_as(GetMyOfflineNotifications)
 def get_my_offline_notifications(
-    end_time: Optional[int] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    start_time: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1354,14 +1350,6 @@ def get_my_offline_notifications(
 
         namespace: (namespace) REQUIRED str in path
 
-        end_time: (endTime) OPTIONAL int in query
-
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
-        start_time: (startTime) OPTIONAL int in query
-
     Responses:
         200: OK - ModelNotificationsResponse (OK)
 
@@ -1380,10 +1368,6 @@ def get_my_offline_notifications(
         if error:
             return None, error
     request = GetMyOfflineNotifications.create(
-        end_time=end_time,
-        limit=limit,
-        offset=offset,
-        start_time=start_time,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1391,10 +1375,6 @@ def get_my_offline_notifications(
 
 @same_doc_as(GetMyOfflineNotifications)
 async def get_my_offline_notifications_async(
-    end_time: Optional[int] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    start_time: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1418,14 +1398,6 @@ async def get_my_offline_notifications_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        end_time: (endTime) OPTIONAL int in query
-
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
-        start_time: (startTime) OPTIONAL int in query
-
     Responses:
         200: OK - ModelNotificationsResponse (OK)
 
@@ -1444,10 +1416,6 @@ async def get_my_offline_notifications_async(
         if error:
             return None, error
     request = GetMyOfflineNotifications.create(
-        end_time=end_time,
-        limit=limit,
-        offset=offset,
-        start_time=start_time,
         namespace=namespace,
     )
     return await run_request_async(

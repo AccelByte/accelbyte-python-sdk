@@ -34,18 +34,324 @@ from ..models import RetrievePolicyPublicResponse
 from ..models import RetrievePolicyResponse
 from ..models import UpdatePolicyRequest
 
+from ..operations.policies import OldRetrieveLatestPoliciesByNamespaceAndCountryPublic
+from ..operations.policies import (
+    OldRetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum,
+)
+from ..operations.policies import OldSetDefaultPolicy
+from ..operations.policies import OldUpdatePolicy
 from ..operations.policies import RetrieveCountryListWithPolicies
 from ..operations.policies import RetrieveLatestPolicies
 from ..operations.policies import RetrieveLatestPoliciesPolicyTypeEnum
-from ..operations.policies import RetrieveLatestPoliciesByNamespaceAndCountryPublic
-from ..operations.policies import (
-    RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum,
-)
 from ..operations.policies import RetrieveLatestPoliciesPublic
 from ..operations.policies import RetrieveLatestPoliciesPublicPolicyTypeEnum
 from ..operations.policies import RetrievePolicies
-from ..operations.policies import SetDefaultPolicy2
-from ..operations.policies import UpdatePolicy
+
+
+@same_doc_as(OldRetrieveLatestPoliciesByNamespaceAndCountryPublic)
+def old_retrieve_latest_policies_by_namespace_and_country_public(
+    country_code: str,
+    always_include_default: Optional[bool] = None,
+    default_on_empty: Optional[bool] = None,
+    policy_type: Optional[
+        Union[str, OldRetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]
+    ] = None,
+    tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Latest Policies by Namespace and Country (oldRetrieveLatestPoliciesByNamespaceAndCountryPublic)
+
+    Retrieve all active latest policies based on a namespace and country.
+    Other detail info:
+
+      * Leave the policyType empty if you want to be responded with all policy type
+      *  Fill the tags if you want to filter the responded policy by tags
+      *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+      *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
+        * Document 1 (default): Region US (default), UA
+        * Document 2 (default): Region US (default)
+        * Document 3 (default): Region US (default)
+        * User: Region UA
+        * Query: alwaysIncludeDefault: true
+        * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
+
+    Properties:
+        url: /agreement/public/policies/namespaces/{namespace}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        always_include_default: (alwaysIncludeDefault) OPTIONAL bool in query
+
+        default_on_empty: (defaultOnEmpty) OPTIONAL bool in query
+
+        policy_type: (policyType) OPTIONAL Union[str, PolicyTypeEnum] in query
+
+        tags: (tags) OPTIONAL str in query
+
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[RetrievePolicyPublicResponse] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = OldRetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
+        country_code=country_code,
+        always_include_default=always_include_default,
+        default_on_empty=default_on_empty,
+        policy_type=policy_type,
+        tags=tags,
+        visible_only=visible_only,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldRetrieveLatestPoliciesByNamespaceAndCountryPublic)
+async def old_retrieve_latest_policies_by_namespace_and_country_public_async(
+    country_code: str,
+    always_include_default: Optional[bool] = None,
+    default_on_empty: Optional[bool] = None,
+    policy_type: Optional[
+        Union[str, OldRetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]
+    ] = None,
+    tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Latest Policies by Namespace and Country (oldRetrieveLatestPoliciesByNamespaceAndCountryPublic)
+
+    Retrieve all active latest policies based on a namespace and country.
+    Other detail info:
+
+      * Leave the policyType empty if you want to be responded with all policy type
+      *  Fill the tags if you want to filter the responded policy by tags
+      *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
+      *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
+        * Document 1 (default): Region US (default), UA
+        * Document 2 (default): Region US (default)
+        * Document 3 (default): Region US (default)
+        * User: Region UA
+        * Query: alwaysIncludeDefault: true
+        * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
+
+    Properties:
+        url: /agreement/public/policies/namespaces/{namespace}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        country_code: (countryCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        always_include_default: (alwaysIncludeDefault) OPTIONAL bool in query
+
+        default_on_empty: (defaultOnEmpty) OPTIONAL bool in query
+
+        policy_type: (policyType) OPTIONAL Union[str, PolicyTypeEnum] in query
+
+        tags: (tags) OPTIONAL str in query
+
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[RetrievePolicyPublicResponse] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = OldRetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
+        country_code=country_code,
+        always_include_default=always_include_default,
+        default_on_empty=default_on_empty,
+        policy_type=policy_type,
+        tags=tags,
+        visible_only=visible_only,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(OldSetDefaultPolicy)
+def old_set_default_policy(
+    policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Set Default Policy (oldSetDefaultPolicy)
+
+    Update a policy to be the default.
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}/default
+
+        method: PATCH
+
+        tags: ["Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
+    """
+    request = OldSetDefaultPolicy.create(
+        policy_id=policy_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldSetDefaultPolicy)
+async def old_set_default_policy_async(
+    policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Set Default Policy (oldSetDefaultPolicy)
+
+    Update a policy to be the default.
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}/default
+
+        method: PATCH
+
+        tags: ["Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
+    """
+    request = OldSetDefaultPolicy.create(
+        policy_id=policy_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(OldUpdatePolicy)
+def old_update_policy(
+    policy_id: str,
+    body: Optional[UpdatePolicyRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Country-Specific Policy (oldUpdatePolicy)
+
+    Update country-specific and country-group policy.
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}
+
+        method: PATCH
+
+        tags: ["Policies"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdatePolicyRequest in body
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
+    """
+    request = OldUpdatePolicy.create(
+        policy_id=policy_id,
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldUpdatePolicy)
+async def old_update_policy_async(
+    policy_id: str,
+    body: Optional[UpdatePolicyRequest] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Country-Specific Policy (oldUpdatePolicy)
+
+    Update country-specific and country-group policy.
+
+    Properties:
+        url: /agreement/admin/policies/{policyId}
+
+        method: PATCH
+
+        tags: ["Policies"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdatePolicyRequest in body
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        200: OK - (operation successful)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
+    """
+    request = OldUpdatePolicy.create(
+        policy_id=policy_id,
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveCountryListWithPolicies)
@@ -212,160 +518,6 @@ async def retrieve_latest_policies_async(
         policy_type=policy_type,
         tags=tags,
         visible_only=visible_only,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic)
-def retrieve_latest_policies_by_namespace_and_country_public(
-    country_code: str,
-    always_include_default: Optional[bool] = None,
-    default_on_empty: Optional[bool] = None,
-    policy_type: Optional[
-        Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]
-    ] = None,
-    tags: Optional[str] = None,
-    visible_only: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic)
-
-    Retrieve all active latest policies based on a namespace and country.
-    Other detail info:
-
-      * Leave the policyType empty if you want to be responded with all policy type
-      *  Fill the tags if you want to filter the responded policy by tags
-      *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
-      *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
-        * Document 1 (default): Region US (default), UA
-        * Document 2 (default): Region US (default)
-        * Document 3 (default): Region US (default)
-        * User: Region UA
-        * Query: alwaysIncludeDefault: true
-        * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-
-    Properties:
-        url: /agreement/public/policies/namespaces/{namespace}/countries/{countryCode}
-
-        method: GET
-
-        tags: ["Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        country_code: (countryCode) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-        always_include_default: (alwaysIncludeDefault) OPTIONAL bool in query
-
-        default_on_empty: (defaultOnEmpty) OPTIONAL bool in query
-
-        policy_type: (policyType) OPTIONAL Union[str, PolicyTypeEnum] in query
-
-        tags: (tags) OPTIONAL str in query
-
-        visible_only: (visibleOnly) OPTIONAL bool in query
-
-    Responses:
-        200: OK - List[RetrievePolicyPublicResponse] (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
-        country_code=country_code,
-        always_include_default=always_include_default,
-        default_on_empty=default_on_empty,
-        policy_type=policy_type,
-        tags=tags,
-        visible_only=visible_only,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic)
-async def retrieve_latest_policies_by_namespace_and_country_public_async(
-    country_code: str,
-    always_include_default: Optional[bool] = None,
-    default_on_empty: Optional[bool] = None,
-    policy_type: Optional[
-        Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]
-    ] = None,
-    tags: Optional[str] = None,
-    visible_only: Optional[bool] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic)
-
-    Retrieve all active latest policies based on a namespace and country.
-    Other detail info:
-
-      * Leave the policyType empty if you want to be responded with all policy type
-      *  Fill the tags if you want to filter the responded policy by tags
-      *  Fill the defaultOnEmpty with true if you want to be responded with default country-specific policy if your requested country is not exist
-      *  Fill the alwaysIncludeDefault with true if you want to be responded with always include default policy. If there are duplicate policies (default policies and country specific policies with same base policy) it'll include policy with same country code, for example:
-        * Document 1 (default): Region US (default), UA
-        * Document 2 (default): Region US (default)
-        * Document 3 (default): Region US (default)
-        * User: Region UA
-        * Query: alwaysIncludeDefault: true
-        * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-
-    Properties:
-        url: /agreement/public/policies/namespaces/{namespace}/countries/{countryCode}
-
-        method: GET
-
-        tags: ["Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        country_code: (countryCode) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-        always_include_default: (alwaysIncludeDefault) OPTIONAL bool in query
-
-        default_on_empty: (defaultOnEmpty) OPTIONAL bool in query
-
-        policy_type: (policyType) OPTIONAL Union[str, PolicyTypeEnum] in query
-
-        tags: (tags) OPTIONAL str in query
-
-        visible_only: (visibleOnly) OPTIONAL bool in query
-
-    Responses:
-        200: OK - List[RetrievePolicyPublicResponse] (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
-        country_code=country_code,
-        always_include_default=always_include_default,
-        default_on_empty=default_on_empty,
-        policy_type=policy_type,
-        tags=tags,
-        visible_only=visible_only,
-        namespace=namespace,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -582,158 +734,6 @@ async def retrieve_policies_async(
     """
     request = RetrievePolicies.create(
         country_code=country_code,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(SetDefaultPolicy2)
-def set_default_policy_2(
-    policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """Set Default Policy (setDefaultPolicy_2)
-
-    Update a policy to be the default.
-
-    Properties:
-        url: /agreement/admin/policies/{policyId}/default
-
-        method: PATCH
-
-        tags: ["Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        policy_id: (policyId) REQUIRED str in path
-
-    Responses:
-        200: OK - (operation successful)
-
-        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
-    """
-    request = SetDefaultPolicy2.create(
-        policy_id=policy_id,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(SetDefaultPolicy2)
-async def set_default_policy_2_async(
-    policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """Set Default Policy (setDefaultPolicy_2)
-
-    Update a policy to be the default.
-
-    Properties:
-        url: /agreement/admin/policies/{policyId}/default
-
-        method: PATCH
-
-        tags: ["Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        policy_id: (policyId) REQUIRED str in path
-
-    Responses:
-        200: OK - (operation successful)
-
-        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
-    """
-    request = SetDefaultPolicy2.create(
-        policy_id=policy_id,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(UpdatePolicy)
-def update_policy(
-    policy_id: str,
-    body: Optional[UpdatePolicyRequest] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Update Country-Specific Policy (updatePolicy)
-
-    Update country-specific and country-group policy.
-
-    Properties:
-        url: /agreement/admin/policies/{policyId}
-
-        method: PATCH
-
-        tags: ["Policies"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL UpdatePolicyRequest in body
-
-        policy_id: (policyId) REQUIRED str in path
-
-    Responses:
-        200: OK - (operation successful)
-
-        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
-    """
-    request = UpdatePolicy.create(
-        policy_id=policy_id,
-        body=body,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(UpdatePolicy)
-async def update_policy_async(
-    policy_id: str,
-    body: Optional[UpdatePolicyRequest] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Update Country-Specific Policy (updatePolicy)
-
-    Update country-specific and country-group policy.
-
-    Properties:
-        url: /agreement/admin/policies/{policyId}
-
-        method: PATCH
-
-        tags: ["Policies"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL UpdatePolicyRequest in body
-
-        policy_id: (policyId) REQUIRED str in path
-
-    Responses:
-        200: OK - (operation successful)
-
-        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
-    """
-    request = UpdatePolicy.create(
-        policy_id=policy_id,
-        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

@@ -32,6 +32,7 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.chat import admin_delete_topic as admin_delete_topic_internal
 from accelbyte_py_sdk.api.chat.models import MessageActionDeleteTopicResult
+from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
 
 @click.command()

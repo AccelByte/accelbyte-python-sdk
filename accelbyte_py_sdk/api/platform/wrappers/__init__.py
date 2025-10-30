@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.8.0"
+__version__ = "6.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -345,6 +345,8 @@ from ._iap import admin_refund_iap_order
 from ._iap import admin_refund_iap_order_async
 from ._iap import admin_reset_steam_job_time
 from ._iap import admin_reset_steam_job_time_async
+from ._iap import admin_sync_oculus_subscriptions
+from ._iap import admin_sync_oculus_subscriptions_async
 from ._iap import admin_sync_steam_abnormal_transaction
 from ._iap import admin_sync_steam_abnormal_transaction_async
 from ._iap import admin_sync_steam_iap_by_transaction
@@ -415,6 +417,8 @@ from ._iap import sync_epic_games_inventory
 from ._iap import sync_epic_games_inventory_async
 from ._iap import sync_oculus_consumable_entitlements
 from ._iap import sync_oculus_consumable_entitlements_async
+from ._iap import sync_oculus_subscriptions
+from ._iap import sync_oculus_subscriptions_async
 from ._iap import sync_steam_abnormal_transaction
 from ._iap import sync_steam_abnormal_transaction_async
 from ._iap import sync_steam_iap_by_transaction
@@ -461,6 +465,14 @@ from ._iap import validate_playstation_iap_config_async
 from ._iap_notification import query_third_party_notifications
 from ._iap_notification import query_third_party_notifications_async
 
+from ._iap_subscription import add_tier_into_meta_quest_subscription_group
+from ._iap_subscription import add_tier_into_meta_quest_subscription_group_async
+from ._iap_subscription import create_oculus_subscription_group
+from ._iap_subscription import create_oculus_subscription_group_async
+from ._iap_subscription import delete_oculus_subscription_group
+from ._iap_subscription import delete_oculus_subscription_group_async
+from ._iap_subscription import delete_oculus_subscription_tier
+from ._iap_subscription import delete_oculus_subscription_tier_async
 from ._iap_subscription import get_subscription_history
 from ._iap_subscription import get_subscription_history_async
 from ._iap_subscription import (
@@ -479,6 +491,10 @@ from ._iap_subscription import get_third_party_subscription_details
 from ._iap_subscription import get_third_party_subscription_details_async
 from ._iap_subscription import get_third_party_user_subscription_details
 from ._iap_subscription import get_third_party_user_subscription_details_async
+from ._iap_subscription import list_oculus_subscription_group_tier
+from ._iap_subscription import list_oculus_subscription_group_tier_async
+from ._iap_subscription import list_oculus_subscription_groups
+from ._iap_subscription import list_oculus_subscription_groups_async
 from ._iap_subscription import public_query_user_third_party_subscription
 from ._iap_subscription import public_query_user_third_party_subscription_async
 from ._iap_subscription import query_third_party_subscription

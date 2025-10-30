@@ -36,23 +36,23 @@ from ..models import RetrievePolicyVersionResponse
 from ..models import UpdatePolicyVersionRequest
 from ..models import UpdatePolicyVersionResponse
 
-from ..operations.policy_versions_with_namespace import CreatePolicyVersion1
+from ..operations.policy_versions_with_namespace import CreatePolicyVersion
 from ..operations.policy_versions_with_namespace import DeletePolicyVersion
-from ..operations.policy_versions_with_namespace import PublishPolicyVersion1
-from ..operations.policy_versions_with_namespace import RetrieveSinglePolicyVersion1
+from ..operations.policy_versions_with_namespace import PublishPolicyVersion
+from ..operations.policy_versions_with_namespace import RetrieveSinglePolicyVersion
 from ..operations.policy_versions_with_namespace import UnpublishPolicyVersion
-from ..operations.policy_versions_with_namespace import UpdatePolicyVersion1
+from ..operations.policy_versions_with_namespace import UpdatePolicyVersion
 
 
-@same_doc_as(CreatePolicyVersion1)
-def create_policy_version_1(
+@same_doc_as(CreatePolicyVersion)
+def create_policy_version(
     policy_id: str,
     body: Optional[CreatePolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Version from Country-Specific Policy (createPolicyVersion_1)
+    """Create a Version from Country-Specific Policy (createPolicyVersion)
 
     Create a version of a particular country-specific policy.
 
@@ -84,7 +84,7 @@ def create_policy_version_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = CreatePolicyVersion1.create(
+    request = CreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
         namespace=namespace,
@@ -92,15 +92,15 @@ def create_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(CreatePolicyVersion1)
-async def create_policy_version_1_async(
+@same_doc_as(CreatePolicyVersion)
+async def create_policy_version_async(
     policy_id: str,
     body: Optional[CreatePolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Version from Country-Specific Policy (createPolicyVersion_1)
+    """Create a Version from Country-Specific Policy (createPolicyVersion)
 
     Create a version of a particular country-specific policy.
 
@@ -132,7 +132,7 @@ async def create_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = CreatePolicyVersion1.create(
+    request = CreatePolicyVersion.create(
         policy_id=policy_id,
         body=body,
         namespace=namespace,
@@ -240,15 +240,15 @@ async def delete_policy_version_async(
     )
 
 
-@same_doc_as(PublishPolicyVersion1)
-def publish_policy_version_1(
+@same_doc_as(PublishPolicyVersion)
+def publish_policy_version(
     policy_version_id: str,
     should_notify: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion_1)
+    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion)
 
     Manually publish a version of a particular country-specific policy.
 
@@ -282,7 +282,7 @@ def publish_policy_version_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = PublishPolicyVersion1.create(
+    request = PublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
         namespace=namespace,
@@ -290,15 +290,15 @@ def publish_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(PublishPolicyVersion1)
-async def publish_policy_version_1_async(
+@same_doc_as(PublishPolicyVersion)
+async def publish_policy_version_async(
     policy_version_id: str,
     should_notify: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion_1)
+    """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion)
 
     Manually publish a version of a particular country-specific policy.
 
@@ -332,7 +332,7 @@ async def publish_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = PublishPolicyVersion1.create(
+    request = PublishPolicyVersion.create(
         policy_version_id=policy_version_id,
         should_notify=should_notify,
         namespace=namespace,
@@ -342,15 +342,15 @@ async def publish_policy_version_1_async(
     )
 
 
-@same_doc_as(RetrieveSinglePolicyVersion1)
-def retrieve_single_policy_version_1(
+@same_doc_as(RetrieveSinglePolicyVersion)
+def retrieve_single_policy_version(
     policy_id: str,
     version_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion_1)
+    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
 
     Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
 
@@ -382,7 +382,7 @@ def retrieve_single_policy_version_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveSinglePolicyVersion1.create(
+    request = RetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
         namespace=namespace,
@@ -390,15 +390,15 @@ def retrieve_single_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveSinglePolicyVersion1)
-async def retrieve_single_policy_version_1_async(
+@same_doc_as(RetrieveSinglePolicyVersion)
+async def retrieve_single_policy_version_async(
     policy_id: str,
     version_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion_1)
+    """Retrieve a Version from Country-Specific Policy (retrieveSinglePolicyVersion)
 
     Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
 
@@ -430,7 +430,7 @@ async def retrieve_single_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveSinglePolicyVersion1.create(
+    request = RetrieveSinglePolicyVersion.create(
         policy_id=policy_id,
         version_id=version_id,
         namespace=namespace,
@@ -536,15 +536,15 @@ async def unpublish_policy_version_async(
     )
 
 
-@same_doc_as(UpdatePolicyVersion1)
-def update_policy_version_1(
+@same_doc_as(UpdatePolicyVersion)
+def update_policy_version(
     policy_version_id: str,
     body: Optional[UpdatePolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a Version of Policy (updatePolicyVersion_1)
+    """Update a Version of Policy (updatePolicyVersion)
 
     Update a particular policy version.
 
@@ -578,7 +578,7 @@ def update_policy_version_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = UpdatePolicyVersion1.create(
+    request = UpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
         namespace=namespace,
@@ -586,15 +586,15 @@ def update_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(UpdatePolicyVersion1)
-async def update_policy_version_1_async(
+@same_doc_as(UpdatePolicyVersion)
+async def update_policy_version_async(
     policy_version_id: str,
     body: Optional[UpdatePolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a Version of Policy (updatePolicyVersion_1)
+    """Update a Version of Policy (updatePolicyVersion)
 
     Update a particular policy version.
 
@@ -628,7 +628,7 @@ async def update_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = UpdatePolicyVersion1.create(
+    request = UpdatePolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
         namespace=namespace,

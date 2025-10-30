@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.27.0"
+__version__ = "1.29.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -111,6 +111,25 @@ from ._image_v2 import delete_app_images_v2
 from ._image_v2 import delete_app_images_v2_async
 from ._image_v2 import get_app_image_list_v2
 from ._image_v2 import get_app_image_list_v2_async
+
+from ._managed_resources import create_no_sql_cluster_v2
+from ._managed_resources import create_no_sql_cluster_v2_async
+from ._managed_resources import create_no_sql_database_credential_v2
+from ._managed_resources import create_no_sql_database_credential_v2_async
+from ._managed_resources import create_no_sql_database_v2
+from ._managed_resources import create_no_sql_database_v2_async
+from ._managed_resources import delete_no_sql_cluster_v2
+from ._managed_resources import delete_no_sql_cluster_v2_async
+from ._managed_resources import delete_no_sql_database_v2
+from ._managed_resources import delete_no_sql_database_v2_async
+from ._managed_resources import get_no_sql_access_tunnel_v2
+from ._managed_resources import get_no_sql_access_tunnel_v2_async
+from ._managed_resources import get_no_sql_cluster_v2
+from ._managed_resources import get_no_sql_cluster_v2_async
+from ._managed_resources import get_no_sql_database_v2
+from ._managed_resources import get_no_sql_database_v2_async
+from ._managed_resources import update_no_sql_cluster_v2
+from ._managed_resources import update_no_sql_cluster_v2_async
 
 from ._messages import public_get_messages
 from ._messages import public_get_messages_async

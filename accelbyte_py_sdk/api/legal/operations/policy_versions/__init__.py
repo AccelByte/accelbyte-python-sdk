@@ -8,13 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "4.4.1"
+__version__ = "4.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .create_policy_version import CreatePolicyVersion
-from .publish_policy_version import PublishPolicyVersion
-from .retrieve_single_policy_version import RetrieveSinglePolicyVersion
-from .update_policy_version import UpdatePolicyVersion
+from .old_create_policy_version import OldCreatePolicyVersion
+from .old_publish_policy_version import OldPublishPolicyVersion
+from .old_retrieve_single_pol_7be633 import OldRetrieveSinglePolicyVersion
+from .old_update_policy_version import OldUpdatePolicyVersion

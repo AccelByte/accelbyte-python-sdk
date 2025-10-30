@@ -35,6 +35,7 @@ from accelbyte_py_sdk.api.chat import (
 )
 from accelbyte_py_sdk.api.chat.models import ApiAddMemberParams
 from accelbyte_py_sdk.api.chat.models import MessageActionAddUserToTopicResult
+from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
 
 @click.command()

@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.legal import create_policy as create_policy_internal
-from accelbyte_py_sdk.api.legal.models import CreateBasePolicyRequest
+from accelbyte_py_sdk.api.legal.models import CreateBasePolicyRequestV2
 from accelbyte_py_sdk.api.legal.models import CreateBasePolicyResponse
 from accelbyte_py_sdk.api.legal.models import ErrorEntity
 from accelbyte_py_sdk.api.legal.models import ValidationErrorEntity
@@ -39,11 +39,13 @@ from accelbyte_py_sdk.api.legal.models import ValidationErrorEntity
 
 @click.command()
 @click.option("--body", "body", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def create_policy(
     body: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -59,11 +61,12 @@ def create_policy(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = CreateBasePolicyRequest.create_from_dict(body_json)
+            body = CreateBasePolicyRequestV2.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = create_policy_internal(
         body=body,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

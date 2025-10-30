@@ -32,19 +32,19 @@ from ....core import same_doc_as
 from ..models import RetrieveSimplePolicyPublicResponseV2
 
 from ..operations.policies_with_namespace_v2 import (
-    RetrieveLatestPoliciesByNamespaceAndCountryPublic1,
+    RetrieveLatestPoliciesByNamespaceAndCountryPublic,
 )
 
 
-@same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic1)
-def retrieve_latest_policies_by_namespace_and_country_public_1(
+@same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic)
+def retrieve_latest_policies_by_namespace_and_country_public(
     client_id: str,
     country_code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic_1)
+    """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic)
 
     This API is used to list all the related doc in register page, include optional & mandatory (when env config APP_LEGAL_AGREEMENT_ALWAYS_INCLUDE_DEFAULT=true).
     Other detail info:
@@ -96,7 +96,7 @@ def retrieve_latest_policies_by_namespace_and_country_public_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveLatestPoliciesByNamespaceAndCountryPublic1.create(
+    request = RetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
         client_id=client_id,
         country_code=country_code,
         namespace=namespace,
@@ -104,15 +104,15 @@ def retrieve_latest_policies_by_namespace_and_country_public_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic1)
-async def retrieve_latest_policies_by_namespace_and_country_public_1_async(
+@same_doc_as(RetrieveLatestPoliciesByNamespaceAndCountryPublic)
+async def retrieve_latest_policies_by_namespace_and_country_public_async(
     client_id: str,
     country_code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic_1)
+    """Retrieve Latest Policies by Namespace and Country (retrieveLatestPoliciesByNamespaceAndCountryPublic)
 
     This API is used to list all the related doc in register page, include optional & mandatory (when env config APP_LEGAL_AGREEMENT_ALWAYS_INCLUDE_DEFAULT=true).
     Other detail info:
@@ -164,7 +164,7 @@ async def retrieve_latest_policies_by_namespace_and_country_public_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveLatestPoliciesByNamespaceAndCountryPublic1.create(
+    request = RetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
         client_id=client_id,
         country_code=country_code,
         namespace=namespace,

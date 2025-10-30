@@ -73,6 +73,8 @@ class ImageList(Operation):
 
         tag: (tag) OPTIONAL str in query
 
+        target_architecture: (targetArchitecture) OPTIONAL str in query
+
     Responses:
         200: OK - ApiImageList (success)
 
@@ -104,6 +106,7 @@ class ImageList(Operation):
     sort_direction: str  # OPTIONAL in [query]
     status: str  # OPTIONAL in [query]
     tag: str  # OPTIONAL in [query]
+    target_architecture: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -173,6 +176,8 @@ class ImageList(Operation):
             result["status"] = self.status
         if hasattr(self, "tag"):
             result["tag"] = self.tag
+        if hasattr(self, "target_architecture"):
+            result["targetArchitecture"] = self.target_architecture
         return result
 
     # endregion get_x_params methods
@@ -223,6 +228,10 @@ class ImageList(Operation):
         self.tag = value
         return self
 
+    def with_target_architecture(self, value: str) -> ImageList:
+        self.target_architecture = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -269,6 +278,10 @@ class ImageList(Operation):
             result["tag"] = str(self.tag)
         elif include_empty:
             result["tag"] = ""
+        if hasattr(self, "target_architecture") and self.target_architecture:
+            result["targetArchitecture"] = str(self.target_architecture)
+        elif include_empty:
+            result["targetArchitecture"] = ""
         return result
 
     # endregion to methods
@@ -338,6 +351,7 @@ class ImageList(Operation):
         sort_direction: Optional[str] = None,
         status: Optional[str] = None,
         tag: Optional[str] = None,
+        target_architecture: Optional[str] = None,
         **kwargs,
     ) -> ImageList:
         instance = cls()
@@ -360,6 +374,8 @@ class ImageList(Operation):
             instance.status = status
         if tag is not None:
             instance.tag = tag
+        if target_architecture is not None:
+            instance.target_architecture = target_architecture
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -407,6 +423,10 @@ class ImageList(Operation):
             instance.tag = str(dict_["tag"])
         elif include_empty:
             instance.tag = ""
+        if "targetArchitecture" in dict_ and dict_["targetArchitecture"] is not None:
+            instance.target_architecture = str(dict_["targetArchitecture"])
+        elif include_empty:
+            instance.target_architecture = ""
         return instance
 
     @staticmethod
@@ -422,6 +442,7 @@ class ImageList(Operation):
             "sortDirection": "sort_direction",
             "status": "status",
             "tag": "tag",
+            "targetArchitecture": "target_architecture",
         }
 
     @staticmethod
@@ -437,6 +458,7 @@ class ImageList(Operation):
             "sortDirection": False,
             "status": False,
             "tag": False,
+            "targetArchitecture": False,
         }
 
     # endregion static methods

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-inventory-service
+# justice-inventory-service (Early Access)
 
 from ._admin_create_chaining_operations import admin_create_chaining_operations
 from ._admin_list_integration_configurations import (

@@ -38,11 +38,13 @@ from accelbyte_py_sdk.api.legal.models import RetrieveLocalizedPolicyVersionResp
 
 @click.command()
 @click.argument("policy_version_id", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_localized_policy_versions(
     policy_version_id: str,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -57,6 +59,7 @@ def retrieve_localized_policy_versions(
         login_as_internal(login_as)
     result, error = retrieve_localized_policy_versions_internal(
         policy_version_id=policy_version_id,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

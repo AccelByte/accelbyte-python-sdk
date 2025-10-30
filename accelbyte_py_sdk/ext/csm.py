@@ -35,6 +35,9 @@ from ..api.csm.models import ApimodelCSMAppLimitsResponse
 from ..api.csm.models import ApimodelCreateAppV2Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Response
+from ..api.csm.models import ApimodelCreateNoSQLAppDatabaseRequest
+from ..api.csm.models import ApimodelCreateNoSQLDatabaseCredentialRequest
+from ..api.csm.models import ApimodelDeleteNoSQLResourceResponse
 from ..api.csm.models import ApimodelGetAppImageListV2DataItem
 from ..api.csm.models import ApimodelGetAppImageListV2DataItemImageScanResult
 from ..api.csm.models import ApimodelGetAppImageListV2DataItemImageScanStatus
@@ -54,6 +57,10 @@ from ..api.csm.models import ApimodelGetNotificationSubscriberStatusResponse
 from ..api.csm.models import ApimodelIncreaseLimitFormRequest
 from ..api.csm.models import ApimodelMemoryRequest
 from ..api.csm.models import ApimodelMemoryResponse
+from ..api.csm.models import ApimodelNoSQLDatabaseCredentialResponse
+from ..api.csm.models import ApimodelNoSQLDatabaseDeleteResponse
+from ..api.csm.models import ApimodelNoSQLDatabaseResponse
+from ..api.csm.models import ApimodelNoSQLResourceResponse
 from ..api.csm.models import ApimodelNotificationType
 from ..api.csm.models import ApimodelReplicaRequest
 from ..api.csm.models import ApimodelReplicaResponse
@@ -65,6 +72,7 @@ from ..api.csm.models import ApimodelSubscribeNotificationRequest
 from ..api.csm.models import ApimodelSubscribeNotificationResponse
 from ..api.csm.models import ApimodelSubscriberItemRequest
 from ..api.csm.models import ApimodelSubscriberItemResponse
+from ..api.csm.models import ApimodelTunnelInfoResponse
 from ..api.csm.models import ApimodelUpdateAppResourceRequest
 from ..api.csm.models import ApimodelUpdateAppV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Request
@@ -103,6 +111,8 @@ from ..api.csm.models import GeneratedUpdateConfigurationV1Response
 from ..api.csm.models import LogAppMessageDeclaration
 from ..api.csm.models import ModelCSMAutoscalingDefaults
 from ..api.csm.models import ModelImageScanFinding
+from ..api.csm.models import NosqlresourceNoSQLResourceConfiguration
+from ..api.csm.models import ResourceaccesstunnelTunnelInfo
 from ..api.csm.models import ResponseErrorResponse
 
 
@@ -202,6 +212,25 @@ def create_apimodel_create_deployment_v2_response_example() -> (
     return instance
 
 
+def create_apimodel_create_no_sql_app_database_request_example() -> (
+    ApimodelCreateNoSQLAppDatabaseRequest
+):
+    instance = ApimodelCreateNoSQLAppDatabaseRequest()
+    instance.db_name = randomize()
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_create_no_sql_database_credential_request_example() -> (
+    ApimodelCreateNoSQLDatabaseCredentialRequest
+):
+    instance = ApimodelCreateNoSQLDatabaseCredentialRequest()
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    return instance
+
+
 def create_apimodel_csm_app_limits_response_example() -> ApimodelCSMAppLimitsResponse:
     instance = ApimodelCSMAppLimitsResponse()
     instance.autoscaling = create_model_csm_autoscaling_defaults_example()
@@ -215,6 +244,18 @@ def create_apimodel_csm_app_limits_response_example() -> ApimodelCSMAppLimitsRes
         "int", min_val=1, max_val=1000
     )
     instance.max_subscriber_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodel_delete_no_sql_resource_response_example() -> (
+    ApimodelDeleteNoSQLResourceResponse
+):
+    instance = ApimodelDeleteNoSQLResourceResponse()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_name = randomize()
+    instance.resource_type = randomize()
+    instance.studio_name = randomize()
     return instance
 
 
@@ -320,11 +361,11 @@ def create_apimodel_get_list_of_configurations_v2_data_item_example() -> (
     instance.config_name = randomize()
     instance.config_type = randomize()
     instance.deployment_status = randomize()
+    instance.editable = randomize("bool")
     instance.is_hidden = randomize("bool")
     instance.value = randomize()
     instance.apply_mask = randomize("bool")
     instance.description = randomize()
-    instance.editable = randomize("bool")
     instance.source = randomize()
     return instance
 
@@ -417,6 +458,56 @@ def create_apimodel_memory_response_example() -> ApimodelMemoryResponse:
     instance = ApimodelMemoryResponse()
     instance.memory_limit = randomize("int", min_val=1, max_val=1000)
     instance.request_memory = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodel_no_sql_database_credential_response_example() -> (
+    ApimodelNoSQLDatabaseCredentialResponse
+):
+    instance = ApimodelNoSQLDatabaseCredentialResponse()
+    instance.created_at = randomize()
+    instance.owner = randomize()
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_no_sql_database_delete_response_example() -> (
+    ApimodelNoSQLDatabaseDeleteResponse
+):
+    instance = ApimodelNoSQLDatabaseDeleteResponse()
+    instance.db_id = randomize()
+    instance.db_name = randomize()
+    return instance
+
+
+def create_apimodel_no_sql_database_response_example() -> ApimodelNoSQLDatabaseResponse:
+    instance = ApimodelNoSQLDatabaseResponse()
+    instance.app_id = randomize("uid")
+    instance.credentials = create_apimodel_no_sql_database_credential_response_example()
+    instance.db_id = randomize()
+    instance.db_name = randomize()
+    instance.game_namespace = randomize("slug")
+    instance.hostnames = randomize()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_status = randomize()
+    return instance
+
+
+def create_apimodel_no_sql_resource_response_example() -> ApimodelNoSQLResourceResponse:
+    instance = ApimodelNoSQLResourceResponse()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_name = randomize()
+    instance.resource_type = randomize()
+    instance.status = randomize()
+    instance.studio_name = randomize()
+    instance.configuration = (
+        create_nosqlresource_no_sql_resource_configuration_example()
+    )
+    instance.hostnames = randomize()
+    instance.last_rotated_at = randomize()
+    instance.region = randomize()
     return instance
 
 
@@ -517,6 +608,12 @@ def create_apimodel_subscriber_item_response_example() -> (
     instance.email_address = randomize("email")
     instance.notification_type = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_apimodel_tunnel_info_response_example() -> ApimodelTunnelInfoResponse:
+    instance = ApimodelTunnelInfoResponse()
+    instance.tunnel = create_resourceaccesstunnel_tunnel_info_example()
     return instance
 
 
@@ -914,6 +1011,24 @@ def create_model_image_scan_finding_example() -> ModelImageScanFinding:
     instance.severity = randomize()
     instance.uri = randomize()
     instance.description = randomize()
+    return instance
+
+
+def create_nosqlresource_no_sql_resource_configuration_example() -> (
+    NosqlresourceNoSQLResourceConfiguration
+):
+    instance = NosqlresourceNoSQLResourceConfiguration()
+    instance.max_dcu = randomize("int", min_val=1, max_val=1000)
+    instance.min_dcu = randomize("int", min_val=1, max_val=1000)
+    instance.profile_name = randomize()
+    return instance
+
+
+def create_resourceaccesstunnel_tunnel_info_example() -> ResourceaccesstunnelTunnelInfo:
+    instance = ResourceaccesstunnelTunnelInfo()
+    instance.endpoint = randomize()
+    instance.name = randomize()
+    instance.token = randomize()
     return instance
 
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.27.0"
+__version__ = "1.29.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -119,6 +119,26 @@ from .wrappers import delete_app_images_v2
 from .wrappers import delete_app_images_v2_async
 from .wrappers import get_app_image_list_v2
 from .wrappers import get_app_image_list_v2_async
+
+# managed_resources
+from .wrappers import create_no_sql_cluster_v2
+from .wrappers import create_no_sql_cluster_v2_async
+from .wrappers import create_no_sql_database_credential_v2
+from .wrappers import create_no_sql_database_credential_v2_async
+from .wrappers import create_no_sql_database_v2
+from .wrappers import create_no_sql_database_v2_async
+from .wrappers import delete_no_sql_cluster_v2
+from .wrappers import delete_no_sql_cluster_v2_async
+from .wrappers import delete_no_sql_database_v2
+from .wrappers import delete_no_sql_database_v2_async
+from .wrappers import get_no_sql_access_tunnel_v2
+from .wrappers import get_no_sql_access_tunnel_v2_async
+from .wrappers import get_no_sql_cluster_v2
+from .wrappers import get_no_sql_cluster_v2_async
+from .wrappers import get_no_sql_database_v2
+from .wrappers import get_no_sql_database_v2_async
+from .wrappers import update_no_sql_cluster_v2
+from .wrappers import update_no_sql_cluster_v2_async
 
 # messages
 from .wrappers import public_get_messages

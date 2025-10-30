@@ -249,6 +249,7 @@ $ python -m accelbyte_py_sdk_cli 'ams-image-list' \
     --sort_direction 'string' \
     --status 'string' \
     --tag 'string' \
+    --target_architecture 'string' \
     > result.txt
 ```
 

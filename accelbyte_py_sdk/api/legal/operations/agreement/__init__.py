@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "4.4.1"
+__version__ = "4.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,9 +17,9 @@ __email__ = "dev@accelbyte.net"
 from .accept_versioned_policy import AcceptVersionedPolicy
 from .bulk_accept_versioned_policy import BulkAcceptVersionedPolicy
 from .change_preference_consent import ChangePreferenceConsent
-from .change_preference_consent_1 import ChangePreferenceConsent1
-from .indirect_bulk_accept_ve_f4345a import IndirectBulkAcceptVersionedPolicy1
 from .indirect_bulk_accept_ve_34e753 import IndirectBulkAcceptVersionedPolicyV2
-from .retrieve_accepted_agreements import RetrieveAcceptedAgreements
+from .old_retrieve_accepted_a_36c88d import OldRetrieveAcceptedAgreements
+from .old_retrieve_all_users__abe0f3 import OldRetrieveAllUsersByPolicyVersion
+from .public_change_preferenc_69bf81 import PublicChangePreferenceConsent
+from .public_indirect_bulk_ac_42b465 import PublicIndirectBulkAcceptVersionedPolicy
 from .retrieve_agreements_public import RetrieveAgreementsPublic
-from .retrieve_all_users_by_p_90a012 import RetrieveAllUsersByPolicyVersion

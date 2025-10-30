@@ -123,7 +123,7 @@ $ python -m accelbyte_py_sdk_cli 'lobby-bulk-delete-friends' \
 ### Operation `sync_native_friends`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'lobby-sync-native-friends' \
-    '[{"isLogin": false, "platformId": "string", "platformToken": "string", "psnEnv": "string"}]' \
+    '[{"isLogin": false, "platformId": "string", "platformToken": "string", "psnEnv": "string", "syncDeletedFriend": false}]' \
     'string' \
     > result.txt
 ```
@@ -512,10 +512,6 @@ $ python -m accelbyte_py_sdk_cli 'lobby-get-my-notifications' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'lobby-get-my-offline-notifications' \
     'string' \
-    --end_time 1 \
-    --limit 1 \
-    --offset 1 \
-    --start_time 1 \
     > result.txt
 ```
 

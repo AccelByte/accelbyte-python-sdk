@@ -39,17 +39,21 @@ from accelbyte_py_sdk.api.legal.models import PagedRetrieveUserAcceptedAgreement
 
 @click.command()
 @click.argument("policy_version_id", type=str)
+@click.option("--convert_game_user_id", "convert_game_user_id", type=bool)
 @click.option("--keyword", "keyword", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_all_users_by_policy_version(
     policy_version_id: str,
+    convert_game_user_id: Optional[bool] = None,
     keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -64,9 +68,11 @@ def retrieve_all_users_by_policy_version(
         login_as_internal(login_as)
     result, error = retrieve_all_users_by_policy_version_internal(
         policy_version_id=policy_version_id,
+        convert_game_user_id=convert_game_user_id,
         keyword=keyword,
         limit=limit,
         offset=offset,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

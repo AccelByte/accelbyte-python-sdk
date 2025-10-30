@@ -40,12 +40,14 @@ from accelbyte_py_sdk.api.legal.models import RetrievePolicyResponse
 @click.command()
 @click.argument("base_policy_id", type=str)
 @click.argument("country_code", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_policy_country(
     base_policy_id: str,
     country_code: str,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -61,6 +63,7 @@ def retrieve_policy_country(
     result, error = retrieve_policy_country_internal(
         base_policy_id=base_policy_id,
         country_code=country_code,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

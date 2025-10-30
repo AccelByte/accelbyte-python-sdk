@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.8.0"
+__version__ = "6.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -611,6 +611,7 @@ from .oculus_reconcile_result import (
     IapOrderStatusEnum as OculusReconcileResultIapOrderStatusEnum,
     ItemIdentityTypeEnum as OculusReconcileResultItemIdentityTypeEnum,
 )
+from .oculus_subscription_sync_request import OculusSubscriptionSyncRequest
 from .operation import Operation
 from .operation import StatusEnum as OperationStatusEnum, TypeEnum as OperationTypeEnum
 from .operation_request import OperationRequest
@@ -981,7 +982,11 @@ from .subscription_summary import (
 )
 from .tax_result import TaxResult
 from .test_result import TestResult
+from .third_party_subscription_group_create import ThirdPartySubscriptionGroupCreate
+from .third_party_subscription_group_info import ThirdPartySubscriptionGroupInfo
 from .third_party_subscription_ownership import ThirdPartySubscriptionOwnership
+from .third_party_subscription_tier_create import ThirdPartySubscriptionTierCreate
+from .third_party_subscription_tier_info import ThirdPartySubscriptionTierInfo
 from .third_party_subscription_transaction_history_info import (
     ThirdPartySubscriptionTransactionHistoryInfo,
 )

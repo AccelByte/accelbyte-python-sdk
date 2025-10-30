@@ -39,6 +39,8 @@ class ModelNativeFriendRequest(Model):
         platform_token: (platformToken) OPTIONAL str
 
         psn_env: (psnEnv) OPTIONAL str
+
+        sync_deleted_friend: (syncDeletedFriend) OPTIONAL bool
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ModelNativeFriendRequest(Model):
     platform_id: str  # REQUIRED
     platform_token: str  # OPTIONAL
     psn_env: str  # OPTIONAL
+    sync_deleted_friend: bool  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ModelNativeFriendRequest(Model):
 
     def with_psn_env(self, value: str) -> ModelNativeFriendRequest:
         self.psn_env = value
+        return self
+
+    def with_sync_deleted_friend(self, value: bool) -> ModelNativeFriendRequest:
+        self.sync_deleted_friend = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class ModelNativeFriendRequest(Model):
             result["psnEnv"] = str(self.psn_env)
         elif include_empty:
             result["psnEnv"] = ""
+        if hasattr(self, "sync_deleted_friend"):
+            result["syncDeletedFriend"] = bool(self.sync_deleted_friend)
+        elif include_empty:
+            result["syncDeletedFriend"] = False
         return result
 
     # endregion to methods
@@ -103,6 +114,7 @@ class ModelNativeFriendRequest(Model):
         platform_id: str,
         platform_token: Optional[str] = None,
         psn_env: Optional[str] = None,
+        sync_deleted_friend: Optional[bool] = None,
         **kwargs,
     ) -> ModelNativeFriendRequest:
         instance = cls()
@@ -112,6 +124,8 @@ class ModelNativeFriendRequest(Model):
             instance.platform_token = platform_token
         if psn_env is not None:
             instance.psn_env = psn_env
+        if sync_deleted_friend is not None:
+            instance.sync_deleted_friend = sync_deleted_friend
         return instance
 
     @classmethod
@@ -137,6 +151,10 @@ class ModelNativeFriendRequest(Model):
             instance.psn_env = str(dict_["psnEnv"])
         elif include_empty:
             instance.psn_env = ""
+        if "syncDeletedFriend" in dict_ and dict_["syncDeletedFriend"] is not None:
+            instance.sync_deleted_friend = bool(dict_["syncDeletedFriend"])
+        elif include_empty:
+            instance.sync_deleted_friend = False
         return instance
 
     @classmethod
@@ -184,6 +202,7 @@ class ModelNativeFriendRequest(Model):
             "platformId": "platform_id",
             "platformToken": "platform_token",
             "psnEnv": "psn_env",
+            "syncDeletedFriend": "sync_deleted_friend",
         }
 
     @staticmethod
@@ -193,6 +212,7 @@ class ModelNativeFriendRequest(Model):
             "platformId": True,
             "platformToken": False,
             "psnEnv": False,
+            "syncDeletedFriend": False,
         }
 
     # endregion static methods

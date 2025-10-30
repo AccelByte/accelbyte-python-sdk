@@ -34,6 +34,8 @@ class BulkStatOperationResult(Model):
     Properties:
         details: (details) OPTIONAL Dict[str, Any]
 
+        request_id: (requestId) OPTIONAL str
+
         stat_code: (statCode) OPTIONAL str
 
         success: (success) OPTIONAL bool
@@ -44,6 +46,7 @@ class BulkStatOperationResult(Model):
     # region fields
 
     details: Dict[str, Any]  # OPTIONAL
+    request_id: str  # OPTIONAL
     stat_code: str  # OPTIONAL
     success: bool  # OPTIONAL
     user_id: str  # OPTIONAL
@@ -54,6 +57,10 @@ class BulkStatOperationResult(Model):
 
     def with_details(self, value: Dict[str, Any]) -> BulkStatOperationResult:
         self.details = value
+        return self
+
+    def with_request_id(self, value: str) -> BulkStatOperationResult:
+        self.request_id = value
         return self
 
     def with_stat_code(self, value: str) -> BulkStatOperationResult:
@@ -78,6 +85,10 @@ class BulkStatOperationResult(Model):
             result["details"] = {str(k0): v0 for k0, v0 in self.details.items()}
         elif include_empty:
             result["details"] = {}
+        if hasattr(self, "request_id"):
+            result["requestId"] = str(self.request_id)
+        elif include_empty:
+            result["requestId"] = ""
         if hasattr(self, "stat_code"):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
@@ -100,6 +111,7 @@ class BulkStatOperationResult(Model):
     def create(
         cls,
         details: Optional[Dict[str, Any]] = None,
+        request_id: Optional[str] = None,
         stat_code: Optional[str] = None,
         success: Optional[bool] = None,
         user_id: Optional[str] = None,
@@ -108,6 +120,8 @@ class BulkStatOperationResult(Model):
         instance = cls()
         if details is not None:
             instance.details = details
+        if request_id is not None:
+            instance.request_id = request_id
         if stat_code is not None:
             instance.stat_code = stat_code
         if success is not None:
@@ -127,6 +141,10 @@ class BulkStatOperationResult(Model):
             instance.details = {str(k0): v0 for k0, v0 in dict_["details"].items()}
         elif include_empty:
             instance.details = {}
+        if "requestId" in dict_ and dict_["requestId"] is not None:
+            instance.request_id = str(dict_["requestId"])
+        elif include_empty:
+            instance.request_id = ""
         if "statCode" in dict_ and dict_["statCode"] is not None:
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
@@ -183,6 +201,7 @@ class BulkStatOperationResult(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "details": "details",
+            "requestId": "request_id",
             "statCode": "stat_code",
             "success": "success",
             "userId": "user_id",
@@ -192,6 +211,7 @@ class BulkStatOperationResult(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "details": False,
+            "requestId": False,
             "statCode": False,
             "success": False,
             "userId": False,

@@ -277,6 +277,7 @@ from ..api.platform.models import NotificationProcessResult
 from ..api.platform.models import OculusIAPConfigInfo
 from ..api.platform.models import OculusIAPConfigRequest
 from ..api.platform.models import OculusReconcileResult
+from ..api.platform.models import OculusSubscriptionSyncRequest
 from ..api.platform.models import Operation
 from ..api.platform.models import OperationRequest
 from ..api.platform.models import OptionBoxConfig
@@ -452,7 +453,11 @@ from ..api.platform.models import SubscriptionSummary
 from ..api.platform.models import TLSConfig
 from ..api.platform.models import TaxResult
 from ..api.platform.models import TestResult
+from ..api.platform.models import ThirdPartySubscriptionGroupCreate
+from ..api.platform.models import ThirdPartySubscriptionGroupInfo
 from ..api.platform.models import ThirdPartySubscriptionOwnership
+from ..api.platform.models import ThirdPartySubscriptionTierCreate
+from ..api.platform.models import ThirdPartySubscriptionTierInfo
 from ..api.platform.models import ThirdPartySubscriptionTransactionHistoryInfo
 from ..api.platform.models import (
     ThirdPartySubscriptionTransactionHistoryPagingSlicedResult,
@@ -2905,6 +2910,7 @@ def create_item_create_example() -> ItemCreate:
     instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
     instance.inventory_config = create_inventory_config_example()
+    instance.item_id = randomize()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -3375,6 +3381,7 @@ def create_oculus_iap_config_info_example() -> OculusIAPConfigInfo:
     instance.namespace = randomize("slug")
     instance.app_id = randomize("uid")
     instance.app_secret = randomize()
+    instance.webhook_verify_token = randomize()
     return instance
 
 
@@ -3382,6 +3389,7 @@ def create_oculus_iap_config_request_example() -> OculusIAPConfigRequest:
     instance = OculusIAPConfigRequest()
     instance.app_id = randomize("uid")
     instance.app_secret = randomize()
+    instance.webhook_verify_token = randomize()
     return instance
 
 
@@ -3392,6 +3400,12 @@ def create_oculus_reconcile_result_example() -> OculusReconcileResult:
     instance.item_identity_type = randomize()
     instance.oculus_item_sku = randomize()
     instance.transaction_id = randomize("uid")
+    return instance
+
+
+def create_oculus_subscription_sync_request_example() -> OculusSubscriptionSyncRequest:
+    instance = OculusSubscriptionSyncRequest()
+    instance.skus = [randomize()]
     return instance
 
 
@@ -5389,11 +5403,45 @@ def create_test_result_example() -> TestResult:
     return instance
 
 
+def create_third_party_subscription_group_create_example() -> (
+    ThirdPartySubscriptionGroupCreate
+):
+    instance = ThirdPartySubscriptionGroupCreate()
+    instance.sku = randomize("slug")
+    return instance
+
+
+def create_third_party_subscription_group_info_example() -> (
+    ThirdPartySubscriptionGroupInfo
+):
+    instance = ThirdPartySubscriptionGroupInfo()
+    instance.sku = randomize("slug")
+    return instance
+
+
 def create_third_party_subscription_ownership_example() -> (
     ThirdPartySubscriptionOwnership
 ):
     instance = ThirdPartySubscriptionOwnership()
     instance.owned = randomize("bool")
+    return instance
+
+
+def create_third_party_subscription_tier_create_example() -> (
+    ThirdPartySubscriptionTierCreate
+):
+    instance = ThirdPartySubscriptionTierCreate()
+    instance.group_sku = randomize()
+    instance.sku = randomize("slug")
+    return instance
+
+
+def create_third_party_subscription_tier_info_example() -> (
+    ThirdPartySubscriptionTierInfo
+):
+    instance = ThirdPartySubscriptionTierInfo()
+    instance.group_sku = randomize()
+    instance.sku = randomize("slug")
     return instance
 
 

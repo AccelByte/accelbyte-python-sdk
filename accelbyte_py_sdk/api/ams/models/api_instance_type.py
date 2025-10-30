@@ -50,6 +50,8 @@ class ApiInstanceType(Model):
 
         owner_account_id: (ownerAccountId) REQUIRED str
 
+        processor_architecture: (processorArchitecture) REQUIRED str
+
         provider: (provider) REQUIRED str
 
         virtual_cpu: (virtualCpu) REQUIRED int
@@ -65,6 +67,7 @@ class ApiInstanceType(Model):
     min_speed: str  # REQUIRED
     name: str  # REQUIRED
     owner_account_id: str  # REQUIRED
+    processor_architecture: str  # REQUIRED
     provider: str  # REQUIRED
     virtual_cpu: int  # REQUIRED
 
@@ -102,6 +105,10 @@ class ApiInstanceType(Model):
 
     def with_owner_account_id(self, value: str) -> ApiInstanceType:
         self.owner_account_id = value
+        return self
+
+    def with_processor_architecture(self, value: str) -> ApiInstanceType:
+        self.processor_architecture = value
         return self
 
     def with_provider(self, value: str) -> ApiInstanceType:
@@ -152,6 +159,10 @@ class ApiInstanceType(Model):
             result["ownerAccountId"] = str(self.owner_account_id)
         elif include_empty:
             result["ownerAccountId"] = ""
+        if hasattr(self, "processor_architecture"):
+            result["processorArchitecture"] = str(self.processor_architecture)
+        elif include_empty:
+            result["processorArchitecture"] = ""
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
@@ -177,6 +188,7 @@ class ApiInstanceType(Model):
         min_speed: str,
         name: str,
         owner_account_id: str,
+        processor_architecture: str,
         provider: str,
         virtual_cpu: int,
         **kwargs,
@@ -190,6 +202,7 @@ class ApiInstanceType(Model):
         instance.min_speed = min_speed
         instance.name = name
         instance.owner_account_id = owner_account_id
+        instance.processor_architecture = processor_architecture
         instance.provider = provider
         instance.virtual_cpu = virtual_cpu
         return instance
@@ -236,6 +249,13 @@ class ApiInstanceType(Model):
             instance.owner_account_id = str(dict_["ownerAccountId"])
         elif include_empty:
             instance.owner_account_id = ""
+        if (
+            "processorArchitecture" in dict_
+            and dict_["processorArchitecture"] is not None
+        ):
+            instance.processor_architecture = str(dict_["processorArchitecture"])
+        elif include_empty:
+            instance.processor_architecture = ""
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
@@ -291,6 +311,7 @@ class ApiInstanceType(Model):
             "minSpeed": "min_speed",
             "name": "name",
             "ownerAccountId": "owner_account_id",
+            "processorArchitecture": "processor_architecture",
             "provider": "provider",
             "virtualCpu": "virtual_cpu",
         }
@@ -306,6 +327,7 @@ class ApiInstanceType(Model):
             "minSpeed": True,
             "name": True,
             "ownerAccountId": True,
+            "processorArchitecture": True,
             "provider": True,
             "virtualCpu": True,
         }

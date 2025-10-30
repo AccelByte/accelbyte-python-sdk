@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.27.0"
+__version__ = "1.29.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -24,7 +24,16 @@ from .apimodel_cpu_response import ApimodelCPUResponse
 from .apimodel_create_app_v2_request import ApimodelCreateAppV2Request
 from .apimodel_create_deployment_v2_request import ApimodelCreateDeploymentV2Request
 from .apimodel_create_deployment_v2_response import ApimodelCreateDeploymentV2Response
+from .apimodel_create_no_sql_app_database_request import (
+    ApimodelCreateNoSQLAppDatabaseRequest,
+)
+from .apimodel_create_no_sql_database_credential_request import (
+    ApimodelCreateNoSQLDatabaseCredentialRequest,
+)
 from .apimodel_csm_app_limits_response import ApimodelCSMAppLimitsResponse
+from .apimodel_delete_no_sql_resource_response import (
+    ApimodelDeleteNoSQLResourceResponse,
+)
 from .apimodel_get_app_image_list_v2_data_item import ApimodelGetAppImageListV2DataItem
 from .apimodel_get_app_image_list_v2_data_item_image_scan_result import (
     ApimodelGetAppImageListV2DataItemImageScanResult,
@@ -66,6 +75,14 @@ from .apimodel_get_notification_subscriber_status_response import (
 from .apimodel_increase_limit_form_request import ApimodelIncreaseLimitFormRequest
 from .apimodel_memory_request import ApimodelMemoryRequest
 from .apimodel_memory_response import ApimodelMemoryResponse
+from .apimodel_no_sql_database_credential_response import (
+    ApimodelNoSQLDatabaseCredentialResponse,
+)
+from .apimodel_no_sql_database_delete_response import (
+    ApimodelNoSQLDatabaseDeleteResponse,
+)
+from .apimodel_no_sql_database_response import ApimodelNoSQLDatabaseResponse
+from .apimodel_no_sql_resource_response import ApimodelNoSQLResourceResponse
 from .apimodel_notification_type import ApimodelNotificationType
 from .apimodel_replica_request import ApimodelReplicaRequest
 from .apimodel_replica_response import ApimodelReplicaResponse
@@ -85,6 +102,7 @@ from .apimodel_subscribe_notification_response import (
 )
 from .apimodel_subscriber_item_request import ApimodelSubscriberItemRequest
 from .apimodel_subscriber_item_response import ApimodelSubscriberItemResponse
+from .apimodel_tunnel_info_response import ApimodelTunnelInfoResponse
 from .apimodel_update_app_resource_request import ApimodelUpdateAppResourceRequest
 from .apimodel_update_app_v2_request import ApimodelUpdateAppV2Request
 from .apimodel_update_configuration_v2_request import (
@@ -149,4 +167,8 @@ from .generated_update_configuration_v1_response import (
 from .log_app_message_declaration import LogAppMessageDeclaration
 from .model_csm_autoscaling_defaults import ModelCSMAutoscalingDefaults
 from .model_image_scan_finding import ModelImageScanFinding
+from .nosqlresource_no_sql_resource_configuration import (
+    NosqlresourceNoSQLResourceConfiguration,
+)
+from .resourceaccesstunnel_tunnel_info import ResourceaccesstunnelTunnelInfo
 from .response_error_response import ResponseErrorResponse

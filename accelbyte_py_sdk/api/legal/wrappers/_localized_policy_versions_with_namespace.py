@@ -40,34 +40,36 @@ from ..models import UploadLocalizedPolicyVersionAttachmentResponse
 from ..models import UploadPolicyVersionAttachmentRequest
 
 from ..operations.localized_policy_versions_with_namespace import (
-    CreateLocalizedPolicyVersion1,
+    CreateLocalizedPolicyVersion,
 )
 from ..operations.localized_policy_versions_with_namespace import DeleteLocalizedPolicy
-from ..operations.localized_policy_versions_with_namespace import RequestPresignedURL1
 from ..operations.localized_policy_versions_with_namespace import (
-    RetrieveLocalizedPolicyVersions1,
+    PublicRetrieveSingleLocalizedPolicyVersion,
+)
+from ..operations.localized_policy_versions_with_namespace import RequestPresignedURL
+from ..operations.localized_policy_versions_with_namespace import (
+    RetrieveLocalizedPolicyVersions,
 )
 from ..operations.localized_policy_versions_with_namespace import (
-    RetrieveSingleLocalizedPolicyVersion1,
+    RetrieveSingleLocalizedPolicyVersion,
 )
 from ..operations.localized_policy_versions_with_namespace import (
-    RetrieveSingleLocalizedPolicyVersion3,
+    SetDefaultLocalizedPolicy,
 )
-from ..operations.localized_policy_versions_with_namespace import SetDefaultPolicy1
 from ..operations.localized_policy_versions_with_namespace import (
-    UpdateLocalizedPolicyVersion1,
+    UpdateLocalizedPolicyVersion,
 )
 
 
-@same_doc_as(CreateLocalizedPolicyVersion1)
-def create_localized_policy_version_1(
+@same_doc_as(CreateLocalizedPolicyVersion)
+def create_localized_policy_version(
     policy_version_id: str,
     body: Optional[CreateLocalizedPolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion_1)
+    """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion)
 
     Create a version of a particular country-specific policy.
 
@@ -101,7 +103,7 @@ def create_localized_policy_version_1(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = CreateLocalizedPolicyVersion1.create(
+    request = CreateLocalizedPolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
         namespace=namespace,
@@ -109,15 +111,15 @@ def create_localized_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(CreateLocalizedPolicyVersion1)
-async def create_localized_policy_version_1_async(
+@same_doc_as(CreateLocalizedPolicyVersion)
+async def create_localized_policy_version_async(
     policy_version_id: str,
     body: Optional[CreateLocalizedPolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion_1)
+    """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion)
 
     Create a version of a particular country-specific policy.
 
@@ -151,7 +153,7 @@ async def create_localized_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = CreateLocalizedPolicyVersion1.create(
+    request = CreateLocalizedPolicyVersion.create(
         policy_version_id=policy_version_id,
         body=body,
         namespace=namespace,
@@ -261,288 +263,14 @@ async def delete_localized_policy_async(
     )
 
 
-@same_doc_as(RequestPresignedURL1)
-def request_presigned_url_1(
-    localized_policy_version_id: str,
-    body: Optional[UploadPolicyVersionAttachmentRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Request Presigned URL for Upload Document (requestPresignedURL_1)
-
-    Request presigned URL for upload attachment for a particular localized version of base policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments
-
-        method: POST
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
-
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        201: Created - UploadLocalizedPolicyVersionAttachmentResponse (successful operation)
-
-        400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RequestPresignedURL1.create(
-        localized_policy_version_id=localized_policy_version_id,
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RequestPresignedURL1)
-async def request_presigned_url_1_async(
-    localized_policy_version_id: str,
-    body: Optional[UploadPolicyVersionAttachmentRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Request Presigned URL for Upload Document (requestPresignedURL_1)
-
-    Request presigned URL for upload attachment for a particular localized version of base policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments
-
-        method: POST
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
-
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        201: Created - UploadLocalizedPolicyVersionAttachmentResponse (successful operation)
-
-        400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RequestPresignedURL1.create(
-        localized_policy_version_id=localized_policy_version_id,
-        body=body,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveLocalizedPolicyVersions1)
-def retrieve_localized_policy_versions_1(
-    policy_version_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions_1)
-
-    Retrieve versions of a particular country-specific policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
-
-        method: GET
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        namespace: (namespace) REQUIRED str in path
-
-        policy_version_id: (policyVersionId) REQUIRED str in path
-
-    Responses:
-        200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RetrieveLocalizedPolicyVersions1.create(
-        policy_version_id=policy_version_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrieveLocalizedPolicyVersions1)
-async def retrieve_localized_policy_versions_1_async(
-    policy_version_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions_1)
-
-    Retrieve versions of a particular country-specific policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
-
-        method: GET
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        namespace: (namespace) REQUIRED str in path
-
-        policy_version_id: (policyVersionId) REQUIRED str in path
-
-    Responses:
-        200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RetrieveLocalizedPolicyVersions1.create(
-        policy_version_id=policy_version_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveSingleLocalizedPolicyVersion1)
-def retrieve_single_localized_policy_version_1(
+@same_doc_as(PublicRetrieveSingleLocalizedPolicyVersion)
+def public_retrieve_single_localized_policy_version(
     localized_policy_version_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion_1)
-
-    Retrieve a version of a particular country-specific policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
-
-        method: GET
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
-
-        404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RetrieveSingleLocalizedPolicyVersion1.create(
-        localized_policy_version_id=localized_policy_version_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrieveSingleLocalizedPolicyVersion1)
-async def retrieve_single_localized_policy_version_1_async(
-    localized_policy_version_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion_1)
-
-    Retrieve a version of a particular country-specific policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
-
-        method: GET
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
-
-        404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = RetrieveSingleLocalizedPolicyVersion1.create(
-        localized_policy_version_id=localized_policy_version_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveSingleLocalizedPolicyVersion3)
-def retrieve_single_localized_policy_version_3(
-    localized_policy_version_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_3)
+    """Retrieve a Localized Version (publicRetrieveSingleLocalizedPolicyVersion)
 
     Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
     Other detail info:
@@ -575,21 +303,21 @@ def retrieve_single_localized_policy_version_3(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveSingleLocalizedPolicyVersion3.create(
+    request = PublicRetrieveSingleLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(RetrieveSingleLocalizedPolicyVersion3)
-async def retrieve_single_localized_policy_version_3_async(
+@same_doc_as(PublicRetrieveSingleLocalizedPolicyVersion)
+async def public_retrieve_single_localized_policy_version_async(
     localized_policy_version_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve a Localized Version (retrieveSingleLocalizedPolicyVersion_3)
+    """Retrieve a Localized Version (publicRetrieveSingleLocalizedPolicyVersion)
 
     Retrieve specific localized policy version including the policy version and base policy version where the localized policy version located.
     Other detail info:
@@ -622,7 +350,7 @@ async def retrieve_single_localized_policy_version_3_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = RetrieveSingleLocalizedPolicyVersion3.create(
+    request = PublicRetrieveSingleLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
         namespace=namespace,
     )
@@ -631,108 +359,22 @@ async def retrieve_single_localized_policy_version_3_async(
     )
 
 
-@same_doc_as(SetDefaultPolicy1)
-def set_default_policy_1(
+@same_doc_as(RequestPresignedURL)
+def request_presigned_url(
     localized_policy_version_id: str,
+    body: Optional[UploadPolicyVersionAttachmentRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set Default Localized Policy (setDefaultPolicy_1)
+    """Request Presigned URL for Upload Document (requestPresignedURL)
 
-    Update a localized version policy to be the default.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default
-
-        method: PATCH
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = SetDefaultPolicy1.create(
-        localized_policy_version_id=localized_policy_version_id,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(SetDefaultPolicy1)
-async def set_default_policy_1_async(
-    localized_policy_version_id: str,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Set Default Localized Policy (setDefaultPolicy_1)
-
-    Update a localized version policy to be the default.
+    Request presigned URL for upload attachment for a particular localized version of base policy.
 
     Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments
 
-        method: PATCH
-
-        tags: ["Localized Policy Versions With Namespace"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - (successful operation)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
-        if error:
-            return None, error
-    request = SetDefaultPolicy1.create(
-        localized_policy_version_id=localized_policy_version_id,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(UpdateLocalizedPolicyVersion1)
-def update_localized_policy_version_1(
-    localized_policy_version_id: str,
-    body: Optional[UpdateLocalizedPolicyVersionRequest] = None,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion_1)
-
-    Update a version of a particular country-specific policy.
-
-    Properties:
-        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
-
-        method: PUT
+        method: POST
 
         tags: ["Localized Policy Versions With Namespace"]
 
@@ -742,22 +384,22 @@ def update_localized_policy_version_1(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
+        body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - UpdateLocalizedPolicyVersionResponse (successful operation)
+        201: Created - UploadLocalizedPolicyVersionAttachmentResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version)
+        400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = UpdateLocalizedPolicyVersion1.create(
+    request = RequestPresignedURL.create(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
         namespace=namespace,
@@ -765,15 +407,327 @@ def update_localized_policy_version_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(UpdateLocalizedPolicyVersion1)
-async def update_localized_policy_version_1_async(
+@same_doc_as(RequestPresignedURL)
+async def request_presigned_url_async(
+    localized_policy_version_id: str,
+    body: Optional[UploadPolicyVersionAttachmentRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Request Presigned URL for Upload Document (requestPresignedURL)
+
+    Request presigned URL for upload attachment for a particular localized version of base policy.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments
+
+        method: POST
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - UploadLocalizedPolicyVersionAttachmentResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RequestPresignedURL.create(
+        localized_policy_version_id=localized_policy_version_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RetrieveLocalizedPolicyVersions)
+def retrieve_localized_policy_versions(
+    policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions)
+
+    Retrieve versions of a particular country-specific policy.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RetrieveLocalizedPolicyVersions.create(
+        policy_version_id=policy_version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetrieveLocalizedPolicyVersions)
+async def retrieve_localized_policy_versions_async(
+    policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions)
+
+    Retrieve versions of a particular country-specific policy.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RetrieveLocalizedPolicyVersions.create(
+        policy_version_id=policy_version_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RetrieveSingleLocalizedPolicyVersion)
+def retrieve_single_localized_policy_version(
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion)
+
+    Retrieve a version of a particular country-specific policy.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
+
+        404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RetrieveSingleLocalizedPolicyVersion.create(
+        localized_policy_version_id=localized_policy_version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetrieveSingleLocalizedPolicyVersion)
+async def retrieve_single_localized_policy_version_async(
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion)
+
+    Retrieve a version of a particular country-specific policy.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: GET
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveLocalizedPolicyVersionResponse (successful operation)
+
+        404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RetrieveSingleLocalizedPolicyVersion.create(
+        localized_policy_version_id=localized_policy_version_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SetDefaultLocalizedPolicy)
+def set_default_localized_policy(
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Set Default Localized Policy (setDefaultLocalizedPolicy)
+
+    Update a localized version policy to be the default.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default
+
+        method: PATCH
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SetDefaultLocalizedPolicy.create(
+        localized_policy_version_id=localized_policy_version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SetDefaultLocalizedPolicy)
+async def set_default_localized_policy_async(
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Set Default Localized Policy (setDefaultLocalizedPolicy)
+
+    Update a localized version policy to be the default.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default
+
+        method: PATCH
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SetDefaultLocalizedPolicy.create(
+        localized_policy_version_id=localized_policy_version_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateLocalizedPolicyVersion)
+def update_localized_policy_version(
     localized_policy_version_id: str,
     body: Optional[UpdateLocalizedPolicyVersionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion_1)
+    """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion)
 
     Update a version of a particular country-specific policy.
 
@@ -805,7 +759,55 @@ async def update_localized_policy_version_1_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = UpdateLocalizedPolicyVersion1.create(
+    request = UpdateLocalizedPolicyVersion.create(
+        localized_policy_version_id=localized_policy_version_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateLocalizedPolicyVersion)
+async def update_localized_policy_version_async(
+    localized_policy_version_id: str,
+    body: Optional[UpdateLocalizedPolicyVersionRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion)
+
+    Update a version of a particular country-specific policy.
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
+
+        method: PUT
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - UpdateLocalizedPolicyVersionResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = UpdateLocalizedPolicyVersion.create(
         localized_policy_version_id=localized_policy_version_id,
         body=body,
         namespace=namespace,

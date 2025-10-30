@@ -51,6 +51,8 @@ class BulkUserStatItemUpdate(Model):
         additional_data: (additionalData) OPTIONAL Dict[str, Any]
 
         additional_key: (additionalKey) OPTIONAL str
+
+        request_id: (requestId) OPTIONAL str
     """
 
     # region fields
@@ -61,6 +63,7 @@ class BulkUserStatItemUpdate(Model):
     value: float  # REQUIRED
     additional_data: Dict[str, Any]  # OPTIONAL
     additional_key: str  # OPTIONAL
+    request_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -90,6 +93,10 @@ class BulkUserStatItemUpdate(Model):
 
     def with_additional_key(self, value: str) -> BulkUserStatItemUpdate:
         self.additional_key = value
+        return self
+
+    def with_request_id(self, value: str) -> BulkUserStatItemUpdate:
+        self.request_id = value
         return self
 
     # endregion with_x methods
@@ -124,6 +131,10 @@ class BulkUserStatItemUpdate(Model):
             result["additionalKey"] = str(self.additional_key)
         elif include_empty:
             result["additionalKey"] = ""
+        if hasattr(self, "request_id"):
+            result["requestId"] = str(self.request_id)
+        elif include_empty:
+            result["requestId"] = ""
         return result
 
     # endregion to methods
@@ -139,6 +150,7 @@ class BulkUserStatItemUpdate(Model):
         value: float,
         additional_data: Optional[Dict[str, Any]] = None,
         additional_key: Optional[str] = None,
+        request_id: Optional[str] = None,
         **kwargs,
     ) -> BulkUserStatItemUpdate:
         instance = cls()
@@ -150,6 +162,8 @@ class BulkUserStatItemUpdate(Model):
             instance.additional_data = additional_data
         if additional_key is not None:
             instance.additional_key = additional_key
+        if request_id is not None:
+            instance.request_id = request_id
         return instance
 
     @classmethod
@@ -185,6 +199,10 @@ class BulkUserStatItemUpdate(Model):
             instance.additional_key = str(dict_["additionalKey"])
         elif include_empty:
             instance.additional_key = ""
+        if "requestId" in dict_ and dict_["requestId"] is not None:
+            instance.request_id = str(dict_["requestId"])
+        elif include_empty:
+            instance.request_id = ""
         return instance
 
     @classmethod
@@ -234,6 +252,7 @@ class BulkUserStatItemUpdate(Model):
             "value": "value",
             "additionalData": "additional_data",
             "additionalKey": "additional_key",
+            "requestId": "request_id",
         }
 
     @staticmethod
@@ -245,6 +264,7 @@ class BulkUserStatItemUpdate(Model):
             "value": True,
             "additionalData": False,
             "additionalKey": False,
+            "requestId": False,
         }
 
     @staticmethod

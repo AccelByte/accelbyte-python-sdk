@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.chat import admin_update_topic as admin_update_topic_internal
 from accelbyte_py_sdk.api.chat.models import ApiCreateTopicResponse
 from accelbyte_py_sdk.api.chat.models import ApiUpdateTopicParams
+from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
 
 @click.command()

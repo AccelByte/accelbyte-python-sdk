@@ -56,6 +56,7 @@ from ..models import MockIAPReceipt
 from ..models import OculusIAPConfigInfo
 from ..models import OculusIAPConfigRequest
 from ..models import OculusReconcileResult
+from ..models import OculusSubscriptionSyncRequest
 from ..models import PlayStationIAPConfigInfo
 from ..models import PlayStationMultiServiceLabelsReconcileRequest
 from ..models import PlayStationReconcileRequest
@@ -71,6 +72,7 @@ from ..models import SteamReportJobInfo
 from ..models import SteamSyncByTransactionRequest
 from ..models import SteamSyncRequest
 from ..models import TestResult
+from ..models import ThirdPartySubscriptionTransactionInfo
 from ..models import TwitchIAPConfigInfo
 from ..models import TwitchIAPConfigRequest
 from ..models import TwitchSyncRequest
@@ -85,6 +87,7 @@ from ..operations.iap import AdminGetIAPOrderLineItems
 from ..operations.iap import AdminGetSteamJobInfo
 from ..operations.iap import AdminRefundIAPOrder
 from ..operations.iap import AdminResetSteamJobTime
+from ..operations.iap import AdminSyncOculusSubscriptions
 from ..operations.iap import AdminSyncSteamAbnormalTransaction
 from ..operations.iap import AdminSyncSteamIAPByTransaction
 from ..operations.iap import DeleteAppleIAPConfig
@@ -127,6 +130,7 @@ from ..operations.iap import QueryUserIAPOrders
 from ..operations.iap import QueryUserIAPOrdersStatusEnum, QueryUserIAPOrdersTypeEnum
 from ..operations.iap import SyncEpicGamesInventory
 from ..operations.iap import SyncOculusConsumableEntitlements
+from ..operations.iap import SyncOculusSubscriptions
 from ..operations.iap import SyncSteamAbnormalTransaction
 from ..operations.iap import SyncSteamIAPByTransaction
 from ..operations.iap import SyncSteamInventory
@@ -175,6 +179,10 @@ from ..models import SteamIAPConfigEnvEnum, SteamIAPConfigSyncModeEnum
 from ..models import SteamIAPConfigInfoEnvEnum, SteamIAPConfigInfoSyncModeEnum
 from ..models import SteamIAPConfigRequestEnvEnum, SteamIAPConfigRequestSyncModeEnum
 from ..models import SteamReportJobInfoEnvEnum
+from ..models import (
+    ThirdPartySubscriptionTransactionInfoPlatformEnum,
+    ThirdPartySubscriptionTransactionInfoStatusEnum,
+)
 from ..models import TwitchSyncResultIapOrderStatusEnum
 from ..models import XblReconcileResultIapOrderStatusEnum
 
@@ -533,6 +541,108 @@ async def admin_reset_steam_job_time_async(
         if error:
             return None, error
     request = AdminResetSteamJobTime.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncOculusSubscriptions)
+def admin_sync_oculus_subscriptions(
+    user_id: str,
+    body: Optional[OculusSubscriptionSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Meta Quest(Oculus) subscription (adminSyncOculusSubscriptions)
+
+    this endpoint only return existed subscription transaction info
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/oculus/subscription/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL OculusSubscriptionSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionTransactionInfo] (successful operation)
+
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}]. | 39154: Meta Quest Subscription Sku [{sku}] not found in namespace [{namespace}] config, please config this Subscription sku in subscription group.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncOculusSubscriptions.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncOculusSubscriptions)
+async def admin_sync_oculus_subscriptions_async(
+    user_id: str,
+    body: Optional[OculusSubscriptionSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Meta Quest(Oculus) subscription (adminSyncOculusSubscriptions)
+
+    this endpoint only return existed subscription transaction info
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/oculus/subscription/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL OculusSubscriptionSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionTransactionInfo] (successful operation)
+
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}]. | 39154: Meta Quest Subscription Sku [{sku}] not found in namespace [{namespace}] config, please config this Subscription sku in subscription group.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncOculusSubscriptions.create(
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )
@@ -3794,6 +3904,108 @@ async def sync_oculus_consumable_entitlements_async(
             return None, error
     request = SyncOculusConsumableEntitlements.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SyncOculusSubscriptions)
+def sync_oculus_subscriptions(
+    user_id: str,
+    body: Optional[OculusSubscriptionSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Meta Quest(Oculus) subscription (syncOculusSubscriptions)
+
+    this endpoint only return existed subscription transaction info
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/subscription/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL OculusSubscriptionSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionTransactionInfo] (successful operation)
+
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}]. | 39154: Meta Quest Subscription Sku [{sku}] not found in namespace [{namespace}] config, please config this Subscription sku in subscription group.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SyncOculusSubscriptions.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SyncOculusSubscriptions)
+async def sync_oculus_subscriptions_async(
+    user_id: str,
+    body: Optional[OculusSubscriptionSyncRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Meta Quest(Oculus) subscription (syncOculusSubscriptions)
+
+    this endpoint only return existed subscription transaction info
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/subscription/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL OculusSubscriptionSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionTransactionInfo] (successful operation)
+
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}]. | 39154: Meta Quest Subscription Sku [{sku}] not found in namespace [{namespace}] config, please config this Subscription sku in subscription group.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SyncOculusSubscriptions.create(
+        user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

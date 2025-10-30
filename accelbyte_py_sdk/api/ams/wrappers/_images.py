@@ -156,6 +156,7 @@ def image_list(
     sort_direction: Optional[str] = None,
     status: Optional[str] = None,
     tag: Optional[str] = None,
+    target_architecture: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -199,6 +200,8 @@ def image_list(
 
         tag: (tag) OPTIONAL str in query
 
+        target_architecture: (targetArchitecture) OPTIONAL str in query
+
     Responses:
         200: OK - ApiImageList (success)
 
@@ -224,6 +227,7 @@ def image_list(
         sort_direction=sort_direction,
         status=status,
         tag=tag,
+        target_architecture=target_architecture,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -240,6 +244,7 @@ async def image_list_async(
     sort_direction: Optional[str] = None,
     status: Optional[str] = None,
     tag: Optional[str] = None,
+    target_architecture: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -283,6 +288,8 @@ async def image_list_async(
 
         tag: (tag) OPTIONAL str in query
 
+        target_architecture: (targetArchitecture) OPTIONAL str in query
+
     Responses:
         200: OK - ApiImageList (success)
 
@@ -308,6 +315,7 @@ async def image_list_async(
         sort_direction=sort_direction,
         status=status,
         tag=tag,
+        target_architecture=target_architecture,
         namespace=namespace,
     )
     return await run_request_async(

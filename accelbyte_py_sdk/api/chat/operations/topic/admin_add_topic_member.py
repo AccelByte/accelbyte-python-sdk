@@ -31,6 +31,7 @@ from .....core import HttpResponse
 
 from ...models import ApiAddMemberParams
 from ...models import MessageActionAddUserToTopicResult
+from ...models import RestapiErrorResponseBody
 
 
 class AdminAddTopicMember(Operation):
@@ -61,6 +62,16 @@ class AdminAddTopicMember(Operation):
 
     Responses:
         200: OK - MessageActionAddUserToTopicResult
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
 
     # region fields
@@ -190,11 +201,22 @@ class AdminAddTopicMember(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, MessageActionAddUserToTopicResult], Union[None, HttpResponse]
+        Union[None, MessageActionAddUserToTopicResult],
+        Union[None, HttpResponse, RestapiErrorResponseBody],
     ]:
         """Parse the given response.
 
         200: OK - MessageActionAddUserToTopicResult
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -211,6 +233,16 @@ class AdminAddTopicMember(Operation):
 
         if code == 200:
             return MessageActionAddUserToTopicResult.create_from_dict(content), None
+        if code == 400:
+            return None, RestapiErrorResponseBody.create_from_dict(content)
+        if code == 401:
+            return None, RestapiErrorResponseBody.create_from_dict(content)
+        if code == 403:
+            return None, RestapiErrorResponseBody.create_from_dict(content)
+        if code == 404:
+            return None, RestapiErrorResponseBody.create_from_dict(content)
+        if code == 500:
+            return None, RestapiErrorResponseBody.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

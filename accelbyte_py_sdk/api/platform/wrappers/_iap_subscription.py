@@ -30,13 +30,21 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
+from ..models import ThirdPartySubscriptionGroupCreate
+from ..models import ThirdPartySubscriptionGroupInfo
 from ..models import ThirdPartySubscriptionOwnership
+from ..models import ThirdPartySubscriptionTierCreate
+from ..models import ThirdPartySubscriptionTierInfo
 from ..models import ThirdPartySubscriptionTransactionHistoryPagingSlicedResult
 from ..models import ThirdPartySubscriptionTransactionInfo
 from ..models import ThirdPartySubscriptionTransactionPagingSlicedResult
 from ..models import ThirdPartyUserSubscriptionInfo
 from ..models import ThirdPartyUserSubscriptionPagingSlicedResult
 
+from ..operations.iap_subscription import AddTierIntoMetaQuestSubscriptionGroup
+from ..operations.iap_subscription import CreateOculusSubscriptionGroup
+from ..operations.iap_subscription import DeleteOculusSubscriptionGroup
+from ..operations.iap_subscription import DeleteOculusSubscriptionTier
 from ..operations.iap_subscription import GetSubscriptionHistory
 from ..operations.iap_subscription import (
     GetThirdPartyPlatformSubscriptionOwnershipByGroupId,
@@ -52,6 +60,8 @@ from ..operations.iap_subscription import (
 )
 from ..operations.iap_subscription import GetThirdPartySubscriptionDetails
 from ..operations.iap_subscription import GetThirdPartyUserSubscriptionDetails
+from ..operations.iap_subscription import ListOculusSubscriptionGroupTier
+from ..operations.iap_subscription import ListOculusSubscriptionGroups
 from ..operations.iap_subscription import PublicQueryUserThirdPartySubscription
 from ..operations.iap_subscription import (
     PublicQueryUserThirdPartySubscriptionPlatformEnum,
@@ -74,6 +84,370 @@ from ..models import (
     ThirdPartyUserSubscriptionInfoPlatformEnum,
     ThirdPartyUserSubscriptionInfoStatusEnum,
 )
+
+
+@same_doc_as(AddTierIntoMetaQuestSubscriptionGroup)
+def add_tier_into_meta_quest_subscription_group(
+    body: Optional[ThirdPartySubscriptionTierCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create Meta quest(Oculus) subscriptions tier (addTierIntoMetaQuestSubscriptionGroup)
+
+    Create Meta Quest(Oculus) subscriptions tier
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/tier
+
+        method: POST
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ThirdPartySubscriptionTierCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ThirdPartySubscriptionTierInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39187: Duplicated group sku [{sku}] platform [{platform}] in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AddTierIntoMetaQuestSubscriptionGroup.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AddTierIntoMetaQuestSubscriptionGroup)
+async def add_tier_into_meta_quest_subscription_group_async(
+    body: Optional[ThirdPartySubscriptionTierCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create Meta quest(Oculus) subscriptions tier (addTierIntoMetaQuestSubscriptionGroup)
+
+    Create Meta Quest(Oculus) subscriptions tier
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/tier
+
+        method: POST
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ThirdPartySubscriptionTierCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ThirdPartySubscriptionTierInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39187: Duplicated group sku [{sku}] platform [{platform}] in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AddTierIntoMetaQuestSubscriptionGroup.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(CreateOculusSubscriptionGroup)
+def create_oculus_subscription_group(
+    body: Optional[ThirdPartySubscriptionGroupCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create AGS Meta Quest(Oculus) subscriptions group (createOculusSubscriptionGroup)
+
+    Create subscriptions group
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group
+
+        method: POST
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ThirdPartySubscriptionGroupCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ThirdPartySubscriptionGroupInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39187: Duplicated group sku [{sku}] platform [{platform}] in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = CreateOculusSubscriptionGroup.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateOculusSubscriptionGroup)
+async def create_oculus_subscription_group_async(
+    body: Optional[ThirdPartySubscriptionGroupCreate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create AGS Meta Quest(Oculus) subscriptions group (createOculusSubscriptionGroup)
+
+    Create subscriptions group
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group
+
+        method: POST
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL ThirdPartySubscriptionGroupCreate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ThirdPartySubscriptionGroupInfo (successful operation)
+
+        409: Conflict - ErrorEntity (39187: Duplicated group sku [{sku}] platform [{platform}] in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = CreateOculusSubscriptionGroup.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteOculusSubscriptionGroup)
+def delete_oculus_subscription_group(
+    sku: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete a AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
+
+    can't delete it if this subscription group is used.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group/{sku}
+
+        method: DELETE
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+
+        404: Not Found - ErrorEntity (39152: Platform [{platform}] - Third-party subscription group [{sku}] not found in namespace [{namespace}]. It may have been deleted.)
+
+        409: Conflict - ErrorEntity (39188: Third-party subscription group [{sku}] on platform [{platform}] in namespace [{namespace}] is already linked to the user's third-party subscription.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = DeleteOculusSubscriptionGroup.create(
+        sku=sku,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteOculusSubscriptionGroup)
+async def delete_oculus_subscription_group_async(
+    sku: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete a AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
+
+    can't delete it if this subscription group is used.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group/{sku}
+
+        method: DELETE
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+
+        404: Not Found - ErrorEntity (39152: Platform [{platform}] - Third-party subscription group [{sku}] not found in namespace [{namespace}]. It may have been deleted.)
+
+        409: Conflict - ErrorEntity (39188: Third-party subscription group [{sku}] on platform [{platform}] in namespace [{namespace}] is already linked to the user's third-party subscription.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = DeleteOculusSubscriptionGroup.create(
+        sku=sku,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteOculusSubscriptionTier)
+def delete_oculus_subscription_tier(
+    sku: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete a AGS Meta Quest(Oculus) subscriptions tier (deleteOculusSubscriptionTier)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/tier/{sku}
+
+        method: DELETE
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+
+        404: Not Found - ErrorEntity (39152: Platform [{platform}] - Third-party subscription group [{sku}] not found in namespace [{namespace}]. It may have been deleted.)
+
+        409: Conflict - ErrorEntity (39188: Third-party subscription group [{sku}] on platform [{platform}] in namespace [{namespace}] is already linked to the user's third-party subscription.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = DeleteOculusSubscriptionTier.create(
+        sku=sku,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteOculusSubscriptionTier)
+async def delete_oculus_subscription_tier_async(
+    sku: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete a AGS Meta Quest(Oculus) subscriptions tier (deleteOculusSubscriptionTier)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/tier/{sku}
+
+        method: DELETE
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Anonymize successfully)
+
+        404: Not Found - ErrorEntity (39152: Platform [{platform}] - Third-party subscription group [{sku}] not found in namespace [{namespace}]. It may have been deleted.)
+
+        409: Conflict - ErrorEntity (39188: Third-party subscription group [{sku}] on platform [{platform}] in namespace [{namespace}] is already linked to the user's third-party subscription.)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = DeleteOculusSubscriptionTier.create(
+        sku=sku,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(GetSubscriptionHistory)
@@ -595,6 +969,170 @@ async def get_third_party_user_subscription_details_async(
     request = GetThirdPartyUserSubscriptionDetails.create(
         id_=id_,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListOculusSubscriptionGroupTier)
+def list_oculus_subscription_group_tier(
+    sku: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List All Tier of AGS Meta Quest(Oculus) subscriptions group (listOculusSubscriptionGroupTier)
+
+    List All Tier of AGS Meta Quest(Oculus) subscriptions group
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group/{sku}/tiers
+
+        method: GET
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionTierInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ListOculusSubscriptionGroupTier.create(
+        sku=sku,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListOculusSubscriptionGroupTier)
+async def list_oculus_subscription_group_tier_async(
+    sku: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List All Tier of AGS Meta Quest(Oculus) subscriptions group (listOculusSubscriptionGroupTier)
+
+    List All Tier of AGS Meta Quest(Oculus) subscriptions group
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group/{sku}/tiers
+
+        method: GET
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        sku: (sku) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionTierInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ListOculusSubscriptionGroupTier.create(
+        sku=sku,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListOculusSubscriptionGroups)
+def list_oculus_subscription_groups(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List All of AGS Meta Quest(Oculus) subscriptions group (listOculusSubscriptionGroups)
+
+    List Meta Quest(Oculus) subscriptions group
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group
+
+        method: GET
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionGroupInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ListOculusSubscriptionGroups.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListOculusSubscriptionGroups)
+async def list_oculus_subscription_groups_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List All of AGS Meta Quest(Oculus) subscriptions group (listOculusSubscriptionGroups)
+
+    List Meta Quest(Oculus) subscriptions group
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/group
+
+        method: GET
+
+        tags: ["IAP(Subscription)"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ThirdPartySubscriptionGroupInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ListOculusSubscriptionGroups.create(
         namespace=namespace,
     )
     return await run_request_async(

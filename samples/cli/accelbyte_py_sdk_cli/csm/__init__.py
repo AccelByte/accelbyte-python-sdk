@@ -39,6 +39,10 @@ from ._update_app_v2 import update_app_v2
 from ._create_deployment_v2 import create_deployment_v2
 from ._get_app_image_list_v2 import get_app_image_list_v2
 from ._delete_app_images_v2 import delete_app_images_v2
+from ._create_no_sql_database_credential_v2 import create_no_sql_database_credential_v2
+from ._get_no_sql_database_v2 import get_no_sql_database_v2
+from ._create_no_sql_database_v2 import create_no_sql_database_v2
+from ._delete_no_sql_database_v2 import delete_no_sql_database_v2
 from ._update_app_resources_v2 import update_app_resources_v2
 from ._update_app_resources_resource_limit_form_v2 import (
     update_app_resources_resource_limit_form_v2,
@@ -70,6 +74,11 @@ from ._delete_variable_v2 import delete_variable_v2
 from ._get_list_of_deployment_v2 import get_list_of_deployment_v2
 from ._get_deployment_v2 import get_deployment_v2
 from ._delete_deployment_v2 import delete_deployment_v2
+from ._get_no_sql_cluster_v2 import get_no_sql_cluster_v2
+from ._update_no_sql_cluster_v2 import update_no_sql_cluster_v2
+from ._create_no_sql_cluster_v2 import create_no_sql_cluster_v2
+from ._delete_no_sql_cluster_v2 import delete_no_sql_cluster_v2
+from ._get_no_sql_access_tunnel_v2 import get_no_sql_access_tunnel_v2
 from ._get_resources_limits import get_resources_limits
 from ._get_notification_subscriber_list_v3 import get_notification_subscriber_list_v3
 from ._delete_subscription_app_notification_v3 import (
@@ -109,6 +118,10 @@ commands = [
     create_deployment_v2,
     get_app_image_list_v2,
     delete_app_images_v2,
+    create_no_sql_database_credential_v2,
+    get_no_sql_database_v2,
+    create_no_sql_database_v2,
+    delete_no_sql_database_v2,
     update_app_resources_v2,
     update_app_resources_resource_limit_form_v2,
     get_list_of_secrets_v2,
@@ -132,6 +145,11 @@ commands = [
     get_list_of_deployment_v2,
     get_deployment_v2,
     delete_deployment_v2,
+    get_no_sql_cluster_v2,
+    update_no_sql_cluster_v2,
+    create_no_sql_cluster_v2,
+    delete_no_sql_cluster_v2,
+    get_no_sql_access_tunnel_v2,
     get_resources_limits,
     get_notification_subscriber_list_v3,
     delete_subscription_app_notification_v3,

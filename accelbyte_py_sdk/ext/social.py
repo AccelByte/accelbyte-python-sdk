@@ -158,12 +158,14 @@ def create_bulk_stat_item_update_example() -> BulkStatItemUpdate:
     instance.update_strategy = randomize()
     instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
+    instance.request_id = randomize()
     return instance
 
 
 def create_bulk_stat_operation_result_example() -> BulkStatOperationResult:
     instance = BulkStatOperationResult()
     instance.details = {randomize(): randomize()}
+    instance.request_id = randomize()
     instance.stat_code = randomize()
     instance.success = randomize("bool")
     instance.user_id = randomize("uid")
@@ -199,6 +201,7 @@ def create_bulk_user_stat_item_update_example() -> BulkUserStatItemUpdate:
     instance.value = randomize("int", min_val=1, max_val=1000)
     instance.additional_data = {randomize(): randomize()}
     instance.additional_key = randomize()
+    instance.request_id = randomize()
     return instance
 
 

@@ -53,14 +53,6 @@ class GetMyOfflineNotifications(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        end_time: (endTime) OPTIONAL int in query
-
-        limit: (limit) OPTIONAL int in query
-
-        offset: (offset) OPTIONAL int in query
-
-        start_time: (startTime) OPTIONAL int in query
-
     Responses:
         200: OK - ModelNotificationsResponse (OK)
 
@@ -85,10 +77,6 @@ class GetMyOfflineNotifications(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    end_time: int  # OPTIONAL in [query]
-    limit: int  # OPTIONAL in [query]
-    offset: int  # OPTIONAL in [query]
-    start_time: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -129,25 +117,12 @@ class GetMyOfflineNotifications(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
-            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        return result
-
-    def get_query_params(self) -> dict:
-        result = {}
-        if hasattr(self, "end_time"):
-            result["endTime"] = self.end_time
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
-        if hasattr(self, "start_time"):
-            result["startTime"] = self.start_time
         return result
 
     # endregion get_x_params methods
@@ -162,22 +137,6 @@ class GetMyOfflineNotifications(Operation):
         self.namespace = value
         return self
 
-    def with_end_time(self, value: int) -> GetMyOfflineNotifications:
-        self.end_time = value
-        return self
-
-    def with_limit(self, value: int) -> GetMyOfflineNotifications:
-        self.limit = value
-        return self
-
-    def with_offset(self, value: int) -> GetMyOfflineNotifications:
-        self.offset = value
-        return self
-
-    def with_start_time(self, value: int) -> GetMyOfflineNotifications:
-        self.start_time = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -188,22 +147,6 @@ class GetMyOfflineNotifications(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "end_time") and self.end_time:
-            result["endTime"] = int(self.end_time)
-        elif include_empty:
-            result["endTime"] = 0
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
-        elif include_empty:
-            result["limit"] = 0
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = 0
-        if hasattr(self, "start_time") and self.start_time:
-            result["startTime"] = int(self.start_time)
-        elif include_empty:
-            result["startTime"] = 0
         return result
 
     # endregion to methods
@@ -266,25 +209,9 @@ class GetMyOfflineNotifications(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls,
-        namespace: str,
-        end_time: Optional[int] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        start_time: Optional[int] = None,
-        **kwargs,
-    ) -> GetMyOfflineNotifications:
+    def create(cls, namespace: str, **kwargs) -> GetMyOfflineNotifications:
         instance = cls()
         instance.namespace = namespace
-        if end_time is not None:
-            instance.end_time = end_time
-        if limit is not None:
-            instance.limit = limit
-        if offset is not None:
-            instance.offset = offset
-        if start_time is not None:
-            instance.start_time = start_time
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -298,42 +225,18 @@ class GetMyOfflineNotifications(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "endTime" in dict_ and dict_["endTime"] is not None:
-            instance.end_time = int(dict_["endTime"])
-        elif include_empty:
-            instance.end_time = 0
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
-        elif include_empty:
-            instance.limit = 0
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = 0
-        if "startTime" in dict_ and dict_["startTime"] is not None:
-            instance.start_time = int(dict_["startTime"])
-        elif include_empty:
-            instance.start_time = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "endTime": "end_time",
-            "limit": "limit",
-            "offset": "offset",
-            "startTime": "start_time",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "endTime": False,
-            "limit": False,
-            "offset": False,
-            "startTime": False,
         }
 
     # endregion static methods

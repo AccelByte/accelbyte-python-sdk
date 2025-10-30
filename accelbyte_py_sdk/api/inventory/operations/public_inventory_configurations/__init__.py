@@ -6,9 +6,9 @@
 
 # template file: ags_py_codegen
 
-"""Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service."""
+"""Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service Early Access."""
 
-__version__ = "0.2.17"
+__version__ = "0.2.19"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

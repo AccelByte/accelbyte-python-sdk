@@ -720,7 +720,7 @@ $ python -m accelbyte_py_sdk_cli 'platform-get-oculus-iap-config' \
 ### Operation `update_oculus_iap_config`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-update-oculus-iap-config' \
-    '{"appId": "string", "appSecret": "string"}' \
+    '{"appId": "string", "appSecret": "string", "webhookVerifyToken": "string"}' \
     'string' \
     > result.txt
 ```
@@ -728,6 +728,53 @@ $ python -m accelbyte_py_sdk_cli 'platform-update-oculus-iap-config' \
 ### Operation `delete_oculus_iap_config`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-delete-oculus-iap-config' \
+    'string' \
+    > result.txt
+```
+
+### Operation `list_oculus_subscription_groups`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-list-oculus-subscription-groups' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_oculus_subscription_group`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-create-oculus-subscription-group' \
+    'string' \
+    --body '{"sku": "string"}' \
+    > result.txt
+```
+
+### Operation `delete_oculus_subscription_group`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-delete-oculus-subscription-group' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `list_oculus_subscription_group_tier`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-list-oculus-subscription-group-tier' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `add_tier_into_meta_quest_subscription_group`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-add-tier-into-meta-quest-subscription-group' \
+    'string' \
+    --body '{"groupSku": "string", "sku": "string"}' \
+    > result.txt
+```
+
+### Operation `delete_oculus_subscription_tier`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-delete-oculus-subscription-tier' \
+    'string' \
     'string' \
     > result.txt
 ```
@@ -963,7 +1010,7 @@ $ python -m accelbyte_py_sdk_cli 'platform-sync-in-game-item' \
 ### Operation `create_item`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-create-item' \
-    '{"appId": "string", "appType": "DEMO", "baseAppId": "string", "boothName": "string", "categoryPath": "string", "clazz": "string", "displayOrder": 1, "entitlementType": "CONSUMABLE", "ext": {"string": {}}, "features": ["string"], "flexible": false, "images": [{}], "inventoryConfig": {}, "itemIds": ["string"], "itemQty": {"string": 1}, "itemType": "APP", "listable": false, "localizations": {"string": {}}, "lootBoxConfig": {}, "maxCount": 1, "maxCountPerUser": 1, "name": "string", "optionBoxConfig": {}, "purchasable": false, "recurring": {}, "regionData": {"string": []}, "saleConfig": {}, "seasonType": "PASS", "sectionExclusive": false, "sellable": false, "sku": "string", "stackable": false, "status": "ACTIVE", "tags": ["string"], "targetCurrencyCode": "string", "targetNamespace": "string", "thumbnailUrl": "string", "useCount": 1}' \
+    '{"appId": "string", "appType": "DEMO", "baseAppId": "string", "boothName": "string", "categoryPath": "string", "clazz": "string", "displayOrder": 1, "entitlementType": "CONSUMABLE", "ext": {"string": {}}, "features": ["string"], "flexible": false, "images": [{}], "inventoryConfig": {}, "itemId": "string", "itemIds": ["string"], "itemQty": {"string": 1}, "itemType": "APP", "listable": false, "localizations": {"string": {}}, "lootBoxConfig": {}, "maxCount": 1, "maxCountPerUser": 1, "name": "string", "optionBoxConfig": {}, "purchasable": false, "recurring": {}, "regionData": {"string": []}, "saleConfig": {}, "seasonType": "PASS", "sectionExclusive": false, "sellable": false, "sku": "string", "stackable": false, "status": "ACTIVE", "tags": ["string"], "targetCurrencyCode": "string", "targetNamespace": "string", "thumbnailUrl": "string", "useCount": 1}' \
     'string' \
     'string' \
     > result.txt
@@ -2538,6 +2585,15 @@ $ python -m accelbyte_py_sdk_cli 'platform-mock-fulfill-iap-item' \
     > result.txt
 ```
 
+### Operation `admin_sync_oculus_subscriptions`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-admin-sync-oculus-subscriptions' \
+    'string' \
+    'string' \
+    --body '{"skus": ["string"]}' \
+    > result.txt
+```
+
 ### Operation `admin_get_iap_order_line_items`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-admin-get-iap-order-line-items' \
@@ -4008,6 +4064,15 @@ $ python -m accelbyte_py_sdk_cli 'platform-public-fulfill-google-iap-item' \
     '{"autoAck": false, "autoConsume": false, "language": "string", "orderId": "string", "packageName": "string", "productId": "string", "purchaseTime": 1, "purchaseToken": "string", "region": "string", "subscriptionPurchase": false}' \
     'string' \
     'string' \
+    > result.txt
+```
+
+### Operation `sync_oculus_subscriptions`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-sync-oculus-subscriptions' \
+    'string' \
+    'string' \
+    --body '{"skus": ["string"]}' \
     > result.txt
 ```
 

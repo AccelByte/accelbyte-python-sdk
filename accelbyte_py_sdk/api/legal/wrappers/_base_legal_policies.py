@@ -39,24 +39,24 @@ from ..models import UpdateBasePolicyRequest
 from ..models import UpdateBasePolicyResponse
 from ..models import ValidationErrorEntity
 
-from ..operations.base_legal_policies import CreatePolicy
-from ..operations.base_legal_policies import PartialUpdatePolicy
+from ..operations.base_legal_policies import OldCreatePolicy
+from ..operations.base_legal_policies import OldPartialUpdatePolicy
+from ..operations.base_legal_policies import OldRetrieveAllPolicyTypes
+from ..operations.base_legal_policies import OldRetrievePolicyCountry
+from ..operations.base_legal_policies import OldRetrieveSinglePolicy
 from ..operations.base_legal_policies import RetrieveAllLegalPolicies
-from ..operations.base_legal_policies import RetrieveAllPolicyTypes
-from ..operations.base_legal_policies import RetrievePolicyCountry
-from ..operations.base_legal_policies import RetrieveSinglePolicy
 from ..models import CreateBasePolicyRequestCountryTypeEnum
 from ..models import CreateBasePolicyResponseCountryTypeEnum
 from ..models import UpdateBasePolicyRequestCountryTypeEnum
 
 
-@same_doc_as(CreatePolicy)
-def create_policy(
+@same_doc_as(OldCreatePolicy)
+def old_create_policy(
     body: Optional[CreateBasePolicyRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Base Legal Policy (createPolicy)
+    """Create a Base Legal Policy (oldCreatePolicy)
 
     Create a legal policy.
     Note:
@@ -92,19 +92,19 @@ def create_policy(
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
-    request = CreatePolicy.create(
+    request = OldCreatePolicy.create(
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(CreatePolicy)
-async def create_policy_async(
+@same_doc_as(OldCreatePolicy)
+async def old_create_policy_async(
     body: Optional[CreateBasePolicyRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a Base Legal Policy (createPolicy)
+    """Create a Base Legal Policy (oldCreatePolicy)
 
     Create a legal policy.
     Note:
@@ -140,7 +140,7 @@ async def create_policy_async(
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
-    request = CreatePolicy.create(
+    request = OldCreatePolicy.create(
         body=body,
     )
     return await run_request_async(
@@ -148,14 +148,14 @@ async def create_policy_async(
     )
 
 
-@same_doc_as(PartialUpdatePolicy)
-def partial_update_policy(
+@same_doc_as(OldPartialUpdatePolicy)
+def old_partial_update_policy(
     base_policy_id: str,
     body: Optional[UpdateBasePolicyRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Base Legal Policy (partialUpdatePolicy)
+    """Update Base Legal Policy (oldPartialUpdatePolicy)
 
     Update an existing base policy.
     Note:
@@ -191,21 +191,21 @@ def partial_update_policy(
 
         404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
     """
-    request = PartialUpdatePolicy.create(
+    request = OldPartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(PartialUpdatePolicy)
-async def partial_update_policy_async(
+@same_doc_as(OldPartialUpdatePolicy)
+async def old_partial_update_policy_async(
     base_policy_id: str,
     body: Optional[UpdateBasePolicyRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Base Legal Policy (partialUpdatePolicy)
+    """Update Base Legal Policy (oldPartialUpdatePolicy)
 
     Update an existing base policy.
     Note:
@@ -241,9 +241,239 @@ async def partial_update_policy_async(
 
         404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
     """
-    request = PartialUpdatePolicy.create(
+    request = OldPartialUpdatePolicy.create(
         base_policy_id=base_policy_id,
         body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(OldRetrieveAllPolicyTypes)
+def old_retrieve_all_policy_types(
+    limit: int,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve All Policy Type (oldRetrieveAllPolicyTypes)
+
+    Retrieve all supported policy types.
+
+    Properties:
+        url: /agreement/admin/policy-types
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        offset: (offset) OPTIONAL int in query
+
+        limit: (limit) REQUIRED int in query
+
+    Responses:
+        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
+    """
+    request = OldRetrieveAllPolicyTypes.create(
+        limit=limit,
+        offset=offset,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldRetrieveAllPolicyTypes)
+async def old_retrieve_all_policy_types_async(
+    limit: int,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve All Policy Type (oldRetrieveAllPolicyTypes)
+
+    Retrieve all supported policy types.
+
+    Properties:
+        url: /agreement/admin/policy-types
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        offset: (offset) OPTIONAL int in query
+
+        limit: (limit) REQUIRED int in query
+
+    Responses:
+        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
+    """
+    request = OldRetrieveAllPolicyTypes.create(
+        limit=limit,
+        offset=offset,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(OldRetrievePolicyCountry)
+def old_retrieve_policy_country(
+    base_policy_id: str,
+    country_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve a Base Legal Policy based on a Particular Country (oldRetrievePolicyCountry)
+
+    Retrieve a Base Legal Policy based on a Particular Country.
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrievePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
+    request = OldRetrievePolicyCountry.create(
+        base_policy_id=base_policy_id,
+        country_code=country_code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldRetrievePolicyCountry)
+async def old_retrieve_policy_country_async(
+    base_policy_id: str,
+    country_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve a Base Legal Policy based on a Particular Country (oldRetrievePolicyCountry)
+
+    Retrieve a Base Legal Policy based on a Particular Country.
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+        country_code: (countryCode) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrievePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
+    """
+    request = OldRetrievePolicyCountry.create(
+        base_policy_id=base_policy_id,
+        country_code=country_code,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(OldRetrieveSinglePolicy)
+def old_retrieve_single_policy(
+    base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Retrieve a Base Legal Policy (oldRetrieveSinglePolicy)
+
+    Retrieve a base policy.
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveBasePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+    """
+    request = OldRetrieveSinglePolicy.create(
+        base_policy_id=base_policy_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(OldRetrieveSinglePolicy)
+async def old_retrieve_single_policy_async(
+    base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Retrieve a Base Legal Policy (oldRetrieveSinglePolicy)
+
+    Retrieve a base policy.
+
+    Properties:
+        url: /agreement/admin/base-policies/{basePolicyId}
+
+        method: GET
+
+        tags: ["Base Legal Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        base_policy_id: (basePolicyId) REQUIRED str in path
+
+    Responses:
+        200: OK - RetrieveBasePolicyResponse (successful operation)
+
+        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
+    """
+    request = OldRetrieveSinglePolicy.create(
+        base_policy_id=base_policy_id,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -314,236 +544,6 @@ async def retrieve_all_legal_policies_async(
     """
     request = RetrieveAllLegalPolicies.create(
         visible_only=visible_only,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveAllPolicyTypes)
-def retrieve_all_policy_types(
-    limit: int,
-    offset: Optional[int] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve All Policy Type (retrieveAllPolicyTypes)
-
-    Retrieve all supported policy types.
-
-    Properties:
-        url: /agreement/admin/policy-types
-
-        method: GET
-
-        tags: ["Base Legal Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        offset: (offset) OPTIONAL int in query
-
-        limit: (limit) REQUIRED int in query
-
-    Responses:
-        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
-    """
-    request = RetrieveAllPolicyTypes.create(
-        limit=limit,
-        offset=offset,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrieveAllPolicyTypes)
-async def retrieve_all_policy_types_async(
-    limit: int,
-    offset: Optional[int] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve All Policy Type (retrieveAllPolicyTypes)
-
-    Retrieve all supported policy types.
-
-    Properties:
-        url: /agreement/admin/policy-types
-
-        method: GET
-
-        tags: ["Base Legal Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        offset: (offset) OPTIONAL int in query
-
-        limit: (limit) REQUIRED int in query
-
-    Responses:
-        200: OK - List[RetrievePolicyTypeResponse] (successful operation)
-    """
-    request = RetrieveAllPolicyTypes.create(
-        limit=limit,
-        offset=offset,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrievePolicyCountry)
-def retrieve_policy_country(
-    base_policy_id: str,
-    country_code: str,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
-
-    Retrieve a Base Legal Policy based on a Particular Country.
-
-    Properties:
-        url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
-
-        method: GET
-
-        tags: ["Base Legal Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        base_policy_id: (basePolicyId) REQUIRED str in path
-
-        country_code: (countryCode) REQUIRED str in path
-
-    Responses:
-        200: OK - RetrievePolicyResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
-    """
-    request = RetrievePolicyCountry.create(
-        base_policy_id=base_policy_id,
-        country_code=country_code,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrievePolicyCountry)
-async def retrieve_policy_country_async(
-    base_policy_id: str,
-    country_code: str,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
-
-    Retrieve a Base Legal Policy based on a Particular Country.
-
-    Properties:
-        url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
-
-        method: GET
-
-        tags: ["Base Legal Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        base_policy_id: (basePolicyId) REQUIRED str in path
-
-        country_code: (countryCode) REQUIRED str in path
-
-    Responses:
-        200: OK - RetrievePolicyResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
-    """
-    request = RetrievePolicyCountry.create(
-        base_policy_id=base_policy_id,
-        country_code=country_code,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(RetrieveSinglePolicy)
-def retrieve_single_policy(
-    base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """Retrieve a Base Legal Policy (retrieveSinglePolicy)
-
-    Retrieve a base policy.
-
-    Properties:
-        url: /agreement/admin/base-policies/{basePolicyId}
-
-        method: GET
-
-        tags: ["Base Legal Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        base_policy_id: (basePolicyId) REQUIRED str in path
-
-    Responses:
-        200: OK - RetrieveBasePolicyResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
-    """
-    request = RetrieveSinglePolicy.create(
-        base_policy_id=base_policy_id,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(RetrieveSinglePolicy)
-async def retrieve_single_policy_async(
-    base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """Retrieve a Base Legal Policy (retrieveSinglePolicy)
-
-    Retrieve a base policy.
-
-    Properties:
-        url: /agreement/admin/base-policies/{basePolicyId}
-
-        method: GET
-
-        tags: ["Base Legal Policies"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        base_policy_id: (basePolicyId) REQUIRED str in path
-
-    Responses:
-        200: OK - RetrieveBasePolicyResponse (successful operation)
-
-        404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
-    """
-    request = RetrieveSinglePolicy.create(
-        base_policy_id=base_policy_id,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

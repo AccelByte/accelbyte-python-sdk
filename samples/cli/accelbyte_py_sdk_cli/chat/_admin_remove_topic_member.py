@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.chat import (
     admin_remove_topic_member as admin_remove_topic_member_internal,
 )
 from accelbyte_py_sdk.api.chat.models import MessageActionAddUserToTopicResult
+from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 
 
 @click.command()

@@ -114,6 +114,8 @@ class ItemCreate(Model):
 
         inventory_config: (inventoryConfig) OPTIONAL InventoryConfig
 
+        item_id: (itemId) OPTIONAL str
+
         item_ids: (itemIds) OPTIONAL List[str]
 
         item_qty: (itemQty) OPTIONAL Dict[str, int]
@@ -175,6 +177,7 @@ class ItemCreate(Model):
     flexible: bool  # OPTIONAL
     images: List[Image]  # OPTIONAL
     inventory_config: InventoryConfig  # OPTIONAL
+    item_id: str  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
     listable: bool  # OPTIONAL
@@ -272,6 +275,10 @@ class ItemCreate(Model):
 
     def with_inventory_config(self, value: InventoryConfig) -> ItemCreate:
         self.inventory_config = value
+        return self
+
+    def with_item_id(self, value: str) -> ItemCreate:
+        self.item_id = value
         return self
 
     def with_item_ids(self, value: List[str]) -> ItemCreate:
@@ -442,6 +449,10 @@ class ItemCreate(Model):
             )
         elif include_empty:
             result["inventoryConfig"] = InventoryConfig()
+        if hasattr(self, "item_id"):
+            result["itemId"] = str(self.item_id)
+        elif include_empty:
+            result["itemId"] = ""
         if hasattr(self, "item_ids"):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
@@ -553,6 +564,7 @@ class ItemCreate(Model):
         flexible: Optional[bool] = None,
         images: Optional[List[Image]] = None,
         inventory_config: Optional[InventoryConfig] = None,
+        item_id: Optional[str] = None,
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
@@ -605,6 +617,8 @@ class ItemCreate(Model):
             instance.images = images
         if inventory_config is not None:
             instance.inventory_config = inventory_config
+        if item_id is not None:
+            instance.item_id = item_id
         if item_ids is not None:
             instance.item_ids = item_ids
         if item_qty is not None:
@@ -738,6 +752,10 @@ class ItemCreate(Model):
             )
         elif include_empty:
             instance.inventory_config = InventoryConfig()
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
+        elif include_empty:
+            instance.item_id = ""
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
@@ -885,6 +903,7 @@ class ItemCreate(Model):
             "flexible": "flexible",
             "images": "images",
             "inventoryConfig": "inventory_config",
+            "itemId": "item_id",
             "itemIds": "item_ids",
             "itemQty": "item_qty",
             "listable": "listable",
@@ -928,6 +947,7 @@ class ItemCreate(Model):
             "flexible": False,
             "images": False,
             "inventoryConfig": False,
+            "itemId": False,
             "itemIds": False,
             "itemQty": False,
             "listable": False,

@@ -8,16 +8,18 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "4.4.1"
+__version__ = "4.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .create_localized_policy_19e4a3 import CreateLocalizedPolicyVersion
-from .request_presigned_url import RequestPresignedURL
-from .retrieve_localized_poli_24a671 import RetrieveLocalizedPolicyVersions
-from .retrieve_single_localiz_2f6231 import RetrieveSingleLocalizedPolicyVersion
-from .retrieve_single_localiz_6ecc81 import RetrieveSingleLocalizedPolicyVersion2
-from .set_default_policy import SetDefaultPolicy
-from .update_localized_policy_a8a90f import UpdateLocalizedPolicyVersion
+from .old_create_localized_po_27ca82 import OldCreateLocalizedPolicyVersion
+from .old_public_retrieve_sin_4e7606 import (
+    OldPublicRetrieveSingleLocalizedPolicyVersion,
+)
+from .old_request_presigned_url import OldRequestPresignedURL
+from .old_retrieve_localized__18cbb5 import OldRetrieveLocalizedPolicyVersions
+from .old_retrieve_single_loc_881bb2 import OldRetrieveSingleLocalizedPolicyVersion
+from .old_set_default_localiz_e3b777 import OldSetDefaultLocalizedPolicy
+from .old_update_localized_po_4765cb import OldUpdateLocalizedPolicyVersion

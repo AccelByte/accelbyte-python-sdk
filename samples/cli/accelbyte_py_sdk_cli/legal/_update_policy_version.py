@@ -41,12 +41,14 @@ from accelbyte_py_sdk.api.legal.models import UpdatePolicyVersionResponse
 @click.command()
 @click.argument("policy_version_id", type=str)
 @click.option("--body", "body", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_policy_version(
     policy_version_id: str,
     body: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -68,6 +70,7 @@ def update_policy_version(
     result, error = update_policy_version_internal(
         policy_version_id=policy_version_id,
         body=body,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

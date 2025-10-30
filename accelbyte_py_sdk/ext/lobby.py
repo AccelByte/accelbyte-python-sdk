@@ -370,6 +370,7 @@ def create_model_native_friend_request_example() -> ModelNativeFriendRequest:
     instance.platform_id = randomize()
     instance.platform_token = randomize()
     instance.psn_env = randomize()
+    instance.sync_deleted_friend = randomize("bool")
     return instance
 
 

@@ -485,6 +485,7 @@ def create_api_image_details_example() -> ApiImageDetails:
     instance.size_in_byte = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
     instance.tags = [randomize()]
+    instance.target_architecture = randomize()
     instance.uploaded_at = randomize("date")
     instance.uploaded_by = randomize()
     instance.delete_at = randomize()
@@ -510,6 +511,7 @@ def create_api_image_list_item_example() -> ApiImageListItem:
     instance.size_in_byte = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
     instance.tags = [randomize()]
+    instance.target_architecture = randomize()
     instance.uploaded_at = randomize("date")
     instance.uploaded_by = randomize()
     instance.delete_at = randomize()
@@ -545,6 +547,7 @@ def create_api_instance_type_example() -> ApiInstanceType:
     instance.min_speed = randomize()
     instance.name = randomize()
     instance.owner_account_id = randomize()
+    instance.processor_architecture = randomize()
     instance.provider = randomize()
     instance.virtual_cpu = randomize("int", min_val=1, max_val=1000)
     return instance

@@ -139,6 +139,16 @@ def admin_add_topic_member(
 
     Responses:
         200: OK - MessageActionAddUserToTopicResult
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -189,6 +199,16 @@ async def admin_add_topic_member_async(
 
     Responses:
         200: OK - MessageActionAddUserToTopicResult
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -245,6 +265,8 @@ def admin_ban_topic_members(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -298,6 +320,8 @@ async def admin_ban_topic_members_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -1027,6 +1051,8 @@ def admin_delete_chat(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -1081,6 +1107,8 @@ async def admin_delete_chat_async(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -1127,6 +1155,14 @@ def admin_delete_topic(
 
     Responses:
         200: OK - MessageActionDeleteTopicResult
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1169,6 +1205,14 @@ async def admin_delete_topic_async(
 
     Responses:
         200: OK - MessageActionDeleteTopicResult
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1792,6 +1836,14 @@ def admin_remove_topic_member(
 
     Responses:
         200: OK - MessageActionAddUserToTopicResult
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1838,6 +1890,14 @@ async def admin_remove_topic_member_async(
 
     Responses:
         200: OK - MessageActionAddUserToTopicResult
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1893,6 +1953,8 @@ def admin_send_chat(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -1946,6 +2008,8 @@ async def admin_send_chat_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -2182,6 +2246,8 @@ def admin_topic_list(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -2239,6 +2305,8 @@ async def admin_topic_list_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -2541,6 +2609,8 @@ def admin_unban_topic_members(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -2595,6 +2665,8 @@ async def admin_unban_topic_members_async(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -2644,6 +2716,14 @@ def admin_update_topic(
 
     Responses:
         200: OK - ApiCreateTopicResponse
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -2690,6 +2770,14 @@ async def admin_update_topic_async(
 
     Responses:
         200: OK - ApiCreateTopicResponse
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -2745,6 +2833,8 @@ def public_ban_topic_members(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -2798,6 +2888,8 @@ async def public_ban_topic_members_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -3185,6 +3277,8 @@ def public_mute_user(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -3238,6 +3332,8 @@ async def public_mute_user_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -3413,6 +3509,8 @@ def public_unban_topic_members(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -3466,6 +3564,8 @@ async def public_unban_topic_members_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
@@ -3523,6 +3623,8 @@ def public_unmute_user(
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
 
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
@@ -3576,6 +3678,8 @@ async def public_unmute_user_async(
         401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
 
         403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
 
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
