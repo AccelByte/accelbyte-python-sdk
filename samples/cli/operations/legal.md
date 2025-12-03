@@ -159,6 +159,8 @@ $ python -m accelbyte_py_sdk_cli 'legal-initiate-export-agreements-to-csv' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'legal-retrieve-all-legal-policies-by-namespace' \
     'string' \
+    --limit 1 \
+    --offset 1 \
     --visible_only false \
     > result.txt
 ```

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Leaderboard Service Index (2.33.1)
+# AccelByte Gaming Services Leaderboard Service Index (2.34.0)
 
 
 ## Operations
@@ -116,6 +116,7 @@
 | models.BulkUserRankingResponseV3 | [ModelsBulkUserRankingResponseV3](../../accelbyte_py_sdk/api/leaderboard/models/models_bulk_user_ranking_response_v3.py) |
 | models.DailyConfig | [ModelsDailyConfig](../../accelbyte_py_sdk/api/leaderboard/models/models_daily_config.py) |
 | models.DeleteBulkLeaderboardFailedResp | [ModelsDeleteBulkLeaderboardFailedResp](../../accelbyte_py_sdk/api/leaderboard/models/models_delete_bulk_leaderboard_failed_resp.py) |
+| models.DeleteBulkLeaderboardSuccessResp | [ModelsDeleteBulkLeaderboardSuccessResp](../../accelbyte_py_sdk/api/leaderboard/models/models_delete_bulk_leaderboard_success_resp.py) |
 | models.DeleteBulkLeaderboardsReq | [ModelsDeleteBulkLeaderboardsReq](../../accelbyte_py_sdk/api/leaderboard/models/models_delete_bulk_leaderboards_req.py) |
 | models.DeleteBulkLeaderboardsResp | [ModelsDeleteBulkLeaderboardsResp](../../accelbyte_py_sdk/api/leaderboard/models/models_delete_bulk_leaderboards_resp.py) |
 | models.GetAllLeaderboardConfigsPublicResp | [ModelsGetAllLeaderboardConfigsPublicResp](../../accelbyte_py_sdk/api/leaderboard/models/models_get_all_leaderboard_configs_public_resp.py) |

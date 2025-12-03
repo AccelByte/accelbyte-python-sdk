@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Login Queue Service Index (2.3.2)
+# AccelByte Gaming Services Login Queue Service Index (2.3.3)
 
 
 ## Operations

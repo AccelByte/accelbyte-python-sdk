@@ -37,6 +37,9 @@ from ..api.csm.models import ApimodelCreateDeploymentV2Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Response
 from ..api.csm.models import ApimodelCreateNoSQLAppDatabaseRequest
 from ..api.csm.models import ApimodelCreateNoSQLDatabaseCredentialRequest
+from ..api.csm.models import ApimodelCreateSubscriptionRequest
+from ..api.csm.models import ApimodelCreateSubscriptionResponse
+from ..api.csm.models import ApimodelCreateTopicRequest
 from ..api.csm.models import ApimodelDeleteNoSQLResourceResponse
 from ..api.csm.models import ApimodelGetAppImageListV2DataItem
 from ..api.csm.models import ApimodelGetAppImageListV2DataItemImageScanResult
@@ -55,6 +58,7 @@ from ..api.csm.models import ApimodelGetNotificationSubscriberListResponse
 from ..api.csm.models import ApimodelGetNotificationSubscriberListResponseV2
 from ..api.csm.models import ApimodelGetNotificationSubscriberStatusResponse
 from ..api.csm.models import ApimodelIncreaseLimitFormRequest
+from ..api.csm.models import ApimodelListTopicsResponse
 from ..api.csm.models import ApimodelMemoryRequest
 from ..api.csm.models import ApimodelMemoryResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseCredentialResponse
@@ -62,6 +66,7 @@ from ..api.csm.models import ApimodelNoSQLDatabaseDeleteResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseResponse
 from ..api.csm.models import ApimodelNoSQLResourceResponse
 from ..api.csm.models import ApimodelNotificationType
+from ..api.csm.models import ApimodelPaginationResponse
 from ..api.csm.models import ApimodelReplicaRequest
 from ..api.csm.models import ApimodelReplicaResponse
 from ..api.csm.models import ApimodelSaveConfigurationV2Request
@@ -72,6 +77,9 @@ from ..api.csm.models import ApimodelSubscribeNotificationRequest
 from ..api.csm.models import ApimodelSubscribeNotificationResponse
 from ..api.csm.models import ApimodelSubscriberItemRequest
 from ..api.csm.models import ApimodelSubscriberItemResponse
+from ..api.csm.models import ApimodelTopicDetailResponse
+from ..api.csm.models import ApimodelTopicResponse
+from ..api.csm.models import ApimodelTopicSubscription
 from ..api.csm.models import ApimodelTunnelInfoResponse
 from ..api.csm.models import ApimodelUpdateAppResourceRequest
 from ..api.csm.models import ApimodelUpdateAppV2Request
@@ -109,6 +117,8 @@ from ..api.csm.models import GeneratedUpdateAppV1Response
 from ..api.csm.models import GeneratedUpdateConfigurationV1Request
 from ..api.csm.models import GeneratedUpdateConfigurationV1Response
 from ..api.csm.models import LogAppMessageDeclaration
+from ..api.csm.models import ModelAppRedeploymentDetail
+from ..api.csm.models import ModelAppRedeploymentInfo
 from ..api.csm.models import ModelCSMAutoscalingDefaults
 from ..api.csm.models import ModelImageScanFinding
 from ..api.csm.models import NosqlresourceNoSQLResourceConfiguration
@@ -139,6 +149,7 @@ def create_apimodel_app_item_example() -> ApimodelAppItem:
     instance.description = randomize()
     instance.memory = create_apimodel_memory_response_example()
     instance.message = randomize()
+    instance.redeployment_info = create_model_app_redeployment_info_example()
     instance.replica = create_apimodel_replica_response_example()
     instance.service_public_url = randomize("url")
     instance.service_url = randomize("url")
@@ -228,6 +239,29 @@ def create_apimodel_create_no_sql_database_credential_request_example() -> (
     instance = ApimodelCreateNoSQLDatabaseCredentialRequest()
     instance.password = randomize("password")
     instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_create_subscription_request_example() -> (
+    ApimodelCreateSubscriptionRequest
+):
+    instance = ApimodelCreateSubscriptionRequest()
+    instance.topic_names = [randomize()]
+    return instance
+
+
+def create_apimodel_create_subscription_response_example() -> (
+    ApimodelCreateSubscriptionResponse
+):
+    instance = ApimodelCreateSubscriptionResponse()
+    instance.data = [create_apimodel_topic_subscription_example()]
+    return instance
+
+
+def create_apimodel_create_topic_request_example() -> ApimodelCreateTopicRequest:
+    instance = ApimodelCreateTopicRequest()
+    instance.topic_name = randomize()
+    instance.description = randomize()
     return instance
 
 
@@ -448,6 +482,13 @@ def create_apimodel_increase_limit_form_request_example() -> (
     return instance
 
 
+def create_apimodel_list_topics_response_example() -> ApimodelListTopicsResponse:
+    instance = ApimodelListTopicsResponse()
+    instance.data = [create_apimodel_topic_detail_response_example()]
+    instance.pagination = create_apimodel_pagination_response_example()
+    return instance
+
+
 def create_apimodel_memory_request_example() -> ApimodelMemoryRequest:
     instance = ApimodelMemoryRequest()
     instance.request_memory = randomize("int", min_val=1, max_val=1000)
@@ -515,6 +556,16 @@ def create_apimodel_notification_type_example() -> ApimodelNotificationType:
     instance = ApimodelNotificationType()
     instance.subcription_id = randomize()
     instance.type_ = randomize()
+    return instance
+
+
+def create_apimodel_pagination_response_example() -> ApimodelPaginationResponse:
+    instance = ApimodelPaginationResponse()
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
+    instance.first = randomize()
+    instance.last = randomize()
+    instance.next_ = randomize()
+    instance.previous = randomize()
     return instance
 
 
@@ -608,6 +659,42 @@ def create_apimodel_subscriber_item_response_example() -> (
     instance.email_address = randomize("email")
     instance.notification_type = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_apimodel_topic_detail_response_example() -> ApimodelTopicDetailResponse:
+    instance = ApimodelTopicDetailResponse()
+    instance.game_name = randomize()
+    instance.id_ = randomize()
+    instance.region = randomize()
+    instance.studio_name = randomize()
+    instance.topic_arn = randomize()
+    instance.topic_name = randomize()
+    instance.description = randomize()
+    instance.subscribers = [create_apimodel_topic_subscription_example()]
+    return instance
+
+
+def create_apimodel_topic_response_example() -> ApimodelTopicResponse:
+    instance = ApimodelTopicResponse()
+    instance.game_name = randomize()
+    instance.id_ = randomize()
+    instance.region = randomize()
+    instance.studio_name = randomize()
+    instance.topic_arn = randomize()
+    instance.topic_name = randomize()
+    instance.description = randomize()
+    return instance
+
+
+def create_apimodel_topic_subscription_example() -> ApimodelTopicSubscription:
+    instance = ApimodelTopicSubscription()
+    instance.app_id = randomize("uid")
+    instance.app_name = randomize()
+    instance.queue_id = randomize()
+    instance.subscription_arn = randomize()
+    instance.subscription_id = randomize()
+    instance.subscription_time = randomize()
     return instance
 
 
@@ -994,6 +1081,20 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     instance.section = randomize()
     instance.service = randomize()
     instance.text = randomize()
+    return instance
+
+
+def create_model_app_redeployment_detail_example() -> ModelAppRedeploymentDetail:
+    instance = ModelAppRedeploymentDetail()
+    instance.reason_id = randomize()
+    instance.message = randomize()
+    return instance
+
+
+def create_model_app_redeployment_info_example() -> ModelAppRedeploymentInfo:
+    instance = ModelAppRedeploymentInfo()
+    instance.should_redeploy = randomize("bool")
+    instance.details = [create_model_app_redeployment_detail_example()]
     return instance
 
 

@@ -34,6 +34,7 @@ from ._development_server_configuration_patch import (
 )
 from ._fleet_list import fleet_list
 from ._fleet_create import fleet_create
+from ._bulk_fleet_delete import bulk_fleet_delete
 from ._fleet_get import fleet_get
 from ._fleet_update import fleet_update
 from ._fleet_delete import fleet_delete
@@ -83,6 +84,7 @@ commands = [
     development_server_configuration_patch,
     fleet_list,
     fleet_create,
+    bulk_fleet_delete,
     fleet_get,
     fleet_update,
     fleet_delete,

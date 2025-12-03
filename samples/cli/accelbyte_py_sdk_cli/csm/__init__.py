@@ -36,6 +36,8 @@ from ._get_app_v2 import get_app_v2
 from ._create_app_v2 import create_app_v2
 from ._delete_app_v2 import delete_app_v2
 from ._update_app_v2 import update_app_v2
+from ._create_subscription_handler import create_subscription_handler
+from ._unsubscribe_topic_handler import unsubscribe_topic_handler
 from ._create_deployment_v2 import create_deployment_v2
 from ._get_app_image_list_v2 import get_app_image_list_v2
 from ._delete_app_images_v2 import delete_app_images_v2
@@ -71,6 +73,9 @@ from ._get_list_of_variables_v2 import get_list_of_variables_v2
 from ._save_variable_v2 import save_variable_v2
 from ._update_variable_v2 import update_variable_v2
 from ._delete_variable_v2 import delete_variable_v2
+from ._list_topics_handler import list_topics_handler
+from ._create_topic_handler import create_topic_handler
+from ._delete_topic_handler import delete_topic_handler
 from ._get_list_of_deployment_v2 import get_list_of_deployment_v2
 from ._get_deployment_v2 import get_deployment_v2
 from ._delete_deployment_v2 import delete_deployment_v2
@@ -78,6 +83,8 @@ from ._get_no_sql_cluster_v2 import get_no_sql_cluster_v2
 from ._update_no_sql_cluster_v2 import update_no_sql_cluster_v2
 from ._create_no_sql_cluster_v2 import create_no_sql_cluster_v2
 from ._delete_no_sql_cluster_v2 import delete_no_sql_cluster_v2
+from ._start_no_sql_cluster_v2 import start_no_sql_cluster_v2
+from ._stop_no_sql_cluster_v2 import stop_no_sql_cluster_v2
 from ._get_no_sql_access_tunnel_v2 import get_no_sql_access_tunnel_v2
 from ._get_resources_limits import get_resources_limits
 from ._get_notification_subscriber_list_v3 import get_notification_subscriber_list_v3
@@ -115,6 +122,8 @@ commands = [
     create_app_v2,
     delete_app_v2,
     update_app_v2,
+    create_subscription_handler,
+    unsubscribe_topic_handler,
     create_deployment_v2,
     get_app_image_list_v2,
     delete_app_images_v2,
@@ -142,6 +151,9 @@ commands = [
     save_variable_v2,
     update_variable_v2,
     delete_variable_v2,
+    list_topics_handler,
+    create_topic_handler,
+    delete_topic_handler,
     get_list_of_deployment_v2,
     get_deployment_v2,
     delete_deployment_v2,
@@ -149,6 +161,8 @@ commands = [
     update_no_sql_cluster_v2,
     create_no_sql_cluster_v2,
     delete_no_sql_cluster_v2,
+    start_no_sql_cluster_v2,
+    stop_no_sql_cluster_v2,
     get_no_sql_access_tunnel_v2,
     get_resources_limits,
     get_notification_subscriber_list_v3,

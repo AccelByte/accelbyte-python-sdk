@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.29.1"
+__version__ = "1.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -51,6 +51,18 @@ from .wrappers import update_app_resources_v2
 from .wrappers import update_app_resources_v2_async
 from .wrappers import update_app_v2
 from .wrappers import update_app_v2_async
+
+# async_messaging
+from .wrappers import create_subscription_handler
+from .wrappers import create_subscription_handler_async
+from .wrappers import create_topic_handler
+from .wrappers import create_topic_handler_async
+from .wrappers import delete_topic_handler
+from .wrappers import delete_topic_handler_async
+from .wrappers import list_topics_handler
+from .wrappers import list_topics_handler_async
+from .wrappers import unsubscribe_topic_handler
+from .wrappers import unsubscribe_topic_handler_async
 
 # configuration
 from .wrappers import delete_secret_v1
@@ -137,6 +149,10 @@ from .wrappers import get_no_sql_cluster_v2
 from .wrappers import get_no_sql_cluster_v2_async
 from .wrappers import get_no_sql_database_v2
 from .wrappers import get_no_sql_database_v2_async
+from .wrappers import start_no_sql_cluster_v2
+from .wrappers import start_no_sql_cluster_v2_async
+from .wrappers import stop_no_sql_cluster_v2
+from .wrappers import stop_no_sql_cluster_v2_async
 from .wrappers import update_no_sql_cluster_v2
 from .wrappers import update_no_sql_cluster_v2_async
 

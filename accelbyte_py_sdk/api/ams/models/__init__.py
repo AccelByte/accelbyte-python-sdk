@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.42.0"
+__version__ = "1.43.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -50,6 +50,11 @@ from .api_ds_history_list import ApiDSHistoryList
 from .api_ds_host_configuration import ApiDSHostConfiguration
 from .api_ds_host_configuration_parameters import ApiDSHostConfigurationParameters
 from .api_fleet_artifacts_sample_rules import ApiFleetArtifactsSampleRules
+from .api_fleet_bulk_action_error_item_response import (
+    ApiFleetBulkActionErrorItemResponse,
+)
+from .api_fleet_bulk_delete_request import ApiFleetBulkDeleteRequest
+from .api_fleet_bulk_delete_response import ApiFleetBulkDeleteResponse
 from .api_fleet_claim_by_keys_req import ApiFleetClaimByKeysReq
 from .api_fleet_claim_req import ApiFleetClaimReq
 from .api_fleet_claim_response import ApiFleetClaimResponse

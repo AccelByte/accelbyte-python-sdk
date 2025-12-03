@@ -609,6 +609,16 @@ $ python -m accelbyte_py_sdk_cli 'session-public-read-party-session-storage' \
     > result.txt
 ```
 
+### Operation `public_update_insert_party_session_storage`
+```sh
+$ python -m accelbyte_py_sdk_cli 'session-public-update-insert-party-session-storage' \
+    '{"string": {}}' \
+    'string' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `public_update_insert_party_session_storage_reserved`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-party-session-storage-reserved' \

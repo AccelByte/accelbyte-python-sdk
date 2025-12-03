@@ -30,6 +30,7 @@ from ..api.leaderboard.models import ModelsBulkUserIDsRequest
 from ..api.leaderboard.models import ModelsBulkUserRankingResponseV3
 from ..api.leaderboard.models import ModelsDailyConfig
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardFailedResp
+from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardSuccessResp
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardsReq
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardsResp
 from ..api.leaderboard.models import ModelsGetAllLeaderboardConfigsPublicResp
@@ -118,6 +119,14 @@ def create_models_delete_bulk_leaderboard_failed_resp_example() -> (
     return instance
 
 
+def create_models_delete_bulk_leaderboard_success_resp_example() -> (
+    ModelsDeleteBulkLeaderboardSuccessResp
+):
+    instance = ModelsDeleteBulkLeaderboardSuccessResp()
+    instance.leaderboard_code = randomize()
+    return instance
+
+
 def create_models_delete_bulk_leaderboards_req_example() -> (
     ModelsDeleteBulkLeaderboardsReq
 ):
@@ -131,6 +140,7 @@ def create_models_delete_bulk_leaderboards_resp_example() -> (
 ):
     instance = ModelsDeleteBulkLeaderboardsResp()
     instance.failed = [create_models_delete_bulk_leaderboard_failed_resp_example()]
+    instance.success = [create_models_delete_bulk_leaderboard_success_resp_example()]
     return instance
 
 

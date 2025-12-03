@@ -35,11 +35,18 @@ from ...models import ResponseError
 class PublicReadPartySessionStorage(Operation):
     """Read Party Session Storage. (publicReadPartySessionStorage)
 
-    Read Party Session Storage by partyID
+    Read Party Session Storage by partyID (with reserved and member).
+    Contains "reserved" when Update Insert Party Session Reserved Storage User.
+    Contains "member" when Update Insert Party Session Storage User.
     Party Storage example:
     ```
     {
     "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    },
+    "member": {
     "userID1": {"key": "value"},
     "userID2": {"key": "value"},
     ...

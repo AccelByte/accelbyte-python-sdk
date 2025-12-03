@@ -29,6 +29,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApiFleetBulkDeleteRequest
+from ..models import ApiFleetBulkDeleteResponse
 from ..models import ApiFleetClaimByKeysReq
 from ..models import ApiFleetClaimReq
 from ..models import ApiFleetClaimResponse
@@ -39,6 +41,7 @@ from ..models import ApiFleetParameters
 from ..models import ApiFleetServersResponse
 from ..models import ResponseErrorResponse
 
+from ..operations.fleets import BulkFleetDelete
 from ..operations.fleets import FleetClaimByID
 from ..operations.fleets import FleetClaimByKeys
 from ..operations.fleets import FleetCreate
@@ -49,6 +52,120 @@ from ..operations.fleets import FleetListSortByEnum, FleetListSortDirectionEnum
 from ..operations.fleets import FleetServers
 from ..operations.fleets import FleetServersSortDirectionEnum, FleetServersStatusEnum
 from ..operations.fleets import FleetUpdate
+
+
+@same_doc_as(BulkFleetDelete)
+def bulk_fleet_delete(
+    body: ApiFleetBulkDeleteRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete one or more fleets. maximum of 1000 fleets allowed (BulkFleetDelete)
+
+    Maximum of 1000 fleets allowed
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/fleets
+
+        method: DELETE
+
+        tags: ["Fleets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiFleetBulkDeleteRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiFleetBulkDeleteResponse (success)
+
+        207: Multi-Status - ApiFleetBulkDeleteResponse (partial success)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        422: Unprocessable Entity - ApiFleetBulkDeleteResponse (one or more fleet(s) are invalid)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = BulkFleetDelete.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkFleetDelete)
+async def bulk_fleet_delete_async(
+    body: ApiFleetBulkDeleteRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete one or more fleets. maximum of 1000 fleets allowed (BulkFleetDelete)
+
+    Maximum of 1000 fleets allowed
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/fleets
+
+        method: DELETE
+
+        tags: ["Fleets"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiFleetBulkDeleteRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiFleetBulkDeleteResponse (success)
+
+        207: Multi-Status - ApiFleetBulkDeleteResponse (partial success)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        422: Unprocessable Entity - ApiFleetBulkDeleteResponse (one or more fleet(s) are invalid)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = BulkFleetDelete.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetClaimByID)

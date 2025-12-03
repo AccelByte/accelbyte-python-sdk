@@ -31,6 +31,7 @@ from ..models.apimodel_autoscaling_response import ApimodelAutoscalingResponse
 from ..models.apimodel_cpu_response import ApimodelCPUResponse
 from ..models.apimodel_memory_response import ApimodelMemoryResponse
 from ..models.apimodel_replica_response import ApimodelReplicaResponse
+from ..models.model_app_redeployment_info import ModelAppRedeploymentInfo
 
 
 class ApimodelAppItem(Model):
@@ -79,6 +80,8 @@ class ApimodelAppItem(Model):
 
         message: (message) OPTIONAL str
 
+        redeployment_info: (redeploymentInfo) OPTIONAL ModelAppRedeploymentInfo
+
         replica: (replica) OPTIONAL ApimodelReplicaResponse
 
         service_public_url: (servicePublicURL) OPTIONAL str
@@ -109,6 +112,7 @@ class ApimodelAppItem(Model):
     description: str  # OPTIONAL
     memory: ApimodelMemoryResponse  # OPTIONAL
     message: str  # OPTIONAL
+    redeployment_info: ModelAppRedeploymentInfo  # OPTIONAL
     replica: ApimodelReplicaResponse  # OPTIONAL
     service_public_url: str  # OPTIONAL
     service_url: str  # OPTIONAL
@@ -199,6 +203,12 @@ class ApimodelAppItem(Model):
 
     def with_message(self, value: str) -> ApimodelAppItem:
         self.message = value
+        return self
+
+    def with_redeployment_info(
+        self, value: ModelAppRedeploymentInfo
+    ) -> ApimodelAppItem:
+        self.redeployment_info = value
         return self
 
     def with_replica(self, value: ApimodelReplicaResponse) -> ApimodelAppItem:
@@ -305,6 +315,12 @@ class ApimodelAppItem(Model):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = ""
+        if hasattr(self, "redeployment_info"):
+            result["redeploymentInfo"] = self.redeployment_info.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["redeploymentInfo"] = ModelAppRedeploymentInfo()
         if hasattr(self, "replica"):
             result["replica"] = self.replica.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -347,6 +363,7 @@ class ApimodelAppItem(Model):
         description: Optional[str] = None,
         memory: Optional[ApimodelMemoryResponse] = None,
         message: Optional[str] = None,
+        redeployment_info: Optional[ModelAppRedeploymentInfo] = None,
         replica: Optional[ApimodelReplicaResponse] = None,
         service_public_url: Optional[str] = None,
         service_url: Optional[str] = None,
@@ -386,6 +403,8 @@ class ApimodelAppItem(Model):
             instance.memory = memory
         if message is not None:
             instance.message = message
+        if redeployment_info is not None:
+            instance.redeployment_info = redeployment_info
         if replica is not None:
             instance.replica = replica
         if service_public_url is not None:
@@ -494,6 +513,12 @@ class ApimodelAppItem(Model):
             instance.message = str(dict_["message"])
         elif include_empty:
             instance.message = ""
+        if "redeploymentInfo" in dict_ and dict_["redeploymentInfo"] is not None:
+            instance.redeployment_info = ModelAppRedeploymentInfo.create_from_dict(
+                dict_["redeploymentInfo"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.redeployment_info = ModelAppRedeploymentInfo()
         if "replica" in dict_ and dict_["replica"] is not None:
             instance.replica = ApimodelReplicaResponse.create_from_dict(
                 dict_["replica"], include_empty=include_empty
@@ -568,6 +593,7 @@ class ApimodelAppItem(Model):
             "description": "description",
             "memory": "memory",
             "message": "message",
+            "redeploymentInfo": "redeployment_info",
             "replica": "replica",
             "servicePublicURL": "service_public_url",
             "serviceURL": "service_url",
@@ -597,6 +623,7 @@ class ApimodelAppItem(Model):
             "description": False,
             "memory": False,
             "message": False,
+            "redeploymentInfo": False,
             "replica": False,
             "servicePublicURL": False,
             "serviceURL": False,

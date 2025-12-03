@@ -48,6 +48,8 @@ from ..operations.managed_resources import DeleteNoSQLDatabaseV2
 from ..operations.managed_resources import GetNoSQLAccessTunnelV2
 from ..operations.managed_resources import GetNoSQLClusterV2
 from ..operations.managed_resources import GetNoSQLDatabaseV2
+from ..operations.managed_resources import StartNoSQLClusterV2
+from ..operations.managed_resources import StopNoSQLClusterV2
 from ..operations.managed_resources import UpdateNoSQLClusterV2
 
 
@@ -752,16 +754,16 @@ def get_no_sql_cluster_v2(
     Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the NoSQL cluster status:
-    - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
+    - `available` : The cluster is accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters
@@ -814,16 +816,16 @@ async def get_no_sql_cluster_v2_async(
     Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the NoSQL cluster status:
-    - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
+    - `available` : The cluster is accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters
@@ -880,16 +882,16 @@ def get_no_sql_database_v2(
     and app name.
 
     `resourceStatus` field - indicates the NoSQL cluster status:
-    - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
+    - `available` : The cluster is accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
@@ -945,16 +947,16 @@ async def get_no_sql_database_v2_async(
     and app name.
 
     `resourceStatus` field - indicates the NoSQL cluster status:
-    - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
+    - `available` : The cluster is accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
@@ -990,6 +992,230 @@ async def get_no_sql_database_v2_async(
             return None, error
     request = GetNoSQLDatabaseV2.create(
         app=app,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(StartNoSQLClusterV2)
+def start_no_sql_cluster_v2(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Start NoSQL Cluster (StartNoSQLClusterV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+    Start NoSQL cluster.
+    You can only start the cluster when its status is "stopped".
+
+    Cluster starting process may take some time to complete.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters/start
+
+        method: PUT
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+
+        503: Service Unavailable - ResponseErrorResponse (Service Unavailable)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = StartNoSQLClusterV2.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(StartNoSQLClusterV2)
+async def start_no_sql_cluster_v2_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Start NoSQL Cluster (StartNoSQLClusterV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+    Start NoSQL cluster.
+    You can only start the cluster when its status is "stopped".
+
+    Cluster starting process may take some time to complete.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters/start
+
+        method: PUT
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+
+        503: Service Unavailable - ResponseErrorResponse (Service Unavailable)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = StartNoSQLClusterV2.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(StopNoSQLClusterV2)
+def stop_no_sql_cluster_v2(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Stop NoSQL Cluster (StopNoSQLClusterV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+    Stop NoSQL cluster.
+    You can only start the cluster when its status is "available".
+
+    Cluster stopping process may take some time to complete.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters/stop
+
+        method: PUT
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+
+        503: Service Unavailable - ResponseErrorResponse (Service Unavailable)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = StopNoSQLClusterV2.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(StopNoSQLClusterV2)
+async def stop_no_sql_cluster_v2_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Stop NoSQL Cluster (StopNoSQLClusterV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
+
+    Stop NoSQL cluster.
+    You can only start the cluster when its status is "available".
+
+    Cluster stopping process may take some time to complete.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters/stop
+
+        method: PUT
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+
+        503: Service Unavailable - ResponseErrorResponse (Service Unavailable)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = StopNoSQLClusterV2.create(
         namespace=namespace,
     )
     return await run_request_async(

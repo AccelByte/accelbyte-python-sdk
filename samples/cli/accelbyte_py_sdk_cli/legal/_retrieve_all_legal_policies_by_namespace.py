@@ -37,12 +37,16 @@ from accelbyte_py_sdk.api.legal.models import RetrieveBasePolicyResponse
 
 
 @click.command()
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--visible_only", "visible_only", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def retrieve_all_legal_policies_by_namespace(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -58,6 +62,8 @@ def retrieve_all_legal_policies_by_namespace(
     else:
         login_as_internal(login_as)
     result, error = retrieve_all_legal_policies_by_namespace_internal(
+        limit=limit,
+        offset=offset,
         visible_only=visible_only,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

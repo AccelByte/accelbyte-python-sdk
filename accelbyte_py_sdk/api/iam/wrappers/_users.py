@@ -16489,9 +16489,8 @@ async def public_get_user_ban_async(
 def public_get_user_ban_history_v3(
     user_id: str,
     active_only: Optional[bool] = None,
-    after: Optional[str] = None,
-    before: Optional[str] = None,
     limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -16499,9 +16498,6 @@ def public_get_user_ban_history_v3(
     """Get user's bans (PublicGetUserBanHistoryV3)
 
     Notes:
-    - This endpoint retrieve the first page of the data if after and before parameters is empty
-    - **The pagination is not working yet**
-
 
     **Authentication:**
     The _**userId**_ parameter should match the one in the access token.
@@ -16525,16 +16521,14 @@ def public_get_user_ban_history_v3(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        after: (after) OPTIONAL str in query
-
-        before: (before) OPTIONAL str in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -16551,9 +16545,8 @@ def public_get_user_ban_history_v3(
     request = PublicGetUserBanHistoryV3.create(
         user_id=user_id,
         active_only=active_only,
-        after=after,
-        before=before,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -16563,9 +16556,8 @@ def public_get_user_ban_history_v3(
 async def public_get_user_ban_history_v3_async(
     user_id: str,
     active_only: Optional[bool] = None,
-    after: Optional[str] = None,
-    before: Optional[str] = None,
     limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -16573,9 +16565,6 @@ async def public_get_user_ban_history_v3_async(
     """Get user's bans (PublicGetUserBanHistoryV3)
 
     Notes:
-    - This endpoint retrieve the first page of the data if after and before parameters is empty
-    - **The pagination is not working yet**
-
 
     **Authentication:**
     The _**userId**_ parameter should match the one in the access token.
@@ -16599,16 +16588,14 @@ async def public_get_user_ban_history_v3_async(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        after: (after) OPTIONAL str in query
-
-        before: (before) OPTIONAL str in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -16625,9 +16612,8 @@ async def public_get_user_ban_history_v3_async(
     request = PublicGetUserBanHistoryV3.create(
         user_id=user_id,
         active_only=active_only,
-        after=after,
-        before=before,
         limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.42.0"
+__version__ = "1.43.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .bulk_fleet_delete import BulkFleetDelete
 from .fleet_claim_by_id import FleetClaimByID
 from .fleet_claim_by_keys import FleetClaimByKeys
 from .fleet_create import FleetCreate

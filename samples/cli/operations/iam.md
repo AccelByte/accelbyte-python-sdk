@@ -1739,9 +1739,8 @@ $ python -m accelbyte_py_sdk_cli 'iam-public-get-user-ban-history-v3' \
     'string' \
     'string' \
     --active_only false \
-    --after 'string' \
-    --before 'string' \
     --limit 1 \
+    --offset 1 \
     > result.txt
 ```
 

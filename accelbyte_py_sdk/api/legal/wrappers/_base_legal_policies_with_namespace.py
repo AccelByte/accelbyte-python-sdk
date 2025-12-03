@@ -503,14 +503,16 @@ async def partial_update_policy_async(
 
 @same_doc_as(RetrieveAllLegalPoliciesByNamespace)
 def retrieve_all_legal_policies_by_namespace(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
+    """Retrieve Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
 
-    Retrieve all base policies in the namespace.
+    Retrieve base policies in the namespace. Set `limit = -1` to retrieve all records
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -527,6 +529,10 @@ def retrieve_all_legal_policies_by_namespace(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
         visible_only: (visibleOnly) OPTIONAL bool in query
 
     Responses:
@@ -537,6 +543,8 @@ def retrieve_all_legal_policies_by_namespace(
         if error:
             return None, error
     request = RetrieveAllLegalPoliciesByNamespace.create(
+        limit=limit,
+        offset=offset,
         visible_only=visible_only,
         namespace=namespace,
     )
@@ -545,14 +553,16 @@ def retrieve_all_legal_policies_by_namespace(
 
 @same_doc_as(RetrieveAllLegalPoliciesByNamespace)
 async def retrieve_all_legal_policies_by_namespace_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
     visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
+    """Retrieve Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
 
-    Retrieve all base policies in the namespace.
+    Retrieve base policies in the namespace. Set `limit = -1` to retrieve all records
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -569,6 +579,10 @@ async def retrieve_all_legal_policies_by_namespace_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
         visible_only: (visibleOnly) OPTIONAL bool in query
 
     Responses:
@@ -579,6 +593,8 @@ async def retrieve_all_legal_policies_by_namespace_async(
         if error:
             return None, error
     request = RetrieveAllLegalPoliciesByNamespace.create(
+        limit=limit,
+        offset=offset,
         visible_only=visible_only,
         namespace=namespace,
     )

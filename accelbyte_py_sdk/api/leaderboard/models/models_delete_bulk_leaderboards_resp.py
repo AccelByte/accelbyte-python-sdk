@@ -30,6 +30,9 @@ from ....core import Model
 from ..models.models_delete_bulk_leaderboard_failed_resp import (
     ModelsDeleteBulkLeaderboardFailedResp,
 )
+from ..models.models_delete_bulk_leaderboard_success_resp import (
+    ModelsDeleteBulkLeaderboardSuccessResp,
+)
 
 
 class ModelsDeleteBulkLeaderboardsResp(Model):
@@ -37,11 +40,14 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
 
     Properties:
         failed: (failed) REQUIRED List[ModelsDeleteBulkLeaderboardFailedResp]
+
+        success: (success) REQUIRED List[ModelsDeleteBulkLeaderboardSuccessResp]
     """
 
     # region fields
 
     failed: List[ModelsDeleteBulkLeaderboardFailedResp]  # REQUIRED
+    success: List[ModelsDeleteBulkLeaderboardSuccessResp]  # REQUIRED
 
     # endregion fields
 
@@ -51,6 +57,12 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
         self, value: List[ModelsDeleteBulkLeaderboardFailedResp]
     ) -> ModelsDeleteBulkLeaderboardsResp:
         self.failed = value
+        return self
+
+    def with_success(
+        self, value: List[ModelsDeleteBulkLeaderboardSuccessResp]
+    ) -> ModelsDeleteBulkLeaderboardsResp:
+        self.success = value
         return self
 
     # endregion with_x methods
@@ -65,6 +77,12 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
             ]
         elif include_empty:
             result["failed"] = []
+        if hasattr(self, "success"):
+            result["success"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.success
+            ]
+        elif include_empty:
+            result["success"] = []
         return result
 
     # endregion to methods
@@ -73,10 +91,14 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
 
     @classmethod
     def create(
-        cls, failed: List[ModelsDeleteBulkLeaderboardFailedResp], **kwargs
+        cls,
+        failed: List[ModelsDeleteBulkLeaderboardFailedResp],
+        success: List[ModelsDeleteBulkLeaderboardSuccessResp],
+        **kwargs,
     ) -> ModelsDeleteBulkLeaderboardsResp:
         instance = cls()
         instance.failed = failed
+        instance.success = success
         return instance
 
     @classmethod
@@ -95,6 +117,15 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
             ]
         elif include_empty:
             instance.failed = []
+        if "success" in dict_ and dict_["success"] is not None:
+            instance.success = [
+                ModelsDeleteBulkLeaderboardSuccessResp.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["success"]
+            ]
+        elif include_empty:
+            instance.success = []
         return instance
 
     @classmethod
@@ -139,12 +170,14 @@ class ModelsDeleteBulkLeaderboardsResp(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "failed": "failed",
+            "success": "success",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "failed": True,
+            "success": True,
         }
 
     # endregion static methods

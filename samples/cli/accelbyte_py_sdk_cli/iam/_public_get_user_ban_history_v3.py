@@ -40,9 +40,8 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.argument("user_id", type=str)
 @click.option("--active_only", "active_only", type=bool)
-@click.option("--after", "after", type=str)
-@click.option("--before", "before", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -50,9 +49,8 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def public_get_user_ban_history_v3(
     user_id: str,
     active_only: Optional[bool] = None,
-    after: Optional[str] = None,
-    before: Optional[str] = None,
     limit: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,9 +67,8 @@ def public_get_user_ban_history_v3(
     result, error = public_get_user_ban_history_v3_internal(
         user_id=user_id,
         active_only=active_only,
-        after=after,
-        before=before,
         limit=limit,
+        offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

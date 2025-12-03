@@ -33,10 +33,10 @@ from ...models import ResponseError
 
 
 class PublicUpdateInsertPartySessionStorageReserved(Operation):
-    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorageReserved)
+    """Update Insert Party Session Reserved Storage User. (publicUpdateInsertPartySessionStorageReserved)
 
     **For Internal Use Only**
-    Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+    Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
     can store generic json
     example json can store :
     ```

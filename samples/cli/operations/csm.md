@@ -59,6 +59,24 @@ $ python -m accelbyte_py_sdk_cli 'csm-update-app-v2' \
     > result.txt
 ```
 
+### Operation `create_subscription_handler`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-subscription-handler' \
+    '{"topicNames": ["string"]}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `unsubscribe_topic_handler`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-unsubscribe-topic-handler' \
+    'string' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `create_deployment_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-create-deployment-v2' \
@@ -291,6 +309,34 @@ $ python -m accelbyte_py_sdk_cli 'csm-delete-variable-v2' \
     > result.txt
 ```
 
+### Operation `list_topics_handler`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-list-topics-handler' \
+    'string' \
+    --fuzzy_topic_name 'string' \
+    --is_subscribed_by_app_name 'string' \
+    --is_unsubscribed_by_app_name 'string' \
+    --limit 1 \
+    --offset 1 \
+    > result.txt
+```
+
+### Operation `create_topic_handler`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-topic-handler' \
+    '{"description": "string", "topicName": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_topic_handler`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-topic-handler' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `get_list_of_deployment_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-get-list-of-deployment-v2' \
@@ -343,6 +389,20 @@ $ python -m accelbyte_py_sdk_cli 'csm-create-no-sql-cluster-v2' \
 ### Operation `delete_no_sql_cluster_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-delete-no-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `start_no_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-start-no-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `stop_no_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-stop-no-sql-cluster-v2' \
     'string' \
     > result.txt
 ```

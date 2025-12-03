@@ -100,6 +100,9 @@ from ._public_revoke_party_code import public_revoke_party_code
 from ._public_party_invite import public_party_invite
 from ._public_promote_party_leader import public_promote_party_leader
 from ._public_read_party_session_storage import public_read_party_session_storage
+from ._public_update_insert_party_session_storage import (
+    public_update_insert_party_session_storage,
+)
 from ._public_update_insert_party_session_storage_reserved import (
     public_update_insert_party_session_storage_reserved,
 )
@@ -202,6 +205,7 @@ commands = [
     public_party_invite,
     public_promote_party_leader,
     public_read_party_session_storage,
+    public_update_insert_party_session_storage,
     public_update_insert_party_session_storage_reserved,
     public_party_join,
     public_party_leave,

@@ -36,6 +36,7 @@ from ..operations.session_storage import AdminReadPartySessionStorage
 from ..operations.session_storage import AdminReadSessionStorage
 from ..operations.session_storage import AdminReadUserSessionStorage
 from ..operations.session_storage import PublicReadPartySessionStorage
+from ..operations.session_storage import PublicUpdateInsertPartySessionStorage
 from ..operations.session_storage import PublicUpdateInsertPartySessionStorageReserved
 from ..operations.session_storage import PublicUpdateInsertSessionStorage
 from ..operations.session_storage import PublicUpdateInsertSessionStorageLeader
@@ -498,11 +499,18 @@ def public_read_party_session_storage(
 ):
     """Read Party Session Storage. (publicReadPartySessionStorage)
 
-    Read Party Session Storage by partyID
+    Read Party Session Storage by partyID (with reserved and member).
+    Contains "reserved" when Update Insert Party Session Reserved Storage User.
+    Contains "member" when Update Insert Party Session Storage User.
     Party Storage example:
     ```
     {
     "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    },
+    "member": {
     "userID1": {"key": "value"},
     "userID2": {"key": "value"},
     ...
@@ -558,11 +566,18 @@ async def public_read_party_session_storage_async(
 ):
     """Read Party Session Storage. (publicReadPartySessionStorage)
 
-    Read Party Session Storage by partyID
+    Read Party Session Storage by partyID (with reserved and member).
+    Contains "reserved" when Update Insert Party Session Reserved Storage User.
+    Contains "member" when Update Insert Party Session Storage User.
     Party Storage example:
     ```
     {
     "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    },
+    "member": {
     "userID1": {"key": "value"},
     "userID2": {"key": "value"},
     ...
@@ -611,6 +626,166 @@ async def public_read_party_session_storage_async(
     )
 
 
+@same_doc_as(PublicUpdateInsertPartySessionStorage)
+def public_update_insert_party_session_storage(
+    body: Dict[str, Any],
+    party_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorage)
+
+    Update Insert Party Session Storage User. User can only update or insert their own party storage (non-immutable).
+    can store generic json
+    example json can store :
+    ```
+    {
+    "key": "value",
+    "number": 123,
+    }
+    ```
+    The data will be stored on the "member" storage field
+    example stored data :
+    ```
+    {
+    "member": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/storage/users/{userId}
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateInsertPartySessionStorage.create(
+        body=body,
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateInsertPartySessionStorage)
+async def public_update_insert_party_session_storage_async(
+    body: Dict[str, Any],
+    party_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorage)
+
+    Update Insert Party Session Storage User. User can only update or insert their own party storage (non-immutable).
+    can store generic json
+    example json can store :
+    ```
+    {
+    "key": "value",
+    "number": 123,
+    }
+    ```
+    The data will be stored on the "member" storage field
+    example stored data :
+    ```
+    {
+    "member": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/storage/users/{userId}
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateInsertPartySessionStorage.create(
+        body=body,
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicUpdateInsertPartySessionStorageReserved)
 def public_update_insert_party_session_storage_reserved(
     body: Dict[str, Any],
@@ -620,10 +795,10 @@ def public_update_insert_party_session_storage_reserved(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorageReserved)
+    """Update Insert Party Session Reserved Storage User. (publicUpdateInsertPartySessionStorageReserved)
 
     **For Internal Use Only**
-    Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+    Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
     can store generic json
     example json can store :
     ```
@@ -700,10 +875,10 @@ async def public_update_insert_party_session_storage_reserved_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorageReserved)
+    """Update Insert Party Session Reserved Storage User. (publicUpdateInsertPartySessionStorageReserved)
 
     **For Internal Use Only**
-    Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+    Update Insert Party Session Reserved Storage User. User can only update or insert their own reserve storage (non-immutable).
     can store generic json
     example json can store :
     ```

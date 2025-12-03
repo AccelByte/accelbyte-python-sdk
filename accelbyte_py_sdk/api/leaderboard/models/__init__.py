@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Leaderboard Service."""
 
-__version__ = "2.33.1"
+__version__ = "2.34.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,6 +23,9 @@ from .models_bulk_user_ranking_response_v3 import ModelsBulkUserRankingResponseV
 from .models_daily_config import ModelsDailyConfig
 from .models_delete_bulk_leaderboard_failed_resp import (
     ModelsDeleteBulkLeaderboardFailedResp,
+)
+from .models_delete_bulk_leaderboard_success_resp import (
+    ModelsDeleteBulkLeaderboardSuccessResp,
 )
 from .models_delete_bulk_leaderboards_req import ModelsDeleteBulkLeaderboardsReq
 from .models_delete_bulk_leaderboards_resp import ModelsDeleteBulkLeaderboardsResp

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.42.0)
+# Fleet Commander Index (1.43.0)
 
 
 ## Operations
@@ -64,6 +64,7 @@
 ### Fleets
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /ams/v1/admin/namespaces/{namespace}/fleets | DELETE | BulkFleetDelete | `false` | [BulkFleetDelete](../../accelbyte_py_sdk/api/ams/operations/fleets/bulk_fleet_delete.py) | [bulk_fleet_delete](../../accelbyte_py_sdk/api/ams/wrappers/_fleets.py) | [accelbyte_py_sdk_cli ams-bulk-fleet-delete](../../samples/cli/accelbyte_py_sdk_cli/ams/_bulk_fleet_delete.py) |
 | /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim | PUT | FleetClaimByID | `false` | [FleetClaimByID](../../accelbyte_py_sdk/api/ams/operations/fleets/fleet_claim_by_id.py) | [fleet_claim_by_id](../../accelbyte_py_sdk/api/ams/wrappers/_fleets.py) | [accelbyte_py_sdk_cli ams-fleet-claim-by-id](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_claim_by_id.py) |
 | /ams/v1/namespaces/{namespace}/servers/claim | PUT | FleetClaimByKeys | `false` | [FleetClaimByKeys](../../accelbyte_py_sdk/api/ams/operations/fleets/fleet_claim_by_keys.py) | [fleet_claim_by_keys](../../accelbyte_py_sdk/api/ams/wrappers/_fleets.py) | [accelbyte_py_sdk_cli ams-fleet-claim-by-keys](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_claim_by_keys.py) |
 | /ams/v1/admin/namespaces/{namespace}/fleets | POST | FleetCreate | `false` | [FleetCreate](../../accelbyte_py_sdk/api/ams/operations/fleets/fleet_create.py) | [fleet_create](../../accelbyte_py_sdk/api/ams/wrappers/_fleets.py) | [accelbyte_py_sdk_cli ams-fleet-create](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_create.py) |
@@ -127,6 +128,9 @@
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |
 | api.DSHostConfigurationParameters | [ApiDSHostConfigurationParameters](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration_parameters.py) |
 | api.FleetArtifactsSampleRules | [ApiFleetArtifactsSampleRules](../../accelbyte_py_sdk/api/ams/models/api_fleet_artifacts_sample_rules.py) |
+| api.FleetBulkActionErrorItemResponse | [ApiFleetBulkActionErrorItemResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_bulk_action_error_item_response.py) |
+| api.FleetBulkDeleteRequest | [ApiFleetBulkDeleteRequest](../../accelbyte_py_sdk/api/ams/models/api_fleet_bulk_delete_request.py) |
+| api.FleetBulkDeleteResponse | [ApiFleetBulkDeleteResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_bulk_delete_response.py) |
 | api.FleetClaimByKeysReq | [ApiFleetClaimByKeysReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_by_keys_req.py) |
 | api.FleetClaimReq | [ApiFleetClaimReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_req.py) |
 | api.FleetClaimResponse | [ApiFleetClaimResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_response.py) |

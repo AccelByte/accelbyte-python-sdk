@@ -50,6 +50,9 @@ from ..api.ams.models import ApiDevelopmentServerConfigurationGetResponse
 from ..api.ams.models import ApiDevelopmentServerConfigurationListResponse
 from ..api.ams.models import ApiDevelopmentServerConfigurationUpdateRequest
 from ..api.ams.models import ApiFleetArtifactsSampleRules
+from ..api.ams.models import ApiFleetBulkActionErrorItemResponse
+from ..api.ams.models import ApiFleetBulkDeleteRequest
+from ..api.ams.models import ApiFleetBulkDeleteResponse
 from ..api.ams.models import ApiFleetClaimByKeysReq
 from ..api.ams.models import ApiFleetClaimReq
 from ..api.ams.models import ApiFleetClaimResponse
@@ -304,6 +307,30 @@ def create_api_fleet_artifacts_sample_rules_example() -> ApiFleetArtifactsSample
     instance = ApiFleetArtifactsSampleRules()
     instance.coredumps = create_api_coredump_sampling_rules_example()
     instance.logs = create_api_artifact_type_sampling_rules_example()
+    return instance
+
+
+def create_api_fleet_bulk_action_error_item_response_example() -> (
+    ApiFleetBulkActionErrorItemResponse
+):
+    instance = ApiFleetBulkActionErrorItemResponse()
+    instance.fleet_id = randomize()
+    instance.error_message = randomize()
+    instance.error_type = randomize()
+    return instance
+
+
+def create_api_fleet_bulk_delete_request_example() -> ApiFleetBulkDeleteRequest:
+    instance = ApiFleetBulkDeleteRequest()
+    instance.fleet_ids = [randomize()]
+    return instance
+
+
+def create_api_fleet_bulk_delete_response_example() -> ApiFleetBulkDeleteResponse:
+    instance = ApiFleetBulkDeleteResponse()
+    instance.errors = [create_api_fleet_bulk_action_error_item_response_example()]
+    instance.success_count = randomize("int", min_val=1, max_val=1000)
+    instance.total_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

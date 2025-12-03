@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.29.1)
+# Custom Service Manager Index (1.30.0)
 
 
 ## Operations
@@ -31,6 +31,15 @@
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/resources/form | POST | UpdateAppResourcesResourceLimitFormV2 | `false` | [UpdateAppResourcesResourceLimitFormV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/update_app_resources_re_e22dc4.py) | [update_app_resources_resource_limit_form_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-update-app-resources-resource-limit-form-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_resources_resource_limit_form_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/resources | PATCH | UpdateAppResourcesV2 | `false` | [UpdateAppResourcesV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/update_app_resources_v2.py) | [update_app_resources_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-update-app-resources-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_resources_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app} | PATCH | UpdateAppV2 | `false` | [UpdateAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/update_app_v2.py) | [update_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-update-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_v2.py) |
+
+### Async Messaging
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/asyncmessaging/topics/subscriptions | POST | CreateSubscriptionHandler | `false` | [CreateSubscriptionHandler](../../accelbyte_py_sdk/api/csm/operations/async_messaging/create_subscription_handler.py) | [create_subscription_handler](../../accelbyte_py_sdk/api/csm/wrappers/_async_messaging.py) | [accelbyte_py_sdk_cli csm-create-subscription-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_subscription_handler.py) |
+| /csm/v2/admin/namespaces/{namespace}/asyncmessaging/topics | POST | CreateTopicHandler | `false` | [CreateTopicHandler](../../accelbyte_py_sdk/api/csm/operations/async_messaging/create_topic_handler.py) | [create_topic_handler](../../accelbyte_py_sdk/api/csm/wrappers/_async_messaging.py) | [accelbyte_py_sdk_cli csm-create-topic-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_topic_handler.py) |
+| /csm/v2/admin/namespaces/{namespace}/asyncmessaging/topics/{topicName} | DELETE | DeleteTopicHandler | `false` | [DeleteTopicHandler](../../accelbyte_py_sdk/api/csm/operations/async_messaging/delete_topic_handler.py) | [delete_topic_handler](../../accelbyte_py_sdk/api/csm/wrappers/_async_messaging.py) | [accelbyte_py_sdk_cli csm-delete-topic-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_topic_handler.py) |
+| /csm/v2/admin/namespaces/{namespace}/asyncmessaging/topics | GET | ListTopicsHandler | `false` | [ListTopicsHandler](../../accelbyte_py_sdk/api/csm/operations/async_messaging/list_topics_handler.py) | [list_topics_handler](../../accelbyte_py_sdk/api/csm/wrappers/_async_messaging.py) | [accelbyte_py_sdk_cli csm-list-topics-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_list_topics_handler.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/asyncmessaging/topics/{topicName}/subscriptions | DELETE | UnsubscribeTopicHandler | `false` | [UnsubscribeTopicHandler](../../accelbyte_py_sdk/api/csm/operations/async_messaging/unsubscribe_topic_handler.py) | [unsubscribe_topic_handler](../../accelbyte_py_sdk/api/csm/wrappers/_async_messaging.py) | [accelbyte_py_sdk_cli csm-unsubscribe-topic-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_unsubscribe_topic_handler.py) |
 
 ### Configuration
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -95,6 +104,8 @@
 | /csm/v2/admin/namespaces/{namespace}/nosql/tunnels | GET | GetNoSQLAccessTunnelV2 | `false` | [GetNoSQLAccessTunnelV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_access_tunnel_v2.py) | [get_no_sql_access_tunnel_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-access-tunnel-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_access_tunnel_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | GET | GetNoSQLClusterV2 | `false` | [GetNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_cluster_v2.py) | [get_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | GET | GetNoSQLDatabaseV2 | `false` | [GetNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_database_v2.py) | [get_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/nosql/clusters/start | PUT | StartNoSQLClusterV2 | `false` | [StartNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/start_no_sql_cluster_v2.py) | [start_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-start-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_start_no_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/nosql/clusters/stop | PUT | StopNoSQLClusterV2 | `false` | [StopNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/stop_no_sql_cluster_v2.py) | [stop_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-stop-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_stop_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | PUT | UpdateNoSQLClusterV2 | `false` | [UpdateNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/update_no_sql_cluster_v2.py) | [update_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-update-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_no_sql_cluster_v2.py) |
 
 ### Messages
@@ -141,6 +152,9 @@
 | apimodel.CreateDeploymentV2Response | [ApimodelCreateDeploymentV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_response.py) |
 | apimodel.CreateNoSQLAppDatabaseRequest | [ApimodelCreateNoSQLAppDatabaseRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_app_database_request.py) |
 | apimodel.CreateNoSQLDatabaseCredentialRequest | [ApimodelCreateNoSQLDatabaseCredentialRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_database_credential_request.py) |
+| apimodel.CreateSubscriptionRequest | [ApimodelCreateSubscriptionRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_subscription_request.py) |
+| apimodel.CreateSubscriptionResponse | [ApimodelCreateSubscriptionResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_create_subscription_response.py) |
+| apimodel.CreateTopicRequest | [ApimodelCreateTopicRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_topic_request.py) |
 | apimodel.CSMAppLimitsResponse | [ApimodelCSMAppLimitsResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_csm_app_limits_response.py) |
 | apimodel.DeleteNoSQLResourceResponse | [ApimodelDeleteNoSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_delete_no_sql_resource_response.py) |
 | apimodel.GetAppImageListV2DataItem | [ApimodelGetAppImageListV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item.py) |
@@ -160,6 +174,7 @@
 | apimodel.GetNotificationSubscriberListResponseV2 | [ApimodelGetNotificationSubscriberListResponseV2](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_list_response_v2.py) |
 | apimodel.GetNotificationSubscriberStatusResponse | [ApimodelGetNotificationSubscriberStatusResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_status_response.py) |
 | apimodel.IncreaseLimitFormRequest | [ApimodelIncreaseLimitFormRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_increase_limit_form_request.py) |
+| apimodel.ListTopicsResponse | [ApimodelListTopicsResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_list_topics_response.py) |
 | apimodel.MemoryRequest | [ApimodelMemoryRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_request.py) |
 | apimodel.MemoryResponse | [ApimodelMemoryResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_response.py) |
 | apimodel.NoSQLDatabaseCredentialResponse | [ApimodelNoSQLDatabaseCredentialResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_credential_response.py) |
@@ -167,6 +182,7 @@
 | apimodel.NoSQLDatabaseResponse | [ApimodelNoSQLDatabaseResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_response.py) |
 | apimodel.NoSQLResourceResponse | [ApimodelNoSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_resource_response.py) |
 | apimodel.NotificationType | [ApimodelNotificationType](../../accelbyte_py_sdk/api/csm/models/apimodel_notification_type.py) |
+| apimodel.PaginationResponse | [ApimodelPaginationResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_pagination_response.py) |
 | apimodel.ReplicaRequest | [ApimodelReplicaRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_request.py) |
 | apimodel.ReplicaResponse | [ApimodelReplicaResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_response.py) |
 | apimodel.SaveConfigurationV2Request | [ApimodelSaveConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_save_configuration_v2_request.py) |
@@ -177,6 +193,9 @@
 | apimodel.SubscribeNotificationResponse | [ApimodelSubscribeNotificationResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_subscribe_notification_response.py) |
 | apimodel.SubscriberItemRequest | [ApimodelSubscriberItemRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_subscriber_item_request.py) |
 | apimodel.SubscriberItemResponse | [ApimodelSubscriberItemResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_subscriber_item_response.py) |
+| apimodel.TopicDetailResponse | [ApimodelTopicDetailResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_topic_detail_response.py) |
+| apimodel.TopicResponse | [ApimodelTopicResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_topic_response.py) |
+| apimodel.TopicSubscription | [ApimodelTopicSubscription](../../accelbyte_py_sdk/api/csm/models/apimodel_topic_subscription.py) |
 | apimodel.TunnelInfoResponse | [ApimodelTunnelInfoResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_tunnel_info_response.py) |
 | apimodel.UpdateAppResourceRequest | [ApimodelUpdateAppResourceRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_update_app_resource_request.py) |
 | apimodel.UpdateAppV2Request | [ApimodelUpdateAppV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_app_v2_request.py) |
@@ -214,6 +233,8 @@
 | generated.UpdateConfigurationV1Request | [GeneratedUpdateConfigurationV1Request](../../accelbyte_py_sdk/api/csm/models/generated_update_configuration_v1_request.py) |
 | generated.UpdateConfigurationV1Response | [GeneratedUpdateConfigurationV1Response](../../accelbyte_py_sdk/api/csm/models/generated_update_configuration_v1_response.py) |
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/csm/models/log_app_message_declaration.py) |
+| model.AppRedeploymentDetail | [ModelAppRedeploymentDetail](../../accelbyte_py_sdk/api/csm/models/model_app_redeployment_detail.py) |
+| model.AppRedeploymentInfo | [ModelAppRedeploymentInfo](../../accelbyte_py_sdk/api/csm/models/model_app_redeployment_info.py) |
 | model.CSMAutoscalingDefaults | [ModelCSMAutoscalingDefaults](../../accelbyte_py_sdk/api/csm/models/model_csm_autoscaling_defaults.py) |
 | model.ImageScanFinding | [ModelImageScanFinding](../../accelbyte_py_sdk/api/csm/models/model_image_scan_finding.py) |
 | nosqlresource.NoSQLResourceConfiguration | [NosqlresourceNoSQLResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/nosqlresource_no_sql_resource_configuration.py) |

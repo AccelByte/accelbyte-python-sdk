@@ -37,9 +37,6 @@ class PublicGetUserBanHistoryV3(Operation):
     """Get user's bans (PublicGetUserBanHistoryV3)
 
     Notes:
-    - This endpoint retrieve the first page of the data if after and before parameters is empty
-    - **The pagination is not working yet**
-
 
     **Authentication:**
     The _**userId**_ parameter should match the one in the access token.
@@ -63,16 +60,14 @@ class PublicGetUserBanHistoryV3(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        after: (after) OPTIONAL str in query
-
-        before: (before) OPTIONAL str in query
-
         limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -95,9 +90,8 @@ class PublicGetUserBanHistoryV3(Operation):
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
     active_only: bool  # OPTIONAL in [query]
-    after: str  # OPTIONAL in [query]
-    before: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -153,12 +147,10 @@ class PublicGetUserBanHistoryV3(Operation):
         result = {}
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
-        if hasattr(self, "after"):
-            result["after"] = self.after
-        if hasattr(self, "before"):
-            result["before"] = self.before
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -181,16 +173,12 @@ class PublicGetUserBanHistoryV3(Operation):
         self.active_only = value
         return self
 
-    def with_after(self, value: str) -> PublicGetUserBanHistoryV3:
-        self.after = value
-        return self
-
-    def with_before(self, value: str) -> PublicGetUserBanHistoryV3:
-        self.before = value
-        return self
-
     def with_limit(self, value: int) -> PublicGetUserBanHistoryV3:
         self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> PublicGetUserBanHistoryV3:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -211,18 +199,14 @@ class PublicGetUserBanHistoryV3(Operation):
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = False
-        if hasattr(self, "after") and self.after:
-            result["after"] = str(self.after)
-        elif include_empty:
-            result["after"] = ""
-        if hasattr(self, "before") and self.before:
-            result["before"] = str(self.before)
-        elif include_empty:
-            result["before"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -240,7 +224,7 @@ class PublicGetUserBanHistoryV3(Operation):
 
         200: OK - ModelGetUserBanV3Response (OK)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+        400: Bad Request - RestErrorResponse (20021: invalid pagination parameter)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -290,9 +274,8 @@ class PublicGetUserBanHistoryV3(Operation):
         namespace: str,
         user_id: str,
         active_only: Optional[bool] = None,
-        after: Optional[str] = None,
-        before: Optional[str] = None,
         limit: Optional[int] = None,
+        offset: Optional[int] = None,
         **kwargs,
     ) -> PublicGetUserBanHistoryV3:
         instance = cls()
@@ -300,12 +283,10 @@ class PublicGetUserBanHistoryV3(Operation):
         instance.user_id = user_id
         if active_only is not None:
             instance.active_only = active_only
-        if after is not None:
-            instance.after = after
-        if before is not None:
-            instance.before = before
         if limit is not None:
             instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -327,18 +308,14 @@ class PublicGetUserBanHistoryV3(Operation):
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = False
-        if "after" in dict_ and dict_["after"] is not None:
-            instance.after = str(dict_["after"])
-        elif include_empty:
-            instance.after = ""
-        if "before" in dict_ and dict_["before"] is not None:
-            instance.before = str(dict_["before"])
-        elif include_empty:
-            instance.before = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
@@ -347,9 +324,8 @@ class PublicGetUserBanHistoryV3(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "activeOnly": "active_only",
-            "after": "after",
-            "before": "before",
             "limit": "limit",
+            "offset": "offset",
         }
 
     @staticmethod
@@ -358,9 +334,8 @@ class PublicGetUserBanHistoryV3(Operation):
             "namespace": True,
             "userId": True,
             "activeOnly": False,
-            "after": False,
-            "before": False,
             "limit": False,
+            "offset": False,
         }
 
     # endregion static methods

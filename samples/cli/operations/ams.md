@@ -164,6 +164,14 @@ $ python -m accelbyte_py_sdk_cli 'ams-fleet-create' \
     > result.txt
 ```
 
+### Operation `bulk_fleet_delete`
+```sh
+$ python -m accelbyte_py_sdk_cli 'ams-bulk-fleet-delete' \
+    '{"fleetIds": ["string"]}' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `fleet_get`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'ams-fleet-get' \

@@ -33,9 +33,9 @@ from ...models import RetrieveBasePolicyResponse
 
 
 class RetrieveAllLegalPoliciesByNamespace(Operation):
-    """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
+    """Retrieve Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
 
-    Retrieve all base policies in the namespace.
+    Retrieve base policies in the namespace. Set `limit = -1` to retrieve all records
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -51,6 +51,10 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
         securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
         visible_only: (visibleOnly) OPTIONAL bool in query
 
@@ -68,6 +72,8 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
     visible_only: bool  # OPTIONAL in [query]
 
     # endregion fields
@@ -120,6 +126,10 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "visible_only"):
             result["visibleOnly"] = self.visible_only
         return result
@@ -136,6 +146,14 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
         self.namespace = value
         return self
 
+    def with_limit(self, value: int) -> RetrieveAllLegalPoliciesByNamespace:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> RetrieveAllLegalPoliciesByNamespace:
+        self.offset = value
+        return self
+
     def with_visible_only(self, value: bool) -> RetrieveAllLegalPoliciesByNamespace:
         self.visible_only = value
         return self
@@ -150,6 +168,14 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         if hasattr(self, "visible_only") and self.visible_only:
             result["visibleOnly"] = bool(self.visible_only)
         elif include_empty:
@@ -198,10 +224,19 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, visible_only: Optional[bool] = None, **kwargs
+        cls,
+        namespace: str,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        visible_only: Optional[bool] = None,
+        **kwargs,
     ) -> RetrieveAllLegalPoliciesByNamespace:
         instance = cls()
         instance.namespace = namespace
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if visible_only is not None:
             instance.visible_only = visible_only
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -217,6 +252,14 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         if "visibleOnly" in dict_ and dict_["visibleOnly"] is not None:
             instance.visible_only = bool(dict_["visibleOnly"])
         elif include_empty:
@@ -227,6 +270,8 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "limit": "limit",
+            "offset": "offset",
             "visibleOnly": "visible_only",
         }
 
@@ -234,6 +279,8 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "limit": False,
+            "offset": False,
             "visibleOnly": False,
         }
 
