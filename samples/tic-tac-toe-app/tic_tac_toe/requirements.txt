@@ -3,9 +3,9 @@ click>=7.0
 crontab==0.23.0
 httpx>=1.0.0b0
 redis>=4.0.2
-requests==2.26.0
+requests==2.32.4
 PyYAML==6.0
-pyjwt[crypto]==2.2.0
+pyjwt[crypto]==2.4.0
 websockets==10.0
 
 accelbyte-py-sdk

@@ -1,7 +1,7 @@
 httpx>=0.23.3
-requests==2.26.0
+requests==2.32.4
 PyYAML==6.0
-pyjwt[crypto]==2.2.0
+pyjwt[crypto]==2.4.0
 websockets==10.0
 
 accelbyte-py-sdk
