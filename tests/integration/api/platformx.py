@@ -260,4 +260,87 @@ class PlatformTestCase(IntegrationTestCase):
 
     # endregion test:update_store
 
+    def test_get_estimated_price(self):
+        from uuid import uuid4
+        from accelbyte_py_sdk.api.platform import get_estimated_price
+        from accelbyte_py_sdk.api.platform import create_category
+        from accelbyte_py_sdk.api.platform import create_item
+        from accelbyte_py_sdk.api.platform.models import CategoryCreate
+        from accelbyte_py_sdk.api.platform.models import ItemCreate
+        from accelbyte_py_sdk.api.platform.models import Localization
+        from accelbyte_py_sdk.api.platform.models import RegionDataItemDTO
+        from accelbyte_py_sdk.api.platform.models import RegionDataItemDTOCurrencyTypeEnum
+        from accelbyte_py_sdk.api.platform.models import ItemCreateEntitlementTypeEnum
+        from accelbyte_py_sdk.api.platform.models import ItemCreateItemTypeEnum
+        from accelbyte_py_sdk.api.platform.models import ItemCreateStatusEnum
+
+        # arrange
+        # Create store
+        _, error, store_id = self.do_create_store(body=self.store_create)
+        self.log_warning(
+            msg=f"Failed to set up store. {str(error)}", condition=error is not None
+        )
+        self.store_id = store_id
+
+        # Create category
+        category_path = f'/{str(uuid4()).replace("-", "")}'
+        category_body = (
+            CategoryCreate()
+            .with_category_path(category_path)
+            .with_localization_display_names({"en-US": category_path})
+        )
+        _, error = create_category(store_id=store_id, body=category_body)
+        self.assertIsNone(error, error)
+
+        # Create flexible pricing items
+        item_ids = []
+        for i in range(2):  # Create 2 items for testing
+            item_name = f"FlexibleItem_{i}"
+            item_price = 100
+            currency_code = "USD"
+            item_body = (
+                ItemCreate()
+                .with_category_path(category_path)
+                .with_entitlement_type(ItemCreateEntitlementTypeEnum.DURABLE)
+                .with_item_type(ItemCreateItemTypeEnum.INGAMEITEM)
+                .with_localizations({"en-US": Localization().with_title(item_name)})
+                .with_name(item_name)
+                .with_status(ItemCreateStatusEnum.ACTIVE)
+                .with_region_data(
+                    {
+                        "US": [
+                            RegionDataItemDTO()
+                            .with_currency_code(currency_code)
+                            .with_currency_namespace(self.namespace)
+                            .with_currency_type(RegionDataItemDTOCurrencyTypeEnum.REAL)
+                            .with_price(item_price)
+                        ]
+                    }
+                )
+                .with_flexible(True)  # Enable flexible pricing
+            )
+            item_result, error = create_item(store_id=store_id, body=item_body)
+            self.assertIsNone(error, error)
+            if item_result and hasattr(item_result, "item_id"):
+                item_ids.append(item_result.item_id)
+
+        self.assertGreater(len(item_ids), 0, "Failed to create items for testing")
+
+        # Get user_id
+        user_id = self.get_user_id()
+        self.assertIsNotNone(user_id, "Failed to get user_id")
+
+        # act
+        item_ids_str = ",".join(item_ids)
+        result, error = get_estimated_price(
+            item_ids=item_ids_str,
+            user_id=user_id,
+            store_id=store_id,
+        )
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertIsNotNone(result)
+        self.assertCountEqual(item_ids, [getattr(item, "item_id", None) for item in result])
+
     # end of file

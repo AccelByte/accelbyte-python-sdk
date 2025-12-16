@@ -218,7 +218,7 @@ class GetEstimatedPrice(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, EstimatedPriceInfo], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[Union[None, List[EstimatedPriceInfo]], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - EstimatedPriceInfo (successful operation)
@@ -239,7 +239,7 @@ class GetEstimatedPrice(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return EstimatedPriceInfo.create_from_dict(content), None
+            return EstimatedPriceInfo.create_many_from_list(content), None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
