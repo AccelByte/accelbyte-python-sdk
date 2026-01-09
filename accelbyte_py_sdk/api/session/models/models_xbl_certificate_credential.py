@@ -43,6 +43,8 @@ class ModelsXBLCertificateCredential(Model):
         namespace: (namespace) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
+
+        description: (description) OPTIONAL str
     """
 
     # region fields
@@ -53,6 +55,7 @@ class ModelsXBLCertificateCredential(Model):
     created_by: str  # REQUIRED
     namespace: str  # REQUIRED
     updated_at: str  # REQUIRED
+    description: str  # OPTIONAL
 
     # endregion fields
 
@@ -84,6 +87,10 @@ class ModelsXBLCertificateCredential(Model):
 
     def with_updated_at(self, value: str) -> ModelsXBLCertificateCredential:
         self.updated_at = value
+        return self
+
+    def with_description(self, value: str) -> ModelsXBLCertificateCredential:
+        self.description = value
         return self
 
     # endregion with_x methods
@@ -120,6 +127,10 @@ class ModelsXBLCertificateCredential(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = ""
         return result
 
     # endregion to methods
@@ -135,6 +146,7 @@ class ModelsXBLCertificateCredential(Model):
         created_by: str,
         namespace: str,
         updated_at: str,
+        description: Optional[str] = None,
         **kwargs,
     ) -> ModelsXBLCertificateCredential:
         instance = cls()
@@ -144,6 +156,8 @@ class ModelsXBLCertificateCredential(Model):
         instance.created_by = created_by
         instance.namespace = namespace
         instance.updated_at = updated_at
+        if description is not None:
+            instance.description = description
         return instance
 
     @classmethod
@@ -187,6 +201,10 @@ class ModelsXBLCertificateCredential(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = ""
         return instance
 
     @classmethod
@@ -236,6 +254,7 @@ class ModelsXBLCertificateCredential(Model):
             "createdBy": "created_by",
             "namespace": "namespace",
             "updatedAt": "updated_at",
+            "description": "description",
         }
 
     @staticmethod
@@ -247,6 +266,7 @@ class ModelsXBLCertificateCredential(Model):
             "createdBy": True,
             "namespace": True,
             "updatedAt": True,
+            "description": False,
         }
 
     # endregion static methods

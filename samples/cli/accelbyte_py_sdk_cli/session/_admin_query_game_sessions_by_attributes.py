@@ -34,6 +34,7 @@ from accelbyte_py_sdk.api.session import (
     admin_query_game_sessions_by_attributes as admin_query_game_sessions_by_attributes_internal,
 )
 from accelbyte_py_sdk.api.session.models import ApimodelsGameSessionQueryResponse
+from accelbyte_py_sdk.api.session.models import ApimodelsGenericObject
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 
@@ -61,7 +62,7 @@ def admin_query_game_sessions_by_attributes(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = {k: v for k, v in body_json.items()}
+            body = ApimodelsGenericObject.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_query_game_sessions_by_attributes_internal(

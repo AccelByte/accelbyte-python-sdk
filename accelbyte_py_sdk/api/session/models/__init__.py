@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.28.0"
+__version__ = "3.29.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -74,6 +74,7 @@ from .apimodels_environment_variable_response import (
 )
 from .apimodels_game_session_query_response import ApimodelsGameSessionQueryResponse
 from .apimodels_game_session_response import ApimodelsGameSessionResponse
+from .apimodels_generic_object import ApimodelsGenericObject
 from .apimodels_global_configuration_response import (
     ApimodelsGlobalConfigurationResponse,
 )

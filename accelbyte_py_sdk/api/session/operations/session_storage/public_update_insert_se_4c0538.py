@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ApimodelsGenericObject
 from ...models import ResponseError
 
 
@@ -61,14 +62,14 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED Dict[str, Any] in body
+        body: (body) REQUIRED ApimodelsGenericObject in body
 
         namespace: (namespace) REQUIRED str in path
 
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (OK)
+        200: OK - ApimodelsGenericObject (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -92,7 +93,7 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: Dict[str, Any]  # REQUIRED in [body]
+    body: ApimodelsGenericObject  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     session_id: str  # REQUIRED in [path]
 
@@ -141,7 +142,7 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
     def get_body_params(self) -> Any:
         if not hasattr(self, "body") or self.body is None:
             return None
-        return self.body
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -160,7 +161,7 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: Dict[str, Any]
+        self, value: ApimodelsGenericObject
     ) -> PublicUpdateInsertSessionStorageLeader:
         self.body = value
         return self
@@ -180,9 +181,9 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "body") and self.body:
-            result["body"] = {str(k0): v0 for k0, v0 in self.body.items()}
+            result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = {}
+            result["body"] = ApimodelsGenericObject()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -200,10 +201,12 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Dict[str, Any]], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ApimodelsGenericObject], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        200: OK - Dict[str, Any] (OK)
+        200: OK - ApimodelsGenericObject (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -229,7 +232,7 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return {str(k): v for k, v in content.items()}, None
+            return ApimodelsGenericObject.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
@@ -251,7 +254,7 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
 
     @classmethod
     def create(
-        cls, body: Dict[str, Any], namespace: str, session_id: str, **kwargs
+        cls, body: ApimodelsGenericObject, namespace: str, session_id: str, **kwargs
     ) -> PublicUpdateInsertSessionStorageLeader:
         instance = cls()
         instance.body = body
@@ -267,9 +270,11 @@ class PublicUpdateInsertSessionStorageLeader(Operation):
     ) -> PublicUpdateInsertSessionStorageLeader:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = {str(k0): v0 for k0, v0 in dict_["body"].items()}
+            instance.body = ApimodelsGenericObject.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.body = {}
+            instance.body = ApimodelsGenericObject()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

@@ -79,7 +79,7 @@ def accept_group_invitation_public_v1(
 
     This endpoint is used to accept group invitation.
 
-    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     This endpoint will also check if the user who access this endpoint is already joined to specific group
 
@@ -145,7 +145,7 @@ async def accept_group_invitation_public_v1_async(
 
     This endpoint is used to accept group invitation.
 
-    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     This endpoint will also check if the user who access this endpoint is already joined to specific group
 
@@ -213,7 +213,7 @@ def accept_group_invitation_public_v2(
 
     This endpoint is used to accept group invitation.
 
-    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     This endpoint will also check if the user who access this endpoint is already joined to specific group
 
@@ -279,7 +279,7 @@ async def accept_group_invitation_public_v2_async(
 
     This endpoint is used to accept group invitation.
 
-    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     This endpoint will also check if the user who access this endpoint is already joined to specific group
 
@@ -349,7 +349,7 @@ def accept_group_join_request_public_v1(
 
     This endpoint is used to accept group join request.
 
-    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -413,7 +413,7 @@ async def accept_group_join_request_public_v1_async(
 
     This endpoint is used to accept group join request.
 
-    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -480,7 +480,7 @@ def accept_group_join_request_public_v2(
 
     This endpoint is used to accept group join request.
 
-    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -548,7 +548,7 @@ async def accept_group_join_request_public_v2_async(
 
     This endpoint is used to accept group join request.
 
-    Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Accept group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -842,7 +842,7 @@ def cancel_invitation_group_member_v2(
 
     This endpoint is used to cancel invitation group member.
 
-    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
+    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -906,7 +906,7 @@ async def cancel_invitation_group_member_v2_async(
 
     This endpoint is used to cancel invitation group member.
 
-    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
+    cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -1508,7 +1508,7 @@ def get_user_group_status_information_v2(
 
     This endpoint is used to get user group status information.
 
-    get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+    get user group status information. This endpoint will check the member and group information, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -1570,7 +1570,7 @@ async def get_user_group_status_information_v2_async(
 
     This endpoint is used to get user group status information.
 
-    get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+    get user group status information. This endpoint will check the member and group information, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -2077,7 +2077,7 @@ def join_group_v1(
 
     This endpoint is used to join as group member
 
-    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+    Join to the group. This endpoint will check the type of the group based on the groupID.
 
     Additional Information:
 
@@ -2143,7 +2143,7 @@ async def join_group_v1_async(
 
     This endpoint is used to join as group member
 
-    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+    Join to the group. This endpoint will check the type of the group based on the groupID.
 
     Additional Information:
 
@@ -2211,7 +2211,7 @@ def join_group_v2(
 
     This endpoint is used to join as group member
 
-    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+    Join to the group. This endpoint will check the type of the group based on the groupID.
 
     Additional Information:
 
@@ -2277,7 +2277,7 @@ async def join_group_v2_async(
 
     This endpoint is used to join as group member
 
-    Join to the group. This endpoint will check the the the type of the group based on the groupID.
+    Join to the group. This endpoint will check the type of the group based on the groupID.
 
     Additional Information:
 
@@ -2347,7 +2347,7 @@ def kick_group_member_public_v1(
 
     This endpoint is used to kick group member.
 
-    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -2407,7 +2407,7 @@ async def kick_group_member_public_v1_async(
 
     This endpoint is used to kick group member.
 
-    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -2470,7 +2470,7 @@ def kick_group_member_public_v2(
 
     This endpoint is used to kick group member.
 
-    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -2534,7 +2534,7 @@ async def kick_group_member_public_v2_async(
 
     This endpoint is used to kick group member.
 
-    Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
+    Kick group member. This endpoint will check the member and group information, and also the role permission of the user who accesses this endpoint
 
     Action Code: 73409
 
@@ -2825,7 +2825,7 @@ def reject_group_invitation_public_v1(
 
     This endpoint is used to reject group invitation.
 
-    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     Action Code: 73402
 
@@ -2885,7 +2885,7 @@ async def reject_group_invitation_public_v1_async(
 
     This endpoint is used to reject group invitation.
 
-    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     Action Code: 73402
 
@@ -2947,7 +2947,7 @@ def reject_group_invitation_public_v2(
 
     This endpoint is used to reject group invitation.
 
-    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     Action Code: 73402
 
@@ -3007,7 +3007,7 @@ async def reject_group_invitation_public_v2_async(
 
     This endpoint is used to reject group invitation.
 
-    Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Reject group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     Action Code: 73402
 
@@ -3071,7 +3071,7 @@ def reject_group_join_request_public_v1(
 
     This endpoint is used to reject group join request.
 
-    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -3135,7 +3135,7 @@ async def reject_group_join_request_public_v1_async(
 
     This endpoint is used to reject group join request.
 
-    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -3202,7 +3202,7 @@ def reject_group_join_request_public_v2(
 
     This endpoint is used to reject group join request.
 
-    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 
@@ -3270,7 +3270,7 @@ async def reject_group_join_request_public_v2_async(
 
     This endpoint is used to reject group join request.
 
-    Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
+    Reject group join request. If specific user is not asked to join the specific group ID, it will show the error to show if the user is not asked to join yet.
 
     This endpoint will also check if the specific user is already joined to specific group
 

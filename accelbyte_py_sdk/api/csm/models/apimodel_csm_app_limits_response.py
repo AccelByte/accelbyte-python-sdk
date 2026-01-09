@@ -40,9 +40,15 @@ class ApimodelCSMAppLimitsResponse(Model):
 
         extend_app_event_handler_cpu_limit: (extendAppEventHandlerCPULimit) REQUIRED int
 
+        extend_app_event_handler_memory_limit: (extendAppEventHandlerMemoryLimit) REQUIRED int
+
         extend_app_memory_limit: (extendAppMemoryLimit) REQUIRED int
 
         extend_app_replica_limit: (extendAppReplicaLimit) REQUIRED int
+
+        extend_app_service_extension_cpu_limit: (extendAppServiceExtensionCPULimit) REQUIRED int
+
+        extend_app_service_extension_memory_limit: (extendAppServiceExtensionMemoryLimit) REQUIRED int
 
         extend_appe_event_handler_memory_limit: (extendAppeEventHandlerMemoryLimit) REQUIRED int
 
@@ -54,8 +60,11 @@ class ApimodelCSMAppLimitsResponse(Model):
     autoscaling: ModelCSMAutoscalingDefaults  # REQUIRED
     extend_app_cpu_limit: int  # REQUIRED
     extend_app_event_handler_cpu_limit: int  # REQUIRED
+    extend_app_event_handler_memory_limit: int  # REQUIRED
     extend_app_memory_limit: int  # REQUIRED
     extend_app_replica_limit: int  # REQUIRED
+    extend_app_service_extension_cpu_limit: int  # REQUIRED
+    extend_app_service_extension_memory_limit: int  # REQUIRED
     extend_appe_event_handler_memory_limit: int  # REQUIRED
     max_subscriber_count: int  # REQUIRED
 
@@ -79,12 +88,30 @@ class ApimodelCSMAppLimitsResponse(Model):
         self.extend_app_event_handler_cpu_limit = value
         return self
 
+    def with_extend_app_event_handler_memory_limit(
+        self, value: int
+    ) -> ApimodelCSMAppLimitsResponse:
+        self.extend_app_event_handler_memory_limit = value
+        return self
+
     def with_extend_app_memory_limit(self, value: int) -> ApimodelCSMAppLimitsResponse:
         self.extend_app_memory_limit = value
         return self
 
     def with_extend_app_replica_limit(self, value: int) -> ApimodelCSMAppLimitsResponse:
         self.extend_app_replica_limit = value
+        return self
+
+    def with_extend_app_service_extension_cpu_limit(
+        self, value: int
+    ) -> ApimodelCSMAppLimitsResponse:
+        self.extend_app_service_extension_cpu_limit = value
+        return self
+
+    def with_extend_app_service_extension_memory_limit(
+        self, value: int
+    ) -> ApimodelCSMAppLimitsResponse:
+        self.extend_app_service_extension_memory_limit = value
         return self
 
     def with_extend_appe_event_handler_memory_limit(
@@ -119,6 +146,12 @@ class ApimodelCSMAppLimitsResponse(Model):
             )
         elif include_empty:
             result["extendAppEventHandlerCPULimit"] = 0
+        if hasattr(self, "extend_app_event_handler_memory_limit"):
+            result["extendAppEventHandlerMemoryLimit"] = int(
+                self.extend_app_event_handler_memory_limit
+            )
+        elif include_empty:
+            result["extendAppEventHandlerMemoryLimit"] = 0
         if hasattr(self, "extend_app_memory_limit"):
             result["extendAppMemoryLimit"] = int(self.extend_app_memory_limit)
         elif include_empty:
@@ -127,6 +160,18 @@ class ApimodelCSMAppLimitsResponse(Model):
             result["extendAppReplicaLimit"] = int(self.extend_app_replica_limit)
         elif include_empty:
             result["extendAppReplicaLimit"] = 0
+        if hasattr(self, "extend_app_service_extension_cpu_limit"):
+            result["extendAppServiceExtensionCPULimit"] = int(
+                self.extend_app_service_extension_cpu_limit
+            )
+        elif include_empty:
+            result["extendAppServiceExtensionCPULimit"] = 0
+        if hasattr(self, "extend_app_service_extension_memory_limit"):
+            result["extendAppServiceExtensionMemoryLimit"] = int(
+                self.extend_app_service_extension_memory_limit
+            )
+        elif include_empty:
+            result["extendAppServiceExtensionMemoryLimit"] = 0
         if hasattr(self, "extend_appe_event_handler_memory_limit"):
             result["extendAppeEventHandlerMemoryLimit"] = int(
                 self.extend_appe_event_handler_memory_limit
@@ -149,8 +194,11 @@ class ApimodelCSMAppLimitsResponse(Model):
         autoscaling: ModelCSMAutoscalingDefaults,
         extend_app_cpu_limit: int,
         extend_app_event_handler_cpu_limit: int,
+        extend_app_event_handler_memory_limit: int,
         extend_app_memory_limit: int,
         extend_app_replica_limit: int,
+        extend_app_service_extension_cpu_limit: int,
+        extend_app_service_extension_memory_limit: int,
         extend_appe_event_handler_memory_limit: int,
         max_subscriber_count: int,
         **kwargs,
@@ -159,8 +207,17 @@ class ApimodelCSMAppLimitsResponse(Model):
         instance.autoscaling = autoscaling
         instance.extend_app_cpu_limit = extend_app_cpu_limit
         instance.extend_app_event_handler_cpu_limit = extend_app_event_handler_cpu_limit
+        instance.extend_app_event_handler_memory_limit = (
+            extend_app_event_handler_memory_limit
+        )
         instance.extend_app_memory_limit = extend_app_memory_limit
         instance.extend_app_replica_limit = extend_app_replica_limit
+        instance.extend_app_service_extension_cpu_limit = (
+            extend_app_service_extension_cpu_limit
+        )
+        instance.extend_app_service_extension_memory_limit = (
+            extend_app_service_extension_memory_limit
+        )
         instance.extend_appe_event_handler_memory_limit = (
             extend_appe_event_handler_memory_limit
         )
@@ -194,6 +251,15 @@ class ApimodelCSMAppLimitsResponse(Model):
         elif include_empty:
             instance.extend_app_event_handler_cpu_limit = 0
         if (
+            "extendAppEventHandlerMemoryLimit" in dict_
+            and dict_["extendAppEventHandlerMemoryLimit"] is not None
+        ):
+            instance.extend_app_event_handler_memory_limit = int(
+                dict_["extendAppEventHandlerMemoryLimit"]
+            )
+        elif include_empty:
+            instance.extend_app_event_handler_memory_limit = 0
+        if (
             "extendAppMemoryLimit" in dict_
             and dict_["extendAppMemoryLimit"] is not None
         ):
@@ -207,6 +273,24 @@ class ApimodelCSMAppLimitsResponse(Model):
             instance.extend_app_replica_limit = int(dict_["extendAppReplicaLimit"])
         elif include_empty:
             instance.extend_app_replica_limit = 0
+        if (
+            "extendAppServiceExtensionCPULimit" in dict_
+            and dict_["extendAppServiceExtensionCPULimit"] is not None
+        ):
+            instance.extend_app_service_extension_cpu_limit = int(
+                dict_["extendAppServiceExtensionCPULimit"]
+            )
+        elif include_empty:
+            instance.extend_app_service_extension_cpu_limit = 0
+        if (
+            "extendAppServiceExtensionMemoryLimit" in dict_
+            and dict_["extendAppServiceExtensionMemoryLimit"] is not None
+        ):
+            instance.extend_app_service_extension_memory_limit = int(
+                dict_["extendAppServiceExtensionMemoryLimit"]
+            )
+        elif include_empty:
+            instance.extend_app_service_extension_memory_limit = 0
         if (
             "extendAppeEventHandlerMemoryLimit" in dict_
             and dict_["extendAppeEventHandlerMemoryLimit"] is not None
@@ -266,8 +350,11 @@ class ApimodelCSMAppLimitsResponse(Model):
             "autoscaling": "autoscaling",
             "extendAppCPULimit": "extend_app_cpu_limit",
             "extendAppEventHandlerCPULimit": "extend_app_event_handler_cpu_limit",
+            "extendAppEventHandlerMemoryLimit": "extend_app_event_handler_memory_limit",
             "extendAppMemoryLimit": "extend_app_memory_limit",
             "extendAppReplicaLimit": "extend_app_replica_limit",
+            "extendAppServiceExtensionCPULimit": "extend_app_service_extension_cpu_limit",
+            "extendAppServiceExtensionMemoryLimit": "extend_app_service_extension_memory_limit",
             "extendAppeEventHandlerMemoryLimit": "extend_appe_event_handler_memory_limit",
             "maxSubscriberCount": "max_subscriber_count",
         }
@@ -278,8 +365,11 @@ class ApimodelCSMAppLimitsResponse(Model):
             "autoscaling": True,
             "extendAppCPULimit": True,
             "extendAppEventHandlerCPULimit": True,
+            "extendAppEventHandlerMemoryLimit": True,
             "extendAppMemoryLimit": True,
             "extendAppReplicaLimit": True,
+            "extendAppServiceExtensionCPULimit": True,
+            "extendAppServiceExtensionMemoryLimit": True,
             "extendAppeEventHandlerMemoryLimit": True,
             "maxSubscriberCount": True,
         }

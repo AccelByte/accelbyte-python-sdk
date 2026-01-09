@@ -388,6 +388,7 @@ def create_model_predicate_example() -> ModelPredicate:
     instance.parameter_name = randomize()
     instance.parameter_type = randomize()
     instance.target_value = randomize("int", min_val=1, max_val=1000)
+    instance.id_ = randomize()
     instance.stat_cycle_id = randomize()
     return instance
 

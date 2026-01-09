@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.28.0)
+# AccelByte Gaming Services Session Service Index (3.29.0)
 
 
 ## Operations
@@ -129,6 +129,7 @@
 | /session/v1/admin/namespaces/{namespace}/platform-credentials | GET | adminGetPlatformCredentials | `false` | [AdminGetPlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_get_platform_credentials.py) | [admin_get_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-get-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_platform_credentials.py) |
 | /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/sync | PUT | adminSyncPlatformCredentials | `false` | [AdminSyncPlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_sync_platform_cre_f4389d.py) | [admin_sync_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-sync-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_sync_platform_credentials.py) |
 | /session/v1/admin/namespaces/{namespace}/platform-credentials | PUT | adminUpdatePlatformCredentials | `false` | [AdminUpdatePlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_update_platform_c_5be87f.py) | [admin_update_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-update-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_update_platform_credentials.py) |
+| /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/upload | PUT | adminUploadPlatformCredentials | `false` | [AdminUploadPlatformCredentials](../../accelbyte_py_sdk/api/session/operations/platform_credential/admin_upload_platform_c_50325d.py) | [admin_upload_platform_credentials](../../accelbyte_py_sdk/api/session/wrappers/_platform_credential.py) | [accelbyte_py_sdk_cli session-admin-upload-platform-credentials](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_upload_platform_credentials.py) |
 
 ### Player
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -182,6 +183,7 @@
 | apimodels.EnvironmentVariableResponse | [ApimodelsEnvironmentVariableResponse](../../accelbyte_py_sdk/api/session/models/apimodels_environment_variable_response.py) |
 | apimodels.GameSessionQueryResponse | [ApimodelsGameSessionQueryResponse](../../accelbyte_py_sdk/api/session/models/apimodels_game_session_query_response.py) |
 | apimodels.GameSessionResponse | [ApimodelsGameSessionResponse](../../accelbyte_py_sdk/api/session/models/apimodels_game_session_response.py) |
+| apimodels.GenericObject | [ApimodelsGenericObject](../../accelbyte_py_sdk/api/session/models/apimodels_generic_object.py) |
 | apimodels.GlobalConfigurationResponse | [ApimodelsGlobalConfigurationResponse](../../accelbyte_py_sdk/api/session/models/apimodels_global_configuration_response.py) |
 | apimodels.JoinByCodeRequest | [ApimodelsJoinByCodeRequest](../../accelbyte_py_sdk/api/session/models/apimodels_join_by_code_request.py) |
 | apimodels.KickResponse | [ApimodelsKickResponse](../../accelbyte_py_sdk/api/session/models/apimodels_kick_response.py) |

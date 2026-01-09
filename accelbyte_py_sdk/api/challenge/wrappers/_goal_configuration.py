@@ -88,6 +88,9 @@ def admin_create_goal(
     Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
     Number of goals per challenge is **limited to 100 goals**.
 
+    **Important**
+    Add a new goal in a TIED challenge may affect users' data, please do not do this unless it's necessary. Then new goal will take effect in the next evaluation
+
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals
 
@@ -180,6 +183,9 @@ async def admin_create_goal_async(
     Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
     Number of goals per challenge is **limited to 100 goals**.
 
+    **Important**
+    Add a new goal in a TIED challenge may affect users' data, please do not do this unless it's necessary. Then new goal will take effect in the next evaluation
+
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals
 
@@ -242,6 +248,9 @@ def admin_delete_goal(
 
     - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
+    **Important**
+    Delete a goal in a TIED challenge may affect/delete users' data, please do not delete a TIED goal unless it's necessary. User data will be deleted in the next evaluation
+
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 
@@ -293,6 +302,9 @@ async def admin_delete_goal_async(
     """Delete Goal (adminDeleteGoal)
 
     - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+
+    **Important**
+    Delete a goal in a TIED challenge may affect/delete users' data, please do not delete a TIED goal unless it's necessary. User data will be deleted in the next evaluation
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
@@ -621,6 +633,10 @@ def admin_update_goals(
     The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
     Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
 
+    **Important**
+    - Update a goal in a TIED challenge may affect users' data, please do not update a TIED goal unless it's necessary. The updated goal will take effect in the next evaluation.
+    - When updating an existing predicate, ensure to put the predicate id in the request, otherwise a new predicate will be created with a new id
+
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 
@@ -706,6 +722,10 @@ async def admin_update_goals_async(
     Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.
     The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
     Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
+
+    **Important**
+    - Update a goal in a TIED challenge may affect users' data, please do not update a TIED goal unless it's necessary. The updated goal will take effect in the next evaluation.
+    - When updating an existing predicate, ensure to put the predicate id in the request, otherwise a new predicate will be created with a new id
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}

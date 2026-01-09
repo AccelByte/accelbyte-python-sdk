@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Statistics Service."""
 
-__version__ = "4.2.0"
+__version__ = "4.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -92,6 +92,7 @@ from .stat_reset_info import StatResetInfo
 from .stat_update import StatUpdate
 from .stat_update import (
     GlobalAggregationMethodEnum as StatUpdateGlobalAggregationMethodEnum,
+    SetByEnum as StatUpdateSetByEnum,
     VisibilityEnum as StatUpdateVisibilityEnum,
 )
 from .user_game_profiles import UserGameProfiles

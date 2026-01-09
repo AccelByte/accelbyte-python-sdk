@@ -2209,7 +2209,7 @@ def get_estimated_price(
         user_id: (userId) REQUIRED str in query
 
     Responses:
-        200: OK - EstimatedPriceInfo (successful operation)
+        200: OK - List[EstimatedPriceInfo] (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
@@ -2269,7 +2269,7 @@ async def get_estimated_price_async(
         user_id: (userId) REQUIRED str in query
 
     Responses:
-        200: OK - EstimatedPriceInfo (successful operation)
+        200: OK - List[EstimatedPriceInfo] (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """

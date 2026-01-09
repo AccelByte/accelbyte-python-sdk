@@ -42,6 +42,10 @@ class CreateClientByNamespace(Operation):
     **Endpoint migration guide**
     - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
 
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
+
     Properties:
         url: /iam/namespaces/{namespace}/clients
 

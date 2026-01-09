@@ -61,6 +61,8 @@ from ..api.csm.models import ApimodelIncreaseLimitFormRequest
 from ..api.csm.models import ApimodelListTopicsResponse
 from ..api.csm.models import ApimodelMemoryRequest
 from ..api.csm.models import ApimodelMemoryResponse
+from ..api.csm.models import ApimodelNoSQLAppListResponse
+from ..api.csm.models import ApimodelNoSQLAppResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseCredentialResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseDeleteResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseResponse
@@ -272,8 +274,17 @@ def create_apimodel_csm_app_limits_response_example() -> ApimodelCSMAppLimitsRes
     instance.extend_app_event_handler_cpu_limit = randomize(
         "int", min_val=1, max_val=1000
     )
+    instance.extend_app_event_handler_memory_limit = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.extend_app_memory_limit = randomize("int", min_val=1, max_val=1000)
     instance.extend_app_replica_limit = randomize("int", min_val=1, max_val=1000)
+    instance.extend_app_service_extension_cpu_limit = randomize(
+        "int", min_val=1, max_val=1000
+    )
+    instance.extend_app_service_extension_memory_limit = randomize(
+        "int", min_val=1, max_val=1000
+    )
     instance.extend_appe_event_handler_memory_limit = randomize(
         "int", min_val=1, max_val=1000
     )
@@ -499,6 +510,22 @@ def create_apimodel_memory_response_example() -> ApimodelMemoryResponse:
     instance = ApimodelMemoryResponse()
     instance.memory_limit = randomize("int", min_val=1, max_val=1000)
     instance.request_memory = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodel_no_sql_app_list_response_example() -> ApimodelNoSQLAppListResponse:
+    instance = ApimodelNoSQLAppListResponse()
+    instance.data = [create_apimodel_no_sql_app_response_example()]
+    instance.pagination = create_apimodel_pagination_response_example()
+    return instance
+
+
+def create_apimodel_no_sql_app_response_example() -> ApimodelNoSQLAppResponse:
+    instance = ApimodelNoSQLAppResponse()
+    instance.app_id = randomize("uid")
+    instance.app_name = randomize()
+    instance.game_name = randomize()
+    instance.scenario = randomize()
     return instance
 
 

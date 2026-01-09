@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ApimodelsGenericObject
 from ...models import ResponseError
 
 
@@ -72,7 +73,7 @@ class PublicReadPartySessionStorage(Operation):
         party_id: (partyId) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (OK)
+        200: OK - ApimodelsGenericObject (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -183,10 +184,12 @@ class PublicReadPartySessionStorage(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Dict[str, Any]], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ApimodelsGenericObject], Union[None, HttpResponse, ResponseError]
+    ]:
         """Parse the given response.
 
-        200: OK - Dict[str, Any] (OK)
+        200: OK - ApimodelsGenericObject (OK)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -210,7 +213,7 @@ class PublicReadPartySessionStorage(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return {str(k): v for k, v in content.items()}, None
+            return ApimodelsGenericObject.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:

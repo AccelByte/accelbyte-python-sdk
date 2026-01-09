@@ -214,7 +214,7 @@ $ python -m accelbyte_py_sdk_cli 'social-delete-stat' \
 ### Operation `update_stat`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'social-update-stat' \
-    '{"capCycleOverride": false, "cycleIds": ["string"], "cycleOverrides": [{}], "defaultValue": 3.14, "description": "string", "globalAggregationMethod": "LAST", "ignoreAdditionalDataOnValueRejected": false, "isPublic": false, "name": "string", "tags": ["string"], "visibility": "SERVERONLY"}' \
+    '{"capCycleOverride": false, "cycleIds": ["string"], "cycleOverrides": [{}], "defaultValue": 3.14, "description": "string", "globalAggregationMethod": "LAST", "ignoreAdditionalDataOnValueRejected": false, "incrementOnly": false, "isPublic": false, "maximum": 3.14, "minimum": 3.14, "name": "string", "setAsGlobal": false, "setBy": "CLIENT", "tags": ["string"], "visibility": "SERVERONLY"}' \
     'string' \
     'string' \
     > result.txt

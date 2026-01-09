@@ -47,6 +47,8 @@ class DtoServiceConfigurationDTO(Model):
 
         extend_config: (extendConfig) OPTIONAL DtoExtendConfigDTO
 
+        package: (package) OPTIONAL str
+
         service_config: (serviceConfig) OPTIONAL DtoServiceConfigDTO
     """
 
@@ -55,6 +57,7 @@ class DtoServiceConfigurationDTO(Model):
     id_: str  # REQUIRED
     type_: Union[str, TypeEnum]  # REQUIRED
     extend_config: DtoExtendConfigDTO  # OPTIONAL
+    package: str  # OPTIONAL
     service_config: DtoServiceConfigDTO  # OPTIONAL
 
     # endregion fields
@@ -73,6 +76,10 @@ class DtoServiceConfigurationDTO(Model):
         self, value: DtoExtendConfigDTO
     ) -> DtoServiceConfigurationDTO:
         self.extend_config = value
+        return self
+
+    def with_package(self, value: str) -> DtoServiceConfigurationDTO:
+        self.package = value
         return self
 
     def with_service_config(
@@ -101,6 +108,10 @@ class DtoServiceConfigurationDTO(Model):
             )
         elif include_empty:
             result["extendConfig"] = DtoExtendConfigDTO()
+        if hasattr(self, "package"):
+            result["package"] = str(self.package)
+        elif include_empty:
+            result["package"] = ""
         if hasattr(self, "service_config"):
             result["serviceConfig"] = self.service_config.to_dict(
                 include_empty=include_empty
@@ -119,6 +130,7 @@ class DtoServiceConfigurationDTO(Model):
         id_: str,
         type_: Union[str, TypeEnum],
         extend_config: Optional[DtoExtendConfigDTO] = None,
+        package: Optional[str] = None,
         service_config: Optional[DtoServiceConfigDTO] = None,
         **kwargs,
     ) -> DtoServiceConfigurationDTO:
@@ -127,6 +139,8 @@ class DtoServiceConfigurationDTO(Model):
         instance.type_ = type_
         if extend_config is not None:
             instance.extend_config = extend_config
+        if package is not None:
+            instance.package = package
         if service_config is not None:
             instance.service_config = service_config
         return instance
@@ -152,6 +166,10 @@ class DtoServiceConfigurationDTO(Model):
             )
         elif include_empty:
             instance.extend_config = DtoExtendConfigDTO()
+        if "package" in dict_ and dict_["package"] is not None:
+            instance.package = str(dict_["package"])
+        elif include_empty:
+            instance.package = ""
         if "serviceConfig" in dict_ and dict_["serviceConfig"] is not None:
             instance.service_config = DtoServiceConfigDTO.create_from_dict(
                 dict_["serviceConfig"], include_empty=include_empty
@@ -204,6 +222,7 @@ class DtoServiceConfigurationDTO(Model):
             "id": "id_",
             "type": "type_",
             "extendConfig": "extend_config",
+            "package": "package",
             "serviceConfig": "service_config",
         }
 
@@ -213,6 +232,7 @@ class DtoServiceConfigurationDTO(Model):
             "id": True,
             "type": True,
             "extendConfig": False,
+            "package": False,
             "serviceConfig": False,
         }
 

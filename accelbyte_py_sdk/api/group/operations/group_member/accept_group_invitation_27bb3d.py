@@ -40,7 +40,7 @@ class AcceptGroupInvitationPublicV1(Operation):
 
     This endpoint is used to accept group invitation.
 
-    Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
+    Accept group invitation. If specific user is not invited in the specific group ID, it will show the error to show if the user is not invited yet.
 
     This endpoint will also check if the user who access this endpoint is already joined to specific group
 

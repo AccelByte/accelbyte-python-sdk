@@ -1510,6 +1510,10 @@ def create_client(
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
 
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
+
     Properties:
         url: /iam/clients
 
@@ -1554,6 +1558,10 @@ async def create_client_async(
     ## The endpoint is going to be deprecated
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
+
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
 
     Properties:
         url: /iam/clients
@@ -1602,6 +1610,10 @@ def create_client_by_namespace(
     ## The endpoint is going to be deprecated
     **Endpoint migration guide**
     - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
+
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
 
     Properties:
         url: /iam/namespaces/{namespace}/clients
@@ -1655,6 +1667,10 @@ async def create_client_by_namespace_async(
     ## The endpoint is going to be deprecated
     **Endpoint migration guide**
     - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
+
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module in _/v3/admin/namespaces/{namespace}/clients [POST]_.
 
     Properties:
         url: /iam/namespaces/{namespace}/clients

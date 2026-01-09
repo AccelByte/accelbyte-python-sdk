@@ -38,6 +38,11 @@ class GlobalAggregationMethodEnum(StrEnum):
     TOTAL = "TOTAL"
 
 
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
+
+
 class VisibilityEnum(StrEnum):
     SERVERONLY = "SERVERONLY"
     SHOWALL = "SHOWALL"
@@ -61,9 +66,19 @@ class StatUpdate(Model):
 
         ignore_additional_data_on_value_rejected: (ignoreAdditionalDataOnValueRejected) OPTIONAL bool
 
+        increment_only: (incrementOnly) OPTIONAL bool
+
         is_public: (isPublic) OPTIONAL bool
 
+        maximum: (maximum) OPTIONAL float
+
+        minimum: (minimum) OPTIONAL float
+
         name: (name) OPTIONAL str
+
+        set_as_global: (setAsGlobal) OPTIONAL bool
+
+        set_by: (setBy) OPTIONAL Union[str, SetByEnum]
 
         tags: (tags) OPTIONAL List[str]
 
@@ -79,8 +94,13 @@ class StatUpdate(Model):
     description: str  # OPTIONAL
     global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
     ignore_additional_data_on_value_rejected: bool  # OPTIONAL
+    increment_only: bool  # OPTIONAL
     is_public: bool  # OPTIONAL
+    maximum: float  # OPTIONAL
+    minimum: float  # OPTIONAL
     name: str  # OPTIONAL
+    set_as_global: bool  # OPTIONAL
+    set_by: Union[str, SetByEnum]  # OPTIONAL
     tags: List[str]  # OPTIONAL
     visibility: Union[str, VisibilityEnum]  # OPTIONAL
 
@@ -118,12 +138,32 @@ class StatUpdate(Model):
         self.ignore_additional_data_on_value_rejected = value
         return self
 
+    def with_increment_only(self, value: bool) -> StatUpdate:
+        self.increment_only = value
+        return self
+
     def with_is_public(self, value: bool) -> StatUpdate:
         self.is_public = value
         return self
 
+    def with_maximum(self, value: float) -> StatUpdate:
+        self.maximum = value
+        return self
+
+    def with_minimum(self, value: float) -> StatUpdate:
+        self.minimum = value
+        return self
+
     def with_name(self, value: str) -> StatUpdate:
         self.name = value
+        return self
+
+    def with_set_as_global(self, value: bool) -> StatUpdate:
+        self.set_as_global = value
+        return self
+
+    def with_set_by(self, value: Union[str, SetByEnum]) -> StatUpdate:
+        self.set_by = value
         return self
 
     def with_tags(self, value: List[str]) -> StatUpdate:
@@ -174,14 +214,34 @@ class StatUpdate(Model):
             )
         elif include_empty:
             result["ignoreAdditionalDataOnValueRejected"] = False
+        if hasattr(self, "increment_only"):
+            result["incrementOnly"] = bool(self.increment_only)
+        elif include_empty:
+            result["incrementOnly"] = False
         if hasattr(self, "is_public"):
             result["isPublic"] = bool(self.is_public)
         elif include_empty:
             result["isPublic"] = False
+        if hasattr(self, "maximum"):
+            result["maximum"] = float(self.maximum)
+        elif include_empty:
+            result["maximum"] = 0.0
+        if hasattr(self, "minimum"):
+            result["minimum"] = float(self.minimum)
+        elif include_empty:
+            result["minimum"] = 0.0
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "set_as_global"):
+            result["setAsGlobal"] = bool(self.set_as_global)
+        elif include_empty:
+            result["setAsGlobal"] = False
+        if hasattr(self, "set_by"):
+            result["setBy"] = str(self.set_by)
+        elif include_empty:
+            result["setBy"] = Union[str, SetByEnum]()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -208,8 +268,13 @@ class StatUpdate(Model):
             Union[str, GlobalAggregationMethodEnum]
         ] = None,
         ignore_additional_data_on_value_rejected: Optional[bool] = None,
+        increment_only: Optional[bool] = None,
         is_public: Optional[bool] = None,
+        maximum: Optional[float] = None,
+        minimum: Optional[float] = None,
         name: Optional[str] = None,
+        set_as_global: Optional[bool] = None,
+        set_by: Optional[Union[str, SetByEnum]] = None,
         tags: Optional[List[str]] = None,
         visibility: Optional[Union[str, VisibilityEnum]] = None,
         **kwargs,
@@ -231,10 +296,20 @@ class StatUpdate(Model):
             instance.ignore_additional_data_on_value_rejected = (
                 ignore_additional_data_on_value_rejected
             )
+        if increment_only is not None:
+            instance.increment_only = increment_only
         if is_public is not None:
             instance.is_public = is_public
+        if maximum is not None:
+            instance.maximum = maximum
+        if minimum is not None:
+            instance.minimum = minimum
         if name is not None:
             instance.name = name
+        if set_as_global is not None:
+            instance.set_as_global = set_as_global
+        if set_by is not None:
+            instance.set_by = set_by
         if tags is not None:
             instance.tags = tags
         if visibility is not None:
@@ -287,14 +362,34 @@ class StatUpdate(Model):
             )
         elif include_empty:
             instance.ignore_additional_data_on_value_rejected = False
+        if "incrementOnly" in dict_ and dict_["incrementOnly"] is not None:
+            instance.increment_only = bool(dict_["incrementOnly"])
+        elif include_empty:
+            instance.increment_only = False
         if "isPublic" in dict_ and dict_["isPublic"] is not None:
             instance.is_public = bool(dict_["isPublic"])
         elif include_empty:
             instance.is_public = False
+        if "maximum" in dict_ and dict_["maximum"] is not None:
+            instance.maximum = float(dict_["maximum"])
+        elif include_empty:
+            instance.maximum = 0.0
+        if "minimum" in dict_ and dict_["minimum"] is not None:
+            instance.minimum = float(dict_["minimum"])
+        elif include_empty:
+            instance.minimum = 0.0
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "setAsGlobal" in dict_ and dict_["setAsGlobal"] is not None:
+            instance.set_as_global = bool(dict_["setAsGlobal"])
+        elif include_empty:
+            instance.set_as_global = False
+        if "setBy" in dict_ and dict_["setBy"] is not None:
+            instance.set_by = str(dict_["setBy"])
+        elif include_empty:
+            instance.set_by = Union[str, SetByEnum]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -349,8 +444,13 @@ class StatUpdate(Model):
             "description": "description",
             "globalAggregationMethod": "global_aggregation_method",
             "ignoreAdditionalDataOnValueRejected": "ignore_additional_data_on_value_rejected",
+            "incrementOnly": "increment_only",
             "isPublic": "is_public",
+            "maximum": "maximum",
+            "minimum": "minimum",
             "name": "name",
+            "setAsGlobal": "set_as_global",
+            "setBy": "set_by",
             "tags": "tags",
             "visibility": "visibility",
         }
@@ -365,8 +465,13 @@ class StatUpdate(Model):
             "description": False,
             "globalAggregationMethod": False,
             "ignoreAdditionalDataOnValueRejected": False,
+            "incrementOnly": False,
             "isPublic": False,
+            "maximum": False,
+            "minimum": False,
             "name": False,
+            "setAsGlobal": False,
+            "setBy": False,
             "tags": False,
             "visibility": False,
         }
@@ -375,6 +480,7 @@ class StatUpdate(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "globalAggregationMethod": ["LAST", "MAX", "MIN", "TOTAL"],
+            "setBy": ["CLIENT", "SERVER"],
             "visibility": ["SERVERONLY", "SHOWALL"],
         }
 

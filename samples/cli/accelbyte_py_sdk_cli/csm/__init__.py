@@ -87,6 +87,7 @@ from ._start_no_sql_cluster_v2 import start_no_sql_cluster_v2
 from ._stop_no_sql_cluster_v2 import stop_no_sql_cluster_v2
 from ._get_no_sql_access_tunnel_v2 import get_no_sql_access_tunnel_v2
 from ._get_resources_limits import get_resources_limits
+from ._get_no_sql_app_list_v2 import get_no_sql_app_list_v2
 from ._get_notification_subscriber_list_v3 import get_notification_subscriber_list_v3
 from ._delete_subscription_app_notification_v3 import (
     delete_subscription_app_notification_v3,
@@ -165,6 +166,7 @@ commands = [
     stop_no_sql_cluster_v2,
     get_no_sql_access_tunnel_v2,
     get_resources_limits,
+    get_no_sql_app_list_v2,
     get_notification_subscriber_list_v3,
     delete_subscription_app_notification_v3,
 ]

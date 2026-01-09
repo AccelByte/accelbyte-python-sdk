@@ -43,6 +43,10 @@ from ..operations.platform_credential import AdminGetPlatformCredentials
 from ..operations.platform_credential import AdminSyncPlatformCredentials
 from ..operations.platform_credential import AdminSyncPlatformCredentialsPlatformIdEnum
 from ..operations.platform_credential import AdminUpdatePlatformCredentials
+from ..operations.platform_credential import AdminUploadPlatformCredentials
+from ..operations.platform_credential import (
+    AdminUploadPlatformCredentialsPlatformIdEnum,
+)
 
 
 @same_doc_as(AdminDeletePlatformCredentials)
@@ -387,7 +391,7 @@ def admin_sync_platform_credentials(
     With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
     If the API returns Not Found, alternatively what you can do is either:
     a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
-    b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+    b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload
     We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
     If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
 
@@ -448,7 +452,7 @@ async def admin_sync_platform_credentials_async(
     With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
     If the API returns Not Found, alternatively what you can do is either:
     a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
-    b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+    b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/platform-credentials/xbox/upload
     We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
     If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
 
@@ -604,6 +608,132 @@ async def admin_update_platform_credentials_async(
             return None, error
     request = AdminUpdatePlatformCredentials.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUploadPlatformCredentials)
+def admin_upload_platform_credentials(
+    file: Any,
+    password: str,
+    platform_id: Union[str, AdminUploadPlatformCredentialsPlatformIdEnum],
+    description: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upload certificates for XBOX Platform (adminUploadPlatformCredentials)
+
+    Upload certificates for XBox. Certificate must be in the valid form of PFX format.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/upload
+
+        method: PUT
+
+        tags: ["Platform Credential"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        description: (description) OPTIONAL str in form_data
+
+        file: (file) REQUIRED Any in form_data
+
+        password: (password) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED Union[str, PlatformIdEnum] in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminUploadPlatformCredentials.create(
+        file=file,
+        password=password,
+        platform_id=platform_id,
+        description=description,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUploadPlatformCredentials)
+async def admin_upload_platform_credentials_async(
+    file: Any,
+    password: str,
+    platform_id: Union[str, AdminUploadPlatformCredentialsPlatformIdEnum],
+    description: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upload certificates for XBOX Platform (adminUploadPlatformCredentials)
+
+    Upload certificates for XBox. Certificate must be in the valid form of PFX format.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/upload
+
+        method: PUT
+
+        tags: ["Platform Credential"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        description: (description) OPTIONAL str in form_data
+
+        file: (file) REQUIRED Any in form_data
+
+        password: (password) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED Union[str, PlatformIdEnum] in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminUploadPlatformCredentials.create(
+        file=file,
+        password=password,
+        platform_id=platform_id,
+        description=description,
         namespace=namespace,
     )
     return await run_request_async(

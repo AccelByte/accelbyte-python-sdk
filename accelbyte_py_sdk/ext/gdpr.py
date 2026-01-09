@@ -169,6 +169,7 @@ def create_dto_service_configuration_dto_example() -> DtoServiceConfigurationDTO
     instance.id_ = randomize()
     instance.type_ = randomize()
     instance.extend_config = create_dto_extend_config_dto_example()
+    instance.package = randomize()
     instance.service_config = create_dto_service_config_dto_example()
     return instance
 

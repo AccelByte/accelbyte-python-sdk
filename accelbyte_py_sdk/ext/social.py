@@ -546,8 +546,13 @@ def create_stat_update_example() -> StatUpdate:
     instance.description = randomize()
     instance.global_aggregation_method = randomize()
     instance.ignore_additional_data_on_value_rejected = randomize("bool")
+    instance.increment_only = randomize("bool")
     instance.is_public = randomize("bool")
+    instance.maximum = randomize("int", min_val=1, max_val=1000)
+    instance.minimum = randomize("int", min_val=1, max_val=1000)
     instance.name = randomize()
+    instance.set_as_global = randomize("bool")
+    instance.set_by = randomize()
     instance.tags = [randomize()]
     instance.visibility = randomize()
     return instance

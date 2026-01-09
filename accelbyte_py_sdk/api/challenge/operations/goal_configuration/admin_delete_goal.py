@@ -37,6 +37,9 @@ class AdminDeleteGoal(Operation):
 
     - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
+    **Important**
+    Delete a goal in a TIED challenge may affect/delete users' data, please do not delete a TIED goal unless it's necessary. User data will be deleted in the next evaluation
+
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 

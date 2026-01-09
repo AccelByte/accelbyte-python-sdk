@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.30.0)
+# Custom Service Manager Index (1.31.0)
 
 
 ## Operations
@@ -102,6 +102,7 @@
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | DELETE | DeleteNoSQLClusterV2 | `false` | [DeleteNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/delete_no_sql_cluster_v2.py) | [delete_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-delete-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | DELETE | DeleteNoSQLDatabaseV2 | `false` | [DeleteNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/delete_no_sql_database_v2.py) | [delete_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-delete-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_no_sql_database_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/tunnels | GET | GetNoSQLAccessTunnelV2 | `false` | [GetNoSQLAccessTunnelV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_access_tunnel_v2.py) | [get_no_sql_access_tunnel_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-access-tunnel-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_access_tunnel_v2.py) |
+| /csm/v2/admin/namespaces/{studioName}/nosql/{resourceId}/apps | GET | GetNoSQLAppListV2 | `false` | [GetNoSQLAppListV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_app_list_v2.py) | [get_no_sql_app_list_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-app-list-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_app_list_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | GET | GetNoSQLClusterV2 | `false` | [GetNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_cluster_v2.py) | [get_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | GET | GetNoSQLDatabaseV2 | `false` | [GetNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/get_no_sql_database_v2.py) | [get_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-get-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_no_sql_database_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters/start | PUT | StartNoSQLClusterV2 | `false` | [StartNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/start_no_sql_cluster_v2.py) | [start_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-start-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_start_no_sql_cluster_v2.py) |
@@ -177,6 +178,8 @@
 | apimodel.ListTopicsResponse | [ApimodelListTopicsResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_list_topics_response.py) |
 | apimodel.MemoryRequest | [ApimodelMemoryRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_request.py) |
 | apimodel.MemoryResponse | [ApimodelMemoryResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_response.py) |
+| apimodel.NoSQLAppListResponse | [ApimodelNoSQLAppListResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_app_list_response.py) |
+| apimodel.NoSQLAppResponse | [ApimodelNoSQLAppResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_app_response.py) |
 | apimodel.NoSQLDatabaseCredentialResponse | [ApimodelNoSQLDatabaseCredentialResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_credential_response.py) |
 | apimodel.NoSQLDatabaseDeleteResponse | [ApimodelNoSQLDatabaseDeleteResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_delete_response.py) |
 | apimodel.NoSQLDatabaseResponse | [ApimodelNoSQLDatabaseResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_response.py) |

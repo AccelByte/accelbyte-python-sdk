@@ -483,9 +483,9 @@ def get_app_v2(
     Get extend app by name
 
     Available scenario:
-    - scenario 1: `function-override`
     - scenario 2: `service-extension`
     - scenario 3: `event-handler`
+    - scenario 1: `function-override`
 
 
     Available app status:
@@ -559,9 +559,9 @@ async def get_app_v2_async(
     Get extend app by name
 
     Available scenario:
-    - scenario 1: `function-override`
     - scenario 2: `service-extension`
     - scenario 3: `event-handler`
+    - scenario 1: `function-override`
 
 
     Available app status:

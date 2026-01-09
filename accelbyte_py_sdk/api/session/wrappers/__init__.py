@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.28.0"
+__version__ = "3.29.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -175,6 +175,8 @@ from ._platform_credential import admin_sync_platform_credentials
 from ._platform_credential import admin_sync_platform_credentials_async
 from ._platform_credential import admin_update_platform_credentials
 from ._platform_credential import admin_update_platform_credentials_async
+from ._platform_credential import admin_upload_platform_credentials
+from ._platform_credential import admin_upload_platform_credentials_async
 
 from ._player import admin_get_player_attributes
 from ._player import admin_get_player_attributes_async

@@ -64,7 +64,7 @@ class GetEstimatedPrice(Operation):
         user_id: (userId) REQUIRED str in query
 
     Responses:
-        200: OK - EstimatedPriceInfo (successful operation)
+        200: OK - List[EstimatedPriceInfo] (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
@@ -218,10 +218,12 @@ class GetEstimatedPrice(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, EstimatedPriceInfo], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, List[EstimatedPriceInfo]], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
-        200: OK - EstimatedPriceInfo (successful operation)
+        200: OK - List[EstimatedPriceInfo] (successful operation)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
@@ -239,7 +241,7 @@ class GetEstimatedPrice(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return EstimatedPriceInfo.create_from_dict(content), None
+            return [EstimatedPriceInfo.create_from_dict(i) for i in content], None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 

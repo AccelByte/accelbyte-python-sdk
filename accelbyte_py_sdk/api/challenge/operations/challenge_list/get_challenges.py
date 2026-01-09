@@ -36,9 +36,13 @@ from ...models import ResponseError
 
 
 class SortByEnum(StrEnum):
+    CODE_ASC = "code:asc"
+    CODE_DESC = "code:desc"
     CREATEDAT = "createdAt"
     CREATEDAT_ASC = "createdAt:asc"
     CREATEDAT_DESC = "createdAt:desc"
+    NAME_ASC = "name:asc"
+    NAME_DESC = "name:desc"
     UPDATEDAT = "updatedAt"
     UPDATEDAT_ASC = "updatedAt:asc"
     UPDATEDAT_DESC = "updatedAt:desc"
@@ -401,9 +405,13 @@ class GetChallenges(Operation):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "sortBy": [
+                "code:asc",
+                "code:desc",
                 "createdAt",
                 "createdAt:asc",
                 "createdAt:desc",
+                "name:asc",
+                "name:desc",
                 "updatedAt",
                 "updatedAt:asc",
                 "updatedAt:desc",

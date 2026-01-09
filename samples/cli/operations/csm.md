@@ -421,6 +421,18 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-resources-limits' \
     > result.txt
 ```
 
+### Operation `get_no_sql_app_list_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-app-list-v2' \
+    'string' \
+    'string' \
+    --app_name 'string' \
+    --limit 1 \
+    --namespace 'string' \
+    --offset 1 \
+    > result.txt
+```
+
 ### Operation `get_notification_subscriber_list_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-get-notification-subscriber-list-v3' \

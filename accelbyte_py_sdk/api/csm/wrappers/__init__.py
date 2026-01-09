@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.30.0"
+__version__ = "1.31.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -135,6 +135,8 @@ from ._managed_resources import delete_no_sql_database_v2
 from ._managed_resources import delete_no_sql_database_v2_async
 from ._managed_resources import get_no_sql_access_tunnel_v2
 from ._managed_resources import get_no_sql_access_tunnel_v2_async
+from ._managed_resources import get_no_sql_app_list_v2
+from ._managed_resources import get_no_sql_app_list_v2_async
 from ._managed_resources import get_no_sql_cluster_v2
 from ._managed_resources import get_no_sql_cluster_v2_async
 from ._managed_resources import get_no_sql_database_v2

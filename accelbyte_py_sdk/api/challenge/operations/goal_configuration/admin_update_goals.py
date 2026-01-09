@@ -67,6 +67,10 @@ class AdminUpdateGoals(Operation):
     The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
     Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
 
+    **Important**
+    - Update a goal in a TIED challenge may affect users' data, please do not update a TIED goal unless it's necessary. The updated goal will take effect in the next evaluation.
+    - When updating an existing predicate, ensure to put the predicate id in the request, otherwise a new predicate will be created with a new id
+
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 

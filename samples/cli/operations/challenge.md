@@ -7,7 +7,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-get-challenges' \
     --keyword 'string' \
     --limit 1 \
     --offset 1 \
-    --sort_by 'createdAt' \
+    --sort_by 'code:asc' \
     --status 'INIT' \
     --tags '["string"]' \
     > result.txt
@@ -273,7 +273,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-get-challenges' \
     --keyword 'string' \
     --limit 1 \
     --offset 1 \
-    --sort_by 'createdAt' \
+    --sort_by 'code:asc' \
     --status 'INIT' \
     --tags '["string"]' \
     > result.txt

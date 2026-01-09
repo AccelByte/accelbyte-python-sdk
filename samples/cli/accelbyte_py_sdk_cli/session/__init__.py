@@ -59,6 +59,7 @@ from ._admin_delete_platform_credentials_by_platform_id import (
     admin_delete_platform_credentials_by_platform_id,
 )
 from ._admin_sync_platform_credentials import admin_sync_platform_credentials
+from ._admin_upload_platform_credentials import admin_upload_platform_credentials
 from ._admin_get_recent_player import admin_get_recent_player
 from ._admin_get_recent_team_player import admin_get_recent_team_player
 from ._admin_read_session_storage import admin_read_session_storage
@@ -168,6 +169,7 @@ commands = [
     admin_delete_platform_credentials,
     admin_delete_platform_credentials_by_platform_id,
     admin_sync_platform_credentials,
+    admin_upload_platform_credentials,
     admin_get_recent_player,
     admin_get_recent_team_player,
     admin_read_session_storage,

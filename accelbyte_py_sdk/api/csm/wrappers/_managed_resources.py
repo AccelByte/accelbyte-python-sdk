@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ApimodelCreateNoSQLAppDatabaseRequest
 from ..models import ApimodelCreateNoSQLDatabaseCredentialRequest
 from ..models import ApimodelDeleteNoSQLResourceResponse
+from ..models import ApimodelNoSQLAppListResponse
 from ..models import ApimodelNoSQLDatabaseCredentialResponse
 from ..models import ApimodelNoSQLDatabaseDeleteResponse
 from ..models import ApimodelNoSQLDatabaseResponse
@@ -46,6 +47,7 @@ from ..operations.managed_resources import CreateNoSQLDatabaseV2
 from ..operations.managed_resources import DeleteNoSQLClusterV2
 from ..operations.managed_resources import DeleteNoSQLDatabaseV2
 from ..operations.managed_resources import GetNoSQLAccessTunnelV2
+from ..operations.managed_resources import GetNoSQLAppListV2
 from ..operations.managed_resources import GetNoSQLClusterV2
 from ..operations.managed_resources import GetNoSQLDatabaseV2
 from ..operations.managed_resources import StartNoSQLClusterV2
@@ -741,6 +743,156 @@ async def get_no_sql_access_tunnel_v2_async(
     )
 
 
+@same_doc_as(GetNoSQLAppListV2)
+def get_no_sql_app_list_v2(
+    resource_id: str,
+    studio_name: str,
+    app_name: Optional[str] = None,
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get List of Extend App using NoSQL (GetNoSQLAppListV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
+
+    Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
+    - `stopped` : The cluster is stopped and not accessible.
+    - `unknown` : The cluster status is not recognized
+    - `available` : The cluster is accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{studioName}/nosql/{resourceId}/apps
+
+        method: GET
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        resource_id: (resourceId) REQUIRED str in path
+
+        studio_name: (studioName) REQUIRED str in path
+
+        app_name: (appName) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        namespace: (namespace) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApimodelNoSQLAppListResponse (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    request = GetNoSQLAppListV2.create(
+        resource_id=resource_id,
+        studio_name=studio_name,
+        app_name=app_name,
+        limit=limit,
+        namespace=namespace,
+        offset=offset,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetNoSQLAppListV2)
+async def get_no_sql_app_list_v2_async(
+    resource_id: str,
+    studio_name: str,
+    app_name: Optional[str] = None,
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get List of Extend App using NoSQL (GetNoSQLAppListV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
+
+    Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
+    - `stopped` : The cluster is stopped and not accessible.
+    - `unknown` : The cluster status is not recognized
+    - `available` : The cluster is accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{studioName}/nosql/{resourceId}/apps
+
+        method: GET
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        resource_id: (resourceId) REQUIRED str in path
+
+        studio_name: (studioName) REQUIRED str in path
+
+        app_name: (appName) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        namespace: (namespace) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ApimodelNoSQLAppListResponse (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    request = GetNoSQLAppListV2.create(
+        resource_id=resource_id,
+        studio_name=studio_name,
+        app_name=app_name,
+        limit=limit,
+        namespace=namespace,
+        offset=offset,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetNoSQLClusterV2)
 def get_no_sql_cluster_v2(
     namespace: Optional[str] = None,
@@ -754,15 +906,15 @@ def get_no_sql_cluster_v2(
     Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the NoSQL cluster status:
+    - `available` : The cluster is accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
-    - `available` : The cluster is accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
 
     Properties:
@@ -816,15 +968,15 @@ async def get_no_sql_cluster_v2_async(
     Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the NoSQL cluster status:
+    - `available` : The cluster is accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
-    - `available` : The cluster is accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
 
     Properties:
@@ -882,16 +1034,16 @@ def get_no_sql_database_v2(
     and app name.
 
     `resourceStatus` field - indicates the NoSQL cluster status:
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `stopped` : The cluster is stopped and not accessible.
+    - `unknown` : The cluster status is not recognized
     - `available` : The cluster is accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `unknown` : The cluster status is not recognized
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
@@ -947,16 +1099,16 @@ async def get_no_sql_database_v2_async(
     and app name.
 
     `resourceStatus` field - indicates the NoSQL cluster status:
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `stopped` : The cluster is stopped and not accessible.
+    - `unknown` : The cluster status is not recognized
     - `available` : The cluster is accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `unknown` : The cluster status is not recognized
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases

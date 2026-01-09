@@ -5083,7 +5083,7 @@ def admin_get_user_login_histories_v3(
     This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
     - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp."
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
@@ -5147,7 +5147,7 @@ async def admin_get_user_login_histories_v3_async(
     This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
     - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp."
+    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
@@ -17146,8 +17146,8 @@ def public_get_user_login_histories_v3(
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
     Notes for this endpoint:
-    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
     - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
     - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
@@ -17214,8 +17214,8 @@ async def public_get_user_login_histories_v3_async(
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
     Notes for this endpoint:
-    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
+    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
     - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
     - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 

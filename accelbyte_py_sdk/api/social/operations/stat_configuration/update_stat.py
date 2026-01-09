@@ -39,12 +39,11 @@ class UpdateStat(Operation):
     """Update stat (updateStat)
 
     Update stat.
+     Update a TIED stat will affect users' data, the updated stat will take effect in the next evaluation.
     Other detail info:
 
       *  Returns : updated stat
       *  Field globalAggregationMethod will be ignored when the stat is not set as global
-      *  Field globalAggregationMethod is not updatable when the stat status is TIED
-      *  Field visibility is not updatable when the stat status is TIED
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}

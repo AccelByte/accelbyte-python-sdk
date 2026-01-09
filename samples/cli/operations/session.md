@@ -170,7 +170,7 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-query-game-sessions' \
 ### Operation `admin_query_game_sessions_by_attributes`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-admin-query-game-sessions-by-attributes' \
-    '{"string": {}}' \
+    '{}' \
     'string' \
     > result.txt
 ```
@@ -306,6 +306,17 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-sync-platform-credentials' \
     > result.txt
 ```
 
+### Operation `admin_upload_platform_credentials`
+```sh
+$ python -m accelbyte_py_sdk_cli 'session-admin-upload-platform-credentials' \
+    'tmp.dat' \
+    'string' \
+    'string' \
+    'XBOX' \
+    --description 'string' \
+    > result.txt
+```
+
 ### Operation `admin_get_recent_player`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-admin-get-recent-player' \
@@ -385,7 +396,7 @@ $ python -m accelbyte_py_sdk_cli 'session-create-game-session' \
 ### Operation `public_query_game_sessions_by_attributes`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-query-game-sessions-by-attributes' \
-    '{"string": {}}' \
+    '{}' \
     'string' \
     > result.txt
 ```
@@ -612,7 +623,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-read-party-session-storage' \
 ### Operation `public_update_insert_party_session_storage`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-party-session-storage' \
-    '{"string": {}}' \
+    '{}' \
     'string' \
     'string' \
     'string' \
@@ -622,7 +633,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-party-session-sto
 ### Operation `public_update_insert_party_session_storage_reserved`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-party-session-storage-reserved' \
-    '{"string": {}}' \
+    '{}' \
     'string' \
     'string' \
     'string' \
@@ -698,7 +709,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-get-recent-team-player' \
 ### Operation `public_update_insert_session_storage_leader`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-session-storage-leader' \
-    '{"string": {}}' \
+    '{}' \
     'string' \
     'string' \
     > result.txt
@@ -707,7 +718,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-session-storage-l
 ### Operation `public_update_insert_session_storage`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-update-insert-session-storage' \
-    '{"string": {}}' \
+    '{}' \
     'string' \
     'string' \
     'string' \
