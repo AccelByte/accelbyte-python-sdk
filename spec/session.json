@@ -1809,7 +1809,8 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           {
@@ -2668,7 +2669,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -3468,7 +3470,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -3552,7 +3555,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -3923,7 +3927,8 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           {
@@ -6208,7 +6213,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -6268,7 +6274,8 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           {
@@ -6300,7 +6307,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -6366,7 +6374,8 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           {
@@ -6398,7 +6407,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -7096,7 +7106,8 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           {
@@ -7121,7 +7132,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -7187,7 +7199,8 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           {
@@ -7219,7 +7232,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/apimodels.GenericObject"
+              "additionalProperties": {},
+              "type": "object"
             }
           },
           "400": {
@@ -8607,9 +8621,6 @@
         "updatedAt",
         "version"
       ]
-    },
-    "apimodels.GenericObject": {
-      "type": "object"
     },
     "apimodels.GlobalConfigurationResponse": {
       "properties": {

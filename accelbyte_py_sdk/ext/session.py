@@ -41,7 +41,6 @@ from ..api.session.models import ApimodelsEnvironmentVariableListResponse
 from ..api.session.models import ApimodelsEnvironmentVariableResponse
 from ..api.session.models import ApimodelsGameSessionQueryResponse
 from ..api.session.models import ApimodelsGameSessionResponse
-from ..api.session.models import ApimodelsGenericObject
 from ..api.session.models import ApimodelsGlobalConfigurationResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
 from ..api.session.models import ApimodelsKickResponse
@@ -372,11 +371,6 @@ def create_apimodels_game_session_response_example() -> ApimodelsGameSessionResp
     instance.storage = {randomize(): randomize()}
     instance.teams = [create_models_team_example()]
     instance.ticket_i_ds = [randomize()]
-    return instance
-
-
-def create_apimodels_generic_object_example() -> ApimodelsGenericObject:
-    instance = ApimodelsGenericObject()
     return instance
 
 

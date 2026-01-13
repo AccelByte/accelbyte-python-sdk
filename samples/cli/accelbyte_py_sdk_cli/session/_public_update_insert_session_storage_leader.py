@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.session import (
     public_update_insert_session_storage_leader as public_update_insert_session_storage_leader_internal,
 )
-from accelbyte_py_sdk.api.session.models import ApimodelsGenericObject
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 
@@ -63,7 +62,7 @@ def public_update_insert_session_storage_leader(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApimodelsGenericObject.create_from_dict(body_json)
+            body = {k: v for k, v in body_json.items()}
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_update_insert_session_storage_leader_internal(

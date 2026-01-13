@@ -36,7 +36,6 @@ from ..models import ApimodelsDeleteBulkGameSessionRequest
 from ..models import ApimodelsDeleteBulkGameSessionsAPIResponse
 from ..models import ApimodelsGameSessionQueryResponse
 from ..models import ApimodelsGameSessionResponse
-from ..models import ApimodelsGenericObject
 from ..models import ApimodelsJoinByCodeRequest
 from ..models import ApimodelsPromoteLeaderRequest
 from ..models import ApimodelsServerSecret
@@ -540,7 +539,7 @@ async def admin_query_game_sessions_async(
 
 @same_doc_as(AdminQueryGameSessionsByAttributes)
 def admin_query_game_sessions_by_attributes(
-    body: ApimodelsGenericObject,
+    body: Dict[str, Any],
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -576,7 +575,7 @@ def admin_query_game_sessions_by_attributes(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsGenericObject in body
+        body: (body) REQUIRED Dict[str, Any] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -604,7 +603,7 @@ def admin_query_game_sessions_by_attributes(
 
 @same_doc_as(AdminQueryGameSessionsByAttributes)
 async def admin_query_game_sessions_by_attributes_async(
-    body: ApimodelsGenericObject,
+    body: Dict[str, Any],
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -640,7 +639,7 @@ async def admin_query_game_sessions_by_attributes_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsGenericObject in body
+        body: (body) REQUIRED Dict[str, Any] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2922,7 +2921,7 @@ async def public_promote_game_session_leader_async(
 
 @same_doc_as(PublicQueryGameSessionsByAttributes)
 def public_query_game_sessions_by_attributes(
-    body: ApimodelsGenericObject,
+    body: Dict[str, Any],
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2958,7 +2957,7 @@ def public_query_game_sessions_by_attributes(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsGenericObject in body
+        body: (body) REQUIRED Dict[str, Any] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2986,7 +2985,7 @@ def public_query_game_sessions_by_attributes(
 
 @same_doc_as(PublicQueryGameSessionsByAttributes)
 async def public_query_game_sessions_by_attributes_async(
-    body: ApimodelsGenericObject,
+    body: Dict[str, Any],
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -3022,7 +3021,7 @@ async def public_query_game_sessions_by_attributes_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelsGenericObject in body
+        body: (body) REQUIRED Dict[str, Any] in body
 
         namespace: (namespace) REQUIRED str in path
 

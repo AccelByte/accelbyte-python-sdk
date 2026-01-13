@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.session import (
     admin_read_party_session_storage as admin_read_party_session_storage_internal,
 )
-from accelbyte_py_sdk.api.session.models import ApimodelsGenericObject
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 
