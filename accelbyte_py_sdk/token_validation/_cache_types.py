@@ -254,7 +254,8 @@ class RolesCache(Timer):
                 raise FetchRoleError(f"failed to get role with ID: {role_id}")
             return None
 
-        return self._roles.get(cache_key, None)
+        with self._lock:
+            return self._roles.get(cache_key, None)
 
     def get_role_permissions(self, role_id: str, namespace: Optional[str] = None, **kwargs) -> List[PermissionStruct]:
         role = self.get_role(role_id=role_id, namespace=namespace, **kwargs)

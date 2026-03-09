@@ -358,12 +358,13 @@ class TokenValidatorTestCase(IntegrationTestCase):
                 "token": InMemoryTokenRepository(),
             }
         )
-        self.sdks.append(custom_sdk)
 
         _, error = auth_service.login_client(sdk=custom_sdk)
         # DOC-REDACT(start)
         if error:
             self.skipTest(reason=f"unable to login with custom client: {error}")
+        else:
+            self.sdks.append(custom_sdk)
         # DOC-REDACT(end)
 
         access_token = custom_sdk.get_token_repository().get_access_token()
