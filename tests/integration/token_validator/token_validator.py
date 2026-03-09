@@ -1,10 +1,11 @@
+import os
 import time
 from typing import List, Optional
 
 import accelbyte_py_sdk.services.auth as auth_service
 
 from accelbyte_py_sdk import AccelByteSDK
-from accelbyte_py_sdk.core import SDK
+from accelbyte_py_sdk.core import SDK, InMemoryTokenRepository, MyConfigRepository
 from accelbyte_py_sdk.services.auth import parse_access_token
 from accelbyte_py_sdk.token_validation.caching import CachingTokenValidator
 
@@ -330,5 +331,105 @@ class TokenValidatorTestCase(IntegrationTestCase):
         self.assertFalse(is_valid)
 
     # endregion test:validate_resource_of_studio_game_namespace
+
+    # region test:custom_permission_validation
+
+    def test_custom_permission_validation(self):
+        # arrange
+        base_url = os.environ.get("AB_BASE_URL", "")
+        client_id = os.environ.get("AB_CLIENT_ID_CUSTOMPERMISSION", "")
+        client_secret = os.environ.get("AB_CLIENT_SECRET_CUSTOMPERMISSION", "")
+        namespace = os.environ.get("AB_NAMESPACE", "")
+
+        if not client_id or not client_secret:
+            self.skipTest(
+                reason="AB_CLIENT_ID_CUSTOMPERMISSION or AB_CLIENT_SECRET_CUSTOMPERMISSION not set"
+            )
+
+        custom_sdk = AccelByteSDK()
+        custom_sdk.initialize(
+            options={
+                "config": MyConfigRepository(
+                    base_url=base_url,
+                    client_id=client_id,
+                    client_secret=client_secret,
+                    namespace=namespace,
+                ),
+                "token": InMemoryTokenRepository(),
+            }
+        )
+        self.sdks.append(custom_sdk)
+
+        _, error = auth_service.login_client(sdk=custom_sdk)
+        # DOC-REDACT(start)
+        if error:
+            self.skipTest(reason=f"unable to login with custom client: {error}")
+        # DOC-REDACT(end)
+
+        access_token = custom_sdk.get_token_repository().get_access_token()
+        # DOC-REDACT(start)
+        if access_token is None:
+            self.skipTest(reason="unable to get access token")
+        # DOC-REDACT(end)
+
+        token_validator = CachingTokenValidator(sdk=custom_sdk)
+
+        # act & assert
+        error = token_validator.validate_token(
+            token=access_token,
+            resource=f"CUSTOM:ADMIN:NAMESPACE:{namespace}:GUILD",
+            action=2,
+            namespace=namespace,
+        )
+        self.assertIsNone(error, error)
+
+    # endregion test:custom_permission_validation
+
+    # region test:user_custom_permission_validation
+
+    def test_user_custom_permission_validation(self):
+        # arrange
+        player1_username = os.environ.get("AB_PLAYER1_USERNAME", "")
+        player1_password = os.environ.get("AB_PLAYER1_PASSWORD", "")
+
+        if not player1_username or not player1_password:
+            self.skipTest(
+                reason="AB_PLAYER1_USERNAME or AB_PLAYER1_PASSWORD not set"
+            )
+
+        namespace, error = SDK.get_namespace()
+        if error:
+            self.fail(msg="unable to get namespace")
+
+        player_sdk, error = self.create_user_sdk(
+            username=player1_username,
+            password=player1_password,
+            existing_sdk=SDK,
+        )
+        # DOC-REDACT(start)
+        if error:
+            self.skipTest(reason=f"unable to login as player1: {error}")
+        else:
+            self.sdks.append(player_sdk)
+        # DOC-REDACT(end)
+
+        access_token = player_sdk.get_token_repository().get_access_token()
+        # DOC-REDACT(start)
+        if access_token is None:
+            self.skipTest(reason="unable to get access token")
+        # DOC-REDACT(end)
+
+        token_validator = CachingTokenValidator(sdk=SDK)
+
+        # act & assert
+        error = token_validator.validate_token(
+            token=access_token,
+            resource=f"CUSTOM:NAMESPACE:{namespace}:GUILD",
+            action=2,
+            namespace=namespace,
+        )
+        self.assertIsNone(error, error)
+
+    # endregion test:user_custom_permission_validation
 
     # end of file
