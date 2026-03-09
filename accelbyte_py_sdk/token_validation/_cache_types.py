@@ -1,5 +1,5 @@
 from threading import RLock
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import jwt
 
@@ -208,7 +208,7 @@ class RolesCache(Timer):
         **kwargs,
     ):
         self.sdk = sdk
-        self._roles: Dict[str, Any] = {}
+        self._roles: Dict[Tuple[str, Optional[str]], Any] = {}
         self._lock = RLock()
         self._raise_on_error = raise_on_error
         Timer.__init__(
@@ -228,34 +228,36 @@ class RolesCache(Timer):
     def update(self, **kwargs):
         pass
 
-    def cache_role(self, role_id: str, **kwargs) -> Any:
+    def cache_role(self, role_id: str, namespace: Optional[str] = None, **kwargs) -> Any:
         role, error = iam_service.admin_get_role_namespace_permission_v3(
             role_id=role_id,
+            namespace=namespace,
             x_additional_headers=kwargs.get("x_additional_headers", None),
             sdk=self.sdk,
         )
         if error:
             return error
         with self._lock:
-            self._roles[role_id] = role
+            self._roles[(role_id, namespace)] = role
         return None
 
-    def get_role(self, role_id: str, **kwargs) -> Optional[Role]:
+    def get_role(self, role_id: str, namespace: Optional[str] = None, **kwargs) -> Optional[Role]:
+        cache_key = (role_id, namespace)
         with self._lock:
-            role = self._roles.get(role_id, None)
+            role = self._roles.get(cache_key, None)
             if role:
                 return role
 
-        error = self.cache_role(role_id=role_id, **kwargs)
+        error = self.cache_role(role_id=role_id, namespace=namespace, **kwargs)
         if error:
             if self._raise_on_error:
                 raise FetchRoleError(f"failed to get role with ID: {role_id}")
             return None
 
-        return self._roles.get(role_id, None)
+        return self._roles.get(cache_key, None)
 
-    def get_role_permissions(self, role_id: str, **kwargs) -> List[PermissionStruct]:
-        role = self.get_role(role_id=role_id, **kwargs)
+    def get_role_permissions(self, role_id: str, namespace: Optional[str] = None, **kwargs) -> List[PermissionStruct]:
+        role = self.get_role(role_id=role_id, namespace=namespace, **kwargs)
         role_permissions = getattr(role, "permissions", []) if role is not None else []
         return role_permissions
 
@@ -266,7 +268,7 @@ class RolesCache(Timer):
         user_id: Optional[str] = None,
         **kwargs,
     ) -> List[PermissionStruct]:
-        role_permissions = self.get_role_permissions(role_id=role_id, **kwargs)
+        role_permissions = self.get_role_permissions(role_id=role_id, namespace=namespace, **kwargs)
         modified_role_permissions = []
         for permission in role_permissions:
             action = getattr(permission, "action", None)
