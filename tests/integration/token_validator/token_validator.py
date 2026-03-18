@@ -433,4 +433,98 @@ class TokenValidatorTestCase(IntegrationTestCase):
 
     # endregion test:user_custom_permission_validation
 
+    # region test:namespace_context_fallback
+
+    def _make_cache_with_game_context(self, game_ns, studio_ns, publisher_ns, fallback=True):
+        from accelbyte_py_sdk.api.basic.models import NamespaceContext
+        from accelbyte_py_sdk.token_validation._cache_types import NamespaceContextCache
+
+        sdk = AccelByteSDK()
+        sdk.initialize(
+            options={
+                "config": MyConfigRepository(
+                    base_url="http://localhost",
+                    client_id="client",
+                    client_secret="secret",
+                    namespace=game_ns,
+                ),
+                "token": InMemoryTokenRepository(),
+            }
+        )
+
+        cache = NamespaceContextCache(sdk, 3600, raise_on_error=False, namespace_context_fallback=fallback)
+        cache._namespace_contexts[game_ns] = NamespaceContext.create_from_dict(
+            {
+                "namespace": game_ns,
+                "type": "Game",
+                "studioNamespace": studio_ns,
+                "publisherNamespace": publisher_ns,
+            }
+        )
+
+        # Simulate 403 for parent namespaces; game ns is already cached so never called
+        def mock_cache_namespace_context(namespace, **kwargs):
+            return Exception(f"403 Forbidden for {namespace}")
+
+        cache.cache_namespace_context = mock_cache_namespace_context
+        self.sdks.append(sdk)
+        return cache
+
+    def test_namespace_context_fallback_derives_studio_context(self):
+        cache = self._make_cache_with_game_context("game1", "studio1", "pub1")
+
+        result = cache.get_namespace_context(namespace="studio1")
+
+        self.assertIsNotNone(result)
+        self.assertEqual("studio1", result.namespace)
+        self.assertEqual("Studio", result.type_)
+        self.assertEqual("pub1", result.publisher_namespace)
+
+    def test_namespace_context_fallback_derives_publisher_context(self):
+        cache = self._make_cache_with_game_context("game1", "studio1", "pub1")
+
+        result = cache.get_namespace_context(namespace="pub1")
+
+        self.assertIsNotNone(result)
+        self.assertEqual("pub1", result.namespace)
+        self.assertEqual("Publisher", result.type_)
+
+    def test_namespace_context_fallback_disabled_returns_none(self):
+        cache = self._make_cache_with_game_context("game1", "studio1", "pub1", fallback=False)
+
+        result = cache.get_namespace_context(namespace="studio1")
+
+        self.assertIsNone(result)
+
+    def test_namespace_context_fallback_returns_none_when_app_ns_fetch_fails(self):
+        from accelbyte_py_sdk.token_validation._cache_types import NamespaceContextCache
+
+        sdk = AccelByteSDK()
+        sdk.initialize(
+            options={
+                "config": MyConfigRepository(
+                    base_url="http://localhost",
+                    client_id="client",
+                    client_secret="secret",
+                    namespace="game1",
+                ),
+                "token": InMemoryTokenRepository(),
+            }
+        )
+        self.sdks.append(sdk)
+
+        cache = NamespaceContextCache(sdk, 3600, raise_on_error=False)
+
+        # Both the requested namespace and the app namespace fail (double 403)
+        def mock_cache_namespace_context(namespace, **kwargs):
+            return Exception(f"403 Forbidden for {namespace}")
+
+        cache.cache_namespace_context = mock_cache_namespace_context
+
+        result = cache.get_namespace_context(namespace="studio1")
+
+        self.assertIsNone(result)
+
+    # endregion test:namespace_context_fallback
+
     # end of file
