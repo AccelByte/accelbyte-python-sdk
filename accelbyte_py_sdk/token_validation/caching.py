@@ -46,6 +46,7 @@ class CachingTokenValidator:
         namespace_context_cache_time: Union[int, float] = 3600,
         raise_on_error: bool = False,
         update_on_init: bool = False,
+        namespace_context_fallback: Optional[bool] = None,
         **kwargs,
     ) -> None:
         self.algorithms = (
@@ -88,6 +89,7 @@ class CachingTokenValidator:
             sdk,
             namespace_context_cache_time,
             raise_on_error=raise_on_error,
+            namespace_context_fallback=namespace_context_fallback,
         )
 
         if update_on_init:

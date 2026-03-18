@@ -1,3 +1,4 @@
+import os
 from threading import RLock
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -82,17 +83,27 @@ class JWKSCache(Timer):
 
 
 class NamespaceContextCache(Timer):
+    ENV_VAR_FALLBACK: str = "AB_NAMESPACE_CONTEXT_FALLBACK"
+
     def __init__(
         self,
         sdk: AccelByteSDK,
         interval: Union[int, float],
         raise_on_error: bool = True,
+        namespace_context_fallback: Optional[bool] = None,
         **kwargs,
     ):
         self.sdk = sdk
         self._namespace_contexts: Dict[str, Any] = {}
         self._lock = RLock()
         self._raise_on_error = raise_on_error
+
+        if namespace_context_fallback is not None:
+            self._namespace_context_fallback = namespace_context_fallback
+        else:
+            env_val = os.environ.get(NamespaceContextCache.ENV_VAR_FALLBACK, "").strip().lower()
+            self._namespace_context_fallback = env_val not in ("0", "false", "no") if env_val else True
+
         Timer.__init__(
             self,
             interval,
@@ -132,11 +143,64 @@ class NamespaceContextCache(Timer):
 
         error = self.cache_namespace_context(namespace=namespace, **kwargs)
         if error:
+            if self._namespace_context_fallback:
+                derived = self._derive_namespace_context_from_app_ns(namespace=namespace, **kwargs)
+                if derived is not None:
+                    return derived
             if self._raise_on_error:
                 raise FetchNamespaceContextError(f"namespace context: {namespace}")
             return None
 
         return self._namespace_contexts.get(namespace, None)
+
+    def _derive_namespace_context_from_app_ns(
+        self, namespace: str, **kwargs
+    ) -> Optional[NamespaceContext]:
+        """Fallback for when the app lacks permission to query a parent namespace.
+
+        Fetches the app's own game namespace context (from the SDK config) and derives
+        studio/publisher namespace contexts from it, populating the cache so that
+        permission validation can proceed without a 403.
+        """
+        app_namespace, error = self.sdk.get_namespace()
+        if error or not app_namespace or app_namespace == namespace:
+            return None
+
+        with self._lock:
+            app_context = self._namespace_contexts.get(app_namespace, None)
+
+        if app_context is None:
+            error = self.cache_namespace_context(namespace=app_namespace, **kwargs)
+            if error:
+                return None
+            with self._lock:
+                app_context = self._namespace_contexts.get(app_namespace, None)
+
+        if app_context is None or getattr(app_context, "type_", None) != "Game":
+            return None
+
+        studio_ns = getattr(app_context, "studio_namespace", None)
+        publisher_ns = getattr(app_context, "publisher_namespace", None)
+
+        with self._lock:
+            if studio_ns:
+                self._namespace_contexts.setdefault(
+                    studio_ns,
+                    NamespaceContext.create(
+                        namespace=studio_ns,
+                        type_="Studio",
+                        publisher_namespace=publisher_ns or "",
+                    ),
+                )
+            if publisher_ns:
+                self._namespace_contexts.setdefault(
+                    publisher_ns,
+                    NamespaceContext.create(
+                        namespace=publisher_ns,
+                        type_="Publisher",
+                    ),
+                )
+            return self._namespace_contexts.get(namespace, None)
 
 
 class RevocationListCache(Timer):
