@@ -102,7 +102,7 @@ class NamespaceContextCache(Timer):
             self._namespace_context_fallback = namespace_context_fallback
         else:
             env_val = os.environ.get(NamespaceContextCache.ENV_VAR_FALLBACK, "").strip().lower()
-            self._namespace_context_fallback = env_val not in ("0", "false", "no") if env_val else True
+            self._namespace_context_fallback = env_val not in ("0", "false", "no", "off", "disabled") if env_val else True
 
         Timer.__init__(
             self,
@@ -151,7 +151,8 @@ class NamespaceContextCache(Timer):
                 raise FetchNamespaceContextError(f"namespace context: {namespace}")
             return None
 
-        return self._namespace_contexts.get(namespace, None)
+        with self._lock:
+            return self._namespace_contexts.get(namespace, None)
 
     def _derive_namespace_context_from_app_ns(
         self, namespace: str, **kwargs
@@ -189,7 +190,8 @@ class NamespaceContextCache(Timer):
                     NamespaceContext.create(
                         namespace=studio_ns,
                         type_="Studio",
-                        publisher_namespace=publisher_ns or "",
+                        studio_namespace=studio_ns,
+                        publisher_namespace=publisher_ns,
                     ),
                 )
             if publisher_ns:
