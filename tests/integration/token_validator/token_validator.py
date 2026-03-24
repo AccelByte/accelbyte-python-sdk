@@ -488,6 +488,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertEqual("pub1", result.namespace)
         self.assertEqual("Publisher", result.type_)
+        self.assertEqual("pub1", result.publisher_namespace)
 
     def test_namespace_context_fallback_disabled_returns_none(self):
         cache = self._make_cache_with_game_context("game1", "studio1", "pub1", fallback=False)

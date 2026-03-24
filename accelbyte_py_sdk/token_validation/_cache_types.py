@@ -1,3 +1,4 @@
+import logging
 import os
 from threading import RLock
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -18,6 +19,8 @@ from ._ctypes import (
     create_permission_struct,
 )
 from ._utils import replace_resource, str2datetime
+
+logger = logging.getLogger(__name__)
 
 PublicPrivateKey = Any
 JWTClaims = Dict[str, Any]
@@ -144,6 +147,7 @@ class NamespaceContextCache(Timer):
         error = self.cache_namespace_context(namespace=namespace, **kwargs)
         if error:
             if self._namespace_context_fallback:
+                logger.debug("namespace context fetch failed for '%s': %s; attempting fallback", namespace, error)
                 derived = self._derive_namespace_context_from_app_ns(namespace=namespace, **kwargs)
                 if derived is not None:
                     return derived
@@ -200,6 +204,7 @@ class NamespaceContextCache(Timer):
                     NamespaceContext.create(
                         namespace=publisher_ns,
                         type_="Publisher",
+                        publisher_namespace=publisher_ns,
                     ),
                 )
             return self._namespace_contexts.get(namespace, None)
