@@ -91,6 +91,8 @@ from .wrappers import public_get_namespaces
 from .wrappers import public_get_namespaces_async
 from .wrappers import update_namespace
 from .wrappers import update_namespace_async
+from .wrappers import update_testing_flag
+from .wrappers import update_testing_flag_async
 
 # user_profile
 from .wrappers import admin_get_user_profile_public_info_by_ids

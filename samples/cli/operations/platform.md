@@ -1659,9 +1659,9 @@ $ python -m accelbyte_py_sdk_cli 'platform-delete-revocation-plugin-config' \
     > result.txt
 ```
 
-### Operation `upload_revocation_plugin_config_cert`
+### Operation `upload_revocation_plugin_config_cert_v2`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'platform-upload-revocation-plugin-config-cert' \
+$ python -m accelbyte_py_sdk_cli 'platform-upload-revocation-plugin-config-cert-v2' \
     'string' \
     --file 'tmp.dat' \
     > result.txt
@@ -4442,6 +4442,15 @@ $ python -m accelbyte_py_sdk_cli 'platform-v2-public-fulfill-apple-iap-item' \
     'string' \
     'string' \
     --body '{"transactionId": "string"}' \
+    > result.txt
+```
+
+### Operation `bulk_fulfill_items_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-bulk-fulfill-items-v3' \
+    '[{"items": [{}], "transactionId": "string"}]' \
+    'string' \
+    'string' \
     > result.txt
 ```
 

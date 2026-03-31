@@ -64,6 +64,8 @@ class FulfillmentV2Result(Model):
 
         id_: (id) OPTIONAL str
 
+        state_reason: (stateReason) OPTIONAL str
+
         subscription_summaries: (subscriptionSummaries) OPTIONAL List[SubscriptionSummary]
     """
 
@@ -78,6 +80,7 @@ class FulfillmentV2Result(Model):
     credit_summaries: List[CreditSummary]  # OPTIONAL
     entitlement_summaries: List[EntitlementSummary]  # OPTIONAL
     id_: str  # OPTIONAL
+    state_reason: str  # OPTIONAL
     subscription_summaries: List[SubscriptionSummary]  # OPTIONAL
 
     # endregion fields
@@ -120,6 +123,10 @@ class FulfillmentV2Result(Model):
 
     def with_id(self, value: str) -> FulfillmentV2Result:
         self.id_ = value
+        return self
+
+    def with_state_reason(self, value: str) -> FulfillmentV2Result:
+        self.state_reason = value
         return self
 
     def with_subscription_summaries(
@@ -177,6 +184,10 @@ class FulfillmentV2Result(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "state_reason"):
+            result["stateReason"] = str(self.state_reason)
+        elif include_empty:
+            result["stateReason"] = ""
         if hasattr(self, "subscription_summaries"):
             result["subscriptionSummaries"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -202,6 +213,7 @@ class FulfillmentV2Result(Model):
         credit_summaries: Optional[List[CreditSummary]] = None,
         entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         id_: Optional[str] = None,
+        state_reason: Optional[str] = None,
         subscription_summaries: Optional[List[SubscriptionSummary]] = None,
         **kwargs,
     ) -> FulfillmentV2Result:
@@ -218,6 +230,8 @@ class FulfillmentV2Result(Model):
             instance.entitlement_summaries = entitlement_summaries
         if id_ is not None:
             instance.id_ = id_
+        if state_reason is not None:
+            instance.state_reason = state_reason
         if subscription_summaries is not None:
             instance.subscription_summaries = subscription_summaries
         return instance
@@ -279,6 +293,10 @@ class FulfillmentV2Result(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "stateReason" in dict_ and dict_["stateReason"] is not None:
+            instance.state_reason = str(dict_["stateReason"])
+        elif include_empty:
+            instance.state_reason = ""
         if (
             "subscriptionSummaries" in dict_
             and dict_["subscriptionSummaries"] is not None
@@ -339,6 +357,7 @@ class FulfillmentV2Result(Model):
             "creditSummaries": "credit_summaries",
             "entitlementSummaries": "entitlement_summaries",
             "id": "id_",
+            "stateReason": "state_reason",
             "subscriptionSummaries": "subscription_summaries",
         }
 
@@ -354,6 +373,7 @@ class FulfillmentV2Result(Model):
             "creditSummaries": False,
             "entitlementSummaries": False,
             "id": False,
+            "stateReason": False,
             "subscriptionSummaries": False,
         }
 

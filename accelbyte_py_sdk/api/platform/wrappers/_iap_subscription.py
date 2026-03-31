@@ -273,7 +273,7 @@ def delete_oculus_subscription_group(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
+    """Delete an AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
 
     can't delete it if this subscription group is used.
 
@@ -319,7 +319,7 @@ async def delete_oculus_subscription_group_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
+    """Delete an AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
 
     can't delete it if this subscription group is used.
 
@@ -367,7 +367,7 @@ def delete_oculus_subscription_tier(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a AGS Meta Quest(Oculus) subscriptions tier (deleteOculusSubscriptionTier)
+    """Delete an AGS Meta Quest(Oculus) subscriptions tier (deleteOculusSubscriptionTier)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/tier/{sku}
@@ -411,7 +411,7 @@ async def delete_oculus_subscription_tier_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a AGS Meta Quest(Oculus) subscriptions tier (deleteOculusSubscriptionTier)
+    """Delete an AGS Meta Quest(Oculus) subscriptions tier (deleteOculusSubscriptionTier)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus/subscription/tier/{sku}

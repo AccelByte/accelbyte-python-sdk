@@ -57,6 +57,8 @@ class GetNamespaces(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
+        is_testing: (isTesting) OPTIONAL bool in query
+
     Responses:
         200: OK - List[NamespaceInfo] (Successful operation)
 
@@ -75,6 +77,7 @@ class GetNamespaces(Operation):
     _location_query: str = None
 
     active_only: bool  # OPTIONAL in [query]
+    is_testing: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -121,6 +124,8 @@ class GetNamespaces(Operation):
         result = {}
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "is_testing"):
+            result["isTesting"] = self.is_testing
         return result
 
     # endregion get_x_params methods
@@ -135,6 +140,10 @@ class GetNamespaces(Operation):
         self.active_only = value
         return self
 
+    def with_is_testing(self, value: bool) -> GetNamespaces:
+        self.is_testing = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -145,6 +154,10 @@ class GetNamespaces(Operation):
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = False
+        if hasattr(self, "is_testing") and self.is_testing:
+            result["isTesting"] = bool(self.is_testing)
+        elif include_empty:
+            result["isTesting"] = False
         return result
 
     # endregion to methods
@@ -194,10 +207,17 @@ class GetNamespaces(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, active_only: Optional[bool] = None, **kwargs) -> GetNamespaces:
+    def create(
+        cls,
+        active_only: Optional[bool] = None,
+        is_testing: Optional[bool] = None,
+        **kwargs,
+    ) -> GetNamespaces:
         instance = cls()
         if active_only is not None:
             instance.active_only = active_only
+        if is_testing is not None:
+            instance.is_testing = is_testing
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -211,18 +231,24 @@ class GetNamespaces(Operation):
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = False
+        if "isTesting" in dict_ and dict_["isTesting"] is not None:
+            instance.is_testing = bool(dict_["isTesting"])
+        elif include_empty:
+            instance.is_testing = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "activeOnly": "active_only",
+            "isTesting": "is_testing",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "activeOnly": False,
+            "isTesting": False,
         }
 
     # endregion static methods

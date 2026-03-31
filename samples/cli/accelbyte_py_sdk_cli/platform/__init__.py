@@ -207,6 +207,9 @@ from ._query_revocation_histories import query_revocation_histories
 from ._get_revocation_plugin_config import get_revocation_plugin_config
 from ._update_revocation_plugin_config import update_revocation_plugin_config
 from ._delete_revocation_plugin_config import delete_revocation_plugin_config
+from ._upload_revocation_plugin_config_cert_v2 import (
+    upload_revocation_plugin_config_cert_v2,
+)
 from ._upload_revocation_plugin_config_cert import upload_revocation_plugin_config_cert
 from ._create_reward import create_reward
 from ._query_rewards import query_rewards
@@ -595,6 +598,7 @@ from ._fulfill_items import fulfill_items
 from ._retry_fulfill_items import retry_fulfill_items
 from ._revoke_items import revoke_items
 from ._v2_public_fulfill_apple_iap_item import v2_public_fulfill_apple_iap_item
+from ._bulk_fulfill_items_v3 import bulk_fulfill_items_v3
 from ._fulfill_items_v3 import fulfill_items_v3
 from ._retry_fulfill_items_v3 import retry_fulfill_items_v3
 from ._revoke_items_v3 import revoke_items_v3
@@ -794,6 +798,7 @@ commands = [
     get_revocation_plugin_config,
     update_revocation_plugin_config,
     delete_revocation_plugin_config,
+    upload_revocation_plugin_config_cert_v2,
     upload_revocation_plugin_config_cert,
     create_reward,
     query_rewards,
@@ -1104,6 +1109,7 @@ commands = [
     retry_fulfill_items,
     revoke_items,
     v2_public_fulfill_apple_iap_item,
+    bulk_fulfill_items_v3,
     fulfill_items_v3,
     retry_fulfill_items_v3,
     revoke_items_v3,

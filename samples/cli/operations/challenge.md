@@ -208,6 +208,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-evaluate-progress' \
     '{"userIds": ["string"]}' \
     'string' \
     --challenge_code '["string"]' \
+    --include_one_time_event 'string' \
     > result.txt
 ```
 
@@ -327,6 +328,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-public-claim-user-rewards-by-goal-co
 $ python -m accelbyte_py_sdk_cli 'challenge-evaluate-my-progress' \
     'string' \
     --challenge_code '["string"]' \
+    --include_one_time_event 'string' \
     > result.txt
 ```
 

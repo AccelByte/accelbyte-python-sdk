@@ -39,10 +39,12 @@ from ..models import FulfillmentRequest
 from ..models import FulfillmentResult
 from ..models import FulfillmentV2Request
 from ..models import FulfillmentV2Result
+from ..models import FulfillmentV3Request
 from ..models import PreCheckFulfillmentRequest
 from ..models import RevokeFulfillmentV2Result
 from ..models import RewardsRequest
 
+from ..operations.fulfillment import BulkFulfillItemsV3
 from ..operations.fulfillment import FulfillItem
 from ..operations.fulfillment import FulfillItems
 from ..operations.fulfillment import FulfillItemsV3
@@ -72,6 +74,108 @@ from ..models import (
     RewardsRequestOriginEnum,
     RewardsRequestSourceEnum,
 )
+
+
+@same_doc_as(BulkFulfillItemsV3)
+def bulk_fulfill_items_v3(
+    body: List[FulfillmentV3Request],
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Fulfill multiple transactions (bulkFulfillItemsV3)
+
+    [Not supported yet in AGS Shared Cloud] Fulfill multiple transactions.
+    Other detail info:
+
+      * Request body : list of fulfillment v3 requests. storeId, region, language, and entitlementCollectionId can be ignored.
+      *  Returns : list of fulfillment v2 result
+
+    Properties:
+        url: /platform/v3/admin/namespaces/{namespace}/users/{userId}/fulfillments/bulk
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[FulfillmentV3Request] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[FulfillmentV2Result] (OK)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = BulkFulfillItemsV3.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkFulfillItemsV3)
+async def bulk_fulfill_items_v3_async(
+    body: List[FulfillmentV3Request],
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Fulfill multiple transactions (bulkFulfillItemsV3)
+
+    [Not supported yet in AGS Shared Cloud] Fulfill multiple transactions.
+    Other detail info:
+
+      * Request body : list of fulfillment v3 requests. storeId, region, language, and entitlementCollectionId can be ignored.
+      *  Returns : list of fulfillment v2 result
+
+    Properties:
+        url: /platform/v3/admin/namespaces/{namespace}/users/{userId}/fulfillments/bulk
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[FulfillmentV3Request] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[FulfillmentV2Result] (OK)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = BulkFulfillItemsV3.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FulfillItem)

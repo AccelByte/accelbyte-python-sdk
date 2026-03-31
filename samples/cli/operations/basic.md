@@ -4,13 +4,14 @@
 ```sh
 $ python -m accelbyte_py_sdk_cli 'basic-get-namespaces' \
     --active_only false \
+    --is_testing false \
     > result.txt
 ```
 
 ### Operation `create_namespace`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'basic-create-namespace' \
-    --body '{"displayName": "string", "namespace": "string"}' \
+    --body '{"displayName": "string", "isTesting": false, "namespace": "string"}' \
     > result.txt
 ```
 
@@ -186,6 +187,14 @@ $ python -m accelbyte_py_sdk_cli 'basic-get-publisher-config' \
 $ python -m accelbyte_py_sdk_cli 'basic-change-namespace-status' \
     'string' \
     --body '{"status": "ACTIVE"}' \
+    > result.txt
+```
+
+### Operation `update_testing_flag`
+```sh
+$ python -m accelbyte_py_sdk_cli 'basic-update-testing-flag' \
+    'string' \
+    --body '{"isTesting": false}' \
     > result.txt
 ```
 

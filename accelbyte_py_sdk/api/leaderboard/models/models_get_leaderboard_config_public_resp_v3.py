@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_cycle_info import ModelsCycleInfo
+
 
 class ModelsGetLeaderboardConfigPublicRespV3(Model):
     """Models get leaderboard config public resp V3 (models.GetLeaderboardConfigPublicRespV3)
@@ -43,6 +45,8 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
         name: (name) REQUIRED str
 
         stat_code: (statCode) REQUIRED str
+
+        cycle_metadata: (cycleMetadata) OPTIONAL Dict[str, ModelsCycleInfo]
     """
 
     # region fields
@@ -53,6 +57,7 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
     leaderboard_code: str  # REQUIRED
     name: str  # REQUIRED
     stat_code: str  # REQUIRED
+    cycle_metadata: Dict[str, ModelsCycleInfo]  # OPTIONAL
 
     # endregion fields
 
@@ -86,6 +91,12 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
         self.stat_code = value
         return self
 
+    def with_cycle_metadata(
+        self, value: Dict[str, ModelsCycleInfo]
+    ) -> ModelsGetLeaderboardConfigPublicRespV3:
+        self.cycle_metadata = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -116,6 +127,13 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = ""
+        if hasattr(self, "cycle_metadata"):
+            result["cycleMetadata"] = {
+                str(k0): v0.to_dict(include_empty=include_empty)
+                for k0, v0 in self.cycle_metadata.items()
+            }
+        elif include_empty:
+            result["cycleMetadata"] = {}
         return result
 
     # endregion to methods
@@ -131,6 +149,7 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
         leaderboard_code: str,
         name: str,
         stat_code: str,
+        cycle_metadata: Optional[Dict[str, ModelsCycleInfo]] = None,
         **kwargs,
     ) -> ModelsGetLeaderboardConfigPublicRespV3:
         instance = cls()
@@ -140,6 +159,8 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
         instance.leaderboard_code = leaderboard_code
         instance.name = name
         instance.stat_code = stat_code
+        if cycle_metadata is not None:
+            instance.cycle_metadata = cycle_metadata
         return instance
 
     @classmethod
@@ -173,6 +194,15 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = ""
+        if "cycleMetadata" in dict_ and dict_["cycleMetadata"] is not None:
+            instance.cycle_metadata = {
+                str(k0): ModelsCycleInfo.create_from_dict(
+                    v0, include_empty=include_empty
+                )
+                for k0, v0 in dict_["cycleMetadata"].items()
+            }
+        elif include_empty:
+            instance.cycle_metadata = {}
         return instance
 
     @classmethod
@@ -222,6 +252,7 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
             "leaderboardCode": "leaderboard_code",
             "name": "name",
             "statCode": "stat_code",
+            "cycleMetadata": "cycle_metadata",
         }
 
     @staticmethod
@@ -233,6 +264,7 @@ class ModelsGetLeaderboardConfigPublicRespV3(Model):
             "leaderboardCode": True,
             "name": True,
             "statCode": True,
+            "cycleMetadata": False,
         }
 
     # endregion static methods

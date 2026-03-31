@@ -1,3 +1,21 @@
+<a name="v0.83.0"></a>
+## [v0.83.0]
+### docs
+- **:**  update doc portal links 
+### chore
+- **deps:**  update dependency flask to v3 [security] 
+### fix
+- **token-validation:**  Role permissions are now cached and looked up by (role_id, namespace) tuple instead of role_id alone, preventing stale cache hits when the same role ID exists across multiple namespaces. The namespace is also forwarded to the admin_get_role_namespace_permission_v3 API call so the correct namespace-scoped permissions are fetched. Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com> 
+- **token-validation:**  Hold self._lock when reading _roles after a cache miss to prevent a race with the background clear() timer returning None for a just-cached role. Move custom_sdk registration into self.sdks inside the login success branch so tearDown only resets authenticated SDKs, consistent with the existing pattern in test_validate_token. Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com> 
+- **token-validation:**  - Wrap the final `_namespace_contexts.get` in `get_namespace_context` with `self._lock`, consistent with `RolesCache.get_role` pattern - Add `studio_namespace=studio_ns` to synthesized Studio `NamespaceContext` so the field is populated for downstream consumers - Remove `or ""` from `publisher_namespace` in Studio context creation so `None` is passed through correctly (leaving the field unset vs. empty string) - Expand `AB_NAMESPACE_CONTEXT_FALLBACK` falsy set to include `"off"` and `"disabled"` to match operator expectations Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com> 
+- **token-validation:**  - log original error on fallback Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com> 
+### test
+- **token-validation:**  Add two integration tests covering custom OAuth client and user token validation against CUSTOM namespace permissions, mirroring the equivalent tests added in the C# SDK (commit 5286533). - test_custom_permission_validation: logs in with an AB_CLIENT_ID_CUSTOMPERMISSION client and validates a CUSTOM:ADMIN:NAMESPACE:{ns}:GUILD permission - test_user_custom_permission_validation: logs in a player (AB_PLAYER1_USERNAME / AB_PLAYER1_PASSWORD) and validates a CUSTOM:NAMESPACE:{ns}:GUILD permission Both tests skip gracefully when the required env vars are not configured. Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com> 
+- **token-validation:**  Cover the four key scenarios for _derive_namespace_context_from_app_ns: - studio namespace correctly derived from game namespace context - publisher namespace correctly derived from game namespace context - fallback disabled via namespace_context_fallback=False returns None - fallback returns None when app namespace fetch also fails (double 403) 
+### feat
+- **token-validation:**  When a user from a studio or publisher namespace hits an Extend app deployed in a game namespace, the app's client credentials cannot fetch namespace context for parent namespaces (403). This causes permission validation to fail even for legitimately permissioned tokens. On a failed namespace context fetch, NamespaceContextCache now falls back to fetching the app's own game namespace context (via sdk.get_namespace()) and derives synthetic studio/publisher namespace contexts from its studio_namespace and publisher_namespace fields, populating the cache so that validate_resource can resolve the namespace hierarchy correctly. The fallback is enabled by default and configurable via: - CachingTokenValidator(namespace_context_fallback=False) - AB_NAMESPACE_CONTEXT_FALLBACK=0 env var 
+
+
 <a name="v0.82.0"></a>
 ## [v0.82.0]
 ### chore

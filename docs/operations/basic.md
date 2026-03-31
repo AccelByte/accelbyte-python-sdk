@@ -60,6 +60,7 @@
 | /basic/v1/public/namespaces/{namespace}/publisher | GET | publicGetNamespacePublisher | `false` | [PublicGetNamespacePublisher](../../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespace_publisher.py) | [public_get_namespace_publisher](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-public-get-namespace-publisher](../../samples/cli/accelbyte_py_sdk_cli/basic/_public_get_namespace_publisher.py) |
 | /basic/v1/public/namespaces | GET | publicGetNamespaces | `false` | [PublicGetNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespaces.py) | [public_get_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-public-get-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_public_get_namespaces.py) |
 | /basic/v1/admin/namespaces/{namespace}/basic | PATCH | updateNamespace | `false` | [UpdateNamespace](../../accelbyte_py_sdk/api/basic/operations/namespace/update_namespace.py) | [update_namespace](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-update-namespace](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_namespace.py) |
+| /basic/v1/admin/namespaces/{namespace}/testingFlag | PATCH | updateTestingFlag | `false` | [UpdateTestingFlag](../../accelbyte_py_sdk/api/basic/operations/namespace/update_testing_flag.py) | [update_testing_flag](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-update-testing-flag](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_testing_flag.py) |
 
 ### UserProfile
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -112,6 +113,7 @@
 | NamespacePublisherInfo | [NamespacePublisherInfo](../../accelbyte_py_sdk/api/basic/models/namespace_publisher_info.py) |
 | NamespaceSimpleInfo | [NamespaceSimpleInfo](../../accelbyte_py_sdk/api/basic/models/namespace_simple_info.py) |
 | NamespaceStatusUpdate | [NamespaceStatusUpdate](../../accelbyte_py_sdk/api/basic/models/namespace_status_update.py) |
+| NamespaceTestingFlagUpdate | [NamespaceTestingFlagUpdate](../../accelbyte_py_sdk/api/basic/models/namespace_testing_flag_update.py) |
 | NamespaceUpdate | [NamespaceUpdate](../../accelbyte_py_sdk/api/basic/models/namespace_update.py) |
 | Permission | [Permission](../../accelbyte_py_sdk/api/basic/models/permission.py) |
 | RetrieveCountryGroupResponse | [RetrieveCountryGroupResponse](../../accelbyte_py_sdk/api/basic/models/retrieve_country_group_response.py) |

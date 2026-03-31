@@ -41,6 +41,7 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 @click.command()
 @click.argument("body", type=str)
 @click.option("--challenge_code", "challenge_code", type=str)
+@click.option("--include_one_time_event", "include_one_time_event", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -48,6 +49,7 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 def admin_evaluate_progress(
     body: str,
     challenge_code: Optional[str] = None,
+    include_one_time_event: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -76,6 +78,7 @@ def admin_evaluate_progress(
     result, error = admin_evaluate_progress_internal(
         body=body,
         challenge_code=challenge_code,
+        include_one_time_event=include_one_time_event,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

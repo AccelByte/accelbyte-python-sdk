@@ -416,6 +416,7 @@ from .fulfillment_v2_request_item import (
 )
 from .fulfillment_v2_result import FulfillmentV2Result
 from .fulfillment_v2_result import StateEnum as FulfillmentV2ResultStateEnum
+from .fulfillment_v3_request import FulfillmentV3Request
 from .full_app_info import FullAppInfo
 from .full_app_info import (
     GenresEnum as FullAppInfoGenresEnum,

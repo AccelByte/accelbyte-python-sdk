@@ -114,6 +114,7 @@
 | models.ArchiveLeaderboardSignedURLResponse | [ModelsArchiveLeaderboardSignedURLResponse](../../accelbyte_py_sdk/api/leaderboard/models/models_archive_leaderboard_signed_url_response.py) |
 | models.BulkUserIDsRequest | [ModelsBulkUserIDsRequest](../../accelbyte_py_sdk/api/leaderboard/models/models_bulk_user_i_ds_request.py) |
 | models.BulkUserRankingResponseV3 | [ModelsBulkUserRankingResponseV3](../../accelbyte_py_sdk/api/leaderboard/models/models_bulk_user_ranking_response_v3.py) |
+| models.CycleInfo | [ModelsCycleInfo](../../accelbyte_py_sdk/api/leaderboard/models/models_cycle_info.py) |
 | models.DailyConfig | [ModelsDailyConfig](../../accelbyte_py_sdk/api/leaderboard/models/models_daily_config.py) |
 | models.DeleteBulkLeaderboardFailedResp | [ModelsDeleteBulkLeaderboardFailedResp](../../accelbyte_py_sdk/api/leaderboard/models/models_delete_bulk_leaderboard_failed_resp.py) |
 | models.DeleteBulkLeaderboardSuccessResp | [ModelsDeleteBulkLeaderboardSuccessResp](../../accelbyte_py_sdk/api/leaderboard/models/models_delete_bulk_leaderboard_success_resp.py) |

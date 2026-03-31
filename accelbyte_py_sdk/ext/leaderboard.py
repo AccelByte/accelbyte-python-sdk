@@ -28,6 +28,7 @@ from ..api.leaderboard.models import ModelsArchiveLeaderboardReq
 from ..api.leaderboard.models import ModelsArchiveLeaderboardSignedURLResponse
 from ..api.leaderboard.models import ModelsBulkUserIDsRequest
 from ..api.leaderboard.models import ModelsBulkUserRankingResponseV3
+from ..api.leaderboard.models import ModelsCycleInfo
 from ..api.leaderboard.models import ModelsDailyConfig
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardFailedResp
 from ..api.leaderboard.models import ModelsDeleteBulkLeaderboardSuccessResp
@@ -101,6 +102,12 @@ def create_models_bulk_user_ranking_response_v3_example() -> (
 ):
     instance = ModelsBulkUserRankingResponseV3()
     instance.data = [create_models_user_ranking_response_v3_example()]
+    return instance
+
+
+def create_models_cycle_info_example() -> ModelsCycleInfo:
+    instance = ModelsCycleInfo()
+    instance.version = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -226,6 +233,7 @@ def create_models_get_leaderboard_config_public_resp_v3_example() -> (
     instance.leaderboard_code = randomize()
     instance.name = randomize()
     instance.stat_code = randomize()
+    instance.cycle_metadata = {}
     return instance
 
 
@@ -262,6 +270,7 @@ def create_models_get_leaderboard_config_resp_v3_example() -> (
     instance.name = randomize()
     instance.stat_code = randomize()
     instance.updated_at = randomize("date")
+    instance.cycle_metadata = {}
     instance.deleted_at = randomize("date")
     instance.description = randomize()
     instance.icon_url = randomize("url")

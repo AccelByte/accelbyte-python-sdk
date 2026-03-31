@@ -33,7 +33,7 @@ from ...models import ErrorEntity
 
 
 class DeleteOculusSubscriptionGroup(Operation):
-    """Delete a AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
+    """Delete an AGS Meta Quest(Oculus) subscriptions group (deleteOculusSubscriptionGroup)
 
     can't delete it if this subscription group is used.
 

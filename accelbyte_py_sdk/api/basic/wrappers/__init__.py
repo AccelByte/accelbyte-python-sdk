@@ -86,6 +86,8 @@ from ._namespace import public_get_namespaces
 from ._namespace import public_get_namespaces_async
 from ._namespace import update_namespace
 from ._namespace import update_namespace_async
+from ._namespace import update_testing_flag
+from ._namespace import update_testing_flag_async
 
 from ._user_profile import admin_get_user_profile_public_info_by_ids
 from ._user_profile import admin_get_user_profile_public_info_by_ids_async

@@ -297,6 +297,8 @@ from ._entitlement import update_platform_entitlement_config_async
 from ._entitlement import update_user_entitlement
 from ._entitlement import update_user_entitlement_async
 
+from ._fulfillment import bulk_fulfill_items_v3
+from ._fulfillment import bulk_fulfill_items_v3_async
 from ._fulfillment import fulfill_item
 from ._fulfillment import fulfill_item_async
 from ._fulfillment import fulfill_items
@@ -898,6 +900,8 @@ from ._service_plugin_config import update_service_plugin_config
 from ._service_plugin_config import update_service_plugin_config_async
 from ._service_plugin_config import upload_revocation_plugin_config_cert
 from ._service_plugin_config import upload_revocation_plugin_config_cert_async
+from ._service_plugin_config import upload_revocation_plugin_config_cert_v2
+from ._service_plugin_config import upload_revocation_plugin_config_cert_v2_async
 from ._service_plugin_config import upload_section_plugin_config_cert
 from ._service_plugin_config import upload_section_plugin_config_cert_async
 from ._service_plugin_config import uplod_loot_box_plugin_config_cert

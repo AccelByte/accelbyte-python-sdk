@@ -27,3 +27,4 @@ from .get_namespaces import GetNamespaces
 from .public_get_namespace_publisher import PublicGetNamespacePublisher
 from .public_get_namespaces import PublicGetNamespaces
 from .update_namespace import UpdateNamespace
+from .update_testing_flag import UpdateTestingFlag

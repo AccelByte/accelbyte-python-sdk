@@ -88,6 +88,14 @@ $ python -m accelbyte_py_sdk_cli 'social-delete-stat-cycle' \
     > result.txt
 ```
 
+### Operation `reset_stat_cycle`
+```sh
+$ python -m accelbyte_py_sdk_cli 'social-reset-stat-cycle' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `bulk_add_stats`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'social-bulk-add-stats' \

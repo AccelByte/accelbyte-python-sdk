@@ -55,6 +55,8 @@ class ApimodelNoSQLResourceResponse(Model):
         last_rotated_at: (lastRotatedAt) OPTIONAL str
 
         region: (region) OPTIONAL str
+
+        tls_enabled: (tlsEnabled) OPTIONAL bool
     """
 
     # region fields
@@ -69,6 +71,7 @@ class ApimodelNoSQLResourceResponse(Model):
     hostnames: str  # OPTIONAL
     last_rotated_at: str  # OPTIONAL
     region: str  # OPTIONAL
+    tls_enabled: bool  # OPTIONAL
 
     # endregion fields
 
@@ -114,6 +117,10 @@ class ApimodelNoSQLResourceResponse(Model):
 
     def with_region(self, value: str) -> ApimodelNoSQLResourceResponse:
         self.region = value
+        return self
+
+    def with_tls_enabled(self, value: bool) -> ApimodelNoSQLResourceResponse:
+        self.tls_enabled = value
         return self
 
     # endregion with_x methods
@@ -164,6 +171,10 @@ class ApimodelNoSQLResourceResponse(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "tls_enabled"):
+            result["tlsEnabled"] = bool(self.tls_enabled)
+        elif include_empty:
+            result["tlsEnabled"] = False
         return result
 
     # endregion to methods
@@ -183,6 +194,7 @@ class ApimodelNoSQLResourceResponse(Model):
         hostnames: Optional[str] = None,
         last_rotated_at: Optional[str] = None,
         region: Optional[str] = None,
+        tls_enabled: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelNoSQLResourceResponse:
         instance = cls()
@@ -200,6 +212,8 @@ class ApimodelNoSQLResourceResponse(Model):
             instance.last_rotated_at = last_rotated_at
         if region is not None:
             instance.region = region
+        if tls_enabled is not None:
+            instance.tls_enabled = tls_enabled
         return instance
 
     @classmethod
@@ -253,6 +267,10 @@ class ApimodelNoSQLResourceResponse(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "tlsEnabled" in dict_ and dict_["tlsEnabled"] is not None:
+            instance.tls_enabled = bool(dict_["tlsEnabled"])
+        elif include_empty:
+            instance.tls_enabled = False
         return instance
 
     @classmethod
@@ -306,6 +324,7 @@ class ApimodelNoSQLResourceResponse(Model):
             "hostnames": "hostnames",
             "lastRotatedAt": "last_rotated_at",
             "region": "region",
+            "tlsEnabled": "tls_enabled",
         }
 
     @staticmethod
@@ -321,6 +340,7 @@ class ApimodelNoSQLResourceResponse(Model):
             "hostnames": False,
             "lastRotatedAt": False,
             "region": False,
+            "tlsEnabled": False,
         }
 
     # endregion static methods

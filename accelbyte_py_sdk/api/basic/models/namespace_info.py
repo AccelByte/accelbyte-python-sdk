@@ -47,6 +47,8 @@ class NamespaceInfo(Model):
 
         created_at: (createdAt) OPTIONAL str
 
+        is_testing: (isTesting) OPTIONAL bool
+
         parent_namespace: (parentNamespace) OPTIONAL str
 
         status: (status) OPTIONAL Union[str, StatusEnum]
@@ -60,6 +62,7 @@ class NamespaceInfo(Model):
     namespace: str  # REQUIRED
     client_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
+    is_testing: bool  # OPTIONAL
     parent_namespace: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
     updated_at: str  # OPTIONAL
@@ -82,6 +85,10 @@ class NamespaceInfo(Model):
 
     def with_created_at(self, value: str) -> NamespaceInfo:
         self.created_at = value
+        return self
+
+    def with_is_testing(self, value: bool) -> NamespaceInfo:
+        self.is_testing = value
         return self
 
     def with_parent_namespace(self, value: str) -> NamespaceInfo:
@@ -118,6 +125,10 @@ class NamespaceInfo(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "is_testing"):
+            result["isTesting"] = bool(self.is_testing)
+        elif include_empty:
+            result["isTesting"] = False
         if hasattr(self, "parent_namespace"):
             result["parentNamespace"] = str(self.parent_namespace)
         elif include_empty:
@@ -143,6 +154,7 @@ class NamespaceInfo(Model):
         namespace: str,
         client_id: Optional[str] = None,
         created_at: Optional[str] = None,
+        is_testing: Optional[bool] = None,
         parent_namespace: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         updated_at: Optional[str] = None,
@@ -155,6 +167,8 @@ class NamespaceInfo(Model):
             instance.client_id = client_id
         if created_at is not None:
             instance.created_at = created_at
+        if is_testing is not None:
+            instance.is_testing = is_testing
         if parent_namespace is not None:
             instance.parent_namespace = parent_namespace
         if status is not None:
@@ -186,6 +200,10 @@ class NamespaceInfo(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "isTesting" in dict_ and dict_["isTesting"] is not None:
+            instance.is_testing = bool(dict_["isTesting"])
+        elif include_empty:
+            instance.is_testing = False
         if "parentNamespace" in dict_ and dict_["parentNamespace"] is not None:
             instance.parent_namespace = str(dict_["parentNamespace"])
         elif include_empty:
@@ -241,6 +259,7 @@ class NamespaceInfo(Model):
             "namespace": "namespace",
             "clientId": "client_id",
             "createdAt": "created_at",
+            "isTesting": "is_testing",
             "parentNamespace": "parent_namespace",
             "status": "status",
             "updatedAt": "updated_at",
@@ -253,6 +272,7 @@ class NamespaceInfo(Model):
             "namespace": True,
             "clientId": False,
             "createdAt": False,
+            "isTesting": False,
             "parentNamespace": False,
             "status": False,
             "updatedAt": False,

@@ -55,6 +55,8 @@ class EvaluateMyProgress(Operation):
 
         challenge_code: (challengeCode) OPTIONAL List[str] in query
 
+        include_one_time_event: (includeOneTimeEvent) OPTIONAL str in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -76,6 +78,7 @@ class EvaluateMyProgress(Operation):
 
     namespace: str  # REQUIRED in [path]
     challenge_code: List[str]  # OPTIONAL in [query]
+    include_one_time_event: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -129,6 +132,8 @@ class EvaluateMyProgress(Operation):
         result = {}
         if hasattr(self, "challenge_code"):
             result["challengeCode"] = self.challenge_code
+        if hasattr(self, "include_one_time_event"):
+            result["includeOneTimeEvent"] = self.include_one_time_event
         return result
 
     # endregion get_x_params methods
@@ -147,6 +152,10 @@ class EvaluateMyProgress(Operation):
         self.challenge_code = value
         return self
 
+    def with_include_one_time_event(self, value: str) -> EvaluateMyProgress:
+        self.include_one_time_event = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -161,6 +170,10 @@ class EvaluateMyProgress(Operation):
             result["challengeCode"] = [str(i0) for i0 in self.challenge_code]
         elif include_empty:
             result["challengeCode"] = []
+        if hasattr(self, "include_one_time_event") and self.include_one_time_event:
+            result["includeOneTimeEvent"] = str(self.include_one_time_event)
+        elif include_empty:
+            result["includeOneTimeEvent"] = ""
         return result
 
     # endregion to methods
@@ -213,12 +226,18 @@ class EvaluateMyProgress(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, challenge_code: Optional[List[str]] = None, **kwargs
+        cls,
+        namespace: str,
+        challenge_code: Optional[List[str]] = None,
+        include_one_time_event: Optional[str] = None,
+        **kwargs,
     ) -> EvaluateMyProgress:
         instance = cls()
         instance.namespace = namespace
         if challenge_code is not None:
             instance.challenge_code = challenge_code
+        if include_one_time_event is not None:
+            instance.include_one_time_event = include_one_time_event
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -236,6 +255,10 @@ class EvaluateMyProgress(Operation):
             instance.challenge_code = [str(i0) for i0 in dict_["challengeCode"]]
         elif include_empty:
             instance.challenge_code = []
+        if "includeOneTimeEvent" in dict_ and dict_["includeOneTimeEvent"] is not None:
+            instance.include_one_time_event = str(dict_["includeOneTimeEvent"])
+        elif include_empty:
+            instance.include_one_time_event = ""
         return instance
 
     @staticmethod
@@ -243,6 +266,7 @@ class EvaluateMyProgress(Operation):
         return {
             "namespace": "namespace",
             "challengeCode": "challenge_code",
+            "includeOneTimeEvent": "include_one_time_event",
         }
 
     @staticmethod
@@ -250,6 +274,7 @@ class EvaluateMyProgress(Operation):
         return {
             "namespace": True,
             "challengeCode": False,
+            "includeOneTimeEvent": False,
         }
 
     @staticmethod

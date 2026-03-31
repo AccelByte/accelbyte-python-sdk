@@ -60,6 +60,7 @@ from ..operations.stat_cycle_configuration import (
     GetStatCycles1StatusEnum,
 )
 from ..operations.stat_cycle_configuration import ImportStatCycle
+from ..operations.stat_cycle_configuration import ResetStatCycle
 from ..operations.stat_cycle_configuration import StopStatCycle
 from ..operations.stat_cycle_configuration import UpdateStatCycle
 from ..models import StatCycleCreateCycleTypeEnum
@@ -1353,6 +1354,118 @@ async def import_stat_cycle_async(
     )
 
 
+@same_doc_as(ResetStatCycle)
+def reset_stat_cycle(
+    cycle_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Reset stat cycle (resetStatCycle)
+
+    Reset stat cycle.
+    Other detail info:
+
+      * This endpoint will reset the cycle immediately
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/reset
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12279: Invalid stat cycle status: Stat cycle [{id}], namespace [{namespace}], status [{status}])
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ResetStatCycle.create(
+        cycle_id=cycle_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ResetStatCycle)
+async def reset_stat_cycle_async(
+    cycle_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Reset stat cycle (resetStatCycle)
+
+    Reset stat cycle.
+    Other detail info:
+
+      * This endpoint will reset the cycle immediately
+
+    Properties:
+        url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/reset
+
+        method: POST
+
+        tags: ["StatCycleConfiguration"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (12279: Invalid stat cycle status: Stat cycle [{id}], namespace [{namespace}], status [{status}])
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ResetStatCycle.create(
+        cycle_id=cycle_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(StopStatCycle)
 def stop_stat_cycle(
     cycle_id: str,
@@ -1478,7 +1591,9 @@ def update_stat_cycle(
     Update stat cycle.
     Other detail info:
 
-      *  Returns : updated stat cycle
+      * STOPPED cycles cannot be updated
+      * If changing the start time of an ACTIVE cycle to a future time, the status will be set to INIT and the related user data will be removed
+      * If changing the cycle type of an ACTIVE cycle, the related user data will be removed
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}
@@ -1541,7 +1656,9 @@ async def update_stat_cycle_async(
     Update stat cycle.
     Other detail info:
 
-      *  Returns : updated stat cycle
+      * STOPPED cycles cannot be updated
+      * If changing the start time of an ACTIVE cycle to a future time, the status will be set to INIT and the related user data will be removed
+      * If changing the cycle type of an ACTIVE cycle, the related user data will be removed
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}

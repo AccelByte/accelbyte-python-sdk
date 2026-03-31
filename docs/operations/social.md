@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Statistics Service Index (4.3.0)
+# AccelByte Gaming Services Statistics Service Index (4.3.2)
 
 
 ## Operations
@@ -79,6 +79,7 @@
 | /social/v1/admin/namespaces/{namespace}/statCycles | GET | getStatCycles | `false` | [GetStatCycles](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/get_stat_cycles.py) | [get_stat_cycles](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-get-stat-cycles](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_cycles.py) |
 | /social/v1/public/namespaces/{namespace}/statCycles | GET | getStatCycles_1 | `false` | [GetStatCycles1](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/get_stat_cycles_1.py) | [get_stat_cycles_1](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-get-stat-cycles-1](../../samples/cli/accelbyte_py_sdk_cli/social/_get_stat_cycles_1.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles/import | POST | importStatCycle | `false` | [ImportStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/import_stat_cycle.py) | [import_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-import-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_import_stat_cycle.py) |
+| /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/reset | POST | resetStatCycle | `false` | [ResetStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/reset_stat_cycle.py) | [reset_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-reset-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_reset_stat_cycle.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}/stop | PUT | stopStatCycle | `false` | [StopStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/stop_stat_cycle.py) | [stop_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-stop-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_stop_stat_cycle.py) |
 | /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId} | PUT | updateStatCycle | `false` | [UpdateStatCycle](../../accelbyte_py_sdk/api/social/operations/stat_cycle_configuration/update_stat_cycle.py) | [update_stat_cycle](../../accelbyte_py_sdk/api/social/wrappers/_stat_cycle_configuration.py) | [accelbyte_py_sdk_cli social-update-stat-cycle](../../samples/cli/accelbyte_py_sdk_cli/social/_update_stat_cycle.py) |
 

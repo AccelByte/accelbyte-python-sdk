@@ -14,6 +14,7 @@ __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .bulk_fulfill_items_v3 import BulkFulfillItemsV3
 from .fulfill_item import FulfillItem
 from .fulfill_items import FulfillItems
 from .fulfill_items_v3 import FulfillItemsV3

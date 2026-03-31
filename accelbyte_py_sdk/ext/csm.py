@@ -576,6 +576,7 @@ def create_apimodel_no_sql_resource_response_example() -> ApimodelNoSQLResourceR
     instance.hostnames = randomize()
     instance.last_rotated_at = randomize()
     instance.region = randomize()
+    instance.tls_enabled = randomize("bool")
     return instance
 
 

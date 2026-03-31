@@ -307,6 +307,8 @@ from .wrappers import update_user_entitlement
 from .wrappers import update_user_entitlement_async
 
 # fulfillment
+from .wrappers import bulk_fulfill_items_v3
+from .wrappers import bulk_fulfill_items_v3_async
 from .wrappers import fulfill_item
 from .wrappers import fulfill_item_async
 from .wrappers import fulfill_items
@@ -925,6 +927,8 @@ from .wrappers import update_service_plugin_config
 from .wrappers import update_service_plugin_config_async
 from .wrappers import upload_revocation_plugin_config_cert
 from .wrappers import upload_revocation_plugin_config_cert_async
+from .wrappers import upload_revocation_plugin_config_cert_v2
+from .wrappers import upload_revocation_plugin_config_cert_v2_async
 from .wrappers import upload_section_plugin_config_cert
 from .wrappers import upload_section_plugin_config_cert_async
 from .wrappers import uplod_loot_box_plugin_config_cert

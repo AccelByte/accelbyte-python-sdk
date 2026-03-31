@@ -37,11 +37,13 @@ from accelbyte_py_sdk.api.basic.models import NamespaceInfo
 
 @click.command()
 @click.option("--active_only", "active_only", type=bool)
+@click.option("--is_testing", "is_testing", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_namespaces(
     active_only: Optional[bool] = None,
+    is_testing: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -56,6 +58,7 @@ def get_namespaces(
         login_as_internal(login_as)
     result, error = get_namespaces_internal(
         active_only=active_only,
+        is_testing=is_testing,
         x_additional_headers=x_additional_headers,
     )
     if error:

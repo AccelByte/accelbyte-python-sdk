@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Statistics Service."""
 
-__version__ = "4.3.0"
+__version__ = "4.3.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -117,6 +117,8 @@ from ._stat_cycle_configuration import get_stat_cycles_1
 from ._stat_cycle_configuration import get_stat_cycles_1_async
 from ._stat_cycle_configuration import import_stat_cycle
 from ._stat_cycle_configuration import import_stat_cycle_async
+from ._stat_cycle_configuration import reset_stat_cycle
+from ._stat_cycle_configuration import reset_stat_cycle_async
 from ._stat_cycle_configuration import stop_stat_cycle
 from ._stat_cycle_configuration import stop_stat_cycle_async
 from ._stat_cycle_configuration import update_stat_cycle

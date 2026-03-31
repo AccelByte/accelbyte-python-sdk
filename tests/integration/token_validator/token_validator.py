@@ -394,9 +394,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
         player1_password = os.environ.get("AB_PLAYER1_PASSWORD", "")
 
         if not player1_username or not player1_password:
-            self.skipTest(
-                reason="AB_PLAYER1_USERNAME or AB_PLAYER1_PASSWORD not set"
-            )
+            self.skipTest(reason="AB_PLAYER1_USERNAME or AB_PLAYER1_PASSWORD not set")
 
         namespace, error = SDK.get_namespace()
         if error:
@@ -435,7 +433,9 @@ class TokenValidatorTestCase(IntegrationTestCase):
 
     # region test:namespace_context_fallback
 
-    def _make_cache_with_game_context(self, game_ns, studio_ns, publisher_ns, fallback=True):
+    def _make_cache_with_game_context(
+        self, game_ns, studio_ns, publisher_ns, fallback=True
+    ):
         from accelbyte_py_sdk.api.basic.models import NamespaceContext
         from accelbyte_py_sdk.token_validation._cache_types import NamespaceContextCache
 
@@ -452,7 +452,9 @@ class TokenValidatorTestCase(IntegrationTestCase):
             }
         )
 
-        cache = NamespaceContextCache(sdk, 3600, raise_on_error=False, namespace_context_fallback=fallback)
+        cache = NamespaceContextCache(
+            sdk, 3600, raise_on_error=False, namespace_context_fallback=fallback
+        )
         cache._namespace_contexts[game_ns] = NamespaceContext.create_from_dict(
             {
                 "namespace": game_ns,
@@ -491,7 +493,9 @@ class TokenValidatorTestCase(IntegrationTestCase):
         self.assertEqual("pub1", result.publisher_namespace)
 
     def test_namespace_context_fallback_disabled_returns_none(self):
-        cache = self._make_cache_with_game_context("game1", "studio1", "pub1", fallback=False)
+        cache = self._make_cache_with_game_context(
+            "game1", "studio1", "pub1", fallback=False
+        )
 
         result = cache.get_namespace_context(namespace="studio1")
 

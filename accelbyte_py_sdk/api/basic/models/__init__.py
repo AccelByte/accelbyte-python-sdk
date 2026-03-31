@@ -33,6 +33,7 @@ from .namespace_publisher_info import NamespacePublisherInfo
 from .namespace_simple_info import NamespaceSimpleInfo
 from .namespace_status_update import NamespaceStatusUpdate
 from .namespace_status_update import StatusEnum as NamespaceStatusUpdateStatusEnum
+from .namespace_testing_flag_update import NamespaceTestingFlagUpdate
 from .namespace_update import NamespaceUpdate
 from .permission import Permission
 from .retrieve_country_group_response import RetrieveCountryGroupResponse

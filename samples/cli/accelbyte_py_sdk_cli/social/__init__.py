@@ -44,6 +44,7 @@ from ._import_stat_cycle import import_stat_cycle
 from ._get_stat_cycle import get_stat_cycle
 from ._update_stat_cycle import update_stat_cycle
 from ._delete_stat_cycle import delete_stat_cycle
+from ._reset_stat_cycle import reset_stat_cycle
 from ._bulk_add_stats import bulk_add_stats
 from ._stop_stat_cycle import stop_stat_cycle
 from ._bulk_fetch_stat_items import bulk_fetch_stat_items
@@ -145,6 +146,7 @@ commands = [
     get_stat_cycle,
     update_stat_cycle,
     delete_stat_cycle,
+    reset_stat_cycle,
     bulk_add_stats,
     stop_stat_cycle,
     bulk_fetch_stat_items,

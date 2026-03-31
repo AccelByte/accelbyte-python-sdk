@@ -41,7 +41,9 @@ class UpdateStatCycle(Operation):
     Update stat cycle.
     Other detail info:
 
-      *  Returns : updated stat cycle
+      * STOPPED cycles cannot be updated
+      * If changing the start time of an ACTIVE cycle to a future time, the status will be set to INIT and the related user data will be removed
+      * If changing the cycle type of an ACTIVE cycle, the related user data will be removed
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}

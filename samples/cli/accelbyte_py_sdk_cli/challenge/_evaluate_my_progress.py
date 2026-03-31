@@ -39,12 +39,14 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 @click.command()
 @click.option("--challenge_code", "challenge_code", type=str)
+@click.option("--include_one_time_event", "include_one_time_event", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def evaluate_my_progress(
     challenge_code: Optional[str] = None,
+    include_one_time_event: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,6 +68,7 @@ def evaluate_my_progress(
             raise Exception(f"Invalid JSON for 'challengeCode'. {str(e)}") from e
     result, error = evaluate_my_progress_internal(
         challenge_code=challenge_code,
+        include_one_time_event=include_one_time_event,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

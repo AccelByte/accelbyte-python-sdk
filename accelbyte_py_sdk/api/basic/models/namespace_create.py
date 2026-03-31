@@ -35,12 +35,15 @@ class NamespaceCreate(Model):
         display_name: (displayName) REQUIRED str
 
         namespace: (namespace) REQUIRED str
+
+        is_testing: (isTesting) OPTIONAL bool
     """
 
     # region fields
 
     display_name: str  # REQUIRED
     namespace: str  # REQUIRED
+    is_testing: bool  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class NamespaceCreate(Model):
 
     def with_namespace(self, value: str) -> NamespaceCreate:
         self.namespace = value
+        return self
+
+    def with_is_testing(self, value: bool) -> NamespaceCreate:
+        self.is_testing = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class NamespaceCreate(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "is_testing"):
+            result["isTesting"] = bool(self.is_testing)
+        elif include_empty:
+            result["isTesting"] = False
         return result
 
     # endregion to methods
@@ -75,10 +86,18 @@ class NamespaceCreate(Model):
     # region static methods
 
     @classmethod
-    def create(cls, display_name: str, namespace: str, **kwargs) -> NamespaceCreate:
+    def create(
+        cls,
+        display_name: str,
+        namespace: str,
+        is_testing: Optional[bool] = None,
+        **kwargs,
+    ) -> NamespaceCreate:
         instance = cls()
         instance.display_name = display_name
         instance.namespace = namespace
+        if is_testing is not None:
+            instance.is_testing = is_testing
         return instance
 
     @classmethod
@@ -96,6 +115,10 @@ class NamespaceCreate(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "isTesting" in dict_ and dict_["isTesting"] is not None:
+            instance.is_testing = bool(dict_["isTesting"])
+        elif include_empty:
+            instance.is_testing = False
         return instance
 
     @classmethod
@@ -137,6 +160,7 @@ class NamespaceCreate(Model):
         return {
             "displayName": "display_name",
             "namespace": "namespace",
+            "isTesting": "is_testing",
         }
 
     @staticmethod
@@ -144,6 +168,7 @@ class NamespaceCreate(Model):
         return {
             "displayName": True,
             "namespace": True,
+            "isTesting": False,
         }
 
     # endregion static methods

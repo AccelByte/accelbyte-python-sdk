@@ -267,7 +267,7 @@ eval_tap $? 23 'DeleteReward' test.out
 $PYTHON -m $MODULE 'seasonpass-update-reward' \
     'lnroQehMDli6t9un' \
     'QLYXxm09wpGAbpEm' \
-    --body '{"currency": {"currencyCode": "DY9vLh3u6EDsUmrV", "namespace": "6kH4OotKwG3UC6XC"}, "image": {"as": "nnZxF8CmQr17W65b", "caption": "r34rBBN9tU6TDm5G", "height": 23, "imageUrl": "VMDu87t0ldWf7iSG", "smallImageUrl": "IiKFtWtn4Yr2svKM", "width": 69}, "itemId": "pqLGZ0TBujELAUK6", "nullFields": ["mQ5iZgbwwm5iGzXt", "cknrgidKupvXO6aj", "4hCmTC34jxW4pIDw"], "quantity": 7, "type": "ITEM"}' \
+    --body '{"currency": {"currencyCode": "DY9vLh3u6EDsUmrV", "namespace": "6kH4OotKwG3UC6XC"}, "image": {"as": "nnZxF8CmQr17W65b", "caption": "r34rBBN9tU6TDm5G", "height": 23, "imageUrl": "VMDu87t0ldWf7iSG", "smallImageUrl": "IiKFtWtn4Yr2svKM", "width": 69}, "itemId": "pqLGZ0TBujELAUK6", "nullFields": ["cknrgidKupvXO6aj", "4hCmTC34jxW4pIDw", "mQ5iZgbwwm5iGzXt"], "quantity": 7, "type": "ITEM"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 24 'UpdateReward' test.out

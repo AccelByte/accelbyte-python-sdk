@@ -35,6 +35,7 @@ from ._admin_get_user_profile_public_info_by_ids import (
 from ._get_namespace_publisher import get_namespace_publisher
 from ._get_publisher_config import get_publisher_config
 from ._change_namespace_status import change_namespace_status
+from ._update_testing_flag import update_testing_flag
 from ._anonymize_user_profile import anonymize_user_profile
 from ._generated_user_upload_content_url import generated_user_upload_content_url
 from ._get_user_profile_info import get_user_profile_info
@@ -115,6 +116,7 @@ commands = [
     get_namespace_publisher,
     get_publisher_config,
     change_namespace_status,
+    update_testing_flag,
     anonymize_user_profile,
     generated_user_upload_content_url,
     get_user_profile_info,

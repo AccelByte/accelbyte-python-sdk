@@ -69,4 +69,4 @@ def upload_revocation_plugin_config_cert(
 
 
 upload_revocation_plugin_config_cert.operation_id = "uploadRevocationPluginConfigCert"
-upload_revocation_plugin_config_cert.is_deprecated = False
+upload_revocation_plugin_config_cert.is_deprecated = True

@@ -40,6 +40,7 @@ from ..api.basic.models import NamespaceInfo
 from ..api.basic.models import NamespacePublisherInfo
 from ..api.basic.models import NamespaceSimpleInfo
 from ..api.basic.models import NamespaceStatusUpdate
+from ..api.basic.models import NamespaceTestingFlagUpdate
 from ..api.basic.models import NamespaceUpdate
 from ..api.basic.models import Permission
 from ..api.basic.models import RetrieveCountryGroupResponse
@@ -155,6 +156,7 @@ def create_namespace_create_example() -> NamespaceCreate:
     instance = NamespaceCreate()
     instance.display_name = randomize("slug")
     instance.namespace = randomize("slug")
+    instance.is_testing = randomize("bool")
     return instance
 
 
@@ -164,6 +166,7 @@ def create_namespace_info_example() -> NamespaceInfo:
     instance.namespace = randomize("slug")
     instance.client_id = randomize("uid")
     instance.created_at = randomize("date")
+    instance.is_testing = randomize("bool")
     instance.parent_namespace = randomize("slug")
     instance.status = randomize()
     instance.updated_at = randomize("date")
@@ -186,6 +189,12 @@ def create_namespace_simple_info_example() -> NamespaceSimpleInfo:
 def create_namespace_status_update_example() -> NamespaceStatusUpdate:
     instance = NamespaceStatusUpdate()
     instance.status = randomize()
+    return instance
+
+
+def create_namespace_testing_flag_update_example() -> NamespaceTestingFlagUpdate:
+    instance = NamespaceTestingFlagUpdate()
+    instance.is_testing = randomize("bool")
     return instance
 
 

@@ -195,6 +195,7 @@ from ..api.platform.models import FulfillmentStateInfo
 from ..api.platform.models import FulfillmentV2Request
 from ..api.platform.models import FulfillmentV2RequestItem
 from ..api.platform.models import FulfillmentV2Result
+from ..api.platform.models import FulfillmentV3Request
 from ..api.platform.models import FullAppInfo
 from ..api.platform.models import FullCategoryInfo
 from ..api.platform.models import FullItemInfo
@@ -2380,7 +2381,15 @@ def create_fulfillment_v2_result_example() -> FulfillmentV2Result:
     instance.credit_summaries = [create_credit_summary_example()]
     instance.entitlement_summaries = [create_entitlement_summary_example()]
     instance.id_ = randomize()
+    instance.state_reason = randomize()
     instance.subscription_summaries = [create_subscription_summary_example()]
+    return instance
+
+
+def create_fulfillment_v3_request_example() -> FulfillmentV3Request:
+    instance = FulfillmentV3Request()
+    instance.items = [create_fulfillment_v2_request_item_example()]
+    instance.transaction_id = randomize("uid")
     return instance
 
 

@@ -794,9 +794,9 @@ def update_section(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update s section (updateSection)
+    """Update a section (updateSection)
 
-    This API is used to update s section.
+    This API is used to update a section.
 
     Other detail info:
 
@@ -874,9 +874,9 @@ async def update_section_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update s section (updateSection)
+    """Update a section (updateSection)
 
-    This API is used to update s section.
+    This API is used to update a section.
 
     Other detail info:
 

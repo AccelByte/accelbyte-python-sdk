@@ -55,6 +55,7 @@ from ..operations.service_plugin_config import UpdateRevocationPluginConfig
 from ..operations.service_plugin_config import UpdateSectionPluginConfig
 from ..operations.service_plugin_config import UpdateServicePluginConfig
 from ..operations.service_plugin_config import UploadRevocationPluginConfigCert
+from ..operations.service_plugin_config import UploadRevocationPluginConfigCertV2
 from ..operations.service_plugin_config import UploadSectionPluginConfigCert
 from ..operations.service_plugin_config import UplodLootBoxPluginConfigCert
 from ..models import GrpcServerInfoConnectionTypeEnumEnum
@@ -1158,6 +1159,7 @@ async def update_service_plugin_config_async(
     )
 
 
+@deprecated
 @same_doc_as(UploadRevocationPluginConfigCert)
 def upload_revocation_plugin_config_cert(
     file: Optional[Any] = None,
@@ -1165,9 +1167,9 @@ def upload_revocation_plugin_config_cert(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload revocation plugin custom config tls cert (uploadRevocationPluginConfigCert)
+    """[Deprecated]Upload revocation plugin custom config tls cert (uploadRevocationPluginConfigCert)
 
-    Upload revocation plugin custom config tls cert.Other detail info:
+    Upload revocation plugin custom config tls cert. This api has been deprecated, please use /admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert to update revocation certOther detail info:
 
       * Returns : updated service plugin config
 
@@ -1204,6 +1206,7 @@ def upload_revocation_plugin_config_cert(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UploadRevocationPluginConfigCert)
 async def upload_revocation_plugin_config_cert_async(
     file: Optional[Any] = None,
@@ -1211,9 +1214,9 @@ async def upload_revocation_plugin_config_cert_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload revocation plugin custom config tls cert (uploadRevocationPluginConfigCert)
+    """[Deprecated]Upload revocation plugin custom config tls cert (uploadRevocationPluginConfigCert)
 
-    Upload revocation plugin custom config tls cert.Other detail info:
+    Upload revocation plugin custom config tls cert. This api has been deprecated, please use /admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert to update revocation certOther detail info:
 
       * Returns : updated service plugin config
 
@@ -1244,6 +1247,100 @@ async def upload_revocation_plugin_config_cert_async(
         if error:
             return None, error
     request = UploadRevocationPluginConfigCert.create(
+        file=file,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UploadRevocationPluginConfigCertV2)
+def upload_revocation_plugin_config_cert_v2(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upload revocation plugin custom config tls cert (uploadRevocationPluginConfigCertV2)
+
+    Upload revocation plugin custom config tls cert.Other detail info:
+
+      * Returns : updated service plugin config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert
+
+        method: PUT
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationPluginConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = UploadRevocationPluginConfigCertV2.create(
+        file=file,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UploadRevocationPluginConfigCertV2)
+async def upload_revocation_plugin_config_cert_v2_async(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upload revocation plugin custom config tls cert (uploadRevocationPluginConfigCertV2)
+
+    Upload revocation plugin custom config tls cert.Other detail info:
+
+      * Returns : updated service plugin config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation/customConfig/cert
+
+        method: PUT
+
+        tags: ["ServicePluginConfig"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - RevocationPluginConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = UploadRevocationPluginConfigCertV2.create(
         file=file,
         namespace=namespace,
     )

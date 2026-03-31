@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_cycle_info import ModelsCycleInfo
+
 
 class ModelsGetLeaderboardConfigRespV3(Model):
     """Models get leaderboard config resp V3 (models.GetLeaderboardConfigRespV3)
@@ -50,6 +52,8 @@ class ModelsGetLeaderboardConfigRespV3(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        cycle_metadata: (cycleMetadata) OPTIONAL Dict[str, ModelsCycleInfo]
+
         deleted_at: (deletedAt) OPTIONAL str
 
         description: (description) OPTIONAL str
@@ -68,6 +72,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
     name: str  # REQUIRED
     stat_code: str  # REQUIRED
     updated_at: str  # REQUIRED
+    cycle_metadata: Dict[str, ModelsCycleInfo]  # OPTIONAL
     deleted_at: str  # OPTIONAL
     description: str  # OPTIONAL
     icon_url: str  # OPTIONAL
@@ -110,6 +115,12 @@ class ModelsGetLeaderboardConfigRespV3(Model):
 
     def with_updated_at(self, value: str) -> ModelsGetLeaderboardConfigRespV3:
         self.updated_at = value
+        return self
+
+    def with_cycle_metadata(
+        self, value: Dict[str, ModelsCycleInfo]
+    ) -> ModelsGetLeaderboardConfigRespV3:
+        self.cycle_metadata = value
         return self
 
     def with_deleted_at(self, value: str) -> ModelsGetLeaderboardConfigRespV3:
@@ -166,6 +177,13 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "cycle_metadata"):
+            result["cycleMetadata"] = {
+                str(k0): v0.to_dict(include_empty=include_empty)
+                for k0, v0 in self.cycle_metadata.items()
+            }
+        elif include_empty:
+            result["cycleMetadata"] = {}
         if hasattr(self, "deleted_at"):
             result["deletedAt"] = str(self.deleted_at)
         elif include_empty:
@@ -196,6 +214,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
         name: str,
         stat_code: str,
         updated_at: str,
+        cycle_metadata: Optional[Dict[str, ModelsCycleInfo]] = None,
         deleted_at: Optional[str] = None,
         description: Optional[str] = None,
         icon_url: Optional[str] = None,
@@ -211,6 +230,8 @@ class ModelsGetLeaderboardConfigRespV3(Model):
         instance.name = name
         instance.stat_code = stat_code
         instance.updated_at = updated_at
+        if cycle_metadata is not None:
+            instance.cycle_metadata = cycle_metadata
         if deleted_at is not None:
             instance.deleted_at = deleted_at
         if description is not None:
@@ -262,6 +283,15 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "cycleMetadata" in dict_ and dict_["cycleMetadata"] is not None:
+            instance.cycle_metadata = {
+                str(k0): ModelsCycleInfo.create_from_dict(
+                    v0, include_empty=include_empty
+                )
+                for k0, v0 in dict_["cycleMetadata"].items()
+            }
+        elif include_empty:
+            instance.cycle_metadata = {}
         if "deletedAt" in dict_ and dict_["deletedAt"] is not None:
             instance.deleted_at = str(dict_["deletedAt"])
         elif include_empty:
@@ -326,6 +356,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             "name": "name",
             "statCode": "stat_code",
             "updatedAt": "updated_at",
+            "cycleMetadata": "cycle_metadata",
             "deletedAt": "deleted_at",
             "description": "description",
             "iconURL": "icon_url",
@@ -343,6 +374,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             "name": True,
             "statCode": True,
             "updatedAt": True,
+            "cycleMetadata": False,
             "deletedAt": False,
             "description": False,
             "iconURL": False,

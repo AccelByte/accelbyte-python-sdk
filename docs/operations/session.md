@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.29.0)
+# AccelByte Gaming Services Session Service Index (3.29.3)
 
 
 ## Operations

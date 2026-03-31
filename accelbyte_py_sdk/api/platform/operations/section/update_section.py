@@ -36,9 +36,9 @@ from ...models import ValidationErrorEntity
 
 
 class UpdateSection(Operation):
-    """Update s section (updateSection)
+    """Update a section (updateSection)
 
-    This API is used to update s section.
+    This API is used to update a section.
 
     Other detail info:
 
