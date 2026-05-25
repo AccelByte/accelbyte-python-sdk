@@ -141,16 +141,21 @@ def main(*args, **kwargs) -> None:
         import tests.core
         import tests.sdk.core
         import tests.sdk.api
+        import tests.sdk.token_validation
 
         core_tests = load_tests_from_module(loader, tests.core, **kwargs)
         sdk_core_tests = load_tests_from_module(loader, tests.sdk.core, **kwargs)
         sdk_api_tests = load_tests_from_module(loader, tests.sdk.api, **kwargs)
+        sdk_token_validation_tests = load_tests_from_module(
+            loader, tests.sdk.token_validation, **kwargs
+        )
 
         suite = unittest.TestSuite(
             [
                 core_tests,
                 sdk_core_tests,
                 sdk_api_tests,
+                sdk_token_validation_tests,
             ]
         )
         results_core = runner.run(suite)

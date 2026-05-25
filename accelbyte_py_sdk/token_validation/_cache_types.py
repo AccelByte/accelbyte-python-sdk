@@ -1,6 +1,6 @@
 import logging
 import os
-from threading import RLock
+from threading import Event, RLock
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import jwt
@@ -28,6 +28,24 @@ JWKSet = Dict[str, PublicPrivateKey]
 NamespaceContext = basic_models.NamespaceContext
 NamespaceRole = Dict[str, str]
 Role = iam_models.ModelRolePermissionResponseV3
+
+
+class _InflightFetch:
+    """Single-flight coordination record: one fetcher per key; others wait on the event.
+
+    `error` holds either a service-layer error object (returned from the
+    (result, error) tuple) or a raised BaseException. Waiters distinguish the
+    two and re-raise exceptions to preserve the original traceback.
+    """
+
+    __slots__ = ("event", "error")
+
+    def __init__(self) -> None:
+        self.event: Event = Event()
+        # None = no error; BaseException subtype = raised exception captured by
+        # the fetcher; otherwise a service-layer error tuple value. Typed as
+        # Optional[Any] because Union[BaseException, Any] collapses to Any.
+        self.error: Optional[Any] = None
 
 
 class JWKSCache(Timer):
@@ -91,15 +109,17 @@ class NamespaceContextCache(Timer):
     def __init__(
         self,
         sdk: AccelByteSDK,
-        interval: Union[int, float],
+        interval: Optional[Union[int, float]] = None,
         raise_on_error: bool = True,
         namespace_context_fallback: Optional[bool] = None,
         **kwargs,
     ):
         self.sdk = sdk
         self._namespace_contexts: Dict[str, Any] = {}
+        self._inflight: Dict[str, _InflightFetch] = {}
         self._lock = RLock()
         self._raise_on_error = raise_on_error
+        self._generation: int = 0
 
         if namespace_context_fallback is not None:
             self._namespace_context_fallback = namespace_context_fallback
@@ -115,34 +135,126 @@ class NamespaceContextCache(Timer):
                 else True
             )
 
-        Timer.__init__(
-            self,
-            interval,
-            self.clear,
-            daemon=True,
-            repeats=-1,
-            autostart=True,
-            repeat_on_exception=True,
-        )
+        if interval is not None:
+            Timer.__init__(
+                self,
+                interval,
+                self.refresh,
+                daemon=True,
+                repeats=-1,
+                autostart=True,
+                repeat_on_exception=True,
+            )
 
     def clear(self):
+        """Drop all cached entries and pending single-flight coordinators.
+
+        Bumps the generation counter so any concurrent refresh() aborts before
+        re-populating the cleared cache. Signals waiters on outstanding
+        coordinators before discarding them so no thread blocks indefinitely.
+        Waiters woken this way observe inflight.error == None (the fetch had
+        not yet completed) and surface a transient None / 401 to callers --
+        the expected semantic for a deliberately invalidated cache.
+
+        The fetcher's finally block may call event.set() again on a coordinator
+        already signalled here; threading.Event.set() is idempotent.
+        """
         with self._lock:
+            self._generation += 1
+            for fetch in self._inflight.values():
+                fetch.event.set()
             self._namespace_contexts = {}
+            self._inflight = {}
 
     def update(self, **kwargs):
         pass
 
-    def cache_namespace_context(self, namespace: str, **kwargs) -> Any:
-        namespace_context, error = basic_service.get_namespace_context(
-            namespace=namespace,
-            x_additional_headers=kwargs.get("x_additional_headers", None),
-            sdk=self.sdk,
-        )
-        if error:
-            return error
+    def refresh(self, **kwargs):
+        """Re-fetch every currently-cached namespace context in place.
+
+        On per-key failure the prior entry is retained (serve-stale), so a transient
+        IAM outage cannot empty the cache and cascade into permission denials.
+
+        Invoked by the background Timer with no kwargs, so x_additional_headers is
+        not propagated during automatic refreshes; auth flows through sdk=self.sdk.
+        Live callers entering get_namespace_context for a refreshed key hit the
+        cached entry before the single-flight gate, so they never block on the
+        in-progress refresh. Aborts immediately if clear() bumps the generation
+        counter mid-loop, so external invalidation is not silently undone.
+        Keys currently in-flight (in _inflight but not yet in _namespace_contexts)
+        are not included in the snapshot; they will be picked up next cycle.
+        """
         with self._lock:
-            self._namespace_contexts[namespace] = namespace_context
-        return None
+            gen = self._generation
+            namespaces = list(self._namespace_contexts.keys())
+        for namespace in namespaces:
+            with self._lock:
+                if self._generation != gen:
+                    return
+            try:
+                error = self.cache_namespace_context(namespace=namespace, **kwargs)
+            except Exception as exc:
+                logger.debug(
+                    "namespace context refresh raised for '%s': %s; keeping stale entry",
+                    namespace,
+                    exc,
+                )
+                continue
+            if error:
+                logger.debug(
+                    "namespace context refresh failed for '%s': %s; keeping stale entry",
+                    namespace,
+                    error,
+                )
+                continue
+            # If clear() ran during the fetch, undo the spurious write so the
+            # invalidation is not silently defeated by this refresh cycle.
+            with self._lock:
+                if self._generation != gen:
+                    self._namespace_contexts.pop(namespace, None)
+                    return
+
+    def cache_namespace_context(self, namespace: str, **kwargs) -> Any:
+        with self._lock:
+            inflight = self._inflight.get(namespace)
+            if inflight is None:
+                inflight = _InflightFetch()
+                self._inflight[namespace] = inflight
+                is_fetcher = True
+            else:
+                is_fetcher = False
+
+        if not is_fetcher:
+            logger.debug("cache waiter: namespace=%s, waiting for in-flight fetch",
+                         namespace)
+            inflight.event.wait()
+            err = inflight.error
+            logger.debug("cache waiter: namespace=%s, unblocked, error=%r",
+                         namespace, err)
+            if isinstance(err, BaseException):
+                raise err
+            return err
+
+        try:
+            try:
+                namespace_context, error = basic_service.get_namespace_context(
+                    namespace=namespace,
+                    x_additional_headers=kwargs.get("x_additional_headers", None),
+                    sdk=self.sdk,
+                )
+            except BaseException as exc:
+                inflight.error = exc
+                raise
+            if error:
+                inflight.error = error
+                return error
+            with self._lock:
+                self._namespace_contexts[namespace] = namespace_context
+            return None
+        finally:
+            with self._lock:
+                self._inflight.pop(namespace, None)
+                inflight.event.set()
 
     def get_namespace_context(
         self, namespace: str, **kwargs
@@ -152,6 +264,9 @@ class NamespaceContextCache(Timer):
             if namespace_context:
                 return namespace_context
 
+        # Lock released; concurrent callers for the same namespace are coalesced
+        # inside cache_namespace_context via _InflightFetch. Do not remove that
+        # coordination without also re-acquiring the lock around the fetch.
         error = self.cache_namespace_context(namespace=namespace, **kwargs)
         if error:
             if self._namespace_context_fallback:
@@ -288,45 +403,143 @@ class RolesCache(Timer):
     def __init__(
         self,
         sdk: AccelByteSDK,
-        interval: Union[int, float],
+        interval: Optional[Union[int, float]] = None,
         raise_on_error: bool = True,
         **kwargs,
     ):
         self.sdk = sdk
         self._roles: Dict[Tuple[str, Optional[str]], Any] = {}
+        self._inflight: Dict[Tuple[str, Optional[str]], _InflightFetch] = {}
         self._lock = RLock()
         self._raise_on_error = raise_on_error
-        Timer.__init__(
-            self,
-            interval,
-            self.clear,
-            daemon=True,
-            repeats=-1,
-            autostart=True,
-            repeat_on_exception=True,
-        )
+        self._generation: int = 0
+        if interval is not None:
+            Timer.__init__(
+                self,
+                interval,
+                self.refresh,
+                daemon=True,
+                repeats=-1,
+                autostart=True,
+                repeat_on_exception=True,
+            )
 
     def clear(self):
+        """Drop all cached entries and pending single-flight coordinators.
+
+        Bumps the generation counter so any concurrent refresh() aborts before
+        re-populating the cleared cache. Signals waiters on outstanding
+        coordinators before discarding them so no thread blocks indefinitely.
+        Waiters woken this way observe inflight.error == None (the fetch had
+        not yet completed) and surface a transient None / 401 to callers --
+        the expected semantic for a deliberately invalidated cache.
+
+        The fetcher's finally block may call event.set() again on a coordinator
+        already signalled here; threading.Event.set() is idempotent.
+        """
         with self._lock:
+            self._generation += 1
+            for fetch in self._inflight.values():
+                fetch.event.set()
             self._roles = {}
+            self._inflight = {}
 
     def update(self, **kwargs):
         pass
 
+    def refresh(self, **kwargs):
+        """Re-fetch every currently-cached role in place.
+
+        On per-key failure the prior entry is retained (serve-stale), so a transient
+        IAM outage cannot empty the cache and cascade into 401 InsufficientPermissions.
+
+        Invoked by the background Timer with no kwargs, so x_additional_headers is
+        not propagated during automatic refreshes; auth flows through sdk=self.sdk.
+        Live callers entering get_role for a refreshed key hit the cached entry
+        before the single-flight gate, so they never block on the in-progress
+        refresh. Aborts immediately if clear() bumps the generation counter
+        mid-loop, so external invalidation is not silently undone. Keys
+        currently in-flight (in _inflight but not yet in _roles) are not
+        included in the snapshot; they will be picked up next cycle.
+        """
+        with self._lock:
+            gen = self._generation
+            keys = list(self._roles.keys())
+        for role_id, namespace in keys:
+            with self._lock:
+                if self._generation != gen:
+                    return
+            try:
+                error = self.cache_role(role_id=role_id, namespace=namespace, **kwargs)
+            except Exception as exc:
+                logger.debug(
+                    "role refresh raised for (%s, %s): %s; keeping stale entry",
+                    role_id,
+                    namespace,
+                    exc,
+                )
+                continue
+            if error:
+                logger.debug(
+                    "role refresh failed for (%s, %s): %s; keeping stale entry",
+                    role_id,
+                    namespace,
+                    error,
+                )
+                continue
+            # If clear() ran during the fetch, undo the spurious write so the
+            # invalidation is not silently defeated by this refresh cycle.
+            with self._lock:
+                if self._generation != gen:
+                    self._roles.pop((role_id, namespace), None)
+                    return
+
     def cache_role(
         self, role_id: str, namespace: Optional[str] = None, **kwargs
     ) -> Any:
-        role, error = iam_service.admin_get_role_namespace_permission_v3(
-            role_id=role_id,
-            namespace=namespace,
-            x_additional_headers=kwargs.get("x_additional_headers", None),
-            sdk=self.sdk,
-        )
-        if error:
-            return error
+        cache_key = (role_id, namespace)
+
         with self._lock:
-            self._roles[(role_id, namespace)] = role
-        return None
+            inflight = self._inflight.get(cache_key)
+            if inflight is None:
+                inflight = _InflightFetch()
+                self._inflight[cache_key] = inflight
+                is_fetcher = True
+            else:
+                is_fetcher = False
+
+        if not is_fetcher:
+            logger.debug("cache waiter: role=%s namespace=%s, waiting for in-flight fetch",
+                         role_id, namespace)
+            inflight.event.wait()
+            err = inflight.error
+            logger.debug("cache waiter: role=%s namespace=%s, unblocked, error=%r",
+                         role_id, namespace, err)
+            if isinstance(err, BaseException):
+                raise err
+            return err
+
+        try:
+            try:
+                role, error = iam_service.admin_get_role_namespace_permission_v3(
+                    role_id=role_id,
+                    namespace=namespace,
+                    x_additional_headers=kwargs.get("x_additional_headers", None),
+                    sdk=self.sdk,
+                )
+            except BaseException as exc:
+                inflight.error = exc
+                raise
+            if error:
+                inflight.error = error
+                return error
+            with self._lock:
+                self._roles[cache_key] = role
+            return None
+        finally:
+            with self._lock:
+                self._inflight.pop(cache_key, None)
+                inflight.event.set()
 
     def get_role(
         self, role_id: str, namespace: Optional[str] = None, **kwargs
@@ -337,6 +550,9 @@ class RolesCache(Timer):
             if role:
                 return role
 
+        # Lock released; concurrent callers for the same key are coalesced inside
+        # cache_role via _InflightFetch. Do not remove that coordination without
+        # also re-acquiring the lock around the fetch.
         error = self.cache_role(role_id=role_id, namespace=namespace, **kwargs)
         if error:
             if self._raise_on_error:
