@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminListUsersV3(Operation):
     """Admin List Users V3 (AdminListUsersV3)
 
-    **This endpoint requires publisher namespace.**
+    **Requires a publisher namespace.**
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
 

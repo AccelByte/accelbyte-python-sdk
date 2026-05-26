@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetListCountryAgeRestriction(Operation):
     """Get List Country age restriction (GetListCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_**
 

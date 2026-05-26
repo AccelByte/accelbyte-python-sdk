@@ -160,6 +160,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-list-schedules' \
 $ python -m accelbyte_py_sdk_cli 'challenge-admin-delete-tied-challenge' \
     'string' \
     'string' \
+    --safe_delete 'string' \
     > result.txt
 ```
 

@@ -67,4 +67,4 @@ def old_retrieve_localized_policy_versions(
 old_retrieve_localized_policy_versions.operation_id = (
     "oldRetrieveLocalizedPolicyVersions"
 )
-old_retrieve_localized_policy_versions.is_deprecated = False
+old_retrieve_localized_policy_versions.is_deprecated = True

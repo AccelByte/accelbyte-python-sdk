@@ -40,13 +40,13 @@ class ModelSSOPlatformCredentialRequest(Model):
 
         federation_metadata_url: (federationMetadataUrl) REQUIRED str
 
-        is_active: (isActive) REQUIRED bool
-
         redirect_uri: (redirectUri) REQUIRED str
 
         secret: (secret) REQUIRED str
 
         sso_url: (ssoUrl) REQUIRED str
+
+        is_active: (isActive) OPTIONAL bool
     """
 
     # region fields
@@ -55,10 +55,10 @@ class ModelSSOPlatformCredentialRequest(Model):
     api_key: str  # REQUIRED
     app_id: str  # REQUIRED
     federation_metadata_url: str  # REQUIRED
-    is_active: bool  # REQUIRED
     redirect_uri: str  # REQUIRED
     secret: str  # REQUIRED
     sso_url: str  # REQUIRED
+    is_active: bool  # OPTIONAL
 
     # endregion fields
 
@@ -82,10 +82,6 @@ class ModelSSOPlatformCredentialRequest(Model):
         self.federation_metadata_url = value
         return self
 
-    def with_is_active(self, value: bool) -> ModelSSOPlatformCredentialRequest:
-        self.is_active = value
-        return self
-
     def with_redirect_uri(self, value: str) -> ModelSSOPlatformCredentialRequest:
         self.redirect_uri = value
         return self
@@ -96,6 +92,10 @@ class ModelSSOPlatformCredentialRequest(Model):
 
     def with_sso_url(self, value: str) -> ModelSSOPlatformCredentialRequest:
         self.sso_url = value
+        return self
+
+    def with_is_active(self, value: bool) -> ModelSSOPlatformCredentialRequest:
+        self.is_active = value
         return self
 
     # endregion with_x methods
@@ -120,10 +120,6 @@ class ModelSSOPlatformCredentialRequest(Model):
             result["federationMetadataUrl"] = str(self.federation_metadata_url)
         elif include_empty:
             result["federationMetadataUrl"] = ""
-        if hasattr(self, "is_active"):
-            result["isActive"] = bool(self.is_active)
-        elif include_empty:
-            result["isActive"] = False
         if hasattr(self, "redirect_uri"):
             result["redirectUri"] = str(self.redirect_uri)
         elif include_empty:
@@ -136,6 +132,10 @@ class ModelSSOPlatformCredentialRequest(Model):
             result["ssoUrl"] = str(self.sso_url)
         elif include_empty:
             result["ssoUrl"] = ""
+        if hasattr(self, "is_active"):
+            result["isActive"] = bool(self.is_active)
+        elif include_empty:
+            result["isActive"] = False
         return result
 
     # endregion to methods
@@ -149,10 +149,10 @@ class ModelSSOPlatformCredentialRequest(Model):
         api_key: str,
         app_id: str,
         federation_metadata_url: str,
-        is_active: bool,
         redirect_uri: str,
         secret: str,
         sso_url: str,
+        is_active: Optional[bool] = None,
         **kwargs,
     ) -> ModelSSOPlatformCredentialRequest:
         instance = cls()
@@ -160,10 +160,11 @@ class ModelSSOPlatformCredentialRequest(Model):
         instance.api_key = api_key
         instance.app_id = app_id
         instance.federation_metadata_url = federation_metadata_url
-        instance.is_active = is_active
         instance.redirect_uri = redirect_uri
         instance.secret = secret
         instance.sso_url = sso_url
+        if is_active is not None:
+            instance.is_active = is_active
         return instance
 
     @classmethod
@@ -192,10 +193,6 @@ class ModelSSOPlatformCredentialRequest(Model):
             instance.federation_metadata_url = str(dict_["federationMetadataUrl"])
         elif include_empty:
             instance.federation_metadata_url = ""
-        if "isActive" in dict_ and dict_["isActive"] is not None:
-            instance.is_active = bool(dict_["isActive"])
-        elif include_empty:
-            instance.is_active = False
         if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
             instance.redirect_uri = str(dict_["redirectUri"])
         elif include_empty:
@@ -208,6 +205,10 @@ class ModelSSOPlatformCredentialRequest(Model):
             instance.sso_url = str(dict_["ssoUrl"])
         elif include_empty:
             instance.sso_url = ""
+        if "isActive" in dict_ and dict_["isActive"] is not None:
+            instance.is_active = bool(dict_["isActive"])
+        elif include_empty:
+            instance.is_active = False
         return instance
 
     @classmethod
@@ -255,10 +256,10 @@ class ModelSSOPlatformCredentialRequest(Model):
             "apiKey": "api_key",
             "appId": "app_id",
             "federationMetadataUrl": "federation_metadata_url",
-            "isActive": "is_active",
             "redirectUri": "redirect_uri",
             "secret": "secret",
             "ssoUrl": "sso_url",
+            "isActive": "is_active",
         }
 
     @staticmethod
@@ -268,10 +269,10 @@ class ModelSSOPlatformCredentialRequest(Model):
             "apiKey": True,
             "appId": True,
             "federationMetadataUrl": True,
-            "isActive": True,
             "redirectUri": True,
             "secret": True,
             "ssoUrl": True,
+            "isActive": False,
         }
 
     # endregion static methods

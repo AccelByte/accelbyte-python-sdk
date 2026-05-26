@@ -36,6 +36,8 @@ class ApimodelNoSQLDatabaseResponse(Model):
     """Apimodel no SQL database response (apimodel.NoSQLDatabaseResponse)
 
     Properties:
+        accept_nosql_secure_credential_handling: (acceptNosqlSecureCredentialHandling) REQUIRED bool
+
         app_id: (appId) REQUIRED str
 
         credentials: (credentials) REQUIRED ApimodelNoSQLDatabaseCredentialResponse
@@ -57,6 +59,7 @@ class ApimodelNoSQLDatabaseResponse(Model):
 
     # region fields
 
+    accept_nosql_secure_credential_handling: bool  # REQUIRED
     app_id: str  # REQUIRED
     credentials: ApimodelNoSQLDatabaseCredentialResponse  # REQUIRED
     db_id: str  # REQUIRED
@@ -70,6 +73,12 @@ class ApimodelNoSQLDatabaseResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_accept_nosql_secure_credential_handling(
+        self, value: bool
+    ) -> ApimodelNoSQLDatabaseResponse:
+        self.accept_nosql_secure_credential_handling = value
+        return self
 
     def with_app_id(self, value: str) -> ApimodelNoSQLDatabaseResponse:
         self.app_id = value
@@ -115,6 +124,12 @@ class ApimodelNoSQLDatabaseResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "accept_nosql_secure_credential_handling"):
+            result["acceptNosqlSecureCredentialHandling"] = bool(
+                self.accept_nosql_secure_credential_handling
+            )
+        elif include_empty:
+            result["acceptNosqlSecureCredentialHandling"] = False
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
@@ -162,6 +177,7 @@ class ApimodelNoSQLDatabaseResponse(Model):
     @classmethod
     def create(
         cls,
+        accept_nosql_secure_credential_handling: bool,
         app_id: str,
         credentials: ApimodelNoSQLDatabaseCredentialResponse,
         db_id: str,
@@ -174,6 +190,9 @@ class ApimodelNoSQLDatabaseResponse(Model):
         **kwargs,
     ) -> ApimodelNoSQLDatabaseResponse:
         instance = cls()
+        instance.accept_nosql_secure_credential_handling = (
+            accept_nosql_secure_credential_handling
+        )
         instance.app_id = app_id
         instance.credentials = credentials
         instance.db_id = db_id
@@ -192,6 +211,15 @@ class ApimodelNoSQLDatabaseResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "acceptNosqlSecureCredentialHandling" in dict_
+            and dict_["acceptNosqlSecureCredentialHandling"] is not None
+        ):
+            instance.accept_nosql_secure_credential_handling = bool(
+                dict_["acceptNosqlSecureCredentialHandling"]
+            )
+        elif include_empty:
+            instance.accept_nosql_secure_credential_handling = False
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
@@ -275,6 +303,7 @@ class ApimodelNoSQLDatabaseResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "acceptNosqlSecureCredentialHandling": "accept_nosql_secure_credential_handling",
             "appId": "app_id",
             "credentials": "credentials",
             "dbId": "db_id",
@@ -289,6 +318,7 @@ class ApimodelNoSQLDatabaseResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "acceptNosqlSecureCredentialHandling": True,
             "appId": True,
             "credentials": True,
             "dbId": True,

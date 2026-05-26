@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicProcessWebLinkPlatformV3(Operation):
     """Process Link Progress  (PublicProcessWebLinkPlatformV3)
 
-    This endpoint is used to process third party account link, this endpoint will return the link status directly instead of redirecting to the original page.
+    Processes third party account link and returns the link status directly instead of redirecting to the original page.
     The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
     Supported platforms:
     - ps4web

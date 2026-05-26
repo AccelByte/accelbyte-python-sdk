@@ -37,8 +37,8 @@ class PublicForceLinkPlatformWithProgression(Operation):
     """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
 
     Force update other account's Platform Account relation to current User Account.
-    This endpoint can transfer progression from 3rd platform binding account's to current account.
-    This endpoint need the same requestID which also used in [Get link status](#operations-Users-PublicGetAsyncStatus).
+    Can transfer progression from 3rd platform binding account's to current account.
+    Requires the same requestID used in [Get link status](#operations-Users-PublicGetAsyncStatus).
 
 
     **Authentication:**

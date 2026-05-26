@@ -37,8 +37,8 @@ from ...models import RestErrorResponse
 class UpdateRolePermissions(Operation):
     """Update Role Permissions (UpdateRolePermissions)
 
-    ## The endpoint is going to be deprecated
-    This endpoint will REPLACE role's permissions with the ones defined in body
+    **This endpoint is deprecated.**
+    Replaces role's permissions with the ones defined in body
 
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.

@@ -36,8 +36,8 @@ from ...models import RestErrorResponse
 class PublicGetConfigValueV3(Operation):
     """Get Config Value (PublicGetConfigValueV3)
 
-    This endpoint return the value of config key. The namespace should be publisher namespace or studio namespace.
-    Note: this endpoint does not need any authorization.
+    Returns the value of the specified config key. The namespace should be publisher namespace or studio namespace.
+    Note: does not require any authorization.
 
     **Supported config key:**
     * uniqueDisplayNameEnabled

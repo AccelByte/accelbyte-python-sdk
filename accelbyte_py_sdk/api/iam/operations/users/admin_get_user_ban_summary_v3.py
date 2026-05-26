@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUserBanSummaryV3(Operation):
     """Get user's bans summary (AdminGetUserBanSummaryV3)
 
-    This endpoint get user's bans summary'
+    Retrieves a summary of the user's ban history, including active and expired bans.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/summary

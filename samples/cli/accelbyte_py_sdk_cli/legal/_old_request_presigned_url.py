@@ -78,4 +78,4 @@ def old_request_presigned_url(
 
 
 old_request_presigned_url.operation_id = "oldRequestPresignedURL"
-old_request_presigned_url.is_deprecated = False
+old_request_presigned_url.is_deprecated = True

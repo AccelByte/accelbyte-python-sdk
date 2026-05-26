@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminSendMyMFAEmailCodeV4(Operation):
     """Send code for MFA email (AdminSendMyMFAEmailCodeV4)
 
-    This endpoint is used to send email code.
+    Sends an MFA email code.
     --------------
     Supported actions:
     * ChangePassword

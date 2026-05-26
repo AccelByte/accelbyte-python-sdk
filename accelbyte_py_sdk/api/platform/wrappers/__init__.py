@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.11.0"
+__version__ = "6.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -353,6 +353,8 @@ from ._iap import admin_sync_steam_abnormal_transaction
 from ._iap import admin_sync_steam_abnormal_transaction_async
 from ._iap import admin_sync_steam_iap_by_transaction
 from ._iap import admin_sync_steam_iap_by_transaction_async
+from ._iap import admin_sync_twitch_drops_entitlement
+from ._iap import admin_sync_twitch_drops_entitlement_async
 from ._iap import delete_apple_iap_config
 from ._iap import delete_apple_iap_config_async
 from ._iap import delete_epic_games_iap_config

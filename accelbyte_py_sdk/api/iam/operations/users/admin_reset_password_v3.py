@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminResetPasswordV3(Operation):
     """Update User Password (AdminResetPasswordV3)
 
-    Update User Password
+    Updates the password for the specified user. This is an admin operation that does not require the user's current password.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password

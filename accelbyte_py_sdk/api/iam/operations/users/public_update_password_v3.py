@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicUpdatePasswordV3(Operation):
     """Update User Password (PublicUpdatePasswordV3)
 
-    action code: 10107
+    Updates the authenticated user's password. Requires the current password and a new password to be provided.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/password

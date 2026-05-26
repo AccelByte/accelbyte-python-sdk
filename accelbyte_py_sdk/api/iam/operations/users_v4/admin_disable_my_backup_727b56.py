@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminDisableMyBackupCodesV4(Operation):
     """Disable 2FA backup codes (AdminDisableMyBackupCodesV4)
 
-    This endpoint is used to disable 2FA backup codes.
+    Disables 2FA backup codes.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true

@@ -26,6 +26,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class StatusEnum(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    DS_ERROR = "DS_ERROR"
+    ENDED = "ENDED"
+    FAILED_TO_REQUEST = "FAILED_TO_REQUEST"
 
 
 class ApimodelsUpdateGamesessionDSInformationRequest(Model):
@@ -48,7 +56,7 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
 
         source: (source) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
     """
 
     # region fields
@@ -61,7 +69,7 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
     region: str  # REQUIRED
     server_id: str  # REQUIRED
     source: str  # REQUIRED
-    status: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
 
     # endregion fields
 
@@ -107,7 +115,9 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         self.source = value
         return self
 
-    def with_status(self, value: str) -> ApimodelsUpdateGamesessionDSInformationRequest:
+    def with_status(
+        self, value: Union[str, StatusEnum]
+    ) -> ApimodelsUpdateGamesessionDSInformationRequest:
         self.status = value
         return self
 
@@ -152,7 +162,7 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = ""
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -170,7 +180,7 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         region: str,
         server_id: str,
         source: str,
-        status: str,
+        status: Union[str, StatusEnum],
         **kwargs,
     ) -> ApimodelsUpdateGamesessionDSInformationRequest:
         instance = cls()
@@ -227,7 +237,7 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = ""
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @classmethod
@@ -294,6 +304,12 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
             "serverId": True,
             "source": True,
             "status": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "status": ["AVAILABLE", "DS_ERROR", "ENDED", "FAILED_TO_REQUEST"],
         }
 
     # endregion static methods

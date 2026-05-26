@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminUpdateAvailablePermissionsByModule(Operation):
     """Update or create Client permissions module (AdminUpdateAvailablePermissionsByModule)
 
-    Update Client available permissions, if module or group not exists, it will auto create.
+    Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
 
     Properties:
         url: /iam/v3/admin/clientConfig/permissions

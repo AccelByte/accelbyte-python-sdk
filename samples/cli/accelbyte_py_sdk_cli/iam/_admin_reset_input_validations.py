@@ -65,4 +65,4 @@ def admin_reset_input_validations(
 
 
 admin_reset_input_validations.operation_id = "AdminResetInputValidations"
-admin_reset_input_validations.is_deprecated = False
+admin_reset_input_validations.is_deprecated = True

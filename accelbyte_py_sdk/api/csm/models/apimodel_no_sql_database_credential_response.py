@@ -36,6 +36,8 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
 
         owner: (owner) REQUIRED str
 
+        recommended_max_age_days: (recommendedMaxAgeDays) REQUIRED int
+
         username: (username) REQUIRED str
     """
 
@@ -43,6 +45,7 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
 
     created_at: str  # REQUIRED
     owner: str  # REQUIRED
+    recommended_max_age_days: int  # REQUIRED
     username: str  # REQUIRED
 
     # endregion fields
@@ -55,6 +58,12 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
 
     def with_owner(self, value: str) -> ApimodelNoSQLDatabaseCredentialResponse:
         self.owner = value
+        return self
+
+    def with_recommended_max_age_days(
+        self, value: int
+    ) -> ApimodelNoSQLDatabaseCredentialResponse:
+        self.recommended_max_age_days = value
         return self
 
     def with_username(self, value: str) -> ApimodelNoSQLDatabaseCredentialResponse:
@@ -75,6 +84,10 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
             result["owner"] = str(self.owner)
         elif include_empty:
             result["owner"] = ""
+        if hasattr(self, "recommended_max_age_days"):
+            result["recommendedMaxAgeDays"] = int(self.recommended_max_age_days)
+        elif include_empty:
+            result["recommendedMaxAgeDays"] = 0
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
@@ -87,11 +100,17 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
 
     @classmethod
     def create(
-        cls, created_at: str, owner: str, username: str, **kwargs
+        cls,
+        created_at: str,
+        owner: str,
+        recommended_max_age_days: int,
+        username: str,
+        **kwargs,
     ) -> ApimodelNoSQLDatabaseCredentialResponse:
         instance = cls()
         instance.created_at = created_at
         instance.owner = owner
+        instance.recommended_max_age_days = recommended_max_age_days
         instance.username = username
         return instance
 
@@ -110,6 +129,13 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
             instance.owner = str(dict_["owner"])
         elif include_empty:
             instance.owner = ""
+        if (
+            "recommendedMaxAgeDays" in dict_
+            and dict_["recommendedMaxAgeDays"] is not None
+        ):
+            instance.recommended_max_age_days = int(dict_["recommendedMaxAgeDays"])
+        elif include_empty:
+            instance.recommended_max_age_days = 0
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -159,6 +185,7 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
         return {
             "createdAt": "created_at",
             "owner": "owner",
+            "recommendedMaxAgeDays": "recommended_max_age_days",
             "username": "username",
         }
 
@@ -167,6 +194,7 @@ class ApimodelNoSQLDatabaseCredentialResponse(Model):
         return {
             "createdAt": True,
             "owner": True,
+            "recommendedMaxAgeDays": True,
             "username": True,
         }
 

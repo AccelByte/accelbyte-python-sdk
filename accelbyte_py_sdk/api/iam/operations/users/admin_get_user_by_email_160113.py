@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUserByEmailAddressV3(Operation):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    This endpoint search user who owns the given email address
-    action code : 10132
+    Searches for the user who owns the given email address.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users

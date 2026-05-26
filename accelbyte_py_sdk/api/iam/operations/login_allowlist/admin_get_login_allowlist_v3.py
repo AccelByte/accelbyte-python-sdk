@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetLoginAllowlistV3(Operation):
     """Admin get login allowlist (AdminGetLoginAllowlistV3)
 
-    This endpoint return login allowlist configuration from specific namespace.
+    Returns the login allowlist configuration from the specific namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/loginAllowlist

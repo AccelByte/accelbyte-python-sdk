@@ -35,8 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteRoleV4(Operation):
     """Delete Role (AdminDeleteRoleV4)
 
-    Removes role ID from user's Roles and NamespaceRoles before deleting the role.
-    action code: 10403
+    Removes the role from all assigned users before deleting it.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}

@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class RemoveRoleAdmin(Operation):
     """Remove Role Admin Status (RemoveRoleAdmin)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/roles/{roleId}/admin [DELETE]_**
 

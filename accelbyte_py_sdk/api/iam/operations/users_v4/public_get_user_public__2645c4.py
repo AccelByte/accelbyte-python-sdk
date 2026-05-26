@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetUserPublicInfoByUserIdV4(Operation):
     """Get User Public Info By User ID (PublicGetUserPublicInfoByUserIdV4)
 
-    This endpoint only returns user's public information.
-    action code: 10129
+    Returns only user's public information.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/{userId}

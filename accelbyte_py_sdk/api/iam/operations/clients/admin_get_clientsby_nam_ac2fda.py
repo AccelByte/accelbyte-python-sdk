@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 
 
 class AdminGetClientsbyNamespacebyIDV3(Operation):
-    """Get clients by namespace and client id. Multi tenant mode allows admin portal client to be accessible regardless of namespace path. (AdminGetClientsbyNamespacebyIDV3)
+    """Get Client by Namespace and Client ID (AdminGetClientsbyNamespacebyIDV3)
 
-    action code: 10309
+    Retrieves an OAuth client by namespace and client ID. In multi-tenant mode, the admin portal client is accessible regardless of the namespace path.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}

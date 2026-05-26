@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelInputValidationUpdatePayload
 from ...models import RestErrorResponse
@@ -36,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminUpdateInputValidations(Operation):
     """Admin Update Input Validations (AdminUpdateInputValidations)
 
-    This endpoint is used to update input validation configuration.
+    Updates input validation configuration.
     Supported `field`:
     - displayName
     - password
@@ -52,16 +53,17 @@ class AdminUpdateInputValidations(Operation):
     - mixed: uppercase and lowercase
     - any: uppercase and/or lowercase
 
-    flexible special character non words with `allowAllSpecialCharacters`
-    if `allowAllSpecialCharacters` is set to true `specialCharacters` will forced to empty.
+    Flexible special character support with `allowAllSpecialCharacters`.
+    If `allowAllSpecialCharacters` is set to true, `specialCharacters` will be forced to empty.
     Supported `specialCharacterLocation`:
     - anywhere
     - middle
 
     If `specialCharacters` is empty, `specialCharacterLocation` and `maxRepeatingSpecialCharacter` will be ignored.
-    `minCharType` is used to identify how many required criteria in the regex. The supported criteria are number, letter, special character, and letter case. If set to 0 or 1 means all criteria are optional. It can be set as much as the number of criteria enabled.
-    If `blockedWord` is set by admin, any input from user which contain kind of blocked word(s) will be blocked for create/upgrade/update account
-    If `avatarConfig` is set, will use this config and skip all the other validation conditions
+    `minCharType` is used to identify how many required criteria in the regex. The supported criteria are number, letter, special character, and letter case. If set to 0 or 1, all criteria are optional. It can be set as much as the number of criteria enabled.
+    If `blockedWord` is set by an admin, any user input containing a blocked word will be rejected during account creation, upgrade, or update.
+    If `avatarConfig` is set, will use this config and skip all the other validation conditions.
+    **Substitute endpoint:** /iam/v3/admin/namespaces/{namespace}/inputValidations[PUT]
 
     Properties:
         url: /iam/v3/admin/inputValidations

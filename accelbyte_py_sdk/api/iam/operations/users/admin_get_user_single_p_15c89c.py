@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUserSinglePlatformAccount(Operation):
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
-    This endpoint gets user single platform account metadata.
+    Gets user single platform account metadata.
 
 
     **Supported Platforms:**

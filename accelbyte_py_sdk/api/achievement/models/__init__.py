@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Achievement Service."""
 
-__version__ = "2.27.2"
+__version__ = "2.29.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,9 @@ from .models_achievement_request import ModelsAchievementRequest
 from .models_achievement_response import ModelsAchievementResponse
 from .models_achievement_update_request import ModelsAchievementUpdateRequest
 from .models_additional_info import ModelsAdditionalInfo
+from .models_batch_query_user_achievement_request import (
+    ModelsBatchQueryUserAchievementRequest,
+)
 from .models_bulk_create_psn_event_response import ModelsBulkCreatePSNEventResponse
 from .models_bulk_create_psn_events import ModelsBulkCreatePSNEvents
 from .models_bulk_unlock_achievement_request import ModelsBulkUnlockAchievementRequest

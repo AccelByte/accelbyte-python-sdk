@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelInputValidationsPublicResponse
 from ...models import RestErrorResponse
@@ -36,9 +37,9 @@ from ...models import RestErrorResponse
 class PublicGetInputValidations(Operation):
     """Public Get Input Validations (PublicGetInputValidations)
 
-    No role required
-    This endpoint is to get list of input validation configuration.
+    Returns the list of input validation configuration.
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
+    **Substitute endpoint:** /iam/v3/public/namespaces/{namespace}/inputValidations[GET]
 
     Properties:
         url: /iam/v3/public/inputValidations

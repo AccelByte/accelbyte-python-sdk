@@ -68,4 +68,4 @@ def old_publish_policy_version(
 
 
 old_publish_policy_version.operation_id = "oldPublishPolicyVersion"
-old_publish_policy_version.is_deprecated = False
+old_publish_policy_version.is_deprecated = True

@@ -50,6 +50,8 @@ class ApimodelNoSQLResourceResponse(Model):
 
         configuration: (configuration) OPTIONAL NosqlresourceNoSQLResourceConfiguration
 
+        engine_version: (engineVersion) OPTIONAL str
+
         hostnames: (hostnames) OPTIONAL str
 
         last_rotated_at: (lastRotatedAt) OPTIONAL str
@@ -68,6 +70,7 @@ class ApimodelNoSQLResourceResponse(Model):
     status: str  # REQUIRED
     studio_name: str  # REQUIRED
     configuration: NosqlresourceNoSQLResourceConfiguration  # OPTIONAL
+    engine_version: str  # OPTIONAL
     hostnames: str  # OPTIONAL
     last_rotated_at: str  # OPTIONAL
     region: str  # OPTIONAL
@@ -105,6 +108,10 @@ class ApimodelNoSQLResourceResponse(Model):
         self, value: NosqlresourceNoSQLResourceConfiguration
     ) -> ApimodelNoSQLResourceResponse:
         self.configuration = value
+        return self
+
+    def with_engine_version(self, value: str) -> ApimodelNoSQLResourceResponse:
+        self.engine_version = value
         return self
 
     def with_hostnames(self, value: str) -> ApimodelNoSQLResourceResponse:
@@ -159,6 +166,10 @@ class ApimodelNoSQLResourceResponse(Model):
             )
         elif include_empty:
             result["configuration"] = NosqlresourceNoSQLResourceConfiguration()
+        if hasattr(self, "engine_version"):
+            result["engineVersion"] = str(self.engine_version)
+        elif include_empty:
+            result["engineVersion"] = ""
         if hasattr(self, "hostnames"):
             result["hostnames"] = str(self.hostnames)
         elif include_empty:
@@ -191,6 +202,7 @@ class ApimodelNoSQLResourceResponse(Model):
         status: str,
         studio_name: str,
         configuration: Optional[NosqlresourceNoSQLResourceConfiguration] = None,
+        engine_version: Optional[str] = None,
         hostnames: Optional[str] = None,
         last_rotated_at: Optional[str] = None,
         region: Optional[str] = None,
@@ -206,6 +218,8 @@ class ApimodelNoSQLResourceResponse(Model):
         instance.studio_name = studio_name
         if configuration is not None:
             instance.configuration = configuration
+        if engine_version is not None:
+            instance.engine_version = engine_version
         if hostnames is not None:
             instance.hostnames = hostnames
         if last_rotated_at is not None:
@@ -255,6 +269,10 @@ class ApimodelNoSQLResourceResponse(Model):
             )
         elif include_empty:
             instance.configuration = NosqlresourceNoSQLResourceConfiguration()
+        if "engineVersion" in dict_ and dict_["engineVersion"] is not None:
+            instance.engine_version = str(dict_["engineVersion"])
+        elif include_empty:
+            instance.engine_version = ""
         if "hostnames" in dict_ and dict_["hostnames"] is not None:
             instance.hostnames = str(dict_["hostnames"])
         elif include_empty:
@@ -321,6 +339,7 @@ class ApimodelNoSQLResourceResponse(Model):
             "status": "status",
             "studioName": "studio_name",
             "configuration": "configuration",
+            "engineVersion": "engine_version",
             "hostnames": "hostnames",
             "lastRotatedAt": "last_rotated_at",
             "region": "region",
@@ -337,6 +356,7 @@ class ApimodelNoSQLResourceResponse(Model):
             "status": True,
             "studioName": True,
             "configuration": False,
+            "engineVersion": False,
             "hostnames": False,
             "lastRotatedAt": False,
             "region": False,

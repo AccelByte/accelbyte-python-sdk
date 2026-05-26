@@ -37,6 +37,7 @@ from ..operations.user_info import InvalidateUserInfoCache
 from ..operations.user_info import SyncUserInfo
 
 
+@deprecated
 @same_doc_as(GetUserInfoStatus)
 def get_user_info_status(
     namespaces: Optional[str] = None,
@@ -73,6 +74,7 @@ def get_user_info_status(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserInfoStatus)
 async def get_user_info_status_async(
     namespaces: Optional[str] = None,

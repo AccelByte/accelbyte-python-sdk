@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetMyEnabledFactorsV4(Operation):
     """Get user enabled factors (AdminGetMyEnabledFactorsV4)
 
-    This endpoint is used to get user enabled factors.
+    Returns all enabled 2FA factors for the user.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/factor

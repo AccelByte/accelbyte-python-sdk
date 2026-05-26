@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApimodelAppItem
+from ..models import ApimodelApplyAppConfigRequest
 from ..models import ApimodelCreateAppV2Request
 from ..models import ApimodelGetAppListV2Request
 from ..models import ApimodelGetAppListV2Response
@@ -38,6 +39,7 @@ from ..models import ApimodelUpdateAppResourceRequest
 from ..models import ApimodelUpdateAppV2Request
 from ..models import ResponseErrorResponse
 
+from ..operations.app_v2 import ApplyAppConfigV2
 from ..operations.app_v2 import CreateAppV2
 from ..operations.app_v2 import DeleteAppV2
 from ..operations.app_v2 import GetAppListV2
@@ -47,6 +49,136 @@ from ..operations.app_v2 import StopAppV2
 from ..operations.app_v2 import UpdateAppResourcesResourceLimitFormV2
 from ..operations.app_v2 import UpdateAppResourcesV2
 from ..operations.app_v2 import UpdateAppV2
+
+
+@same_doc_as(ApplyAppConfigV2)
+def apply_app_config_v2(
+    app: str,
+    body: ApimodelApplyAppConfigRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Declaratively create or update an extend app from a spec (ApplyAppConfigV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
+
+    Idempotent endpoint that creates or updates an Extend app from a declarative spec.
+    Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
+
+    Note: `preferred_k8s_namespace` is only used on the initial create call; it is ignored on subsequent apply calls.
+    On the first apply after creation the deletion phase is skipped (no prior apply state recorded).
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/apply
+
+        method: POST
+
+        tags: ["App V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelApplyAppConfigRequest in body
+
+        app: (app) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelAppItem (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ApplyAppConfigV2.create(
+        app=app,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ApplyAppConfigV2)
+async def apply_app_config_v2_async(
+    app: str,
+    body: ApimodelApplyAppConfigRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Declaratively create or update an extend app from a spec (ApplyAppConfigV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
+
+    Idempotent endpoint that creates or updates an Extend app from a declarative spec.
+    Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
+
+    Note: `preferred_k8s_namespace` is only used on the initial create call; it is ignored on subsequent apply calls.
+    On the first apply after creation the deletion phase is skipped (no prior apply state recorded).
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/apply
+
+        method: POST
+
+        tags: ["App V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelApplyAppConfigRequest in body
+
+        app: (app) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelAppItem (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = ApplyAppConfigV2.create(
+        app=app,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateAppV2)
@@ -64,9 +196,9 @@ def create_app_v2(
     Create new extend app with name provided by {app} path parameter and specified scenario type
 
     Available scenario:
+    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
-    - scenario 3: `event-handler`
 
 
     Available app status:
@@ -148,9 +280,9 @@ async def create_app_v2_async(
     Create new extend app with name provided by {app} path parameter and specified scenario type
 
     Available scenario:
+    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
-    - scenario 3: `event-handler`
 
 
     Available app status:

@@ -69,4 +69,4 @@ def old_retrieve_policy_country(
 
 
 old_retrieve_policy_country.operation_id = "oldRetrievePolicyCountry"
-old_retrieve_policy_country.is_deprecated = False
+old_retrieve_policy_country.is_deprecated = True

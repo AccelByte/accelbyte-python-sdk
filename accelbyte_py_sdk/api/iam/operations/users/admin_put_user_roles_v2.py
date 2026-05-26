@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminPutUserRolesV2(Operation):
     """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 

@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicListUserAllPlatformAccountsDistinctV3(Operation):
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
     It will query all linked platform accounts. The results will be distinct and grouped by platform, and for each platform, we will select the oldest linked one.
 
 

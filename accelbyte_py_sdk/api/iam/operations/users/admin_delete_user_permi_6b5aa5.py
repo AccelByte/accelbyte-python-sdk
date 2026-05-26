@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminDeleteUserPermissionBulkV3(Operation):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
-    Delete User Permission
+    Removes multiple permissions from a user in bulk.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions

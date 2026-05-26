@@ -32,16 +32,19 @@ from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.session import join_game_session as join_game_session_internal
 from accelbyte_py_sdk.api.session.models import ApimodelsGameSessionResponse
+from accelbyte_py_sdk.api.session.models import ApimodelsJoinSessionRequest
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("session_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def join_game_session(
+    body: str,
     session_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -56,7 +59,14 @@ def join_game_session(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ApimodelsJoinSessionRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = join_game_session_internal(
+        body=body,
         session_id=session_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

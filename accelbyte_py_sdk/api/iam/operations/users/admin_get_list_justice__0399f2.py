@@ -36,7 +36,9 @@ from ...models import RestErrorResponse
 class AdminGetListJusticePlatformAccounts(Operation):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice

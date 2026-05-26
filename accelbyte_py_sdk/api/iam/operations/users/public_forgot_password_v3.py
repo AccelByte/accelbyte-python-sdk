@@ -40,7 +40,6 @@ class PublicForgotPasswordV3(Operation):
     Game Client should provide game namespace path parameter and Publisher
     Client should provide publisher namespace path parameter.
     The password reset code will be sent to the publisher account's email address.
-    action code : 10104
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/forgot

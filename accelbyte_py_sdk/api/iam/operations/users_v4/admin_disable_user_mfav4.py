@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminDisableUserMFAV4(Operation):
     """Disable User 2FA (AdminDisableUserMFAV4)
 
-    This endpoint is used to disable user 2FA.
+    Disables user 2FA.
     -----------
     **Note**: if the factor is not specified, will disable all 2FA methods.
 

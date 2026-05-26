@@ -405,6 +405,7 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(OldRetrieveAcceptedAgreements)
 def old_retrieve_accepted_agreements(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -437,6 +438,7 @@ def old_retrieve_accepted_agreements(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldRetrieveAcceptedAgreements)
 async def old_retrieve_accepted_agreements_async(
     user_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -471,6 +473,7 @@ async def old_retrieve_accepted_agreements_async(
     )
 
 
+@deprecated
 @same_doc_as(OldRetrieveAllUsersByPolicyVersion)
 def old_retrieve_all_users_by_policy_version(
     policy_version_id: str,
@@ -519,6 +522,7 @@ def old_retrieve_all_users_by_policy_version(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldRetrieveAllUsersByPolicyVersion)
 async def old_retrieve_all_users_by_policy_version_async(
     policy_version_id: str,

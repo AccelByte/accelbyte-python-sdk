@@ -33,12 +33,11 @@ from ...models import OauthmodelErrorResponse
 
 
 class RevokeUserV3(Operation):
-    """Revokes user's tokens' (RevokeUserV3)
+    """Revoke User's Tokens (RevokeUserV3)
 
-    This endpoint revokes all access tokens and refresh tokens a user has prior the revocation time.
-    This endpoint requires authorized requests header with valid access token.
-    It is a convenient feature for the developer (or admin) who wanted to revokes all user's access tokens and refresh tokens generated before some period of time.
-    action code : 10707
+    Revokes all access tokens and refresh tokens a user has prior to the revocation time.
+
+    **Namespace restriction for includeGameNamespace:** When the query parameter includeGameNamespace is set to true, the {namespace} path parameter must be a **publisher namespace**. Passing a game namespace with includeGameNamespace=true returns HTTP 400.
 
     Properties:
         url: /iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke

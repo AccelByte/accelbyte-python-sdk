@@ -37,7 +37,6 @@ class AdminGetRoleMembersV3(Operation):
     """Get Role Members (AdminGetRoleMembersV3)
 
     Admin roles has its members listed in the role.
-    action code: 10416
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members

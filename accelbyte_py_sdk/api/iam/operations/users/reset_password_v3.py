@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class ResetPasswordV3(Operation):
     """Reset User Password (ResetPasswordV3)
 
-    action code: 10105
+    Resets a user's password using a valid password reset code sent to their email address.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/reset

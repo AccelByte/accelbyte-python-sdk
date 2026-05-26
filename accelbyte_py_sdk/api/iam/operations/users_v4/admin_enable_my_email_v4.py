@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminEnableMyEmailV4(Operation):
     """Enable 2FA email (AdminEnableMyEmailV4)
 
-    This endpoint is used to enable 2FA email.
+    Enables 2FA email.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/enable

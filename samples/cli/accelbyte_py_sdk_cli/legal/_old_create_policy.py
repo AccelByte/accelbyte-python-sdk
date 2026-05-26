@@ -72,4 +72,4 @@ def old_create_policy(
 
 
 old_create_policy.operation_id = "oldCreatePolicy"
-old_create_policy.is_deprecated = False
+old_create_policy.is_deprecated = True

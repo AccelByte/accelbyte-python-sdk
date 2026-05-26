@@ -2715,6 +2715,15 @@ $ python -m accelbyte_py_sdk_cli 'platform-sync-subscription' \
     > result.txt
 ```
 
+### Operation `admin_sync_twitch_drops_entitlement`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-admin-sync-twitch-drops-entitlement' \
+    '{"gameId": "string", "language": "string", "region": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `query_user_orders`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-query-user-orders' \

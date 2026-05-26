@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.29.3"
+__version__ = "3.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -74,10 +74,12 @@ from .apimodels_environment_variable_response import (
 )
 from .apimodels_game_session_query_response import ApimodelsGameSessionQueryResponse
 from .apimodels_game_session_response import ApimodelsGameSessionResponse
+from .apimodels_get_password_response import ApimodelsGetPasswordResponse
 from .apimodels_global_configuration_response import (
     ApimodelsGlobalConfigurationResponse,
 )
 from .apimodels_join_by_code_request import ApimodelsJoinByCodeRequest
+from .apimodels_join_session_request import ApimodelsJoinSessionRequest
 from .apimodels_kick_response import ApimodelsKickResponse
 from .apimodels_native_session_paging_response import (
     ApimodelsNativeSessionPagingResponse,
@@ -148,11 +150,15 @@ from .apimodels_update_game_session_request import (
 from .apimodels_update_gamesession_ds_information_request import (
     ApimodelsUpdateGamesessionDSInformationRequest,
 )
+from .apimodels_update_gamesession_ds_information_request import (
+    StatusEnum as ApimodelsUpdateGamesessionDSInformationRequestStatusEnum,
+)
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
 from .apimodels_update_party_request import (
     JoinabilityEnum as ApimodelsUpdatePartyRequestJoinabilityEnum,
     TypeEnum as ApimodelsUpdatePartyRequestTypeEnum,
 )
+from .apimodels_update_password_request import ApimodelsUpdatePasswordRequest
 from .apimodels_user_response import ApimodelsUserResponse
 from .apimodels_user_response import (
     StatusEnum as ApimodelsUserResponseStatusEnum,

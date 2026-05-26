@@ -39,6 +39,8 @@ class AccountcommonPermissionGroup(Model):
         group_id: (groupId) REQUIRED str
 
         permissions: (permissions) REQUIRED List[AccountcommonAllowedPermission]
+
+        package: (package) OPTIONAL str
     """
 
     # region fields
@@ -46,6 +48,7 @@ class AccountcommonPermissionGroup(Model):
     group: str  # REQUIRED
     group_id: str  # REQUIRED
     permissions: List[AccountcommonAllowedPermission]  # REQUIRED
+    package: str  # OPTIONAL
 
     # endregion fields
 
@@ -63,6 +66,10 @@ class AccountcommonPermissionGroup(Model):
         self, value: List[AccountcommonAllowedPermission]
     ) -> AccountcommonPermissionGroup:
         self.permissions = value
+        return self
+
+    def with_package(self, value: str) -> AccountcommonPermissionGroup:
+        self.package = value
         return self
 
     # endregion with_x methods
@@ -85,6 +92,10 @@ class AccountcommonPermissionGroup(Model):
             ]
         elif include_empty:
             result["permissions"] = []
+        if hasattr(self, "package"):
+            result["package"] = str(self.package)
+        elif include_empty:
+            result["package"] = ""
         return result
 
     # endregion to methods
@@ -97,12 +108,15 @@ class AccountcommonPermissionGroup(Model):
         group: str,
         group_id: str,
         permissions: List[AccountcommonAllowedPermission],
+        package: Optional[str] = None,
         **kwargs,
     ) -> AccountcommonPermissionGroup:
         instance = cls()
         instance.group = group
         instance.group_id = group_id
         instance.permissions = permissions
+        if package is not None:
+            instance.package = package
         return instance
 
     @classmethod
@@ -129,6 +143,10 @@ class AccountcommonPermissionGroup(Model):
             ]
         elif include_empty:
             instance.permissions = []
+        if "package" in dict_ and dict_["package"] is not None:
+            instance.package = str(dict_["package"])
+        elif include_empty:
+            instance.package = ""
         return instance
 
     @classmethod
@@ -175,6 +193,7 @@ class AccountcommonPermissionGroup(Model):
             "group": "group",
             "groupId": "group_id",
             "permissions": "permissions",
+            "package": "package",
         }
 
     @staticmethod
@@ -183,6 +202,7 @@ class AccountcommonPermissionGroup(Model):
             "group": True,
             "groupId": True,
             "permissions": True,
+            "package": False,
         }
 
     # endregion static methods

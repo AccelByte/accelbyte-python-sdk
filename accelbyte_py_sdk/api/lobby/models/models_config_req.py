@@ -75,6 +75,8 @@ class ModelsConfigReq(Model):
         request_metadata_max_size: (requestMetadataMaxSize) OPTIONAL int
 
         unregister_delay: (unregisterDelay) OPTIONAL int
+
+        ws_read_timeout: (wsReadTimeout) OPTIONAL int
     """
 
     # region fields
@@ -101,6 +103,7 @@ class ModelsConfigReq(Model):
     ready_consent_timeout: int  # OPTIONAL
     request_metadata_max_size: int  # OPTIONAL
     unregister_delay: int  # OPTIONAL
+    ws_read_timeout: int  # OPTIONAL
 
     # endregion fields
 
@@ -192,6 +195,10 @@ class ModelsConfigReq(Model):
 
     def with_unregister_delay(self, value: int) -> ModelsConfigReq:
         self.unregister_delay = value
+        return self
+
+    def with_ws_read_timeout(self, value: int) -> ModelsConfigReq:
+        self.ws_read_timeout = value
         return self
 
     # endregion with_x methods
@@ -298,6 +305,10 @@ class ModelsConfigReq(Model):
             result["unregisterDelay"] = int(self.unregister_delay)
         elif include_empty:
             result["unregisterDelay"] = 0
+        if hasattr(self, "ws_read_timeout"):
+            result["wsReadTimeout"] = int(self.ws_read_timeout)
+        elif include_empty:
+            result["wsReadTimeout"] = 0
         return result
 
     # endregion to methods
@@ -329,6 +340,7 @@ class ModelsConfigReq(Model):
         ready_consent_timeout: Optional[int] = None,
         request_metadata_max_size: Optional[int] = None,
         unregister_delay: Optional[int] = None,
+        ws_read_timeout: Optional[int] = None,
         **kwargs,
     ) -> ModelsConfigReq:
         instance = cls()
@@ -380,6 +392,8 @@ class ModelsConfigReq(Model):
             instance.request_metadata_max_size = request_metadata_max_size
         if unregister_delay is not None:
             instance.unregister_delay = unregister_delay
+        if ws_read_timeout is not None:
+            instance.ws_read_timeout = ws_read_timeout
         return instance
 
     @classmethod
@@ -527,6 +541,10 @@ class ModelsConfigReq(Model):
             instance.unregister_delay = int(dict_["unregisterDelay"])
         elif include_empty:
             instance.unregister_delay = 0
+        if "wsReadTimeout" in dict_ and dict_["wsReadTimeout"] is not None:
+            instance.ws_read_timeout = int(dict_["wsReadTimeout"])
+        elif include_empty:
+            instance.ws_read_timeout = 0
         return instance
 
     @classmethod
@@ -588,6 +606,7 @@ class ModelsConfigReq(Model):
             "readyConsentTimeout": "ready_consent_timeout",
             "requestMetadataMaxSize": "request_metadata_max_size",
             "unregisterDelay": "unregister_delay",
+            "wsReadTimeout": "ws_read_timeout",
         }
 
     @staticmethod
@@ -615,6 +634,7 @@ class ModelsConfigReq(Model):
             "readyConsentTimeout": False,
             "requestMetadataMaxSize": False,
             "unregisterDelay": False,
+            "wsReadTimeout": False,
         }
 
     # endregion static methods

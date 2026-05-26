@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.31.0"
+__version__ = "1.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .apply_app_config_v2 import ApplyAppConfigV2
 from .create_app_v2 import CreateAppV2
 from .delete_app_v2 import DeleteAppV2
 from .get_app_list_v2 import GetAppListV2

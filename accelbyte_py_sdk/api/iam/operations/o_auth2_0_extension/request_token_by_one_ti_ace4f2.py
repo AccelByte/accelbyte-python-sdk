@@ -33,12 +33,12 @@ from ...models import OauthmodelTokenResponseV3
 
 
 class RequestTokenByOneTimeLinkCodeResponseV3(Operation):
-    """Generate token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
+    """Generate Token by Headless Account's One-Time Link Code (RequestTokenByOneTimeLinkCodeResponseV3)
 
-    This endpoint is being used to generate user's token by one time link code.
-    It requires a code which can be generated from `/iam/v3/link/code/request` or `/iam/v3/public/users/me/link/forward`.
+    Generates the user's token by one-time link code.
+    It requires a code which can be generated from `/iam/v3/link/code/request [POST]` or `/iam/v3/public/users/me/link/redirection [GET]`.
 
-    This endpoint support creating transient token by utilizing **isTransient** param:
+    Supports creating a transient token by utilizing the **isTransient** param:
     **isTransient=true** will generate a transient token with a short Time Expiration and without a refresh token
     **isTransient=false** will consume the one-time code and generate the access token with a refresh token.
 

@@ -36,7 +36,7 @@ from ...models import ModelResetPasswordRequest
 class ResetPassword(Operation):
     """Reset User Password (ResetPassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 

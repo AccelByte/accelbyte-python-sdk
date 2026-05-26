@@ -37,10 +37,13 @@ from ...models import OauthmodelTokenResponseV3
 class Verify2faCodeV4(Operation):
     """Verify 2FA code (Verify2FACodeV4)
 
-    Verify 2FA code
-    This endpoint is used for verifying 2FA code.
+    Verifies 2FA code.
+
     ## 2FA remember device
-    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
+    To remember device for 2FA, the request should provide cookie: device_token or header: Device-Token
+
+    ## Login Queue
+    When the Login Queue is enabled and at capacity, this API returns a 202 Accepted response, with the queue ticket included in the response body.
 
     Properties:
         url: /iam/v4/oauth/mfa/verify

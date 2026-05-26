@@ -37,12 +37,7 @@ from ...models import RestErrorResponse
 class AdminUpdateRoleV3(Operation):
     """Update Role (AdminUpdateRoleV3)
 
-    Update role request body:
-    - roleName: specify role name, alphanumeric, cannot have special character (required)
-    - isWildcard: specify if role can be assigned to wildcard (*) namespace (default false)
-    - deletable: specify if role can be deleted or not (optional)
-
-    action code: 10402
+    Updates a role.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}

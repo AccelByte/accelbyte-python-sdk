@@ -135,6 +135,15 @@ $ python -m accelbyte_py_sdk_cli 'achievement-admin-list-user-achievements' \
     > result.txt
 ```
 
+### Operation `admin_batch_query_user_achievements`
+```sh
+$ python -m accelbyte_py_sdk_cli 'achievement-admin-batch-query-user-achievements' \
+    '{"codes": ["string"], "status": 1}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_bulk_unlock_achievement`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'achievement-admin-bulk-unlock-achievement' \

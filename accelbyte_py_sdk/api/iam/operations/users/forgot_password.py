@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class ForgotPassword(Operation):
     """Request Password Reset Code (ForgotPassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 

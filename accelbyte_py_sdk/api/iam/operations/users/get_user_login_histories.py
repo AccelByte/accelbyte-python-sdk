@@ -37,16 +37,16 @@ from ...models import RestErrorResponse
 class GetUserLoginHistories(Operation):
     """Get User's Login Histories (GetUserLoginHistories)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
 
-    Notes for this endpoint:
-    - This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    Notes:
+    - Retrieves the first page of the data if 'after' and 'before' parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
+    - Retrieves the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    - Retrieves the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories

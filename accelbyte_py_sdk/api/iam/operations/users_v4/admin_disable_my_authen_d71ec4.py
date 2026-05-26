@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminDisableMyAuthenticatorV4(Operation):
     """Disable 2FA authenticator (AdminDisableMyAuthenticatorV4)
 
-    This endpoint is used to disable 2FA authenticator.
+    Disables 2FA authenticator.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true

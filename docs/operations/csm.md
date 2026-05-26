@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.31.0)
+# Custom Service Manager Index (1.33.0)
 
 
 ## Operations
@@ -19,9 +19,18 @@
 | /csm/v1/admin/namespaces/{namespace}/apps/{app}/stop | PUT | StopAppV1 | `true` | [StopAppV1](../../accelbyte_py_sdk/api/csm/operations/app/stop_app_v1.py) | [stop_app_v1](../../accelbyte_py_sdk/api/csm/wrappers/_app.py) | [accelbyte_py_sdk_cli csm-stop-app-v1](../../samples/cli/accelbyte_py_sdk_cli/csm/_stop_app_v1.py) |
 | /csm/v1/admin/namespaces/{namespace}/apps/{app} | PATCH | UpdateAppV1 | `true` | [UpdateAppV1](../../accelbyte_py_sdk/api/csm/operations/app/update_app_v1.py) | [update_app_v1](../../accelbyte_py_sdk/api/csm/wrappers/_app.py) | [accelbyte_py_sdk_cli csm-update-app-v1](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_v1.py) |
 
+### App UI
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v1/admin/namespaces/{namespace}/app-ui | POST | CreateAppUI | `false` | [CreateAppUI](../../accelbyte_py_sdk/api/csm/operations/app_ui/create_app_ui.py) | [create_app_ui](../../accelbyte_py_sdk/api/csm/wrappers/_app_ui.py) | [accelbyte_py_sdk_cli csm-create-app-ui](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_app_ui.py) |
+| /csm/v1/admin/namespaces/{namespace}/app-ui/{appUiName} | DELETE | DeleteAppUI | `false` | [DeleteAppUI](../../accelbyte_py_sdk/api/csm/operations/app_ui/delete_app_ui.py) | [delete_app_ui](../../accelbyte_py_sdk/api/csm/wrappers/_app_ui.py) | [accelbyte_py_sdk_cli csm-delete-app-ui](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_app_ui.py) |
+| /csm/v1/admin/namespaces/{namespace}/app-ui | GET | ListAppUI | `false` | [ListAppUI](../../accelbyte_py_sdk/api/csm/operations/app_ui/list_app_ui.py) | [list_app_ui](../../accelbyte_py_sdk/api/csm/wrappers/_app_ui.py) | [accelbyte_py_sdk_cli csm-list-app-ui](../../samples/cli/accelbyte_py_sdk_cli/csm/_list_app_ui.py) |
+| /csm/v1/admin/namespaces/{namespace}/app-ui/{appUiName}/files/upload | POST | UploadAppUIFile | `false` | [UploadAppUIFile](../../accelbyte_py_sdk/api/csm/operations/app_ui/upload_app_ui_file.py) | [upload_app_ui_file](../../accelbyte_py_sdk/api/csm/wrappers/_app_ui.py) | [accelbyte_py_sdk_cli csm-upload-app-ui-file](../../samples/cli/accelbyte_py_sdk_cli/csm/_upload_app_ui_file.py) |
+
 ### App V2
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/apply | POST | ApplyAppConfigV2 | `false` | [ApplyAppConfigV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/apply_app_config_v2.py) | [apply_app_config_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-apply-app-config-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_apply_app_config_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app} | POST | CreateAppV2 | `false` | [CreateAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/create_app_v2.py) | [create_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-create-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_app_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app} | DELETE | DeleteAppV2 | `false` | [DeleteAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/delete_app_v2.py) | [delete_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-delete-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_app_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps | POST | GetAppListV2 | `false` | [GetAppListV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/get_app_list_v2.py) | [get_app_list_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-get-app-list-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_app_list_v2.py) |
@@ -81,6 +90,11 @@
 | /csm/v2/admin/namespaces/{namespace}/deployments/{deploymentId} | GET | GetDeploymentV2 | `false` | [GetDeploymentV2](../../accelbyte_py_sdk/api/csm/operations/deployment_v2/get_deployment_v2.py) | [get_deployment_v2](../../accelbyte_py_sdk/api/csm/wrappers/_deployment_v2.py) | [accelbyte_py_sdk_cli csm-get-deployment-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_deployment_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/deployments | POST | GetListOfDeploymentV2 | `false` | [GetListOfDeploymentV2](../../accelbyte_py_sdk/api/csm/operations/deployment_v2/get_list_of_deployment_v2.py) | [get_list_of_deployment_v2](../../accelbyte_py_sdk/api/csm/wrappers/_deployment_v2.py) | [accelbyte_py_sdk_cli csm-get-list-of-deployment-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_list_of_deployment_v2.py) |
 
+### Extend Files
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v1/admin/namespaces/{namespace}/files/{filePath} | GET | GetExtendFile | `false` | [GetExtendFile](../../accelbyte_py_sdk/api/csm/operations/extend_files/get_extend_file.py) | [get_extend_file](../../accelbyte_py_sdk/api/csm/wrappers/_extend_files.py) | [accelbyte_py_sdk_cli csm-get-extend-file](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_extend_file.py) |
+
 ### Image
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -96,8 +110,9 @@
 ### Managed Resources
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/credentials | POST | CreateNewNoSQLDatabaseCredentialV2 | `false` | [CreateNewNoSQLDatabaseCredentialV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_new_no_sql_datab_b22b67.py) | [create_new_no_sql_database_credential_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-new-no-sql-database-credential-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_new_no_sql_database_credential_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | POST | CreateNoSQLClusterV2 | `false` | [CreateNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_cluster_v2.py) | [create_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_cluster_v2.py) |
-| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/crendentials | POST | CreateNoSQLDatabaseCredentialV2 | `false` | [CreateNoSQLDatabaseCredentialV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_database__189b02.py) | [create_no_sql_database_credential_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-database-credential-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_database_credential_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/crendentials | POST | CreateNoSQLDatabaseCredentialV2 | `true` | [CreateNoSQLDatabaseCredentialV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_database__189b02.py) | [create_no_sql_database_credential_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-database-credential-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_database_credential_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | POST | CreateNoSQLDatabaseV2 | `false` | [CreateNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/create_no_sql_database_v2.py) | [create_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-create-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_no_sql_database_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | DELETE | DeleteNoSQLClusterV2 | `false` | [DeleteNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/delete_no_sql_cluster_v2.py) | [delete_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-delete-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases | DELETE | DeleteNoSQLDatabaseV2 | `false` | [DeleteNoSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/delete_no_sql_database_v2.py) | [delete_no_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-delete-no-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_no_sql_database_v2.py) |
@@ -108,6 +123,36 @@
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters/start | PUT | StartNoSQLClusterV2 | `false` | [StartNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/start_no_sql_cluster_v2.py) | [start_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-start-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_start_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters/stop | PUT | StopNoSQLClusterV2 | `false` | [StopNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/stop_no_sql_cluster_v2.py) | [stop_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-stop-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_stop_no_sql_cluster_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/nosql/clusters | PUT | UpdateNoSQLClusterV2 | `false` | [UpdateNoSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources/update_no_sql_cluster_v2.py) | [update_no_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources.py) | [accelbyte_py_sdk_cli csm-update-no-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_no_sql_cluster_v2.py) |
+
+### Managed Resources - KeyValue
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/clusters | POST | CreateKeyValueClusterV2 | `false` | [CreateKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/create_key_value_cluster_v2.py) | [create_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-create-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/keyvalue/credentials | POST | CreateKeyValueCredentialV2 | `false` | [CreateKeyValueCredentialV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/create_key_value_credential_v2.py) | [create_key_value_credential_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-create-key-value-credential-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_key_value_credential_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/clusters/{resourceId} | DELETE | DeleteKeyValueClusterV2 | `false` | [DeleteKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/delete_key_value_cluster_v2.py) | [delete_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-delete-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/keyvalue/integrations | GET | GetIntegrationAppKeyValueClusterV2 | `false` | [GetIntegrationAppKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_integration_app_key_181476.py) | [get_integration_app_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-get-integration-app-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_integration_app_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/clusters/limitconfig | GET | GetKeyValueClusterLimitConfigV2 | `false` | [GetKeyValueClusterLimitConfigV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_key_value_cluster_l_62a4fb.py) | [get_key_value_cluster_limit_config_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-get-key-value-cluster-limit-config-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_key_value_cluster_limit_config_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/cluster/{resourceId} | GET | GetKeyValueClusterV2 | `false` | [GetKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_key_value_cluster_v2.py) | [get_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-get-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/{resourceId}/integrations | GET | GetListIntegratedAppKeyValueClusterV2 | `false` | [GetListIntegratedAppKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/get_list_integrated_app_4a9d12.py) | [get_list_integrated_app_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-get-list-integrated-app-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_list_integrated_app_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/keyvalue/integrations | POST | IntegrateAppKeyValueClusterV2 | `false` | [IntegrateAppKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/integrate_app_key_value_d23a27.py) | [integrate_app_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-integrate-app-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_integrate_app_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/clusters | GET | ListKeyValueClusterV2 | `false` | [ListKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/list_key_value_cluster_v2.py) | [list_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-list-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_list_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/keyvalue/integrations | DELETE | RemoveIntegrationAppKeyValueClusterV2 | `false` | [RemoveIntegrationAppKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/remove_integration_app__84d881.py) | [remove_integration_app_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-remove-integration-app-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_remove_integration_app_key_value_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/keyvalue/clusters/{resourceId} | PUT | UpdateKeyValueClusterV2 | `false` | [UpdateKeyValueClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_key_value/update_key_value_cluster_v2.py) | [update_key_value_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_key_value.py) | [accelbyte_py_sdk_cli csm-update-key-value-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_key_value_cluster_v2.py) |
+
+### Managed Resources - SQL
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v2/admin/namespaces/{namespace}/sql/clusters | POST | CreateSQLClusterV2 | `false` | [CreateSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/create_sql_cluster_v2.py) | [create_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-create-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/sql/credentials | POST | CreateSQLDatabaseCredentialV2 | `false` | [CreateSQLDatabaseCredentialV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/create_sql_database_cre_9da946.py) | [create_sql_database_credential_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-create-sql-database-credential-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_sql_database_credential_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/sql/databases | POST | CreateSQLDatabaseV2 | `false` | [CreateSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/create_sql_database_v2.py) | [create_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-create-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/sql/clusters | DELETE | DeleteSQLClusterV2 | `false` | [DeleteSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/delete_sql_cluster_v2.py) | [delete_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-delete-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/sql/databases | DELETE | DeleteSQLDatabaseV2 | `false` | [DeleteSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/delete_sql_database_v2.py) | [delete_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-delete-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/sql/{resourceId}/apps | GET | GetSQLAppListV2 | `false` | [GetSQLAppListV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/get_sql_app_list_v2.py) | [get_sql_app_list_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-get-sql-app-list-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_sql_app_list_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/sql/clusters | GET | GetSQLClusterV2 | `false` | [GetSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/get_sql_cluster_v2.py) | [get_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-get-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app}/sql/databases | GET | GetSQLDatabaseV2 | `false` | [GetSQLDatabaseV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/get_sql_database_v2.py) | [get_sql_database_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-get-sql-database-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_sql_database_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/sql/clusters/start | PUT | StartSQLClusterV2 | `false` | [StartSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/start_sql_cluster_v2.py) | [start_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-start-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_start_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/sql/clusters/stop | PUT | StopSQLClusterV2 | `false` | [StopSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/stop_sql_cluster_v2.py) | [stop_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-stop-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_stop_sql_cluster_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/sql/clusters | PUT | UpdateSQLClusterV2 | `false` | [UpdateSQLClusterV2](../../accelbyte_py_sdk/api/csm/operations/managed_resources_sql/update_sql_cluster_v2.py) | [update_sql_cluster_v2](../../accelbyte_py_sdk/api/csm/wrappers/_managed_resources_sql.py) | [accelbyte_py_sdk_cli csm-update-sql-cluster-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_sql_cluster_v2.py) |
 
 ### Messages
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -142,22 +187,32 @@
 | Model | Class |
 |---|---|
 | apimodel.AppItem | [ApimodelAppItem](../../accelbyte_py_sdk/api/csm/models/apimodel_app_item.py) |
+| apimodel.AppUIResponse | [ApimodelAppUIResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_app_ui_response.py) |
+| apimodel.ApplyAppConfigRequest | [ApimodelApplyAppConfigRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_apply_app_config_request.py) |
+| apimodel.ApplyConfigItem | [ApimodelApplyConfigItem](../../accelbyte_py_sdk/api/csm/models/apimodel_apply_config_item.py) |
+| apimodel.ApplyPermissionItem | [ApimodelApplyPermissionItem](../../accelbyte_py_sdk/api/csm/models/apimodel_apply_permission_item.py) |
 | apimodel.AutoscalingRequest | [ApimodelAutoscalingRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_autoscaling_request.py) |
 | apimodel.AutoscalingResponse | [ApimodelAutoscalingResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_autoscaling_response.py) |
 | apimodel.BulkSubscribeItem | [ApimodelBulkSubscribeItem](../../accelbyte_py_sdk/api/csm/models/apimodel_bulk_subscribe_item.py) |
 | apimodel.BulkSubscribeRequest | [ApimodelBulkSubscribeRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_bulk_subscribe_request.py) |
 | apimodel.CPURequest | [ApimodelCPURequest](../../accelbyte_py_sdk/api/csm/models/apimodel_cpu_request.py) |
 | apimodel.CPUResponse | [ApimodelCPUResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_cpu_response.py) |
+| apimodel.CreateAppUIRequest | [ApimodelCreateAppUIRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_app_ui_request.py) |
 | apimodel.CreateAppV2Request | [ApimodelCreateAppV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_app_v2_request.py) |
 | apimodel.CreateDeploymentV2Request | [ApimodelCreateDeploymentV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_request.py) |
 | apimodel.CreateDeploymentV2Response | [ApimodelCreateDeploymentV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_response.py) |
+| apimodel.CreateKeyValueCredentialRequest | [ApimodelCreateKeyValueCredentialRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_key_value_credential_request.py) |
+| apimodel.CreateKeyValueCredentialResponse | [ApimodelCreateKeyValueCredentialResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_create_key_value_credential_response.py) |
 | apimodel.CreateNoSQLAppDatabaseRequest | [ApimodelCreateNoSQLAppDatabaseRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_app_database_request.py) |
 | apimodel.CreateNoSQLDatabaseCredentialRequest | [ApimodelCreateNoSQLDatabaseCredentialRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_no_sql_database_credential_request.py) |
+| apimodel.CreateSQLAppDatabaseRequest | [ApimodelCreateSQLAppDatabaseRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_sql_app_database_request.py) |
+| apimodel.CreateSQLDatabaseCredentialRequest | [ApimodelCreateSQLDatabaseCredentialRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_sql_database_credential_request.py) |
 | apimodel.CreateSubscriptionRequest | [ApimodelCreateSubscriptionRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_subscription_request.py) |
 | apimodel.CreateSubscriptionResponse | [ApimodelCreateSubscriptionResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_create_subscription_response.py) |
 | apimodel.CreateTopicRequest | [ApimodelCreateTopicRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_topic_request.py) |
 | apimodel.CSMAppLimitsResponse | [ApimodelCSMAppLimitsResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_csm_app_limits_response.py) |
 | apimodel.DeleteNoSQLResourceResponse | [ApimodelDeleteNoSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_delete_no_sql_resource_response.py) |
+| apimodel.DeleteSQLResourceResponse | [ApimodelDeleteSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_delete_sql_resource_response.py) |
 | apimodel.GetAppImageListV2DataItem | [ApimodelGetAppImageListV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item.py) |
 | apimodel.GetAppImageListV2DataItemImageScanResult | [ApimodelGetAppImageListV2DataItemImageScanResult](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item_image_scan_result.py) |
 | apimodel.GetAppImageListV2DataItemImageScanStatus | [ApimodelGetAppImageListV2DataItemImageScanStatus](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_data_item_image_scan_status.py) |
@@ -167,6 +222,7 @@
 | apimodel.GetDeploymentListV2DataItem | [ApimodelGetDeploymentListV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_deployment_list_v2_data_item.py) |
 | apimodel.GetDeploymentListV2Request | [ApimodelGetDeploymentListV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_get_deployment_list_v2_request.py) |
 | apimodel.GetDeploymentListV2Response | [ApimodelGetDeploymentListV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_get_deployment_list_v2_response.py) |
+| apimodel.GetIntegrationAppKeyValueResponse | [ApimodelGetIntegrationAppKeyValueResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_get_integration_app_key_value_response.py) |
 | apimodel.GetListOfConfigurationsV2DataItem | [ApimodelGetListOfConfigurationsV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_list_of_configurations_v2_data_item.py) |
 | apimodel.GetListOfConfigurationsV2Response | [ApimodelGetListOfConfigurationsV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_get_list_of_configurations_v2_response.py) |
 | apimodel.GetNotificationSubscriberItem | [ApimodelGetNotificationSubscriberItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_item.py) |
@@ -175,23 +231,41 @@
 | apimodel.GetNotificationSubscriberListResponseV2 | [ApimodelGetNotificationSubscriberListResponseV2](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_list_response_v2.py) |
 | apimodel.GetNotificationSubscriberStatusResponse | [ApimodelGetNotificationSubscriberStatusResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_status_response.py) |
 | apimodel.IncreaseLimitFormRequest | [ApimodelIncreaseLimitFormRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_increase_limit_form_request.py) |
+| apimodel.IntegrateAppKeyValueRequest | [ApimodelIntegrateAppKeyValueRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_integrate_app_key_value_request.py) |
+| apimodel.IntegrateAppKeyValueResponse | [ApimodelIntegrateAppKeyValueResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_integrate_app_key_value_response.py) |
+| apimodel.IntegrationCredentialInfo | [ApimodelIntegrationCredentialInfo](../../accelbyte_py_sdk/api/csm/models/apimodel_integration_credential_info.py) |
+| apimodel.IntegrationListItem | [ApimodelIntegrationListItem](../../accelbyte_py_sdk/api/csm/models/apimodel_integration_list_item.py) |
+| apimodel.KeyValueCredentialAcknowledgements | [ApimodelKeyValueCredentialAcknowledgements](../../accelbyte_py_sdk/api/csm/models/apimodel_key_value_credential_acknowledgements.py) |
+| apimodel.KeyValueResourceListResponse | [ApimodelKeyValueResourceListResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_key_value_resource_list_response.py) |
+| apimodel.KeyValueResourceResponse | [ApimodelKeyValueResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_key_value_resource_response.py) |
+| apimodel.ListAppUIResponse | [ApimodelListAppUIResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_list_app_ui_response.py) |
+| apimodel.ListIntegratedAppsKeyValueResponse | [ApimodelListIntegratedAppsKeyValueResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_list_integrated_apps_key_value_response.py) |
 | apimodel.ListTopicsResponse | [ApimodelListTopicsResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_list_topics_response.py) |
 | apimodel.MemoryRequest | [ApimodelMemoryRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_request.py) |
 | apimodel.MemoryResponse | [ApimodelMemoryResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_response.py) |
 | apimodel.NoSQLAppListResponse | [ApimodelNoSQLAppListResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_app_list_response.py) |
 | apimodel.NoSQLAppResponse | [ApimodelNoSQLAppResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_app_response.py) |
+| apimodel.NoSQLDatabaseAcknowledgements | [ApimodelNoSQLDatabaseAcknowledgements](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_acknowledgements.py) |
 | apimodel.NoSQLDatabaseCredentialResponse | [ApimodelNoSQLDatabaseCredentialResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_credential_response.py) |
 | apimodel.NoSQLDatabaseDeleteResponse | [ApimodelNoSQLDatabaseDeleteResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_delete_response.py) |
 | apimodel.NoSQLDatabaseResponse | [ApimodelNoSQLDatabaseResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_database_response.py) |
 | apimodel.NoSQLResourceResponse | [ApimodelNoSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_no_sql_resource_response.py) |
 | apimodel.NotificationType | [ApimodelNotificationType](../../accelbyte_py_sdk/api/csm/models/apimodel_notification_type.py) |
 | apimodel.PaginationResponse | [ApimodelPaginationResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_pagination_response.py) |
+| apimodel.PublicIAMClientResponse | [ApimodelPublicIAMClientResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_public_iam_client_response.py) |
 | apimodel.ReplicaRequest | [ApimodelReplicaRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_request.py) |
 | apimodel.ReplicaResponse | [ApimodelReplicaResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_response.py) |
 | apimodel.SaveConfigurationV2Request | [ApimodelSaveConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_save_configuration_v2_request.py) |
 | apimodel.SaveConfigurationV2Response | [ApimodelSaveConfigurationV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_save_configuration_v2_response.py) |
 | apimodel.SaveSecretConfigurationV2Request | [ApimodelSaveSecretConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_save_secret_configuration_v2_request.py) |
 | apimodel.SelfSubscribeNotificationRequest | [ApimodelSelfSubscribeNotificationRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_self_subscribe_notification_request.py) |
+| apimodel.SQLAppListResponse | [ApimodelSQLAppListResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_app_list_response.py) |
+| apimodel.SQLAppResponse | [ApimodelSQLAppResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_app_response.py) |
+| apimodel.SQLDatabaseAcknowledgements | [ApimodelSQLDatabaseAcknowledgements](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_database_acknowledgements.py) |
+| apimodel.SQLDatabaseCredentialResponse | [ApimodelSQLDatabaseCredentialResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_database_credential_response.py) |
+| apimodel.SQLDatabaseDeleteResponse | [ApimodelSQLDatabaseDeleteResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_database_delete_response.py) |
+| apimodel.SQLDatabaseResponse | [ApimodelSQLDatabaseResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_database_response.py) |
+| apimodel.SQLResourceResponse | [ApimodelSQLResourceResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_sql_resource_response.py) |
 | apimodel.SubscribeNotificationRequest | [ApimodelSubscribeNotificationRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_subscribe_notification_request.py) |
 | apimodel.SubscribeNotificationResponse | [ApimodelSubscribeNotificationResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_subscribe_notification_response.py) |
 | apimodel.SubscriberItemRequest | [ApimodelSubscriberItemRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_subscriber_item_request.py) |
@@ -205,6 +279,10 @@
 | apimodel.UpdateConfigurationV2Request | [ApimodelUpdateConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_configuration_v2_request.py) |
 | apimodel.UpdateConfigurationV2Response | [ApimodelUpdateConfigurationV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_update_configuration_v2_response.py) |
 | apimodel.UpdateSecretConfigurationV2Request | [ApimodelUpdateSecretConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_secret_configuration_v2_request.py) |
+| apimodel.UploadFileResponse | [ApimodelUploadFileResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_upload_file_response.py) |
+| domain.KeyValueClusterConfig | [DomainKeyValueClusterConfig](../../accelbyte_py_sdk/api/csm/models/domain_key_value_cluster_config.py) |
+| domain.KeyValueResourceConfiguration | [DomainKeyValueResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/domain_key_value_resource_configuration.py) |
+| domain.KeyValueUpdateConfiguration | [DomainKeyValueUpdateConfiguration](../../accelbyte_py_sdk/api/csm/models/domain_key_value_update_configuration.py) |
 | generated.CreateAppV1Request | [GeneratedCreateAppV1Request](../../accelbyte_py_sdk/api/csm/models/generated_create_app_v1_request.py) |
 | generated.CreateAppV1Response | [GeneratedCreateAppV1Response](../../accelbyte_py_sdk/api/csm/models/generated_create_app_v1_response.py) |
 | generated.CreateDeploymentV1Request | [GeneratedCreateDeploymentV1Request](../../accelbyte_py_sdk/api/csm/models/generated_create_deployment_v1_request.py) |
@@ -243,3 +321,4 @@
 | nosqlresource.NoSQLResourceConfiguration | [NosqlresourceNoSQLResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/nosqlresource_no_sql_resource_configuration.py) |
 | resourceaccesstunnel.TunnelInfo | [ResourceaccesstunnelTunnelInfo](../../accelbyte_py_sdk/api/csm/models/resourceaccesstunnel_tunnel_info.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/csm/models/response_error_response.py) |
+| sqlresource.SQLResourceConfiguration | [SqlresourceSQLResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/sqlresource_sql_resource_configuration.py) |

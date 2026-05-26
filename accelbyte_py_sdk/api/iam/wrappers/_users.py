@@ -334,11 +334,11 @@ def add_user_permission(
 ):
     """Add User Permission (AddUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
-    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+    Updates existing permission (bitwise OR the action) if found one with same resource, otherwise appends a new permission
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date
@@ -424,11 +424,11 @@ async def add_user_permission_async(
 ):
     """Add User Permission (AddUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
-    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+    Updates existing permission (bitwise OR the action) if found one with same resource, otherwise appends a new permission
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date
@@ -514,7 +514,7 @@ def add_user_role(
 ):
     """Add User Role (AddUserRole)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]_**
 
@@ -573,7 +573,7 @@ async def add_user_role_async(
 ):
     """Add User Role (AddUserRole)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]_**
 
@@ -633,7 +633,7 @@ def admin_add_user_permissions_v3(
 ):
     """Add User Permissions (AdminAddUserPermissionsV3)
 
-    This endpoint will APPEND user's permissions with the ones defined in body
+    Appends user's permissions with the ones defined in body.
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date
@@ -709,7 +709,7 @@ async def admin_add_user_permissions_v3_async(
 ):
     """Add User Permissions (AdminAddUserPermissionsV3)
 
-    This endpoint will APPEND user's permissions with the ones defined in body
+    Appends user's permissions with the ones defined in body.
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date
@@ -777,6 +777,7 @@ async def admin_add_user_permissions_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminAddUserRoleV3)
 def admin_add_user_role_v3(
     role_id: str,
@@ -787,7 +788,9 @@ def admin_add_user_role_v3(
 ):
     """Add User Role (AdminAddUserRoleV3)
 
-    action code: 10109
+    **Deprecated.** Only assigns roles in the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [POST]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -835,6 +838,7 @@ def admin_add_user_role_v3(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminAddUserRoleV3)
 async def admin_add_user_role_v3_async(
     role_id: str,
@@ -845,7 +849,9 @@ async def admin_add_user_role_v3_async(
 ):
     """Add User Role (AdminAddUserRoleV3)
 
-    action code: 10109
+    **Deprecated.** Only assigns roles in the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [POST]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -906,7 +912,7 @@ def admin_ban_user_v2(
 ):
     """Ban a single user (AdminBanUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
@@ -965,7 +971,7 @@ async def admin_ban_user_v2_async(
 ):
     """Ban a single user (AdminBanUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
@@ -1026,7 +1032,6 @@ def admin_ban_user_v3(
     """Ban a single user (AdminBanUserV3)
 
     Bans a user with specific type of ban. Ban types and reason can be queried.
-    action code : 10141
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -1083,7 +1088,6 @@ async def admin_ban_user_v3_async(
     """Ban a single user (AdminBanUserV3)
 
     Bans a user with specific type of ban. Ban types and reason can be queried.
-    action code : 10141
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -1141,7 +1145,7 @@ def admin_bulk_get_users_platform(
     """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
     Notes:
-    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - Bulk-retrieves basic user info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Properties:
@@ -1189,7 +1193,7 @@ async def admin_bulk_get_users_platform_async(
     """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
     Notes:
-    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - Bulk-retrieves basic user info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Properties:
@@ -1238,7 +1242,7 @@ def admin_bulk_update_users_v3(
 ):
     """Update Users (AdminBulkUpdateUsersV3)
 
-    This endpoint support to bulk update users based on given data.
+    Bulk updates users based on given data.
     ------
     Supported fields:
     * skipLoginQueue
@@ -1293,7 +1297,7 @@ async def admin_bulk_update_users_v3_async(
 ):
     """Update Users (AdminBulkUpdateUsersV3)
 
-    This endpoint support to bulk update users based on given data.
+    Bulk updates users based on given data.
     ------
     Supported fields:
     * skipLoginQueue
@@ -1466,7 +1470,7 @@ def admin_create_user_roles_v2(
 ):
     """Save User Roles (AdminCreateUserRolesV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
@@ -1525,7 +1529,7 @@ async def admin_create_user_roles_v2_async(
 ):
     """Save User Roles (AdminCreateUserRolesV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
@@ -1725,7 +1729,7 @@ def admin_delete_platform_link_v2(
 ):
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_**
 
@@ -1803,7 +1807,7 @@ async def admin_delete_platform_link_v2_async(
 ):
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_**
 
@@ -1880,7 +1884,7 @@ def admin_delete_user_information_v3(
 ):
     """Delete user's information (AdminDeleteUserInformationV3)
 
-    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
+    **WARNING:** Deletes user data directly from the database, bypassing the GDPR flow. Use with caution as this action is irreversible.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information
@@ -1928,7 +1932,7 @@ async def admin_delete_user_information_v3_async(
 ):
     """Delete user's information (AdminDeleteUserInformationV3)
 
-    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
+    **WARNING:** Deletes user data directly from the database, bypassing the GDPR flow. Use with caution as this action is irreversible.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information
@@ -2359,7 +2363,7 @@ def admin_delete_user_permission_bulk_v3(
 ):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
-    Delete User Permission
+    Removes multiple permissions from a user in bulk.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -2413,7 +2417,7 @@ async def admin_delete_user_permission_bulk_v3_async(
 ):
     """Delete User Permission (AdminDeleteUserPermissionBulkV3)
 
-    Delete User Permission
+    Removes multiple permissions from a user in bulk.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -2470,7 +2474,7 @@ def admin_delete_user_permission_v3(
 ):
     """Delete User Permission (AdminDeleteUserPermissionV3)
 
-    Delete User Permission
+    Removes a specific permission (identified by resource and action) from the specified user.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -2528,7 +2532,7 @@ async def admin_delete_user_permission_v3_async(
 ):
     """Delete User Permission (AdminDeleteUserPermissionV3)
 
-    Delete User Permission
+    Removes a specific permission (identified by resource and action) from the specified user.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}
@@ -2577,6 +2581,7 @@ async def admin_delete_user_permission_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeleteUserRoleV3)
 def admin_delete_user_role_v3(
     role_id: str,
@@ -2587,8 +2592,9 @@ def admin_delete_user_role_v3(
 ):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    This endpoint removes role from user
-    action code: 10110
+    **Deprecated.** Only removes roles from the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -2634,6 +2640,7 @@ def admin_delete_user_role_v3(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeleteUserRoleV3)
 async def admin_delete_user_role_v3_async(
     role_id: str,
@@ -2644,8 +2651,9 @@ async def admin_delete_user_role_v3_async(
 ):
     """Delete User Role (AdminDeleteUserRoleV3)
 
-    This endpoint removes role from user
-    action code: 10110
+    **Deprecated.** Only removes roles from the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}
@@ -2693,6 +2701,7 @@ async def admin_delete_user_role_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeleteUserRolesV3)
 def admin_delete_user_roles_v3(
     body: List[str],
@@ -2703,7 +2712,9 @@ def admin_delete_user_roles_v3(
 ):
     """Delete User Roles (AdminDeleteUserRolesV3)
 
-    Delete User Roles
+    **Deprecated.** Only removes roles from the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -2747,6 +2758,7 @@ def admin_delete_user_roles_v3(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeleteUserRolesV3)
 async def admin_delete_user_roles_v3_async(
     body: List[str],
@@ -2757,7 +2769,9 @@ async def admin_delete_user_roles_v3_async(
 ):
     """Delete User Roles (AdminDeleteUserRolesV3)
 
-    Delete User Roles
+    **Deprecated.** Only removes roles from the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -2814,7 +2828,7 @@ def admin_disable_user_v2(
 ):
     """Disable a user (AdminDisableUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -2877,7 +2891,7 @@ async def admin_disable_user_v2_async(
 ):
     """Disable a user (AdminDisableUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -2941,7 +2955,7 @@ def admin_enable_user_v2(
 ):
     """Enable a user (AdminEnableUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -2994,7 +3008,7 @@ async def admin_enable_user_v2_async(
 ):
     """Enable a user (AdminEnableUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -3048,7 +3062,7 @@ def admin_get_age_restriction_status_v2(
 ):
     """Get age restriction status (AdminGetAgeRestrictionStatusV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]_**
     - **Note:**
@@ -3097,7 +3111,7 @@ async def admin_get_age_restriction_status_v2_async(
 ):
     """Get age restriction status (AdminGetAgeRestrictionStatusV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]_**
     - **Note:**
@@ -3147,7 +3161,7 @@ def admin_get_age_restriction_status_v3(
 ):
     """Get age restriction status (AdminGetAgeRestrictionStatusV3)
 
-    action code: 10138
+    Retrieves the age restriction status for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -3195,7 +3209,7 @@ async def admin_get_age_restriction_status_v3_async(
 ):
     """Get age restriction status (AdminGetAgeRestrictionStatusV3)
 
-    action code: 10138
+    Retrieves the age restriction status for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -3248,8 +3262,7 @@ def admin_get_bulk_user_ban_v3(
 ):
     """Get bulk user bans (AdminGetBulkUserBanV3)
 
-    This endpoint returns user bans of userIDs specified in the payload
-    action code : 10127
+    Returns user bans of userIDs specified in the payload.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bans
@@ -3309,8 +3322,7 @@ async def admin_get_bulk_user_ban_v3_async(
 ):
     """Get bulk user bans (AdminGetBulkUserBanV3)
 
-    This endpoint returns user bans of userIDs specified in the payload
-    action code : 10127
+    Returns user bans of userIDs specified in the payload.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bans
@@ -3370,8 +3382,7 @@ def admin_get_bulk_user_by_email_address_v3(
 ):
     """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
 
-    This endpoint search user by the list of email addresses
-    action code : 10132
+    Searches users by the list of email addresses.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
@@ -3423,8 +3434,7 @@ async def admin_get_bulk_user_by_email_address_v3_async(
 ):
     """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
 
-    This endpoint search user by the list of email addresses
-    action code : 10132
+    Searches users by the list of email addresses.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk
@@ -3477,7 +3487,7 @@ def admin_get_list_country_age_restriction_v3(
 ):
     """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
 
-    action code : 10139
+    Retrieves the list of age restriction settings for all countries.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
@@ -3523,7 +3533,7 @@ async def admin_get_list_country_age_restriction_v3_async(
 ):
     """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
 
-    action code : 10139
+    Retrieves the list of age restriction settings for all countries.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries
@@ -3572,7 +3582,9 @@ def admin_get_list_justice_platform_accounts(
 ):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -3624,7 +3636,9 @@ async def admin_get_list_justice_platform_accounts_async(
 ):
     """Get User Justice Platform Accounts (AdminGetListJusticePlatformAccounts)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -3676,7 +3690,6 @@ def admin_get_my_user_v3(
     """Get My User (AdminGetMyUserV3)
 
     Get my user data
-    action code : 10147
 
     Properties:
         url: /iam/v3/admin/users/me
@@ -3709,7 +3722,6 @@ async def admin_get_my_user_v3_async(
     """Get My User (AdminGetMyUserV3)
 
     Get my user data
-    action code : 10147
 
     Properties:
         url: /iam/v3/admin/users/me
@@ -3750,7 +3762,7 @@ def admin_get_third_party_platform_token_link_status_v3(
 
     Admin get the link status of the third party platform token with user id.
 
-    This endpoint is used for checking whether the third party user represented by third party token is
+    Checks whether the third party user represented by third party token is
     linked with the corresponding user id.
 
     ## Supported platforms:
@@ -3837,7 +3849,7 @@ async def admin_get_third_party_platform_token_link_status_v3_async(
 
     Admin get the link status of the third party platform token with user id.
 
-    This endpoint is used for checking whether the third party user represented by third party token is
+    Checks whether the third party user represented by third party token is
     linked with the corresponding user id.
 
     ## Supported platforms:
@@ -3922,7 +3934,7 @@ def admin_get_user_ban_summary_v3(
 ):
     """Get user's bans summary (AdminGetUserBanSummaryV3)
 
-    This endpoint get user's bans summary'
+    Retrieves a summary of the user's ban history, including active and expired bans.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/summary
@@ -3974,7 +3986,7 @@ async def admin_get_user_ban_summary_v3_async(
 ):
     """Get user's bans summary (AdminGetUserBanSummaryV3)
 
-    This endpoint get user's bans summary'
+    Retrieves a summary of the user's ban history, including active and expired bans.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/summary
@@ -4030,7 +4042,7 @@ def admin_get_user_ban_v2(
 ):
     """Get user's bans (AdminGetUserBanV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
@@ -4085,7 +4097,7 @@ async def admin_get_user_ban_v2_async(
 ):
     """Get user's bans (AdminGetUserBanV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
@@ -4144,8 +4156,7 @@ def admin_get_user_ban_v3(
 ):
     """Get user's bans (AdminGetUserBanV3)
 
-    This endpoint retrieve the first page of the data if after and before parameters is empty
-    action code : 10126
+    Returns the first page of the data if after and before parameters is empty.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -4213,8 +4224,7 @@ async def admin_get_user_ban_v3_async(
 ):
     """Get user's bans (AdminGetUserBanV3)
 
-    This endpoint retrieve the first page of the data if after and before parameters is empty
-    action code : 10126
+    Returns the first page of the data if after and before parameters is empty.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans
@@ -4280,8 +4290,7 @@ def admin_get_user_by_email_address_v3(
 ):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    This endpoint search user who owns the given email address
-    action code : 10132
+    Searches for the user who owns the given email address.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users
@@ -4333,8 +4342,7 @@ async def admin_get_user_by_email_address_v3_async(
 ):
     """Get User By Email Address (AdminGetUserByEmailAddressV3)
 
-    This endpoint search user who owns the given email address
-    action code : 10132
+    Searches for the user who owns the given email address.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users
@@ -4391,7 +4399,7 @@ def admin_get_user_by_platform_user_idv3(
     """Admin Get User By Platform User ID (AdminGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID
-    This endpoint return user information by given platform ID and platform user ID.
+    Returns user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
 
@@ -4489,7 +4497,7 @@ async def admin_get_user_by_platform_user_idv3_async(
     """Admin Get User By Platform User ID (AdminGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID
-    This endpoint return user information by given platform ID and platform user ID.
+    Returns user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
 
@@ -4587,7 +4595,7 @@ def admin_get_user_by_user_id_v2(
 ):
     """Get User By User Id (AdminGetUserByUserIdV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
 
@@ -4636,7 +4644,7 @@ async def admin_get_user_by_user_id_v2_async(
 ):
     """Get User By User Id (AdminGetUserByUserIdV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
 
@@ -4684,9 +4692,9 @@ def admin_get_user_by_user_id_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Admin Get User By User Id (AdminGetUserByUserIdV3)
+    """Admin Get User By User ID (AdminGetUserByUserIdV3)
 
-    Admin Get User By User Id
+    Retrieves the full user profile including email verification status, ban status, deletion status, and linked platform accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -4736,9 +4744,9 @@ async def admin_get_user_by_user_id_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Admin Get User By User Id (AdminGetUserByUserIdV3)
+    """Admin Get User By User ID (AdminGetUserByUserIdV3)
 
-    Admin Get User By User Id
+    Retrieves the full user profile including email verification status, ban status, deletion status, and linked platform accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -4792,7 +4800,7 @@ def admin_get_user_deletion_status_v3(
 ):
     """Get User Deletion Status (AdminGetUserDeletionStatusV3)
 
-    action code : 10145
+    Retrieves the deletion status of the specified user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -4842,7 +4850,7 @@ async def admin_get_user_deletion_status_v3_async(
 ):
     """Get User Deletion Status (AdminGetUserDeletionStatusV3)
 
-    action code : 10145
+    Retrieves the deletion status of the specified user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -5079,11 +5087,11 @@ def admin_get_user_login_histories_v3(
 ):
     """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
 
-    Notes for this endpoint:
-    This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - This API only accept publisher/studio namespace and userId.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - Returns the first page of the data if `after` and `before` parameters is empty.
+    - Returns the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - Returns the previous page of the data if we provide `before` parameter with valid Unix timestamp.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
@@ -5143,11 +5151,11 @@ async def admin_get_user_login_histories_v3_async(
 ):
     """Get User's Login Histories (AdminGetUserLoginHistoriesV3)
 
-    Notes for this endpoint:
-    This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
+    - This API only accept publisher/studio namespace and userId.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - Returns the first page of the data if `after` and `before` parameters is empty.
+    - Returns the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - Returns the previous page of the data if we provide `before` parameter with valid Unix timestamp.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories
@@ -5208,9 +5216,9 @@ def admin_get_user_mapping(
 ):
     """Get user mapping (AdminGetUserMapping)
 
-    This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
-    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
+    Supports publisher access to game and game access to publisher.
+    If targetNamespace filled with publisher namespace then returns its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then returns its game user id and game namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -5268,9 +5276,9 @@ async def admin_get_user_mapping_async(
 ):
     """Get user mapping (AdminGetUserMapping)
 
-    This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
-    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
+    Supports publisher access to game and game access to publisher.
+    If targetNamespace filled with publisher namespace then returns its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then returns its game user id and game namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -5558,7 +5566,7 @@ def admin_get_user_single_platform_account(
 ):
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
-    This endpoint gets user single platform account metadata.
+    Gets user single platform account metadata.
 
 
     **Supported Platforms:**
@@ -5655,7 +5663,7 @@ async def admin_get_user_single_platform_account_async(
 ):
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
-    This endpoint gets user single platform account metadata.
+    Gets user single platform account metadata.
 
 
     **Supported Platforms:**
@@ -5750,9 +5758,9 @@ def admin_get_user_state_by_user_id_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Admin Get User State By User Id (AdminGetUserStateByUserIdV3)
+    """Admin Get User State By User ID (AdminGetUserStateByUserIdV3)
 
-    Admin Get User State By User Id
+    Retrieves the current account state (enabled/disabled, email verification, deletion status) for the specified user.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/state
@@ -5802,9 +5810,9 @@ async def admin_get_user_state_by_user_id_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Admin Get User State By User Id (AdminGetUserStateByUserIdV3)
+    """Admin Get User State By User ID (AdminGetUserStateByUserIdV3)
 
-    Admin Get User State By User Id
+    Retrieves the current account state (enabled/disabled, email verification, deletion status) for the specified user.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/state
@@ -5858,7 +5866,7 @@ def admin_invite_user_v3(
 ):
     """Invite User (AdminInviteUserV3)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them.
+    Invites an admin or non-admin user and assigns a role to them.
     The role must be scoped to namespace based on the **{namespace}** value in path parameter.
     An admin user can only assign role to namespaces that the admin user has the required permission.
     Role is optional, if not specified then it will only assign User role
@@ -5919,7 +5927,7 @@ async def admin_invite_user_v3_async(
 ):
     """Invite User (AdminInviteUserV3)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them.
+    Invites an admin or non-admin user and assigns a role to them.
     The role must be scoped to namespace based on the **{namespace}** value in path parameter.
     An admin user can only assign role to namespaces that the admin user has the required permission.
     Role is optional, if not specified then it will only assign User role
@@ -5984,7 +5992,7 @@ def admin_link_platform_account(
 ):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
+    Force linking platform account to user User Account. Intended for admin to forcefully link account to user.
     By default, these cases are not allowed
     - The platform account current is linked by another account
     - The target account ever linked this platform's another account
@@ -6047,7 +6055,7 @@ async def admin_link_platform_account_async(
 ):
     """Link a Platform User Account to User Account (AdminLinkPlatformAccount)
 
-    Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user.
+    Force linking platform account to user User Account. Intended for admin to forcefully link account to user.
     By default, these cases are not allowed
     - The platform account current is linked by another account
     - The target account ever linked this platform's another account
@@ -6111,7 +6119,7 @@ def admin_list_all_distinct_platform_accounts_v3(
 ):
     """Admin get distinct platforms linked to the user (AdminListAllDistinctPlatformAccountsV3)
 
-    This endpoint only retrieves 3rd party platform accounts linked to user.
+    Retrieves only 3rd party platform accounts linked to user.
     It will query platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
     ------
     Supported status:
@@ -6174,7 +6182,7 @@ async def admin_list_all_distinct_platform_accounts_v3_async(
 ):
     """Admin get distinct platforms linked to the user (AdminListAllDistinctPlatformAccountsV3)
 
-    This endpoint only retrieves 3rd party platform accounts linked to user.
+    Retrieves only 3rd party platform accounts linked to user.
     It will query platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
     ------
     Supported status:
@@ -6238,7 +6246,7 @@ def admin_list_user_all_platform_accounts_distinct_v3(
 ):
     """Admin get distinct platform accounts linked to the user (AdminListUserAllPlatformAccountsDistinctV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
     It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
 
     Properties:
@@ -6291,7 +6299,7 @@ async def admin_list_user_all_platform_accounts_distinct_v3_async(
 ):
     """Admin get distinct platform accounts linked to the user (AdminListUserAllPlatformAccountsDistinctV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
     It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
 
     Properties:
@@ -6350,8 +6358,7 @@ def admin_list_user_id_by_platform_user_i_ds_v3(
     """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
 
     Admin List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID
+    Lists game user IDs from the given namespace by given platform ID and list of platform user ID.
 
     Supported platform:
     - steam
@@ -6444,8 +6451,7 @@ async def admin_list_user_id_by_platform_user_i_ds_v3_async(
     """Admin List User ID By Platform User ID (AdminListUserIDByPlatformUserIDsV3)
 
     Admin List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID
+    Lists game user IDs from the given namespace by given platform ID and list of platform user ID.
 
     Supported platform:
     - steam
@@ -6537,7 +6543,7 @@ def admin_list_user_id_by_user_i_ds_v3(
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
     List User By User ID
-    This endpoint intended to list user information from the given list of userID and namespace
+    Lists user information from the given list of userID and namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk
@@ -6588,7 +6594,7 @@ async def admin_list_user_id_by_user_i_ds_v3_async(
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
     List User By User ID
-    This endpoint intended to list user information from the given list of userID and namespace
+    Lists user information from the given list of userID and namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk
@@ -6641,7 +6647,7 @@ def admin_list_users_v3(
 ):
     """Admin List Users V3 (AdminListUsersV3)
 
-    **This endpoint requires publisher namespace.**
+    **Requires a publisher namespace.**
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
 
@@ -6697,7 +6703,7 @@ async def admin_list_users_v3_async(
 ):
     """Admin List Users V3 (AdminListUsersV3)
 
-    **This endpoint requires publisher namespace.**
+    **Requires a publisher namespace.**
     Returns list of users ID and namespace with their Justice platform account, under a namespace. If user
     doesn't have Justice platform account, the linkedPlatforms will be empty array.'
 
@@ -7133,7 +7139,6 @@ def admin_platform_unlink_v3(
     _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
     If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
-    action code : 10121
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
@@ -7216,7 +7221,6 @@ async def admin_platform_unlink_v3_async(
     _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
     If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
-    action code : 10121
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}
@@ -7278,7 +7282,7 @@ def admin_put_user_roles_v2(
 ):
     """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
@@ -7335,7 +7339,7 @@ async def admin_put_user_roles_v2_async(
 ):
     """Update User Roles, will replace all the existing roles (AdminPutUserRolesV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
@@ -7395,7 +7399,7 @@ def admin_query_third_platform_link_history_v3(
 ):
     """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
 
-    if limit is not defined, The default limit is 100
+    If the limit is not defined, the default limit is 100.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
@@ -7457,7 +7461,7 @@ async def admin_query_third_platform_link_history_v3_async(
 ):
     """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
 
-    if limit is not defined, The default limit is 100
+    If the limit is not defined, the default limit is 100.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories
@@ -7520,7 +7524,7 @@ def admin_reset_password_v2(
 ):
     """Update User Password (AdminResetPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]_**
 
@@ -7579,7 +7583,7 @@ async def admin_reset_password_v2_async(
 ):
     """Update User Password (AdminResetPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]_**
 
@@ -7639,7 +7643,7 @@ def admin_reset_password_v3(
 ):
     """Update User Password (AdminResetPasswordV3)
 
-    Update User Password
+    Updates the password for the specified user. This is an admin operation that does not require the user's current password.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password
@@ -7695,7 +7699,7 @@ async def admin_reset_password_v3_async(
 ):
     """Update User Password (AdminResetPasswordV3)
 
-    Update User Password
+    Updates the password for the specified user. This is an admin operation that does not require the user's current password.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/password
@@ -7754,7 +7758,7 @@ def admin_save_user_role_v3(
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
     User's roles will be replaced with roles from request body.
-    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -7813,7 +7817,7 @@ async def admin_save_user_role_v3_async(
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
     User's roles will be replaced with roles from request body.
-    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles
@@ -7885,16 +7889,16 @@ def admin_search_user_v3(
 ):
     """Search User (AdminSearchUserV3)
 
-    Endpoint behavior :
-    - By default this endpoint searches all users on the specified namespace.
-    - If query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query.
+    Behavior :
+    - By default, searches all users on the specified namespace.
+    - If query parameter is defined, searches users whose email address, display name, username, or third party partially match with the query.
     - The query parameter length must be between 3 and 30 characters. For email address queries (i.e., contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
-    - If startDate and endDate parameters is defined, endpoint will search users which created on the certain date range.
-    - If query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range.
-    - If startDate parameter is defined, endpoint will search users that created start from the defined date.
-    - If endDate parameter is defined, endpoint will search users that created until the defined date.
-    - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
-    - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
+    - If startDate and endDate parameters is defined, searches users which created on the certain date range.
+    - If query, startDate and endDate parameters are defined, searches users whose email address and display name match and created on the certain date range.
+    - If startDate parameter is defined, searches users that created start from the defined date.
+    - If endDate parameter is defined, searches users that created until the defined date.
+    - If platformId parameter is defined and by parameter is using thirdparty, searches users based on the platformId they have linked to.
+    - If platformBy parameter is defined and by parameter is using thirdparty, searches users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
     - If limit is not defined, The default limit is 100.
 
     GraphQL-Like Querying:
@@ -7910,8 +7914,7 @@ def admin_search_user_v3(
     - If super admin search in game namespace, the result will be all game admin users and players under the game namespace
     - If game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
     - If game admin search in their game namespace, the result will be all player in the game namespace
-
-    action code : 10133
+    - If IAM client token (from studio namespace or game namespace) with ADMIN:NAMESPACE:{namespace}:USER permission searches in a game namespace, the result will be all players in that game namespace
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
@@ -7964,6 +7967,8 @@ def admin_search_user_v3(
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -8013,16 +8018,16 @@ async def admin_search_user_v3_async(
 ):
     """Search User (AdminSearchUserV3)
 
-    Endpoint behavior :
-    - By default this endpoint searches all users on the specified namespace.
-    - If query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query.
+    Behavior :
+    - By default, searches all users on the specified namespace.
+    - If query parameter is defined, searches users whose email address, display name, username, or third party partially match with the query.
     - The query parameter length must be between 3 and 30 characters. For email address queries (i.e., contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
-    - If startDate and endDate parameters is defined, endpoint will search users which created on the certain date range.
-    - If query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range.
-    - If startDate parameter is defined, endpoint will search users that created start from the defined date.
-    - If endDate parameter is defined, endpoint will search users that created until the defined date.
-    - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
-    - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
+    - If startDate and endDate parameters is defined, searches users which created on the certain date range.
+    - If query, startDate and endDate parameters are defined, searches users whose email address and display name match and created on the certain date range.
+    - If startDate parameter is defined, searches users that created start from the defined date.
+    - If endDate parameter is defined, searches users that created until the defined date.
+    - If platformId parameter is defined and by parameter is using thirdparty, searches users based on the platformId they have linked to.
+    - If platformBy parameter is defined and by parameter is using thirdparty, searches users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
     - If limit is not defined, The default limit is 100.
 
     GraphQL-Like Querying:
@@ -8038,8 +8043,7 @@ async def admin_search_user_v3_async(
     - If super admin search in game namespace, the result will be all game admin users and players under the game namespace
     - If game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
     - If game admin search in their game namespace, the result will be all player in the game namespace
-
-    action code : 10133
+    - If IAM client token (from studio namespace or game namespace) with ADMIN:NAMESPACE:{namespace}:USER permission searches in a game namespace, the result will be all players in that game namespace
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search
@@ -8093,6 +8097,8 @@ async def admin_search_user_v3_async(
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
@@ -8139,7 +8145,7 @@ def admin_search_users_v2(
 ):
     """Search Users (AdminSearchUsersV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
 
@@ -8222,7 +8228,7 @@ async def admin_search_users_v2_async(
 ):
     """Search Users (AdminSearchUsersV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
 
@@ -8312,8 +8318,6 @@ def admin_send_verification_code_v3(
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
 
-    action code: 10116
-
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/request
 
@@ -8383,8 +8387,6 @@ async def admin_send_verification_code_v3_async(
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
 
-    action code: 10116
-
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/code/request
 
@@ -8443,15 +8445,13 @@ def admin_trustly_update_user_identity(
 ):
     """Update User Identity (AdminTrustlyUpdateUserIdentity)
 
-    This endpoint ONLY accept **Client Token**
-    This endpoint is utilized for specific scenarios where **email notifications are disabled**
+    Only accepts **Client Token**.
+    Intended for specific scenarios where **email notifications are disabled**.
     The user's email will be marked as verified
 
     Note:
     - emailAddress or password field are optional
     - request body can't be empty
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity
@@ -8509,15 +8509,13 @@ async def admin_trustly_update_user_identity_async(
 ):
     """Update User Identity (AdminTrustlyUpdateUserIdentity)
 
-    This endpoint ONLY accept **Client Token**
-    This endpoint is utilized for specific scenarios where **email notifications are disabled**
+    Only accepts **Client Token**.
+    Intended for specific scenarios where **email notifications are disabled**.
     The user's email will be marked as verified
 
     Note:
     - emailAddress or password field are optional
     - request body can't be empty
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity
@@ -8577,7 +8575,7 @@ def admin_update_age_restriction_config_v2(
 ):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_**
 
@@ -8630,7 +8628,7 @@ async def admin_update_age_restriction_config_v2_async(
 ):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_**
 
@@ -8684,7 +8682,7 @@ def admin_update_age_restriction_config_v3(
 ):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
 
-    action code: 10122
+    Updates the age restriction configuration for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -8734,7 +8732,7 @@ async def admin_update_age_restriction_config_v3_async(
 ):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
 
-    action code: 10122
+    Updates the age restriction configuration for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions
@@ -8787,7 +8785,7 @@ def admin_update_country_age_restriction_v3(
 ):
     """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
 
-    action code: 10123
+    Updates the age restriction setting for the specified country.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
@@ -8843,7 +8841,7 @@ async def admin_update_country_age_restriction_v3_async(
 ):
     """Update country's age restriction (AdminUpdateCountryAgeRestrictionV3)
 
-    action code: 10123
+    Updates the age restriction setting for the specified country.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode}
@@ -8905,7 +8903,6 @@ def admin_update_user_ban_v3(
     Set ban status for a single user for a specific ban. Retrieve
     user ban and choose the ban ID. Set the form parameter to true/false to enable
     or disable the ban.
-    action code : 10142'
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
@@ -8968,7 +8965,6 @@ async def admin_update_user_ban_v3_async(
     Set ban status for a single user for a specific ban. Retrieve
     user ban and choose the ban ID. Set the form parameter to true/false to enable
     or disable the ban.
-    action code : 10142'
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}
@@ -9029,7 +9025,7 @@ def admin_update_user_deletion_status_v3(
 ):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
-    action code : 10144
+    Updates the deletion status of the specified user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -9085,7 +9081,7 @@ async def admin_update_user_deletion_status_v3_async(
 ):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
-    action code : 10144
+    Updates the deletion status of the specified user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status
@@ -9143,29 +9139,7 @@ def admin_update_user_permission_v3(
 ):
     """Update User Permissions (AdminUpdateUserPermissionV3)
 
-    This endpoint will REPLACE user's permissions with the ones defined in body
-    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-    In ranged schedule, first element will be start date, and second one will be end date
-    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-    Syntax reference
-    Fields:
-    1. Seconds: 0-59 * / , -
-    2. Minutes: 0-59 * / , -
-    3. Hours: 0-23 * / , -
-    4. Day of month: 1-31 * / , - L W
-    5. Month: 1-12 JAN-DEC * / , -
-    6. Day of week: 0-6 SUN-SAT * / , - L #
-    7. Year: 1970-2099 * / , -
-
-    Special characters:
-    1. *: all values in the fields, e.g. * in seconds fields indicates every second
-    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+    Replaces the user's permissions with the ones defined in the request body. Supports scheduled permissions using cron or date range syntax.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -9219,29 +9193,7 @@ async def admin_update_user_permission_v3_async(
 ):
     """Update User Permissions (AdminUpdateUserPermissionV3)
 
-    This endpoint will REPLACE user's permissions with the ones defined in body
-    Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
-    Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
-    In ranged schedule, first element will be start date, and second one will be end date
-    If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive
-    Syntax reference
-    Fields:
-    1. Seconds: 0-59 * / , -
-    2. Minutes: 0-59 * / , -
-    3. Hours: 0-23 * / , -
-    4. Day of month: 1-31 * / , - L W
-    5. Month: 1-12 JAN-DEC * / , -
-    6. Day of week: 0-6 SUN-SAT * / , - L #
-    7. Year: 1970-2099 * / , -
-
-    Special characters:
-    1. *: all values in the fields, e.g. * in seconds fields indicates every second
-    2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter
-    3. ,: separate items of a list, e.g. MON,WED,FRI in day of week
-    4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive
-    5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as "the last Friday" (5L) of a given month. In the day-of-month field, it specifies the last day of the month.
-    6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: "the nearest business day to the 15th of the month."
-    7. #: must be followed by a number between one and five. It allows you to specify constructs such as "the second Friday" of a given month.
+    Replaces the user's permissions with the ones defined in the request body. Supports scheduled permissions using cron or date range syntax.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions
@@ -9297,12 +9249,7 @@ def admin_update_user_status_v3(
 ):
     """Update user status (AdminUpdateUserStatusV3)
 
-    This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
-    Disable user for **Account Disable** purpose fill the reason with:
-    - **AdminDeactivateAccount** : if your disable account request comes from admin
-
-    Enable user ignore field 'reason' in the request body.
-    action code : 10143
+    Disables or enables a user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
@@ -9358,12 +9305,7 @@ async def admin_update_user_status_v3_async(
 ):
     """Update user status (AdminUpdateUserStatusV3)
 
-    This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
-    Disable user for **Account Disable** purpose fill the reason with:
-    - **AdminDeactivateAccount** : if your disable account request comes from admin
-
-    Enable user ignore field 'reason' in the request body.
-    action code : 10143
+    Disables or enables a user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status
@@ -9422,11 +9364,11 @@ def admin_update_user_v2(
 ):
     """Update User (AdminUpdateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_**
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -9490,11 +9432,11 @@ async def admin_update_user_v2_async(
 ):
     """Update User (AdminUpdateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_**
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -9559,7 +9501,7 @@ def admin_update_user_v3(
 ):
     """Update User (AdminUpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName, tags}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -9571,8 +9513,6 @@ def admin_update_user_v3(
     - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -9630,7 +9570,7 @@ async def admin_update_user_v3_async(
 ):
     """Update User (AdminUpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName, tags}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -9642,8 +9582,6 @@ async def admin_update_user_v3_async(
     - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}
@@ -9703,18 +9641,16 @@ def admin_upgrade_headless_account_v3(
 ):
     """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
 
-    If validateOnly is set false, will upgrade headless account with verification code
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    If validateOnly is set false, will upgrade headless account with verification code.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the send verification code endpoint.
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    To obtain a verification code, use the send verification code API.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
     Supported user data fields :
     - displayName
     - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
     - country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-    action code : 10124
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
@@ -9772,18 +9708,16 @@ async def admin_upgrade_headless_account_v3_async(
 ):
     """Verify or consume verification code.  (AdminUpgradeHeadlessAccountV3)
 
-    If validateOnly is set false, will upgrade headless account with verification code
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    If validateOnly is set false, will upgrade headless account with verification code.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the send verification code endpoint.
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    To obtain a verification code, use the send verification code API.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
     Supported user data fields :
     - displayName
     - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
     - country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-    action code : 10124
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/headless/code/verify
@@ -9960,11 +9894,11 @@ def admin_verify_user_without_verification_code_v3(
 ):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
-    This endpoint force verify user
-    Note:
-    - namespace: only accept publisher/studio namespace
-    - userId: only accept publisher/studio userId
-    action code: 10118
+    Force-verifies a user's account without requiring a verification code.
+
+    **Note:**
+    - namespace: only accepts publisher/studio namespaces
+    - userId: only accepts publisher/studio user IDs
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
@@ -10018,11 +9952,11 @@ async def admin_verify_user_without_verification_code_v3_async(
 ):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
-    This endpoint force verify user
-    Note:
-    - namespace: only accept publisher/studio namespace
-    - userId: only accept publisher/studio userId
-    action code: 10118
+    Force-verifies a user's account without requiring a verification code.
+
+    **Note:**
+    - namespace: only accepts publisher/studio namespaces
+    - userId: only accepts publisher/studio user IDs
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify
@@ -10080,7 +10014,7 @@ def ban_user(
 ):
     """Ban a single user (BanUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
@@ -10139,7 +10073,7 @@ async def ban_user_async(
 ):
     """Ban a single user (BanUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 
@@ -10327,7 +10261,7 @@ def create_user(
 ):
     """Create User (CreateUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
     - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
@@ -10390,7 +10324,7 @@ async def create_user_async(
 ):
     """Create User (CreateUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
     - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
@@ -10455,8 +10389,8 @@ def create_user_from_invitation_v3(
 ):
     """Create User From Invitation (CreateUserFromInvitationV3)
 
-    This endpoint create user from saved roles when creating invitation and submitted data.
-    User will be able to login after completing submitting the data through this endpoint.
+    Creates a user from saved roles when creating invitation and submitted data.
+    User will be able to login after submitting data.
     Available Authentication Types:
     EMAILPASSWD: an authentication type used for new user registration through email.
 
@@ -10520,8 +10454,8 @@ async def create_user_from_invitation_v3_async(
 ):
     """Create User From Invitation (CreateUserFromInvitationV3)
 
-    This endpoint create user from saved roles when creating invitation and submitted data.
-    User will be able to login after completing submitting the data through this endpoint.
+    Creates a user from saved roles when creating invitation and submitted data.
+    User will be able to login after submitting data.
     Available Authentication Types:
     EMAILPASSWD: an authentication type used for new user registration through email.
 
@@ -10587,7 +10521,7 @@ def delete_user(
 ):
     """Delete User (DeleteUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
@@ -10638,7 +10572,7 @@ async def delete_user_async(
 ):
     """Delete User (DeleteUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
@@ -10691,7 +10625,7 @@ def delete_user_information(
 ):
     """Delete user's information (DeleteUserInformation)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
@@ -10742,7 +10676,7 @@ async def delete_user_information_async(
 ):
     """Delete user's information (DeleteUserInformation)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/information [DELETE]_**
 
@@ -10797,7 +10731,7 @@ def delete_user_permission(
 ):
     """Delete User Permission (DeleteUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]_**
 
@@ -10858,7 +10792,7 @@ async def delete_user_permission_async(
 ):
     """Delete User Permission (DeleteUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action} [DELETE]_**
 
@@ -10920,7 +10854,7 @@ def delete_user_role(
 ):
     """Delete User Role (DeleteUserRole)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]_**
 
@@ -10977,7 +10911,7 @@ async def delete_user_role_async(
 ):
     """Delete User Role (DeleteUserRole)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [DELETE]_**
 
@@ -11036,7 +10970,7 @@ def disable_user(
 ):
     """Disable a user (DisableUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -11099,7 +11033,7 @@ async def disable_user_async(
 ):
     """Disable a user (DisableUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -11164,12 +11098,12 @@ def disable_user_ban(
 ):
     """Disable ban for a single user. (DisableUserBan)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
     **Notes for using IAM in publisher - game studio scenarios**
-    The endpoint allows:
+    Allows:
     - The admin user in publisher namespace disables userâs ban in publisher namespace.
     - The admin user in game namespace disables userâs ban in game namespace.
     - The admin user in publisher namespace disables userâs ban in publisher namespace.
@@ -11229,12 +11163,12 @@ async def disable_user_ban_async(
 ):
     """Disable ban for a single user. (DisableUserBan)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
     **Notes for using IAM in publisher - game studio scenarios**
-    The endpoint allows:
+    Allows:
     - The admin user in publisher namespace disables userâs ban in publisher namespace.
     - The admin user in game namespace disables userâs ban in game namespace.
     - The admin user in publisher namespace disables userâs ban in publisher namespace.
@@ -11295,7 +11229,7 @@ def enable_user(
 ):
     """Enable a user (EnableUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -11348,7 +11282,7 @@ async def enable_user_async(
 ):
     """Enable a user (EnableUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 
@@ -11404,7 +11338,7 @@ def enable_user_ban(
 ):
     """Enable ban for a single user (EnableUserBan)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
@@ -11461,7 +11395,7 @@ async def enable_user_ban_async(
 ):
     """Enable ban for a single user (EnableUserBan)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId} [PATCH]_**
 
@@ -11519,7 +11453,7 @@ def forgot_password(
 ):
     """Request Password Reset Code (ForgotPassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
@@ -11576,7 +11510,7 @@ async def forgot_password_async(
 ):
     """Request Password Reset Code (ForgotPassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
@@ -11634,7 +11568,7 @@ def get_admin_invitation_v3(
 ):
     """Get User Invitation (GetAdminInvitationV3)
 
-    Endpoint to validate user invitation. When not found, it could also means the invitation has expired.
+    Validates a user invitation. When not found, it could also mean the invitation has expired.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
@@ -11680,7 +11614,7 @@ async def get_admin_invitation_v3_async(
 ):
     """Get User Invitation (GetAdminInvitationV3)
 
-    Endpoint to validate user invitation. When not found, it could also means the invitation has expired.
+    Validates a user invitation. When not found, it could also mean the invitation has expired.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/invite/{invitationId}
@@ -11732,15 +11666,15 @@ def get_admin_users_by_role_id(
 ):
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]_**
     - **Note:**
     difference in V3 response, format difference: Pascal case => Camel case
 
-    This endpoint search admin users which have the roleId
+    Searches admin users which have the roleId
 
-    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
+    Notes: only accepts admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
 
     Properties:
@@ -11806,15 +11740,15 @@ async def get_admin_users_by_role_id_async(
 ):
     """Get Admin Users By RoleId (GetAdminUsersByRoleID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users [GET]_**
     - **Note:**
     difference in V3 response, format difference: Pascal case => Camel case
 
-    This endpoint search admin users which have the roleId
+    Searches admin users which have the roleId
 
-    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
+    Notes: only accepts admin role. Admin Role is role which have admin status and members.
     Use endpoint [GET] /roles/{roleId}/admin to check the role status
 
     Properties:
@@ -11881,11 +11815,10 @@ def get_admin_users_by_role_id_v3(
 ):
     """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
 
-    This endpoint search admin users which have the roleId
+    Searches admin users which have the roleId.
 
-    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
-    Use endpoint [GET] /roles/{roleId}/admin to check the role status
-    action code : 10140
+    Notes : only accepts admin role. Admin Role is role which have admin status and members.
+    Use [GET] /roles/{roleId}/admin to check the role status.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
@@ -11949,11 +11882,10 @@ async def get_admin_users_by_role_id_v3_async(
 ):
     """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
 
-    This endpoint search admin users which have the roleId
+    Searches admin users which have the roleId.
 
-    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
-    Use endpoint [GET] /roles/{roleId}/admin to check the role status
-    action code : 10140
+    Notes : only accepts admin role. Admin Role is role which have admin status and members.
+    Use [GET] /roles/{roleId}/admin to check the role status.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users
@@ -12016,7 +11948,7 @@ def get_list_country_age_restriction(
 ):
     """Get List Country age restriction (GetListCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_**
 
@@ -12063,7 +11995,7 @@ async def get_list_country_age_restriction_async(
 ):
     """Get List Country age restriction (GetListCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_**
 
@@ -12113,11 +12045,13 @@ def get_list_justice_platform_accounts(
 ):
     """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]_**
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -12164,11 +12098,13 @@ async def get_list_justice_platform_accounts_async(
 ):
     """Get User Justice Platform Accounts (GetListJusticePlatformAccounts)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/justice [GET]_**
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
     Properties:
         url: /iam/v2/public/namespaces/{namespace}/users/{userId}/platforms/justice
@@ -12217,7 +12153,7 @@ def get_publisher_user(
 ):
     """Get Publisher User (GetPublisherUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]_**
 
@@ -12273,7 +12209,7 @@ async def get_publisher_user_async(
 ):
     """Get Publisher User (GetPublisherUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]_**
 
@@ -12331,7 +12267,7 @@ def get_user_ban_history(
 ):
     """Get user's bans history (GetUserBanHistory)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
@@ -12382,7 +12318,7 @@ async def get_user_ban_history_async(
 ):
     """Get user's bans history (GetUserBanHistory)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
@@ -12435,7 +12371,7 @@ def get_user_by_login_id(
 ):
     """Get User By Login Id (GetUserByLoginID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [GET]_**
 
@@ -12486,7 +12422,7 @@ async def get_user_by_login_id_async(
 ):
     """Get User By Login Id (GetUserByLoginID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [GET]_**
 
@@ -12540,7 +12476,7 @@ def get_user_by_platform_user_id(
 ):
     """Get User By Platform User ID (GetUserByPlatformUserID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
@@ -12600,7 +12536,7 @@ async def get_user_by_platform_user_id_async(
 ):
     """Get User By Platform User ID (GetUserByPlatformUserID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
@@ -12661,7 +12597,7 @@ def get_user_by_user_id(
 ):
     """Get User By User Id (GetUserByUserID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
@@ -12713,7 +12649,7 @@ async def get_user_by_user_id_async(
 ):
     """Get User By User Id (GetUserByUserID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
@@ -12767,7 +12703,7 @@ def get_user_information(
 ):
     """Get user's information (GetUserInformation)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]_**
 
@@ -12818,7 +12754,7 @@ async def get_user_information_async(
 ):
     """Get user's information (GetUserInformation)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/information [GET]_**
 
@@ -12872,13 +12808,13 @@ def get_user_justice_platform_account(
 ):
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-    This endpoint requires the client access token as the bearer token
+    Requires the client access token as the bearer token
 
-    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going to *create and return the new Justice platform account.*
+    Returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, automatically *creates and returns the new Justice platform account.*
     The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
 
     ### Read Justice Platform Account UserID
@@ -12935,13 +12871,13 @@ async def get_user_justice_platform_account_async(
 ):
     """Get the Justice linked accounts on the designated namespace (GetUserJusticePlatformAccount)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-    This endpoint requires the client access token as the bearer token
+    Requires the client access token as the bearer token
 
-    The endpoint returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, the endpoint is going to *create and return the new Justice platform account.*
+    Returns user Justice platform account linked with the given user. If the user Justice platform account doesn't exist in the designated namespace, automatically *creates and returns the new Justice platform account.*
     The newly user Justice platform account is going to be forced to perform token grant through the given user and can't perform password update
 
     ### Read Justice Platform Account UserID
@@ -13002,16 +12938,16 @@ def get_user_login_histories(
 ):
     """Get User's Login Histories (GetUserLoginHistories)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
 
-    Notes for this endpoint:
-    - This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    Notes:
+    - Retrieves the first page of the data if 'after' and 'before' parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
+    - Retrieves the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    - Retrieves the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
@@ -13072,16 +13008,16 @@ async def get_user_login_histories_async(
 ):
     """Get User's Login Histories (GetUserLoginHistories)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/logins/histories [GET]_**
 
-    Notes for this endpoint:
-    - This endpoint retrieve the first page of the data if 'after' and 'before' parameters is empty.
+    Notes:
+    - Retrieves the first page of the data if 'after' and 'before' parameters is empty.
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the next page of the data if we provide 'after' parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
+    - Retrieves the next page of the data if we provide 'after' parameters with valid Unix timestamp.
+    - Retrieves the previous page of the data if we provide 'before' parameter with valid data Unix timestamp.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/logins/histories
@@ -13142,14 +13078,14 @@ def get_user_mapping(
 ):
     """Get user mapping (GetUserMapping)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-    This endpoint requires the client access token as the bearer token
-    This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
-    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace. **Will create game user id if not exists.**
+    Requires the client access token as the bearer token
+    Supports publisher access to game and game access to publisher
+    If targetNamespace filled with publisher namespace, returns its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace, returns its game user id and game namespace. **Will create game user id if not exists.**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -13204,14 +13140,14 @@ async def get_user_mapping_async(
 ):
     """Get user mapping (GetUserMapping)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace} [GET]_**
 
-    This endpoint requires the client access token as the bearer token
-    This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
-    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace. **Will create game user id if not exists.**
+    Requires the client access token as the bearer token
+    Supports publisher access to game and game access to publisher
+    If targetNamespace filled with publisher namespace, returns its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace, returns its game user id and game namespace. **Will create game user id if not exists.**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -13267,7 +13203,7 @@ def get_user_platform_accounts(
 ):
     """Get platform accounts linked to the user (GetUserPlatformAccounts)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]_**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]_**
@@ -13322,7 +13258,7 @@ async def get_user_platform_accounts_async(
 ):
     """Get platform accounts linked to the user (GetUserPlatformAccounts)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/platforms [GET]_**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms [GET]_**
@@ -13378,10 +13314,10 @@ def get_user_verification_code(
 ):
     """Get verification code sent to user (getUserVerificationCode)
 
-    **[WARNING] This endpoint is only for testing purpose.**
+    **[WARNING] This API is only for testing purpose.**
 
-    This endpoint get active user verification code.
-    There are some scenarios of getting verification codes, all of them will be returned on this endpoint:
+    Gets the active user verification code.
+    There are some scenarios of getting verification codes, all of them will be returned:
     - After account registration
     - After reset password request
     - After headless account upgrade
@@ -13439,10 +13375,10 @@ async def get_user_verification_code_async(
 ):
     """Get verification code sent to user (getUserVerificationCode)
 
-    **[WARNING] This endpoint is only for testing purpose.**
+    **[WARNING] This API is only for testing purpose.**
 
-    This endpoint get active user verification code.
-    There are some scenarios of getting verification codes, all of them will be returned on this endpoint:
+    Gets the active user verification code.
+    There are some scenarios of getting verification codes, all of them will be returned:
     - After account registration
     - After reset password request
     - After headless account upgrade
@@ -13503,7 +13439,7 @@ def get_users_by_login_ids(
 ):
     """Get a List of Users By Their Login Id (GetUsersByLoginIds)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
     - **Substitute endpoint(query by user id list): _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
@@ -13555,7 +13491,7 @@ async def get_users_by_login_ids_async(
 ):
     """Get a List of Users By Their Login Id (GetUsersByLoginIds)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(query by email list): _/iam/v3/public/namespaces/{namespace}/users/bulk/basic [POST]_**
     - **Substitute endpoint(query by user id list): _/iam/v3/admin/namespaces/{namespace}/users/search/bulk [POST]_**
@@ -13705,20 +13641,20 @@ def list_admins_v3(
     """List User Admins (ListAdminsV3)
 
     List all users that has admin role (role that has admin_role attribute set to true).
-    Endpoint behavior :
-    - if query parameter is defined, endpoint will search users whose email address and display name match with the query
-    - if roleId parameter is defined, endpoint will search users that have the defined roleId
-    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-    - if startDate parameter is defined, endpoint will search users that created start from the defined date
-    - if endDate parameter is defined, endpoint will search users that created until the defined date
+    Behavior :
+    - if query parameter is defined, searches users whose email address and display name match with the query
+    - if roleId parameter is defined, searches users that have the defined roleId
+    - if startDate and endDate parameters is defined, searches users which created on the certain date range
+    - if startDate parameter is defined, searches users that created start from the defined date
+    - if endDate parameter is defined, searches users that created until the defined date
 
     In multi tenant mode :
     - if super admin search in super admin namespace, the result will be all admin users
     - if super admin search in game studio namespace, the result will be all admin users under the game studio namespace
     - if studio admin search in their studio namespace, the result will be all admin user in the game studio namespace
 
-    The endpoint will return all admin from all namespace when called from publisher namespace.
-    When not called from publisher namespace, the endpoint will return all admin from the path namespace.
+    Returns all admin from all namespace when called from publisher namespace.
+    When not called from publisher namespace, returns all admin from the path namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/admins
@@ -13791,20 +13727,20 @@ async def list_admins_v3_async(
     """List User Admins (ListAdminsV3)
 
     List all users that has admin role (role that has admin_role attribute set to true).
-    Endpoint behavior :
-    - if query parameter is defined, endpoint will search users whose email address and display name match with the query
-    - if roleId parameter is defined, endpoint will search users that have the defined roleId
-    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-    - if startDate parameter is defined, endpoint will search users that created start from the defined date
-    - if endDate parameter is defined, endpoint will search users that created until the defined date
+    Behavior :
+    - if query parameter is defined, searches users whose email address and display name match with the query
+    - if roleId parameter is defined, searches users that have the defined roleId
+    - if startDate and endDate parameters is defined, searches users which created on the certain date range
+    - if startDate parameter is defined, searches users that created start from the defined date
+    - if endDate parameter is defined, searches users that created until the defined date
 
     In multi tenant mode :
     - if super admin search in super admin namespace, the result will be all admin users
     - if super admin search in game studio namespace, the result will be all admin users under the game studio namespace
     - if studio admin search in their studio namespace, the result will be all admin user in the game studio namespace
 
-    The endpoint will return all admin from all namespace when called from publisher namespace.
-    When not called from publisher namespace, the endpoint will return all admin from the path namespace.
+    Returns all admin from all namespace when called from publisher namespace.
+    When not called from publisher namespace, returns all admin from the path namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/admins
@@ -13875,7 +13811,7 @@ def list_cross_namespace_account_link(
 ):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -13940,7 +13876,7 @@ async def list_cross_namespace_account_link_async(
 ):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -14007,7 +13943,7 @@ def platform_link(
 ):
     """Link user's account with platform (PlatformLink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -14023,7 +13959,7 @@ def platform_link(
     - **android**: The ticket's value is the Androidâs device ID
     - **ios**: The ticket's value is the iOSâs device ID.
     - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
-    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **device**: Every device that doesnât run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
     - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:
@@ -14087,7 +14023,7 @@ async def platform_link_async(
 ):
     """Link user's account with platform (PlatformLink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -14103,7 +14039,7 @@ async def platform_link_async(
     - **android**: The ticket's value is the Androidâs device ID
     - **ios**: The ticket's value is the iOSâs device ID.
     - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
-    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **device**: Every device that doesnât run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
     - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:
@@ -14169,7 +14105,7 @@ def platform_unlink(
 ):
     """Unlink user's account with platform (PlatformUnlink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
@@ -14247,7 +14183,7 @@ async def platform_unlink_async(
 ):
     """Unlink user's account with platform (PlatformUnlink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
@@ -14326,7 +14262,7 @@ def public_bulk_get_users(
     """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
     Notes:
-    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - Bulk-retrieves basic user info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
     - **Result will include displayName(if it exists)**
     - **Substitute endpoint:** /iam/v3/public/namespaces/{namespace}/users/platforms [POST]
@@ -14377,7 +14313,7 @@ async def public_bulk_get_users_async(
     """Bulk get users' basic info by user Id (PublicBulkGetUsers)
 
     Notes:
-    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - Bulk-retrieves basic user info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
     - **Result will include displayName(if it exists)**
     - **Substitute endpoint:** /iam/v3/public/namespaces/{namespace}/users/platforms [POST]
@@ -14535,7 +14471,7 @@ def public_create_user_v2(
 ):
     """Create User (PublicCreateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
     - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
@@ -14596,7 +14532,7 @@ async def public_create_user_v2_async(
 ):
     """Create User (PublicCreateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
     - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**
@@ -14667,7 +14603,7 @@ def public_create_user_v3(
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Supports accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
@@ -14730,7 +14666,7 @@ async def public_create_user_v3_async(
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Supports accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
@@ -14789,7 +14725,7 @@ def public_delete_platform_link_v2(
 ):
     """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
@@ -14868,7 +14804,7 @@ async def public_delete_platform_link_v2_async(
 ):
     """Delete the link of user's account with platform (PublicDeletePlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [DELETE]_**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/all [DELETE]_**
@@ -14948,8 +14884,8 @@ def public_force_link_platform_with_progression(
     """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
 
     Force update other account's Platform Account relation to current User Account.
-    This endpoint can transfer progression from 3rd platform binding account's to current account.
-    This endpoint need the same requestID which also used in [Get link status](#operations-Users-PublicGetAsyncStatus).
+    Can transfer progression from 3rd platform binding account's to current account.
+    Requires the same requestID used in [Get link status](#operations-Users-PublicGetAsyncStatus).
 
 
     **Authentication:**
@@ -15008,8 +14944,8 @@ async def public_force_link_platform_with_progression_async(
     """Force link 3rd platform account and transfer progression (PublicForceLinkPlatformWithProgression)
 
     Force update other account's Platform Account relation to current User Account.
-    This endpoint can transfer progression from 3rd platform binding account's to current account.
-    This endpoint need the same requestID which also used in [Get link status](#operations-Users-PublicGetAsyncStatus).
+    Can transfer progression from 3rd platform binding account's to current account.
+    Requires the same requestID used in [Get link status](#operations-Users-PublicGetAsyncStatus).
 
 
     **Authentication:**
@@ -15070,7 +15006,7 @@ def public_force_platform_link_v3(
     """Force linking user's account with platform (PublicForcePlatformLinkV3)
 
     Force linking user account with platform.
-    If this platform account was already linked to another user account, this endpoint will perform force linking and remove platform from that conflict user, not only from the current request namespace but also include all the enrolled namespaces.
+    If this platform account was already linked to another user account, force linking is performed and the platform is removed from the conflicting user account, not only from the current request namespace but also from all the enrolled namespaces.
     If current user have linked to this platform with another platform account (include once linked but it is unlinked now), it will not allow user to perform linking.
     ## Supported platforms:
     - **steam**: The platform_tokenâs value is the binary ticket returned by Steam.
@@ -15152,7 +15088,7 @@ async def public_force_platform_link_v3_async(
     """Force linking user's account with platform (PublicForcePlatformLinkV3)
 
     Force linking user account with platform.
-    If this platform account was already linked to another user account, this endpoint will perform force linking and remove platform from that conflict user, not only from the current request namespace but also include all the enrolled namespaces.
+    If this platform account was already linked to another user account, force linking is performed and the platform is removed from the conflicting user account, not only from the current request namespace but also from all the enrolled namespaces.
     If current user have linked to this platform with another platform account (include once linked but it is unlinked now), it will not allow user to perform linking.
     ## Supported platforms:
     - **steam**: The platform_tokenâs value is the binary ticket returned by Steam.
@@ -15235,7 +15171,7 @@ def public_forgot_password_v2(
 ):
     """Request Password Reset Code (PublicForgotPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
@@ -15291,7 +15227,7 @@ async def public_forgot_password_v2_async(
 ):
     """Request Password Reset Code (PublicForgotPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 
@@ -15352,7 +15288,6 @@ def public_forgot_password_v3(
     Game Client should provide game namespace path parameter and Publisher
     Client should provide publisher namespace path parameter.
     The password reset code will be sent to the publisher account's email address.
-    action code : 10104
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/forgot
@@ -15404,7 +15339,6 @@ async def public_forgot_password_v3_async(
     Game Client should provide game namespace path parameter and Publisher
     Client should provide publisher namespace path parameter.
     The password reset code will be sent to the publisher account's email address.
-    action code : 10104
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/forgot
@@ -15453,7 +15387,7 @@ def public_forgot_password_without_namespace_v3(
 ):
     """Request Password Reset Code (PublicForgotPasswordWithoutNamespaceV3)
 
-    This endpoint does not need a namespace in the path, we will find the namespace based on:
+    Does not need a namespace in the path, we will find the namespace based on:
 
     - If this is premium environment, the namespace will be the publisher namespace.
     - If this is shared cloud:
@@ -15500,7 +15434,7 @@ async def public_forgot_password_without_namespace_v3_async(
 ):
     """Request Password Reset Code (PublicForgotPasswordWithoutNamespaceV3)
 
-    This endpoint does not need a namespace in the path, we will find the namespace based on:
+    Does not need a namespace in the path, we will find the namespace based on:
 
     - If this is premium environment, the namespace will be the publisher namespace.
     - If this is shared cloud:
@@ -15550,8 +15484,7 @@ def public_get_async_status(
 ):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
-    This endpoint is used to get linking status.
-    This API need logged user and user can only request its own linking status.
+    Retrieves the linking status. The user must be logged in and can only request their own linking status.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
@@ -15599,8 +15532,7 @@ async def public_get_async_status_async(
 ):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
-    This endpoint is used to get linking status.
-    This API need logged user and user can only request its own linking status.
+    Retrieves the linking status. The user must be logged in and can only request their own linking status.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status
@@ -15651,7 +15583,7 @@ def public_get_country_age_restriction(
 ):
     """Public get age restriction by country code (PublicGetCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]_**
 
@@ -15700,7 +15632,7 @@ async def public_get_country_age_restriction_async(
 ):
     """Public get age restriction by country code (PublicGetCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/agerestrictions/countries/{countryCode} [GET]_**
 
@@ -15847,7 +15779,7 @@ def public_get_link_headless_account_to_my_account_conflict_v3(
     1. My account should be full account
     2. My account not linked to request headless account's third platform.
 
-    After client resolving the conflict, it will call endpoint `/iam/v3/public/users/me/headless/linkWithProgression [POST]`
+    After client resolving the conflict, it will call `/iam/v3/public/users/me/headless/linkWithProgression [POST]`
 
     Properties:
         url: /iam/v3/public/users/me/headless/link/conflict
@@ -15893,7 +15825,7 @@ async def public_get_link_headless_account_to_my_account_conflict_v3_async(
     1. My account should be full account
     2. My account not linked to request headless account's third platform.
 
-    After client resolving the conflict, it will call endpoint `/iam/v3/public/users/me/headless/linkWithProgression [POST]`
+    After client resolving the conflict, it will call `/iam/v3/public/users/me/headless/linkWithProgression [POST]`
 
     Properties:
         url: /iam/v3/public/users/me/headless/link/conflict
@@ -16013,7 +15945,7 @@ def public_get_my_redirection_after_link_v3(
 ):
     """Get My Forward URI Link (PublicGetMyRedirectionAfterLinkV3)
 
-    Get my redirect uri after link, this endpoint will return NotFound(404) if redirect uri is not found
+    Returns the redirect URI after link. Returns NotFound(404) if redirect URI is not found.
 
     Properties:
         url: /iam/v3/public/users/me/link/redirection
@@ -16053,7 +15985,7 @@ async def public_get_my_redirection_after_link_v3_async(
 ):
     """Get My Forward URI Link (PublicGetMyRedirectionAfterLinkV3)
 
-    Get my redirect uri after link, this endpoint will return NotFound(404) if redirect uri is not found
+    Returns the redirect URI after link. Returns NotFound(404) if redirect URI is not found.
 
     Properties:
         url: /iam/v3/public/users/me/link/redirection
@@ -16114,8 +16046,6 @@ def public_get_my_user_v3(
     * epic account id
     * display name
 
-    action code : 10147
-
     Properties:
         url: /iam/v3/public/users/me
 
@@ -16170,8 +16100,6 @@ async def public_get_my_user_v3_async(
     * __EpicGames(epicgames)__
     * epic account id
     * display name
-
-    action code : 10147
 
     Properties:
         url: /iam/v3/public/users/me
@@ -16384,7 +16312,7 @@ def public_get_user_ban(
 ):
     """Get user's bans (PublicGetUserBan)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
@@ -16439,7 +16367,7 @@ async def public_get_user_ban_async(
 ):
     """Get user's bans (PublicGetUserBan)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/bans [GET]_**
 
@@ -16633,7 +16561,7 @@ def public_get_user_by_platform_user_idv3(
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID.
-    This endpoint return user information by given platform ID and platform user ID.
+    Returns user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
     **Note**: this is deprecated, substitute endpoint: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
@@ -16729,7 +16657,7 @@ async def public_get_user_by_platform_user_idv3_async(
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV3)
 
     Get User By Platform User ID.
-    This endpoint return user information by given platform ID and platform user ID.
+    Returns user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
     **Note**: this is deprecated, substitute endpoint: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
@@ -16825,7 +16753,7 @@ def public_get_user_by_user_id_v3(
 ):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
-    This endpoint retrieve user attributes. action code: 10129
+    Retrieves user attributes.
     **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [GET]
 
     Properties:
@@ -16875,7 +16803,7 @@ async def public_get_user_by_user_id_v3_async(
 ):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
-    This endpoint retrieve user attributes. action code: 10129
+    Retrieves user attributes.
     **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [GET]
 
     Properties:
@@ -16927,7 +16855,7 @@ def public_get_user_by_user_idv2(
 ):
     """Get User By User ID (PublicGetUserByUserIDV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
@@ -16979,7 +16907,7 @@ async def public_get_user_by_user_idv2_async(
 ):
     """Get User By User ID (PublicGetUserByUserIDV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/users/{userId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
@@ -17032,7 +16960,7 @@ def public_get_user_information_v3(
 ):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts.
+    Retrieves user info and linked platform accounts.
 
 
     **Authentication:**
@@ -17086,7 +17014,7 @@ async def public_get_user_information_v3_async(
 ):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts.
+    Retrieves user info and linked platform accounts.
 
 
     **Authentication:**
@@ -17145,11 +17073,10 @@ def public_get_user_login_histories_v3(
 ):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
-    Notes for this endpoint:
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - Returns the first page of the data if `after` and `before` parameters is empty.
+    - Returns the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - Returns the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
 
     **Authentication:**
@@ -17213,11 +17140,10 @@ async def public_get_user_login_histories_v3_async(
 ):
     """Get User's Login Histories (PublicGetUserLoginHistoriesV3)
 
-    Notes for this endpoint:
     - The maximum value of the limit is 100 and the minimum value of the limit is 1.
-    - This endpoint retrieve the first page of the data if `after` and `before` parameters is empty.
-    - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
-    - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
+    - Returns the first page of the data if `after` and `before` parameters is empty.
+    - Returns the next page of the data if we provide `after` parameters with valid Unix timestamp.
+    - Returns the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
 
     **Authentication:**
@@ -17284,7 +17210,7 @@ def public_get_user_platform_accounts_v3(
 ):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
 
 
     **Supported Platforms:**
@@ -17326,8 +17252,6 @@ def public_get_user_platform_accounts_v3(
 
     **Authentication:**
     The _**userId**_ parameter should match the one in the access token.
-
-    action code: 10128
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms
@@ -17395,7 +17319,7 @@ async def public_get_user_platform_accounts_v3_async(
 ):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
 
 
     **Supported Platforms:**
@@ -17437,8 +17361,6 @@ async def public_get_user_platform_accounts_v3_async(
 
     **Authentication:**
     The _**userId**_ parameter should match the one in the access token.
-
-    action code: 10128
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms
@@ -17633,6 +17555,7 @@ async def public_get_users_platform_infos_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicLinkPlatformAccount)
 def public_link_platform_account(
     body: ModelLinkPlatformAccountRequest,
@@ -17643,7 +17566,10 @@ def public_link_platform_account(
 ):
     """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
 
-    It is going to be **DEPRECATED**.
+    ## This API has been deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/force [POST]_**
+
     Update Platform Account relation to current User Account.
 
     Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
@@ -17695,6 +17621,7 @@ def public_link_platform_account(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicLinkPlatformAccount)
 async def public_link_platform_account_async(
     body: ModelLinkPlatformAccountRequest,
@@ -17705,7 +17632,10 @@ async def public_link_platform_account_async(
 ):
     """Link a Platform User Account to User Account (PublicLinkPlatformAccount)
 
-    It is going to be **DEPRECATED**.
+    ## This API has been deprecated
+    **Endpoint migration guide**
+    - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/force [POST]_**
+
     Update Platform Account relation to current User Account.
 
     Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
@@ -17768,7 +17698,9 @@ def public_list_justice_platform_accounts_v3(
 ):
     """Get User Justice Platform Accounts (PublicListJusticePlatformAccountsV3)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
 
     **Authentication:**
@@ -17824,7 +17756,9 @@ async def public_list_justice_platform_accounts_v3_async(
 ):
     """Get User Justice Platform Accounts (PublicListJusticePlatformAccountsV3)
 
-    This endpoint gets list justice platform account by providing publisher namespace and publisher userID.
+    Retrieves the list of Justice platform accounts linked to the given user.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **publisher namespace**. Passing a game namespace returns HTTP 400.
 
 
     **Authentication:**
@@ -17882,7 +17816,7 @@ def public_list_user_all_platform_accounts_distinct_v3(
 ):
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
     It will query all linked platform accounts. The results will be distinct and grouped by platform, and for each platform, we will select the oldest linked one.
 
 
@@ -17939,7 +17873,7 @@ async def public_list_user_all_platform_accounts_distinct_v3_async(
 ):
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
     It will query all linked platform accounts. The results will be distinct and grouped by platform, and for each platform, we will select the oldest linked one.
 
 
@@ -18003,8 +17937,7 @@ def public_list_user_id_by_platform_user_i_ds_v3(
     """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV3)
 
     List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID
+    Lists game user IDs from the given namespace by given platform ID and list of platform user ID.
 
     Supported platform:
     - steam
@@ -18096,8 +18029,7 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
     """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV3)
 
     List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID
+    Lists game user IDs from the given namespace by given platform ID and list of platform user ID.
 
     Supported platform:
     - steam
@@ -18186,7 +18118,7 @@ def public_partial_update_user_v3(
 ):
     """Update User (PublicPartialUpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -18194,8 +18126,6 @@ def public_partial_update_user_v3(
     - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me
@@ -18247,7 +18177,7 @@ async def public_partial_update_user_v3_async(
 ):
     """Update User (PublicPartialUpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -18255,8 +18185,6 @@ async def public_partial_update_user_v3_async(
     - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me
@@ -18313,7 +18241,7 @@ def public_platform_link_v2(
 ):
     """Link user's account with platform (PublicPlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -18393,7 +18321,7 @@ async def public_platform_link_v2_async(
 ):
     """Link user's account with platform (PublicPlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -18500,7 +18428,6 @@ def public_platform_link_v3(
     - **netflix**: The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
     - **snapchat**: The ticketâs value is authorization code returned by Snapchat OAuth.
     - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
-    action code : 10144
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
@@ -18586,7 +18513,6 @@ async def public_platform_link_v3_async(
     - **netflix**: The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
     - **snapchat**: The ticketâs value is authorization code returned by Snapchat OAuth.
     - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
-    action code : 10144
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
@@ -18857,7 +18783,6 @@ def public_platform_unlink_v3(
     _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
     If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
-    action code : 10121
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
@@ -18933,7 +18858,6 @@ async def public_platform_unlink_v3_async(
     _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
     If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
-    action code : 10121
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}
@@ -18990,7 +18914,7 @@ def public_process_web_link_platform_v3(
 ):
     """Process Link Progress  (PublicProcessWebLinkPlatformV3)
 
-    This endpoint is used to process third party account link, this endpoint will return the link status directly instead of redirecting to the original page.
+    Processes third party account link and returns the link status directly instead of redirecting to the original page.
     The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
     Supported platforms:
     - ps4web
@@ -19056,7 +18980,7 @@ async def public_process_web_link_platform_v3_async(
 ):
     """Process Link Progress  (PublicProcessWebLinkPlatformV3)
 
-    This endpoint is used to process third party account link, this endpoint will return the link status directly instead of redirecting to the original page.
+    Processes third party account link and returns the link status directly instead of redirecting to the original page.
     The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
     Supported platforms:
     - ps4web
@@ -19123,7 +19047,7 @@ def public_reset_password_v2(
 ):
     """Reset User Password (PublicResetPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
@@ -19176,7 +19100,7 @@ async def public_reset_password_v2_async(
 ):
     """Reset User Password (PublicResetPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
@@ -19235,7 +19159,7 @@ def public_search_user_v3(
 ):
     """Search User (PublicSearchUserV3)
 
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
+    Searches all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
     The query length must be between 3 and 30 characters. For email address queries (i.e. contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
     The default limit value is 20.
 
@@ -19364,7 +19288,7 @@ async def public_search_user_v3_async(
 ):
     """Search User (PublicSearchUserV3)
 
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
+    Searches all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
     The query length must be between 3 and 30 characters. For email address queries (i.e. contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
     The default limit value is 20.
 
@@ -19568,10 +19492,10 @@ def public_send_registration_code(
 ):
     """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
 
-    This endpoint will validate the request's email address.
+    Validates the request's email address.
     If it already been used, will response 409.
     If it is available, we will send a verification code to this email address.
-    This code can be verified by this [endpoint](#operations-Users-PublicVerifyRegistrationCode).
+    This code can be verified by this [API](#operations-Users-PublicVerifyRegistrationCode).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/code/request
@@ -19619,10 +19543,10 @@ async def public_send_registration_code_async(
 ):
     """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
 
-    This endpoint will validate the request's email address.
+    Validates the request's email address.
     If it already been used, will response 409.
     If it is available, we will send a verification code to this email address.
-    This code can be verified by this [endpoint](#operations-Users-PublicVerifyRegistrationCode).
+    This code can be verified by this [API](#operations-Users-PublicVerifyRegistrationCode).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/code/request
@@ -19682,8 +19606,6 @@ def public_send_verification_code_v3(
     3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
-
-    action code: 10116
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/code/request
@@ -19747,8 +19669,6 @@ async def public_send_verification_code_v3_async(
     3. **upgradeHeadlessAccount**
     The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
     If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
-
-    action code: 10116
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/code/request
@@ -19894,7 +19814,7 @@ def public_update_password_v2(
 ):
     """Update User Password (PublicUpdatePasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
@@ -19953,7 +19873,7 @@ async def public_update_password_v2_async(
 ):
     """Update User Password (PublicUpdatePasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
@@ -20012,7 +19932,7 @@ def public_update_password_v3(
 ):
     """Update User Password (PublicUpdatePasswordV3)
 
-    action code: 10107
+    Updates the authenticated user's password. Requires the current password and a new password to be provided.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/password
@@ -20062,7 +19982,7 @@ async def public_update_password_v3_async(
 ):
     """Update User Password (PublicUpdatePasswordV3)
 
-    action code: 10107
+    Updates the authenticated user's password. Requires the current password and a new password to be provided.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/password
@@ -20116,7 +20036,7 @@ def public_update_user_v2(
 ):
     """Update User (PublicUpdateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
     - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
@@ -20125,7 +20045,7 @@ def public_update_user_v2(
     1. Prefer [PATCH] if client support PATCH method
     2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
 
     Properties:
@@ -20183,7 +20103,7 @@ async def public_update_user_v2_async(
 ):
     """Update User (PublicUpdateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
     - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
@@ -20192,7 +20112,7 @@ async def public_update_user_v2_async(
     1. Prefer [PATCH] if client support PATCH method
     2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
 
     Properties:
@@ -20250,18 +20170,17 @@ def public_upgrade_headless_account_v3(
 ):
     """Verify or consume verification code. (PublicUpgradeHeadlessAccountV3)
 
-    If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the send verification code endpoint.
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    To obtain a verification code, use the send verification code API.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
     Supported user data fields :
     - displayName
     - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
     - country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-    action code : 10124
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify
@@ -20315,18 +20234,17 @@ async def public_upgrade_headless_account_v3_async(
 ):
     """Verify or consume verification code. (PublicUpgradeHeadlessAccountV3)
 
-    If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password.
+    If validateOnly is set false, consume code and upgrade headless account and automatically verified the email address if it is succeeded.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the send verification code endpoint.
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    To obtain a verification code, use the send verification code API.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
     Supported user data fields :
     - displayName
     - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
     - country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-    action code : 10124
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify
@@ -20385,7 +20303,6 @@ def public_user_verification_v3(
     Will consume code if validateOnly is set false
     Redeems a verification code sent to a user to verify the user's contact address is correct
     Available ContactType : **email**
-    action code: 10107
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/code/verify
@@ -20438,7 +20355,6 @@ async def public_user_verification_v3_async(
     Will consume code if validateOnly is set false
     Redeems a verification code sent to a user to verify the user's contact address is correct
     Available ContactType : **email**
-    action code: 10107
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/code/verify
@@ -20491,8 +20407,7 @@ def public_validate_user_by_user_id_and_password_v3(
 ):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
-    This endpoint is used to validate the user password.
-    This endpoint validate the user password by specifying the userId and password.
+    Validates the user password by specifying the userId and password.
 
 
     **Authentication:**
@@ -20552,8 +20467,7 @@ async def public_validate_user_by_user_id_and_password_v3_async(
 ):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
-    This endpoint is used to validate the user password.
-    This endpoint validate the user password by specifying the userId and password.
+    Validates the user password by specifying the userId and password.
 
 
     **Authentication:**
@@ -20617,7 +20531,7 @@ def public_validate_user_input(
     Validate user's input.
     --------
     **note:**
-    - this endpoint will check the input validation and profanity filter service(if this is enabled)
+    - checks the input validation and profanity filter service (if this is enabled)
     - the namespace should be publisher namespace
 
     Properties:
@@ -20665,7 +20579,7 @@ async def public_validate_user_input_async(
     Validate user's input.
     --------
     **note:**
-    - this endpoint will check the input validation and profanity filter service(if this is enabled)
+    - checks the input validation and profanity filter service (if this is enabled)
     - the namespace should be publisher namespace
 
     Properties:
@@ -20712,8 +20626,6 @@ def public_verify_headless_account_v3(
     **kwargs
 ):
     """Upgrade user headless account to full account (with email) (PublicVerifyHeadlessAccountV3)
-
-    action code : 10124
 
     if set NeedVerificationCode = true, IAM will send verification code into email
     user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
@@ -20771,8 +20683,6 @@ async def public_verify_headless_account_v3_async(
     **kwargs
 ):
     """Upgrade user headless account to full account (with email) (PublicVerifyHeadlessAccountV3)
-
-    action code : 10124
 
     if set NeedVerificationCode = true, IAM will send verification code into email
     user can use that verification code to verify user through /iam/v3/public/namespaces/{namespace}/users/me/code/verify
@@ -20990,7 +20900,7 @@ def public_web_link_platform(
 ):
     """Create Public Web Linking (PublicWebLinkPlatform)
 
-    This endpoint is used to generate third party login page which will redirected to establish endpoint.
+    Generates a third party login page which will redirect to the establish API.
     Supported platforms:
     - ps4web
     - xblweb
@@ -21059,7 +20969,7 @@ async def public_web_link_platform_async(
 ):
     """Create Public Web Linking (PublicWebLinkPlatform)
 
-    This endpoint is used to generate third party login page which will redirected to establish endpoint.
+    Generates a third party login page which will redirect to the establish API.
     Supported platforms:
     - ps4web
     - xblweb
@@ -21130,7 +21040,7 @@ def public_web_link_platform_establish(
 ):
     """Establish Link Progress  (PublicWebLinkPlatformEstablish)
 
-    This endpoint is used by third party to redirect the code for the purpose of linking the account third party to IAM account.
+    Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
     Supported platforms:
     - ps4web
     - xblweb
@@ -21195,7 +21105,7 @@ async def public_web_link_platform_establish_async(
 ):
     """Establish Link Progress  (PublicWebLinkPlatformEstablish)
 
-    This endpoint is used by third party to redirect the code for the purpose of linking the account third party to IAM account.
+    Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
     Supported platforms:
     - ps4web
     - xblweb
@@ -21261,7 +21171,7 @@ def reset_password(
 ):
     """Reset User Password (ResetPassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
@@ -21314,7 +21224,7 @@ async def reset_password_async(
 ):
     """Reset User Password (ResetPassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
@@ -21368,7 +21278,7 @@ def reset_password_v3(
 ):
     """Reset User Password (ResetPasswordV3)
 
-    action code: 10105
+    Resets a user's password using a valid password reset code sent to their email address.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/reset
@@ -21416,7 +21326,7 @@ async def reset_password_v3_async(
 ):
     """Reset User Password (ResetPasswordV3)
 
-    action code: 10105
+    Resets a user's password using a valid password reset code sent to their email address.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/reset
@@ -21468,11 +21378,11 @@ def save_user_permission(
 ):
     """Save User Permissions (SaveUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
-    This endpoint will REPLACE user's permissions with the ones defined in body
+    Replaces user's permissions with the ones defined in body
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date
@@ -21550,11 +21460,11 @@ async def save_user_permission_async(
 ):
     """Save User Permissions (SaveUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
-    This endpoint will REPLACE user's permissions with the ones defined in body
+    Replaces user's permissions with the ones defined in body
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date
@@ -21634,7 +21544,7 @@ def save_user_roles(
 ):
     """Save User Roles (SaveUserRoles)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
@@ -21693,7 +21603,7 @@ async def save_user_roles_async(
 ):
     """Save User Roles (SaveUserRoles)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
 
@@ -21753,7 +21663,7 @@ def search_user(
 ):
     """Search users (SearchUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
     Search all users that match the query on these fields: all login IDs (email address, phone number, and platform user id),
@@ -21806,7 +21716,7 @@ async def search_user_async(
 ):
     """Search users (SearchUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
     Search all users that match the query on these fields: all login IDs (email address, phone number, and platform user id),
@@ -21862,7 +21772,7 @@ def send_verification_code(
 ):
     """Send verification code to user (SendVerificationCode)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]_**
 
@@ -21934,7 +21844,7 @@ async def send_verification_code_async(
 ):
     """Send verification code to user (SendVerificationCode)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]_**
 
@@ -22008,7 +21918,7 @@ def update_country_age_restriction(
 ):
     """Update country's age restriction (UpdateCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
 
@@ -22065,7 +21975,7 @@ async def update_country_age_restriction_async(
 ):
     """Update country's age restriction (UpdateCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
 
@@ -22124,7 +22034,7 @@ def update_password(
 ):
     """Update User Password (UpdatePassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
@@ -22183,7 +22093,7 @@ async def update_password_async(
 ):
     """Update User Password (UpdatePassword)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/password [PUT]_**
 
@@ -22244,7 +22154,7 @@ def update_user(
 ):
     """Update User (UpdateUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
     - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
@@ -22253,7 +22163,7 @@ def update_user(
     1. Prefer [PATCH] if client support PATCH method
     2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -22317,7 +22227,7 @@ async def update_user_async(
 ):
     """Update User (UpdateUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
     - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
@@ -22326,7 +22236,7 @@ async def update_user_async(
     1. Prefer [PATCH] if client support PATCH method
     2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -22390,7 +22300,7 @@ def update_user_v3(
 ):
     """Update User (UpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -22400,10 +22310,8 @@ def update_user_v3(
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
     **Important notes:**
-    This endpoint provides support for client that doesn't have PATCH support, i.e. UE4 before v4.23 released.
+    Provides PATCH support for clients that do not support PATCH natively, e.g. UE4 before v4.23 released.
     If the client support PATCH method, use [PATCH] /iam/v3/public/namespaces/{namespace}/users/me instead
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me
@@ -22455,7 +22363,7 @@ async def update_user_v3_async(
 ):
     """Update User (UpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -22465,10 +22373,8 @@ async def update_user_v3_async(
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
 
     **Important notes:**
-    This endpoint provides support for client that doesn't have PATCH support, i.e. UE4 before v4.23 released.
+    Provides PATCH support for clients that do not support PATCH natively, e.g. UE4 before v4.23 released.
     If the client support PATCH method, use [PATCH] /iam/v3/public/namespaces/{namespace}/users/me instead
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me
@@ -22524,7 +22430,7 @@ def upgrade_headless_account(
 ):
     """Upgrade user account to full account (with email) (upgradeHeadlessAccount)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
 
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]_**
@@ -22580,7 +22486,7 @@ async def upgrade_headless_account_async(
 ):
     """Upgrade user account to full account (with email) (upgradeHeadlessAccount)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
 
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]_**
@@ -22638,12 +22544,15 @@ def upgrade_headless_account_with_verification_code(
 ):
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]_**
 
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+    In order to get a verification code, please check the send verification code API.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
@@ -22698,12 +22607,15 @@ async def upgrade_headless_account_with_verification_code_async(
 ):
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]_**
 
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+    In order to get a verification code, please check the send verification code API.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode
@@ -22760,7 +22672,7 @@ def user_verification(
 ):
     """Redeem verification code sent to user (UserVerification)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]_**
 
@@ -22822,7 +22734,7 @@ async def user_verification_async(
 ):
     """Redeem verification code sent to user (UserVerification)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/verify [POST]_**
 

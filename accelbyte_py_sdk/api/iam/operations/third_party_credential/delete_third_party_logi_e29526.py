@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class DeleteThirdPartyLoginPlatformCredentialV3(Operation):
     """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential.
+    Deletes the third-party platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients

@@ -37,6 +37,8 @@ class AdminUpdateDSInformation(Operation):
     """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
 
     This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
+    For persistent sessions with DS_AMS or DS_CUSTOM, this endpoint can be used to update DS information when the dedicated server becomes available or when DS status changes occur.
+    Supported status only enums:"AVAILABLE, FAILED_TO_REQUEST, DS_ERROR, ENDED" example:"AVAILABLE"
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation

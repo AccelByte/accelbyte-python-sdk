@@ -36,6 +36,7 @@ class JoinabilityEnum(StrEnum):
     FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
     INVITE_ONLY = "INVITE_ONLY"
     OPEN = "OPEN"
+    PASSWORD_PROTECTED = "PASSWORD_PROTECTED"
 
 
 class TypeEnum(StrEnum):
@@ -63,6 +64,8 @@ class ApimodelsUpdatePartyRequest(Model):
         type_: (type) REQUIRED Union[str, TypeEnum]
 
         version: (version) REQUIRED int
+
+        password: (password) OPTIONAL str
     """
 
     # region fields
@@ -75,6 +78,7 @@ class ApimodelsUpdatePartyRequest(Model):
     min_players: int  # REQUIRED
     type_: Union[str, TypeEnum]  # REQUIRED
     version: int  # REQUIRED
+    password: str  # OPTIONAL
 
     # endregion fields
 
@@ -112,6 +116,10 @@ class ApimodelsUpdatePartyRequest(Model):
 
     def with_version(self, value: int) -> ApimodelsUpdatePartyRequest:
         self.version = value
+        return self
+
+    def with_password(self, value: str) -> ApimodelsUpdatePartyRequest:
+        self.password = value
         return self
 
     # endregion with_x methods
@@ -152,6 +160,10 @@ class ApimodelsUpdatePartyRequest(Model):
             result["version"] = int(self.version)
         elif include_empty:
             result["version"] = 0
+        if hasattr(self, "password"):
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = ""
         return result
 
     # endregion to methods
@@ -169,6 +181,7 @@ class ApimodelsUpdatePartyRequest(Model):
         min_players: int,
         type_: Union[str, TypeEnum],
         version: int,
+        password: Optional[str] = None,
         **kwargs,
     ) -> ApimodelsUpdatePartyRequest:
         instance = cls()
@@ -180,6 +193,8 @@ class ApimodelsUpdatePartyRequest(Model):
         instance.min_players = min_players
         instance.type_ = type_
         instance.version = version
+        if password is not None:
+            instance.password = password
         return instance
 
     @classmethod
@@ -223,6 +238,10 @@ class ApimodelsUpdatePartyRequest(Model):
             instance.version = int(dict_["version"])
         elif include_empty:
             instance.version = 0
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = ""
         return instance
 
     @classmethod
@@ -274,6 +293,7 @@ class ApimodelsUpdatePartyRequest(Model):
             "minPlayers": "min_players",
             "type": "type_",
             "version": "version",
+            "password": "password",
         }
 
     @staticmethod
@@ -287,6 +307,7 @@ class ApimodelsUpdatePartyRequest(Model):
             "minPlayers": True,
             "type": True,
             "version": True,
+            "password": False,
         }
 
     @staticmethod
@@ -299,6 +320,7 @@ class ApimodelsUpdatePartyRequest(Model):
                 "FRIENDS_OF_MEMBERS",
                 "INVITE_ONLY",
                 "OPEN",
+                "PASSWORD_PROTECTED",
             ],
             "type": ["DS", "NONE", "P2P"],
         }

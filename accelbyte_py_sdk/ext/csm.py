@@ -25,6 +25,10 @@
 from .utils import randomize
 
 from ..api.csm.models import ApimodelAppItem
+from ..api.csm.models import ApimodelAppUIResponse
+from ..api.csm.models import ApimodelApplyAppConfigRequest
+from ..api.csm.models import ApimodelApplyConfigItem
+from ..api.csm.models import ApimodelApplyPermissionItem
 from ..api.csm.models import ApimodelAutoscalingRequest
 from ..api.csm.models import ApimodelAutoscalingResponse
 from ..api.csm.models import ApimodelBulkSubscribeItem
@@ -32,15 +36,21 @@ from ..api.csm.models import ApimodelBulkSubscribeRequest
 from ..api.csm.models import ApimodelCPURequest
 from ..api.csm.models import ApimodelCPUResponse
 from ..api.csm.models import ApimodelCSMAppLimitsResponse
+from ..api.csm.models import ApimodelCreateAppUIRequest
 from ..api.csm.models import ApimodelCreateAppV2Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Response
+from ..api.csm.models import ApimodelCreateKeyValueCredentialRequest
+from ..api.csm.models import ApimodelCreateKeyValueCredentialResponse
 from ..api.csm.models import ApimodelCreateNoSQLAppDatabaseRequest
 from ..api.csm.models import ApimodelCreateNoSQLDatabaseCredentialRequest
+from ..api.csm.models import ApimodelCreateSQLAppDatabaseRequest
+from ..api.csm.models import ApimodelCreateSQLDatabaseCredentialRequest
 from ..api.csm.models import ApimodelCreateSubscriptionRequest
 from ..api.csm.models import ApimodelCreateSubscriptionResponse
 from ..api.csm.models import ApimodelCreateTopicRequest
 from ..api.csm.models import ApimodelDeleteNoSQLResourceResponse
+from ..api.csm.models import ApimodelDeleteSQLResourceResponse
 from ..api.csm.models import ApimodelGetAppImageListV2DataItem
 from ..api.csm.models import ApimodelGetAppImageListV2DataItemImageScanResult
 from ..api.csm.models import ApimodelGetAppImageListV2DataItemImageScanStatus
@@ -50,6 +60,7 @@ from ..api.csm.models import ApimodelGetAppListV2Response
 from ..api.csm.models import ApimodelGetDeploymentListV2DataItem
 from ..api.csm.models import ApimodelGetDeploymentListV2Request
 from ..api.csm.models import ApimodelGetDeploymentListV2Response
+from ..api.csm.models import ApimodelGetIntegrationAppKeyValueResponse
 from ..api.csm.models import ApimodelGetListOfConfigurationsV2DataItem
 from ..api.csm.models import ApimodelGetListOfConfigurationsV2Response
 from ..api.csm.models import ApimodelGetNotificationSubscriberItem
@@ -58,19 +69,37 @@ from ..api.csm.models import ApimodelGetNotificationSubscriberListResponse
 from ..api.csm.models import ApimodelGetNotificationSubscriberListResponseV2
 from ..api.csm.models import ApimodelGetNotificationSubscriberStatusResponse
 from ..api.csm.models import ApimodelIncreaseLimitFormRequest
+from ..api.csm.models import ApimodelIntegrateAppKeyValueRequest
+from ..api.csm.models import ApimodelIntegrateAppKeyValueResponse
+from ..api.csm.models import ApimodelIntegrationCredentialInfo
+from ..api.csm.models import ApimodelIntegrationListItem
+from ..api.csm.models import ApimodelKeyValueCredentialAcknowledgements
+from ..api.csm.models import ApimodelKeyValueResourceListResponse
+from ..api.csm.models import ApimodelKeyValueResourceResponse
+from ..api.csm.models import ApimodelListAppUIResponse
+from ..api.csm.models import ApimodelListIntegratedAppsKeyValueResponse
 from ..api.csm.models import ApimodelListTopicsResponse
 from ..api.csm.models import ApimodelMemoryRequest
 from ..api.csm.models import ApimodelMemoryResponse
 from ..api.csm.models import ApimodelNoSQLAppListResponse
 from ..api.csm.models import ApimodelNoSQLAppResponse
+from ..api.csm.models import ApimodelNoSQLDatabaseAcknowledgements
 from ..api.csm.models import ApimodelNoSQLDatabaseCredentialResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseDeleteResponse
 from ..api.csm.models import ApimodelNoSQLDatabaseResponse
 from ..api.csm.models import ApimodelNoSQLResourceResponse
 from ..api.csm.models import ApimodelNotificationType
 from ..api.csm.models import ApimodelPaginationResponse
+from ..api.csm.models import ApimodelPublicIAMClientResponse
 from ..api.csm.models import ApimodelReplicaRequest
 from ..api.csm.models import ApimodelReplicaResponse
+from ..api.csm.models import ApimodelSQLAppListResponse
+from ..api.csm.models import ApimodelSQLAppResponse
+from ..api.csm.models import ApimodelSQLDatabaseAcknowledgements
+from ..api.csm.models import ApimodelSQLDatabaseCredentialResponse
+from ..api.csm.models import ApimodelSQLDatabaseDeleteResponse
+from ..api.csm.models import ApimodelSQLDatabaseResponse
+from ..api.csm.models import ApimodelSQLResourceResponse
 from ..api.csm.models import ApimodelSaveConfigurationV2Request
 from ..api.csm.models import ApimodelSaveConfigurationV2Response
 from ..api.csm.models import ApimodelSaveSecretConfigurationV2Request
@@ -88,6 +117,10 @@ from ..api.csm.models import ApimodelUpdateAppV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Response
 from ..api.csm.models import ApimodelUpdateSecretConfigurationV2Request
+from ..api.csm.models import ApimodelUploadFileResponse
+from ..api.csm.models import DomainKeyValueClusterConfig
+from ..api.csm.models import DomainKeyValueResourceConfiguration
+from ..api.csm.models import DomainKeyValueUpdateConfiguration
 from ..api.csm.models import GeneratedCreateAppV1Request
 from ..api.csm.models import GeneratedCreateAppV1Response
 from ..api.csm.models import GeneratedCreateDeploymentV1Request
@@ -126,6 +159,7 @@ from ..api.csm.models import ModelImageScanFinding
 from ..api.csm.models import NosqlresourceNoSQLResourceConfiguration
 from ..api.csm.models import ResourceaccesstunnelTunnelInfo
 from ..api.csm.models import ResponseErrorResponse
+from ..api.csm.models import SqlresourceSQLResourceConfiguration
 
 
 def create_apimodel_app_item_example() -> ApimodelAppItem:
@@ -155,6 +189,48 @@ def create_apimodel_app_item_example() -> ApimodelAppItem:
     instance.replica = create_apimodel_replica_response_example()
     instance.service_public_url = randomize("url")
     instance.service_url = randomize("url")
+    return instance
+
+
+def create_apimodel_app_ui_response_example() -> ApimodelAppUIResponse:
+    instance = ApimodelAppUIResponse()
+    instance.app_ui_id = randomize()
+    instance.asset_base_path = randomize()
+    instance.created_at = randomize("date")
+    instance.current_file_version = randomize()
+    instance.game_namespace = randomize("slug")
+    instance.name = randomize()
+    instance.updated_at = randomize("date")
+    instance.public_iam_client = create_apimodel_public_iam_client_response_example()
+    return instance
+
+
+def create_apimodel_apply_app_config_request_example() -> ApimodelApplyAppConfigRequest:
+    instance = ApimodelApplyAppConfigRequest()
+    instance.scenario = randomize()
+    instance.autoscaling = create_apimodel_autoscaling_request_example()
+    instance.cpu = create_apimodel_cpu_request_example()
+    instance.description = randomize()
+    instance.memory = create_apimodel_memory_request_example()
+    instance.permissions = [create_apimodel_apply_permission_item_example()]
+    instance.replica = create_apimodel_replica_request_example()
+    instance.secrets = [create_apimodel_apply_config_item_example()]
+    instance.variables = [create_apimodel_apply_config_item_example()]
+    instance.vm_sharing_configuration = randomize()
+    return instance
+
+
+def create_apimodel_apply_config_item_example() -> ApimodelApplyConfigItem:
+    instance = ApimodelApplyConfigItem()
+    instance.name = randomize()
+    instance.value = randomize()
+    return instance
+
+
+def create_apimodel_apply_permission_item_example() -> ApimodelApplyPermissionItem:
+    instance = ApimodelApplyPermissionItem()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 
@@ -197,6 +273,12 @@ def create_apimodel_cpu_response_example() -> ApimodelCPUResponse:
     return instance
 
 
+def create_apimodel_create_app_ui_request_example() -> ApimodelCreateAppUIRequest:
+    instance = ApimodelCreateAppUIRequest()
+    instance.name = randomize()
+    return instance
+
+
 def create_apimodel_create_app_v2_request_example() -> ApimodelCreateAppV2Request:
     instance = ApimodelCreateAppV2Request()
     instance.scenario = randomize()
@@ -225,10 +307,33 @@ def create_apimodel_create_deployment_v2_response_example() -> (
     return instance
 
 
+def create_apimodel_create_key_value_credential_request_example() -> (
+    ApimodelCreateKeyValueCredentialRequest
+):
+    instance = ApimodelCreateKeyValueCredentialRequest()
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_create_key_value_credential_response_example() -> (
+    ApimodelCreateKeyValueCredentialResponse
+):
+    instance = ApimodelCreateKeyValueCredentialResponse()
+    instance.created_at = randomize()
+    instance.owner = randomize()
+    instance.recommended_max_age_days = randomize("int", min_val=1, max_val=1000)
+    instance.username = randomize("slug")
+    return instance
+
+
 def create_apimodel_create_no_sql_app_database_request_example() -> (
     ApimodelCreateNoSQLAppDatabaseRequest
 ):
     instance = ApimodelCreateNoSQLAppDatabaseRequest()
+    instance.acknowledgements = (
+        create_apimodel_no_sql_database_acknowledgements_example()
+    )
     instance.db_name = randomize()
     instance.password = randomize("password")
     instance.username = randomize("slug")
@@ -239,6 +344,29 @@ def create_apimodel_create_no_sql_database_credential_request_example() -> (
     ApimodelCreateNoSQLDatabaseCredentialRequest
 ):
     instance = ApimodelCreateNoSQLDatabaseCredentialRequest()
+    instance.acknowledgements = (
+        create_apimodel_no_sql_database_acknowledgements_example()
+    )
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_create_sql_app_database_request_example() -> (
+    ApimodelCreateSQLAppDatabaseRequest
+):
+    instance = ApimodelCreateSQLAppDatabaseRequest()
+    instance.acknowledgements = create_apimodel_sql_database_acknowledgements_example()
+    instance.db_name = randomize()
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_create_sql_database_credential_request_example() -> (
+    ApimodelCreateSQLDatabaseCredentialRequest
+):
+    instance = ApimodelCreateSQLDatabaseCredentialRequest()
     instance.password = randomize("password")
     instance.username = randomize("slug")
     return instance
@@ -296,6 +424,18 @@ def create_apimodel_delete_no_sql_resource_response_example() -> (
     ApimodelDeleteNoSQLResourceResponse
 ):
     instance = ApimodelDeleteNoSQLResourceResponse()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_name = randomize()
+    instance.resource_type = randomize()
+    instance.studio_name = randomize()
+    return instance
+
+
+def create_apimodel_delete_sql_resource_response_example() -> (
+    ApimodelDeleteSQLResourceResponse
+):
+    instance = ApimodelDeleteSQLResourceResponse()
     instance.platform_name = randomize()
     instance.resource_id = randomize()
     instance.resource_name = randomize()
@@ -398,6 +538,24 @@ def create_apimodel_get_deployment_list_v2_response_example() -> (
     return instance
 
 
+def create_apimodel_get_integration_app_key_value_response_example() -> (
+    ApimodelGetIntegrationAppKeyValueResponse
+):
+    instance = ApimodelGetIntegrationAppKeyValueResponse()
+    instance.accept_key_value_secure_credential_handling = randomize("bool")
+    instance.app_id = randomize("uid")
+    instance.credentials = create_apimodel_integration_credential_info_example()
+    instance.game_namespace = randomize("slug")
+    instance.hostnames = randomize()
+    instance.integration_id = randomize()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_status = randomize()
+    instance.status = randomize()
+    instance.status_message = randomize()
+    return instance
+
+
 def create_apimodel_get_list_of_configurations_v2_data_item_example() -> (
     ApimodelGetListOfConfigurationsV2DataItem
 ):
@@ -493,6 +651,115 @@ def create_apimodel_increase_limit_form_request_example() -> (
     return instance
 
 
+def create_apimodel_integrate_app_key_value_request_example() -> (
+    ApimodelIntegrateAppKeyValueRequest
+):
+    instance = ApimodelIntegrateAppKeyValueRequest()
+    instance.acknowledgements = (
+        create_apimodel_key_value_credential_acknowledgements_example()
+    )
+    instance.password = randomize("password")
+    instance.resource_id = randomize()
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_integrate_app_key_value_response_example() -> (
+    ApimodelIntegrateAppKeyValueResponse
+):
+    instance = ApimodelIntegrateAppKeyValueResponse()
+    instance.accept_key_value_secure_credential_handling = randomize("bool")
+    instance.app_id = randomize("uid")
+    instance.credentials = create_apimodel_integration_credential_info_example()
+    instance.game_namespace = randomize("slug")
+    instance.hostnames = randomize()
+    instance.integration_id = randomize()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_status = randomize()
+    instance.scenario = randomize()
+    instance.status = randomize()
+    instance.status_message = randomize()
+    return instance
+
+
+def create_apimodel_integration_credential_info_example() -> (
+    ApimodelIntegrationCredentialInfo
+):
+    instance = ApimodelIntegrationCredentialInfo()
+    instance.created_at = randomize()
+    instance.owner = randomize()
+    instance.recommended_max_age_days = randomize("int", min_val=1, max_val=1000)
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_integration_list_item_example() -> ApimodelIntegrationListItem:
+    instance = ApimodelIntegrationListItem()
+    instance.app_id = randomize("uid")
+    instance.app_name = randomize()
+    instance.created_at = randomize()
+    instance.game_namespace = randomize("slug")
+    instance.integration_id = randomize()
+    instance.resource_id = randomize()
+    instance.scenario = randomize()
+    instance.status = randomize()
+    instance.status_message = randomize()
+    instance.studio_name = randomize()
+    return instance
+
+
+def create_apimodel_key_value_credential_acknowledgements_example() -> (
+    ApimodelKeyValueCredentialAcknowledgements
+):
+    instance = ApimodelKeyValueCredentialAcknowledgements()
+    instance.accept_key_value_secure_credential_handling = randomize("bool")
+    return instance
+
+
+def create_apimodel_key_value_resource_list_response_example() -> (
+    ApimodelKeyValueResourceListResponse
+):
+    instance = ApimodelKeyValueResourceListResponse()
+    instance.data = [create_apimodel_key_value_resource_response_example()]
+    return instance
+
+
+def create_apimodel_key_value_resource_response_example() -> (
+    ApimodelKeyValueResourceResponse
+):
+    instance = ApimodelKeyValueResourceResponse()
+    instance.cluster_name = randomize()
+    instance.configuration = create_domain_key_value_resource_configuration_example()
+    instance.engine = randomize()
+    instance.hostnames = randomize()
+    instance.last_rotated_at = randomize()
+    instance.platform_name = randomize()
+    instance.region = randomize()
+    instance.resource_id = randomize()
+    instance.resource_name = randomize()
+    instance.resource_type = randomize()
+    instance.status = randomize()
+    instance.status_message = randomize()
+    instance.studio_name = randomize()
+    return instance
+
+
+def create_apimodel_list_app_ui_response_example() -> ApimodelListAppUIResponse:
+    instance = ApimodelListAppUIResponse()
+    instance.data = [create_apimodel_app_ui_response_example()]
+    instance.pagination = create_apimodel_pagination_response_example()
+    return instance
+
+
+def create_apimodel_list_integrated_apps_key_value_response_example() -> (
+    ApimodelListIntegratedAppsKeyValueResponse
+):
+    instance = ApimodelListIntegratedAppsKeyValueResponse()
+    instance.data = [create_apimodel_integration_list_item_example()]
+    return instance
+
+
 def create_apimodel_list_topics_response_example() -> ApimodelListTopicsResponse:
     instance = ApimodelListTopicsResponse()
     instance.data = [create_apimodel_topic_detail_response_example()]
@@ -529,12 +796,21 @@ def create_apimodel_no_sql_app_response_example() -> ApimodelNoSQLAppResponse:
     return instance
 
 
+def create_apimodel_no_sql_database_acknowledgements_example() -> (
+    ApimodelNoSQLDatabaseAcknowledgements
+):
+    instance = ApimodelNoSQLDatabaseAcknowledgements()
+    instance.accept_nosql_secure_credential_handling = randomize("bool")
+    return instance
+
+
 def create_apimodel_no_sql_database_credential_response_example() -> (
     ApimodelNoSQLDatabaseCredentialResponse
 ):
     instance = ApimodelNoSQLDatabaseCredentialResponse()
     instance.created_at = randomize()
     instance.owner = randomize()
+    instance.recommended_max_age_days = randomize("int", min_val=1, max_val=1000)
     instance.username = randomize("slug")
     return instance
 
@@ -550,6 +826,7 @@ def create_apimodel_no_sql_database_delete_response_example() -> (
 
 def create_apimodel_no_sql_database_response_example() -> ApimodelNoSQLDatabaseResponse:
     instance = ApimodelNoSQLDatabaseResponse()
+    instance.accept_nosql_secure_credential_handling = randomize("bool")
     instance.app_id = randomize("uid")
     instance.credentials = create_apimodel_no_sql_database_credential_response_example()
     instance.db_id = randomize()
@@ -573,6 +850,7 @@ def create_apimodel_no_sql_resource_response_example() -> ApimodelNoSQLResourceR
     instance.configuration = (
         create_nosqlresource_no_sql_resource_configuration_example()
     )
+    instance.engine_version = randomize()
     instance.hostnames = randomize()
     instance.last_rotated_at = randomize()
     instance.region = randomize()
@@ -594,6 +872,16 @@ def create_apimodel_pagination_response_example() -> ApimodelPaginationResponse:
     instance.last = randomize()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_apimodel_public_iam_client_response_example() -> (
+    ApimodelPublicIAMClientResponse
+):
+    instance = ApimodelPublicIAMClientResponse()
+    instance.client_id = randomize("uid")
+    instance.client_name = randomize()
+    instance.redirect_uri_list = [randomize()]
     return instance
 
 
@@ -650,6 +938,81 @@ def create_apimodel_self_subscribe_notification_request_example() -> (
 ):
     instance = ApimodelSelfSubscribeNotificationRequest()
     instance.notification_type = randomize()
+    return instance
+
+
+def create_apimodel_sql_app_list_response_example() -> ApimodelSQLAppListResponse:
+    instance = ApimodelSQLAppListResponse()
+    instance.data = [create_apimodel_sql_app_response_example()]
+    instance.pagination = create_apimodel_pagination_response_example()
+    return instance
+
+
+def create_apimodel_sql_app_response_example() -> ApimodelSQLAppResponse:
+    instance = ApimodelSQLAppResponse()
+    instance.app_id = randomize("uid")
+    instance.app_name = randomize()
+    instance.game_name = randomize()
+    instance.scenario = randomize()
+    return instance
+
+
+def create_apimodel_sql_database_acknowledgements_example() -> (
+    ApimodelSQLDatabaseAcknowledgements
+):
+    instance = ApimodelSQLDatabaseAcknowledgements()
+    instance.accept_sql_secure_credential_handling = randomize("bool")
+    return instance
+
+
+def create_apimodel_sql_database_credential_response_example() -> (
+    ApimodelSQLDatabaseCredentialResponse
+):
+    instance = ApimodelSQLDatabaseCredentialResponse()
+    instance.created_at = randomize()
+    instance.owner = randomize()
+    instance.recommended_max_age = randomize("int", min_val=1, max_val=1000)
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_apimodel_sql_database_delete_response_example() -> (
+    ApimodelSQLDatabaseDeleteResponse
+):
+    instance = ApimodelSQLDatabaseDeleteResponse()
+    instance.db_id = randomize()
+    instance.db_name = randomize()
+    return instance
+
+
+def create_apimodel_sql_database_response_example() -> ApimodelSQLDatabaseResponse:
+    instance = ApimodelSQLDatabaseResponse()
+    instance.accept_sql_secure_credential_handling = randomize("bool")
+    instance.app_id = randomize("uid")
+    instance.credentials = create_apimodel_sql_database_credential_response_example()
+    instance.db_id = randomize()
+    instance.db_name = randomize()
+    instance.game_namespace = randomize("slug")
+    instance.hostnames = randomize()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_status = randomize()
+    return instance
+
+
+def create_apimodel_sql_resource_response_example() -> ApimodelSQLResourceResponse:
+    instance = ApimodelSQLResourceResponse()
+    instance.platform_name = randomize()
+    instance.resource_id = randomize()
+    instance.resource_name = randomize()
+    instance.resource_type = randomize()
+    instance.status = randomize()
+    instance.studio_name = randomize()
+    instance.configuration = create_sqlresource_sql_resource_configuration_example()
+    instance.engine_version = randomize()
+    instance.hostnames = randomize()
+    instance.last_rotated_at = randomize()
+    instance.region = randomize()
     return instance
 
 
@@ -779,6 +1142,45 @@ def create_apimodel_update_secret_configuration_v2_request_example() -> (
     instance = ApimodelUpdateSecretConfigurationV2Request()
     instance.value = randomize()
     instance.description = randomize()
+    return instance
+
+
+def create_apimodel_upload_file_response_example() -> ApimodelUploadFileResponse:
+    instance = ApimodelUploadFileResponse()
+    instance.app_ui = create_apimodel_app_ui_response_example()
+    return instance
+
+
+def create_domain_key_value_cluster_config_example() -> DomainKeyValueClusterConfig:
+    instance = DomainKeyValueClusterConfig()
+    instance.max_cluster_per_studio_private_cloud = randomize(
+        "int", min_val=1, max_val=1000
+    )
+    instance.max_cluster_per_studio_shared_cloud = randomize(
+        "int", min_val=1, max_val=1000
+    )
+    instance.max_integration_per_cluster = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_domain_key_value_resource_configuration_example() -> (
+    DomainKeyValueResourceConfiguration
+):
+    instance = DomainKeyValueResourceConfiguration()
+    instance.cluster_name = randomize()
+    instance.max_data_storage_gb = randomize("int", min_val=1, max_val=1000)
+    instance.max_ecpu_per_second = randomize("int", min_val=1, max_val=1000)
+    instance.profile_name = randomize()
+    return instance
+
+
+def create_domain_key_value_update_configuration_example() -> (
+    DomainKeyValueUpdateConfiguration
+):
+    instance = DomainKeyValueUpdateConfiguration()
+    instance.max_data_storage_gb = randomize("int", min_val=1, max_val=1000)
+    instance.max_ecpu_per_second = randomize("int", min_val=1, max_val=1000)
+    instance.profile_name = randomize()
     return instance
 
 
@@ -1170,4 +1572,15 @@ def create_response_error_response_example() -> ResponseErrorResponse:
     instance.message_variables = {randomize(): randomize()}
     instance.name = randomize()
     instance.reason = randomize()
+    return instance
+
+
+def create_sqlresource_sql_resource_configuration_example() -> (
+    SqlresourceSQLResourceConfiguration
+):
+    instance = SqlresourceSQLResourceConfiguration()
+    instance.max_acu = randomize("int", min_val=1, max_val=1000)
+    instance.min_acu = randomize("int", min_val=1, max_val=1000)
+    instance.multi_az = randomize("bool")
+    instance.profile_name = randomize()
     return instance

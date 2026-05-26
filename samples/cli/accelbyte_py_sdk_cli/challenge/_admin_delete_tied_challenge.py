@@ -38,12 +38,14 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 @click.command()
 @click.argument("challenge_code", type=str)
+@click.option("--safe_delete", "safe_delete", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_delete_tied_challenge(
     challenge_code: str,
+    safe_delete: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -59,6 +61,7 @@ def admin_delete_tied_challenge(
         login_as_internal(login_as)
     result, error = admin_delete_tied_challenge_internal(
         challenge_code=challenge_code,
+        safe_delete=safe_delete,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class AdminBanUserV2(Operation):
     """Ban a single user (AdminBanUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
 

@@ -37,8 +37,7 @@ from ...models import RestErrorResponse
 class AdminGetBulkUserBanV3(Operation):
     """Get bulk user bans (AdminGetBulkUserBanV3)
 
-    This endpoint returns user bans of userIDs specified in the payload
-    action code : 10127
+    Returns user bans of userIDs specified in the payload.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bans

@@ -1,5 +1,12 @@
 ## Python Extend SDK CLI Sample App Operation Index for Iam service.
 
+### Operation `get_authorization_server_metadata_with_namespace`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-get-authorization-server-metadata-with-namespace' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_get_bans_type_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-get-bans-type-v3' \
@@ -35,29 +42,16 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-delete-config-permissions-by-group' 
     > result.txt
 ```
 
+### Operation `admin_update_module_package`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-admin-update-module-package' \
+    '{"data": [{}]}' \
+    > result.txt
+```
+
 ### Operation `admin_list_client_templates`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-list-client-templates' \
-    > result.txt
-```
-
-### Operation `admin_get_input_validations`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-admin-get-input-validations' \
-    > result.txt
-```
-
-### Operation `admin_update_input_validations`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-admin-update-input-validations' \
-    '[{"field": "string", "validation": {}}]' \
-    > result.txt
-```
-
-### Operation `admin_reset_input_validations`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-admin-reset-input-validations' \
-    'string' \
     > result.txt
 ```
 
@@ -164,7 +158,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-bulk-update-clients-v3' \
 ### Operation `admin_create_client_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-create-client-v3' \
-    '{"audiences": ["string"], "baseUri": "string", "clientId": "string", "clientName": "string", "clientPermissions": [{}], "clientPlatform": "string", "deletable": false, "description": "string", "modulePermissions": [{}], "namespace": "string", "oauthAccessTokenExpiration": 1, "oauthAccessTokenExpirationTimeUnit": "string", "oauthClientType": "string", "oauthRefreshTokenExpiration": 1, "oauthRefreshTokenExpirationTimeUnit": "string", "parentNamespace": "string", "redirectUri": "string", "scopes": ["string"], "secret": "string", "skipLoginQueue": false, "twoFactorEnabled": false}' \
+    '{"audiences": ["string"], "baseUri": "string", "clientId": "string", "clientName": "string", "clientPermissions": [{}], "clientPlatform": "string", "deletable": false, "description": "string", "modulePermissions": [{}], "namespace": "string", "oauthAccessTokenExpiration": 1, "oauthAccessTokenExpirationTimeUnit": "string", "oauthClientType": "string", "oauthRefreshTokenExpiration": 1, "oauthRefreshTokenExpirationTimeUnit": "string", "redirectUri": "string", "scopes": ["string"], "secret": "string", "skipLoginQueue": false, "twoFactorEnabled": false}' \
     'string' \
     > result.txt
 ```
@@ -249,6 +243,29 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-get-country-blacklist-v3' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-add-country-blacklist-v3' \
     '{"blacklist": ["string"]}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_get_namespace_scoped_input_validations`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-admin-get-namespace-scoped-input-validations' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_update_namespace_scoped_input_validations`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-admin-update-namespace-scoped-input-validations' \
+    '[{"field": "string", "validation": {}}]' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_reset_namespace_scoped_input_validations`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-admin-reset-namespace-scoped-input-validations' \
+    'string' \
     'string' \
     > result.txt
 ```
@@ -916,37 +933,10 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-get-user-single-platform-account' \
     > result.txt
 ```
 
-### Operation `admin_delete_user_roles_v3`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-admin-delete-user-roles-v3' \
-    '["string"]' \
-    'string' \
-    'string' \
-    > result.txt
-```
-
 ### Operation `admin_save_user_role_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-save-user-role-v3' \
     '[{"namespace": "string", "roleId": "string"}]' \
-    'string' \
-    'string' \
-    > result.txt
-```
-
-### Operation `admin_add_user_role_v3`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-admin-add-user-role-v3' \
-    'string' \
-    'string' \
-    'string' \
-    > result.txt
-```
-
-### Operation `admin_delete_user_role_v3`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-admin-delete-user-role-v3' \
-    'string' \
     'string' \
     'string' \
     > result.txt
@@ -998,6 +988,13 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-update-client-secret-v3' \
 ### Operation `admin_check_third_party_login_platform_availability_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-check-third-party-login-platform-availability-v3' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_third_party_login_platform_defaults_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-get-third-party-login-platform-defaults-v3' \
     'string' \
     > result.txt
 ```
@@ -1334,6 +1331,14 @@ $ python -m accelbyte_py_sdk_cli 'iam-verify2fa-code-forward' \
     > result.txt
 ```
 
+### Operation `o_auth_dynamic_client_register_with_namespace_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-o-auth-dynamic-client-register-with-namespace-v3' \
+    '{"client_name": "string", "client_uri": "string", "grant_types": ["string"], "redirect_uris": ["string"], "response_types": ["string"], "scopes": ["string"], "token_endpoint_auth_method": "string"}' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `retrieve_user_third_party_platform_token_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-retrieve-user-third-party-platform-token-v3' \
@@ -1447,21 +1452,6 @@ $ python -m accelbyte_py_sdk_cli 'iam-platform-token-refresh-v3' \
     > result.txt
 ```
 
-### Operation `public_get_input_validations`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-public-get-input-validations' \
-    --default_on_empty false \
-    --language_code 'string' \
-    > result.txt
-```
-
-### Operation `public_get_input_validation_by_field`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-public-get-input-validation-by-field' \
-    'string' \
-    > result.txt
-```
-
 ### Operation `public_get_country_age_restriction_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-public-get-country-age-restriction-v3' \
@@ -1481,6 +1471,23 @@ $ python -m accelbyte_py_sdk_cli 'iam-public-get-config-value-v3' \
 ### Operation `public_get_country_list_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-public-get-country-list-v3' \
+    'string' \
+    > result.txt
+```
+
+### Operation `public_get_namespace_scoped_input_validations`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-get-namespace-scoped-input-validations' \
+    'string' \
+    --default_on_empty false \
+    --language_code 'string' \
+    > result.txt
+```
+
+### Operation `public_get_namespace_scoped_input_validation_by_field`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-get-namespace-scoped-input-validation-by-field' \
+    'string' \
     'string' \
     > result.txt
 ```
@@ -1786,15 +1793,6 @@ $ python -m accelbyte_py_sdk_cli 'iam-public-get-user-platform-accounts-v3' \
 ### Operation `public_list_justice_platform_accounts_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-public-list-justice-platform-accounts-v3' \
-    'string' \
-    'string' \
-    > result.txt
-```
-
-### Operation `public_link_platform_account`
-```sh
-$ python -m accelbyte_py_sdk_cli 'iam-public-link-platform-account' \
-    '{"platformId": "string", "platformUserId": "string"}' \
     'string' \
     'string' \
     > result.txt

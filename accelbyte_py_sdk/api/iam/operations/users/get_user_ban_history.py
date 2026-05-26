@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetUserBanHistory(Operation):
     """Get user's bans history (GetUserBanHistory)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
 

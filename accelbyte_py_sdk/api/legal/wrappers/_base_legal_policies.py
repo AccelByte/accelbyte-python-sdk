@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import CreateBasePolicyRequest
@@ -50,6 +51,7 @@ from ..models import CreateBasePolicyResponseCountryTypeEnum
 from ..models import UpdateBasePolicyRequestCountryTypeEnum
 
 
+@deprecated
 @same_doc_as(OldCreatePolicy)
 def old_create_policy(
     body: Optional[CreateBasePolicyRequest] = None,
@@ -98,6 +100,7 @@ def old_create_policy(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldCreatePolicy)
 async def old_create_policy_async(
     body: Optional[CreateBasePolicyRequest] = None,
@@ -148,6 +151,7 @@ async def old_create_policy_async(
     )
 
 
+@deprecated
 @same_doc_as(OldPartialUpdatePolicy)
 def old_partial_update_policy(
     base_policy_id: str,
@@ -198,6 +202,7 @@ def old_partial_update_policy(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldPartialUpdatePolicy)
 async def old_partial_update_policy_async(
     base_policy_id: str,
@@ -250,6 +255,7 @@ async def old_partial_update_policy_async(
     )
 
 
+@deprecated
 @same_doc_as(OldRetrieveAllPolicyTypes)
 def old_retrieve_all_policy_types(
     limit: int,
@@ -288,6 +294,7 @@ def old_retrieve_all_policy_types(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldRetrieveAllPolicyTypes)
 async def old_retrieve_all_policy_types_async(
     limit: int,
@@ -328,6 +335,7 @@ async def old_retrieve_all_policy_types_async(
     )
 
 
+@deprecated
 @same_doc_as(OldRetrievePolicyCountry)
 def old_retrieve_policy_country(
     base_policy_id: str,
@@ -368,6 +376,7 @@ def old_retrieve_policy_country(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldRetrievePolicyCountry)
 async def old_retrieve_policy_country_async(
     base_policy_id: str,
@@ -410,6 +419,7 @@ async def old_retrieve_policy_country_async(
     )
 
 
+@deprecated
 @same_doc_as(OldRetrieveSinglePolicy)
 def old_retrieve_single_policy(
     base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -444,6 +454,7 @@ def old_retrieve_single_policy(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldRetrieveSinglePolicy)
 async def old_retrieve_single_policy_async(
     base_policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -480,6 +491,7 @@ async def old_retrieve_single_policy_async(
     )
 
 
+@deprecated
 @same_doc_as(RetrieveAllLegalPolicies)
 def retrieve_all_legal_policies(
     visible_only: Optional[bool] = None,
@@ -514,6 +526,7 @@ def retrieve_all_legal_policies(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(RetrieveAllLegalPolicies)
 async def retrieve_all_legal_policies_async(
     visible_only: Optional[bool] = None,

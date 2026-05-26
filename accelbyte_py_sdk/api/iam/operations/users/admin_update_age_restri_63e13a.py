@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminUpdateAgeRestrictionConfigV3(Operation):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV3)
 
-    action code: 10122
+    Updates the age restriction configuration for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions

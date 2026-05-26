@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUserMFAStatusV4(Operation):
     """Get User 2FA Status (AdminGetUserMFAStatusV4)
 
-    **This endpoint is used to get user's 2FA status.**
+    Retrieves the 2FA status for the specified user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/status

@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetListCountryAgeRestrictionV3(Operation):
     """Get List Country age restriction (AdminGetListCountryAgeRestrictionV3)
 
-    action code : 10139
+    Retrieves the list of age restriction settings for all countries.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions/countries

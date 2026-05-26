@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 
 
 class AdminGetUserStateByUserIdV3(Operation):
-    """Admin Get User State By User Id (AdminGetUserStateByUserIdV3)
+    """Admin Get User State By User ID (AdminGetUserStateByUserIdV3)
 
-    Admin Get User State By User Id
+    Retrieves the current account state (enabled/disabled, email verification, deletion status) for the specified user.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/state

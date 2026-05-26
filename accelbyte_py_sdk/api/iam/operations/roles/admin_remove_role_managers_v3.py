@@ -37,7 +37,6 @@ class AdminRemoveRoleManagersV3(Operation):
     """Remove Role Managers (AdminRemoveRoleManagersV3)
 
     Role can only be assigned to other users by the role's manager.
-    action code: 10409
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers

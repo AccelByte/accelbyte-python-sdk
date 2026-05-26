@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ApimodelCreateNoSQLDatabaseCredentialRequest
 from ...models import ApimodelNoSQLDatabaseCredentialResponse
@@ -40,6 +41,8 @@ class CreateNoSQLDatabaseCredentialV2(Operation):
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
 
     Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+    `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/crendentials

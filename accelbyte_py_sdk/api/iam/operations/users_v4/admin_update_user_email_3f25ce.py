@@ -36,8 +36,8 @@ from ...models import RestErrorResponse
 class AdminUpdateUserEmailAddressV4(Operation):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
-    This is the endpoint for an admin to update a user email address.
-    This endpoint need a valid user token from an admin to verify its identity (email) before updating a user.
+    Updates a user email address (admin operation).
+    Requires a valid admin user token to verify identity (email) before updating the user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/email

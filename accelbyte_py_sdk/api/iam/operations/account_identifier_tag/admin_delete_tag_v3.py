@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteTagV3(Operation):
     """Delete Account Identifier Tag (AdminDeleteTagV3)
 
-    Delete an Account Identifier Tag. This endpoint allows administrators to delete a tag that is used to identify and categorize user accounts.
+    Deletes an Account Identifier Tag used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags/{tagId}

@@ -73,4 +73,4 @@ def old_update_policy(
 
 
 old_update_policy.operation_id = "oldUpdatePolicy"
-old_update_policy.is_deprecated = False
+old_update_policy.is_deprecated = True

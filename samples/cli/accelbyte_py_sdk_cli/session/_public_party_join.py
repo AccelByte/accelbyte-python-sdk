@@ -31,17 +31,20 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.session import public_party_join as public_party_join_internal
+from accelbyte_py_sdk.api.session.models import ApimodelsJoinSessionRequest
 from accelbyte_py_sdk.api.session.models import ApimodelsPartySessionResponse
 from accelbyte_py_sdk.api.session.models import ResponseError
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("party_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_party_join(
+    body: str,
     party_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -56,7 +59,14 @@ def public_party_join(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ApimodelsJoinSessionRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_party_join_internal(
+        body=body,
         party_id=party_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

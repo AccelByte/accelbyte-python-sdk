@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class RetrieveAllThirdPartyLoginPlatformCredentialV3(Operation):
     """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential.
+    Retrieves all third-party platform credentials.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients

@@ -65,4 +65,4 @@ def old_retrieve_accepted_agreements(
 
 
 old_retrieve_accepted_agreements.operation_id = "oldRetrieveAcceptedAgreements"
-old_retrieve_accepted_agreements.is_deprecated = False
+old_retrieve_accepted_agreements.is_deprecated = True

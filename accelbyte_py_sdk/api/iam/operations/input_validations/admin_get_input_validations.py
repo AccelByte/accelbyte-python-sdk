@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelInputValidationsResponse
 from ...models import RestErrorResponse
@@ -36,8 +37,9 @@ from ...models import RestErrorResponse
 class AdminGetInputValidations(Operation):
     """Admin Get Input Validations (AdminGetInputValidations)
 
-    This endpoint is to get list of input validation configuration.
+    Returns the list of input validation configuration.
     `regex` parameter will be returned if `isCustomRegex` is true. Otherwise, it will be empty.
+    **Substitute endpoint:** /iam/v3/admin/namespaces/{namespace}/inputValidations[GET]
 
     Properties:
         url: /iam/v3/admin/inputValidations

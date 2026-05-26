@@ -29,11 +29,14 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBatchQueryUserAchievementRequest
 from ..models import ModelsBulkUnlockAchievementRequest
 from ..models import ModelsBulkUnlockAchievementResponse
 from ..models import ModelsPaginatedUserAchievementResponse
+from ..models import ModelsUserAchievementResponse
 from ..models import ResponseError
 
+from ..operations.user_achievements import AdminBatchQueryUserAchievements
 from ..operations.user_achievements import AdminBulkUnlockAchievement
 from ..operations.user_achievements import AdminListUserAchievements
 from ..operations.user_achievements import AdminListUserAchievementsSortByEnum
@@ -43,6 +46,140 @@ from ..operations.user_achievements import PublicBulkUnlockAchievement
 from ..operations.user_achievements import PublicListUserAchievements
 from ..operations.user_achievements import PublicListUserAchievementsSortByEnum
 from ..operations.user_achievements import PublicUnlockAchievement
+
+
+@same_doc_as(AdminBatchQueryUserAchievements)
+def admin_batch_query_user_achievements(
+    body: ModelsBatchQueryUserAchievementRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Batch Query user achievements (AdminBatchQueryUserAchievements)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+    Note:
+
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/batchQuery
+
+        method: POST
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBatchQueryUserAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsUserAchievementResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminBatchQueryUserAchievements.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBatchQueryUserAchievements)
+async def admin_batch_query_user_achievements_async(
+    body: ModelsBatchQueryUserAchievementRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Batch Query user achievements (AdminBatchQueryUserAchievements)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+
+
+
+
+    Note:
+
+
+
+
+    User Achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
+
+
+
+
+    `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/batchQuery
+
+        method: POST
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBatchQueryUserAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsUserAchievementResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminBatchQueryUserAchievements.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminBulkUnlockAchievement)

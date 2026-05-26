@@ -78,4 +78,4 @@ def public_link_platform_account(
 
 
 public_link_platform_account.operation_id = "PublicLinkPlatformAccount"
-public_link_platform_account.is_deprecated = False
+public_link_platform_account.is_deprecated = True

@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -202,6 +203,7 @@ async def old_retrieve_latest_policies_by_namespace_and_country_public_async(
     )
 
 
+@deprecated
 @same_doc_as(OldSetDefaultPolicy)
 def old_set_default_policy(
     policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -236,6 +238,7 @@ def old_set_default_policy(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldSetDefaultPolicy)
 async def old_set_default_policy_async(
     policy_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -272,6 +275,7 @@ async def old_set_default_policy_async(
     )
 
 
+@deprecated
 @same_doc_as(OldUpdatePolicy)
 def old_update_policy(
     policy_id: str,
@@ -312,6 +316,7 @@ def old_update_policy(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldUpdatePolicy)
 async def old_update_policy_async(
     policy_id: str,
@@ -674,6 +679,7 @@ async def retrieve_latest_policies_public_async(
     )
 
 
+@deprecated
 @same_doc_as(RetrievePolicies)
 def retrieve_policies(
     country_code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -706,6 +712,7 @@ def retrieve_policies(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(RetrievePolicies)
 async def retrieve_policies_async(
     country_code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs

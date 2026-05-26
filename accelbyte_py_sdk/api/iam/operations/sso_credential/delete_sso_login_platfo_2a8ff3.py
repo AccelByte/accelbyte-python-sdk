@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class DeleteSSOLoginPlatformCredentialV3(Operation):
     """Delete SSO Platform Credential (DeleteSSOLoginPlatformCredentialV3)
 
-    This is the API to Delete SSO Platform Credential.
+    Deletes the SSO platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso

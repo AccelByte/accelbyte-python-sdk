@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminEnableUserV2(Operation):
     """Enable a user (AdminEnableUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
 

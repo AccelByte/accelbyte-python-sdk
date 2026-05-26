@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AddUserRole(Operation):
     """Add User Role (AddUserRole)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId} [POST]_**
 

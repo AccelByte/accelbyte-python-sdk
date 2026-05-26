@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminRemoveRoleAdminV3(Operation):
     """Remove Role Admin Status (AdminRemoveRoleAdminV3)
 
-    code: 10413
+    Removes admin status from a role.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin

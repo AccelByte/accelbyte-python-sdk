@@ -37,7 +37,6 @@ class AdminListAssignedUsersV4(Operation):
     """Get Role's Assigned Users (AdminListAssignedUsersV4)
 
     Query all users that has the specified role.
-    action code: 10416
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users

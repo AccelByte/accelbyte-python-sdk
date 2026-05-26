@@ -36,7 +36,7 @@ class Change2faMethod(Operation):
     """Change 2FA method (Change2FAMethod)
 
     Change 2FA method
-    This endpoint is used for change 2FA method. Only enabled methods are accepted.
+    Changes the 2FA method. Only enabled methods are accepted.
     Supported methods:
     - authenticator
     - backupCode

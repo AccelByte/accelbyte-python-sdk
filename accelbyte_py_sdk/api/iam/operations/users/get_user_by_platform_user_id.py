@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetUserByPlatformUserID(Operation):
     """Get User By Platform User ID (GetUserByPlatformUserID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint(Public): _/iam/v3/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**
     - **Substitute endpoint(Admin): _/iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]_**

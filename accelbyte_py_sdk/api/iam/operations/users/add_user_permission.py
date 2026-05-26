@@ -37,11 +37,11 @@ from ...models import RestErrorResponse
 class AddUserPermission(Operation):
     """Add User Permission (AddUserPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions [POST]_**
 
-    This endpoint will update existing permission (bitwise OR the action) if found one with same resource, otherwise it will append a new permission
+    Updates existing permission (bitwise OR the action) if found one with same resource, otherwise appends a new permission
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date

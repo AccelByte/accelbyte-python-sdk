@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.37.0"
+__version__ = "7.39.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -97,6 +97,8 @@ from .wrappers import admin_list_client_templates
 from .wrappers import admin_list_client_templates_async
 from .wrappers import admin_update_available_permissions_by_module
 from .wrappers import admin_update_available_permissions_by_module_async
+from .wrappers import admin_update_module_package
+from .wrappers import admin_update_module_package_async
 
 # config
 from .wrappers import admin_get_config_value_v3
@@ -145,14 +147,24 @@ from .wrappers import admin_update_device_ban_v4_async
 # input_validations
 from .wrappers import admin_get_input_validations
 from .wrappers import admin_get_input_validations_async
+from .wrappers import admin_get_namespace_scoped_input_validations
+from .wrappers import admin_get_namespace_scoped_input_validations_async
 from .wrappers import admin_reset_input_validations
 from .wrappers import admin_reset_input_validations_async
+from .wrappers import admin_reset_namespace_scoped_input_validations
+from .wrappers import admin_reset_namespace_scoped_input_validations_async
 from .wrappers import admin_update_input_validations
 from .wrappers import admin_update_input_validations_async
+from .wrappers import admin_update_namespace_scoped_input_validations
+from .wrappers import admin_update_namespace_scoped_input_validations_async
 from .wrappers import public_get_input_validation_by_field
 from .wrappers import public_get_input_validation_by_field_async
 from .wrappers import public_get_input_validations
 from .wrappers import public_get_input_validations_async
+from .wrappers import public_get_namespace_scoped_input_validation_by_field
+from .wrappers import public_get_namespace_scoped_input_validation_by_field_async
+from .wrappers import public_get_namespace_scoped_input_validations
+from .wrappers import public_get_namespace_scoped_input_validations_async
 
 # login_allowlist
 from .wrappers import admin_get_login_allowlist_v3
@@ -189,10 +201,14 @@ from .wrappers import authorize_v3
 from .wrappers import authorize_v3_async
 from .wrappers import change2fa_method
 from .wrappers import change2fa_method_async
+from .wrappers import get_authorization_server_metadata_with_namespace
+from .wrappers import get_authorization_server_metadata_with_namespace_async
 from .wrappers import get_jwksv3
 from .wrappers import get_jwksv3_async
 from .wrappers import get_revocation_list_v3
 from .wrappers import get_revocation_list_v3_async
+from .wrappers import o_auth_dynamic_client_register_with_namespace_v3
+from .wrappers import o_auth_dynamic_client_register_with_namespace_v3_async
 from .wrappers import platform_token_grant_v3
 from .wrappers import platform_token_grant_v3_async
 from .wrappers import retrieve_user_third_party_platform_token_v3
@@ -411,6 +427,8 @@ from .wrappers import delete_third_party_login_platform_credential_v3
 from .wrappers import delete_third_party_login_platform_credential_v3_async
 from .wrappers import delete_third_party_login_platform_domain_v3
 from .wrappers import delete_third_party_login_platform_domain_v3_async
+from .wrappers import get_third_party_login_platform_defaults_v3
+from .wrappers import get_third_party_login_platform_defaults_v3_async
 from .wrappers import partial_update_third_party_login_platform_domain_v3
 from .wrappers import partial_update_third_party_login_platform_domain_v3_async
 from .wrappers import retrieve_active_oidc_clients_public_v3

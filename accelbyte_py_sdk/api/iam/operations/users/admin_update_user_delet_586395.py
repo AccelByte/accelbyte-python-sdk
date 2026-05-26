@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminUpdateUserDeletionStatusV3(Operation):
     """Update User Deletion Status (AdminUpdateUserDeletionStatusV3)
 
-    action code : 10144
+    Updates the deletion status of the specified user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status

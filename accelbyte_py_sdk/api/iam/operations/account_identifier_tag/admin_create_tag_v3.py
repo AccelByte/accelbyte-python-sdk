@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminCreateTagV3(Operation):
     """Create Account Identifier Tag (AdminCreateTagV3)
 
-    Create a new Account Identifier Tag for users. This endpoint allows administrators to create tags that can be used to identify and categorize user accounts.
+    Creates a new Account Identifier Tag for users, which can be used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags

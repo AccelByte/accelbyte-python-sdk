@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.37.0"
+__version__ = "7.39.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -152,11 +152,15 @@ from .clientmodel_default_field_value_value import ClientmodelDefaultFieldValueV
 from .clientmodel_list_client_permission_set import ClientmodelListClientPermissionSet
 from .clientmodel_list_templates_response import ClientmodelListTemplatesResponse
 from .clientmodel_list_upsert_modules_request import ClientmodelListUpsertModulesRequest
+from .clientmodel_module_package import ClientmodelModulePackage
 from .clientmodel_permission_set_delete_group_request import (
     ClientmodelPermissionSetDeleteGroupRequest,
 )
 from .clientmodel_permission_set_upsert_request import (
     ClientmodelPermissionSetUpsertRequest,
+)
+from .clientmodel_upsert_permission_module_package_request import (
+    ClientmodelUpsertPermissionModulePackageRequest,
 )
 from .clientmodel_v3_client_update_secret_request import (
     ClientmodelV3ClientUpdateSecretRequest,
@@ -282,6 +286,7 @@ from .model_one_time_code_link_redirection_response import (
     ModelOneTimeCodeLinkRedirectionResponse,
 )
 from .model_permission_delete_request import ModelPermissionDeleteRequest
+from .model_platform_defaults_response import ModelPlatformDefaultsResponse
 from .model_platform_domain_delete_request import ModelPlatformDomainDeleteRequest
 from .model_platform_domain_patch_request import ModelPlatformDomainPatchRequest
 from .model_platform_domain_response import ModelPlatformDomainResponse
@@ -441,9 +446,12 @@ from .model_verification_code_response import ModelVerificationCodeResponse
 from .model_verify_registration_code import ModelVerifyRegistrationCode
 from .model_web_linking_response import ModelWebLinkingResponse
 from .oauthapi_revocation_list import OauthapiRevocationList
+from .oauthcommon_as_metadata_response import OauthcommonASMetadataResponse
 from .oauthcommon_jwk_key import OauthcommonJWKKey
 from .oauthcommon_jwk_set import OauthcommonJWKSet
 from .oauthcommon_user_revocation_list_record import OauthcommonUserRevocationListRecord
+from .oauthmodel_client_register_response import OauthmodelClientRegisterResponse
+from .oauthmodel_client_registration_request import OauthmodelClientRegistrationRequest
 from .oauthmodel_country_location_response import OauthmodelCountryLocationResponse
 from .oauthmodel_error_response import OauthmodelErrorResponse
 from .oauthmodel_login_queue_ticket_response import OauthmodelLoginQueueTicketResponse

@@ -124,8 +124,10 @@ from ..api.iam.models import ClientmodelDefaultFieldValueValue
 from ..api.iam.models import ClientmodelListClientPermissionSet
 from ..api.iam.models import ClientmodelListTemplatesResponse
 from ..api.iam.models import ClientmodelListUpsertModulesRequest
+from ..api.iam.models import ClientmodelModulePackage
 from ..api.iam.models import ClientmodelPermissionSetDeleteGroupRequest
 from ..api.iam.models import ClientmodelPermissionSetUpsertRequest
+from ..api.iam.models import ClientmodelUpsertPermissionModulePackageRequest
 from ..api.iam.models import ClientmodelV3ClientUpdateSecretRequest
 from ..api.iam.models import LegalAcceptedPoliciesRequest
 from ..api.iam.models import ModelAccountProgressionInfo
@@ -224,6 +226,7 @@ from ..api.iam.models import ModelNamespaceInvitationHistoryUserV4Response
 from ..api.iam.models import ModelNamespaceRoleRequest
 from ..api.iam.models import ModelOneTimeCodeLinkRedirectionResponse
 from ..api.iam.models import ModelPermissionDeleteRequest
+from ..api.iam.models import ModelPlatformDefaultsResponse
 from ..api.iam.models import ModelPlatformDomainDeleteRequest
 from ..api.iam.models import ModelPlatformDomainPatchRequest
 from ..api.iam.models import ModelPlatformDomainResponse
@@ -351,9 +354,12 @@ from ..api.iam.models import ModelVerificationCodeResponse
 from ..api.iam.models import ModelVerifyRegistrationCode
 from ..api.iam.models import ModelWebLinkingResponse
 from ..api.iam.models import OauthapiRevocationList
+from ..api.iam.models import OauthcommonASMetadataResponse
 from ..api.iam.models import OauthcommonJWKKey
 from ..api.iam.models import OauthcommonJWKSet
 from ..api.iam.models import OauthcommonUserRevocationListRecord
+from ..api.iam.models import OauthmodelClientRegisterResponse
+from ..api.iam.models import OauthmodelClientRegistrationRequest
 from ..api.iam.models import OauthmodelCountryLocationResponse
 from ..api.iam.models import OauthmodelErrorResponse
 from ..api.iam.models import OauthmodelLoginQueueTicketResponse
@@ -667,6 +673,7 @@ def create_accountcommon_client_permission_set_example() -> (
     instance.groups = [create_accountcommon_permission_group_example()]
     instance.module = randomize()
     instance.module_id = randomize()
+    instance.package = randomize()
     return instance
 
 
@@ -875,6 +882,7 @@ def create_accountcommon_permission_group_example() -> AccountcommonPermissionGr
     instance.group = randomize()
     instance.group_id = randomize()
     instance.permissions = [create_accountcommon_allowed_permission_example()]
+    instance.package = randomize()
     return instance
 
 
@@ -1258,7 +1266,6 @@ def create_clientmodel_client_creation_v3_request_example() -> (
     instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_refresh_token_expiration_time_unit = randomize()
-    instance.parent_namespace = randomize("slug")
     instance.scopes = [randomize()]
     instance.two_factor_enabled = randomize("bool")
     return instance
@@ -1287,6 +1294,7 @@ def create_clientmodel_client_template_example() -> ClientmodelClientTemplate:
     instance.default_values = [create_clientmodel_default_field_value_example()]
     instance.description = randomize()
     instance.id_ = randomize()
+    instance.package = randomize()
     instance.required_fields = [randomize()]
     instance.type_ = randomize()
     return instance
@@ -1421,6 +1429,13 @@ def create_clientmodel_list_upsert_modules_request_example() -> (
     return instance
 
 
+def create_clientmodel_module_package_example() -> ClientmodelModulePackage:
+    instance = ClientmodelModulePackage()
+    instance.module_id = randomize()
+    instance.package = randomize()
+    return instance
+
+
 def create_clientmodel_permission_set_delete_group_request_example() -> (
     ClientmodelPermissionSetDeleteGroupRequest
 ):
@@ -1438,6 +1453,15 @@ def create_clientmodel_permission_set_upsert_request_example() -> (
     instance.groups = [create_accountcommon_permission_group_example()]
     instance.module = randomize()
     instance.module_id = randomize()
+    instance.package = randomize()
+    return instance
+
+
+def create_clientmodel_upsert_permission_module_package_request_example() -> (
+    ClientmodelUpsertPermissionModulePackageRequest
+):
+    instance = ClientmodelUpsertPermissionModulePackageRequest()
+    instance.data = [create_clientmodel_module_package_example()]
     return instance
 
 
@@ -2020,6 +2044,7 @@ def create_model_input_validations_public_response_example() -> (
 def create_model_input_validations_response_example() -> ModelInputValidationsResponse:
     instance = ModelInputValidationsResponse()
     instance.data = [create_model_input_validation_data_example()]
+    instance.from_default = randomize("bool")
     instance.version = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -2268,6 +2293,13 @@ def create_model_permission_delete_request_example() -> ModelPermissionDeleteReq
     instance = ModelPermissionDeleteRequest()
     instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
+    return instance
+
+
+def create_model_platform_defaults_response_example() -> ModelPlatformDefaultsResponse:
+    instance = ModelPlatformDefaultsResponse()
+    instance.default_scopes = [randomize()]
+    instance.platform_id = randomize()
     return instance
 
 
@@ -2821,10 +2853,10 @@ def create_model_sso_platform_credential_request_example() -> (
     instance.api_key = randomize()
     instance.app_id = randomize("uid")
     instance.federation_metadata_url = randomize("url")
-    instance.is_active = randomize("bool")
     instance.redirect_uri = randomize()
     instance.secret = randomize()
     instance.sso_url = randomize("url")
+    instance.is_active = randomize("bool")
     return instance
 
 
@@ -2877,7 +2909,6 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.environment = randomize()
     instance.federation_metadata_url = randomize("url")
     instance.generic_oauth_flow = randomize("bool")
-    instance.is_active = randomize("bool")
     instance.issuer = randomize()
     instance.jwks_endpoint = randomize()
     instance.key_id = randomize()
@@ -2886,7 +2917,6 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.platform_name = randomize()
     instance.redirect_uri = randomize()
     instance.registered_domains = [create_accountcommon_registered_domain_example()]
-    instance.scopes = [randomize()]
     instance.secret = randomize()
     instance.team_id = randomize()
     instance.token_authentication_type = randomize()
@@ -2898,10 +2928,12 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.enable_server_license_validation = randomize("bool")
     instance.google_admin_console_key = randomize()
     instance.include_puid = randomize("bool")
+    instance.is_active = randomize("bool")
     instance.logo_url = randomize("url")
     instance.private_key = randomize()
     instance.relying_party = randomize()
     instance.sandbox_id = randomize()
+    instance.scopes = [randomize()]
     instance.token_claims_mapping = {randomize(): randomize()}
     return instance
 
@@ -3664,6 +3696,21 @@ def create_oauthapi_revocation_list_example() -> OauthapiRevocationList:
     return instance
 
 
+def create_oauthcommon_as_metadata_response_example() -> OauthcommonASMetadataResponse:
+    instance = OauthcommonASMetadataResponse()
+    instance.authorization_endpoint = randomize()
+    instance.code_challenge_methods_supported = [randomize()]
+    instance.grant_types_supported = [randomize()]
+    instance.issuer = randomize()
+    instance.jwks_uri = randomize()
+    instance.registration_endpoint = randomize()
+    instance.response_types_supported = [randomize()]
+    instance.scopes_supported = [randomize()]
+    instance.token_endpoint = randomize()
+    instance.token_endpoint_auth_methods_supported = [randomize()]
+    return instance
+
+
 def create_oauthcommon_jwk_key_example() -> OauthcommonJWKKey:
     instance = OauthcommonJWKKey()
     instance.kty = randomize()
@@ -3687,6 +3734,37 @@ def create_oauthcommon_user_revocation_list_record_example() -> (
     instance = OauthcommonUserRevocationListRecord()
     instance.id_ = randomize()
     instance.revoked_at = randomize("date")
+    return instance
+
+
+def create_oauthmodel_client_register_response_example() -> (
+    OauthmodelClientRegisterResponse
+):
+    instance = OauthmodelClientRegisterResponse()
+    instance.client_id = randomize("uid")
+    instance.client_id_issued_at = randomize("int", min_val=1, max_val=1000)
+    instance.client_name = randomize()
+    instance.namespace = randomize("slug")
+    instance.redirect_uris = [randomize()]
+    instance.client_uri = randomize()
+    instance.grant_types = [randomize()]
+    instance.response_types = [randomize()]
+    instance.scopes = [randomize()]
+    instance.token_endpoint_auth_method = randomize()
+    return instance
+
+
+def create_oauthmodel_client_registration_request_example() -> (
+    OauthmodelClientRegistrationRequest
+):
+    instance = OauthmodelClientRegistrationRequest()
+    instance.client_name = randomize()
+    instance.redirect_uris = [randomize()]
+    instance.client_uri = randomize()
+    instance.grant_types = [randomize()]
+    instance.response_types = [randomize()]
+    instance.scopes = [randomize()]
+    instance.token_endpoint_auth_method = randomize()
     return instance
 
 

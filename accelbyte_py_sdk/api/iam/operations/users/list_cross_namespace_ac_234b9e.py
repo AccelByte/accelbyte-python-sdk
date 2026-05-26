@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class ListCrossNamespaceAccountLink(Operation):
     """Links existing account with another account in different namespace.  (ListCrossNamespaceAccountLink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 

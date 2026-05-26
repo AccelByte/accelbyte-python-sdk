@@ -38,7 +38,7 @@ class AdminAddUserRoleV4(Operation):
     """Admin Add User's Role V4 (AdminAddUserRoleV4)
 
     New role will be appended to user's current roles.
-    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this endpoint.
+    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this API.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles

@@ -36,8 +36,9 @@ from ...models import RestErrorResponse
 class AdminGetNamespaceInvitationHistoryV4(Operation):
     """Admin Get Invitation History for specific namespace V4 (AdminGetNamespaceInvitationHistoryV4)
 
-    This endpoint is to Invitation Historiy for specific new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
+    Retrieves the invitation history for a specific studio namespace in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/invitationHistories

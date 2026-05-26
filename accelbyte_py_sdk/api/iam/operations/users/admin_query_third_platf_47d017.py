@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminQueryThirdPlatformLinkHistoryV3(Operation):
     """Search linking history of the query platform with platform user id (AdminQueryThirdPlatformLinkHistoryV3)
 
-    if limit is not defined, The default limit is 100
+    If the limit is not defined, the default limit is 100.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/linkhistories

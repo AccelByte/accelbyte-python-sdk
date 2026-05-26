@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminBulkUpdateUsersV3(Operation):
     """Update Users (AdminBulkUpdateUsersV3)
 
-    This endpoint support to bulk update users based on given data.
+    Bulk updates users based on given data.
     ------
     Supported fields:
     * skipLoginQueue

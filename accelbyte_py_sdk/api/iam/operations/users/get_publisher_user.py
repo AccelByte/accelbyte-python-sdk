@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetPublisherUser(Operation):
     """Get Publisher User (GetPublisherUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/{userId}/publisher [GET]_**
 

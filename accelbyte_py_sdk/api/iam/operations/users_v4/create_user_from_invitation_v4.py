@@ -37,26 +37,7 @@ from ...models import RestErrorResponse
 class CreateUserFromInvitationV4(Operation):
     """Create User From Invitation (CreateUserFromInvitationV4)
 
-    This endpoint create user from saved roles when creating invitation and submitted data.
-    User will be able to login after completing submitting the data through this endpoint.
-    Available Authentication Types:
-
-    EMAILPASSWD: an authentication type used for new user registration through email.
-
-    **Note**:
-    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
-
-    Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-    Required attributes:
-    - authType: possible value is EMAILPASSWD (see above)
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
+    Creates a user from a saved invitation, completing the registration with the submitted data. The user will be able to login after completing this step. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/invite/{invitationId}

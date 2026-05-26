@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteClientV3(Operation):
     """Delete Client (AdminDeleteClientV3)
 
-    action code : 10310
+    Deletes the specified OAuth client.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}

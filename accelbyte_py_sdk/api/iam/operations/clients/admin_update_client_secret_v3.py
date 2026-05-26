@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminUpdateClientSecretV3(Operation):
     """Update Client Secret (AdminUpdateClientSecretV3)
 
-    Update Client Secret
+    Updates the client secret for the specified OAuth client.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/{clientId}/secret

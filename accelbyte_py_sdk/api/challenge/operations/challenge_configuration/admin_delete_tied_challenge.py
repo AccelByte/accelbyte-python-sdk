@@ -55,6 +55,8 @@ class AdminDeleteTiedChallenge(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        safe_delete: (safeDelete) OPTIONAL str in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -82,6 +84,7 @@ class AdminDeleteTiedChallenge(Operation):
 
     challenge_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
+    safe_delete: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -122,6 +125,7 @@ class AdminDeleteTiedChallenge(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -130,6 +134,12 @@ class AdminDeleteTiedChallenge(Operation):
             result["challengeCode"] = self.challenge_code
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "safe_delete"):
+            result["safeDelete"] = self.safe_delete
         return result
 
     # endregion get_x_params methods
@@ -148,6 +158,10 @@ class AdminDeleteTiedChallenge(Operation):
         self.namespace = value
         return self
 
+    def with_safe_delete(self, value: str) -> AdminDeleteTiedChallenge:
+        self.safe_delete = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -162,6 +176,10 @@ class AdminDeleteTiedChallenge(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "safe_delete") and self.safe_delete:
+            result["safeDelete"] = str(self.safe_delete)
+        elif include_empty:
+            result["safeDelete"] = ""
         return result
 
     # endregion to methods
@@ -222,11 +240,17 @@ class AdminDeleteTiedChallenge(Operation):
 
     @classmethod
     def create(
-        cls, challenge_code: str, namespace: str, **kwargs
+        cls,
+        challenge_code: str,
+        namespace: str,
+        safe_delete: Optional[str] = None,
+        **kwargs,
     ) -> AdminDeleteTiedChallenge:
         instance = cls()
         instance.challenge_code = challenge_code
         instance.namespace = namespace
+        if safe_delete is not None:
+            instance.safe_delete = safe_delete
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -244,6 +268,10 @@ class AdminDeleteTiedChallenge(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "safeDelete" in dict_ and dict_["safeDelete"] is not None:
+            instance.safe_delete = str(dict_["safeDelete"])
+        elif include_empty:
+            instance.safe_delete = ""
         return instance
 
     @staticmethod
@@ -251,6 +279,7 @@ class AdminDeleteTiedChallenge(Operation):
         return {
             "challengeCode": "challenge_code",
             "namespace": "namespace",
+            "safeDelete": "safe_delete",
         }
 
     @staticmethod
@@ -258,6 +287,7 @@ class AdminDeleteTiedChallenge(Operation):
         return {
             "challengeCode": True,
             "namespace": True,
+            "safeDelete": False,
         }
 
     # endregion static methods

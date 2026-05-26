@@ -66,8 +66,6 @@ class AdminGetRoleOverrideConfigV3(Operation):
     Responses:
         200: OK - ModelRoleOverrideResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
-
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
@@ -190,8 +188,6 @@ class AdminGetRoleOverrideConfigV3(Operation):
 
         200: OK - ModelRoleOverrideResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
-
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
@@ -213,8 +209,6 @@ class AdminGetRoleOverrideConfigV3(Operation):
 
         if code == 200:
             return ModelRoleOverrideResponse.create_from_dict(content), None
-        if code == 400:
-            return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 403:

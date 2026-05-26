@@ -35,9 +35,9 @@ from ...models import OauthmodelTokenResponseV3
 class RequestTargetTokenResponseV3(Operation):
     """Generate target token by code (RequestTargetTokenResponseV3)
 
-    This endpoint is being used to generate target token.
-    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request`
-    The code should be generated from `/iam/v3/namespace/{namespace}/token/request`.
+    Generates the target token.
+    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request [POST]`
+    The code should be generated from `/iam/v3/namespace/{namespace}/token/request [POST]`.
 
     Properties:
         url: /iam/v3/token/exchange

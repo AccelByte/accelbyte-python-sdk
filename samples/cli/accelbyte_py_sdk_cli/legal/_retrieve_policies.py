@@ -63,4 +63,4 @@ def retrieve_policies(
 
 
 retrieve_policies.operation_id = "retrievePolicies"
-retrieve_policies.is_deprecated = False
+retrieve_policies.is_deprecated = True

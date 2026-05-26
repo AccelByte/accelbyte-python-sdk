@@ -38,8 +38,8 @@ class PublicListUserIDByPlatformUserIDsV4(Operation):
     """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV4)
 
     List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID, the max count is 100.
+    Returns game user IDs from the given namespace.
+    Returns a list of user IDs by given platform ID and list of platform user IDs. The max count is 100.
 
     Supported platform:
     - steam

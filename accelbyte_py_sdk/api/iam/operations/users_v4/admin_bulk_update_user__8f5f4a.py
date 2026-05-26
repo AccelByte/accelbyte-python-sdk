@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminBulkUpdateUserAccountTypeV4(Operation):
     """Admin Bulk Update User Account Type V4 (AdminBulkUpdateUserAccountTypeV4)
 
-    This endpoint is used to change users account type
+    Changes users account type.
     - set **testAccount** to `true` to mark user as test account type
     - set **testAccount** to `false` to mark user as default account type
 

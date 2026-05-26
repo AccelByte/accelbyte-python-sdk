@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (6.11.0)
+# AccelByte Gaming Services Platform Service Index (6.13.0)
 
 
 ## Operations
@@ -218,6 +218,7 @@
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/oculus/subscription/sync | PUT | adminSyncOculusSubscriptions | `false` | [AdminSyncOculusSubscriptions](../../accelbyte_py_sdk/api/platform/operations/iap/admin_sync_oculus_subsc_25b739.py) | [admin_sync_oculus_subscriptions](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-sync-oculus-subscriptions](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_sync_oculus_subscriptions.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction | PUT | adminSyncSteamAbnormalTransaction | `false` | [AdminSyncSteamAbnormalTransaction](../../accelbyte_py_sdk/api/platform/operations/iap/admin_sync_steam_abnorm_be4791.py) | [admin_sync_steam_abnormal_transaction](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-sync-steam-abnormal-transaction](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_sync_steam_abnormal_transaction.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction | PUT | adminSyncSteamIAPByTransaction | `false` | [AdminSyncSteamIAPByTransaction](../../accelbyte_py_sdk/api/platform/operations/iap/admin_sync_steam_iap_by_48029c.py) | [admin_sync_steam_iap_by_transaction](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-sync-steam-iap-by-transaction](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_sync_steam_iap_by_transaction.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/iap/twitch/sync | PUT | adminSyncTwitchDropsEntitlement | `false` | [AdminSyncTwitchDropsEntitlement](../../accelbyte_py_sdk/api/platform/operations/iap/admin_sync_twitch_drops_61485a.py) | [admin_sync_twitch_drops_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-sync-twitch-drops-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_sync_twitch_drops_entitlement.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/apple | DELETE | deleteAppleIAPConfig | `false` | [DeleteAppleIAPConfig](../../accelbyte_py_sdk/api/platform/operations/iap/delete_apple_iap_config.py) | [delete_apple_iap_config](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-delete-apple-iap-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_apple_iap_config.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | DELETE | deleteEpicGamesIAPConfig | `false` | [DeleteEpicGamesIAPConfig](../../accelbyte_py_sdk/api/platform/operations/iap/delete_epic_games_iap_config.py) | [delete_epic_games_iap_config](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-delete-epic-games-iap-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_epic_games_iap_config.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/google | DELETE | deleteGoogleIAPConfig | `false` | [DeleteGoogleIAPConfig](../../accelbyte_py_sdk/api/platform/operations/iap/delete_google_iap_config.py) | [delete_google_iap_config](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-delete-google-iap-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_google_iap_config.py) |
@@ -702,7 +703,6 @@
 | BillingAccount | [BillingAccount](../../accelbyte_py_sdk/api/platform/models/billing_account.py) |
 | BillingHistoryInfo | [BillingHistoryInfo](../../accelbyte_py_sdk/api/platform/models/billing_history_info.py) |
 | BillingHistoryPagingSlicedResult | [BillingHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/billing_history_paging_sliced_result.py) |
-| BinarySchema | [BinarySchema](../../accelbyte_py_sdk/api/platform/models/binary_schema.py) |
 | BoxItem | [BoxItem](../../accelbyte_py_sdk/api/platform/models/box_item.py) |
 | BulkCreditRequest | [BulkCreditRequest](../../accelbyte_py_sdk/api/platform/models/bulk_credit_request.py) |
 | BulkCreditResult | [BulkCreditResult](../../accelbyte_py_sdk/api/platform/models/bulk_credit_result.py) |
@@ -733,6 +733,7 @@
 | CategoryInfo | [CategoryInfo](../../accelbyte_py_sdk/api/platform/models/category_info.py) |
 | CategoryUpdate | [CategoryUpdate](../../accelbyte_py_sdk/api/platform/models/category_update.py) |
 | ChangeStatusItemRequest | [ChangeStatusItemRequest](../../accelbyte_py_sdk/api/platform/models/change_status_item_request.py) |
+| CheckBalanceResponse | [CheckBalanceResponse](../../accelbyte_py_sdk/api/platform/models/check_balance_response.py) |
 | CheckoutConfig | [CheckoutConfig](../../accelbyte_py_sdk/api/platform/models/checkout_config.py) |
 | ClawbackInfo | [ClawbackInfo](../../accelbyte_py_sdk/api/platform/models/clawback_info.py) |
 | ClientRequestParameter | [ClientRequestParameter](../../accelbyte_py_sdk/api/platform/models/client_request_parameter.py) |

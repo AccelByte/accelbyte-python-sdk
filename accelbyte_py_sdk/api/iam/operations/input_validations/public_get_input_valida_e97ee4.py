@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelInputValidationConfigVersion
 from ...models import RestErrorResponse
@@ -36,7 +37,8 @@ from ...models import RestErrorResponse
 class PublicGetInputValidationByField(Operation):
     """Public Get Input Validation by field (PublicGetInputValidationByField)
 
-    This endpoint is to get input validation configuration by field.
+    Returns input validation configuration by field.
+    **Substitute endpoint:** /iam/v3/public/namespaces/{namespace}/inputValidations/{field}[GET]
 
     Properties:
         url: /iam/v3/public/inputValidations/{field}

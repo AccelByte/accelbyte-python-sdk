@@ -41,6 +41,8 @@ class CreateNoSQLDatabaseV2(Operation):
 
     Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
 
+    `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
+
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
 

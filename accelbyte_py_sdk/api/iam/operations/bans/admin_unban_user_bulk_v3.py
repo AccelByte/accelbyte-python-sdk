@@ -38,7 +38,6 @@ class AdminUnbanUserBulkV3(Operation):
     """Bulk unban user (AdminUnbanUserBulkV3)
 
     disable bulk ban user. The maximum limit value is 100
-    action code : 10142
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled

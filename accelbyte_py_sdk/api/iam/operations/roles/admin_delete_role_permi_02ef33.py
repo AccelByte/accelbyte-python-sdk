@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteRolePermissionV3(Operation):
     """Delete Role Permission (AdminDeleteRolePermissionV3)
 
-    action code: 10406
+    Deletes a specific permission from a role.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/permissions/{resource}/{action}

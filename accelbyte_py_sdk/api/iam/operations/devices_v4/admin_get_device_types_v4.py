@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetDeviceTypesV4(Operation):
     """Admin get device types (AdminGetDeviceTypesV4)
 
-    This is the endpoint for an admin to get device types
+    Returns all supported device types (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/types

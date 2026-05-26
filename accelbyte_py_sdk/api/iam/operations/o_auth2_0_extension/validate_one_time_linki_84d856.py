@@ -33,9 +33,9 @@ from ...models import OauthmodelOneTimeLinkingCodeValidationResponse
 
 
 class ValidateOneTimeLinkingCodeV3(Operation):
-    """Validate one time linking code (ValidateOneTimeLinkingCodeV3)
+    """Validate One-Time Linking Code (ValidateOneTimeLinkingCodeV3)
 
-    This endpoint is being used to validate one time link code.
+    Validates a one-time link code.
 
     Properties:
         url: /iam/v3/link/code/validate

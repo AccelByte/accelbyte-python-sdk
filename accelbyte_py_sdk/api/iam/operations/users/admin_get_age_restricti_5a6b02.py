@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetAgeRestrictionStatusV3(Operation):
     """Get age restriction status (AdminGetAgeRestrictionStatusV3)
 
-    action code: 10138
+    Retrieves the age restriction status for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/agerestrictions

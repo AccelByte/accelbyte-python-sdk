@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class RetrieveSSOLoginPlatformCredential(Operation):
     """Retrieve SSO Platform Credential (RetrieveSSOLoginPlatformCredential)
 
-    This is the API to Get SSO Platform Credential.
+    Retrieves the SSO platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso

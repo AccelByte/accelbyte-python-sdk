@@ -69,4 +69,4 @@ def old_retrieve_single_policy_version(
 
 
 old_retrieve_single_policy_version.operation_id = "oldRetrieveSinglePolicyVersion"
-old_retrieve_single_policy_version.is_deprecated = False
+old_retrieve_single_policy_version.is_deprecated = True

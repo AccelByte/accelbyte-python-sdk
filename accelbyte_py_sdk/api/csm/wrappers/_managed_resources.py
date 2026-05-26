@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ApimodelCreateNoSQLAppDatabaseRequest
@@ -41,6 +42,7 @@ from ..models import ApimodelTunnelInfoResponse
 from ..models import NosqlresourceNoSQLResourceConfiguration
 from ..models import ResponseErrorResponse
 
+from ..operations.managed_resources import CreateNewNoSQLDatabaseCredentialV2
 from ..operations.managed_resources import CreateNoSQLClusterV2
 from ..operations.managed_resources import CreateNoSQLDatabaseCredentialV2
 from ..operations.managed_resources import CreateNoSQLDatabaseV2
@@ -53,6 +55,136 @@ from ..operations.managed_resources import GetNoSQLDatabaseV2
 from ..operations.managed_resources import StartNoSQLClusterV2
 from ..operations.managed_resources import StopNoSQLClusterV2
 from ..operations.managed_resources import UpdateNoSQLClusterV2
+
+
+@same_doc_as(CreateNewNoSQLDatabaseCredentialV2)
+def create_new_no_sql_database_credential_v2(
+    app: str,
+    body: ApimodelCreateNoSQLDatabaseCredentialRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Creates a new database credential for the customer (CreateNewNoSQLDatabaseCredentialV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
+
+    Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+    `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/credentials
+
+        method: POST
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelCreateNoSQLDatabaseCredentialRequest in body
+
+        app: (app) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelNoSQLDatabaseCredentialResponse (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+
+        503: Service Unavailable - ResponseErrorResponse (Service Unavailable)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = CreateNewNoSQLDatabaseCredentialV2.create(
+        app=app,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateNewNoSQLDatabaseCredentialV2)
+async def create_new_no_sql_database_credential_v2_async(
+    app: str,
+    body: ApimodelCreateNoSQLDatabaseCredentialRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Creates a new database credential for the customer (CreateNewNoSQLDatabaseCredentialV2)
+
+    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
+
+    Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+    `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
+
+    Properties:
+        url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/credentials
+
+        method: POST
+
+        tags: ["Managed Resources"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelCreateNoSQLDatabaseCredentialRequest in body
+
+        app: (app) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelNoSQLDatabaseCredentialResponse (OK)
+
+        400: Bad Request - ResponseErrorResponse (Bad Request)
+
+        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+
+        403: Forbidden - ResponseErrorResponse (Forbidden)
+
+        404: Not Found - ResponseErrorResponse (Not Found)
+
+        409: Conflict - ResponseErrorResponse (Conflict)
+
+        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+
+        503: Service Unavailable - ResponseErrorResponse (Service Unavailable)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = CreateNewNoSQLDatabaseCredentialV2.create(
+        app=app,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(CreateNoSQLClusterV2)
@@ -171,6 +303,7 @@ async def create_no_sql_cluster_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(CreateNoSQLDatabaseCredentialV2)
 def create_no_sql_database_credential_v2(
     app: str,
@@ -184,6 +317,8 @@ def create_no_sql_database_credential_v2(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
 
     Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+    `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/crendentials
@@ -233,6 +368,7 @@ def create_no_sql_database_credential_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CreateNoSQLDatabaseCredentialV2)
 async def create_no_sql_database_credential_v2_async(
     app: str,
@@ -246,6 +382,8 @@ async def create_no_sql_database_credential_v2_async(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASECREDENTIALS [CREATE]`
 
     Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
+
+    `acknowledgements.acceptNosqlSecureCredentialHandling` is optional when previously accepted during database creation. Otherwise, it MUST be set to true to proceed with credential creation, indicating the customer accepts the secure credential handling mechanism.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/crendentials
@@ -311,6 +449,8 @@ def create_no_sql_database_v2(
 
     Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
 
+    `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
+
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
 
@@ -372,6 +512,8 @@ async def create_no_sql_database_v2_async(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
 
     Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
+
+    `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
@@ -759,16 +901,16 @@ def get_no_sql_app_list_v2(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
 
     Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
-    - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
+    - `available` : The cluster is accessible.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{studioName}/nosql/{resourceId}/apps
@@ -833,16 +975,16 @@ async def get_no_sql_app_list_v2_async(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
 
     Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
-    - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
+    - `available` : The cluster is accessible.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{studioName}/nosql/{resourceId}/apps
@@ -906,16 +1048,16 @@ def get_no_sql_cluster_v2(
     Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the NoSQL cluster status:
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
+    - `available` : The cluster is accessible.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `stopped` : The cluster is stopped and not accessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters
@@ -968,16 +1110,16 @@ async def get_no_sql_cluster_v2_async(
     Get NoSQL cluster information returns the NoSQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the NoSQL cluster status:
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
+    - `available` : The cluster is accessible.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `stopped` : The cluster is stopped and not accessible.
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/nosql/clusters
@@ -1035,15 +1177,15 @@ def get_no_sql_database_v2(
 
     `resourceStatus` field - indicates the NoSQL cluster status:
     - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases
@@ -1100,15 +1242,15 @@ async def get_no_sql_database_v2_async(
 
     `resourceStatus` field - indicates the NoSQL cluster status:
     - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/nosql/databases

@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetRolesV3(Operation):
     """Get Roles (PublicGetRolesV3)
 
-    This endpoint is used to get all non-admin role.
-    action code: 10418
+    Returns all non-admin roles.
 
     Properties:
         url: /iam/v3/public/roles

@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class PublicMakeFactorMyDefaultV4(Operation):
     """Make 2FA factor default (PublicMakeFactorMyDefaultV4)
 
-    This endpoint is used to make 2FA factor default.
+    Makes 2FA factor default.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor

@@ -45,7 +45,7 @@ def admin_get_login_allowlist_v3(
 ):
     """Admin get login allowlist (AdminGetLoginAllowlistV3)
 
-    This endpoint return login allowlist configuration from specific namespace.
+    Returns the login allowlist configuration from the specific namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/loginAllowlist
@@ -89,7 +89,7 @@ async def admin_get_login_allowlist_v3_async(
 ):
     """Admin get login allowlist (AdminGetLoginAllowlistV3)
 
-    This endpoint return login allowlist configuration from specific namespace.
+    Returns the login allowlist configuration from the specific namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/loginAllowlist
@@ -136,9 +136,9 @@ def admin_update_login_allowlist_v3(
 ):
     """Admin update login allowlist (AdminUpdateLoginAllowlistV3)
 
-    This endpoint update login allowlist configuration from specific game namespace.
-    roleIds: are list of role that allowed to login
-    Note: only accept game namespace
+    Updates the login allowlist configuration for a specific game namespace.
+
+    **Note:** Only accepts game namespaces.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/loginAllowlist
@@ -188,9 +188,9 @@ async def admin_update_login_allowlist_v3_async(
 ):
     """Admin update login allowlist (AdminUpdateLoginAllowlistV3)
 
-    This endpoint update login allowlist configuration from specific game namespace.
-    roleIds: are list of role that allowed to login
-    Note: only accept game namespace
+    Updates the login allowlist configuration for a specific game namespace.
+
+    **Note:** Only accepts game namespaces.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/loginAllowlist

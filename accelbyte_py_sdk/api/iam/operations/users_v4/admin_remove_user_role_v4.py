@@ -36,7 +36,9 @@ from ...models import RestErrorResponse
 class AdminRemoveUserRoleV4(Operation):
     """Admin Remove User Role v4 (AdminRemoveUserRoleV4)
 
-    Remove a role from user's roles.
+    Removes a role from the user's assigned roles.
+
+    **Request body:** Specify the role ID and the allowed namespaces to remove from the user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles

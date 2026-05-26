@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicDownloadMyBackupCodesV4(Operation):
     """Download user backup codes (PublicDownloadMyBackupCodesV4)
 
-    This endpoint is used to download backup codes.
+    Downloads backup codes as a file.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/download

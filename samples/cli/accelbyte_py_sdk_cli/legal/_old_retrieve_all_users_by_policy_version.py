@@ -77,4 +77,4 @@ def old_retrieve_all_users_by_policy_version(
 old_retrieve_all_users_by_policy_version.operation_id = (
     "oldRetrieveAllUsersByPolicyVersion"
 )
-old_retrieve_all_users_by_policy_version.is_deprecated = False
+old_retrieve_all_users_by_policy_version.is_deprecated = True

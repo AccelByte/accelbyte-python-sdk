@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminBulkCheckValidUserIDV4(Operation):
     """Admin Check Valid User ID (AdminBulkCheckValidUserIDV4)
 
-    Use this endpoint to check if userID exists or not
+    Checks if userIDs exist or not.
     Maximum number of userID to be checked is 50
 
     Properties:

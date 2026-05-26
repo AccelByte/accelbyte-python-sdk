@@ -47,7 +47,7 @@ def admin_get_config_value_v3(
 ):
     """Get Config Value (AdminGetConfigValueV3)
 
-    This endpoint return the value of config key. The namespace should be publisher namespace or studio namespace.
+    Returns the value of the specified config key. The namespace should be publisher namespace or studio namespace.
 
     **Supported config key:**
     * uniqueDisplayNameEnabled
@@ -98,7 +98,7 @@ async def admin_get_config_value_v3_async(
 ):
     """Get Config Value (AdminGetConfigValueV3)
 
-    This endpoint return the value of config key. The namespace should be publisher namespace or studio namespace.
+    Returns the value of the specified config key. The namespace should be publisher namespace or studio namespace.
 
     **Supported config key:**
     * uniqueDisplayNameEnabled
@@ -151,8 +151,8 @@ def public_get_config_value_v3(
 ):
     """Get Config Value (PublicGetConfigValueV3)
 
-    This endpoint return the value of config key. The namespace should be publisher namespace or studio namespace.
-    Note: this endpoint does not need any authorization.
+    Returns the value of the specified config key. The namespace should be publisher namespace or studio namespace.
+    Note: does not require any authorization.
 
     **Supported config key:**
     * uniqueDisplayNameEnabled
@@ -206,8 +206,8 @@ async def public_get_config_value_v3_async(
 ):
     """Get Config Value (PublicGetConfigValueV3)
 
-    This endpoint return the value of config key. The namespace should be publisher namespace or studio namespace.
-    Note: this endpoint does not need any authorization.
+    Returns the value of the specified config key. The namespace should be publisher namespace or studio namespace.
+    Note: does not require any authorization.
 
     **Supported config key:**
     * uniqueDisplayNameEnabled

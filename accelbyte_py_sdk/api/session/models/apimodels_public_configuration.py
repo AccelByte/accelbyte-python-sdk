@@ -50,6 +50,7 @@ class TypeEnum(StrEnum):
 
 class TextChatModeEnum(StrEnum):
     GAME = "GAME"
+    GAME_AND_TEAM = "GAME_AND_TEAM"
     NONE = "NONE"
     TEAM = "TEAM"
 
@@ -952,7 +953,7 @@ class ApimodelsPublicConfiguration(Model):
                 "OPEN",
             ],
             "type": ["DS", "NONE", "P2P"],
-            "textChatMode": ["GAME", "NONE", "TEAM"],
+            "textChatMode": ["GAME", "GAME_AND_TEAM", "NONE", "TEAM"],
         }
 
     # endregion static methods

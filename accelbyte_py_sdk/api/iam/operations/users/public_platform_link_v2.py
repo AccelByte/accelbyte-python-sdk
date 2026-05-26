@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicPlatformLinkV2(Operation):
     """Link user's account with platform (PublicPlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 

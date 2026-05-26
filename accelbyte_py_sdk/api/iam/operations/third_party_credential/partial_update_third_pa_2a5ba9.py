@@ -35,10 +35,12 @@ from ...models import RestErrorResponse
 
 
 class PartialUpdateThirdPartyLoginPlatformDomainV3(Operation):
-    """Partial update third Party Platform Credential's domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
+    """Partial Update Third Party Platform Credential Domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to patch update 3rd Platform domain.
     This API is a create or partial-update behavior. If it is update, it is a partial update behavior.
+
+    **Request body:** Partial domain configuration update. Only provided fields will be updated.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain

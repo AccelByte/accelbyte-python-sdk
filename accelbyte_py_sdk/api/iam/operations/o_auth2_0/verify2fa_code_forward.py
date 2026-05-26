@@ -33,13 +33,14 @@ from .....core import HttpResponse
 class Verify2faCodeForward(Operation):
     """Verify 2FA code (Verify2FACodeForward)
 
+    Verifies the 2FA code.
+
     This is a forward version for '/mfa/verify'. If there is any error, it will redirect to login website with error details.
-    If success, it will forward to auth request redirect url
-    If got error, it will forward to login website
-    Verify 2FA code
-    This endpoint is used for verifying 2FA code.
+    If success, it will forward to auth request redirect url.
+    If got error, it will forward to login website.
+
     ## 2FA remember device
-    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
+    To remember device for 2FA, the request should provide cookie: device_token or header: Device-Token
 
     Properties:
         url: /iam/v3/oauth/mfa/verify/forward

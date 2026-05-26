@@ -76,4 +76,4 @@ def old_partial_update_policy(
 
 
 old_partial_update_policy.operation_id = "oldPartialUpdatePolicy"
-old_partial_update_policy.is_deprecated = False
+old_partial_update_policy.is_deprecated = True

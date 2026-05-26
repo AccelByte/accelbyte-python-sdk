@@ -37,8 +37,8 @@ class AdminAddClientPermissionsV3(Operation):
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code: 10303
+    Studio admin & game admin can only update custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions

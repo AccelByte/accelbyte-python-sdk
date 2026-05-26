@@ -69,14 +69,13 @@ def authenticate_and_link_forward_v3(
 ):
     """Authentication with platform link, the response will be a forward (AuthenticateAndLinkForwardV3)
 
-    This endpoint is being used to authenticate a user account and perform platform link.
-    It validates user's email / username and password.
-    If user already enable 2FA, then invoke _/mfa/verify_ using **mfa_token** from this endpoint response.
+    Authenticates a user account and performs platform linking. Validates user's email / username and password.
+    If user already enabled 2FA, invoke _/mfa/verify_ using **mfa_token** from the response.
 
     ## Device Cookie Validation
 
     Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
-    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+    It will read the device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and sets it into the cookie on successful authentication.
 
     Properties:
         url: /iam/v3/authenticateWithLink/forward
@@ -126,14 +125,13 @@ async def authenticate_and_link_forward_v3_async(
 ):
     """Authentication with platform link, the response will be a forward (AuthenticateAndLinkForwardV3)
 
-    This endpoint is being used to authenticate a user account and perform platform link.
-    It validates user's email / username and password.
-    If user already enable 2FA, then invoke _/mfa/verify_ using **mfa_token** from this endpoint response.
+    Authenticates a user account and performs platform linking. Validates user's email / username and password.
+    If user already enabled 2FA, invoke _/mfa/verify_ using **mfa_token** from the response.
 
     ## Device Cookie Validation
 
     Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
-    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+    It will read the device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and sets it into the cookie on successful authentication.
 
     Properties:
         url: /iam/v3/authenticateWithLink/forward
@@ -185,14 +183,15 @@ def authentication_with_platform_link_v3(
 ):
     """Authentication with platform link (AuthenticationWithPlatformLinkV3)
 
-    This endpoint is being used to authenticate a user account and perform platform link.
-    It validates user's email / username and password.
-    If user already enable 2FA, then invoke _/mfa/verify_ using **mfa_token** from this endpoint response.
+    Authenticates a user account and performs platform linking. Validates user's email / username and password.
+    If user already enabled 2FA, invoke _/mfa/verify_ using **mfa_token** from the response.
 
     ## Device Cookie Validation
-
     Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
-    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+    It will read the device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and sets it into the cookie on successful authentication.
+
+    ## Login Queue
+    When the Login Queue is enabled and at capacity, this API returns a 401 Unauthorized response, with the queue ticket included in the response body.
 
     Properties:
         url: /iam/v3/authenticateWithLink
@@ -250,14 +249,15 @@ async def authentication_with_platform_link_v3_async(
 ):
     """Authentication with platform link (AuthenticationWithPlatformLinkV3)
 
-    This endpoint is being used to authenticate a user account and perform platform link.
-    It validates user's email / username and password.
-    If user already enable 2FA, then invoke _/mfa/verify_ using **mfa_token** from this endpoint response.
+    Authenticates a user account and performs platform linking. Validates user's email / username and password.
+    If user already enabled 2FA, invoke _/mfa/verify_ using **mfa_token** from the response.
 
     ## Device Cookie Validation
-
     Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
-    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+    It will read the device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and sets it into the cookie on successful authentication.
+
+    ## Login Queue
+    When the Login Queue is enabled and at capacity, this API returns a 401 Unauthorized response, with the queue ticket included in the response body.
 
     Properties:
         url: /iam/v3/authenticateWithLink
@@ -315,9 +315,8 @@ def generate_token_by_new_headless_account_v3(
 ):
     """Create headless account and response token (GenerateTokenByNewHeadlessAccountV3)
 
-    This endpoint is being used to create headless account after 3rd platform authenticated, and response token .
-    The 'linkingToken' in request body is received from "/platforms/{platformId}/token"
-    when 3rd platform account is not linked to justice account yet.
+    Creates a headless account after 3rd-party platform authentication and returns a token.
+    The 'linkingToken' in request body is received from "/platforms/{platformId}/token" when 3rd platform account is not linked to any account yet and createHeadless param is set to false.
 
     Properties:
         url: /iam/v3/headless/token
@@ -365,9 +364,8 @@ async def generate_token_by_new_headless_account_v3_async(
 ):
     """Create headless account and response token (GenerateTokenByNewHeadlessAccountV3)
 
-    This endpoint is being used to create headless account after 3rd platform authenticated, and response token .
-    The 'linkingToken' in request body is received from "/platforms/{platformId}/token"
-    when 3rd platform account is not linked to justice account yet.
+    Creates a headless account after 3rd-party platform authentication and returns a token.
+    The 'linkingToken' in request body is received from "/platforms/{platformId}/token" when 3rd platform account is not linked to any account yet and createHeadless param is set to false.
 
     Properties:
         url: /iam/v3/headless/token
@@ -413,7 +411,7 @@ def get_country_location_v3(
 ):
     """Get Country Location (GetCountryLocationV3)
 
-    This endpoint get country location based on the request.
+    Returns the country location based on the request.
 
     Properties:
         url: /iam/v3/location/country
@@ -422,7 +420,7 @@ def get_country_location_v3(
 
         tags: ["OAuth2.0 - Extension"]
 
-        consumes: [""]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -441,7 +439,7 @@ async def get_country_location_v3_async(
 ):
     """Get Country Location (GetCountryLocationV3)
 
-    This endpoint get country location based on the request.
+    Returns the country location based on the request.
 
     Properties:
         url: /iam/v3/location/country
@@ -450,7 +448,7 @@ async def get_country_location_v3_async(
 
         tags: ["OAuth2.0 - Extension"]
 
-        consumes: [""]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -469,7 +467,7 @@ async def get_country_location_v3_async(
 def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Logout (Logout)
 
-    This endpoint is used to remove **access_token**, **refresh_token** from cookie.
+    Removes **access_token** and **refresh_token** from the cookie.
 
     Properties:
         url: /iam/v3/logout
@@ -495,7 +493,7 @@ def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
 async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Logout (Logout)
 
-    This endpoint is used to remove **access_token**, **refresh_token** from cookie.
+    Removes **access_token** and **refresh_token** from the cookie.
 
     Properties:
         url: /iam/v3/logout
@@ -540,32 +538,31 @@ def platform_authentication_v3(
 ):
     """Platform Authentication API (PlatformAuthenticationV3)
 
-    This endpoint authenticates user platform. It validates user to its
-    respective platforms. Deactivated or login-banned users are unable to login.
-    If already linked with justice account or match SSO condition, will redirect to client's redirect url with code. then invoke '/iam/v3/oauth/token' with grant_type=authorization_code
-    If already not linked with justice account and not match SSO condition, will redirect to client's account linking page
+    Authenticates the user's platform account. Validates the user against their respective platform.
+    Deactivated or login-banned users are unable to login.
+    If already linked with a Justice account or matches SSO conditions, redirects to the client's redirect URL with code â then invoke '/iam/v3/oauth/token' with grant_type=authorization_code.
+    If not yet linked with a Justice account and SSO conditions do not match, redirects to the client's account linking page.
     ## Supported platforms:
-    - **steamopenid**Steam login page will redirects to this endpoint after login success
+    - **steamopenid** â Steam login page will redirect to this API after login success
     as previously defined on openID request parameter `openid.return_to` when request login to steam
     https://openid.net/specs/openid-authentication-2_0.html#anchor27
-    - **ps4web**PS4 login page will redirects to this endpoint after login success
+    - **ps4web** â PS4 login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
     https://ps4.siedev.net/resources/documents/WebAPI/1/Auth_WebAPI-Reference/0002.html#0GetAccessTokenUsingAuthorizationCode
-    - **xblweb**XBL login page will redirects to this endpoint after login success
+    - **xblweb** â XBL login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **epicgames**Epicgames login page will redirects to this endpoint after login success
+    - **epicgames** â Epicgames login page will redirect to this API after login success
     or an error occurred. If error, it redirects to the login page.
-    - **twitch**Twitch login page will redirects to this endpoint after login success
+    - **twitch** â Twitch login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **facebook**Facebook login page will redirects to this endpoint after login success
+    - **facebook** â Facebook login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **google**Google login page will redirects to this endpoint after login success
+    - **google** â Google login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **snapchat**Snapchat login page will redirects to this endpoint after login success
+    - **snapchat** â Snapchat login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **discord**Discord login page will redirects to this endpoint after login success
+    - **discord** â Discord login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    action code : 10709
 
     Properties:
         url: /iam/v3/platforms/{platformId}/authenticate
@@ -653,32 +650,31 @@ async def platform_authentication_v3_async(
 ):
     """Platform Authentication API (PlatformAuthenticationV3)
 
-    This endpoint authenticates user platform. It validates user to its
-    respective platforms. Deactivated or login-banned users are unable to login.
-    If already linked with justice account or match SSO condition, will redirect to client's redirect url with code. then invoke '/iam/v3/oauth/token' with grant_type=authorization_code
-    If already not linked with justice account and not match SSO condition, will redirect to client's account linking page
+    Authenticates the user's platform account. Validates the user against their respective platform.
+    Deactivated or login-banned users are unable to login.
+    If already linked with a Justice account or matches SSO conditions, redirects to the client's redirect URL with code â then invoke '/iam/v3/oauth/token' with grant_type=authorization_code.
+    If not yet linked with a Justice account and SSO conditions do not match, redirects to the client's account linking page.
     ## Supported platforms:
-    - **steamopenid**Steam login page will redirects to this endpoint after login success
+    - **steamopenid** â Steam login page will redirect to this API after login success
     as previously defined on openID request parameter `openid.return_to` when request login to steam
     https://openid.net/specs/openid-authentication-2_0.html#anchor27
-    - **ps4web**PS4 login page will redirects to this endpoint after login success
+    - **ps4web** â PS4 login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
     https://ps4.siedev.net/resources/documents/WebAPI/1/Auth_WebAPI-Reference/0002.html#0GetAccessTokenUsingAuthorizationCode
-    - **xblweb**XBL login page will redirects to this endpoint after login success
+    - **xblweb** â XBL login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **epicgames**Epicgames login page will redirects to this endpoint after login success
+    - **epicgames** â Epicgames login page will redirect to this API after login success
     or an error occurred. If error, it redirects to the login page.
-    - **twitch**Twitch login page will redirects to this endpoint after login success
+    - **twitch** â Twitch login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **facebook**Facebook login page will redirects to this endpoint after login success
+    - **facebook** â Facebook login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **google**Google login page will redirects to this endpoint after login success
+    - **google** â Google login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **snapchat**Snapchat login page will redirects to this endpoint after login success
+    - **snapchat** â Snapchat login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    - **discord**Discord login page will redirects to this endpoint after login success
+    - **discord** â Discord login page will redirect to this API after login success
     as previously defined on authorize request parameter `redirect_uri`
-    action code : 10709
 
     Properties:
         url: /iam/v3/platforms/{platformId}/authenticate
@@ -756,9 +752,9 @@ def platform_token_refresh_v3(
 ):
     """Platform Token Validation (PlatformTokenRefreshV3)
 
-    This endpoint will validate the third party platform token, for some platforms will also refresh the token stored in IAM, it will not generate any event or AB access/refresh token.
-    This endpoint can be used by game client to refresh third party token if game client got platform token not found error, for example got 404
-    platform token not found from IAP/DLC.
+    Validates the third party platform token. For some platforms, also refreshes the token stored in IAM.
+    Does not generate any event or AB access/refresh token.
+    Can be used by game clients to refresh the third party token if a platform token not found error is received (e.g., HTTP 404 from IAP/DLC).
 
     ## Platforms will refresh stored token:
     - **twitch**: The platform_tokenâs value is the authorization code returned by Twitch OAuth.
@@ -815,9 +811,9 @@ async def platform_token_refresh_v3_async(
 ):
     """Platform Token Validation (PlatformTokenRefreshV3)
 
-    This endpoint will validate the third party platform token, for some platforms will also refresh the token stored in IAM, it will not generate any event or AB access/refresh token.
-    This endpoint can be used by game client to refresh third party token if game client got platform token not found error, for example got 404
-    platform token not found from IAP/DLC.
+    Validates the third party platform token. For some platforms, also refreshes the token stored in IAM.
+    Does not generate any event or AB access/refresh token.
+    Can be used by game clients to refresh the third party token if a platform token not found error is received (e.g., HTTP 404 from IAP/DLC).
 
     ## Platforms will refresh stored token:
     - **twitch**: The platform_tokenâs value is the authorization code returned by Twitch OAuth.
@@ -875,9 +871,9 @@ def request_one_time_linking_code_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate one time linking code (RequestOneTimeLinkingCodeV3)
+    """Generate One-Time Linking Code (RequestOneTimeLinkingCodeV3)
 
-    This endpoint is being used to request the one time code [8 length] for headless account to link or upgrade to a full account.
+    Requests a one-time code [8 characters] for a headless account to link or upgrade to a full account.
     Should specify the target platform id and current user should already linked to this platform.
     Current user should be a headless account.
     ## Supported platforms:
@@ -942,9 +938,9 @@ async def request_one_time_linking_code_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate one time linking code (RequestOneTimeLinkingCodeV3)
+    """Generate One-Time Linking Code (RequestOneTimeLinkingCodeV3)
 
-    This endpoint is being used to request the one time code [8 length] for headless account to link or upgrade to a full account.
+    Requests a one-time code [8 characters] for a headless account to link or upgrade to a full account.
     Should specify the target platform id and current user should already linked to this platform.
     Current user should be a headless account.
     ## Supported platforms:
@@ -1012,9 +1008,9 @@ def request_target_token_response_v3(
 ):
     """Generate target token by code (RequestTargetTokenResponseV3)
 
-    This endpoint is being used to generate target token.
-    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request`
-    The code should be generated from `/iam/v3/namespace/{namespace}/token/request`.
+    Generates the target token.
+    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request [POST]`
+    The code should be generated from `/iam/v3/namespace/{namespace}/token/request [POST]`.
 
     Properties:
         url: /iam/v3/token/exchange
@@ -1052,9 +1048,9 @@ async def request_target_token_response_v3_async(
 ):
     """Generate target token by code (RequestTargetTokenResponseV3)
 
-    This endpoint is being used to generate target token.
-    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request`
-    The code should be generated from `/iam/v3/namespace/{namespace}/token/request`.
+    Generates the target token.
+    It requires basic header with ClientID and Secret, it should match the ClientID when call `/iam/v3/namespace/{namespace}/token/request [POST]`
+    The code should be generated from `/iam/v3/namespace/{namespace}/token/request [POST]`.
 
     Properties:
         url: /iam/v3/token/exchange
@@ -1094,12 +1090,12 @@ def request_token_by_one_time_link_code_response_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
+    """Generate Token by Headless Account's One-Time Link Code (RequestTokenByOneTimeLinkCodeResponseV3)
 
-    This endpoint is being used to generate user's token by one time link code.
-    It requires a code which can be generated from `/iam/v3/link/code/request` or `/iam/v3/public/users/me/link/forward`.
+    Generates the user's token by one-time link code.
+    It requires a code which can be generated from `/iam/v3/link/code/request [POST]` or `/iam/v3/public/users/me/link/redirection [GET]`.
 
-    This endpoint support creating transient token by utilizing **isTransient** param:
+    Supports creating a transient token by utilizing the **isTransient** param:
     **isTransient=true** will generate a transient token with a short Time Expiration and without a refresh token
     **isTransient=false** will consume the one-time code and generate the access token with a refresh token.
 
@@ -1145,12 +1141,12 @@ async def request_token_by_one_time_link_code_response_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
+    """Generate Token by Headless Account's One-Time Link Code (RequestTokenByOneTimeLinkCodeResponseV3)
 
-    This endpoint is being used to generate user's token by one time link code.
-    It requires a code which can be generated from `/iam/v3/link/code/request` or `/iam/v3/public/users/me/link/forward`.
+    Generates the user's token by one-time link code.
+    It requires a code which can be generated from `/iam/v3/link/code/request [POST]` or `/iam/v3/public/users/me/link/redirection [GET]`.
 
-    This endpoint support creating transient token by utilizing **isTransient** param:
+    Supports creating a transient token by utilizing the **isTransient** param:
     **isTransient=true** will generate a transient token with a short Time Expiration and without a refresh token
     **isTransient=false** will consume the one-time code and generate the access token with a refresh token.
 
@@ -1202,12 +1198,12 @@ def request_token_exchange_code_v3(
 ):
     """Request code to get a new token (RequestTokenExchangeCodeV3)
 
-    This endpoint is being used to request the code to exchange a new token.
+    Requests the code to exchange for a new token.
     The target new token's clientId should NOT be same with current using one.
     Path namespace should be target namespace.
     Client ID should match the target namespace.
 
-    The code in response can be consumed by `/iam/v3/token/exchange`
+    The code in response can be consumed by `/iam/v3/token/exchange [POST]`
 
     Properties:
         url: /iam/v3/namespace/{namespace}/token/request
@@ -1259,12 +1255,12 @@ async def request_token_exchange_code_v3_async(
 ):
     """Request code to get a new token (RequestTokenExchangeCodeV3)
 
-    This endpoint is being used to request the code to exchange a new token.
+    Requests the code to exchange for a new token.
     The target new token's clientId should NOT be same with current using one.
     Path namespace should be target namespace.
     Client ID should match the target namespace.
 
-    The code in response can be consumed by `/iam/v3/token/exchange`
+    The code in response can be consumed by `/iam/v3/token/exchange [POST]`
 
     Properties:
         url: /iam/v3/namespace/{namespace}/token/request
@@ -1396,17 +1392,14 @@ def user_authentication_v3(
 ):
     """Authentication API (UserAuthenticationV3)
 
-    This endpoint is being used to authenticate a user account.
-    It validates user's email / username and password.
+    Authenticates a user account. Validates user's email / username and password.
     Deactivated or login-banned users are unable to login.
     Redirect URI and Client ID must be specified as a pair and only used to redirect to the specified redirect URI in case the requestId is no longer valid.
 
     ## Device Cookie Validation
 
     Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
-    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
-
-    Action code: 10801
+    It will read the device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and sets it into the cookie on successful authentication.
 
     Properties:
         url: /iam/v3/authenticate
@@ -1462,17 +1455,14 @@ async def user_authentication_v3_async(
 ):
     """Authentication API (UserAuthenticationV3)
 
-    This endpoint is being used to authenticate a user account.
-    It validates user's email / username and password.
+    Authenticates a user account. Validates user's email / username and password.
     Deactivated or login-banned users are unable to login.
     Redirect URI and Client ID must be specified as a pair and only used to redirect to the specified redirect URI in case the requestId is no longer valid.
 
     ## Device Cookie Validation
 
     Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
-    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
-
-    Action code: 10801
+    It will read the device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and sets it into the cookie on successful authentication.
 
     Properties:
         url: /iam/v3/authenticate
@@ -1523,9 +1513,9 @@ def validate_one_time_linking_code_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Validate one time linking code (ValidateOneTimeLinkingCodeV3)
+    """Validate One-Time Linking Code (ValidateOneTimeLinkingCodeV3)
 
-    This endpoint is being used to validate one time link code.
+    Validates a one-time link code.
 
     Properties:
         url: /iam/v3/link/code/validate
@@ -1557,9 +1547,9 @@ async def validate_one_time_linking_code_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Validate one time linking code (ValidateOneTimeLinkingCodeV3)
+    """Validate One-Time Linking Code (ValidateOneTimeLinkingCodeV3)
 
-    This endpoint is being used to validate one time link code.
+    Validates a one-time link code.
 
     Properties:
         url: /iam/v3/link/code/validate

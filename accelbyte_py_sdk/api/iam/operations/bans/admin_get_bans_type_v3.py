@@ -38,7 +38,6 @@ class AdminGetBansTypeV3(Operation):
 
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
 
     Properties:
         url: /iam/v3/admin/bans

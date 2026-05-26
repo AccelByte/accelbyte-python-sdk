@@ -38,7 +38,6 @@ class PublicUpgradeHeadlessAccountV4(Operation):
     """Upgrade user account to full account (PublicUpgradeHeadlessAccountV4)
 
     Upgrade headless account to full account without verifying email address. Client does not need to provide verification code which sent to email address.
-    action code : 10124
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/headless/verify

@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetListBanReason(Operation):
     """Get list of ban reasons (GetListBanReason)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/bans/reasons [GET]_**
 

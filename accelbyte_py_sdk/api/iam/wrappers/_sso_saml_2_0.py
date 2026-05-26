@@ -44,11 +44,11 @@ def platform_authenticate_samlv3_handler(
 ):
     """SAML platform Authentication API (platformAuthenticateSAMLV3Handler)
 
-    This endpoint authenticates user platform for SAML protocol. It validates user to its
+    Authenticates user platform for SAML protocol. Validates user to its
     respective platforms. Deactivated or login-banned users are unable to login.
     ## Supported platforms:
     - **azure**
-    Microsoft login page will redirects to this endpoint after login success
+    Microsoft login page will redirect to this API after login success
     as previously defined on authentication request SAML
 
     Properties:
@@ -97,11 +97,11 @@ async def platform_authenticate_samlv3_handler_async(
 ):
     """SAML platform Authentication API (platformAuthenticateSAMLV3Handler)
 
-    This endpoint authenticates user platform for SAML protocol. It validates user to its
+    Authenticates user platform for SAML protocol. Validates user to its
     respective platforms. Deactivated or login-banned users are unable to login.
     ## Supported platforms:
     - **azure**
-    Microsoft login page will redirects to this endpoint after login success
+    Microsoft login page will redirect to this API after login success
     as previously defined on authentication request SAML
 
     Properties:

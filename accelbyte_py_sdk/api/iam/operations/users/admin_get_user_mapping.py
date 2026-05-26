@@ -36,9 +36,9 @@ from ...models import RestErrorResponse
 class AdminGetUserMapping(Operation):
     """Get user mapping (AdminGetUserMapping)
 
-    This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
-    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
+    Supports publisher access to game and game access to publisher.
+    If targetNamespace filled with publisher namespace then returns its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then returns its game user id and game namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}

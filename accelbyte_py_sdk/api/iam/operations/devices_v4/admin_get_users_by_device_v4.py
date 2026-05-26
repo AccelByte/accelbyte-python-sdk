@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUsersByDeviceV4(Operation):
     """Admin get users by device id (AdminGetUsersByDeviceV4)
 
-    This is the endpoint for an admin to get users that ever login on the device
+    Returns all users that have ever logged in on the specified device (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/users

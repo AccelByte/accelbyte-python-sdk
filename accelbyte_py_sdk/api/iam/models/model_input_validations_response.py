@@ -36,12 +36,15 @@ class ModelInputValidationsResponse(Model):
     Properties:
         data: (data) REQUIRED List[ModelInputValidationData]
 
+        from_default: (fromDefault) REQUIRED bool
+
         version: (version) REQUIRED int
     """
 
     # region fields
 
     data: List[ModelInputValidationData]  # REQUIRED
+    from_default: bool  # REQUIRED
     version: int  # REQUIRED
 
     # endregion fields
@@ -52,6 +55,10 @@ class ModelInputValidationsResponse(Model):
         self, value: List[ModelInputValidationData]
     ) -> ModelInputValidationsResponse:
         self.data = value
+        return self
+
+    def with_from_default(self, value: bool) -> ModelInputValidationsResponse:
+        self.from_default = value
         return self
 
     def with_version(self, value: int) -> ModelInputValidationsResponse:
@@ -70,6 +77,10 @@ class ModelInputValidationsResponse(Model):
             ]
         elif include_empty:
             result["data"] = []
+        if hasattr(self, "from_default"):
+            result["fromDefault"] = bool(self.from_default)
+        elif include_empty:
+            result["fromDefault"] = False
         if hasattr(self, "version"):
             result["version"] = int(self.version)
         elif include_empty:
@@ -82,10 +93,15 @@ class ModelInputValidationsResponse(Model):
 
     @classmethod
     def create(
-        cls, data: List[ModelInputValidationData], version: int, **kwargs
+        cls,
+        data: List[ModelInputValidationData],
+        from_default: bool,
+        version: int,
+        **kwargs,
     ) -> ModelInputValidationsResponse:
         instance = cls()
         instance.data = data
+        instance.from_default = from_default
         instance.version = version
         return instance
 
@@ -105,6 +121,10 @@ class ModelInputValidationsResponse(Model):
             ]
         elif include_empty:
             instance.data = []
+        if "fromDefault" in dict_ and dict_["fromDefault"] is not None:
+            instance.from_default = bool(dict_["fromDefault"])
+        elif include_empty:
+            instance.from_default = False
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = int(dict_["version"])
         elif include_empty:
@@ -153,6 +173,7 @@ class ModelInputValidationsResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "data": "data",
+            "fromDefault": "from_default",
             "version": "version",
         }
 
@@ -160,6 +181,7 @@ class ModelInputValidationsResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "data": True,
+            "fromDefault": True,
             "version": True,
         }
 

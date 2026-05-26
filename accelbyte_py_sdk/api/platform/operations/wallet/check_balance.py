@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import CheckBalanceResponse
 from ...models import DebitByWalletPlatformRequest
 from ...models import ErrorEntity
 
@@ -63,7 +64,7 @@ class CheckBalance(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successfully determined if user has enough balance.)
+        200: OK - CheckBalanceResponse (Successfully determined if user has enough balance.)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
     """
@@ -194,10 +195,12 @@ class CheckBalance(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, CheckBalanceResponse], Union[None, ErrorEntity, HttpResponse]
+    ]:
         """Parse the given response.
 
-        200: OK - (Successfully determined if user has enough balance.)
+        200: OK - CheckBalanceResponse (Successfully determined if user has enough balance.)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
 
@@ -215,7 +218,7 @@ class CheckBalance(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return CheckBalanceResponse.create_from_dict(content), None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
 

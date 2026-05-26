@@ -55,8 +55,6 @@ class PublicGetMyUserV3(Operation):
     * epic account id
     * display name
 
-    action code : 10147
-
     Properties:
         url: /iam/v3/public/users/me
 

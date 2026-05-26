@@ -90,6 +90,7 @@ from ..operations.iap import AdminResetSteamJobTime
 from ..operations.iap import AdminSyncOculusSubscriptions
 from ..operations.iap import AdminSyncSteamAbnormalTransaction
 from ..operations.iap import AdminSyncSteamIAPByTransaction
+from ..operations.iap import AdminSyncTwitchDropsEntitlement
 from ..operations.iap import DeleteAppleIAPConfig
 from ..operations.iap import DeleteEpicGamesIAPConfig
 from ..operations.iap import DeleteGoogleIAPConfig
@@ -838,6 +839,108 @@ async def admin_sync_steam_iap_by_transaction_async(
         if error:
             return None, error
     request = AdminSyncSteamIAPByTransaction.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncTwitchDropsEntitlement)
+def admin_sync_twitch_drops_entitlement(
+    body: TwitchSyncRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync twitch drops entitlements with App Token. (adminSyncTwitchDropsEntitlement)
+
+    Sync twitch drops entitlements. rate limit: 800 req/minutes.
+
+    *  Returns :
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/twitch/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED TwitchSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Sync Successful)
+
+        429: Too Many Requests - (Too Many Request (twitch rate limit exceeded))
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncTwitchDropsEntitlement.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncTwitchDropsEntitlement)
+async def admin_sync_twitch_drops_entitlement_async(
+    body: TwitchSyncRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync twitch drops entitlements with App Token. (adminSyncTwitchDropsEntitlement)
+
+    Sync twitch drops entitlements. rate limit: 800 req/minutes.
+
+    *  Returns :
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/twitch/sync
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED TwitchSyncRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Sync Successful)
+
+        429: Too Many Requests - (Too Many Request (twitch rate limit exceeded))
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncTwitchDropsEntitlement.create(
         body=body,
         user_id=user_id,
         namespace=namespace,

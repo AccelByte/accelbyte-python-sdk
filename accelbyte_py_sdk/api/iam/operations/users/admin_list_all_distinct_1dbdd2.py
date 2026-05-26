@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminListAllDistinctPlatformAccountsV3(Operation):
     """Admin get distinct platforms linked to the user (AdminListAllDistinctPlatformAccountsV3)
 
-    This endpoint only retrieves 3rd party platform accounts linked to user.
+    Retrieves only 3rd party platform accounts linked to user.
     It will query platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
     ------
     Supported status:

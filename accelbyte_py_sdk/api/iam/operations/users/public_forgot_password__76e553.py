@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class PublicForgotPasswordWithoutNamespaceV3(Operation):
     """Request Password Reset Code (PublicForgotPasswordWithoutNamespaceV3)
 
-    This endpoint does not need a namespace in the path, we will find the namespace based on:
+    Does not need a namespace in the path, we will find the namespace based on:
 
     - If this is premium environment, the namespace will be the publisher namespace.
     - If this is shared cloud:

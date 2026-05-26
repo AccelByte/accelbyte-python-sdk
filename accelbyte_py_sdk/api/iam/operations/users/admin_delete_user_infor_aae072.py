@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteUserInformationV3(Operation):
     """Delete user's information (AdminDeleteUserInformationV3)
 
-    [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
+    **WARNING:** Deletes user data directly from the database, bypassing the GDPR flow. Use with caution as this action is irreversible.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/information

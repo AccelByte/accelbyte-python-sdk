@@ -69,4 +69,4 @@ def public_get_input_validations(
 
 
 public_get_input_validations.operation_id = "PublicGetInputValidations"
-public_get_input_validations.is_deprecated = False
+public_get_input_validations.is_deprecated = True

@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class PublicEnableMyEmailV4(Operation):
     """Enable 2FA email (PublicEnableMyEmailV4)
 
-    This endpoint is used to enable 2FA email.
+    Enables 2FA email.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/enable

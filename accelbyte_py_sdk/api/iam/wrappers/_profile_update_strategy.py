@@ -162,9 +162,7 @@ def admin_update_profile_update_strategy_v3(
 ):
     """Admin update profile update strategy by namespace and field. (AdminUpdateProfileUpdateStrategyV3)
 
-    This API includes upsert behavior.
-    Note:
-    1. field 'config'' in request body will only work when type is limited
+    Uses upsert behavior.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/profileUpdateStrategies
@@ -218,9 +216,7 @@ async def admin_update_profile_update_strategy_v3_async(
 ):
     """Admin update profile update strategy by namespace and field. (AdminUpdateProfileUpdateStrategyV3)
 
-    This API includes upsert behavior.
-    Note:
-    1. field 'config'' in request body will only work when type is limited
+    Uses upsert behavior.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/profileUpdateStrategies

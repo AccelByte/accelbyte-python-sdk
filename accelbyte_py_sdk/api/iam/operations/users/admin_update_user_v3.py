@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminUpdateUserV3(Operation):
     """Update User (AdminUpdateUserV3)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName, tags}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -49,8 +49,6 @@ class AdminUpdateUserV3(Operation):
     - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}

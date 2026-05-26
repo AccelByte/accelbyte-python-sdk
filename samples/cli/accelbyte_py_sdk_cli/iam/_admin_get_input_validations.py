@@ -63,4 +63,4 @@ def admin_get_input_validations(
 
 
 admin_get_input_validations.operation_id = "AdminGetInputValidations"
-admin_get_input_validations.is_deprecated = False
+admin_get_input_validations.is_deprecated = True

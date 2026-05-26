@@ -65,4 +65,4 @@ def get_user_info_status(
 
 
 get_user_info_status.operation_id = "getUserInfoStatus"
-get_user_info_status.is_deprecated = False
+get_user_info_status.is_deprecated = True

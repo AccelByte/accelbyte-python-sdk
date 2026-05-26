@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminUnbanDeviceV4(Operation):
     """Admin unban device (AdminUnbanDeviceV4)
 
-    This is the endpoint for an admin to unban device
+    Unbans a device (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/unban

@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminInviteUserV3(Operation):
     """Invite User (AdminInviteUserV3)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them.
+    Invites an admin or non-admin user and assigns a role to them.
     The role must be scoped to namespace based on the **{namespace}** value in path parameter.
     An admin user can only assign role to namespaces that the admin user has the required permission.
     Role is optional, if not specified then it will only assign User role

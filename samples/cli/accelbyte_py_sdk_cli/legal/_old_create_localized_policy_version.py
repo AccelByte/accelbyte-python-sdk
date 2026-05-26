@@ -76,4 +76,4 @@ def old_create_localized_policy_version(
 
 
 old_create_localized_policy_version.operation_id = "oldCreateLocalizedPolicyVersion"
-old_create_localized_policy_version.is_deprecated = False
+old_create_localized_policy_version.is_deprecated = True

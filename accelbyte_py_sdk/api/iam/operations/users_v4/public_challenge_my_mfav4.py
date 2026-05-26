@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicChallengeMyMFAV4(Operation):
     """Challenge User MFA (PublicChallengeMyMFAV4)
 
-    This endpoint will verify user's' MFA code and generate a MFA token for the action.
+    Verifies the user's MFA code and generates an MFA token for the action.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/challenge/verify

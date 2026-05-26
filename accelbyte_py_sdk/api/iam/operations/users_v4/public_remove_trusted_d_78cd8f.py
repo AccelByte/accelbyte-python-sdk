@@ -35,8 +35,7 @@ from ...models import RestErrorResponse
 class PublicRemoveTrustedDeviceV4(Operation):
     """Remove Trusted Device (PublicRemoveTrustedDeviceV4)
 
-    (Only for test)This endpoint is used to remove trusted device.
-    This endpoint Requires device_token in cookie
+    **(Test only)** Removes a trusted device. Requires a device_token cookie.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/device

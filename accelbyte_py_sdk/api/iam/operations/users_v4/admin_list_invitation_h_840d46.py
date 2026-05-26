@@ -36,12 +36,9 @@ from ...models import RestErrorResponse
 class AdminListInvitationHistoriesV4(Operation):
     """Admin List Invitation Histories V4 (AdminListInvitationHistoriesV4)
 
-    This endpoint is to list all Invitation Histories for new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-    Accepted Query:
-    - namespace
-    - offset
-    - limit
+    Lists all invitation histories for studio namespaces in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/invitationHistories

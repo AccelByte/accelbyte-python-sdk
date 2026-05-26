@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 
 
 class AdminGetUserByUserIdV3(Operation):
-    """Admin Get User By User Id (AdminGetUserByUserIdV3)
+    """Admin Get User By User ID (AdminGetUserByUserIdV3)
 
-    Admin Get User By User Id
+    Retrieves the full user profile including email verification status, ban status, deletion status, and linked platform accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}

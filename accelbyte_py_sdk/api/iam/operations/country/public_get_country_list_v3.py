@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetCountryListV3(Operation):
     """Get Country List (PublicGetCountryListV3)
 
-    Public get country list, will filter out countries in black list
+    Retrieves the list of countries, excluding those on the blacklist.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/countries

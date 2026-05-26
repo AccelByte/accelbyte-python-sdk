@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import RestErrorResponse
 
@@ -35,7 +36,9 @@ from ...models import RestErrorResponse
 class AdminDeleteUserRolesV3(Operation):
     """Delete User Roles (AdminDeleteUserRolesV3)
 
-    Delete User Roles
+    **Deprecated.** Only removes roles from the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [DELETE]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles

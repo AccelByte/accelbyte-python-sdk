@@ -33,16 +33,16 @@ from ...models import AccountUpgradeHeadlessAccountWithVerificationCodeForwardRe
 
 
 class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
-    """Upgrade the headless account and automatically verify the email address if the upgrade succeeds. (PublicUpgradeHeadlessWithCodeV4Forward)
+    """Upgrade Headless Account with Auto-Verification (Forward) (PublicUpgradeHeadlessWithCodeV4Forward)
 
     This is a forward version for code verify.
-    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
 
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendCodeForwardV3).
+    To obtain a verification code, use the [send verification code API](#operations-Users-PublicSendCodeForwardV3).
 
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
 
     Properties:
         url: /iam/v4/public/users/me/headless/code/verify/forward

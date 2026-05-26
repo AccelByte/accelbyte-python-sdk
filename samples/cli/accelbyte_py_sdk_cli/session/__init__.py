@@ -88,6 +88,8 @@ from ._join_game_session import join_game_session
 from ._public_promote_game_session_leader import public_promote_game_session_leader
 from ._leave_game_session import leave_game_session
 from ._public_kick_game_session_member import public_kick_game_session_member
+from ._public_get_game_session_password import public_get_game_session_password
+from ._public_update_game_session_password import public_update_game_session_password
 from ._public_game_session_reject import public_game_session_reject
 from ._get_session_server_secret import get_session_server_secret
 from ._append_team_game_session import append_team_game_session
@@ -100,6 +102,8 @@ from ._public_generate_party_code import public_generate_party_code
 from ._public_revoke_party_code import public_revoke_party_code
 from ._public_party_invite import public_party_invite
 from ._public_promote_party_leader import public_promote_party_leader
+from ._public_get_party_password import public_get_party_password
+from ._public_update_party_password import public_update_party_password
 from ._public_read_party_session_storage import public_read_party_session_storage
 from ._public_update_insert_party_session_storage import (
     public_update_insert_party_session_storage,
@@ -127,6 +131,18 @@ from ._public_store_player_attributes import public_store_player_attributes
 from ._public_delete_player_attributes import public_delete_player_attributes
 from ._public_query_my_game_sessions import public_query_my_game_sessions
 from ._public_query_my_parties import public_query_my_parties
+from ._public_replace_session_storage_leader_v2 import (
+    public_replace_session_storage_leader_v2,
+)
+from ._public_update_insert_session_storage_leader_v2 import (
+    public_update_insert_session_storage_leader_v2,
+)
+from ._public_replace_session_storage_user_v2 import (
+    public_replace_session_storage_user_v2,
+)
+from ._public_update_insert_session_storage_user_v2 import (
+    public_update_insert_session_storage_user_v2,
+)
 
 
 commands = [
@@ -194,6 +210,8 @@ commands = [
     public_promote_game_session_leader,
     leave_game_session,
     public_kick_game_session_member,
+    public_get_game_session_password,
+    public_update_game_session_password,
     public_game_session_reject,
     get_session_server_secret,
     append_team_game_session,
@@ -206,6 +224,8 @@ commands = [
     public_revoke_party_code,
     public_party_invite,
     public_promote_party_leader,
+    public_get_party_password,
+    public_update_party_password,
     public_read_party_session_storage,
     public_update_insert_party_session_storage,
     public_update_insert_party_session_storage_reserved,
@@ -225,4 +245,8 @@ commands = [
     public_delete_player_attributes,
     public_query_my_game_sessions,
     public_query_my_parties,
+    public_replace_session_storage_leader_v2,
+    public_update_insert_session_storage_leader_v2,
+    public_replace_session_storage_user_v2,
+    public_update_insert_session_storage_user_v2,
 ]

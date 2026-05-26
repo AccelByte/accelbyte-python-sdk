@@ -36,7 +36,7 @@ from ...models import ModelSendVerificationCodeRequest
 class PublicForgotPasswordV2(Operation):
     """Request Password Reset Code (PublicForgotPasswordV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/forgot [POST]_**
 

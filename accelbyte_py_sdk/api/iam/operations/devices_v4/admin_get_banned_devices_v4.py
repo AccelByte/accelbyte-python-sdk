@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetBannedDevicesV4(Operation):
     """Admin get banned devices (AdminGetBannedDevicesV4)
 
-    This is the endpoint for an admin to get banned devices
+    Returns all banned devices (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/banned

@@ -36,17 +36,23 @@ class PublicUpdateInsertSessionStorage(Operation):
     """Update Insert Session Storage User. (publicUpdateInsertSessionStorage)
 
 
-    Update Insert Session Storage User. user can only update or insert user session storage data itself.
-    can store generic json
-    example json can store :
+    Update Insert Session Storage User. Performs selective merge with existing storage data.
+
+    User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Example patch:
     {
-    "storage": {
-    "storage": 1
-    },
-    "data": 123
+    "weapon": "sword",
+    "level": null
     }
-    game Admin can update or insert session storage
-    Session Storage feature only available for Gamesession
+
+    Session Storage feature only available for Gamesession.
+
+    Alternative v2 endpoints available with explicit semantics:
+    - PATCH /v2/.../storage/users/{userId} - Selective merge with partial updates
+    - PUT /v2/.../storage/users/{userId} - Complete replacement of entire storage
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}

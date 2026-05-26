@@ -37,7 +37,6 @@ class AdminGetListBanReasonV3(Operation):
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
     Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
-    action code : 10202
 
     Properties:
         url: /iam/v3/admin/bans/reasons

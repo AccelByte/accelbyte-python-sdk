@@ -36,12 +36,7 @@ from ...models import RestErrorResponse
 class AdminUpdateUserStatusV3(Operation):
     """Update user status (AdminUpdateUserStatusV3)
 
-    This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it.
-    Disable user for **Account Disable** purpose fill the reason with:
-    - **AdminDeactivateAccount** : if your disable account request comes from admin
-
-    Enable user ignore field 'reason' in the request body.
-    action code : 10143
+    Disables or enables a user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/status

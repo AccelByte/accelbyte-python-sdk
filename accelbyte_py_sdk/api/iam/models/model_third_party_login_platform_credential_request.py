@@ -53,8 +53,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         generic_oauth_flow: (GenericOauthFlow) REQUIRED bool
 
-        is_active: (IsActive) REQUIRED bool
-
         issuer: (Issuer) REQUIRED str
 
         jwks_endpoint: (JWKSEndpoint) REQUIRED str
@@ -70,8 +68,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         redirect_uri: (RedirectUri) REQUIRED str
 
         registered_domains: (RegisteredDomains) REQUIRED List[AccountcommonRegisteredDomain]
-
-        scopes: (scopes) REQUIRED List[str]
 
         secret: (Secret) REQUIRED str
 
@@ -95,6 +91,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         include_puid: (IncludePUID) OPTIONAL bool
 
+        is_active: (IsActive) OPTIONAL bool
+
         logo_url: (LogoURL) OPTIONAL str
 
         private_key: (PrivateKey) OPTIONAL str
@@ -102,6 +100,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         relying_party: (RelyingParty) OPTIONAL str
 
         sandbox_id: (SandboxId) OPTIONAL str
+
+        scopes: (scopes) OPTIONAL List[str]
 
         token_claims_mapping: (TokenClaimsMapping) OPTIONAL Dict[str, str]
     """
@@ -117,7 +117,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     environment: str  # REQUIRED
     federation_metadata_url: str  # REQUIRED
     generic_oauth_flow: bool  # REQUIRED
-    is_active: bool  # REQUIRED
     issuer: str  # REQUIRED
     jwks_endpoint: str  # REQUIRED
     key_id: str  # REQUIRED
@@ -126,7 +125,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     platform_name: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     registered_domains: List[AccountcommonRegisteredDomain]  # REQUIRED
-    scopes: List[str]  # REQUIRED
     secret: str  # REQUIRED
     team_id: str  # REQUIRED
     token_authentication_type: str  # REQUIRED
@@ -138,10 +136,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     enable_server_license_validation: bool  # OPTIONAL
     google_admin_console_key: str  # OPTIONAL
     include_puid: bool  # OPTIONAL
+    is_active: bool  # OPTIONAL
     logo_url: str  # OPTIONAL
     private_key: str  # OPTIONAL
     relying_party: str  # OPTIONAL
     sandbox_id: str  # OPTIONAL
+    scopes: List[str]  # OPTIONAL
     token_claims_mapping: Dict[str, str]  # OPTIONAL
 
     # endregion fields
@@ -198,12 +198,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.generic_oauth_flow = value
         return self
 
-    def with_is_active(
-        self, value: bool
-    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
-        self.is_active = value
-        return self
-
     def with_issuer(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.issuer = value
         return self
@@ -246,12 +240,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self, value: List[AccountcommonRegisteredDomain]
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.registered_domains = value
-        return self
-
-    def with_scopes(
-        self, value: List[str]
-    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
-        self.scopes = value
         return self
 
     def with_secret(self, value: str) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -316,6 +304,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.include_puid = value
         return self
 
+    def with_is_active(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.is_active = value
+        return self
+
     def with_logo_url(
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -338,6 +332,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
         self.sandbox_id = value
+        return self
+
+    def with_scopes(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.scopes = value
         return self
 
     def with_token_claims_mapping(
@@ -388,10 +388,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["GenericOauthFlow"] = bool(self.generic_oauth_flow)
         elif include_empty:
             result["GenericOauthFlow"] = False
-        if hasattr(self, "is_active"):
-            result["IsActive"] = bool(self.is_active)
-        elif include_empty:
-            result["IsActive"] = False
         if hasattr(self, "issuer"):
             result["Issuer"] = str(self.issuer)
         elif include_empty:
@@ -429,10 +425,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             ]
         elif include_empty:
             result["RegisteredDomains"] = []
-        if hasattr(self, "scopes"):
-            result["scopes"] = [str(i0) for i0 in self.scopes]
-        elif include_empty:
-            result["scopes"] = []
         if hasattr(self, "secret"):
             result["Secret"] = str(self.secret)
         elif include_empty:
@@ -479,6 +471,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["IncludePUID"] = bool(self.include_puid)
         elif include_empty:
             result["IncludePUID"] = False
+        if hasattr(self, "is_active"):
+            result["IsActive"] = bool(self.is_active)
+        elif include_empty:
+            result["IsActive"] = False
         if hasattr(self, "logo_url"):
             result["LogoURL"] = str(self.logo_url)
         elif include_empty:
@@ -495,6 +491,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["SandboxId"] = str(self.sandbox_id)
         elif include_empty:
             result["SandboxId"] = ""
+        if hasattr(self, "scopes"):
+            result["scopes"] = [str(i0) for i0 in self.scopes]
+        elif include_empty:
+            result["scopes"] = []
         if hasattr(self, "token_claims_mapping"):
             result["TokenClaimsMapping"] = {
                 str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()
@@ -519,7 +519,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         environment: str,
         federation_metadata_url: str,
         generic_oauth_flow: bool,
-        is_active: bool,
         issuer: str,
         jwks_endpoint: str,
         key_id: str,
@@ -528,7 +527,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         platform_name: str,
         redirect_uri: str,
         registered_domains: List[AccountcommonRegisteredDomain],
-        scopes: List[str],
         secret: str,
         team_id: str,
         token_authentication_type: str,
@@ -540,10 +538,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         enable_server_license_validation: Optional[bool] = None,
         google_admin_console_key: Optional[str] = None,
         include_puid: Optional[bool] = None,
+        is_active: Optional[bool] = None,
         logo_url: Optional[str] = None,
         private_key: Optional[str] = None,
         relying_party: Optional[str] = None,
         sandbox_id: Optional[str] = None,
+        scopes: Optional[List[str]] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
         **kwargs,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -557,7 +557,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.environment = environment
         instance.federation_metadata_url = federation_metadata_url
         instance.generic_oauth_flow = generic_oauth_flow
-        instance.is_active = is_active
         instance.issuer = issuer
         instance.jwks_endpoint = jwks_endpoint
         instance.key_id = key_id
@@ -566,7 +565,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.platform_name = platform_name
         instance.redirect_uri = redirect_uri
         instance.registered_domains = registered_domains
-        instance.scopes = scopes
         instance.secret = secret
         instance.team_id = team_id
         instance.token_authentication_type = token_authentication_type
@@ -583,6 +581,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.google_admin_console_key = google_admin_console_key
         if include_puid is not None:
             instance.include_puid = include_puid
+        if is_active is not None:
+            instance.is_active = is_active
         if logo_url is not None:
             instance.logo_url = logo_url
         if private_key is not None:
@@ -591,6 +591,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.relying_party = relying_party
         if sandbox_id is not None:
             instance.sandbox_id = sandbox_id
+        if scopes is not None:
+            instance.scopes = scopes
         if token_claims_mapping is not None:
             instance.token_claims_mapping = token_claims_mapping
         return instance
@@ -644,10 +646,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.generic_oauth_flow = bool(dict_["GenericOauthFlow"])
         elif include_empty:
             instance.generic_oauth_flow = False
-        if "IsActive" in dict_ and dict_["IsActive"] is not None:
-            instance.is_active = bool(dict_["IsActive"])
-        elif include_empty:
-            instance.is_active = False
         if "Issuer" in dict_ and dict_["Issuer"] is not None:
             instance.issuer = str(dict_["Issuer"])
         elif include_empty:
@@ -689,10 +687,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             ]
         elif include_empty:
             instance.registered_domains = []
-        if "scopes" in dict_ and dict_["scopes"] is not None:
-            instance.scopes = [str(i0) for i0 in dict_["scopes"]]
-        elif include_empty:
-            instance.scopes = []
         if "Secret" in dict_ and dict_["Secret"] is not None:
             instance.secret = str(dict_["Secret"])
         elif include_empty:
@@ -750,6 +744,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.include_puid = bool(dict_["IncludePUID"])
         elif include_empty:
             instance.include_puid = False
+        if "IsActive" in dict_ and dict_["IsActive"] is not None:
+            instance.is_active = bool(dict_["IsActive"])
+        elif include_empty:
+            instance.is_active = False
         if "LogoURL" in dict_ and dict_["LogoURL"] is not None:
             instance.logo_url = str(dict_["LogoURL"])
         elif include_empty:
@@ -766,6 +764,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.sandbox_id = str(dict_["SandboxId"])
         elif include_empty:
             instance.sandbox_id = ""
+        if "scopes" in dict_ and dict_["scopes"] is not None:
+            instance.scopes = [str(i0) for i0 in dict_["scopes"]]
+        elif include_empty:
+            instance.scopes = []
         if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
             instance.token_claims_mapping = {
                 str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()
@@ -824,7 +826,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Environment": "environment",
             "FederationMetadataURL": "federation_metadata_url",
             "GenericOauthFlow": "generic_oauth_flow",
-            "IsActive": "is_active",
             "Issuer": "issuer",
             "JWKSEndpoint": "jwks_endpoint",
             "KeyID": "key_id",
@@ -833,7 +834,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "PlatformName": "platform_name",
             "RedirectUri": "redirect_uri",
             "RegisteredDomains": "registered_domains",
-            "scopes": "scopes",
             "Secret": "secret",
             "TeamID": "team_id",
             "TokenAuthenticationType": "token_authentication_type",
@@ -845,10 +845,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "EnableServerLicenseValidation": "enable_server_license_validation",
             "googleAdminConsoleKey": "google_admin_console_key",
             "IncludePUID": "include_puid",
+            "IsActive": "is_active",
             "LogoURL": "logo_url",
             "PrivateKey": "private_key",
             "RelyingParty": "relying_party",
             "SandboxId": "sandbox_id",
+            "scopes": "scopes",
             "TokenClaimsMapping": "token_claims_mapping",
         }
 
@@ -864,7 +866,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "Environment": True,
             "FederationMetadataURL": True,
             "GenericOauthFlow": True,
-            "IsActive": True,
             "Issuer": True,
             "JWKSEndpoint": True,
             "KeyID": True,
@@ -873,7 +874,6 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "PlatformName": True,
             "RedirectUri": True,
             "RegisteredDomains": True,
-            "scopes": True,
             "Secret": True,
             "TeamID": True,
             "TokenAuthenticationType": True,
@@ -885,10 +885,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "EnableServerLicenseValidation": False,
             "googleAdminConsoleKey": False,
             "IncludePUID": False,
+            "IsActive": False,
             "LogoURL": False,
             "PrivateKey": False,
             "RelyingParty": False,
             "SandboxId": False,
+            "scopes": False,
             "TokenClaimsMapping": False,
         }
 

@@ -35,8 +35,8 @@ from ...models import RestErrorResponse
 class PublicGenerateBackupCodesV4(Operation):
     """Generate backup codes (PublicGenerateBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
-    Each codes is a one-time code and will be deleted once used.
+    Generates 8-digit backup codes.
+    Each code is a one-time code and will be deleted once used.
     The codes will be sent through linked email.
 
     Properties:

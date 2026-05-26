@@ -150,7 +150,7 @@ def admin_add_user_role_v4(
     """Admin Add User's Role V4 (AdminAddUserRoleV4)
 
     New role will be appended to user's current roles.
-    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this endpoint.
+    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this API.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -209,7 +209,7 @@ async def admin_add_user_role_v4_async(
     """Admin Add User's Role V4 (AdminAddUserRoleV4)
 
     New role will be appended to user's current roles.
-    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this endpoint.
+    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this API.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -268,7 +268,7 @@ def admin_bulk_check_valid_user_idv4(
 ):
     """Admin Check Valid User ID (AdminBulkCheckValidUserIDV4)
 
-    Use this endpoint to check if userID exists or not
+    Checks if userIDs exist or not.
     Maximum number of userID to be checked is 50
 
     Properties:
@@ -319,7 +319,7 @@ async def admin_bulk_check_valid_user_idv4_async(
 ):
     """Admin Check Valid User ID (AdminBulkCheckValidUserIDV4)
 
-    Use this endpoint to check if userID exists or not
+    Checks if userIDs exist or not.
     Maximum number of userID to be checked is 50
 
     Properties:
@@ -372,7 +372,7 @@ def admin_bulk_update_user_account_type_v4(
 ):
     """Admin Bulk Update User Account Type V4 (AdminBulkUpdateUserAccountTypeV4)
 
-    This endpoint is used to change users account type
+    Changes users account type.
     - set **testAccount** to `true` to mark user as test account type
     - set **testAccount** to `false` to mark user as default account type
 
@@ -426,7 +426,7 @@ async def admin_bulk_update_user_account_type_v4_async(
 ):
     """Admin Bulk Update User Account Type V4 (AdminBulkUpdateUserAccountTypeV4)
 
-    This endpoint is used to change users account type
+    Changes users account type.
     - set **testAccount** to `true` to mark user as test account type
     - set **testAccount** to `false` to mark user as default account type
 
@@ -482,7 +482,7 @@ def admin_challenge_my_mfav4(
 ):
     """Challenge User MFA (AdminChallengeMyMFAV4)
 
-    This endpoint will verify user's' MFA code and generate a MFA token.
+    Verifies the user's MFA code and generates an MFA token.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/challenge/verify
@@ -532,7 +532,7 @@ async def admin_challenge_my_mfav4_async(
 ):
     """Challenge User MFA (AdminChallengeMyMFAV4)
 
-    This endpoint will verify user's' MFA code and generate a MFA token.
+    Verifies the user's MFA code and generates an MFA token.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/challenge/verify
@@ -694,19 +694,7 @@ def admin_create_user_v4(
 ):
     """Admin Create User (AdminCreateUserV4)
 
-    Create a new user with unique email address and username.
-    **Required attributes:**
-    - authType: possible value is EMAILPASSWD
-    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
-
-    **Not required attributes:**
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Creates a new user with unique email address and username (admin operation). Supports accepting agreements for the created user via the acceptedPolicies attribute. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users
@@ -760,19 +748,7 @@ async def admin_create_user_v4_async(
 ):
     """Admin Create User (AdminCreateUserV4)
 
-    Create a new user with unique email address and username.
-    **Required attributes:**
-    - authType: possible value is EMAILPASSWD
-    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
-
-    **Not required attributes:**
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Creates a new user with unique email address and username (admin operation). Supports accepting agreements for the created user via the acceptedPolicies attribute. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users
@@ -827,7 +803,7 @@ def admin_disable_my_authenticator_v4(
 ):
     """Disable 2FA authenticator (AdminDisableMyAuthenticatorV4)
 
-    This endpoint is used to disable 2FA authenticator.
+    Disables 2FA authenticator.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -876,7 +852,7 @@ async def admin_disable_my_authenticator_v4_async(
 ):
     """Disable 2FA authenticator (AdminDisableMyAuthenticatorV4)
 
-    This endpoint is used to disable 2FA authenticator.
+    Disables 2FA authenticator.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -927,7 +903,7 @@ def admin_disable_my_backup_codes_v4(
 ):
     """Disable 2FA backup codes (AdminDisableMyBackupCodesV4)
 
-    This endpoint is used to disable 2FA backup codes.
+    Disables 2FA backup codes.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -976,7 +952,7 @@ async def admin_disable_my_backup_codes_v4_async(
 ):
     """Disable 2FA backup codes (AdminDisableMyBackupCodesV4)
 
-    This endpoint is used to disable 2FA backup codes.
+    Disables 2FA backup codes.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -1027,7 +1003,7 @@ def admin_disable_my_email_v4(
 ):
     """Disable 2FA email (AdminDisableMyEmailV4)
 
-    This endpoint is used to disable 2FA email.
+    Disables 2FA email.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -1076,7 +1052,7 @@ async def admin_disable_my_email_v4_async(
 ):
     """Disable 2FA email (AdminDisableMyEmailV4)
 
-    This endpoint is used to disable 2FA email.
+    Disables 2FA email.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -1129,7 +1105,7 @@ def admin_disable_user_mfav4(
 ):
     """Disable User 2FA (AdminDisableUserMFAV4)
 
-    This endpoint is used to disable user 2FA.
+    Disables user 2FA.
     -----------
     **Note**: if the factor is not specified, will disable all 2FA methods.
 
@@ -1187,7 +1163,7 @@ async def admin_disable_user_mfav4_async(
 ):
     """Disable User 2FA (AdminDisableUserMFAV4)
 
-    This endpoint is used to disable user 2FA.
+    Disables user 2FA.
     -----------
     **Note**: if the factor is not specified, will disable all 2FA methods.
 
@@ -1244,7 +1220,7 @@ def admin_download_my_backup_codes_v4(
 ):
     """Download user backup codes (AdminDownloadMyBackupCodesV4)
 
-    This endpoint is used to download backup codes.
+    Downloads backup codes as a file.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/download
@@ -1283,7 +1259,7 @@ async def admin_download_my_backup_codes_v4_async(
 ):
     """Download user backup codes (AdminDownloadMyBackupCodesV4)
 
-    This endpoint is used to download backup codes.
+    Downloads backup codes as a file.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/download
@@ -1325,7 +1301,7 @@ def admin_enable_backup_codes_v4(
 ):
     """Enable 2FA backup codes (AdminEnableBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCodes/enable
@@ -1371,7 +1347,7 @@ async def admin_enable_backup_codes_v4_async(
 ):
     """Enable 2FA backup codes (AdminEnableBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCodes/enable
@@ -1417,7 +1393,7 @@ def admin_enable_my_authenticator_v4(
 ):
     """Enable 2FA authenticator (AdminEnableMyAuthenticatorV4)
 
-    This endpoint is used to enable 2FA authenticator.
+    Enables 2FA authenticator.
     ----------
     Prerequisites:
     - Generate the secret key/QR code uri by **_/iam/v4/admin/users/me/mfa/authenticator/key_**
@@ -1466,7 +1442,7 @@ async def admin_enable_my_authenticator_v4_async(
 ):
     """Enable 2FA authenticator (AdminEnableMyAuthenticatorV4)
 
-    This endpoint is used to enable 2FA authenticator.
+    Enables 2FA authenticator.
     ----------
     Prerequisites:
     - Generate the secret key/QR code uri by **_/iam/v4/admin/users/me/mfa/authenticator/key_**
@@ -1518,7 +1494,7 @@ def admin_enable_my_backup_codes_v4(
 ):
     """Enable 2FA backup codes (AdminEnableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/enable
@@ -1559,7 +1535,7 @@ async def admin_enable_my_backup_codes_v4_async(
 ):
     """Enable 2FA backup codes (AdminEnableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/enable
@@ -1601,7 +1577,7 @@ def admin_enable_my_email_v4(
 ):
     """Enable 2FA email (AdminEnableMyEmailV4)
 
-    This endpoint is used to enable 2FA email.
+    Enables 2FA email.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/enable
@@ -1645,7 +1621,7 @@ async def admin_enable_my_email_v4_async(
 ):
     """Enable 2FA email (AdminEnableMyEmailV4)
 
-    This endpoint is used to enable 2FA email.
+    Enables 2FA email.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/enable
@@ -1693,7 +1669,7 @@ def admin_generate_backup_codes_v4(
 ):
     """Generate backup codes (AdminGenerateBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -1738,7 +1714,7 @@ async def admin_generate_backup_codes_v4_async(
 ):
     """Generate backup codes (AdminGenerateBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -1783,7 +1759,7 @@ def admin_generate_my_authenticator_key_v4(
 ):
     """Generate secret key for 3rd-party authenticate app (AdminGenerateMyAuthenticatorKeyV4)
 
-    This endpoint is used to generate a secret key for 3rd-party authenticator app.
+    Generates a secret key for 3rd-party authenticator app.
     A QR code URI is also returned so that frontend can generate QR code image.
 
     Properties:
@@ -1822,7 +1798,7 @@ async def admin_generate_my_authenticator_key_v4_async(
 ):
     """Generate secret key for 3rd-party authenticate app (AdminGenerateMyAuthenticatorKeyV4)
 
-    This endpoint is used to generate a secret key for 3rd-party authenticator app.
+    Generates a secret key for 3rd-party authenticator app.
     A QR code URI is also returned so that frontend can generate QR code image.
 
     Properties:
@@ -1864,7 +1840,7 @@ def admin_generate_my_backup_codes_v4(
 ):
     """Generate backup codes (AdminGenerateMyBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -1904,7 +1880,7 @@ async def admin_generate_my_backup_codes_v4_async(
 ):
     """Generate backup codes (AdminGenerateMyBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -1947,7 +1923,7 @@ def admin_get_backup_codes_v4(
 ):
     """Get backup codes and send to email (AdminGetBackupCodesV4)
 
-    This endpoint is used to get 8-digits backup codes.
+    Returns 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -1992,7 +1968,7 @@ async def admin_get_backup_codes_v4_async(
 ):
     """Get backup codes and send to email (AdminGetBackupCodesV4)
 
-    This endpoint is used to get 8-digits backup codes.
+    Returns 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -2038,7 +2014,7 @@ def admin_get_my_backup_codes_v4(
 ):
     """Get backup codes (AdminGetMyBackupCodesV4)
 
-    This endpoint is used to get 8-digits backup codes.
+    Returns 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -2078,7 +2054,7 @@ async def admin_get_my_backup_codes_v4_async(
 ):
     """Get backup codes (AdminGetMyBackupCodesV4)
 
-    This endpoint is used to get 8-digits backup codes.
+    Returns 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -2119,7 +2095,7 @@ def admin_get_my_enabled_factors_v4(
 ):
     """Get user enabled factors (AdminGetMyEnabledFactorsV4)
 
-    This endpoint is used to get user enabled factors.
+    Returns all enabled 2FA factors for the user.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/factor
@@ -2157,7 +2133,7 @@ async def admin_get_my_enabled_factors_v4_async(
 ):
     """Get user enabled factors (AdminGetMyEnabledFactorsV4)
 
-    This endpoint is used to get user enabled factors.
+    Returns all enabled 2FA factors for the user.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/factor
@@ -2198,7 +2174,7 @@ def admin_get_my_mfa_status_v4(
 ):
     """Get User MFA Status (AdminGetMyMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
     ------------
     **Substitute endpoint**: /iam/v4/admin/users/me/mfa/status [GET]
 
@@ -2237,7 +2213,7 @@ async def admin_get_my_mfa_status_v4_async(
 ):
     """Get User MFA Status (AdminGetMyMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
     ------------
     **Substitute endpoint**: /iam/v4/admin/users/me/mfa/status [GET]
 
@@ -2277,7 +2253,7 @@ def admin_get_my_own_mfa_status_v4(
 ):
     """Get Admin Own MFA Status (AdminGetMyOwnMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/status
@@ -2313,7 +2289,7 @@ async def admin_get_my_own_mfa_status_v4_async(
 ):
     """Get Admin Own MFA Status (AdminGetMyOwnMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/status
@@ -2353,8 +2329,9 @@ def admin_get_namespace_invitation_history_v4(
 ):
     """Admin Get Invitation History for specific namespace V4 (AdminGetNamespaceInvitationHistoryV4)
 
-    This endpoint is to Invitation Historiy for specific new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
+    Retrieves the invitation history for a specific studio namespace in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/invitationHistories
@@ -2402,8 +2379,9 @@ async def admin_get_namespace_invitation_history_v4_async(
 ):
     """Admin Get Invitation History for specific namespace V4 (AdminGetNamespaceInvitationHistoryV4)
 
-    This endpoint is to Invitation Historiy for specific new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
+    Retrieves the invitation history for a specific studio namespace in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/invitationHistories
@@ -2455,11 +2433,9 @@ def admin_get_namespace_user_invitation_history_v4(
 ):
     """Admin Get Users Invitation History for specific namespace V4 (AdminGetNamespaceUserInvitationHistoryV4)
 
-    This endpoint is to Get list of users Invitation History for specific new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-    Accepted Query:
-    - offset
-    - limit
+    Retrieves the list of user invitation history for a specific studio namespace in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/invitationHistories/users
@@ -2515,11 +2491,9 @@ async def admin_get_namespace_user_invitation_history_v4_async(
 ):
     """Admin Get Users Invitation History for specific namespace V4 (AdminGetNamespaceUserInvitationHistoryV4)
 
-    This endpoint is to Get list of users Invitation History for specific new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-    Accepted Query:
-    - offset
-    - limit
+    Retrieves the list of user invitation history for a specific studio namespace in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/invitationHistories/users
@@ -2576,7 +2550,7 @@ def admin_get_user_mfa_status_v4(
 ):
     """Get User 2FA Status (AdminGetUserMFAStatusV4)
 
-    **This endpoint is used to get user's 2FA status.**
+    Retrieves the 2FA status for the specified user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/status
@@ -2626,7 +2600,7 @@ async def admin_get_user_mfa_status_v4_async(
 ):
     """Get User 2FA Status (AdminGetUserMFAStatusV4)
 
-    **This endpoint is used to get user's 2FA status.**
+    Retrieves the 2FA status for the specified user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/status
@@ -2677,8 +2651,8 @@ def admin_invite_user_new_v4(
 ):
     """Admin invite User v4 (AdminInviteUserNewV4)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
-    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    Invites admin or non-admin user and assigns role to them. The role must be scoped to namespace. An admin user can only
+    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Detail request body :
     - **emailAddresses** is required, List of email addresses that will be invited
@@ -2737,8 +2711,8 @@ async def admin_invite_user_new_v4_async(
 ):
     """Admin invite User v4 (AdminInviteUserNewV4)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
-    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    Invites admin or non-admin user and assigns role to them. The role must be scoped to namespace. An admin user can only
+    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Detail request body :
     - **emailAddresses** is required, List of email addresses that will be invited
@@ -2800,8 +2774,8 @@ def admin_invite_user_v4(
 ):
     """Admin invite User v4 (AdminInviteUserV4)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
-    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    Invites admin or non-admin user and assigns role to them. The role must be scoped to namespace. An admin user can only
+    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Detail request body :
     - Email Address is required, List of email addresses that will be invited
@@ -2814,7 +2788,7 @@ def admin_invite_user_v4(
 
     The invited admin will also assigned with "User" role by default.
 
-    Substitute endpoint: /iam/v4/admin/users/invite
+    Substitute API: /iam/v4/admin/users/invite
 
     Properties:
         url: /iam/v4/admin/users/users/invite
@@ -2863,8 +2837,8 @@ async def admin_invite_user_v4_async(
 ):
     """Admin invite User v4 (AdminInviteUserV4)
 
-    Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace. An admin user can only
-    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    Invites admin or non-admin user and assigns role to them. The role must be scoped to namespace. An admin user can only
+    assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Detail request body :
     - Email Address is required, List of email addresses that will be invited
@@ -2877,7 +2851,7 @@ async def admin_invite_user_v4_async(
 
     The invited admin will also assigned with "User" role by default.
 
-    Substitute endpoint: /iam/v4/admin/users/invite
+    Substitute API: /iam/v4/admin/users/invite
 
     Properties:
         url: /iam/v4/admin/users/users/invite
@@ -2929,12 +2903,9 @@ def admin_list_invitation_histories_v4(
 ):
     """Admin List Invitation Histories V4 (AdminListInvitationHistoriesV4)
 
-    This endpoint is to list all Invitation Histories for new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-    Accepted Query:
-    - namespace
-    - offset
-    - limit
+    Lists all invitation histories for studio namespaces in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/invitationHistories
@@ -2986,12 +2957,9 @@ async def admin_list_invitation_histories_v4_async(
 ):
     """Admin List Invitation Histories V4 (AdminListInvitationHistoriesV4)
 
-    This endpoint is to list all Invitation Histories for new studio namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-    Accepted Query:
-    - namespace
-    - offset
-    - limit
+    Lists all invitation histories for studio namespaces in multi-tenant mode.
+
+    Returns an error if the service multi-tenant mode is set to false.
 
     Properties:
         url: /iam/v4/admin/invitationHistories
@@ -3143,7 +3111,7 @@ def admin_make_factor_my_default_v4(
 ):
     """Make 2FA factor default (AdminMakeFactorMyDefaultV4)
 
-    This endpoint is used to make 2FA factor default.
+    Makes 2FA factor default.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/factor
@@ -3185,7 +3153,7 @@ async def admin_make_factor_my_default_v4_async(
 ):
     """Make 2FA factor default (AdminMakeFactorMyDefaultV4)
 
-    This endpoint is used to make 2FA factor default.
+    Makes 2FA factor default.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/factor
@@ -3233,7 +3201,9 @@ def admin_remove_user_role_v4(
 ):
     """Admin Remove User Role v4 (AdminRemoveUserRoleV4)
 
-    Remove a role from user's roles.
+    Removes a role from the user's assigned roles.
+
+    **Request body:** Specify the role ID and the allowed namespaces to remove from the user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -3291,7 +3261,9 @@ async def admin_remove_user_role_v4_async(
 ):
     """Admin Remove User Role v4 (AdminRemoveUserRoleV4)
 
-    Remove a role from user's roles.
+    Removes a role from the user's assigned roles.
+
+    **Request body:** Specify the role ID and the allowed namespaces to remove from the user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -3350,7 +3322,7 @@ def admin_send_my_mfa_email_code_v4(
 ):
     """Send code for MFA email (AdminSendMyMFAEmailCodeV4)
 
-    This endpoint is used to send email code.
+    Sends an MFA email code.
     --------------
     Supported actions:
     * ChangePassword
@@ -3404,7 +3376,7 @@ async def admin_send_my_mfa_email_code_v4_async(
 ):
     """Send code for MFA email (AdminSendMyMFAEmailCodeV4)
 
-    This endpoint is used to send email code.
+    Sends an MFA email code.
     --------------
     Supported actions:
     * ChangePassword
@@ -3459,12 +3431,10 @@ def admin_update_my_user_v4(
 ):
     """Admin Update My User (AdminUpdateMyUserV4)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the authenticated admin user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-    action code : 10103
 
     Properties:
         url: /iam/v4/admin/users/me
@@ -3506,12 +3476,10 @@ async def admin_update_my_user_v4_async(
 ):
     """Admin Update My User (AdminUpdateMyUserV4)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the authenticated admin user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-    action code : 10103
 
     Properties:
         url: /iam/v4/admin/users/me
@@ -3557,8 +3525,8 @@ def admin_update_user_email_address_v4(
 ):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
-    This is the endpoint for an admin to update a user email address.
-    This endpoint need a valid user token from an admin to verify its identity (email) before updating a user.
+    Updates a user email address (admin operation).
+    Requires a valid admin user token to verify identity (email) before updating the user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/email
@@ -3614,8 +3582,8 @@ async def admin_update_user_email_address_v4_async(
 ):
     """Update a User Email Address (AdminUpdateUserEmailAddressV4)
 
-    This is the endpoint for an admin to update a user email address.
-    This endpoint need a valid user token from an admin to verify its identity (email) before updating a user.
+    Updates a user email address (admin operation).
+    Requires a valid admin user token to verify identity (email) before updating the user.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/email
@@ -3674,7 +3642,7 @@ def admin_update_user_role_v4(
     """Admin Update User's Role V4 (AdminUpdateUserRoleV4)
 
     User's roles will be replaced with roles from request body.
-    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this endpoint.
+    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this API.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -3733,7 +3701,7 @@ async def admin_update_user_role_v4_async(
     """Admin Update User's Role V4 (AdminUpdateUserRoleV4)
 
     User's roles will be replaced with roles from request body.
-    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this endpoint.
+    An admin user can only assign role with **assignedNamespaces** if the admin user has required permission which is same as the required permission of this API.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles
@@ -3793,7 +3761,7 @@ def admin_update_user_v4(
 ):
     """Update User (AdminUpdateUserV4)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -3802,8 +3770,6 @@ def admin_update_user_v4(
     - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}
@@ -3861,7 +3827,7 @@ async def admin_update_user_v4_async(
 ):
     """Update User (AdminUpdateUserV4)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -3870,8 +3836,6 @@ async def admin_update_user_v4_async(
     - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}
@@ -3931,26 +3895,7 @@ def create_user_from_invitation_v4(
 ):
     """Create User From Invitation (CreateUserFromInvitationV4)
 
-    This endpoint create user from saved roles when creating invitation and submitted data.
-    User will be able to login after completing submitting the data through this endpoint.
-    Available Authentication Types:
-
-    EMAILPASSWD: an authentication type used for new user registration through email.
-
-    **Note**:
-    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
-
-    Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-    Required attributes:
-    - authType: possible value is EMAILPASSWD (see above)
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
+    Creates a user from a saved invitation, completing the registration with the submitted data. The user will be able to login after completing this step. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/invite/{invitationId}
@@ -4006,26 +3951,7 @@ async def create_user_from_invitation_v4_async(
 ):
     """Create User From Invitation (CreateUserFromInvitationV4)
 
-    This endpoint create user from saved roles when creating invitation and submitted data.
-    User will be able to login after completing submitting the data through this endpoint.
-    Available Authentication Types:
-
-    EMAILPASSWD: an authentication type used for new user registration through email.
-
-    **Note**:
-    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
-
-    Country use ISO3166-1 alpha-2 two letter, e.g. US.
-
-    Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
-
-    Required attributes:
-    - authType: possible value is EMAILPASSWD (see above)
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
+    Creates a user from a saved invitation, completing the registration with the submitted data. The user will be able to login after completing this step. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/invite/{invitationId}
@@ -4083,7 +4009,7 @@ def public_challenge_my_mfav4(
 ):
     """Challenge User MFA (PublicChallengeMyMFAV4)
 
-    This endpoint will verify user's' MFA code and generate a MFA token for the action.
+    Verifies the user's MFA code and generates an MFA token for the action.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/challenge/verify
@@ -4141,7 +4067,7 @@ async def public_challenge_my_mfav4_async(
 ):
     """Challenge User MFA (PublicChallengeMyMFAV4)
 
-    This endpoint will verify user's' MFA code and generate a MFA token for the action.
+    Verifies the user's MFA code and generates an MFA token for the action.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/challenge/verify
@@ -4200,20 +4126,7 @@ def public_create_test_user_v4(
 ):
     """[TEST FACILITY ONLY]Create test User (PublicCreateTestUserV4)
 
-    Create a test user and not send verification code email
-    **Required attributes:**
-    - verified: this new user is verified or not
-    - authType: possible value is EMAILPASSWD
-    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-
-    **Not required attributes:**
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Creates a test user without sending a verification code email. Supports accepting agreements for the created user via the acceptedPolicies attribute. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/test_users
@@ -4263,20 +4176,7 @@ async def public_create_test_user_v4_async(
 ):
     """[TEST FACILITY ONLY]Create test User (PublicCreateTestUserV4)
 
-    Create a test user and not send verification code email
-    **Required attributes:**
-    - verified: this new user is verified or not
-    - authType: possible value is EMAILPASSWD
-    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-
-    **Not required attributes:**
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Creates a test user without sending a verification code email. Supports accepting agreements for the created user via the acceptedPolicies attribute. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/test_users
@@ -4328,20 +4228,7 @@ def public_create_user_v4(
 ):
     """Create User (PublicCreateUserV4)
 
-    Create a new user with unique email address and username.
-    **Required attributes:**
-    - authType: possible value is EMAILPASSWD
-    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
-    - code: required when mandatoryEmailVerificationEnabled config is true, please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
-
-    **Not required attributes:**
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Creates a new user with unique email address and username. Supports accepting agreements for the created user via the acceptedPolicies attribute. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users
@@ -4395,20 +4282,7 @@ async def public_create_user_v4_async(
 ):
     """Create User (PublicCreateUserV4)
 
-    Create a new user with unique email address and username.
-    **Required attributes:**
-    - authType: possible value is EMAILPASSWD
-    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
-    - username: Please refer to the rule from /v3/public/inputValidations API.
-    - password: Please refer to the rule from /v3/public/inputValidations API.
-    - country: ISO3166-1 alpha-2 two letter, e.g. US.
-    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
-    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
-    - code: required when mandatoryEmailVerificationEnabled config is true, please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
-
-    **Not required attributes:**
-    - displayName: Please refer to the rule from /v3/public/inputValidations API.
-    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+    Creates a new user with unique email address and username. Supports accepting agreements for the created user via the acceptedPolicies attribute. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users
@@ -4464,7 +4338,7 @@ def public_disable_my_authenticator_v4(
 ):
     """Disable 2FA authenticator (PublicDisableMyAuthenticatorV4)
 
-    This endpoint is used to disable 2FA authenticator.
+    Disables 2FA authenticator.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -4521,7 +4395,7 @@ async def public_disable_my_authenticator_v4_async(
 ):
     """Disable 2FA authenticator (PublicDisableMyAuthenticatorV4)
 
-    This endpoint is used to disable 2FA authenticator.
+    Disables 2FA authenticator.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -4580,7 +4454,7 @@ def public_disable_my_backup_codes_v4(
 ):
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
-    This endpoint is used to disable 2FA backup codes.
+    Disables 2FA backup codes.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -4637,7 +4511,7 @@ async def public_disable_my_backup_codes_v4_async(
 ):
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
-    This endpoint is used to disable 2FA backup codes.
+    Disables 2FA backup codes.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -4696,7 +4570,7 @@ def public_disable_my_email_v4(
 ):
     """Disable 2FA email (PublicDisableMyEmailV4)
 
-    This endpoint is used to disable 2FA email.
+    Disables 2FA email.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -4753,7 +4627,7 @@ async def public_disable_my_email_v4_async(
 ):
     """Disable 2FA email (PublicDisableMyEmailV4)
 
-    This endpoint is used to disable 2FA email.
+    Disables 2FA email.
     ------
     **Note**: **mfaToken** is required when all the following are enabled:
     - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
@@ -4812,7 +4686,7 @@ def public_download_my_backup_codes_v4(
 ):
     """Download user backup codes (PublicDownloadMyBackupCodesV4)
 
-    This endpoint is used to download backup codes.
+    Downloads backup codes as a file.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/download
@@ -4861,7 +4735,7 @@ async def public_download_my_backup_codes_v4_async(
 ):
     """Download user backup codes (PublicDownloadMyBackupCodesV4)
 
-    This endpoint is used to download backup codes.
+    Downloads backup codes as a file.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/download
@@ -4912,7 +4786,7 @@ def public_enable_backup_codes_v4(
 ):
     """Enable 2FA backup codes (PublicEnableBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes/enable
@@ -4966,7 +4840,7 @@ async def public_enable_backup_codes_v4_async(
 ):
     """Enable 2FA backup codes (PublicEnableBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes/enable
@@ -5022,7 +4896,7 @@ def public_enable_my_authenticator_v4(
 ):
     """Enable 2FA authenticator (PublicEnableMyAuthenticatorV4)
 
-    This endpoint is used to enable 2FA authenticator.
+    Enables 2FA authenticator.
     ----------
     Prerequisites:
     - Generate the secret key/QR code uri by **_/iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key_**
@@ -5081,7 +4955,7 @@ async def public_enable_my_authenticator_v4_async(
 ):
     """Enable 2FA authenticator (PublicEnableMyAuthenticatorV4)
 
-    This endpoint is used to enable 2FA authenticator.
+    Enables 2FA authenticator.
     ----------
     Prerequisites:
     - Generate the secret key/QR code uri by **_/iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key_**
@@ -5142,7 +5016,7 @@ def public_enable_my_backup_codes_v4(
 ):
     """Enable 2FA backup codes (PublicEnableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/enable
@@ -5193,7 +5067,7 @@ async def public_enable_my_backup_codes_v4_async(
 ):
     """Enable 2FA backup codes (PublicEnableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/enable
@@ -5246,7 +5120,7 @@ def public_enable_my_email_v4(
 ):
     """Enable 2FA email (PublicEnableMyEmailV4)
 
-    This endpoint is used to enable 2FA email.
+    Enables 2FA email.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/enable
@@ -5300,7 +5174,7 @@ async def public_enable_my_email_v4_async(
 ):
     """Enable 2FA email (PublicEnableMyEmailV4)
 
-    This endpoint is used to enable 2FA email.
+    Enables 2FA email.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/enable
@@ -5356,8 +5230,8 @@ def public_generate_backup_codes_v4(
 ):
     """Generate backup codes (PublicGenerateBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
-    Each codes is a one-time code and will be deleted once used.
+    Generates 8-digit backup codes.
+    Each code is a one-time code and will be deleted once used.
     The codes will be sent through linked email.
 
     Properties:
@@ -5410,8 +5284,8 @@ async def public_generate_backup_codes_v4_async(
 ):
     """Generate backup codes (PublicGenerateBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
-    Each codes is a one-time code and will be deleted once used.
+    Generates 8-digit backup codes.
+    Each code is a one-time code and will be deleted once used.
     The codes will be sent through linked email.
 
     Properties:
@@ -5465,7 +5339,7 @@ def public_generate_my_authenticator_key_v4(
 ):
     """Generate secret key for 3rd-party authenticate app (PublicGenerateMyAuthenticatorKeyV4)
 
-    This endpoint is used to generate a secret key for 3rd-party authenticator app.
+    Generates a secret key for a 3rd-party authenticator app.
     A QR code URI is also returned so that frontend can generate QR code image.
 
     Properties:
@@ -5514,7 +5388,7 @@ async def public_generate_my_authenticator_key_v4_async(
 ):
     """Generate secret key for 3rd-party authenticate app (PublicGenerateMyAuthenticatorKeyV4)
 
-    This endpoint is used to generate a secret key for 3rd-party authenticator app.
+    Generates a secret key for a 3rd-party authenticator app.
     A QR code URI is also returned so that frontend can generate QR code image.
 
     Properties:
@@ -5566,7 +5440,7 @@ def public_generate_my_backup_codes_v4(
 ):
     """Generate backup codes (PublicGenerateMyBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -5616,7 +5490,7 @@ async def public_generate_my_backup_codes_v4_async(
 ):
     """Generate backup codes (PublicGenerateMyBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -5668,8 +5542,8 @@ def public_get_backup_codes_v4(
 ):
     """Get backup codes and send to email (PublicGetBackupCodesV4)
 
-    This endpoint is used to get existing 8-digits backup codes.
-    Each codes is a one-time code and will be deleted once used.
+    Returns existing 8-digit backup codes.
+    Each code is a one-time code and will be deleted once used.
     The codes will be sent through linked email.
 
     Properties:
@@ -5722,8 +5596,8 @@ async def public_get_backup_codes_v4_async(
 ):
     """Get backup codes and send to email (PublicGetBackupCodesV4)
 
-    This endpoint is used to get existing 8-digits backup codes.
-    Each codes is a one-time code and will be deleted once used.
+    Returns existing 8-digit backup codes.
+    Each code is a one-time code and will be deleted once used.
     The codes will be sent through linked email.
 
     Properties:
@@ -5778,7 +5652,7 @@ def public_get_my_backup_codes_v4(
 ):
     """Get backup codes (PublicGetMyBackupCodesV4)
 
-    This endpoint is used to get 8-digits backup codes.
+    Returns 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -5828,7 +5702,7 @@ async def public_get_my_backup_codes_v4_async(
 ):
     """Get backup codes (PublicGetMyBackupCodesV4)
 
-    This endpoint is used to get 8-digits backup codes.
+    Returns 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:
@@ -5879,7 +5753,7 @@ def public_get_my_enabled_factors_v4(
 ):
     """Get user enabled factors (PublicGetMyEnabledFactorsV4)
 
-    This endpoint is used to get user enabled factors.
+    Returns all enabled 2FA factors for the user.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor
@@ -5927,7 +5801,7 @@ async def public_get_my_enabled_factors_v4_async(
 ):
     """Get user enabled factors (PublicGetMyEnabledFactorsV4)
 
-    This endpoint is used to get user enabled factors.
+    Returns all enabled 2FA factors for the user.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor
@@ -5978,7 +5852,7 @@ def public_get_my_mfa_status_v4(
 ):
     """Get User MFA Status (PublicGetMyMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
     ---------
     **Substitute endpoint**: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status [GET]
 
@@ -6027,7 +5901,7 @@ async def public_get_my_mfa_status_v4_async(
 ):
     """Get User MFA Status (PublicGetMyMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
     ---------
     **Substitute endpoint**: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status [GET]
 
@@ -6077,7 +5951,7 @@ def public_get_my_own_mfa_status_v4(
 ):
     """Get My Own MFA Status (PublicGetMyOwnMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
@@ -6123,7 +5997,7 @@ async def public_get_my_own_mfa_status_v4_async(
 ):
     """Get My Own MFA Status (PublicGetMyOwnMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
@@ -6174,7 +6048,7 @@ def public_get_user_by_platform_user_idv4(
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV4)
 
     Get User By Platform User ID.
-    This endpoint return user information by given platform ID and platform user ID.
+    Returns user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
     If the target platform is not linked to the current user, will only return public information.
@@ -6269,7 +6143,7 @@ async def public_get_user_by_platform_user_idv4_async(
     """Get User By Platform User ID (PublicGetUserByPlatformUserIDV4)
 
     Get User By Platform User ID.
-    This endpoint return user information by given platform ID and platform user ID.
+    Returns user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
     If the target platform is not linked to the current user, will only return public information.
@@ -6364,8 +6238,7 @@ def public_get_user_public_info_by_user_id_v4(
 ):
     """Get User Public Info By User ID (PublicGetUserPublicInfoByUserIdV4)
 
-    This endpoint only returns user's public information.
-    action code: 10129
+    Returns only user's public information.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/{userId}
@@ -6413,8 +6286,7 @@ async def public_get_user_public_info_by_user_id_v4_async(
 ):
     """Get User Public Info By User ID (PublicGetUserPublicInfoByUserIdV4)
 
-    This endpoint only returns user's public information.
-    action code: 10129
+    Returns only user's public information.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/{userId}
@@ -6463,16 +6335,7 @@ def public_invite_user_v4(
 ):
     """Public invite admin user v4 (PublicInviteUserV4)
 
-    This endpoint is used to invite a game studio admin user with new namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-
-    Request body details:
-    - emailAddress: email address of the user to be invited
-    - namespace: new namespace of the user to be created
-    - namespaceDisplayName: display name of the new namespace
-    - additionalData(optional): for utm parameter data
-
-    The invited users will also be assigned with "User" role by default.
+    Invites a game studio admin user with a new namespace in multi tenant mode. Returns an error if the service multi tenant mode is set to false. The invited users will also be assigned with "User" role by default. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/users/invite
@@ -6516,16 +6379,7 @@ async def public_invite_user_v4_async(
 ):
     """Public invite admin user v4 (PublicInviteUserV4)
 
-    This endpoint is used to invite a game studio admin user with new namespace in multi tenant mode.
-    It will return error if the service multi tenant mode is set to false.
-
-    Request body details:
-    - emailAddress: email address of the user to be invited
-    - namespace: new namespace of the user to be created
-    - namespaceDisplayName: display name of the new namespace
-    - additionalData(optional): for utm parameter data
-
-    The invited users will also be assigned with "User" role by default.
+    Invites a game studio admin user with a new namespace in multi tenant mode. Returns an error if the service multi tenant mode is set to false. The invited users will also be assigned with "User" role by default. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/public/users/invite
@@ -6575,8 +6429,8 @@ def public_list_user_id_by_platform_user_i_ds_v4(
     """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV4)
 
     List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID, the max count is 100.
+    Returns game user IDs from the given namespace.
+    Returns a list of user IDs by given platform ID and list of platform user IDs. The max count is 100.
 
     Supported platform:
     - steam
@@ -6666,8 +6520,8 @@ async def public_list_user_id_by_platform_user_i_ds_v4_async(
     """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV4)
 
     List User ID By Platform User ID
-    This endpoint intended to list game user ID from the given namespace
-    This endpoint return list of user ID by given platform ID and list of platform user ID, the max count is 100.
+    Returns game user IDs from the given namespace.
+    Returns a list of user IDs by given platform ID and list of platform user IDs. The max count is 100.
 
     Supported platform:
     - steam
@@ -6756,7 +6610,7 @@ def public_make_factor_my_default_v4(
 ):
     """Make 2FA factor default (PublicMakeFactorMyDefaultV4)
 
-    This endpoint is used to make 2FA factor default.
+    Makes 2FA factor default.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor
@@ -6808,7 +6662,7 @@ async def public_make_factor_my_default_v4_async(
 ):
     """Make 2FA factor default (PublicMakeFactorMyDefaultV4)
 
-    This endpoint is used to make 2FA factor default.
+    Makes 2FA factor default.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/factor
@@ -6862,8 +6716,7 @@ def public_remove_trusted_device_v4(
 ):
     """Remove Trusted Device (PublicRemoveTrustedDeviceV4)
 
-    (Only for test)This endpoint is used to remove trusted device.
-    This endpoint Requires device_token in cookie
+    **(Test only)** Removes a trusted device. Requires a device_token cookie.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/device
@@ -6915,8 +6768,7 @@ async def public_remove_trusted_device_v4_async(
 ):
     """Remove Trusted Device (PublicRemoveTrustedDeviceV4)
 
-    (Only for test)This endpoint is used to remove trusted device.
-    This endpoint Requires device_token in cookie
+    **(Test only)** Removes a trusted device. Requires a device_token cookie.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/device
@@ -6971,7 +6823,7 @@ def public_send_my_mfa_email_code_v4(
 ):
     """Send code for MFA email (PublicSendMyMFAEmailCodeV4)
 
-    This endpoint is used to send email code.
+    Sends an MFA email code.
     ----------------
     Supported values of action:
     * ChangePassword
@@ -7033,7 +6885,7 @@ async def public_send_my_mfa_email_code_v4_async(
 ):
     """Send code for MFA email (PublicSendMyMFAEmailCodeV4)
 
-    This endpoint is used to send email code.
+    Sends an MFA email code.
     ----------------
     Supported values of action:
     * ChangePassword
@@ -7096,8 +6948,8 @@ def public_update_user_email_address_v4(
 ):
     """Update My Email Address (PublicUpdateUserEmailAddressV4)
 
-    The endpoint to update my email address.
-    It requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
+    Updates the authenticated user's email address.
+    Requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email
@@ -7149,8 +7001,8 @@ async def public_update_user_email_address_v4_async(
 ):
     """Update My Email Address (PublicUpdateUserEmailAddressV4)
 
-    The endpoint to update my email address.
-    It requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
+    Updates the authenticated user's email address.
+    Requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email
@@ -7204,7 +7056,7 @@ def public_update_user_v4(
 ):
     """Update User (PublicUpdateUserV4)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -7213,8 +7065,6 @@ def public_update_user_v4(
     - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me
@@ -7266,7 +7116,7 @@ async def public_update_user_v4_async(
 ):
     """Update User (PublicUpdateUserV4)
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Updates the user based on given data. **Single request can update single field or multi fields.**
     Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -7275,8 +7125,6 @@ async def public_update_user_v4_async(
     - User want to update email address of which have been verified, newEmailAddress response field will be filled with new email address.
     - User want to update email address of which have not been verified, { oldEmailAddress, emailAddress} response field will be filled with new email address.
     - User want to update email address of which have been verified and updated before, { oldEmailAddress, emailAddress} response field will be filled with verified email before. newEmailAddress response field will be filled with newest email address.
-
-    action code : 10103
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me
@@ -7331,7 +7179,6 @@ def public_upgrade_headless_account_v4(
     """Upgrade user account to full account (PublicUpgradeHeadlessAccountV4)
 
     Upgrade headless account to full account without verifying email address. Client does not need to provide verification code which sent to email address.
-    action code : 10124
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/headless/verify
@@ -7384,7 +7231,6 @@ async def public_upgrade_headless_account_v4_async(
     """Upgrade user account to full account (PublicUpgradeHeadlessAccountV4)
 
     Upgrade headless account to full account without verifying email address. Client does not need to provide verification code which sent to email address.
-    action code : 10124
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/headless/verify
@@ -7438,19 +7284,13 @@ def public_upgrade_headless_account_with_verification_code_v4(
 ):
     """Upgrade headless account and automatically verified the email address if it is succeeded (PublicUpgradeHeadlessAccountWithVerificationCodeV4)
 
-    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
 
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendVerificationCodeV3).
+    To obtain a verification code, use the [send verification code API](#operations-Users-PublicSendVerificationCodeV3).
 
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
-    Supported user data fields:
-    - displayName
-    - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
-    - country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-    action code : 10124
+    Also has the ability to update user data (displayName, dateOfBirth, country) right after the upgrade process is done. See request body field descriptions for format details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/headless/code/verify
@@ -7504,19 +7344,13 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(
 ):
     """Upgrade headless account and automatically verified the email address if it is succeeded (PublicUpgradeHeadlessAccountWithVerificationCodeV4)
 
-    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
 
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendVerificationCodeV3).
+    To obtain a verification code, use the [send verification code API](#operations-Users-PublicSendVerificationCodeV3).
 
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
-    Supported user data fields:
-    - displayName
-    - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29
-    - country : format ISO3166-1 alpha-2 two letter, e.g. US
-
-    action code : 10124
+    Also has the ability to update user data (displayName, dateOfBirth, country) right after the upgrade process is done. See request body field descriptions for format details.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/headless/code/verify
@@ -7569,16 +7403,16 @@ def public_upgrade_headless_with_code_v4_forward(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upgrade the headless account and automatically verify the email address if the upgrade succeeds. (PublicUpgradeHeadlessWithCodeV4Forward)
+    """Upgrade Headless Account with Auto-Verification (Forward) (PublicUpgradeHeadlessWithCodeV4Forward)
 
     This is a forward version for code verify.
-    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
 
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendCodeForwardV3).
+    To obtain a verification code, use the [send verification code API](#operations-Users-PublicSendCodeForwardV3).
 
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
 
     Properties:
         url: /iam/v4/public/users/me/headless/code/verify/forward
@@ -7610,16 +7444,16 @@ async def public_upgrade_headless_with_code_v4_forward_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upgrade the headless account and automatically verify the email address if the upgrade succeeds. (PublicUpgradeHeadlessWithCodeV4Forward)
+    """Upgrade Headless Account with Auto-Verification (Forward) (PublicUpgradeHeadlessWithCodeV4Forward)
 
     This is a forward version for code verify.
-    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
     By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
 
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
-    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendCodeForwardV3).
+    To obtain a verification code, use the [send verification code API](#operations-Users-PublicSendCodeForwardV3).
 
-    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+    Also has the ability to update user data (if the user data field is specified) right after the upgrade account process is done.
 
     Properties:
         url: /iam/v4/public/users/me/headless/code/verify/forward

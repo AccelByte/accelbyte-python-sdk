@@ -333,6 +333,7 @@ async def admin_delete_challenge_async(
 @same_doc_as(AdminDeleteTiedChallenge)
 def admin_delete_tied_challenge(
     challenge_code: str,
+    safe_delete: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -359,6 +360,8 @@ def admin_delete_tied_challenge(
 
         namespace: (namespace) REQUIRED str in path
 
+        safe_delete: (safeDelete) OPTIONAL str in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -378,6 +381,7 @@ def admin_delete_tied_challenge(
             return None, error
     request = AdminDeleteTiedChallenge.create(
         challenge_code=challenge_code,
+        safe_delete=safe_delete,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -386,6 +390,7 @@ def admin_delete_tied_challenge(
 @same_doc_as(AdminDeleteTiedChallenge)
 async def admin_delete_tied_challenge_async(
     challenge_code: str,
+    safe_delete: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -412,6 +417,8 @@ async def admin_delete_tied_challenge_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        safe_delete: (safeDelete) OPTIONAL str in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -431,6 +438,7 @@ async def admin_delete_tied_challenge_async(
             return None, error
     request = AdminDeleteTiedChallenge.create(
         challenge_code=challenge_code,
+        safe_delete=safe_delete,
         namespace=namespace,
     )
     return await run_request_async(

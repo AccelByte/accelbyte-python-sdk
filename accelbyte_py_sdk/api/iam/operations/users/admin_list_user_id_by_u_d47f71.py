@@ -38,7 +38,7 @@ class AdminListUserIDByUserIDsV3(Operation):
     """List User By User ID (AdminListUserIDByUserIDsV3)
 
     List User By User ID
-    This endpoint intended to list user information from the given list of userID and namespace
+    Lists user information from the given list of userID and namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/bulk

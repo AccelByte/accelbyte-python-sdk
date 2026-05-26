@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class UpdateSSOPlatformCredential(Operation):
     """Update SSO Platform Credential (UpdateSSOPlatformCredential)
 
-    This is the API to Delete SSO Platform Credential.
+    Updates the SSO platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/sso

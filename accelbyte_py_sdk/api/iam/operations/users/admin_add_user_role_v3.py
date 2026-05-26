@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import RestErrorResponse
 
@@ -35,7 +36,9 @@ from ...models import RestErrorResponse
 class AdminAddUserRoleV3(Operation):
     """Add User Role (AdminAddUserRoleV3)
 
-    action code: 10109
+    **Deprecated.** Only assigns roles in the legacy roles entity.
+
+    **Substitute endpoint:** /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles [POST]
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles/{roleId}

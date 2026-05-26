@@ -37,7 +37,6 @@ class AdminAddRoleManagersV3(Operation):
     """Add Role Managers (AdminAddRoleManagersV3)
 
     Role can only be assigned to other users by the role's manager.
-    action code: 10408
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/managers

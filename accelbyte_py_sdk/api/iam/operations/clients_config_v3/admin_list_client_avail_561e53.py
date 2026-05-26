@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminListClientAvailablePermissions(Operation):
     """List Client available permissions (AdminListClientAvailablePermissions)
 
-    List Client available permissions
+    Lists all available client permissions.
 
     Properties:
         url: /iam/v3/admin/clientConfig/permissions

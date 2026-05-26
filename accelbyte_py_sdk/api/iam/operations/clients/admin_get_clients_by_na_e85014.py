@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 
 
 class AdminGetClientsByNamespaceV3(Operation):
-    """Get clients by namespace (AdminGetClientsByNamespaceV3)
+    """Get Clients by Namespace (AdminGetClientsByNamespaceV3)
 
-    action code: 10308
+    Retrieves all OAuth clients in the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients

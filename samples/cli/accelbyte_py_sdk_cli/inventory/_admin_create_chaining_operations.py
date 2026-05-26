@@ -75,4 +75,4 @@ def admin_create_chaining_operations(
 
 
 admin_create_chaining_operations.operation_id = "AdminCreateChainingOperations"
-admin_create_chaining_operations.is_deprecated = False
+admin_create_chaining_operations.is_deprecated = True

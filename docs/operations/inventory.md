@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Inventory Service Early Access Index (0.2.22)
+# AccelByte Gaming Services Inventory Service Early Access Index (0.2.25)
 
 
 ## Operations
@@ -10,7 +10,7 @@
 ### Admin Chaining Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /inventory/v1/admin/namespaces/{namespace}/chainingOperations | POST | AdminCreateChainingOperations | `false` | [AdminCreateChainingOperations](../../accelbyte_py_sdk/api/inventory/operations/admin_chaining_operations/admin_create_chaining_o_8801c9.py) | [admin_create_chaining_operations](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_chaining_operations.py) | [accelbyte_py_sdk_cli inventory-admin-create-chaining-operations](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_create_chaining_operations.py) |
+| /inventory/v1/admin/namespaces/{namespace}/chainingOperations | POST | AdminCreateChainingOperations | `true` | [AdminCreateChainingOperations](../../accelbyte_py_sdk/api/inventory/operations/admin_chaining_operations/admin_create_chaining_o_8801c9.py) | [admin_create_chaining_operations](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_chaining_operations.py) | [accelbyte_py_sdk_cli inventory-admin-create-chaining-operations](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_create_chaining_operations.py) |
 
 ### Admin Integration Configurations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

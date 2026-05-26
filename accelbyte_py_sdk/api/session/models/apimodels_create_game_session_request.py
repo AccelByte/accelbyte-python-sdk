@@ -49,6 +49,7 @@ class TypeEnum(StrEnum):
 
 class TextChatModeEnum(StrEnum):
     GAME = "GAME"
+    GAME_AND_TEAM = "GAME_AND_TEAM"
     NONE = "NONE"
     TEAM = "TEAM"
 
@@ -101,6 +102,8 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        password: (password) OPTIONAL str
+
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
 
         storage: (storage) OPTIONAL ApimodelsSessionStorageRequest
@@ -134,6 +137,7 @@ class ApimodelsCreateGameSessionRequest(Model):
     custom_urlgrpc: str  # OPTIONAL
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    password: str  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
     storage: ApimodelsSessionStorageRequest  # OPTIONAL
     text_chat_mode: Union[str, TextChatModeEnum]  # OPTIONAL
@@ -239,6 +243,10 @@ class ApimodelsCreateGameSessionRequest(Model):
         self, value: List[str]
     ) -> ApimodelsCreateGameSessionRequest:
         self.fallback_claim_keys = value
+        return self
+
+    def with_password(self, value: str) -> ApimodelsCreateGameSessionRequest:
+        self.password = value
         return self
 
     def with_preferred_claim_keys(
@@ -361,6 +369,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "password"):
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = ""
         if hasattr(self, "preferred_claim_keys"):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
@@ -408,6 +420,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         custom_urlgrpc: Optional[str] = None,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        password: Optional[str] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         storage: Optional[ApimodelsSessionStorageRequest] = None,
         text_chat_mode: Optional[Union[str, TextChatModeEnum]] = None,
@@ -442,6 +455,8 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if password is not None:
+            instance.password = password
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
         if storage is not None:
@@ -554,6 +569,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = ""
         if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
             instance.preferred_claim_keys = [
                 str(i0) for i0 in dict_["preferredClaimKeys"]
@@ -642,6 +661,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "customURLGRPC": "custom_urlgrpc",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "password": "password",
             "preferredClaimKeys": "preferred_claim_keys",
             "storage": "storage",
             "textChatMode": "text_chat_mode",
@@ -673,6 +693,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "customURLGRPC": False,
             "dsSource": False,
             "fallbackClaimKeys": False,
+            "password": False,
             "preferredClaimKeys": False,
             "storage": False,
             "textChatMode": False,
@@ -691,7 +712,7 @@ class ApimodelsCreateGameSessionRequest(Model):
                 "OPEN",
             ],
             "type": ["DS", "NONE", "P2P"],
-            "textChatMode": ["GAME", "NONE", "TEAM"],
+            "textChatMode": ["GAME", "GAME_AND_TEAM", "NONE", "TEAM"],
         }
 
     # endregion static methods

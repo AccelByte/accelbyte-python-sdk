@@ -65,4 +65,4 @@ def retrieve_all_legal_policies(
 
 
 retrieve_all_legal_policies.operation_id = "retrieveAllLegalPolicies"
-retrieve_all_legal_policies.is_deprecated = False
+retrieve_all_legal_policies.is_deprecated = True

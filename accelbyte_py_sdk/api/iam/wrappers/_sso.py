@@ -44,6 +44,8 @@ def login_sso_client(
 ):
     """Login to SSO client with provided platformId (LoginSSOClient)
 
+    Redirects the user to the SSO client's login page for the specified platform. An optional 'payload' query parameter can be passed with key-value data from the SSO client.
+
     Properties:
         url: /iam/v3/sso/{platformId}
 
@@ -80,6 +82,8 @@ async def login_sso_client_async(
 ):
     """Login to SSO client with provided platformId (LoginSSOClient)
 
+    Redirects the user to the SSO client's login page for the specified platform. An optional 'payload' query parameter can be passed with key-value data from the SSO client.
+
     Properties:
         url: /iam/v3/sso/{platformId}
 
@@ -115,7 +119,7 @@ def logout_sso_client(
 ):
     """Logout (LogoutSSOClient)
 
-    Logout user's session on platform that logged in using SSO.
+    Logs out the user's session on a platform that was authenticated using SSO.
 
     Supported platforms:
     - discourse
@@ -156,7 +160,7 @@ async def logout_sso_client_async(
 ):
     """Logout (LogoutSSOClient)
 
-    Logout user's session on platform that logged in using SSO.
+    Logs out the user's session on a platform that was authenticated using SSO.
 
     Supported platforms:
     - discourse

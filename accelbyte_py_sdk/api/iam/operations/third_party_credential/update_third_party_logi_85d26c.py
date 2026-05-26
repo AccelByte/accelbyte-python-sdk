@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 
 
 class UpdateThirdPartyLoginPlatformDomainV3(Operation):
-    """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
+    """Set Third Party Platform Credential Domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
     This API is a create-or-update behavior. If it is update, it is a replacement behavior.

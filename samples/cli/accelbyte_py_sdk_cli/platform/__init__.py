@@ -347,6 +347,7 @@ from ._get_third_party_user_subscription_details import (
     get_third_party_user_subscription_details,
 )
 from ._sync_subscription import sync_subscription
+from ._admin_sync_twitch_drops_entitlement import admin_sync_twitch_drops_entitlement
 from ._query_user_orders import query_user_orders
 from ._admin_create_user_order import admin_create_user_order
 from ._count_of_purchased_item import count_of_purchased_item
@@ -912,6 +913,7 @@ commands = [
     sync_subscription_transaction,
     get_third_party_user_subscription_details,
     sync_subscription,
+    admin_sync_twitch_drops_entitlement,
     query_user_orders,
     admin_create_user_order,
     count_of_purchased_item,

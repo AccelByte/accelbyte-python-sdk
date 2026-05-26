@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.31.0"
+__version__ = "1.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -31,6 +31,17 @@ from ._app import stop_app_v1_async
 from ._app import update_app_v1
 from ._app import update_app_v1_async
 
+from ._app_ui import create_app_ui
+from ._app_ui import create_app_ui_async
+from ._app_ui import delete_app_ui
+from ._app_ui import delete_app_ui_async
+from ._app_ui import list_app_ui
+from ._app_ui import list_app_ui_async
+from ._app_ui import upload_app_ui_file
+from ._app_ui import upload_app_ui_file_async
+
+from ._app_v2 import apply_app_config_v2
+from ._app_v2 import apply_app_config_v2_async
 from ._app_v2 import create_app_v2
 from ._app_v2 import create_app_v2_async
 from ._app_v2 import delete_app_v2
@@ -113,6 +124,9 @@ from ._deployment_v2 import get_deployment_v2_async
 from ._deployment_v2 import get_list_of_deployment_v2
 from ._deployment_v2 import get_list_of_deployment_v2_async
 
+from ._extend_files import get_extend_file
+from ._extend_files import get_extend_file_async
+
 from ._image import delete_app_images_v1
 from ._image import delete_app_images_v1_async
 from ._image import get_app_image_list_v1
@@ -123,6 +137,8 @@ from ._image_v2 import delete_app_images_v2_async
 from ._image_v2 import get_app_image_list_v2
 from ._image_v2 import get_app_image_list_v2_async
 
+from ._managed_resources import create_new_no_sql_database_credential_v2
+from ._managed_resources import create_new_no_sql_database_credential_v2_async
 from ._managed_resources import create_no_sql_cluster_v2
 from ._managed_resources import create_no_sql_cluster_v2_async
 from ._managed_resources import create_no_sql_database_credential_v2
@@ -147,6 +163,56 @@ from ._managed_resources import stop_no_sql_cluster_v2
 from ._managed_resources import stop_no_sql_cluster_v2_async
 from ._managed_resources import update_no_sql_cluster_v2
 from ._managed_resources import update_no_sql_cluster_v2_async
+
+from ._managed_resources_key_value import create_key_value_cluster_v2
+from ._managed_resources_key_value import create_key_value_cluster_v2_async
+from ._managed_resources_key_value import create_key_value_credential_v2
+from ._managed_resources_key_value import create_key_value_credential_v2_async
+from ._managed_resources_key_value import delete_key_value_cluster_v2
+from ._managed_resources_key_value import delete_key_value_cluster_v2_async
+from ._managed_resources_key_value import get_integration_app_key_value_cluster_v2
+from ._managed_resources_key_value import get_integration_app_key_value_cluster_v2_async
+from ._managed_resources_key_value import get_key_value_cluster_limit_config_v2
+from ._managed_resources_key_value import get_key_value_cluster_limit_config_v2_async
+from ._managed_resources_key_value import get_key_value_cluster_v2
+from ._managed_resources_key_value import get_key_value_cluster_v2_async
+from ._managed_resources_key_value import get_list_integrated_app_key_value_cluster_v2
+from ._managed_resources_key_value import (
+    get_list_integrated_app_key_value_cluster_v2_async,
+)
+from ._managed_resources_key_value import integrate_app_key_value_cluster_v2
+from ._managed_resources_key_value import integrate_app_key_value_cluster_v2_async
+from ._managed_resources_key_value import list_key_value_cluster_v2
+from ._managed_resources_key_value import list_key_value_cluster_v2_async
+from ._managed_resources_key_value import remove_integration_app_key_value_cluster_v2
+from ._managed_resources_key_value import (
+    remove_integration_app_key_value_cluster_v2_async,
+)
+from ._managed_resources_key_value import update_key_value_cluster_v2
+from ._managed_resources_key_value import update_key_value_cluster_v2_async
+
+from ._managed_resources_sql import create_sql_cluster_v2
+from ._managed_resources_sql import create_sql_cluster_v2_async
+from ._managed_resources_sql import create_sql_database_credential_v2
+from ._managed_resources_sql import create_sql_database_credential_v2_async
+from ._managed_resources_sql import create_sql_database_v2
+from ._managed_resources_sql import create_sql_database_v2_async
+from ._managed_resources_sql import delete_sql_cluster_v2
+from ._managed_resources_sql import delete_sql_cluster_v2_async
+from ._managed_resources_sql import delete_sql_database_v2
+from ._managed_resources_sql import delete_sql_database_v2_async
+from ._managed_resources_sql import get_sql_app_list_v2
+from ._managed_resources_sql import get_sql_app_list_v2_async
+from ._managed_resources_sql import get_sql_cluster_v2
+from ._managed_resources_sql import get_sql_cluster_v2_async
+from ._managed_resources_sql import get_sql_database_v2
+from ._managed_resources_sql import get_sql_database_v2_async
+from ._managed_resources_sql import start_sql_cluster_v2
+from ._managed_resources_sql import start_sql_cluster_v2_async
+from ._managed_resources_sql import stop_sql_cluster_v2
+from ._managed_resources_sql import stop_sql_cluster_v2_async
+from ._managed_resources_sql import update_sql_cluster_v2
+from ._managed_resources_sql import update_sql_cluster_v2_async
 
 from ._messages import public_get_messages
 from ._messages import public_get_messages_async

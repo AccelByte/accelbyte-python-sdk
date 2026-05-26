@@ -35,11 +35,11 @@ from ...models import RestErrorResponse
 class AdminVerifyUserWithoutVerificationCodeV3(Operation):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
-    This endpoint force verify user
-    Note:
-    - namespace: only accept publisher/studio namespace
-    - userId: only accept publisher/studio userId
-    action code: 10118
+    Force-verifies a user's account without requiring a verification code.
+
+    **Note:**
+    - namespace: only accepts publisher/studio namespaces
+    - userId: only accepts publisher/studio user IDs
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/verify

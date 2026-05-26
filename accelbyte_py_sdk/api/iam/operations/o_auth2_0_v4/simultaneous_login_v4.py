@@ -48,7 +48,7 @@ class CodeChallengeMethodEnum(StrEnum):
 class SimultaneousLoginV4(Operation):
     """Simultaneous login (SimultaneousLoginV4)
 
-    # This endpoint is in ALPHA, avoid using this endpoint fow now, reach out to AB support for inquiries
+    # In ALPHA â avoid using this API for now, reach out to AB support for inquiries
 
     Simultaneous login flow.
 

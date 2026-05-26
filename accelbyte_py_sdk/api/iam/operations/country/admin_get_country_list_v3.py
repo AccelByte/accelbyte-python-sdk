@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetCountryListV3(Operation):
     """Get Country List (AdminGetCountryListV3)
 
-    Admin get country list
+    Retrieves the list of countries for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries

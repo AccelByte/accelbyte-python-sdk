@@ -66,4 +66,4 @@ def public_get_input_validation_by_field(
 
 
 public_get_input_validation_by_field.operation_id = "PublicGetInputValidationByField"
-public_get_input_validation_by_field.is_deprecated = False
+public_get_input_validation_by_field.is_deprecated = True

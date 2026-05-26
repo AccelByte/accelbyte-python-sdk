@@ -36,7 +36,9 @@ from ..models import ApimodelsDeleteBulkGameSessionRequest
 from ..models import ApimodelsDeleteBulkGameSessionsAPIResponse
 from ..models import ApimodelsGameSessionQueryResponse
 from ..models import ApimodelsGameSessionResponse
+from ..models import ApimodelsGetPasswordResponse
 from ..models import ApimodelsJoinByCodeRequest
+from ..models import ApimodelsJoinSessionRequest
 from ..models import ApimodelsPromoteLeaderRequest
 from ..models import ApimodelsServerSecret
 from ..models import ApimodelsSessionInviteRequest
@@ -45,6 +47,7 @@ from ..models import ApimodelsUpdateGameSessionBackfillRequest
 from ..models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..models import ApimodelsUpdateGameSessionRequest
 from ..models import ApimodelsUpdateGamesessionDSInformationRequest
+from ..models import ApimodelsUpdatePasswordRequest
 from ..models import ResponseError
 
 from ..operations.game_session import AdminDeleteBulkGameSessions
@@ -72,12 +75,14 @@ from ..operations.game_session import PatchUpdateGameSession
 from ..operations.game_session import PublicGameSessionCancel
 from ..operations.game_session import PublicGameSessionInvite
 from ..operations.game_session import PublicGameSessionReject
+from ..operations.game_session import PublicGetGameSessionPassword
 from ..operations.game_session import PublicKickGameSessionMember
 from ..operations.game_session import PublicPromoteGameSessionLeader
 from ..operations.game_session import PublicQueryGameSessionsByAttributes
 from ..operations.game_session import PublicQueryMyGameSessions
 from ..operations.game_session import PublicRevokeGameSessionCode
 from ..operations.game_session import PublicSessionJoinCode
+from ..operations.game_session import PublicUpdateGameSessionPassword
 from ..operations.game_session import UpdateGameSession
 from ..operations.game_session import UpdateGameSessionBackfillTicketID
 from ..models import (
@@ -89,6 +94,7 @@ from ..models import (
     ApimodelsUpdateGameSessionRequestJoinabilityEnum,
     ApimodelsUpdateGameSessionRequestTypeEnum,
 )
+from ..models import ApimodelsUpdateGamesessionDSInformationRequestStatusEnum
 
 
 @same_doc_as(AdminDeleteBulkGameSessions)
@@ -788,6 +794,8 @@ def admin_update_ds_information(
     """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
 
     This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
+    For persistent sessions with DS_AMS or DS_CUSTOM, this endpoint can be used to update DS information when the dedicated server becomes available or when DS status changes occur.
+    Supported status only enums:"AVAILABLE, FAILED_TO_REQUEST, DS_ERROR, ENDED" example:"AVAILABLE"
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation
@@ -844,6 +852,8 @@ async def admin_update_ds_information_async(
     """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
 
     This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
+    For persistent sessions with DS_AMS or DS_CUSTOM, this endpoint can be used to update DS information when the dedicated server becomes available or when DS status changes occur.
+    Supported status only enums:"AVAILABLE, FAILED_TO_REQUEST, DS_ERROR, ENDED" example:"AVAILABLE"
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation
@@ -1993,6 +2003,7 @@ async def get_session_server_secret_async(
 
 @same_doc_as(JoinGameSession)
 def join_game_session(
+    body: ApimodelsJoinSessionRequest,
     session_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2009,11 +2020,13 @@ def join_game_session(
 
         tags: ["Game Session"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsJoinSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2037,6 +2050,7 @@ def join_game_session(
         if error:
             return None, error
     request = JoinGameSession.create(
+        body=body,
         session_id=session_id,
         namespace=namespace,
     )
@@ -2045,6 +2059,7 @@ def join_game_session(
 
 @same_doc_as(JoinGameSession)
 async def join_game_session_async(
+    body: ApimodelsJoinSessionRequest,
     session_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2061,11 +2076,13 @@ async def join_game_session_async(
 
         tags: ["Game Session"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsJoinSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2089,6 +2106,7 @@ async def join_game_session_async(
         if error:
             return None, error
     request = JoinGameSession.create(
+        body=body,
         session_id=session_id,
         namespace=namespace,
     )
@@ -2659,6 +2677,112 @@ async def public_game_session_reject_async(
         if error:
             return None, error
     request = PublicGameSessionReject.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetGameSessionPassword)
+def public_get_game_session_password(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get password of a password-protected game session. (publicGetGameSessionPassword)
+
+    Get the plaintext password of a PASSWORD_PROTECTED game session. Only active members of the session may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/password
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGetPasswordResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicGetGameSessionPassword.create(
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetGameSessionPassword)
+async def public_get_game_session_password_async(
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get password of a password-protected game session. (publicGetGameSessionPassword)
+
+    Get the plaintext password of a PASSWORD_PROTECTED game session. Only active members of the session may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/password
+
+        method: GET
+
+        tags: ["Game Session"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGetPasswordResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicGetGameSessionPassword.create(
         session_id=session_id,
         namespace=namespace,
     )
@@ -3396,6 +3520,120 @@ async def public_session_join_code_async(
             return None, error
     request = PublicSessionJoinCode.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpdateGameSessionPassword)
+def public_update_game_session_password(
+    body: ApimodelsUpdatePasswordRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update password of a password-protected game session. (publicUpdateGameSessionPassword)
+
+    Update the password of a PASSWORD_PROTECTED game session. Only the session leader may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/password
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdatePasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateGameSessionPassword.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateGameSessionPassword)
+async def public_update_game_session_password_async(
+    body: ApimodelsUpdatePasswordRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update password of a password-protected game session. (publicUpdateGameSessionPassword)
+
+    Update the password of a PASSWORD_PROTECTED game session. Only the session leader may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/password
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdatePasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateGameSessionPassword.create(
+        body=body,
+        session_id=session_id,
         namespace=namespace,
     )
     return await run_request_async(

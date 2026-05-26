@@ -61,7 +61,6 @@ class PublicPlatformLinkV3(Operation):
     - **netflix**: The ticketâs value is GAT (Gamer Access Token) returned by Netflix backend.
     - **snapchat**: The ticketâs value is authorization code returned by Snapchat OAuth.
     - **for specific generic oauth (OIDC)**: The platform_tokenâs value should be the same type as created OIDC auth type whether it is auth code, idToken or bearerToken.
-    action code : 10144
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}

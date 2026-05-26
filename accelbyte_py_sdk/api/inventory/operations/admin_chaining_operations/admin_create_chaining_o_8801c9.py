@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ApimodelsChainingOperationReq
 from ...models import ApimodelsChainingOperationResp
@@ -37,6 +38,7 @@ class AdminCreateChainingOperations(Operation):
     """To Create Chaining Operation (AdminCreateChainingOperations)
 
 
+    ## The endpoint is going to be deprecated
     Create chaining Operations.
     This process will run sequentially
     1. remove item process

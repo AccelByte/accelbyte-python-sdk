@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminUpdateTagV3(Operation):
     """Update Account Identifier Tag (AdminUpdateTagV3)
 
-    Update an existing Account Identifier Tag. This endpoint allows administrators to update the details of a tag that is used to identify and categorize user accounts.
+    Updates the details of an existing Account Identifier Tag used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags/{tagId}

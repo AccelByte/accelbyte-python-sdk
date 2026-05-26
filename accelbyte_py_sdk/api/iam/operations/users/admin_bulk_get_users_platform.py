@@ -38,7 +38,7 @@ class AdminBulkGetUsersPlatform(Operation):
     """Admin bulk get users' platform info by user Ids (AdminBulkGetUsersPlatform)
 
     Notes:
-    - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
+    - Bulk-retrieves basic user info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
 
     Properties:

@@ -37,7 +37,6 @@ class AdminUpdateAdminRoleStatusV3(Operation):
 
     Admin roles has its members listed in the role.
     Role can be set as admin role only when it has at least 1 manager.
-    action code: 10412
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/admin

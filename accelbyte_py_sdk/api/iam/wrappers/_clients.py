@@ -80,7 +80,7 @@ def add_client_permission(
 ):
     """Add Client Permission (AddClientPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [POST]_**
 
@@ -133,7 +133,7 @@ async def add_client_permission_async(
 ):
     """Add Client Permission (AddClientPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [POST]_**
 
@@ -188,8 +188,8 @@ def admin_add_client_permissions_v3(
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code: 10303
+    Studio admin & game admin can only update custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions
@@ -244,8 +244,8 @@ async def admin_add_client_permissions_v3_async(
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code: 10303
+    Studio admin & game admin can only update custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions
@@ -301,13 +301,12 @@ def admin_bulk_update_clients_v3(
     """Bulk Update Clients (AdminBulkUpdateClientsV3)
 
     Updates multiple OAuth 2.0 clients.
-    Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Specify only the fields you want to update in the request payload, e.g. {"clientName":"E-commerce", "baseUri":"https://example.net"}
 
     **Note for Multi Tenant Mode (Confidential Client):**
-    Only Super admin can set permission with resource & action.
-    Studio admin & game admin need set permission with permission module.
-
-    action code: 10302
+    Only Super Admins can set permission with resource and action.
+    Studio admin & game admin can only set permission through the permission module.
+    If Studio admin & game admin need to set custom permission string, they must use the non-bulk API.
 
     **Fields Description:**
     - **clientName** : The client name. It should not be empty if the field exists in the body. e.g E-commerce
@@ -382,13 +381,12 @@ async def admin_bulk_update_clients_v3_async(
     """Bulk Update Clients (AdminBulkUpdateClientsV3)
 
     Updates multiple OAuth 2.0 clients.
-    Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Specify only the fields you want to update in the request payload, e.g. {"clientName":"E-commerce", "baseUri":"https://example.net"}
 
     **Note for Multi Tenant Mode (Confidential Client):**
-    Only Super admin can set permission with resource & action.
-    Studio admin & game admin need set permission with permission module.
-
-    action code: 10302
+    Only Super Admins can set permission with resource and action.
+    Studio admin & game admin can only set permission through the permission module.
+    If Studio admin & game admin need to set custom permission string, they must use the non-bulk API.
 
     **Fields Description:**
     - **clientName** : The client name. It should not be empty if the field exists in the body. e.g E-commerce
@@ -464,45 +462,15 @@ def admin_create_client_v3(
 ):
     """Create Client (AdminCreateClientV3)
 
-    Add a new OAuth 2.0 client
+    Creates a new OAuth 2.0 client.
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
-
     **Note for Multi Tenant Mode (Confidential Client):**
-    Only Super admin can set permission with resource & action.
-    Studio admin & game admin need set permission with permission module.
-
-    action code: 10301
-
-    **Fields Description:**
-    - **clientId** : The client ID. e.g f815e5c44f364993961be3b3f26a7bf4
-    - **clientName** : The client name. e.g E-commerce
-    - **secret** : The client's secret. It's empty if the client's type is a public client. Otherwise, the client secret is required
-    - **namespace** : The namespace where the client lives. e.g sample-game
-    - **redirectUri** : Contains the redirect URI used in OAuth callback. e.g https://example.net/platform
-    - **oauthClientType** : The OAuth 2.0 client type. The client type determines whether the authorization needs Proof Of Key Exchange or not.
-    A public client type doesn't have a client secret and should use PKCE flow.
-    A confidential client type has a client secret and don't use PKCE flow
-    Supported oAuthClientType :
-    - **Public**
-    - **Confidential**
-    - **audiences** : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
-    - **baseUri** : A base URI of the application. It is used for making sure the token is intended to be used by the client. e.g https://example.net/platform
-    - **clientPermissions** : Contains the client's permissions
-    - **deletable** : The flag to identify whether client is deletable (optional). default value: true
-    - **clientPlatform**: available client platform (optional). default value: ""
-    - Playstation
-    - Xbox
-    - Steam
-    - Epic
-    - IOS
-    - GooglePlay
-    - Nintendo
-    - Oculus
-    - **twoFactorEnabled**: The flag to indicate whether 2FA validation is enable for this client. default value: false
-    - **oauthAccessTokenExpiration**: a configurable expiration time for **access_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, default value: SECONDS
-    - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, default value: SECONDS
+    Super admin can set any valid format permission with resource & action.
+    Studio admin & game admin can only set permission with these 2 ways:
+    * Permission module, available from _GET /iam/v3/admin/clientConfig/permissions_
+    * Fixed prefix custom permissions, the allowed prefix are:
+    1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}***
+    2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
@@ -552,45 +520,15 @@ async def admin_create_client_v3_async(
 ):
     """Create Client (AdminCreateClientV3)
 
-    Add a new OAuth 2.0 client
+    Creates a new OAuth 2.0 client.
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
-
     **Note for Multi Tenant Mode (Confidential Client):**
-    Only Super admin can set permission with resource & action.
-    Studio admin & game admin need set permission with permission module.
-
-    action code: 10301
-
-    **Fields Description:**
-    - **clientId** : The client ID. e.g f815e5c44f364993961be3b3f26a7bf4
-    - **clientName** : The client name. e.g E-commerce
-    - **secret** : The client's secret. It's empty if the client's type is a public client. Otherwise, the client secret is required
-    - **namespace** : The namespace where the client lives. e.g sample-game
-    - **redirectUri** : Contains the redirect URI used in OAuth callback. e.g https://example.net/platform
-    - **oauthClientType** : The OAuth 2.0 client type. The client type determines whether the authorization needs Proof Of Key Exchange or not.
-    A public client type doesn't have a client secret and should use PKCE flow.
-    A confidential client type has a client secret and don't use PKCE flow
-    Supported oAuthClientType :
-    - **Public**
-    - **Confidential**
-    - **audiences** : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
-    - **baseUri** : A base URI of the application. It is used for making sure the token is intended to be used by the client. e.g https://example.net/platform
-    - **clientPermissions** : Contains the client's permissions
-    - **deletable** : The flag to identify whether client is deletable (optional). default value: true
-    - **clientPlatform**: available client platform (optional). default value: ""
-    - Playstation
-    - Xbox
-    - Steam
-    - Epic
-    - IOS
-    - GooglePlay
-    - Nintendo
-    - Oculus
-    - **twoFactorEnabled**: The flag to indicate whether 2FA validation is enable for this client. default value: false
-    - **oauthAccessTokenExpiration**: a configurable expiration time for **access_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, default value: SECONDS
-    - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, default value: SECONDS
+    Super admin can set any valid format permission with resource & action.
+    Studio admin & game admin can only set permission with these 2 ways:
+    * Permission module, available from _GET /iam/v3/admin/clientConfig/permissions_
+    * Fixed prefix custom permissions, the allowed prefix are:
+    1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}***
+    2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
@@ -645,8 +583,8 @@ def admin_delete_client_permission_v3(
     """Delete Client Permission (AdminDeleteClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code : 10304
+    Studio admin & game admin are only allowed to delete custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action}
@@ -705,8 +643,8 @@ async def admin_delete_client_permission_v3_async(
     """Delete Client Permission (AdminDeleteClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code : 10304
+    Studio admin & game admin are only allowed to delete custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action}
@@ -764,7 +702,7 @@ def admin_delete_client_v3(
 ):
     """Delete Client (AdminDeleteClientV3)
 
-    action code : 10310
+    Deletes the specified OAuth client.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -816,7 +754,7 @@ async def admin_delete_client_v3_async(
 ):
     """Delete Client (AdminDeleteClientV3)
 
-    action code : 10310
+    Deletes the specified OAuth client.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -873,9 +811,9 @@ def admin_get_clients_by_namespace_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get clients by namespace (AdminGetClientsByNamespaceV3)
+    """Get Clients by Namespace (AdminGetClientsByNamespaceV3)
 
-    action code: 10308
+    Retrieves all OAuth clients in the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
@@ -941,9 +879,9 @@ async def admin_get_clients_by_namespace_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get clients by namespace (AdminGetClientsByNamespaceV3)
+    """Get Clients by Namespace (AdminGetClientsByNamespaceV3)
 
-    action code: 10308
+    Retrieves all OAuth clients in the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients
@@ -1006,9 +944,9 @@ def admin_get_clientsby_namespaceby_idv3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get clients by namespace and client id. Multi tenant mode allows admin portal client to be accessible regardless of namespace path. (AdminGetClientsbyNamespacebyIDV3)
+    """Get Client by Namespace and Client ID (AdminGetClientsbyNamespacebyIDV3)
 
-    action code: 10309
+    Retrieves an OAuth client by namespace and client ID. In multi-tenant mode, the admin portal client is accessible regardless of the namespace path.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -1056,9 +994,9 @@ async def admin_get_clientsby_namespaceby_idv3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get clients by namespace and client id. Multi tenant mode allows admin portal client to be accessible regardless of namespace path. (AdminGetClientsbyNamespacebyIDV3)
+    """Get Client by Namespace and Client ID (AdminGetClientsbyNamespacebyIDV3)
 
-    action code: 10309
+    Retrieves an OAuth client by namespace and client ID. In multi-tenant mode, the admin portal client is accessible regardless of the namespace path.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -1112,8 +1050,9 @@ def admin_update_client_permission_v3(
     """Update Client Permissions (AdminUpdateClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code: 10307
+    Studio admin & game admin can only add custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
+    * If the request body has new added/delete non-custom permission, the request will fail.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions
@@ -1168,8 +1107,9 @@ async def admin_update_client_permission_v3_async(
     """Update Client Permissions (AdminUpdateClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    This is for super admin only.
-    action code: 10307
+    Studio admin & game admin can only add custom permissions:
+    * The allowed prefix are: 1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}*** 2. ***CUSTOM:NAMESPACE:{namespace}***
+    * If the request body has new added/delete non-custom permission, the request will fail.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions
@@ -1225,7 +1165,7 @@ def admin_update_client_secret_v3(
 ):
     """Update Client Secret (AdminUpdateClientSecretV3)
 
-    Update Client Secret
+    Updates the client secret for the specified OAuth client.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/{clientId}/secret
@@ -1279,7 +1219,7 @@ async def admin_update_client_secret_v3_async(
 ):
     """Update Client Secret (AdminUpdateClientSecretV3)
 
-    Update Client Secret
+    Updates the client secret for the specified OAuth client.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/{clientId}/secret
@@ -1335,38 +1275,15 @@ def admin_update_client_v3(
 ):
     """Update Client (AdminUpdateClientV3)
 
-    Updates an OAuth 2.0 client.
-    Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Updates an OAuth 2.0 client. Specify only the fields you want to update in the request payload.
 
     **Note for Multi Tenant Mode (Confidential Client):**
-    Only Super admin can set permission with resource & action.
-    Studio admin & game admin need set permission with permission module.
-
-    action code: 10302
-
-    **Fields Description:**
-    - **clientName** : The client name. It should not be empty if the field exists in the body. e.g E-commerce
-    - **namespace** : The namespace where the client lives. e.g sample-game
-    - **redirectUri** : Contains the redirect URI used in OAuth callback. It should not be empty if the field exists in the body. e.g https://example.net/platform
-    - **audiences** : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
-    - **baseUri** : A base URI of the application. It is used in the audience checking for making sure the token is used by the right resource server. Required if the application type is a server. e.g https://example.net/platform
-    - **clientPermissions** : Contains the client's permissions
-    - **deletable** : The flag to identify whether client is deletable (optional). e.g. true
-    - **clientPlatform** : available client platform (optional). default value: "".
-    - Playstation
-    - Xbox
-    - Steam
-    - Epic
-    - IOS
-    - GooglePlay
-    - Nintendo
-    - Oculus
-    - **twoFactorEnabled**: The flag to indicate whether 2FA validation is enable for this client. default value: false
-    - **oauthAccessTokenExpiration**: a configurable expiration time for **access_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
-    - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
-    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
+    Super admin can set any valid format permission with resource & action.
+    Studio admin & game admin can only set permission with these 2 ways:
+    * Permission module, available from _GET /iam/v3/admin/clientConfig/permissions_
+    * Fixed prefix custom permissions, the allowed prefix are:
+    1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}***
+    2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -1420,38 +1337,15 @@ async def admin_update_client_v3_async(
 ):
     """Update Client (AdminUpdateClientV3)
 
-    Updates an OAuth 2.0 client.
-    Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+    Updates an OAuth 2.0 client. Specify only the fields you want to update in the request payload.
 
     **Note for Multi Tenant Mode (Confidential Client):**
-    Only Super admin can set permission with resource & action.
-    Studio admin & game admin need set permission with permission module.
-
-    action code: 10302
-
-    **Fields Description:**
-    - **clientName** : The client name. It should not be empty if the field exists in the body. e.g E-commerce
-    - **namespace** : The namespace where the client lives. e.g sample-game
-    - **redirectUri** : Contains the redirect URI used in OAuth callback. It should not be empty if the field exists in the body. e.g https://example.net/platform
-    - **audiences** : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
-    - **baseUri** : A base URI of the application. It is used in the audience checking for making sure the token is used by the right resource server. Required if the application type is a server. e.g https://example.net/platform
-    - **clientPermissions** : Contains the client's permissions
-    - **deletable** : The flag to identify whether client is deletable (optional). e.g. true
-    - **clientPlatform** : available client platform (optional). default value: "".
-    - Playstation
-    - Xbox
-    - Steam
-    - Epic
-    - IOS
-    - GooglePlay
-    - Nintendo
-    - Oculus
-    - **twoFactorEnabled**: The flag to indicate whether 2FA validation is enable for this client. default value: false
-    - **oauthAccessTokenExpiration**: a configurable expiration time for **access_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
-    - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
-    - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
-    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
+    Super admin can set any valid format permission with resource & action.
+    Studio admin & game admin can only set permission with these 2 ways:
+    * Permission module, available from _GET /iam/v3/admin/clientConfig/permissions_
+    * Fixed prefix custom permissions, the allowed prefix are:
+    1. ***CUSTOM:ADMIN:NAMESPACE:{namespace}***
+    2. ***CUSTOM:NAMESPACE:{namespace}***
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -1506,7 +1400,7 @@ def create_client(
 ):
     """Create Client (CreateClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
 
@@ -1555,7 +1449,7 @@ async def create_client_async(
 ):
     """Create Client (CreateClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
 
@@ -1607,7 +1501,7 @@ def create_client_by_namespace(
 ):
     """Create Client (CreateClientByNamespace)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
 
@@ -1664,7 +1558,7 @@ async def create_client_by_namespace_async(
 ):
     """Create Client (CreateClientByNamespace)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
 
@@ -1720,7 +1614,7 @@ def delete_client(
 ):
     """Delete Client (DeleteClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
 
@@ -1761,7 +1655,7 @@ async def delete_client_async(
 ):
     """Delete Client (DeleteClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
 
@@ -1807,7 +1701,7 @@ def delete_client_by_namespace(
 ):
     """Delete Client (DeleteClientByNamespace)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
 
@@ -1858,7 +1752,7 @@ async def delete_client_by_namespace_async(
 ):
     """Delete Client (DeleteClientByNamespace)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
 
@@ -1912,7 +1806,7 @@ def delete_client_permission(
 ):
     """Delete Client Permission (DeleteClientPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action} [DELETE]_**
 
@@ -1965,7 +1859,7 @@ async def delete_client_permission_async(
 ):
     """Delete Client Permission (DeleteClientPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action} [DELETE]_**
 
@@ -2016,7 +1910,7 @@ def get_client(
 ):
     """Get Client (GetClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [GET]_**
 
@@ -2057,7 +1951,7 @@ async def get_client_async(
 ):
     """Get Client (GetClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [GET]_**
 
@@ -2098,7 +1992,7 @@ async def get_client_async(
 def get_clients(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get All Clients (GetClients)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
 
@@ -2133,7 +2027,7 @@ async def get_clients_async(
 ):
     """Get All Clients (GetClients)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
 
@@ -2172,7 +2066,7 @@ def get_clientsby_namespace(
 ):
     """Get clients by namespace (GetClientsbyNamespace)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
 
@@ -2217,7 +2111,7 @@ async def get_clientsby_namespace_async(
 ):
     """Get clients by namespace (GetClientsbyNamespace)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
 
@@ -2265,7 +2159,7 @@ def update_client(
 ):
     """Update Client (UpdateClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [PATCH]_**
 
@@ -2314,7 +2208,7 @@ async def update_client_async(
 ):
     """Update Client (UpdateClient)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [PATCH]_**
 
@@ -2365,7 +2259,7 @@ def update_client_permission(
 ):
     """Update Client Permissions (UpdateClientPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [PUT]_**
 
@@ -2414,7 +2308,7 @@ async def update_client_permission_async(
 ):
     """Update Client Permissions (UpdateClientPermission)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [PUT]_**
 
@@ -2465,7 +2359,7 @@ def update_client_secret(
 ):
     """Update Client Secret (UpdateClientSecret)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/{clientId}/secret [PUT]_**
 
@@ -2514,7 +2408,7 @@ async def update_client_secret_async(
 ):
     """Update Client Secret (UpdateClientSecret)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/{clientId}/secret [PUT]_**
 

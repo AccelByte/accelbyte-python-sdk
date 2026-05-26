@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetMyOwnMFAStatusV4(Operation):
     """Get Admin Own MFA Status (AdminGetMyOwnMFAStatusV4)
 
-    This endpoint will get user's' MFA status.
+    Retrieves the user's MFA status.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/status

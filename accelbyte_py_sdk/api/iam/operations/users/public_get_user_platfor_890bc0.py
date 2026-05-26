@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
-    This endpoint retrieves platform accounts linked to user.
+    Retrieves platform accounts linked to user.
 
 
     **Supported Platforms:**
@@ -78,8 +78,6 @@ class PublicGetUserPlatformAccountsV3(Operation):
 
     **Authentication:**
     The _**userId**_ parameter should match the one in the access token.
-
-    action code: 10128
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms

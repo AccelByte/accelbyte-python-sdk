@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelCheckAvailabilityResponse
+from ..models import ModelPlatformDefaultsResponse
 from ..models import ModelPlatformDomainDeleteRequest
 from ..models import ModelPlatformDomainPatchRequest
 from ..models import ModelPlatformDomainResponse
@@ -47,6 +48,7 @@ from ..operations.third_party_credential import (
     DeleteThirdPartyLoginPlatformCredentialV3,
 )
 from ..operations.third_party_credential import DeleteThirdPartyLoginPlatformDomainV3
+from ..operations.third_party_credential import GetThirdPartyLoginPlatformDefaultsV3
 from ..operations.third_party_credential import (
     PartialUpdateThirdPartyLoginPlatformDomainV3,
 )
@@ -79,28 +81,7 @@ def add_third_party_login_platform_credential_v3(
 ):
     """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Add 3rd Platform Credential.
-    - The secret for **apple** is base64 encoded private key.
-    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
-    - The secret for **discord** is client secret of the twitch client id.
-    - The secret for **epicgames** is client secret of the epicgames client id.
-    - The secret for **facebook** is client secret of the facebook client id.
-    - The secret for **google** is client secret of the google OAuth client.
-    - No secret for **nintendo**, we only need to configure app id of the game
-    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-    - The secret for **oculus** is app secret of the oculus app.
-    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
-    - The secret for **steam** is the Steam Web API Key.
-    - The secret for **steamopenid** is the Steam Web API Key.
-    - The secret for **twitch** is client secret of the twitch client.
-    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
-    - The secret for **xblwebapi** is client secret of the xbl client.
-
-    If generic oauth flow is set to true:
-    - Current supported value for TokenAuthenticationType are **code, idToken and bearerToken**
-    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
-    Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info. **default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
+    Creates a third-party platform credential. Configure the Secret field according to the target platform (see field description). For generic OAuth flow, set GenericOauthFlow to true and configure the corresponding fields.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -154,28 +135,7 @@ async def add_third_party_login_platform_credential_v3_async(
 ):
     """Add Third Party Platform Credential (AddThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Add 3rd Platform Credential.
-    - The secret for **apple** is base64 encoded private key.
-    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
-    - The secret for **discord** is client secret of the twitch client id.
-    - The secret for **epicgames** is client secret of the epicgames client id.
-    - The secret for **facebook** is client secret of the facebook client id.
-    - The secret for **google** is client secret of the google OAuth client.
-    - No secret for **nintendo**, we only need to configure app id of the game
-    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-    - The secret for **oculus** is app secret of the oculus app.
-    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
-    - The secret for **steam** is the Steam Web API Key.
-    - The secret for **steamopenid** is the Steam Web API Key.
-    - The secret for **twitch** is client secret of the twitch client.
-    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
-    - The secret for **xblwebapi** is client secret of the xbl client.
-
-    If generic oauth flow is set to true:
-    - Current supported value for TokenAuthenticationType are **code, idToken and bearerToken**
-    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
-    Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info. **default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
+    Creates a third-party platform credential. Configure the Secret field according to the target platform (see field description). For generic OAuth flow, set GenericOauthFlow to true and configure the corresponding fields.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -320,7 +280,7 @@ def delete_third_party_login_platform_credential_v3(
 ):
     """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential.
+    Deletes the third-party platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -370,7 +330,7 @@ async def delete_third_party_login_platform_credential_v3_async(
 ):
     """Delete Third Party Platform Credential (DeleteThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Delete 3rd Platform Credential.
+    Deletes the third-party platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -421,7 +381,7 @@ def delete_third_party_login_platform_domain_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
+    """Unregister Third Party Platform Credential Domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
     If there is a ssoGroups in request body, then this request wil only delete the sso group from the target domain, it will not delete domain.
@@ -478,7 +438,7 @@ async def delete_third_party_login_platform_domain_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
+    """Unregister Third Party Platform Credential Domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
     If there is a ssoGroups in request body, then this request wil only delete the sso group from the target domain, it will not delete domain.
@@ -529,6 +489,72 @@ async def delete_third_party_login_platform_domain_v3_async(
     )
 
 
+@same_doc_as(GetThirdPartyLoginPlatformDefaultsV3)
+def get_third_party_login_platform_defaults_v3(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Third Party Platform Defaults (GetThirdPartyLoginPlatformDefaultsV3)
+
+    Returns the built-in default configuration values for a given platform.
+
+    Properties:
+        url: /iam/v3/admin/platforms/{platformId}/defaults
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPlatformDefaultsResponse (Platform defaults retrieved)
+    """
+    request = GetThirdPartyLoginPlatformDefaultsV3.create(
+        platform_id=platform_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetThirdPartyLoginPlatformDefaultsV3)
+async def get_third_party_login_platform_defaults_v3_async(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Third Party Platform Defaults (GetThirdPartyLoginPlatformDefaultsV3)
+
+    Returns the built-in default configuration values for a given platform.
+
+    Properties:
+        url: /iam/v3/admin/platforms/{platformId}/defaults
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPlatformDefaultsResponse (Platform defaults retrieved)
+    """
+    request = GetThirdPartyLoginPlatformDefaultsV3.create(
+        platform_id=platform_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PartialUpdateThirdPartyLoginPlatformDomainV3)
 def partial_update_third_party_login_platform_domain_v3(
     body: ModelPlatformDomainPatchRequest,
@@ -537,10 +563,12 @@ def partial_update_third_party_login_platform_domain_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Partial update third Party Platform Credential's domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
+    """Partial Update Third Party Platform Credential Domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to patch update 3rd Platform domain.
     This API is a create or partial-update behavior. If it is update, it is a partial update behavior.
+
+    **Request body:** Partial domain configuration update. Only provided fields will be updated.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -594,10 +622,12 @@ async def partial_update_third_party_login_platform_domain_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Partial update third Party Platform Credential's domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
+    """Partial Update Third Party Platform Credential Domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to patch update 3rd Platform domain.
     This API is a create or partial-update behavior. If it is update, it is a partial update behavior.
+
+    **Request body:** Partial domain configuration update. Only provided fields will be updated.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -652,9 +682,9 @@ def retrieve_active_oidc_clients_public_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get Active OIDC Platform Credential By Client ID (RetrieveActiveOIDCClientsPublicV3)
+    """Get Active OIDC Platform Credentials by Client ID (RetrieveActiveOIDCClientsPublicV3)
 
-    This is the Public API to Get All Active OIDC Platform Credential By Client ID
+    Retrieves all active OIDC platform credentials filtered by client ID.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/oidc
@@ -698,9 +728,9 @@ async def retrieve_active_oidc_clients_public_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get Active OIDC Platform Credential By Client ID (RetrieveActiveOIDCClientsPublicV3)
+    """Get Active OIDC Platform Credentials by Client ID (RetrieveActiveOIDCClientsPublicV3)
 
-    This is the Public API to Get All Active OIDC Platform Credential By Client ID
+    Retrieves all active OIDC platform credentials filtered by client ID.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/oidc
@@ -745,9 +775,9 @@ def retrieve_all_active_third_party_login_platform_credential_public_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get All Active Third Party Platform Active Credential for Public Usage (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
+    """Get All Active Third Party Platform Credentials (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
 
-    This is the Public API to Get All Active 3rd Platform Credential.
+    Retrieves all active third-party platform credentials for the namespace.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/active
@@ -791,9 +821,9 @@ async def retrieve_all_active_third_party_login_platform_credential_public_v3_as
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get All Active Third Party Platform Active Credential for Public Usage (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
+    """Get All Active Third Party Platform Credentials (RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3)
 
-    This is the Public API to Get All Active 3rd Platform Credential.
+    Retrieves all active third-party platform credentials for the namespace.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/active
@@ -841,7 +871,7 @@ def retrieve_all_active_third_party_login_platform_credential_v3(
 ):
     """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential.
+    Retrieves all active third-party platform credentials.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active
@@ -887,7 +917,7 @@ async def retrieve_all_active_third_party_login_platform_credential_v3_async(
 ):
     """Get All Active Third Party Platform Active Credential (RetrieveAllActiveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential.
+    Retrieves all active third-party platform credentials.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients/active
@@ -935,7 +965,7 @@ def retrieve_all_third_party_login_platform_credential_v3(
 ):
     """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential.
+    Retrieves all third-party platform credentials.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients
@@ -981,7 +1011,7 @@ async def retrieve_all_third_party_login_platform_credential_v3_async(
 ):
     """Get All Third Party Platform Credential (RetrieveAllThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get All Active 3rd Platform Credential.
+    Retrieves all third-party platform credentials.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/all/clients
@@ -1030,7 +1060,7 @@ def retrieve_third_party_login_platform_credential_v3(
 ):
     """Retrieve Third Party Platform Credential (RetrieveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get 3rd Platform Credential.
+    Retrieves the third-party platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1080,7 +1110,7 @@ async def retrieve_third_party_login_platform_credential_v3_async(
 ):
     """Retrieve Third Party Platform Credential (RetrieveThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Get 3rd Platform Credential.
+    Retrieves the third-party platform credential for the specified platform.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1133,28 +1163,7 @@ def update_third_party_login_platform_credential_v3(
 ):
     """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Add 3rd Platform Credential.
-    - The secret for **apple** is base64 encoded private key.
-    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
-    - The secret for **discord** is client secret of the twitch client id.
-    - The secret for **epicgames** is client secret of the epicgames client id.
-    - The secret for **facebook** is client secret of the facebook client id.
-    - The secret for **google** is client secret of the google OAuth client.
-    - No secret for **nintendo**, we only need to configure app id of the game
-    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-    - The secret for **oculus** is app secret of the oculus app.
-    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
-    - The secret for **steam** is the Steam Web API Key.
-    - The secret for **steamopenid** is the Steam Web API Key.
-    - The secret for **twitch** is client secret of the twitch client.
-    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
-    - The secret for **xblwebapi** is client secret of the xbl client.
-
-    If generic oauth flow is set to true:
-    - Current supported value for TokenAuthenticationType is **code, idToken and bearerToken**
-    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
-    Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info.**default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
+    Updates a third-party platform credential. Configure the Secret field according to the target platform (see field description). For generic OAuth flow, set GenericOauthFlow to true and configure the corresponding fields.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1210,28 +1219,7 @@ async def update_third_party_login_platform_credential_v3_async(
 ):
     """Update Third Party Platform Credential (UpdateThirdPartyLoginPlatformCredentialV3)
 
-    This is the API to Add 3rd Platform Credential.
-    - The secret for **apple** is base64 encoded private key.
-    - No secret for **awscognito**, we only need to configure AWS Cognito Region and User Pool
-    - The secret for **discord** is client secret of the twitch client id.
-    - The secret for **epicgames** is client secret of the epicgames client id.
-    - The secret for **facebook** is client secret of the facebook client id.
-    - The secret for **google** is client secret of the google OAuth client.
-    - No secret for **nintendo**, we only need to configure app id of the game
-    - No secret for **netflix**, we configure the Root, Public, Private Key certificate pem file and target environment; value: [sandbox, production]
-    - The secret for **oculus** is app secret of the oculus app.
-    - The secret for **ps4, ps5, and ps4web** is client secret of the psn web server.
-    - The secret for **steam** is the Steam Web API Key.
-    - The secret for **steamopenid** is the Steam Web API Key.
-    - The secret for **twitch** is client secret of the twitch client.
-    - The secret for **live** is the Relying Party Private Key in base64 encode PEM format.
-    - The secret for **xblwebapi** is client secret of the xbl client.
-
-    If generic oauth flow is set to true:
-    - Current supported value for TokenAuthenticationType is **code, idToken and bearerToken**
-    - `TokenClaimsMapping` is used to extract user info from idToken claims or user info endpoint response accessed using bearerToken.
-    Its a JSON format with key should be `name`, `email` and `avatarUrl`
-    since IAM will look up for these key when extracting user info.**default claims keys : userIdentity/sub, name, email and avatarUrl/picture**
+    Updates a third-party platform credential. Configure the Secret field according to the target platform (see field description). For generic OAuth flow, set GenericOauthFlow to true and configure the corresponding fields.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients
@@ -1287,7 +1275,7 @@ def update_third_party_login_platform_domain_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
+    """Set Third Party Platform Credential Domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
     This API is a create-or-update behavior. If it is update, it is a replacement behavior.
@@ -1344,7 +1332,7 @@ async def update_third_party_login_platform_domain_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
+    """Set Third Party Platform Credential Domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
     This API is a create-or-update behavior. If it is update, it is a replacement behavior.

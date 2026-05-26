@@ -36,7 +36,7 @@ class SendMFAAuthenticationCode(Operation):
     """Send 2FA code (SendMFAAuthenticationCode)
 
     Send 2FA code
-    This endpoint is used for sending 2FA code.
+    Sends the 2FA code.
 
     Properties:
         url: /iam/v3/oauth/mfa/code

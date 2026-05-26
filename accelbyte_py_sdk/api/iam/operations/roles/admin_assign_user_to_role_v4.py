@@ -37,12 +37,7 @@ from ...models import RestErrorResponse
 class AdminAssignUserToRoleV4(Operation):
     """Assign User to Role (AdminAssignUserToRoleV4)
 
-    Parameters:
-    - **userId**: string (required)
-    - **namespace**: string (userâs namespace) (required)
-    - **assignedNamespaces**: array of string (namespaces to be assigned on role) (required)
-
-    action code: 10410
+    Assigns a user to a role with specified namespaces. See request body field descriptions for per-field details.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}/users

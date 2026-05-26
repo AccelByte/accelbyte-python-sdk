@@ -38,12 +38,15 @@ from ...models import RestErrorResponse
 class UpgradeHeadlessAccountWithVerificationCode(Operation):
     """Upgrade headless account and automatically verified the email address if it is succeeded (UpgradeHeadlessAccountWithVerificationCode)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/code/verify [POST]_**
 
-    The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
-    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint.
+    Upgrades a headless account by linking it with an email address, username, and password, and immediately verifies the email address afterward.
+
+    By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM.
+
+    In order to get a verification code, please check the send verification code API.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/upgradeHeadlessAccountWithVerificationCode

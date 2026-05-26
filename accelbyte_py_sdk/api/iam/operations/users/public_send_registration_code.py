@@ -36,10 +36,10 @@ from ...models import RestErrorResponse
 class PublicSendRegistrationCode(Operation):
     """Send verification code to new unregistered account's email address (PublicSendRegistrationCode)
 
-    This endpoint will validate the request's email address.
+    Validates the request's email address.
     If it already been used, will response 409.
     If it is available, we will send a verification code to this email address.
-    This code can be verified by this [endpoint](#operations-Users-PublicVerifyRegistrationCode).
+    This code can be verified by this [API](#operations-Users-PublicVerifyRegistrationCode).
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/code/request

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.29.3"
+__version__ = "3.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -97,6 +97,8 @@ from .wrappers import public_game_session_invite
 from .wrappers import public_game_session_invite_async
 from .wrappers import public_game_session_reject
 from .wrappers import public_game_session_reject_async
+from .wrappers import public_get_game_session_password
+from .wrappers import public_get_game_session_password_async
 from .wrappers import public_kick_game_session_member
 from .wrappers import public_kick_game_session_member_async
 from .wrappers import public_promote_game_session_leader
@@ -109,6 +111,8 @@ from .wrappers import public_revoke_game_session_code
 from .wrappers import public_revoke_game_session_code_async
 from .wrappers import public_session_join_code
 from .wrappers import public_session_join_code_async
+from .wrappers import public_update_game_session_password
+from .wrappers import public_update_game_session_password_async
 from .wrappers import update_game_session
 from .wrappers import update_game_session_async
 from .wrappers import update_game_session_backfill_ticket_id
@@ -151,6 +155,8 @@ from .wrappers import public_generate_party_code
 from .wrappers import public_generate_party_code_async
 from .wrappers import public_get_party
 from .wrappers import public_get_party_async
+from .wrappers import public_get_party_password
+from .wrappers import public_get_party_password_async
 from .wrappers import public_party_cancel
 from .wrappers import public_party_cancel_async
 from .wrappers import public_party_invite
@@ -175,6 +181,8 @@ from .wrappers import public_revoke_party_code
 from .wrappers import public_revoke_party_code_async
 from .wrappers import public_update_party
 from .wrappers import public_update_party_async
+from .wrappers import public_update_party_password
+from .wrappers import public_update_party_password_async
 
 # platform_credential
 from .wrappers import admin_delete_platform_credentials
@@ -225,6 +233,10 @@ from .wrappers import admin_read_user_session_storage
 from .wrappers import admin_read_user_session_storage_async
 from .wrappers import public_read_party_session_storage
 from .wrappers import public_read_party_session_storage_async
+from .wrappers import public_replace_session_storage_leader_v2
+from .wrappers import public_replace_session_storage_leader_v2_async
+from .wrappers import public_replace_session_storage_user_v2
+from .wrappers import public_replace_session_storage_user_v2_async
 from .wrappers import public_update_insert_party_session_storage
 from .wrappers import public_update_insert_party_session_storage_async
 from .wrappers import public_update_insert_party_session_storage_reserved
@@ -233,3 +245,7 @@ from .wrappers import public_update_insert_session_storage
 from .wrappers import public_update_insert_session_storage_async
 from .wrappers import public_update_insert_session_storage_leader
 from .wrappers import public_update_insert_session_storage_leader_async
+from .wrappers import public_update_insert_session_storage_leader_v2
+from .wrappers import public_update_insert_session_storage_leader_v2_async
+from .wrappers import public_update_insert_session_storage_user_v2
+from .wrappers import public_update_insert_session_storage_user_v2_async

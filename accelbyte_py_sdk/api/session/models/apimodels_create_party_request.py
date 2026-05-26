@@ -69,6 +69,8 @@ class ApimodelsCreatePartyRequest(Model):
         text_chat: (textChat) REQUIRED bool
 
         type_: (type) REQUIRED Union[str, TypeEnum]
+
+        password: (password) OPTIONAL str
     """
 
     # region fields
@@ -83,6 +85,7 @@ class ApimodelsCreatePartyRequest(Model):
     min_players: int  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: Union[str, TypeEnum]  # REQUIRED
+    password: str  # OPTIONAL
 
     # endregion fields
 
@@ -130,6 +133,10 @@ class ApimodelsCreatePartyRequest(Model):
 
     def with_type(self, value: Union[str, TypeEnum]) -> ApimodelsCreatePartyRequest:
         self.type_ = value
+        return self
+
+    def with_password(self, value: str) -> ApimodelsCreatePartyRequest:
+        self.password = value
         return self
 
     # endregion with_x methods
@@ -180,6 +187,10 @@ class ApimodelsCreatePartyRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = Union[str, TypeEnum]()
+        if hasattr(self, "password"):
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = ""
         return result
 
     # endregion to methods
@@ -199,6 +210,7 @@ class ApimodelsCreatePartyRequest(Model):
         min_players: int,
         text_chat: bool,
         type_: Union[str, TypeEnum],
+        password: Optional[str] = None,
         **kwargs,
     ) -> ApimodelsCreatePartyRequest:
         instance = cls()
@@ -212,6 +224,8 @@ class ApimodelsCreatePartyRequest(Model):
         instance.min_players = min_players
         instance.text_chat = text_chat
         instance.type_ = type_
+        if password is not None:
+            instance.password = password
         return instance
 
     @classmethod
@@ -266,6 +280,10 @@ class ApimodelsCreatePartyRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = Union[str, TypeEnum]()
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = ""
         return instance
 
     @classmethod
@@ -319,6 +337,7 @@ class ApimodelsCreatePartyRequest(Model):
             "minPlayers": "min_players",
             "textChat": "text_chat",
             "type": "type_",
+            "password": "password",
         }
 
     @staticmethod
@@ -334,6 +353,7 @@ class ApimodelsCreatePartyRequest(Model):
             "minPlayers": True,
             "textChat": True,
             "type": True,
+            "password": False,
         }
 
     @staticmethod

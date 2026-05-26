@@ -49,7 +49,7 @@ def admin_add_country_blacklist_v3(
 ):
     """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    Admin update country blacklist
+    Updates the country blacklist for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -99,7 +99,7 @@ async def admin_add_country_blacklist_v3_async(
 ):
     """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    Admin update country blacklist
+    Updates the country blacklist for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -150,7 +150,7 @@ def admin_get_country_blacklist_v3(
 ):
     """Get Country Blacklist (AdminGetCountryBlacklistV3)
 
-    Admin get country blacklist
+    Retrieves the country blacklist for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -194,7 +194,7 @@ async def admin_get_country_blacklist_v3_async(
 ):
     """Get Country Blacklist (AdminGetCountryBlacklistV3)
 
-    Admin get country blacklist
+    Retrieves the country blacklist for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist
@@ -241,7 +241,7 @@ def admin_get_country_list_v3(
 ):
     """Get Country List (AdminGetCountryListV3)
 
-    Admin get country list
+    Retrieves the list of countries for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries
@@ -289,7 +289,7 @@ async def admin_get_country_list_v3_async(
 ):
     """Get Country List (AdminGetCountryListV3)
 
-    Admin get country list
+    Retrieves the list of countries for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries
@@ -338,7 +338,7 @@ def public_get_country_list_v3(
 ):
     """Get Country List (PublicGetCountryListV3)
 
-    Public get country list, will filter out countries in black list
+    Retrieves the list of countries, excluding those on the blacklist.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/countries
@@ -378,7 +378,7 @@ async def public_get_country_list_v3_async(
 ):
     """Get Country List (PublicGetCountryListV3)
 
-    Public get country list, will filter out countries in black list
+    Retrieves the list of countries, excluding those on the blacklist.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/countries

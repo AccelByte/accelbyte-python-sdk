@@ -36,8 +36,8 @@ from ...models import OauthapiRevocationList
 class GetRevocationList(Operation):
     """OAuth2 revocation list API (GetRevocationList)
 
-    ## The endpoint is going to be deprecated
-    This endpoint will return a list of revoked users and revoked tokens. List of revoked tokens in bloom filter format. This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
+    **This endpoint is deprecated.**
+    Returns a list of revoked users and revoked tokens. List of revoked tokens in bloom filter format. Requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
     The bloom filter uses MurmurHash3 algorithm for hashing the values
 
     ### Endpoint migration guide
@@ -50,7 +50,7 @@ class GetRevocationList(Operation):
 
         tags: ["OAuth"]
 
-        consumes: [""]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -66,7 +66,7 @@ class GetRevocationList(Operation):
 
     _url: str = "/iam/oauth/revocationlist"
     _method: str = "GET"
-    _consumes: List[str] = [""]
+    _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BASIC_AUTH"]]
     _location_query: str = None

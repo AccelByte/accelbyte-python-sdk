@@ -36,11 +36,10 @@ from ...models import RestErrorResponse
 class GetAdminUsersByRoleIdV3(Operation):
     """Get Admin Users By RoleId (GetAdminUsersByRoleIdV3)
 
-    This endpoint search admin users which have the roleId
+    Searches admin users which have the roleId.
 
-    Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members.
-    Use endpoint [GET] /roles/{roleId}/admin to check the role status
-    action code : 10140
+    Notes : only accepts admin role. Admin Role is role which have admin status and members.
+    Use [GET] /roles/{roleId}/admin to check the role status.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roles/{roleId}/users

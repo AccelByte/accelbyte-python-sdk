@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetCountryBlacklistV3(Operation):
     """Get Country Blacklist (AdminGetCountryBlacklistV3)
 
-    Admin get country blacklist
+    Retrieves the country blacklist for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist

@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class PublicWebLinkPlatformEstablish(Operation):
     """Establish Link Progress  (PublicWebLinkPlatformEstablish)
 
-    This endpoint is used by third party to redirect the code for the purpose of linking the account third party to IAM account.
+    Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
     Supported platforms:
     - ps4web
     - xblweb

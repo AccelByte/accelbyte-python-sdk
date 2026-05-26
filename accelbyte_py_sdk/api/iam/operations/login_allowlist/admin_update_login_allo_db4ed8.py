@@ -36,9 +36,9 @@ from ...models import RestErrorResponse
 class AdminUpdateLoginAllowlistV3(Operation):
     """Admin update login allowlist (AdminUpdateLoginAllowlistV3)
 
-    This endpoint update login allowlist configuration from specific game namespace.
-    roleIds: are list of role that allowed to login
-    Note: only accept game namespace
+    Updates the login allowlist configuration for a specific game namespace.
+
+    **Note:** Only accepts game namespaces.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/loginAllowlist

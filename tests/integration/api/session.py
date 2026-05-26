@@ -208,6 +208,7 @@ class SessionTestCase(IntegrationTestCase):
 
             # act & assert (join_game_sesion)
             result, error = session_service.join_game_session(
+                body=session_models.ApimodelsJoinSessionRequest.create(),
                 session_id=game_session_id,
                 sdk=user_sdk2,
             )

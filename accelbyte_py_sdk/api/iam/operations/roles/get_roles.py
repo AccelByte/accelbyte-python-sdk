@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetRoles(Operation):
     """Get Roles (GetRoles)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/roles [GET]_**
 

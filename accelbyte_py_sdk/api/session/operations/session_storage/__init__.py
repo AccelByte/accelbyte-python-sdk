@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.29.3"
+__version__ = "3.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,9 +19,13 @@ from .admin_read_party_sessio_bd0f12 import AdminReadPartySessionStorage
 from .admin_read_session_storage import AdminReadSessionStorage
 from .admin_read_user_session_f101bc import AdminReadUserSessionStorage
 from .public_read_party_sessi_aa590f import PublicReadPartySessionStorage
+from .public_replace_session__230ae4 import PublicReplaceSessionStorageLeaderV2
+from .public_replace_session__23ca93 import PublicReplaceSessionStorageUserV2
 from .public_update_insert_pa_71696c import PublicUpdateInsertPartySessionStorage
 from .public_update_insert_pa_fe85ff import (
     PublicUpdateInsertPartySessionStorageReserved,
 )
 from .public_update_insert_se_f96597 import PublicUpdateInsertSessionStorage
 from .public_update_insert_se_4c0538 import PublicUpdateInsertSessionStorageLeader
+from .public_update_insert_se_c59a75 import PublicUpdateInsertSessionStorageLeaderV2
+from .public_update_insert_se_65fc60 import PublicUpdateInsertSessionStorageUserV2

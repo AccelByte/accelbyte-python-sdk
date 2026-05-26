@@ -77,4 +77,4 @@ def admin_delete_user_roles_v3(
 
 
 admin_delete_user_roles_v3.operation_id = "AdminDeleteUserRolesV3"
-admin_delete_user_roles_v3.is_deprecated = False
+admin_delete_user_roles_v3.is_deprecated = True

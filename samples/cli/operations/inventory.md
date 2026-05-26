@@ -1,13 +1,5 @@
 ## Python Extend SDK CLI Sample App Operation Index for Inventory service.
 
-### Operation `admin_create_chaining_operations`
-```sh
-$ python -m accelbyte_py_sdk_cli 'inventory-admin-create-chaining-operations' \
-    '{"message": "string", "operations": [{}], "requestId": "string"}' \
-    'string' \
-    > result.txt
-```
-
 ### Operation `admin_list_integration_configurations`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'inventory-admin-list-integration-configurations' \

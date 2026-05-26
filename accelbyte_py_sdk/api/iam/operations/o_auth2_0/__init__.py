@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.37.0"
+__version__ = "7.39.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,8 +22,10 @@ from .authorize_v3 import (
     ResponseTypeEnum as AuthorizeV3ResponseTypeEnum,
 )
 from .change2fa_method import Change2faMethod
+from .get_authorization_serve_d0fc55 import GetAuthorizationServerMetadataWithNamespace
 from .get_jwksv3 import GetJWKSV3
 from .get_revocation_list_v3 import GetRevocationListV3
+from .o_auth_dynamic_client_r_de5475 import OAuthDynamicClientRegisterWithNamespaceV3
 from .platform_token_grant_v3 import PlatformTokenGrantV3
 from .retrieve_user_third_par_204b6e import RetrieveUserThirdPartyPlatformTokenV3
 from .revoke_user_v3 import RevokeUserV3

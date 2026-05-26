@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class PublicCreateUserV2(Operation):
     """Create User (PublicCreateUserV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [POST]_**
     - **Substitute endpoint: _/iam/v4/public/namespaces/{namespace}/users [POST]_**

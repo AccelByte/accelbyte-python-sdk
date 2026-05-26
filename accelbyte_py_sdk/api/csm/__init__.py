@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.31.0"
+__version__ = "1.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -32,7 +32,19 @@ from .wrappers import stop_app_v1_async
 from .wrappers import update_app_v1
 from .wrappers import update_app_v1_async
 
+# app_ui
+from .wrappers import create_app_ui
+from .wrappers import create_app_ui_async
+from .wrappers import delete_app_ui
+from .wrappers import delete_app_ui_async
+from .wrappers import list_app_ui
+from .wrappers import list_app_ui_async
+from .wrappers import upload_app_ui_file
+from .wrappers import upload_app_ui_file_async
+
 # app_v2
+from .wrappers import apply_app_config_v2
+from .wrappers import apply_app_config_v2_async
 from .wrappers import create_app_v2
 from .wrappers import create_app_v2_async
 from .wrappers import delete_app_v2
@@ -120,6 +132,10 @@ from .wrappers import get_deployment_v2_async
 from .wrappers import get_list_of_deployment_v2
 from .wrappers import get_list_of_deployment_v2_async
 
+# extend_files
+from .wrappers import get_extend_file
+from .wrappers import get_extend_file_async
+
 # image
 from .wrappers import delete_app_images_v1
 from .wrappers import delete_app_images_v1_async
@@ -133,6 +149,8 @@ from .wrappers import get_app_image_list_v2
 from .wrappers import get_app_image_list_v2_async
 
 # managed_resources
+from .wrappers import create_new_no_sql_database_credential_v2
+from .wrappers import create_new_no_sql_database_credential_v2_async
 from .wrappers import create_no_sql_cluster_v2
 from .wrappers import create_no_sql_cluster_v2_async
 from .wrappers import create_no_sql_database_credential_v2
@@ -157,6 +175,54 @@ from .wrappers import stop_no_sql_cluster_v2
 from .wrappers import stop_no_sql_cluster_v2_async
 from .wrappers import update_no_sql_cluster_v2
 from .wrappers import update_no_sql_cluster_v2_async
+
+# managed_resources_key_value
+from .wrappers import create_key_value_cluster_v2
+from .wrappers import create_key_value_cluster_v2_async
+from .wrappers import create_key_value_credential_v2
+from .wrappers import create_key_value_credential_v2_async
+from .wrappers import delete_key_value_cluster_v2
+from .wrappers import delete_key_value_cluster_v2_async
+from .wrappers import get_integration_app_key_value_cluster_v2
+from .wrappers import get_integration_app_key_value_cluster_v2_async
+from .wrappers import get_key_value_cluster_limit_config_v2
+from .wrappers import get_key_value_cluster_limit_config_v2_async
+from .wrappers import get_key_value_cluster_v2
+from .wrappers import get_key_value_cluster_v2_async
+from .wrappers import get_list_integrated_app_key_value_cluster_v2
+from .wrappers import get_list_integrated_app_key_value_cluster_v2_async
+from .wrappers import integrate_app_key_value_cluster_v2
+from .wrappers import integrate_app_key_value_cluster_v2_async
+from .wrappers import list_key_value_cluster_v2
+from .wrappers import list_key_value_cluster_v2_async
+from .wrappers import remove_integration_app_key_value_cluster_v2
+from .wrappers import remove_integration_app_key_value_cluster_v2_async
+from .wrappers import update_key_value_cluster_v2
+from .wrappers import update_key_value_cluster_v2_async
+
+# managed_resources_sql
+from .wrappers import create_sql_cluster_v2
+from .wrappers import create_sql_cluster_v2_async
+from .wrappers import create_sql_database_credential_v2
+from .wrappers import create_sql_database_credential_v2_async
+from .wrappers import create_sql_database_v2
+from .wrappers import create_sql_database_v2_async
+from .wrappers import delete_sql_cluster_v2
+from .wrappers import delete_sql_cluster_v2_async
+from .wrappers import delete_sql_database_v2
+from .wrappers import delete_sql_database_v2_async
+from .wrappers import get_sql_app_list_v2
+from .wrappers import get_sql_app_list_v2_async
+from .wrappers import get_sql_cluster_v2
+from .wrappers import get_sql_cluster_v2_async
+from .wrappers import get_sql_database_v2
+from .wrappers import get_sql_database_v2_async
+from .wrappers import start_sql_cluster_v2
+from .wrappers import start_sql_cluster_v2_async
+from .wrappers import stop_sql_cluster_v2
+from .wrappers import stop_sql_cluster_v2_async
+from .wrappers import update_sql_cluster_v2
+from .wrappers import update_sql_cluster_v2_async
 
 # messages
 from .wrappers import public_get_messages

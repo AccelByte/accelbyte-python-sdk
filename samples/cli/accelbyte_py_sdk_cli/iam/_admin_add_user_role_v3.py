@@ -71,4 +71,4 @@ def admin_add_user_role_v3(
 
 
 admin_add_user_role_v3.operation_id = "AdminAddUserRoleV3"
-admin_add_user_role_v3.is_deprecated = False
+admin_add_user_role_v3.is_deprecated = True

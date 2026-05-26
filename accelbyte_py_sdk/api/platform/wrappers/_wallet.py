@@ -34,6 +34,7 @@ from ..models import BulkCreditRequest
 from ..models import BulkCreditResult
 from ..models import BulkDebitRequest
 from ..models import BulkDebitResult
+from ..models import CheckBalanceResponse
 from ..models import CreditRequest
 from ..models import CurrencyWallet
 from ..models import DebitByCurrencyCodeRequest
@@ -330,7 +331,7 @@ def check_balance(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successfully determined if user has enough balance.)
+        200: OK - CheckBalanceResponse (Successfully determined if user has enough balance.)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
     """
@@ -385,7 +386,7 @@ async def check_balance_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successfully determined if user has enough balance.)
+        200: OK - CheckBalanceResponse (Successfully determined if user has enough balance.)
 
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
     """

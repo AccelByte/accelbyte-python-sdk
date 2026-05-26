@@ -75,4 +75,4 @@ def admin_update_input_validations(
 
 
 admin_update_input_validations.operation_id = "AdminUpdateInputValidations"
-admin_update_input_validations.is_deprecated = False
+admin_update_input_validations.is_deprecated = True

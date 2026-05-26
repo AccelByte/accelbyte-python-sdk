@@ -34,9 +34,9 @@ from .....core import deprecated
 class RevokeToken(Operation):
     """OAuth2 token revocation API (RevokeToken)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     Revokes a token.
-    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret or Bearer access authentication with valid access token.
+    Requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret or Bearer access authentication with valid access token.
 
     ### Endpoint migration guide
     - **Substitute endpoint: _/v3/oauth/revoke [POST]_**

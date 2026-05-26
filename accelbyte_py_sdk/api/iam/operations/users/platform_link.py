@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PlatformLink(Operation):
     """Link user's account with platform (PlatformLink)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId} [POST]_**
 
@@ -52,7 +52,7 @@ class PlatformLink(Operation):
     - **android**: The ticket's value is the Androidâs device ID
     - **ios**: The ticket's value is the iOSâs device ID.
     - **apple**: The ticketâs value is the authorization code returned by Apple OAuth.
-    - **device**: Every device that doesânt run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
+    - **device**: Every device that doesnât run Android and iOS is categorized as a device platform. The ticket's value is the deviceâs ID.
     - **discord**: The ticketâs value is the authorization code returned by Discord OAuth.
 
     Properties:

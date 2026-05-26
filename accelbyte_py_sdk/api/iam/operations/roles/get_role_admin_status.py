@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class GetRoleAdminStatus(Operation):
     """Get Role Admin Status (GetRoleAdminStatus)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     Admin roles has its members listed in the role.
 
     ### Endpoint migration guide

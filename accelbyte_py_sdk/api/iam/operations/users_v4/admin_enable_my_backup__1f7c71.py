@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminEnableMyBackupCodesV4(Operation):
     """Enable 2FA backup codes (AdminEnableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    Enables 2FA backup codes.
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/enable

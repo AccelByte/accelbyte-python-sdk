@@ -27,11 +27,17 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.apimodel_no_sql_database_acknowledgements import (
+    ApimodelNoSQLDatabaseAcknowledgements,
+)
+
 
 class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
     """Apimodel create no SQL database credential request (apimodel.CreateNoSQLDatabaseCredentialRequest)
 
     Properties:
+        acknowledgements: (acknowledgements) REQUIRED ApimodelNoSQLDatabaseAcknowledgements
+
         password: (password) REQUIRED str
 
         username: (username) REQUIRED str
@@ -39,12 +45,19 @@ class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
 
     # region fields
 
+    acknowledgements: ApimodelNoSQLDatabaseAcknowledgements  # REQUIRED
     password: str  # REQUIRED
     username: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_acknowledgements(
+        self, value: ApimodelNoSQLDatabaseAcknowledgements
+    ) -> ApimodelCreateNoSQLDatabaseCredentialRequest:
+        self.acknowledgements = value
+        return self
 
     def with_password(self, value: str) -> ApimodelCreateNoSQLDatabaseCredentialRequest:
         self.password = value
@@ -60,6 +73,12 @@ class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "acknowledgements"):
+            result["acknowledgements"] = self.acknowledgements.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["acknowledgements"] = ApimodelNoSQLDatabaseAcknowledgements()
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
@@ -76,9 +95,14 @@ class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
 
     @classmethod
     def create(
-        cls, password: str, username: str, **kwargs
+        cls,
+        acknowledgements: ApimodelNoSQLDatabaseAcknowledgements,
+        password: str,
+        username: str,
+        **kwargs,
     ) -> ApimodelCreateNoSQLDatabaseCredentialRequest:
         instance = cls()
+        instance.acknowledgements = acknowledgements
         instance.password = password
         instance.username = username
         return instance
@@ -90,6 +114,14 @@ class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "acknowledgements" in dict_ and dict_["acknowledgements"] is not None:
+            instance.acknowledgements = (
+                ApimodelNoSQLDatabaseAcknowledgements.create_from_dict(
+                    dict_["acknowledgements"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.acknowledgements = ApimodelNoSQLDatabaseAcknowledgements()
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
@@ -141,6 +173,7 @@ class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "acknowledgements": "acknowledgements",
             "password": "password",
             "username": "username",
         }
@@ -148,6 +181,7 @@ class ApimodelCreateNoSQLDatabaseCredentialRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "acknowledgements": True,
             "password": True,
             "username": True,
         }

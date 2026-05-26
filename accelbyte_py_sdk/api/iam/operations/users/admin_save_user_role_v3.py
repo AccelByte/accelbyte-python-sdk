@@ -37,7 +37,7 @@ class AdminSaveUserRoleV3(Operation):
     """Admin Save User Role V3 (AdminSaveUserRoleV3)
 
     User's roles will be replaced with roles from request body.
-    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+    An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of [AdminAddUserRoleV4].
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/roles

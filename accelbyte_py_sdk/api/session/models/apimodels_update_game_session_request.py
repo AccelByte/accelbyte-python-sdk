@@ -38,6 +38,7 @@ class JoinabilityEnum(StrEnum):
     FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
     INVITE_ONLY = "INVITE_ONLY"
     OPEN = "OPEN"
+    PASSWORD_PROTECTED = "PASSWORD_PROTECTED"
 
 
 class TypeEnum(StrEnum):
@@ -82,6 +83,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        password: (password) OPTIONAL str
+
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
 
         tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
@@ -105,6 +108,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
     type_: Union[str, TypeEnum]  # REQUIRED
     version: int  # REQUIRED
     fallback_claim_keys: List[str]  # OPTIONAL
+    password: str  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
     tie_teams_session_lifetime: bool  # OPTIONAL
 
@@ -184,6 +188,10 @@ class ApimodelsUpdateGameSessionRequest(Model):
         self, value: List[str]
     ) -> ApimodelsUpdateGameSessionRequest:
         self.fallback_claim_keys = value
+        return self
+
+    def with_password(self, value: str) -> ApimodelsUpdateGameSessionRequest:
+        self.password = value
         return self
 
     def with_preferred_claim_keys(
@@ -270,6 +278,10 @@ class ApimodelsUpdateGameSessionRequest(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "password"):
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = ""
         if hasattr(self, "preferred_claim_keys"):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
@@ -303,6 +315,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         type_: Union[str, TypeEnum],
         version: int,
         fallback_claim_keys: Optional[List[str]] = None,
+        password: Optional[str] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         tie_teams_session_lifetime: Optional[bool] = None,
         **kwargs,
@@ -325,6 +338,8 @@ class ApimodelsUpdateGameSessionRequest(Model):
         instance.version = version
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if password is not None:
+            instance.password = password
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
         if tie_teams_session_lifetime is not None:
@@ -409,6 +424,10 @@ class ApimodelsUpdateGameSessionRequest(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = ""
         if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
             instance.preferred_claim_keys = [
                 str(i0) for i0 in dict_["preferredClaimKeys"]
@@ -481,6 +500,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "type": "type_",
             "version": "version",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "password": "password",
             "preferredClaimKeys": "preferred_claim_keys",
             "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
         }
@@ -504,6 +524,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "type": True,
             "version": True,
             "fallbackClaimKeys": False,
+            "password": False,
             "preferredClaimKeys": False,
             "tieTeamsSessionLifetime": False,
         }
@@ -518,6 +539,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
                 "FRIENDS_OF_MEMBERS",
                 "INVITE_ONLY",
                 "OPEN",
+                "PASSWORD_PROTECTED",
             ],
             "type": ["DS", "NONE", "P2P"],
         }

@@ -54,6 +54,8 @@ class ModelsNativeSessionSetting(Model):
 
         xbox_title_id: (XboxTitleID) REQUIRED str
 
+        active_platforms: (activePlatforms) OPTIONAL List[str]
+
         localized_session_name: (localizedSessionName) OPTIONAL Dict[str, Any]
 
         psn_disable_system_ui_menu: (PSNDisableSystemUIMenu) OPTIONAL List[Union[str, PSNDisableSystemUIMenuEnum]]
@@ -72,6 +74,7 @@ class ModelsNativeSessionSetting(Model):
     xbox_service_config_id: str  # REQUIRED
     xbox_session_template_name: str  # REQUIRED
     xbox_title_id: str  # REQUIRED
+    active_platforms: List[str]  # OPTIONAL
     localized_session_name: Dict[str, Any]  # OPTIONAL
     psn_disable_system_ui_menu: List[Union[str, PSNDisableSystemUIMenuEnum]]  # OPTIONAL
     psn_supported_platforms: List[str]  # OPTIONAL
@@ -107,6 +110,10 @@ class ModelsNativeSessionSetting(Model):
 
     def with_xbox_title_id(self, value: str) -> ModelsNativeSessionSetting:
         self.xbox_title_id = value
+        return self
+
+    def with_active_platforms(self, value: List[str]) -> ModelsNativeSessionSetting:
+        self.active_platforms = value
         return self
 
     def with_localized_session_name(
@@ -165,6 +172,10 @@ class ModelsNativeSessionSetting(Model):
             result["XboxTitleID"] = str(self.xbox_title_id)
         elif include_empty:
             result["XboxTitleID"] = ""
+        if hasattr(self, "active_platforms"):
+            result["activePlatforms"] = [str(i0) for i0 in self.active_platforms]
+        elif include_empty:
+            result["activePlatforms"] = []
         if hasattr(self, "localized_session_name"):
             result["localizedSessionName"] = {
                 str(k0): v0 for k0, v0 in self.localized_session_name.items()
@@ -203,6 +214,7 @@ class ModelsNativeSessionSetting(Model):
         xbox_service_config_id: str,
         xbox_session_template_name: str,
         xbox_title_id: str,
+        active_platforms: Optional[List[str]] = None,
         localized_session_name: Optional[Dict[str, Any]] = None,
         psn_disable_system_ui_menu: Optional[
             List[Union[str, PSNDisableSystemUIMenuEnum]]
@@ -219,6 +231,8 @@ class ModelsNativeSessionSetting(Model):
         instance.xbox_service_config_id = xbox_service_config_id
         instance.xbox_session_template_name = xbox_session_template_name
         instance.xbox_title_id = xbox_title_id
+        if active_platforms is not None:
+            instance.active_platforms = active_platforms
         if localized_session_name is not None:
             instance.localized_session_name = localized_session_name
         if psn_disable_system_ui_menu is not None:
@@ -270,6 +284,10 @@ class ModelsNativeSessionSetting(Model):
             instance.xbox_title_id = str(dict_["XboxTitleID"])
         elif include_empty:
             instance.xbox_title_id = ""
+        if "activePlatforms" in dict_ and dict_["activePlatforms"] is not None:
+            instance.active_platforms = [str(i0) for i0 in dict_["activePlatforms"]]
+        elif include_empty:
+            instance.active_platforms = []
         if (
             "localizedSessionName" in dict_
             and dict_["localizedSessionName"] is not None
@@ -351,6 +369,7 @@ class ModelsNativeSessionSetting(Model):
             "XboxServiceConfigID": "xbox_service_config_id",
             "XboxSessionTemplateName": "xbox_session_template_name",
             "XboxTitleID": "xbox_title_id",
+            "activePlatforms": "active_platforms",
             "localizedSessionName": "localized_session_name",
             "PSNDisableSystemUIMenu": "psn_disable_system_ui_menu",
             "PSNSupportedPlatforms": "psn_supported_platforms",
@@ -367,6 +386,7 @@ class ModelsNativeSessionSetting(Model):
             "XboxServiceConfigID": True,
             "XboxSessionTemplateName": True,
             "XboxTitleID": True,
+            "activePlatforms": False,
             "localizedSessionName": False,
             "PSNDisableSystemUIMenu": False,
             "PSNSupportedPlatforms": False,

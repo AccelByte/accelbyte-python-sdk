@@ -37,7 +37,6 @@ class AdminGetMyUserV3(Operation):
     """Get My User (AdminGetMyUserV3)
 
     Get my user data
-    action code : 10147
 
     Properties:
         url: /iam/v3/admin/users/me

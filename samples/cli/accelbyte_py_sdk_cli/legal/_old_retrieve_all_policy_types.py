@@ -68,4 +68,4 @@ def old_retrieve_all_policy_types(
 
 
 old_retrieve_all_policy_types.operation_id = "oldRetrieveAllPolicyTypes"
-old_retrieve_all_policy_types.is_deprecated = False
+old_retrieve_all_policy_types.is_deprecated = True

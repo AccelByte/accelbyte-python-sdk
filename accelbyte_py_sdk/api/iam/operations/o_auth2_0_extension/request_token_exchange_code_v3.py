@@ -41,12 +41,12 @@ class CodeChallengeMethodEnum(StrEnum):
 class RequestTokenExchangeCodeV3(Operation):
     """Request code to get a new token (RequestTokenExchangeCodeV3)
 
-    This endpoint is being used to request the code to exchange a new token.
+    Requests the code to exchange for a new token.
     The target new token's clientId should NOT be same with current using one.
     Path namespace should be target namespace.
     Client ID should match the target namespace.
 
-    The code in response can be consumed by `/iam/v3/token/exchange`
+    The code in response can be consumed by `/iam/v3/token/exchange [POST]`
 
     Properties:
         url: /iam/v3/namespace/{namespace}/token/request

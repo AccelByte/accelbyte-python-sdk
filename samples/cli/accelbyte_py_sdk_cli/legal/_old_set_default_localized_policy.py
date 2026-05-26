@@ -65,4 +65,4 @@ def old_set_default_localized_policy(
 
 
 old_set_default_localized_policy.operation_id = "oldSetDefaultLocalizedPolicy"
-old_set_default_localized_policy.is_deprecated = False
+old_set_default_localized_policy.is_deprecated = True

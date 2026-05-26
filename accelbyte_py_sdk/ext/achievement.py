@@ -29,6 +29,7 @@ from ..api.achievement.models import ModelsAchievementRequest
 from ..api.achievement.models import ModelsAchievementResponse
 from ..api.achievement.models import ModelsAchievementUpdateRequest
 from ..api.achievement.models import ModelsAdditionalInfo
+from ..api.achievement.models import ModelsBatchQueryUserAchievementRequest
 from ..api.achievement.models import ModelsBulkCreatePSNEventResponse
 from ..api.achievement.models import ModelsBulkCreatePSNEvents
 from ..api.achievement.models import ModelsBulkUnlockAchievementRequest
@@ -130,6 +131,15 @@ def create_models_additional_info_example() -> ModelsAdditionalInfo:
     instance.number_of_achievements = randomize("int", min_val=1, max_val=1000)
     instance.number_of_hidden_achievements = randomize("int", min_val=1, max_val=1000)
     instance.number_of_visible_achievements = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_batch_query_user_achievement_request_example() -> (
+    ModelsBatchQueryUserAchievementRequest
+):
+    instance = ModelsBatchQueryUserAchievementRequest()
+    instance.codes = [randomize()]
+    instance.status = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

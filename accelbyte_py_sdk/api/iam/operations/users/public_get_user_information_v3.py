@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetUserInformationV3(Operation):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts.
+    Retrieves user info and linked platform accounts.
 
 
     **Authentication:**

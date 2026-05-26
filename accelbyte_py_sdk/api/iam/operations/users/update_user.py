@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class UpdateUser(Operation):
     """Update User (UpdateUser)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint([PUT]): _/iam/v3/public/namespaces/{namespace}/users/me [PUT]_**
     - **Substitute endpoint([PATCH]): _/iam/v3/public/namespaces/{namespace}/users/me [PATCH]_**
@@ -47,7 +47,7 @@ class UpdateUser(Operation):
     1. Prefer [PATCH] if client support PATCH method
     2. Difference in V3/v4 request body, format difference: Pascal case => Camel case
 
-    This Endpoint support update user based on given data. **Single request can update single field or multi fields.**
+    Supports updating user based on given data. **Single request can update single field or multi fields.**
     Supported field {Country, DisplayName, LanguageTag}
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 

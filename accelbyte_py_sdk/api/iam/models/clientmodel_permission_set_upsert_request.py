@@ -41,6 +41,8 @@ class ClientmodelPermissionSetUpsertRequest(Model):
         module: (module) REQUIRED str
 
         module_id: (moduleId) REQUIRED str
+
+        package: (package) REQUIRED str
     """
 
     # region fields
@@ -49,6 +51,7 @@ class ClientmodelPermissionSetUpsertRequest(Model):
     groups: List[AccountcommonPermissionGroup]  # REQUIRED
     module: str  # REQUIRED
     module_id: str  # REQUIRED
+    package: str  # REQUIRED
 
     # endregion fields
 
@@ -70,6 +73,10 @@ class ClientmodelPermissionSetUpsertRequest(Model):
 
     def with_module_id(self, value: str) -> ClientmodelPermissionSetUpsertRequest:
         self.module_id = value
+        return self
+
+    def with_package(self, value: str) -> ClientmodelPermissionSetUpsertRequest:
+        self.package = value
         return self
 
     # endregion with_x methods
@@ -96,6 +103,10 @@ class ClientmodelPermissionSetUpsertRequest(Model):
             result["moduleId"] = str(self.module_id)
         elif include_empty:
             result["moduleId"] = ""
+        if hasattr(self, "package"):
+            result["package"] = str(self.package)
+        elif include_empty:
+            result["package"] = ""
         return result
 
     # endregion to methods
@@ -109,6 +120,7 @@ class ClientmodelPermissionSetUpsertRequest(Model):
         groups: List[AccountcommonPermissionGroup],
         module: str,
         module_id: str,
+        package: str,
         **kwargs,
     ) -> ClientmodelPermissionSetUpsertRequest:
         instance = cls()
@@ -116,6 +128,7 @@ class ClientmodelPermissionSetUpsertRequest(Model):
         instance.groups = groups
         instance.module = module
         instance.module_id = module_id
+        instance.package = package
         return instance
 
     @classmethod
@@ -146,6 +159,10 @@ class ClientmodelPermissionSetUpsertRequest(Model):
             instance.module_id = str(dict_["moduleId"])
         elif include_empty:
             instance.module_id = ""
+        if "package" in dict_ and dict_["package"] is not None:
+            instance.package = str(dict_["package"])
+        elif include_empty:
+            instance.package = ""
         return instance
 
     @classmethod
@@ -193,6 +210,7 @@ class ClientmodelPermissionSetUpsertRequest(Model):
             "groups": "groups",
             "module": "module",
             "moduleId": "module_id",
+            "package": "package",
         }
 
     @staticmethod
@@ -202,6 +220,7 @@ class ClientmodelPermissionSetUpsertRequest(Model):
             "groups": True,
             "module": True,
             "moduleId": True,
+            "package": True,
         }
 
     # endregion static methods

@@ -32,7 +32,9 @@ from ....core import same_doc_as
 from ..models import ApimodelsCreatePartyRequest
 from ..models import ApimodelsDeleteBulkPartySessionRequest
 from ..models import ApimodelsDeleteBulkPartySessionsAPIResponse
+from ..models import ApimodelsGetPasswordResponse
 from ..models import ApimodelsJoinByCodeRequest
+from ..models import ApimodelsJoinSessionRequest
 from ..models import ApimodelsKickResponse
 from ..models import ApimodelsPartyQueryResponse
 from ..models import ApimodelsPartySessionResponse
@@ -40,6 +42,7 @@ from ..models import ApimodelsPromoteLeaderRequest
 from ..models import ApimodelsSessionInviteRequest
 from ..models import ApimodelsSessionInviteResponse
 from ..models import ApimodelsUpdatePartyRequest
+from ..models import ApimodelsUpdatePasswordRequest
 from ..models import ResponseError
 
 from ..operations.party import AdminDeleteBulkParties
@@ -52,6 +55,7 @@ from ..operations.party import AdminSyncNativeSession
 from ..operations.party import PublicCreateParty
 from ..operations.party import PublicGeneratePartyCode
 from ..operations.party import PublicGetParty
+from ..operations.party import PublicGetPartyPassword
 from ..operations.party import PublicPartyCancel
 from ..operations.party import PublicPartyInvite
 from ..operations.party import PublicPartyJoin
@@ -64,6 +68,7 @@ from ..operations.party import PublicPromotePartyLeader
 from ..operations.party import PublicQueryMyParties
 from ..operations.party import PublicRevokePartyCode
 from ..operations.party import PublicUpdateParty
+from ..operations.party import PublicUpdatePartyPassword
 from ..models import (
     ApimodelsCreatePartyRequestJoinabilityEnum,
     ApimodelsCreatePartyRequestTypeEnum,
@@ -524,6 +529,9 @@ def public_create_party(
     - configurationName
     - attributes
 
+    maxPlayers override rules:
+    - maxPlayers can be set to a value lower than or equal to the template's maxPlayers. Values above the template ceiling are ignored and the template value is used instead.
+
     Supported platforms:
     1. STEAM
     2. PSN
@@ -633,6 +641,9 @@ async def public_create_party_async(
     - joinability
     - configurationName
     - attributes
+
+    maxPlayers override rules:
+    - maxPlayers can be set to a value lower than or equal to the template's maxPlayers. Values above the template ceiling are ignored and the template value is used instead.
 
     Supported platforms:
     1. STEAM
@@ -914,6 +925,112 @@ async def public_get_party_async(
     )
 
 
+@same_doc_as(PublicGetPartyPassword)
+def public_get_party_password(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get password of a password-protected party. (publicGetPartyPassword)
+
+    Get the plaintext password of a PASSWORD_PROTECTED party. Only active members of the party may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/password
+
+        method: GET
+
+        tags: ["Party"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGetPasswordResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicGetPartyPassword.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetPartyPassword)
+async def public_get_party_password_async(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get password of a password-protected party. (publicGetPartyPassword)
+
+    Get the plaintext password of a PASSWORD_PROTECTED party. Only active members of the party may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/password
+
+        method: GET
+
+        tags: ["Party"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsGetPasswordResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicGetPartyPassword.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicPartyCancel)
 def public_party_cancel(
     party_id: str,
@@ -1156,6 +1273,7 @@ async def public_party_invite_async(
 
 @same_doc_as(PublicPartyJoin)
 def public_party_join(
+    body: ApimodelsJoinSessionRequest,
     party_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1172,11 +1290,13 @@ def public_party_join(
 
         tags: ["Party"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsJoinSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1200,6 +1320,7 @@ def public_party_join(
         if error:
             return None, error
     request = PublicPartyJoin.create(
+        body=body,
         party_id=party_id,
         namespace=namespace,
     )
@@ -1208,6 +1329,7 @@ def public_party_join(
 
 @same_doc_as(PublicPartyJoin)
 async def public_party_join_async(
+    body: ApimodelsJoinSessionRequest,
     party_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1224,11 +1346,13 @@ async def public_party_join_async(
 
         tags: ["Party"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsJoinSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1252,6 +1376,7 @@ async def public_party_join_async(
         if error:
             return None, error
     request = PublicPartyJoin.create(
+        body=body,
         party_id=party_id,
         namespace=namespace,
     )
@@ -2277,6 +2402,120 @@ async def public_update_party_async(
         if error:
             return None, error
     request = PublicUpdateParty.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpdatePartyPassword)
+def public_update_party_password(
+    body: ApimodelsUpdatePasswordRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update password of a password-protected party. (publicUpdatePartyPassword)
+
+    Update the password of a PASSWORD_PROTECTED party. Only the party leader may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/password
+
+        method: PUT
+
+        tags: ["Party"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdatePasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdatePartyPassword.create(
+        body=body,
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdatePartyPassword)
+async def public_update_party_password_async(
+    body: ApimodelsUpdatePasswordRequest,
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update password of a password-protected party. (publicUpdatePartyPassword)
+
+    Update the password of a PASSWORD_PROTECTED party. Only the party leader may call this endpoint.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/password
+
+        method: PUT
+
+        tags: ["Party"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdatePasswordRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdatePartyPassword.create(
         body=body,
         party_id=party_id,
         namespace=namespace,

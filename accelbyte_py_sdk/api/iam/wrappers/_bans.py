@@ -60,7 +60,6 @@ def admin_ban_user_bulk_v3(
     """Bulk ban user (AdminBanUserBulkV3)
 
     Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs
-    action code : 10141
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -113,7 +112,6 @@ async def admin_ban_user_bulk_v3_async(
     """Bulk ban user (AdminBanUserBulkV3)
 
     Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs
-    action code : 10141
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -170,9 +168,7 @@ def admin_get_banned_users_v3(
 ):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
-    Ban type is the code
-    available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
+    Retrieves a paginated list of users who have active or history bans, filtered by ban type.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -232,9 +228,7 @@ async def admin_get_banned_users_v3_async(
 ):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
-    Ban type is the code
-    available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
+    Retrieves a paginated list of users who have active or history bans, filtered by ban type.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users
@@ -292,7 +286,6 @@ def admin_get_bans_type_v3(
 
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
 
     Properties:
         url: /iam/v3/admin/bans
@@ -328,7 +321,6 @@ async def admin_get_bans_type_v3_async(
 
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
 
     Properties:
         url: /iam/v3/admin/bans
@@ -368,7 +360,6 @@ def admin_get_bans_type_with_namespace_v3(
 
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bantypes
@@ -414,7 +405,6 @@ async def admin_get_bans_type_with_namespace_v3_async(
 
     Ban type is the code
     available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bantypes
@@ -459,7 +449,6 @@ def admin_get_list_ban_reason_v3(
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
     Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
-    action code : 10202
 
     Properties:
         url: /iam/v3/admin/bans/reasons
@@ -494,7 +483,6 @@ async def admin_get_list_ban_reason_v3_async(
     """Get list of ban reasons (AdminGetListBanReasonV3)
 
     Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace.
-    action code : 10202
 
     Properties:
         url: /iam/v3/admin/bans/reasons
@@ -534,7 +522,6 @@ def admin_unban_user_bulk_v3(
     """Bulk unban user (AdminUnbanUserBulkV3)
 
     disable bulk ban user. The maximum limit value is 100
-    action code : 10142
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled
@@ -587,7 +574,6 @@ async def admin_unban_user_bulk_v3_async(
     """Bulk unban user (AdminUnbanUserBulkV3)
 
     disable bulk ban user. The maximum limit value is 100
-    action code : 10142
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users/disabled
@@ -637,7 +623,7 @@ async def admin_unban_user_bulk_v3_async(
 def get_bans_type(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Get list of ban types (GetBansType)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/bans [GET]_**
 
@@ -672,7 +658,7 @@ async def get_bans_type_async(
 ):
     """Get list of ban types (GetBansType)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/bans [GET]_**
 
@@ -709,7 +695,7 @@ def get_list_ban_reason(
 ):
     """Get list of ban reasons (GetListBanReason)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/bans/reasons [GET]_**
 
@@ -744,7 +730,7 @@ async def get_list_ban_reason_async(
 ):
     """Get list of ban reasons (GetListBanReason)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/admin/bans/reasons [GET]_**
 

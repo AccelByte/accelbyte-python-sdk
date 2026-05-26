@@ -50,7 +50,7 @@ def admin_create_tag_v3(
 ):
     """Create Account Identifier Tag (AdminCreateTagV3)
 
-    Create a new Account Identifier Tag for users. This endpoint allows administrators to create tags that can be used to identify and categorize user accounts.
+    Creates a new Account Identifier Tag for users, which can be used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags
@@ -98,7 +98,7 @@ async def admin_create_tag_v3_async(
 ):
     """Create Account Identifier Tag (AdminCreateTagV3)
 
-    Create a new Account Identifier Tag for users. This endpoint allows administrators to create tags that can be used to identify and categorize user accounts.
+    Creates a new Account Identifier Tag for users, which can be used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags
@@ -148,7 +148,7 @@ def admin_delete_tag_v3(
 ):
     """Delete Account Identifier Tag (AdminDeleteTagV3)
 
-    Delete an Account Identifier Tag. This endpoint allows administrators to delete a tag that is used to identify and categorize user accounts.
+    Deletes an Account Identifier Tag used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags/{tagId}
@@ -194,7 +194,7 @@ async def admin_delete_tag_v3_async(
 ):
     """Delete Account Identifier Tag (AdminDeleteTagV3)
 
-    Delete an Account Identifier Tag. This endpoint allows administrators to delete a tag that is used to identify and categorize user accounts.
+    Deletes an Account Identifier Tag used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags/{tagId}
@@ -244,7 +244,7 @@ def admin_query_tag_v3(
 ):
     """Query Account Identifier Tag (AdminQueryTagV3)
 
-    Retrieve Account Identifier Tags. This endpoint allows administrators to retrieve tags that are used to identify and categorize user accounts.
+    Retrieves Account Identifier Tags used to identify and categorize user accounts.
     Tag Name can be used for partial content search.
 
     Properties:
@@ -297,7 +297,7 @@ async def admin_query_tag_v3_async(
 ):
     """Query Account Identifier Tag (AdminQueryTagV3)
 
-    Retrieve Account Identifier Tags. This endpoint allows administrators to retrieve tags that are used to identify and categorize user accounts.
+    Retrieves Account Identifier Tags used to identify and categorize user accounts.
     Tag Name can be used for partial content search.
 
     Properties:
@@ -351,7 +351,7 @@ def admin_update_tag_v3(
 ):
     """Update Account Identifier Tag (AdminUpdateTagV3)
 
-    Update an existing Account Identifier Tag. This endpoint allows administrators to update the details of a tag that is used to identify and categorize user accounts.
+    Updates the details of an existing Account Identifier Tag used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags/{tagId}
@@ -405,7 +405,7 @@ async def admin_update_tag_v3_async(
 ):
     """Update Account Identifier Tag (AdminUpdateTagV3)
 
-    Update an existing Account Identifier Tag. This endpoint allows administrators to update the details of a tag that is used to identify and categorize user accounts.
+    Updates the details of an existing Account Identifier Tag used to identify and categorize user accounts.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/tags/{tagId}

@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminDeletePlatformLinkV2(Operation):
     """Delete the link of user's account with platform (AdminDeletePlatformLinkV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_**
 

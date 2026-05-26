@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.11.0"
+__version__ = "6.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,7 @@ from .admin_reset_steam_job_time import AdminResetSteamJobTime
 from .admin_sync_oculus_subsc_25b739 import AdminSyncOculusSubscriptions
 from .admin_sync_steam_abnorm_be4791 import AdminSyncSteamAbnormalTransaction
 from .admin_sync_steam_iap_by_48029c import AdminSyncSteamIAPByTransaction
+from .admin_sync_twitch_drops_61485a import AdminSyncTwitchDropsEntitlement
 from .delete_apple_iap_config import DeleteAppleIAPConfig
 from .delete_epic_games_iap_config import DeleteEpicGamesIAPConfig
 from .delete_google_iap_config import DeleteGoogleIAPConfig

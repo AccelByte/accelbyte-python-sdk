@@ -8,27 +8,44 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.31.0"
+__version__ = "1.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .apimodel_app_item import ApimodelAppItem
+from .apimodel_app_ui_response import ApimodelAppUIResponse
+from .apimodel_apply_app_config_request import ApimodelApplyAppConfigRequest
+from .apimodel_apply_config_item import ApimodelApplyConfigItem
+from .apimodel_apply_permission_item import ApimodelApplyPermissionItem
 from .apimodel_autoscaling_request import ApimodelAutoscalingRequest
 from .apimodel_autoscaling_response import ApimodelAutoscalingResponse
 from .apimodel_bulk_subscribe_item import ApimodelBulkSubscribeItem
 from .apimodel_bulk_subscribe_request import ApimodelBulkSubscribeRequest
 from .apimodel_cpu_request import ApimodelCPURequest
 from .apimodel_cpu_response import ApimodelCPUResponse
+from .apimodel_create_app_ui_request import ApimodelCreateAppUIRequest
 from .apimodel_create_app_v2_request import ApimodelCreateAppV2Request
 from .apimodel_create_deployment_v2_request import ApimodelCreateDeploymentV2Request
 from .apimodel_create_deployment_v2_response import ApimodelCreateDeploymentV2Response
+from .apimodel_create_key_value_credential_request import (
+    ApimodelCreateKeyValueCredentialRequest,
+)
+from .apimodel_create_key_value_credential_response import (
+    ApimodelCreateKeyValueCredentialResponse,
+)
 from .apimodel_create_no_sql_app_database_request import (
     ApimodelCreateNoSQLAppDatabaseRequest,
 )
 from .apimodel_create_no_sql_database_credential_request import (
     ApimodelCreateNoSQLDatabaseCredentialRequest,
+)
+from .apimodel_create_sql_app_database_request import (
+    ApimodelCreateSQLAppDatabaseRequest,
+)
+from .apimodel_create_sql_database_credential_request import (
+    ApimodelCreateSQLDatabaseCredentialRequest,
 )
 from .apimodel_create_subscription_request import ApimodelCreateSubscriptionRequest
 from .apimodel_create_subscription_response import ApimodelCreateSubscriptionResponse
@@ -37,6 +54,7 @@ from .apimodel_csm_app_limits_response import ApimodelCSMAppLimitsResponse
 from .apimodel_delete_no_sql_resource_response import (
     ApimodelDeleteNoSQLResourceResponse,
 )
+from .apimodel_delete_sql_resource_response import ApimodelDeleteSQLResourceResponse
 from .apimodel_get_app_image_list_v2_data_item import ApimodelGetAppImageListV2DataItem
 from .apimodel_get_app_image_list_v2_data_item_image_scan_result import (
     ApimodelGetAppImageListV2DataItemImageScanResult,
@@ -53,6 +71,9 @@ from .apimodel_get_deployment_list_v2_data_item import (
 from .apimodel_get_deployment_list_v2_request import ApimodelGetDeploymentListV2Request
 from .apimodel_get_deployment_list_v2_response import (
     ApimodelGetDeploymentListV2Response,
+)
+from .apimodel_get_integration_app_key_value_response import (
+    ApimodelGetIntegrationAppKeyValueResponse,
 )
 from .apimodel_get_list_of_configurations_v2_data_item import (
     ApimodelGetListOfConfigurationsV2DataItem,
@@ -76,11 +97,33 @@ from .apimodel_get_notification_subscriber_status_response import (
     ApimodelGetNotificationSubscriberStatusResponse,
 )
 from .apimodel_increase_limit_form_request import ApimodelIncreaseLimitFormRequest
+from .apimodel_integrate_app_key_value_request import (
+    ApimodelIntegrateAppKeyValueRequest,
+)
+from .apimodel_integrate_app_key_value_response import (
+    ApimodelIntegrateAppKeyValueResponse,
+)
+from .apimodel_integration_credential_info import ApimodelIntegrationCredentialInfo
+from .apimodel_integration_list_item import ApimodelIntegrationListItem
+from .apimodel_key_value_credential_acknowledgements import (
+    ApimodelKeyValueCredentialAcknowledgements,
+)
+from .apimodel_key_value_resource_list_response import (
+    ApimodelKeyValueResourceListResponse,
+)
+from .apimodel_key_value_resource_response import ApimodelKeyValueResourceResponse
+from .apimodel_list_app_ui_response import ApimodelListAppUIResponse
+from .apimodel_list_integrated_apps_key_value_response import (
+    ApimodelListIntegratedAppsKeyValueResponse,
+)
 from .apimodel_list_topics_response import ApimodelListTopicsResponse
 from .apimodel_memory_request import ApimodelMemoryRequest
 from .apimodel_memory_response import ApimodelMemoryResponse
 from .apimodel_no_sql_app_list_response import ApimodelNoSQLAppListResponse
 from .apimodel_no_sql_app_response import ApimodelNoSQLAppResponse
+from .apimodel_no_sql_database_acknowledgements import (
+    ApimodelNoSQLDatabaseAcknowledgements,
+)
 from .apimodel_no_sql_database_credential_response import (
     ApimodelNoSQLDatabaseCredentialResponse,
 )
@@ -91,6 +134,7 @@ from .apimodel_no_sql_database_response import ApimodelNoSQLDatabaseResponse
 from .apimodel_no_sql_resource_response import ApimodelNoSQLResourceResponse
 from .apimodel_notification_type import ApimodelNotificationType
 from .apimodel_pagination_response import ApimodelPaginationResponse
+from .apimodel_public_iam_client_response import ApimodelPublicIAMClientResponse
 from .apimodel_replica_request import ApimodelReplicaRequest
 from .apimodel_replica_response import ApimodelReplicaResponse
 from .apimodel_save_configuration_v2_request import ApimodelSaveConfigurationV2Request
@@ -101,6 +145,15 @@ from .apimodel_save_secret_configuration_v2_request import (
 from .apimodel_self_subscribe_notification_request import (
     ApimodelSelfSubscribeNotificationRequest,
 )
+from .apimodel_sql_app_list_response import ApimodelSQLAppListResponse
+from .apimodel_sql_app_response import ApimodelSQLAppResponse
+from .apimodel_sql_database_acknowledgements import ApimodelSQLDatabaseAcknowledgements
+from .apimodel_sql_database_credential_response import (
+    ApimodelSQLDatabaseCredentialResponse,
+)
+from .apimodel_sql_database_delete_response import ApimodelSQLDatabaseDeleteResponse
+from .apimodel_sql_database_response import ApimodelSQLDatabaseResponse
+from .apimodel_sql_resource_response import ApimodelSQLResourceResponse
 from .apimodel_subscribe_notification_request import (
     ApimodelSubscribeNotificationRequest,
 )
@@ -124,6 +177,10 @@ from .apimodel_update_configuration_v2_response import (
 from .apimodel_update_secret_configuration_v2_request import (
     ApimodelUpdateSecretConfigurationV2Request,
 )
+from .apimodel_upload_file_response import ApimodelUploadFileResponse
+from .domain_key_value_cluster_config import DomainKeyValueClusterConfig
+from .domain_key_value_resource_configuration import DomainKeyValueResourceConfiguration
+from .domain_key_value_update_configuration import DomainKeyValueUpdateConfiguration
 from .generated_create_app_v1_request import GeneratedCreateAppV1Request
 from .generated_create_app_v1_response import GeneratedCreateAppV1Response
 from .generated_create_deployment_v1_request import GeneratedCreateDeploymentV1Request
@@ -184,3 +241,4 @@ from .nosqlresource_no_sql_resource_configuration import (
 )
 from .resourceaccesstunnel_tunnel_info import ResourceaccesstunnelTunnelInfo
 from .response_error_response import ResponseErrorResponse
+from .sqlresource_sql_resource_configuration import SqlresourceSQLResourceConfiguration

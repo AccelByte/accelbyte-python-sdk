@@ -8,6 +8,9 @@
 
 # justice-iam-service
 
+from ._get_authorization_server_metadata_with_namespace import (
+    get_authorization_server_metadata_with_namespace,
+)
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
 from ._get_clients import get_clients
@@ -127,6 +130,7 @@ from ._admin_update_available_permissions_by_module import (
 from ._admin_delete_config_permissions_by_group import (
     admin_delete_config_permissions_by_group,
 )
+from ._admin_update_module_package import admin_update_module_package
 from ._admin_list_client_templates import admin_list_client_templates
 from ._admin_get_input_validations import admin_get_input_validations
 from ._admin_update_input_validations import admin_update_input_validations
@@ -161,6 +165,15 @@ from ._admin_get_config_value_v3 import admin_get_config_value_v3
 from ._admin_get_country_list_v3 import admin_get_country_list_v3
 from ._admin_get_country_blacklist_v3 import admin_get_country_blacklist_v3
 from ._admin_add_country_blacklist_v3 import admin_add_country_blacklist_v3
+from ._admin_get_namespace_scoped_input_validations import (
+    admin_get_namespace_scoped_input_validations,
+)
+from ._admin_update_namespace_scoped_input_validations import (
+    admin_update_namespace_scoped_input_validations,
+)
+from ._admin_reset_namespace_scoped_input_validations import (
+    admin_reset_namespace_scoped_input_validations,
+)
 from ._admin_get_login_allowlist_v3 import admin_get_login_allowlist_v3
 from ._admin_update_login_allowlist_v3 import admin_update_login_allowlist_v3
 from ._retrieve_all_third_party_login_platform_credential_v3 import (
@@ -300,6 +313,9 @@ from ._admin_update_client_secret_v3 import admin_update_client_secret_v3
 from ._admin_check_third_party_login_platform_availability_v3 import (
     admin_check_third_party_login_platform_availability_v3,
 )
+from ._get_third_party_login_platform_defaults_v3 import (
+    get_third_party_login_platform_defaults_v3,
+)
 from ._admin_get_roles_v3 import admin_get_roles_v3
 from ._admin_create_role_v3 import admin_create_role_v3
 from ._admin_get_role_v3 import admin_get_role_v3
@@ -345,6 +361,9 @@ from ._send_mfa_authentication_code import send_mfa_authentication_code
 from ._change2fa_method import change2fa_method
 from ._verify2fa_code import verify2fa_code
 from ._verify2fa_code_forward import verify2fa_code_forward
+from ._o_auth_dynamic_client_register_with_namespace_v3 import (
+    o_auth_dynamic_client_register_with_namespace_v3,
+)
 from ._retrieve_user_third_party_platform_token_v3 import (
     retrieve_user_third_party_platform_token_v3,
 )
@@ -364,6 +383,12 @@ from ._public_get_country_age_restriction_v3 import (
 )
 from ._public_get_config_value_v3 import public_get_config_value_v3
 from ._public_get_country_list_v3 import public_get_country_list_v3
+from ._public_get_namespace_scoped_input_validations import (
+    public_get_namespace_scoped_input_validations,
+)
+from ._public_get_namespace_scoped_input_validation_by_field import (
+    public_get_namespace_scoped_input_validation_by_field,
+)
 from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
 )
@@ -577,6 +602,7 @@ from ._public_upgrade_headless_with_code_v4_forward import (
 
 
 commands = [
+    get_authorization_server_metadata_with_namespace,
     get_bans_type,
     get_list_ban_reason,
     get_clients,
@@ -686,6 +712,7 @@ commands = [
     admin_list_client_available_permissions,
     admin_update_available_permissions_by_module,
     admin_delete_config_permissions_by_group,
+    admin_update_module_package,
     admin_list_client_templates,
     admin_get_input_validations,
     admin_update_input_validations,
@@ -712,6 +739,9 @@ commands = [
     admin_get_country_list_v3,
     admin_get_country_blacklist_v3,
     admin_add_country_blacklist_v3,
+    admin_get_namespace_scoped_input_validations,
+    admin_update_namespace_scoped_input_validations,
+    admin_reset_namespace_scoped_input_validations,
     admin_get_login_allowlist_v3,
     admin_update_login_allowlist_v3,
     retrieve_all_third_party_login_platform_credential_v3,
@@ -797,6 +827,7 @@ commands = [
     admin_verify_user_without_verification_code_v3,
     admin_update_client_secret_v3,
     admin_check_third_party_login_platform_availability_v3,
+    get_third_party_login_platform_defaults_v3,
     admin_get_roles_v3,
     admin_create_role_v3,
     admin_get_role_v3,
@@ -836,6 +867,7 @@ commands = [
     change2fa_method,
     verify2fa_code,
     verify2fa_code_forward,
+    o_auth_dynamic_client_register_with_namespace_v3,
     retrieve_user_third_party_platform_token_v3,
     auth_code_request_v3,
     platform_token_grant_v3,
@@ -851,6 +883,8 @@ commands = [
     public_get_country_age_restriction_v3,
     public_get_config_value_v3,
     public_get_country_list_v3,
+    public_get_namespace_scoped_input_validations,
+    public_get_namespace_scoped_input_validation_by_field,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
     retrieve_active_oidc_clients_public_v3,
     public_list_user_id_by_platform_user_i_ds_v3,

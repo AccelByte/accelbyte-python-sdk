@@ -35,7 +35,9 @@ from ...models import RestErrorResponse
 class AdminGenerateReportV4(Operation):
     """Admin generate device report (AdminGenerateReportV4)
 
-    This is the endpoint for an admin to generate device report
+    Generates a device report for the specified namespace.
+
+    **Namespace restriction:** The {namespace} path parameter must be a **game namespace**. Passing a publisher namespace returns HTTP 400.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/report

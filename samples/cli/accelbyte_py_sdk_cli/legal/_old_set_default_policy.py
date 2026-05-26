@@ -65,4 +65,4 @@ def old_set_default_policy(
 
 
 old_set_default_policy.operation_id = "oldSetDefaultPolicy"
-old_set_default_policy.is_deprecated = False
+old_set_default_policy.is_deprecated = True

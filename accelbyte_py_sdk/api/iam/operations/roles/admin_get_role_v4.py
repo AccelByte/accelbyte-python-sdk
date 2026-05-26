@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetRoleV4(Operation):
     """Get Role (AdminGetRoleV4)
 
-    action code: 10419
+    Retrieves a role by its ID.
 
     Properties:
         url: /iam/v4/admin/roles/{roleId}

@@ -38,7 +38,6 @@ class AdminBanUserV3(Operation):
     """Ban a single user (AdminBanUserV3)
 
     Bans a user with specific type of ban. Ban types and reason can be queried.
-    action code : 10141
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans

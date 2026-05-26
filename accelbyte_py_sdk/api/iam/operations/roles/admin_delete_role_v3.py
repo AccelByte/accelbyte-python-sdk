@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteRoleV3(Operation):
     """Delete Role (AdminDeleteRoleV3)
 
-    action code: 10403
+    Deletes a role by its ID. Removes the role from all assigned users first.
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}

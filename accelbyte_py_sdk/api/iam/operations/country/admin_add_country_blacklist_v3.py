@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminAddCountryBlacklistV3(Operation):
     """Update Country Blacklist (AdminAddCountryBlacklistV3)
 
-    Admin update country blacklist
+    Updates the country blacklist for the namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/countries/blacklist

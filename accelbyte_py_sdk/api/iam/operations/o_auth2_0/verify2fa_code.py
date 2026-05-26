@@ -36,10 +36,10 @@ from ...models import OauthmodelTokenResponseV3
 class Verify2faCode(Operation):
     """Verify 2FA code (Verify2FACode)
 
-    Verify 2FA code
-    This endpoint is used for verifying 2FA code.
+    Verifies the 2FA code.
+
     ## 2FA remember device
-    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
+    To remember device for 2FA, the request should provide cookie: device_token or header: Device-Token
 
     Properties:
         url: /iam/v3/oauth/mfa/verify

@@ -81,4 +81,4 @@ def create_no_sql_database_credential_v2(
 
 
 create_no_sql_database_credential_v2.operation_id = "CreateNoSQLDatabaseCredentialV2"
-create_no_sql_database_credential_v2.is_deprecated = False
+create_no_sql_database_credential_v2.is_deprecated = True

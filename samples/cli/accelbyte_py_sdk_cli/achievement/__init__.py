@@ -24,6 +24,7 @@ from ._reset_global_achievement import reset_global_achievement
 from ._bulk_create_psn_event import bulk_create_psn_event
 from ._admin_list_tags import admin_list_tags
 from ._admin_list_user_achievements import admin_list_user_achievements
+from ._admin_batch_query_user_achievements import admin_batch_query_user_achievements
 from ._admin_bulk_unlock_achievement import admin_bulk_unlock_achievement
 from ._admin_reset_achievement import admin_reset_achievement
 from ._admin_unlock_achievement import admin_unlock_achievement
@@ -56,6 +57,7 @@ commands = [
     bulk_create_psn_event,
     admin_list_tags,
     admin_list_user_achievements,
+    admin_batch_query_user_achievements,
     admin_bulk_unlock_achievement,
     admin_reset_achievement,
     admin_unlock_achievement,

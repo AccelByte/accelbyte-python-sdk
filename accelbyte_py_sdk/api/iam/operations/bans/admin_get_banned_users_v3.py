@@ -36,9 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetBannedUsersV3(Operation):
     """Get list of user filtered by ban types (AdminGetBannedUsersV3)
 
-    Ban type is the code
-    available for ban assignment. It is applicable globally for any namespace.
-    action code : 10201
+    Retrieves a paginated list of users who have active or history bans, filtered by ban type.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/bans/users

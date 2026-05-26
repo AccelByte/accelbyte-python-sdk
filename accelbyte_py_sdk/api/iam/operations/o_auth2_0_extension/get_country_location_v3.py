@@ -35,7 +35,7 @@ from ...models import OauthmodelCountryLocationResponse
 class GetCountryLocationV3(Operation):
     """Get Country Location (GetCountryLocationV3)
 
-    This endpoint get country location based on the request.
+    Returns the country location based on the request.
 
     Properties:
         url: /iam/v3/location/country
@@ -44,7 +44,7 @@ class GetCountryLocationV3(Operation):
 
         tags: ["OAuth2.0 - Extension"]
 
-        consumes: [""]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -58,7 +58,7 @@ class GetCountryLocationV3(Operation):
 
     _url: str = "/iam/v3/location/country"
     _method: str = "GET"
-    _consumes: List[str] = [""]
+    _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

@@ -40,7 +40,6 @@ class AdminUpdateUserBanV3(Operation):
     Set ban status for a single user for a specific ban. Retrieve
     user ban and choose the ban ID. Set the form parameter to true/false to enable
     or disable the ban.
-    action code : 10142'
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/{banId}

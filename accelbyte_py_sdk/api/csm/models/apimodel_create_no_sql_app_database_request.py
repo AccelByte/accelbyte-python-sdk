@@ -27,11 +27,17 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.apimodel_no_sql_database_acknowledgements import (
+    ApimodelNoSQLDatabaseAcknowledgements,
+)
+
 
 class ApimodelCreateNoSQLAppDatabaseRequest(Model):
     """Apimodel create no SQL app database request (apimodel.CreateNoSQLAppDatabaseRequest)
 
     Properties:
+        acknowledgements: (acknowledgements) REQUIRED ApimodelNoSQLDatabaseAcknowledgements
+
         db_name: (dbName) REQUIRED str
 
         password: (password) REQUIRED str
@@ -41,6 +47,7 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
 
     # region fields
 
+    acknowledgements: ApimodelNoSQLDatabaseAcknowledgements  # REQUIRED
     db_name: str  # REQUIRED
     password: str  # REQUIRED
     username: str  # REQUIRED
@@ -48,6 +55,12 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_acknowledgements(
+        self, value: ApimodelNoSQLDatabaseAcknowledgements
+    ) -> ApimodelCreateNoSQLAppDatabaseRequest:
+        self.acknowledgements = value
+        return self
 
     def with_db_name(self, value: str) -> ApimodelCreateNoSQLAppDatabaseRequest:
         self.db_name = value
@@ -67,6 +80,12 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "acknowledgements"):
+            result["acknowledgements"] = self.acknowledgements.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["acknowledgements"] = ApimodelNoSQLDatabaseAcknowledgements()
         if hasattr(self, "db_name"):
             result["dbName"] = str(self.db_name)
         elif include_empty:
@@ -87,9 +106,15 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
 
     @classmethod
     def create(
-        cls, db_name: str, password: str, username: str, **kwargs
+        cls,
+        acknowledgements: ApimodelNoSQLDatabaseAcknowledgements,
+        db_name: str,
+        password: str,
+        username: str,
+        **kwargs,
     ) -> ApimodelCreateNoSQLAppDatabaseRequest:
         instance = cls()
+        instance.acknowledgements = acknowledgements
         instance.db_name = db_name
         instance.password = password
         instance.username = username
@@ -102,6 +127,14 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "acknowledgements" in dict_ and dict_["acknowledgements"] is not None:
+            instance.acknowledgements = (
+                ApimodelNoSQLDatabaseAcknowledgements.create_from_dict(
+                    dict_["acknowledgements"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.acknowledgements = ApimodelNoSQLDatabaseAcknowledgements()
         if "dbName" in dict_ and dict_["dbName"] is not None:
             instance.db_name = str(dict_["dbName"])
         elif include_empty:
@@ -157,6 +190,7 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "acknowledgements": "acknowledgements",
             "dbName": "db_name",
             "password": "password",
             "username": "username",
@@ -165,6 +199,7 @@ class ApimodelCreateNoSQLAppDatabaseRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "acknowledgements": True,
             "dbName": True,
             "password": True,
             "username": True,

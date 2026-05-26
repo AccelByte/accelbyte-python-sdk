@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminListClientTemplates(Operation):
     """List Client templates (AdminListClientTemplates)
 
-    List client templates
+    Lists all available client templates.
 
     Properties:
         url: /iam/v3/admin/clientConfig/templates

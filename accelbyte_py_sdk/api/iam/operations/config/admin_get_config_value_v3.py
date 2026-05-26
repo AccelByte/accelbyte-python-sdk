@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetConfigValueV3(Operation):
     """Get Config Value (AdminGetConfigValueV3)
 
-    This endpoint return the value of config key. The namespace should be publisher namespace or studio namespace.
+    Returns the value of the specified config key. The namespace should be publisher namespace or studio namespace.
 
     **Supported config key:**
     * uniqueDisplayNameEnabled

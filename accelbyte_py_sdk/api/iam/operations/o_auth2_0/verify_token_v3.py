@@ -35,7 +35,7 @@ from ...models import OauthmodelTokenResponseV3
 class VerifyTokenV3(Operation):
     """OAuth2 token verification API (VerifyTokenV3)
 
-    This endpoint requires all requests to have Authorization header set with Basic access authentication constructed from client id and client secret.
+    Requires Basic authentication (Base64-encoded ClientID:ClientSecret) in the Authorization header.
 
     Properties:
         url: /iam/v3/oauth/verify

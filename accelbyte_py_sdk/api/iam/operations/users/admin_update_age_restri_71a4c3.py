@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class AdminUpdateAgeRestrictionConfigV2(Operation):
     """Update age restriction config value (AdminUpdateAgeRestrictionConfigV2)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_**
 

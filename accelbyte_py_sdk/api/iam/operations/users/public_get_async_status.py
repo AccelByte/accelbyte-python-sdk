@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetAsyncStatus(Operation):
     """Get Linking Progress Status (PublicGetAsyncStatus)
 
-    This endpoint is used to get linking status.
-    This API need logged user and user can only request its own linking status.
+    Retrieves the linking status. The user must be logged in and can only request their own linking status.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/requests/{requestId}/async/status

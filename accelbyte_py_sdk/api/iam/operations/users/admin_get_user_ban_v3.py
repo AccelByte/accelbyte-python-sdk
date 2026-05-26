@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUserBanV3(Operation):
     """Get user's bans (AdminGetUserBanV3)
 
-    This endpoint retrieve the first page of the data if after and before parameters is empty
-    action code : 10126
+    Returns the first page of the data if after and before parameters is empty.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans

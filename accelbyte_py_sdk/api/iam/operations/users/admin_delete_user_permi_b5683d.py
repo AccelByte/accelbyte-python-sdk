@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminDeleteUserPermissionV3(Operation):
     """Delete User Permission (AdminDeleteUserPermissionV3)
 
-    Delete User Permission
+    Removes a specific permission (identified by resource and action) from the specified user.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/permissions/{resource}/{action}

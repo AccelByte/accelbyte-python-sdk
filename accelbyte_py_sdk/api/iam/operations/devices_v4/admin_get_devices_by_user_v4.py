@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetDevicesByUserV4(Operation):
     """Admin get devices by user id (AdminGetDevicesByUserV4)
 
-    This is the endpoint for an admin to get devices a user ever used to login
+    Returns all devices a user has ever used to login (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices

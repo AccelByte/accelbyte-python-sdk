@@ -1,8 +1,52 @@
 ## Python Extend SDK CLI Sample App Operation Index for Csm service.
 
+### Operation `list_app_ui`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-list-app-ui' \
+    'string' \
+    --limit 1 \
+    --name 'string' \
+    --offset 1 \
+    > result.txt
+```
+
+### Operation `create_app_ui`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-app-ui' \
+    '{"name": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_app_ui`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-app-ui' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `upload_app_ui_file`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-upload-app-ui-file' \
+    'tmp.dat' \
+    'string' \
+    'string' \
+    --version 'string' \
+    > result.txt
+```
+
 ### Operation `get_app_release_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-get-app-release-v1' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_extend_file`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-extend-file' \
     'string' \
     'string' \
     > result.txt
@@ -59,6 +103,15 @@ $ python -m accelbyte_py_sdk_cli 'csm-update-app-v2' \
     > result.txt
 ```
 
+### Operation `apply_app_config_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-apply-app-config-v2' \
+    '{"autoscaling": {}, "cpu": {}, "description": "string", "memory": {}, "permissions": [{}], "replica": {}, "scenario": "string", "secrets": [{}], "variables": [{}], "vmSharingConfiguration": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `create_subscription_handler`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-create-subscription-handler' \
@@ -104,10 +157,44 @@ $ python -m accelbyte_py_sdk_cli 'csm-delete-app-images-v2' \
     > result.txt
 ```
 
-### Operation `create_no_sql_database_credential_v2`
+### Operation `create_key_value_credential_v2`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'csm-create-no-sql-database-credential-v2' \
+$ python -m accelbyte_py_sdk_cli 'csm-create-key-value-credential-v2' \
     '{"password": "string", "username": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_integration_app_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-integration-app-key-value-cluster-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `integrate_app_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-integrate-app-key-value-cluster-v2' \
+    '{"acknowledgements": {}, "password": "string", "resourceId": "string", "username": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `remove_integration_app_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-remove-integration-app-key-value-cluster-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_new_no_sql_database_credential_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-new-no-sql-database-credential-v2' \
+    '{"acknowledgements": {}, "password": "string", "username": "string"}' \
     'string' \
     'string' \
     > result.txt
@@ -124,7 +211,7 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-database-v2' \
 ### Operation `create_no_sql_database_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-create-no-sql-database-v2' \
-    '{"dbName": "string", "password": "string", "username": "string"}' \
+    '{"acknowledgements": {}, "dbName": "string", "password": "string", "username": "string"}' \
     'string' \
     'string' \
     > result.txt
@@ -189,6 +276,40 @@ $ python -m accelbyte_py_sdk_cli 'csm-update-secret-v2' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-delete-secret-v2' \
     'string' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_sql_database_credential_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-sql-database-credential-v2' \
+    '{"password": "string", "username": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_sql_database_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-sql-database-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_sql_database_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-sql-database-v2' \
+    '{"acknowledgements": {}, "dbName": "string", "password": "string", "username": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_sql_database_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-sql-database-v2' \
     'string' \
     'string' \
     > result.txt
@@ -363,6 +484,62 @@ $ python -m accelbyte_py_sdk_cli 'csm-delete-deployment-v2' \
     > result.txt
 ```
 
+### Operation `get_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-key-value-cluster-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `list_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-list-key-value-cluster-v2' \
+    'string' \
+    --refresh false \
+    > result.txt
+```
+
+### Operation `create_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-key-value-cluster-v2' \
+    '{"clusterName": "string", "maxDataStorageGB": 1, "maxECPUPerSecond": 1, "profileName": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_key_value_cluster_limit_config_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-key-value-cluster-limit-config-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `update_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-update-key-value-cluster-v2' \
+    '{"maxDataStorageGB": 1, "maxECPUPerSecond": 1, "profileName": "string"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-key-value-cluster-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_list_integrated_app_key_value_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-list-integrated-app-key-value-cluster-v2' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `get_no_sql_cluster_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-cluster-v2' \
@@ -418,6 +595,62 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-access-tunnel-v2' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-get-resources-limits' \
     'string' \
+    > result.txt
+```
+
+### Operation `get_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `update_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-update-sql-cluster-v2' \
+    '{"maxACU": 3.14, "minACU": 3.14, "multiAZ": false, "profileName": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-sql-cluster-v2' \
+    '{"maxACU": 3.14, "minACU": 3.14, "multiAZ": false, "profileName": "string"}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `start_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-start-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `stop_sql_cluster_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-stop-sql-cluster-v2' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_sql_app_list_v2`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-sql-app-list-v2' \
+    'string' \
+    'string' \
+    --app_name 'string' \
+    --game_namespace 'string' \
+    --limit 1 \
+    --offset 1 \
     > result.txt
 ```
 

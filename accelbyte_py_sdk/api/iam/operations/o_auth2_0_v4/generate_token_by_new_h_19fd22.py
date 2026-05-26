@@ -37,9 +37,11 @@ from ...models import RestErrorResponse
 class GenerateTokenByNewHeadlessAccountV4(Operation):
     """Create headless account and response token (GenerateTokenByNewHeadlessAccountV4)
 
-    This endpoint is being used to create headless account after 3rd platform authenticated, and response token .
-    The 'linkingToken' in request body is received from "/platforms/{platformId}/token"
-    when 3rd platform account is not linked to justice account yet.
+    Creates headless account after 3rd platform authenticated, and returns token.
+    The 'linkingToken' in request body is received from "/platforms/{platformId}/token" when 3rd platform account is not linked to any account yet and createHeadless param is set to false.
+
+    ## Login Queue
+    When the Login Queue is enabled and at capacity, this API returns a 202 Accepted response, with the queue ticket included in the response body.
 
     Properties:
         url: /iam/v4/oauth/headless/token

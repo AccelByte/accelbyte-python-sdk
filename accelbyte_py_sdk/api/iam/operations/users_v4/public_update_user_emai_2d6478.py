@@ -36,8 +36,8 @@ from ...models import RestErrorResponse
 class PublicUpdateUserEmailAddressV4(Operation):
     """Update My Email Address (PublicUpdateUserEmailAddressV4)
 
-    The endpoint to update my email address.
-    It requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
+    Updates the authenticated user's email address.
+    Requires a verification code from `/users/me/code/request` with **UpdateEmailAddress** context.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/email

@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import CreatePolicyVersionRequest
@@ -42,6 +43,7 @@ from ..operations.policy_versions import OldRetrieveSinglePolicyVersion
 from ..operations.policy_versions import OldUpdatePolicyVersion
 
 
+@deprecated
 @same_doc_as(OldCreatePolicyVersion)
 def old_create_policy_version(
     policy_id: str,
@@ -82,6 +84,7 @@ def old_create_policy_version(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldCreatePolicyVersion)
 async def old_create_policy_version_async(
     policy_id: str,
@@ -124,6 +127,7 @@ async def old_create_policy_version_async(
     )
 
 
+@deprecated
 @same_doc_as(OldPublishPolicyVersion)
 def old_publish_policy_version(
     policy_version_id: str,
@@ -166,6 +170,7 @@ def old_publish_policy_version(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldPublishPolicyVersion)
 async def old_publish_policy_version_async(
     policy_version_id: str,
@@ -210,6 +215,7 @@ async def old_publish_policy_version_async(
     )
 
 
+@deprecated
 @same_doc_as(OldRetrieveSinglePolicyVersion)
 def old_retrieve_single_policy_version(
     policy_id: str,
@@ -250,6 +256,7 @@ def old_retrieve_single_policy_version(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldRetrieveSinglePolicyVersion)
 async def old_retrieve_single_policy_version_async(
     policy_id: str,
@@ -292,6 +299,7 @@ async def old_retrieve_single_policy_version_async(
     )
 
 
+@deprecated
 @same_doc_as(OldUpdatePolicyVersion)
 def old_update_policy_version(
     policy_version_id: str,
@@ -334,6 +342,7 @@ def old_update_policy_version(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(OldUpdatePolicyVersion)
 async def old_update_policy_version_async(
     policy_version_id: str,

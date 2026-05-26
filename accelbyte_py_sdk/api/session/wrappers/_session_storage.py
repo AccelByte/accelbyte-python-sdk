@@ -36,10 +36,14 @@ from ..operations.session_storage import AdminReadPartySessionStorage
 from ..operations.session_storage import AdminReadSessionStorage
 from ..operations.session_storage import AdminReadUserSessionStorage
 from ..operations.session_storage import PublicReadPartySessionStorage
+from ..operations.session_storage import PublicReplaceSessionStorageLeaderV2
+from ..operations.session_storage import PublicReplaceSessionStorageUserV2
 from ..operations.session_storage import PublicUpdateInsertPartySessionStorage
 from ..operations.session_storage import PublicUpdateInsertPartySessionStorageReserved
 from ..operations.session_storage import PublicUpdateInsertSessionStorage
 from ..operations.session_storage import PublicUpdateInsertSessionStorageLeader
+from ..operations.session_storage import PublicUpdateInsertSessionStorageLeaderV2
+from ..operations.session_storage import PublicUpdateInsertSessionStorageUserV2
 
 
 @same_doc_as(AdminDeleteUserSessionStorage)
@@ -626,6 +630,296 @@ async def public_read_party_session_storage_async(
     )
 
 
+@same_doc_as(PublicReplaceSessionStorageLeaderV2)
+def public_replace_session_storage_leader_v2(
+    body: Dict[str, Any],
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Replace entire Session Storage Leader. (publicReplaceSessionStorageLeaderV2)
+
+
+    Replace entire Session Storage Leader with the request body. No merging is performed.
+
+    Leader (regular token): Only the session leader can replace leader storage. Complete replacement.
+    Game Admin (client token): Can replace leader storage. Complete replacement.
+
+    PUT semantics: The request body completely replaces the existing storage, no partial updates.
+    Leader storage is separate from per-user storage and identified by session context, not userID.
+    Example request:
+    {
+    "gameState": {"round": "2"},
+    "difficulty": "hard"
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader
+
+        method: PUT
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicReplaceSessionStorageLeaderV2.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicReplaceSessionStorageLeaderV2)
+async def public_replace_session_storage_leader_v2_async(
+    body: Dict[str, Any],
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Replace entire Session Storage Leader. (publicReplaceSessionStorageLeaderV2)
+
+
+    Replace entire Session Storage Leader with the request body. No merging is performed.
+
+    Leader (regular token): Only the session leader can replace leader storage. Complete replacement.
+    Game Admin (client token): Can replace leader storage. Complete replacement.
+
+    PUT semantics: The request body completely replaces the existing storage, no partial updates.
+    Leader storage is separate from per-user storage and identified by session context, not userID.
+    Example request:
+    {
+    "gameState": {"round": "2"},
+    "difficulty": "hard"
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader
+
+        method: PUT
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicReplaceSessionStorageLeaderV2.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicReplaceSessionStorageUserV2)
+def public_replace_session_storage_user_v2(
+    body: Dict[str, Any],
+    session_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Replace entire Session Storage User. (publicReplaceSessionStorageUserV2)
+
+
+    Replace entire Session Storage User with the request body. No merging is performed.
+
+    User (regular token): Can only replace own user session storage. Complete replacement.
+    Game Admin (client token): Can replace any user's session storage. Complete replacement.
+
+    PUT semantics: The request body completely replaces the existing storage, no partial updates.
+    Example request:
+    {
+    "weapon": "sword",
+    "armor": "leather"
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}
+
+        method: PUT
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicReplaceSessionStorageUserV2.create(
+        body=body,
+        session_id=session_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicReplaceSessionStorageUserV2)
+async def public_replace_session_storage_user_v2_async(
+    body: Dict[str, Any],
+    session_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Replace entire Session Storage User. (publicReplaceSessionStorageUserV2)
+
+
+    Replace entire Session Storage User with the request body. No merging is performed.
+
+    User (regular token): Can only replace own user session storage. Complete replacement.
+    Game Admin (client token): Can replace any user's session storage. Complete replacement.
+
+    PUT semantics: The request body completely replaces the existing storage, no partial updates.
+    Example request:
+    {
+    "weapon": "sword",
+    "armor": "leather"
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}
+
+        method: PUT
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicReplaceSessionStorageUserV2.create(
+        body=body,
+        session_id=session_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicUpdateInsertPartySessionStorage)
 def public_update_insert_party_session_storage(
     body: Dict[str, Any],
@@ -960,17 +1254,23 @@ def public_update_insert_session_storage(
     """Update Insert Session Storage User. (publicUpdateInsertSessionStorage)
 
 
-    Update Insert Session Storage User. user can only update or insert user session storage data itself.
-    can store generic json
-    example json can store :
+    Update Insert Session Storage User. Performs selective merge with existing storage data.
+
+    User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Example patch:
     {
-    "storage": {
-    "storage": 1
-    },
-    "data": 123
+    "weapon": "sword",
+    "level": null
     }
-    game Admin can update or insert session storage
-    Session Storage feature only available for Gamesession
+
+    Session Storage feature only available for Gamesession.
+
+    Alternative v2 endpoints available with explicit semantics:
+    - PATCH /v2/.../storage/users/{userId} - Selective merge with partial updates
+    - PUT /v2/.../storage/users/{userId} - Complete replacement of entire storage
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}
@@ -1031,17 +1331,23 @@ async def public_update_insert_session_storage_async(
     """Update Insert Session Storage User. (publicUpdateInsertSessionStorage)
 
 
-    Update Insert Session Storage User. user can only update or insert user session storage data itself.
-    can store generic json
-    example json can store :
+    Update Insert Session Storage User. Performs selective merge with existing storage data.
+
+    User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Example patch:
     {
-    "storage": {
-    "storage": 1
-    },
-    "data": 123
+    "weapon": "sword",
+    "level": null
     }
-    game Admin can update or insert session storage
-    Session Storage feature only available for Gamesession
+
+    Session Storage feature only available for Gamesession.
+
+    Alternative v2 endpoints available with explicit semantics:
+    - PATCH /v2/.../storage/users/{userId} - Selective merge with partial updates
+    - PUT /v2/.../storage/users/{userId} - Complete replacement of entire storage
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}
@@ -1103,17 +1409,24 @@ def public_update_insert_session_storage_leader(
     """Update Insert Session Storage Leader. (publicUpdateInsertSessionStorageLeader)
 
 
-    Update Insert Session Storage Leader. only Leader can update or insert user session storage data Leader.
-    can store generic json
-    example json can store :
+    Update Insert Session Storage Leader. Performs selective merge with existing leader storage data.
+
+    Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Leader storage is separate from per-user storage and identified by session context, not userID.
+    Example patch:
     {
-    "leader": {
-    "leader": 1
-    },
-    "data": 123
+    "gameState": {"round": "2"},
+    "difficulty": null
     }
-    game Admin can update or insert session storage
-    Session Storage feature only available for Gamesession
+
+    Session Storage feature only available for Gamesession.
+
+    Alternative v2 endpoints available with explicit semantics:
+    - PATCH /v2/.../storage/leader - Selective merge with partial updates
+    - PUT /v2/.../storage/leader - Complete replacement of entire storage
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader
@@ -1170,17 +1483,24 @@ async def public_update_insert_session_storage_leader_async(
     """Update Insert Session Storage Leader. (publicUpdateInsertSessionStorageLeader)
 
 
-    Update Insert Session Storage Leader. only Leader can update or insert user session storage data Leader.
-    can store generic json
-    example json can store :
+    Update Insert Session Storage Leader. Performs selective merge with existing leader storage data.
+
+    Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Leader storage is separate from per-user storage and identified by session context, not userID.
+    Example patch:
     {
-    "leader": {
-    "leader": 1
-    },
-    "data": 123
+    "gameState": {"round": "2"},
+    "difficulty": null
     }
-    game Admin can update or insert session storage
-    Session Storage feature only available for Gamesession
+
+    Session Storage feature only available for Gamesession.
+
+    Alternative v2 endpoints available with explicit semantics:
+    - PATCH /v2/.../storage/leader - Selective merge with partial updates
+    - PUT /v2/.../storage/leader - Complete replacement of entire storage
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader
@@ -1221,6 +1541,296 @@ async def public_update_insert_session_storage_leader_async(
     request = PublicUpdateInsertSessionStorageLeader.create(
         body=body,
         session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpdateInsertSessionStorageLeaderV2)
+def public_update_insert_session_storage_leader_v2(
+    body: Dict[str, Any],
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update partial Session Storage Leader. (publicUpdateInsertSessionStorageLeaderV2)
+
+
+    Update partial Session Storage Leader. Performs selective merge with existing leader storage data.
+
+    Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Leader storage is separate from per-user storage and identified by session context, not userID.
+    Example patch:
+    {
+    "gameState": {"round": "2"},
+    "difficulty": null
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateInsertSessionStorageLeaderV2.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateInsertSessionStorageLeaderV2)
+async def public_update_insert_session_storage_leader_v2_async(
+    body: Dict[str, Any],
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update partial Session Storage Leader. (publicUpdateInsertSessionStorageLeaderV2)
+
+
+    Update partial Session Storage Leader. Performs selective merge with existing leader storage data.
+
+    Leader (regular token): Only the session leader can update leader storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update leader storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Leader storage is separate from per-user storage and identified by session context, not userID.
+    Example patch:
+    {
+    "gameState": {"round": "2"},
+    "difficulty": null
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/leader
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateInsertSessionStorageLeaderV2.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpdateInsertSessionStorageUserV2)
+def public_update_insert_session_storage_user_v2(
+    body: Dict[str, Any],
+    session_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update partial Session Storage User. (publicUpdateInsertSessionStorageUserV2)
+
+
+    Update partial Session Storage User. Performs selective merge with existing storage data.
+
+    User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Example patch:
+    {
+    "weapon": "sword",
+    "level": null
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateInsertSessionStorageUserV2.create(
+        body=body,
+        session_id=session_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateInsertSessionStorageUserV2)
+async def public_update_insert_session_storage_user_v2_async(
+    body: Dict[str, Any],
+    session_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update partial Session Storage User. (publicUpdateInsertSessionStorageUserV2)
+
+
+    Update partial Session Storage User. Performs selective merge with existing storage data.
+
+    User (regular token): Can only update own user session storage. Merges patch with existing data, nil values delete keys.
+    Game Admin (client token): Can update any user's session storage. Merges patch with existing data, nil values delete keys.
+
+    Deep merge: Nested objects are recursively merged, not replaced. Absent keys in patch are preserved in storage.
+    Example patch:
+    {
+    "weapon": "sword",
+    "level": null
+    }
+
+    Session Storage feature only available for Gamesession.
+
+    Properties:
+        url: /session/v2/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicUpdateInsertSessionStorageUserV2.create(
+        body=body,
+        session_id=session_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

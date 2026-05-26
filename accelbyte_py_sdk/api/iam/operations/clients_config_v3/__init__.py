@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.37.0"
+__version__ = "7.39.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,3 +18,4 @@ from .admin_delete_config_per_4d40c6 import AdminDeleteConfigPermissionsByGroup
 from .admin_list_client_avail_561e53 import AdminListClientAvailablePermissions
 from .admin_list_client_templates import AdminListClientTemplates
 from .admin_update_available__50a681 import AdminUpdateAvailablePermissionsByModule
+from .admin_update_module_package import AdminUpdateModulePackage

@@ -36,8 +36,7 @@ from ...models import RestErrorResponse
 class AdminUpdateRolePermissionsV3(Operation):
     """Update Role Permissions (AdminUpdateRolePermissionsV3)
 
-    This endpoint will REPLACE role's permissions with the ones defined in body
-    action code: 10405
+    Replaces role's permissions with the ones defined in body.
     Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect.
     Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *.
     In ranged schedule, first element will be start date, and second one will be end date

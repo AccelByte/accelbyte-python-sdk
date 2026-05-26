@@ -45,9 +45,7 @@ class FieldEnum(StrEnum):
 class AdminUpdateProfileUpdateStrategyV3(Operation):
     """Admin update profile update strategy by namespace and field. (AdminUpdateProfileUpdateStrategyV3)
 
-    This API includes upsert behavior.
-    Note:
-    1. field 'config'' in request body will only work when type is limited
+    Uses upsert behavior.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/profileUpdateStrategies

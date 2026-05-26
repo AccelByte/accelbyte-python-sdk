@@ -33,12 +33,14 @@ from ..models import ClientmodelListClientPermissionSet
 from ..models import ClientmodelListTemplatesResponse
 from ..models import ClientmodelListUpsertModulesRequest
 from ..models import ClientmodelPermissionSetDeleteGroupRequest
+from ..models import ClientmodelUpsertPermissionModulePackageRequest
 from ..models import RestErrorResponse
 
 from ..operations.clients_config_v3 import AdminDeleteConfigPermissionsByGroup
 from ..operations.clients_config_v3 import AdminListClientAvailablePermissions
 from ..operations.clients_config_v3 import AdminListClientTemplates
 from ..operations.clients_config_v3 import AdminUpdateAvailablePermissionsByModule
+from ..operations.clients_config_v3 import AdminUpdateModulePackage
 
 
 @same_doc_as(AdminDeleteConfigPermissionsByGroup)
@@ -135,7 +137,7 @@ def admin_list_client_available_permissions(
 ):
     """List Client available permissions (AdminListClientAvailablePermissions)
 
-    List Client available permissions
+    Lists all available client permissions.
 
     Properties:
         url: /iam/v3/admin/clientConfig/permissions
@@ -173,7 +175,7 @@ async def admin_list_client_available_permissions_async(
 ):
     """List Client available permissions (AdminListClientAvailablePermissions)
 
-    List Client available permissions
+    Lists all available client permissions.
 
     Properties:
         url: /iam/v3/admin/clientConfig/permissions
@@ -211,7 +213,7 @@ def admin_list_client_templates(
 ):
     """List Client templates (AdminListClientTemplates)
 
-    List client templates
+    Lists all available client templates.
 
     Properties:
         url: /iam/v3/admin/clientConfig/templates
@@ -243,7 +245,7 @@ async def admin_list_client_templates_async(
 ):
     """List Client templates (AdminListClientTemplates)
 
-    List client templates
+    Lists all available client templates.
 
     Properties:
         url: /iam/v3/admin/clientConfig/templates
@@ -280,7 +282,7 @@ def admin_update_available_permissions_by_module(
 ):
     """Update or create Client permissions module (AdminUpdateAvailablePermissionsByModule)
 
-    Update Client available permissions, if module or group not exists, it will auto create.
+    Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
 
     Properties:
         url: /iam/v3/admin/clientConfig/permissions
@@ -322,7 +324,7 @@ async def admin_update_available_permissions_by_module_async(
 ):
     """Update or create Client permissions module (AdminUpdateAvailablePermissionsByModule)
 
-    Update Client available permissions, if module or group not exists, it will auto create.
+    Updates client available permissions. If the specified module or group does not exist, it will be automatically created.
 
     Properties:
         url: /iam/v3/admin/clientConfig/permissions
@@ -351,6 +353,84 @@ async def admin_update_available_permissions_by_module_async(
     request = AdminUpdateAvailablePermissionsByModule.create(
         body=body,
         force_delete=force_delete,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUpdateModulePackage)
+def admin_update_module_package(
+    body: ClientmodelUpsertPermissionModulePackageRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Set permission module package info (AdminUpdateModulePackage)
+
+    Sets the package info for a permission module. Ignores the module if it is not found.
+
+    Properties:
+        url: /iam/v3/admin/clientConfig/permissions/package
+
+        method: PATCH
+
+        tags: ["Clients Config V3"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ClientmodelUpsertPermissionModulePackageRequest in body
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
+    request = AdminUpdateModulePackage.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdateModulePackage)
+async def admin_update_module_package_async(
+    body: ClientmodelUpsertPermissionModulePackageRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Set permission module package info (AdminUpdateModulePackage)
+
+    Sets the package info for a permission module. Ignores the module if it is not found.
+
+    Properties:
+        url: /iam/v3/admin/clientConfig/permissions/package
+
+        method: PATCH
+
+        tags: ["Clients Config V3"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ClientmodelUpsertPermissionModulePackageRequest in body
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
+    request = AdminUpdateModulePackage.create(
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

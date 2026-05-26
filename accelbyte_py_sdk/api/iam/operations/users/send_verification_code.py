@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class SendVerificationCode(Operation):
     """Send verification code to user (SendVerificationCode)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/code/request [POST]_**
 

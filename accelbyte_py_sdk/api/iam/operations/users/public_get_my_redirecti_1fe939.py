@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class PublicGetMyRedirectionAfterLinkV3(Operation):
     """Get My Forward URI Link (PublicGetMyRedirectionAfterLinkV3)
 
-    Get my redirect uri after link, this endpoint will return NotFound(404) if redirect uri is not found
+    Returns the redirect URI after link. Returns NotFound(404) if redirect URI is not found.
 
     Properties:
         url: /iam/v3/public/users/me/link/redirection

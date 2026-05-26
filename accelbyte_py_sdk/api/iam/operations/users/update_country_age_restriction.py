@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class UpdateCountryAgeRestriction(Operation):
     """Update country's age restriction (UpdateCountryAgeRestriction)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     **Endpoint migration guide**
     - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
 

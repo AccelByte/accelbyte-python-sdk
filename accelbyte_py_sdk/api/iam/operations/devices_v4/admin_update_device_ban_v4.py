@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminUpdateDeviceBanV4(Operation):
     """Admin update device ban config (AdminUpdateDeviceBanV4)
 
-    This is the endpoint for an admin to update a device ban config
+    Updates a device ban configuration (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/bans/{banId}

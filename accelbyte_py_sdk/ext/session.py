@@ -41,8 +41,10 @@ from ..api.session.models import ApimodelsEnvironmentVariableListResponse
 from ..api.session.models import ApimodelsEnvironmentVariableResponse
 from ..api.session.models import ApimodelsGameSessionQueryResponse
 from ..api.session.models import ApimodelsGameSessionResponse
+from ..api.session.models import ApimodelsGetPasswordResponse
 from ..api.session.models import ApimodelsGlobalConfigurationResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
+from ..api.session.models import ApimodelsJoinSessionRequest
 from ..api.session.models import ApimodelsKickResponse
 from ..api.session.models import ApimodelsNativeSessionPagingResponse
 from ..api.session.models import ApimodelsPSNAppServerCredentialRecord
@@ -72,6 +74,7 @@ from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..api.session.models import ApimodelsUpdateGameSessionRequest
 from ..api.session.models import ApimodelsUpdateGamesessionDSInformationRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
+from ..api.session.models import ApimodelsUpdatePasswordRequest
 from ..api.session.models import ApimodelsUserResponse
 from ..api.session.models import ApimodelsXblCertificateResponseBody
 from ..api.session.models import LogconfigConfiguration
@@ -253,6 +256,7 @@ def create_apimodels_create_game_session_request_example() -> (
     instance.custom_urlgrpc = randomize()
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
+    instance.password = randomize("password")
     instance.preferred_claim_keys = [randomize()]
     instance.storage = create_apimodels_session_storage_request_example()
     instance.text_chat_mode = randomize()
@@ -272,6 +276,7 @@ def create_apimodels_create_party_request_example() -> ApimodelsCreatePartyReque
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.password = randomize("password")
     return instance
 
 
@@ -374,6 +379,12 @@ def create_apimodels_game_session_response_example() -> ApimodelsGameSessionResp
     return instance
 
 
+def create_apimodels_get_password_response_example() -> ApimodelsGetPasswordResponse:
+    instance = ApimodelsGetPasswordResponse()
+    instance.password = randomize("password")
+    return instance
+
+
 def create_apimodels_global_configuration_response_example() -> (
     ApimodelsGlobalConfigurationResponse
 ):
@@ -391,6 +402,12 @@ def create_apimodels_global_configuration_response_example() -> (
 def create_apimodels_join_by_code_request_example() -> ApimodelsJoinByCodeRequest:
     instance = ApimodelsJoinByCodeRequest()
     instance.code = randomize()
+    return instance
+
+
+def create_apimodels_join_session_request_example() -> ApimodelsJoinSessionRequest:
+    instance = ApimodelsJoinSessionRequest()
+    instance.password = randomize("password")
     return instance
 
 
@@ -720,6 +737,7 @@ def create_apimodels_update_game_session_request_example() -> (
     instance.type_ = randomize()
     instance.version = randomize("int", min_val=1, max_val=1000)
     instance.fallback_claim_keys = [randomize()]
+    instance.password = randomize("password")
     instance.preferred_claim_keys = [randomize()]
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
@@ -751,6 +769,15 @@ def create_apimodels_update_party_request_example() -> ApimodelsUpdatePartyReque
     instance.min_players = randomize("int", min_val=1, max_val=1000)
     instance.type_ = randomize()
     instance.version = randomize("int", min_val=1, max_val=1000)
+    instance.password = randomize("password")
+    return instance
+
+
+def create_apimodels_update_password_request_example() -> (
+    ApimodelsUpdatePasswordRequest
+):
+    instance = ApimodelsUpdatePasswordRequest()
+    instance.new_password = randomize()
     return instance
 
 
@@ -885,6 +912,7 @@ def create_models_native_session_setting_example() -> ModelsNativeSessionSetting
     instance.xbox_service_config_id = randomize()
     instance.xbox_session_template_name = randomize()
     instance.xbox_title_id = randomize()
+    instance.active_platforms = [randomize()]
     instance.localized_session_name = {randomize(): randomize()}
     instance.psn_disable_system_ui_menu = [randomize()]
     instance.psn_supported_platforms = [randomize()]

@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class CreateRole(Operation):
     """Create Role (CreateRole)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     Role can only be assigned to other users by the role's manager.
 
     If role is an administrator role (i.e. AdminRole == true), it will list out the role's members.

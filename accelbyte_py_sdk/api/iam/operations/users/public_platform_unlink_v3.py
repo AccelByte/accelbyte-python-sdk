@@ -58,7 +58,6 @@ class PublicPlatformUnlinkV3(Operation):
     _platformNamespace_ need to be specified when the platform ID is 'justice'.
     Unlink user's account from justice platform will enable password token grant and password update.
     If you want to unlink user's account in a game namespace, you have to specify _platformNamespace_ to that game namespace.
-    action code : 10121
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}

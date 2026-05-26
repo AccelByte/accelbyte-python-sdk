@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Achievement Service Index (2.27.2)
+# AccelByte Gaming Services Achievement Service Index (2.29.0)
 
 
 ## Operations
@@ -52,6 +52,7 @@
 ### User Achievements
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/batchQuery | POST | AdminBatchQueryUserAchievements | `false` | [AdminBatchQueryUserAchievements](../../accelbyte_py_sdk/api/achievement/operations/user_achievements/admin_batch_query_user__2f3d81.py) | [admin_batch_query_user_achievements](../../accelbyte_py_sdk/api/achievement/wrappers/_user_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-batch-query-user-achievements](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_batch_query_user_achievements.py) |
 | /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/bulkUnlock | PUT | AdminBulkUnlockAchievement | `false` | [AdminBulkUnlockAchievement](../../accelbyte_py_sdk/api/achievement/operations/user_achievements/admin_bulk_unlock_achievement.py) | [admin_bulk_unlock_achievement](../../accelbyte_py_sdk/api/achievement/wrappers/_user_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-bulk-unlock-achievement](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_bulk_unlock_achievement.py) |
 | /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements | GET | AdminListUserAchievements | `false` | [AdminListUserAchievements](../../accelbyte_py_sdk/api/achievement/operations/user_achievements/admin_list_user_achievements.py) | [admin_list_user_achievements](../../accelbyte_py_sdk/api/achievement/wrappers/_user_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-list-user-achievements](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_list_user_achievements.py) |
 | /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/reset | DELETE | AdminResetAchievement | `false` | [AdminResetAchievement](../../accelbyte_py_sdk/api/achievement/operations/user_achievements/admin_reset_achievement.py) | [admin_reset_achievement](../../accelbyte_py_sdk/api/achievement/wrappers/_user_achievements.py) | [accelbyte_py_sdk_cli achievement-admin-reset-achievement](../../samples/cli/accelbyte_py_sdk_cli/achievement/_admin_reset_achievement.py) |
@@ -69,6 +70,7 @@
 | models.AchievementResponse | [ModelsAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_achievement_response.py) |
 | models.AchievementUpdateRequest | [ModelsAchievementUpdateRequest](../../accelbyte_py_sdk/api/achievement/models/models_achievement_update_request.py) |
 | models.AdditionalInfo | [ModelsAdditionalInfo](../../accelbyte_py_sdk/api/achievement/models/models_additional_info.py) |
+| models.BatchQueryUserAchievementRequest | [ModelsBatchQueryUserAchievementRequest](../../accelbyte_py_sdk/api/achievement/models/models_batch_query_user_achievement_request.py) |
 | models.BulkCreatePSNEventResponse | [ModelsBulkCreatePSNEventResponse](../../accelbyte_py_sdk/api/achievement/models/models_bulk_create_psn_event_response.py) |
 | models.BulkCreatePSNEvents | [ModelsBulkCreatePSNEvents](../../accelbyte_py_sdk/api/achievement/models/models_bulk_create_psn_events.py) |
 | models.BulkUnlockAchievementRequest | [ModelsBulkUnlockAchievementRequest](../../accelbyte_py_sdk/api/achievement/models/models_bulk_unlock_achievement_request.py) |

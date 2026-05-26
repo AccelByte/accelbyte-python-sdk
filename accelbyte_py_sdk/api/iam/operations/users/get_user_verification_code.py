@@ -36,10 +36,10 @@ from ...models import RestErrorResponse
 class GetUserVerificationCode(Operation):
     """Get verification code sent to user (getUserVerificationCode)
 
-    **[WARNING] This endpoint is only for testing purpose.**
+    **[WARNING] This API is only for testing purpose.**
 
-    This endpoint get active user verification code.
-    There are some scenarios of getting verification codes, all of them will be returned on this endpoint:
+    Gets the active user verification code.
+    There are some scenarios of getting verification codes, all of them will be returned:
     - After account registration
     - After reset password request
     - After headless account upgrade

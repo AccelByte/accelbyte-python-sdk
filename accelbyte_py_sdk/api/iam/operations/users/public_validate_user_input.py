@@ -40,7 +40,7 @@ class PublicValidateUserInput(Operation):
     Validate user's input.
     --------
     **note:**
-    - this endpoint will check the input validation and profanity filter service(if this is enabled)
+    - checks the input validation and profanity filter service (if this is enabled)
     - the namespace should be publisher namespace
 
     Properties:

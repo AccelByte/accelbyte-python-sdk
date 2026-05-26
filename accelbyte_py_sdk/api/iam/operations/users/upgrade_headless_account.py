@@ -38,7 +38,7 @@ from ...models import RestErrorResponse
 class UpgradeHeadlessAccount(Operation):
     """Upgrade user account to full account (with email) (upgradeHeadlessAccount)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
 
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/me/headless/verify [POST]_**

@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminQueryTagV3(Operation):
     """Query Account Identifier Tag (AdminQueryTagV3)
 
-    Retrieve Account Identifier Tags. This endpoint allows administrators to retrieve tags that are used to identify and categorize user accounts.
+    Retrieves Account Identifier Tags used to identify and categorize user accounts.
     Tag Name can be used for partial content search.
 
     Properties:

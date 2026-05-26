@@ -37,7 +37,7 @@ from ...models import RestErrorResponse
 class AdminDecryptDeviceV4(Operation):
     """Admin decrypt device id (AdminDecryptDeviceV4)
 
-    This is the endpoint for an admin to decrypt device id
+    Decrypts a device ID (admin operation).
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/decrypt

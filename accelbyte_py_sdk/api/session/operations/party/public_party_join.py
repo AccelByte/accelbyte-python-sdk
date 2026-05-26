@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ApimodelsJoinSessionRequest
 from ...models import ApimodelsPartySessionResponse
 from ...models import ResponseError
 
@@ -45,11 +46,13 @@ class PublicPartyJoin(Operation):
 
         tags: ["Party"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsJoinSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,11 +78,12 @@ class PublicPartyJoin(Operation):
         "/session/v1/public/namespaces/{namespace}/parties/{partyId}/users/me/join"
     )
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: ApimodelsJoinSessionRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     party_id: str  # REQUIRED in [path]
 
@@ -121,8 +125,14 @@ class PublicPartyJoin(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -140,6 +150,10 @@ class PublicPartyJoin(Operation):
 
     # region with_x methods
 
+    def with_body(self, value: ApimodelsJoinSessionRequest) -> PublicPartyJoin:
+        self.body = value
+        return self
+
     def with_namespace(self, value: str) -> PublicPartyJoin:
         self.namespace = value
         return self
@@ -154,6 +168,10 @@ class PublicPartyJoin(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = ApimodelsJoinSessionRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -224,8 +242,11 @@ class PublicPartyJoin(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, party_id: str, **kwargs) -> PublicPartyJoin:
+    def create(
+        cls, body: ApimodelsJoinSessionRequest, namespace: str, party_id: str, **kwargs
+    ) -> PublicPartyJoin:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.party_id = party_id
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -237,6 +258,12 @@ class PublicPartyJoin(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> PublicPartyJoin:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ApimodelsJoinSessionRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = ApimodelsJoinSessionRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -250,6 +277,7 @@ class PublicPartyJoin(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
             "partyId": "party_id",
         }
@@ -257,6 +285,7 @@ class PublicPartyJoin(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": True,
             "namespace": True,
             "partyId": True,
         }

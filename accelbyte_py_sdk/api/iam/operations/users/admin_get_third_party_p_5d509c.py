@@ -38,7 +38,7 @@ class AdminGetThirdPartyPlatformTokenLinkStatusV3(Operation):
 
     Admin get the link status of the third party platform token with user id.
 
-    This endpoint is used for checking whether the third party user represented by third party token is
+    Checks whether the third party user represented by third party token is
     linked with the corresponding user id.
 
     ## Supported platforms:

@@ -45,6 +45,8 @@ class ClientmodelClientTemplate(Model):
 
         id_: (id) REQUIRED str
 
+        package: (package) REQUIRED str
+
         required_fields: (requiredFields) REQUIRED List[str]
 
         type_: (type) REQUIRED str
@@ -56,6 +58,7 @@ class ClientmodelClientTemplate(Model):
     default_values: List[ClientmodelDefaultFieldValue]  # REQUIRED
     description: str  # REQUIRED
     id_: str  # REQUIRED
+    package: str  # REQUIRED
     required_fields: List[str]  # REQUIRED
     type_: str  # REQUIRED
 
@@ -81,6 +84,10 @@ class ClientmodelClientTemplate(Model):
 
     def with_id(self, value: str) -> ClientmodelClientTemplate:
         self.id_ = value
+        return self
+
+    def with_package(self, value: str) -> ClientmodelClientTemplate:
+        self.package = value
         return self
 
     def with_required_fields(self, value: List[str]) -> ClientmodelClientTemplate:
@@ -118,6 +125,10 @@ class ClientmodelClientTemplate(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "package"):
+            result["package"] = str(self.package)
+        elif include_empty:
+            result["package"] = ""
         if hasattr(self, "required_fields"):
             result["requiredFields"] = [str(i0) for i0 in self.required_fields]
         elif include_empty:
@@ -139,6 +150,7 @@ class ClientmodelClientTemplate(Model):
         default_values: List[ClientmodelDefaultFieldValue],
         description: str,
         id_: str,
+        package: str,
         required_fields: List[str],
         type_: str,
         **kwargs,
@@ -148,6 +160,7 @@ class ClientmodelClientTemplate(Model):
         instance.default_values = default_values
         instance.description = description
         instance.id_ = id_
+        instance.package = package
         instance.required_fields = required_fields
         instance.type_ = type_
         return instance
@@ -188,6 +201,10 @@ class ClientmodelClientTemplate(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "package" in dict_ and dict_["package"] is not None:
+            instance.package = str(dict_["package"])
+        elif include_empty:
+            instance.package = ""
         if "requiredFields" in dict_ and dict_["requiredFields"] is not None:
             instance.required_fields = [str(i0) for i0 in dict_["requiredFields"]]
         elif include_empty:
@@ -243,6 +260,7 @@ class ClientmodelClientTemplate(Model):
             "defaultValues": "default_values",
             "description": "description",
             "id": "id_",
+            "package": "package",
             "requiredFields": "required_fields",
             "type": "type_",
         }
@@ -254,6 +272,7 @@ class ClientmodelClientTemplate(Model):
             "defaultValues": True,
             "description": True,
             "id": True,
+            "package": True,
             "requiredFields": True,
             "type": True,
         }

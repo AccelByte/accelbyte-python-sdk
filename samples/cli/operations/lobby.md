@@ -165,7 +165,7 @@ $ python -m accelbyte_py_sdk_cli 'lobby-admin-get-config-v1' \
 ### Operation `admin_update_config_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'lobby-admin-update-config-v1' \
-    '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 1, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 1, "chatRateLimitDuration": 1, "concurrentUsersLimit": 1, "disableInvitationOnJoinParty": false, "enableChat": false, "entitlementCheck": false, "entitlementItemID": "string", "generalRateLimitBurst": 1, "generalRateLimitDuration": 1, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 1, "maxFriendsLimit": 1, "maxPartyMember": 1, "profanityFilter": false, "readyConsentTimeout": 1, "requestMetadataMaxSize": 1, "unregisterDelay": 1}' \
+    '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 1, "cancelTicketOnDisconnect": false, "chatRateLimitBurst": 1, "chatRateLimitDuration": 1, "concurrentUsersLimit": 1, "disableInvitationOnJoinParty": false, "enableChat": false, "entitlementCheck": false, "entitlementItemID": "string", "generalRateLimitBurst": 1, "generalRateLimitDuration": 1, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 1, "maxFriendsLimit": 1, "maxPartyMember": 1, "profanityFilter": false, "readyConsentTimeout": 1, "requestMetadataMaxSize": 1, "unregisterDelay": 1, "wsReadTimeout": 1}' \
     'string' \
     > result.txt
 ```

@@ -79,6 +79,8 @@ class ModelsConfig(Model):
         ready_consent_timeout: (readyConsentTimeout) OPTIONAL int
 
         request_metadata_max_size: (requestMetadataMaxSize) OPTIONAL int
+
+        ws_read_timeout: (wsReadTimeout) OPTIONAL int
     """
 
     # region fields
@@ -107,6 +109,7 @@ class ModelsConfig(Model):
     profanity_filter: bool  # OPTIONAL
     ready_consent_timeout: int  # OPTIONAL
     request_metadata_max_size: int  # OPTIONAL
+    ws_read_timeout: int  # OPTIONAL
 
     # endregion fields
 
@@ -206,6 +209,10 @@ class ModelsConfig(Model):
 
     def with_request_metadata_max_size(self, value: int) -> ModelsConfig:
         self.request_metadata_max_size = value
+        return self
+
+    def with_ws_read_timeout(self, value: int) -> ModelsConfig:
+        self.ws_read_timeout = value
         return self
 
     # endregion with_x methods
@@ -322,6 +329,10 @@ class ModelsConfig(Model):
             result["requestMetadataMaxSize"] = int(self.request_metadata_max_size)
         elif include_empty:
             result["requestMetadataMaxSize"] = 0
+        if hasattr(self, "ws_read_timeout"):
+            result["wsReadTimeout"] = int(self.ws_read_timeout)
+        elif include_empty:
+            result["wsReadTimeout"] = 0
         return result
 
     # endregion to methods
@@ -355,6 +366,7 @@ class ModelsConfig(Model):
         profanity_filter: Optional[bool] = None,
         ready_consent_timeout: Optional[int] = None,
         request_metadata_max_size: Optional[int] = None,
+        ws_read_timeout: Optional[int] = None,
         **kwargs,
     ) -> ModelsConfig:
         instance = cls()
@@ -410,6 +422,8 @@ class ModelsConfig(Model):
             instance.ready_consent_timeout = ready_consent_timeout
         if request_metadata_max_size is not None:
             instance.request_metadata_max_size = request_metadata_max_size
+        if ws_read_timeout is not None:
+            instance.ws_read_timeout = ws_read_timeout
         return instance
 
     @classmethod
@@ -568,6 +582,10 @@ class ModelsConfig(Model):
             instance.request_metadata_max_size = int(dict_["requestMetadataMaxSize"])
         elif include_empty:
             instance.request_metadata_max_size = 0
+        if "wsReadTimeout" in dict_ and dict_["wsReadTimeout"] is not None:
+            instance.ws_read_timeout = int(dict_["wsReadTimeout"])
+        elif include_empty:
+            instance.ws_read_timeout = 0
         return instance
 
     @classmethod
@@ -631,6 +649,7 @@ class ModelsConfig(Model):
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
             "requestMetadataMaxSize": "request_metadata_max_size",
+            "wsReadTimeout": "ws_read_timeout",
         }
 
     @staticmethod
@@ -660,6 +679,7 @@ class ModelsConfig(Model):
             "profanityFilter": False,
             "readyConsentTimeout": False,
             "requestMetadataMaxSize": False,
+            "wsReadTimeout": False,
         }
 
     # endregion static methods

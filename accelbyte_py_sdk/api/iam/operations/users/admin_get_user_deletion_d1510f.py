@@ -36,7 +36,7 @@ from ...models import RestErrorResponse
 class AdminGetUserDeletionStatusV3(Operation):
     """Get User Deletion Status (AdminGetUserDeletionStatusV3)
 
-    action code : 10145
+    Retrieves the deletion status of the specified user account.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/deletion/status

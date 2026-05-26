@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 
 
 class RetrieveActiveOIDCClientsPublicV3(Operation):
-    """Get Active OIDC Platform Credential By Client ID (RetrieveActiveOIDCClientsPublicV3)
+    """Get Active OIDC Platform Credentials by Client ID (RetrieveActiveOIDCClientsPublicV3)
 
-    This is the Public API to Get All Active OIDC Platform Credential By Client ID
+    Retrieves all active OIDC platform credentials filtered by client ID.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/platforms/clients/oidc

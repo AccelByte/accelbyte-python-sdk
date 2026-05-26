@@ -36,7 +36,7 @@ from ...models import ModelPublicUserResponse
 class GetUserByLoginID(Operation):
     """Get User By Login Id (GetUserByLoginID)
 
-    ## The endpoint is going to be deprecated
+    **This endpoint is deprecated.**
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users [GET]_**
 

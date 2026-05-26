@@ -36,15 +36,13 @@ from ...models import RestErrorResponse
 class AdminTrustlyUpdateUserIdentity(Operation):
     """Update User Identity (AdminTrustlyUpdateUserIdentity)
 
-    This endpoint ONLY accept **Client Token**
-    This endpoint is utilized for specific scenarios where **email notifications are disabled**
+    Only accepts **Client Token**.
+    Intended for specific scenarios where **email notifications are disabled**.
     The user's email will be marked as verified
 
     Note:
     - emailAddress or password field are optional
     - request body can't be empty
-
-    action code : 10103
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/trustly/identity

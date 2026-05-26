@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class AdminGenerateBackupCodesV4(Operation):
     """Generate backup codes (AdminGenerateBackupCodesV4)
 
-    This endpoint is used to generate 8-digits backup codes.
+    Generates 8-digit backup codes.
     Each code is a one-time code and will be deleted once used.
 
     Properties:

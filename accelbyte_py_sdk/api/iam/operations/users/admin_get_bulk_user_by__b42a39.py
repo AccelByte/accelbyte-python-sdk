@@ -37,8 +37,7 @@ from ...models import RestErrorResponse
 class AdminGetBulkUserByEmailAddressV3(Operation):
     """Get Bulk User By Email Address (AdminGetBulkUserByEmailAddressV3)
 
-    This endpoint search user by the list of email addresses
-    action code : 10132
+    Searches users by the list of email addresses.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/search/bulk

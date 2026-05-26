@@ -55,7 +55,6 @@ from ..api.platform.models import BasicItem
 from ..api.platform.models import BillingAccount
 from ..api.platform.models import BillingHistoryInfo
 from ..api.platform.models import BillingHistoryPagingSlicedResult
-from ..api.platform.models import BinarySchema
 from ..api.platform.models import BoxItem
 from ..api.platform.models import BulkCreditRequest
 from ..api.platform.models import BulkCreditResult
@@ -86,6 +85,7 @@ from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
 from ..api.platform.models import ChangeStatusItemRequest
+from ..api.platform.models import CheckBalanceResponse
 from ..api.platform.models import CheckoutConfig
 from ..api.platform.models import ClawbackInfo
 from ..api.platform.models import ClientRequestParameter
@@ -875,11 +875,6 @@ def create_billing_history_paging_sliced_result_example() -> (
     return instance
 
 
-def create_binary_schema_example() -> BinarySchema:
-    instance = BinarySchema()
-    return instance
-
-
 def create_box_item_example() -> BoxItem:
     instance = BoxItem()
     instance.count = randomize("int", min_val=1, max_val=1000)
@@ -1224,6 +1219,12 @@ def create_category_update_example() -> CategoryUpdate:
 def create_change_status_item_request_example() -> ChangeStatusItemRequest:
     instance = ChangeStatusItemRequest()
     instance.features_to_check = [randomize()]
+    return instance
+
+
+def create_check_balance_response_example() -> CheckBalanceResponse:
+    instance = CheckBalanceResponse()
+    instance.enough_balance = randomize("bool")
     return instance
 
 

@@ -34,9 +34,9 @@ from ...models import RestErrorResponse
 
 
 class RetrieveAllSSOLoginPlatformCredentialV3(Operation):
-    """Get All SSO Platform Credential (RetrieveAllSSOLoginPlatformCredentialV3)
+    """Get All SSO Platform Credentials (RetrieveAllSSOLoginPlatformCredentialV3)
 
-    This is the API to Get All Active SSO Platform Credential.
+    Retrieves all SSO platform credentials for the namespace. Supports pagination via limit and offset parameters.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/sso

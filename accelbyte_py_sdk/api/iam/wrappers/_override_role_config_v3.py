@@ -89,6 +89,8 @@ def admin_change_role_override_config_status_v3(
     Responses:
         200: OK - ModelRoleOverrideResponse (OK)
 
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
+
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
@@ -142,6 +144,8 @@ async def admin_change_role_override_config_status_v3_async(
 
     Responses:
         200: OK - ModelRoleOverrideResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -297,8 +301,6 @@ def admin_get_role_override_config_v3(
     Responses:
         200: OK - ModelRoleOverrideResponse (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
-
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
@@ -347,8 +349,6 @@ async def admin_get_role_override_config_v3_async(
 
     Responses:
         200: OK - ModelRoleOverrideResponse (OK)
-
-        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -488,6 +488,9 @@ def admin_update_role_override_config_v3(
     This API is for updating role override config.
     Note:
     This API has upsert behavior, if there is no config yet, it will create a new one first.
+    **Note for Multi Tenant Mode:**
+    Studio/game admin:
+    * only allow to add custom permission to additions.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roleoverride
@@ -544,6 +547,9 @@ async def admin_update_role_override_config_v3_async(
     This API is for updating role override config.
     Note:
     This API has upsert behavior, if there is no config yet, it will create a new one first.
+    **Note for Multi Tenant Mode:**
+    Studio/game admin:
+    * only allow to add custom permission to additions.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/roleoverride

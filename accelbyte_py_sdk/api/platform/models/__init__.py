@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.11.0"
+__version__ = "6.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -87,7 +87,6 @@ from .billing_account import PaymentProviderEnum as BillingAccountPaymentProvide
 from .billing_history_info import BillingHistoryInfo
 from .billing_history_info import StatusEnum as BillingHistoryInfoStatusEnum
 from .billing_history_paging_sliced_result import BillingHistoryPagingSlicedResult
-from .binary_schema import BinarySchema
 from .box_item import BoxItem
 from .bulk_credit_request import BulkCreditRequest
 from .bulk_credit_result import BulkCreditResult
@@ -163,6 +162,7 @@ from .change_status_item_request import ChangeStatusItemRequest
 from .change_status_item_request import (
     FeaturesToCheckEnum as ChangeStatusItemRequestFeaturesToCheckEnum,
 )
+from .check_balance_response import CheckBalanceResponse
 from .checkout_config import CheckoutConfig
 from .clawback_info import ClawbackInfo
 from .clawback_info import (
