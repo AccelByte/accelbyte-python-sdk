@@ -36,7 +36,7 @@ from ..models import ResponseError
 
 from ..operations.challenge_progression import AdminEvaluateProgress
 from ..operations.challenge_progression import AdminGetUserProgression
-from ..operations.challenge_progression import EvaluateMyProgress
+from ..operations.challenge_progression import PublicEvaluateMyProgress
 from ..operations.challenge_progression import PublicGetPastUserProgression
 from ..operations.challenge_progression import PublicGetUserProgression
 
@@ -323,15 +323,15 @@ async def admin_get_user_progression_async(
     )
 
 
-@same_doc_as(EvaluateMyProgress)
-def evaluate_my_progress(
+@same_doc_as(PublicEvaluateMyProgress)
+def public_evaluate_my_progress(
     challenge_code: Optional[List[str]] = None,
     include_one_time_event: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Evaluate User's Challenge Progressions (EvaluateMyProgress)
+    """Evaluate User's Challenge Progressions (publicEvaluateMyProgress)
 
     - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
@@ -367,7 +367,7 @@ def evaluate_my_progress(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = EvaluateMyProgress.create(
+    request = PublicEvaluateMyProgress.create(
         challenge_code=challenge_code,
         include_one_time_event=include_one_time_event,
         namespace=namespace,
@@ -375,15 +375,15 @@ def evaluate_my_progress(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(EvaluateMyProgress)
-async def evaluate_my_progress_async(
+@same_doc_as(PublicEvaluateMyProgress)
+async def public_evaluate_my_progress_async(
     challenge_code: Optional[List[str]] = None,
     include_one_time_event: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Evaluate User's Challenge Progressions (EvaluateMyProgress)
+    """Evaluate User's Challenge Progressions (publicEvaluateMyProgress)
 
     - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
@@ -419,7 +419,7 @@ async def evaluate_my_progress_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = EvaluateMyProgress.create(
+    request = PublicEvaluateMyProgress.create(
         challenge_code=challenge_code,
         include_one_time_event=include_one_time_event,
         namespace=namespace,

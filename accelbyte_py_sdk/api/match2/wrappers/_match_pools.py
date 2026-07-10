@@ -528,7 +528,8 @@ def match_pool_details(
 ):
     """Get details for a specific match pool (MatchPoolDetails)
 
-    Get details for a specific match pool
+    Get details for a specific match pool, including its configuration such as match function,
+    ticket expiration, ruleset, and backfill settings.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -578,7 +579,8 @@ async def match_pool_details_async(
 ):
     """Get details for a specific match pool (MatchPoolDetails)
 
-    Get details for a specific match pool
+    Get details for a specific match pool, including its configuration such as match function,
+    ticket expiration, ruleset, and backfill settings.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -851,7 +853,10 @@ def post_match_error_metric(
 ):
     """Post metrics for external flow failure in a specific match pool (PostMatchErrorMetric)
 
-    Post metrics for external flow failure in a specific match pool
+    Post metrics for external flow failure in a specific match pool.
+
+    Records an external match error metric for the given match pool. Used to track failures
+    from custom (gRPC) match functions during the matchmaking process.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/external-failure
@@ -907,7 +912,10 @@ async def post_match_error_metric_async(
 ):
     """Post metrics for external flow failure in a specific match pool (PostMatchErrorMetric)
 
-    Post metrics for external flow failure in a specific match pool
+    Post metrics for external flow failure in a specific match pool.
+
+    Records an external match error metric for the given match pool. Used to track failures
+    from custom (gRPC) match functions during the matchmaking process.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/external-failure

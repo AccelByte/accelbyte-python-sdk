@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class DeleteNoSQLDatabaseV2(Operation):
     """Deletes NoSQL Database for Extend App (DeleteNoSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [DELETE]`
-
     Deletes a NoSQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned NoSQL cluster.
 
     Properties:

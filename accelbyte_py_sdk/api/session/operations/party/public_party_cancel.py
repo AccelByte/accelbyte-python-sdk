@@ -35,7 +35,7 @@ from ...models import ResponseError
 class PublicPartyCancel(Operation):
     """Cancel a party invitation. (publicPartyCancel)
 
-    Cancel a party invitation.
+    Cancels a pending party invitation sent to the specified user. Only the party leader or the inviting member can cancel the invitation.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/users/{userId}/cancel

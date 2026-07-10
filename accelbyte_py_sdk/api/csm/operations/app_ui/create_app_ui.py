@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateAppUI(Operation):
     """Create a new App UI instance (CreateAppUI)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
-
     Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
 
     Properties:

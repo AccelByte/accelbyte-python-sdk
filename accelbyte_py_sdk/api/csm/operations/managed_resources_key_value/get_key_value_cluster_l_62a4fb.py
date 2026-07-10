@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetKeyValueClusterLimitConfigV2(Operation):
     """Get Key-Value Cluster Limit Config (GetKeyValueClusterLimitConfigV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     Get Key-Value cluster limit config.
 
     Properties:

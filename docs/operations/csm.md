@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.33.0)
+# Custom Service Manager Index (1.34.0)
 
 
 ## Operations
@@ -19,6 +19,11 @@
 | /csm/v1/admin/namespaces/{namespace}/apps/{app}/stop | PUT | StopAppV1 | `true` | [StopAppV1](../../accelbyte_py_sdk/api/csm/operations/app/stop_app_v1.py) | [stop_app_v1](../../accelbyte_py_sdk/api/csm/wrappers/_app.py) | [accelbyte_py_sdk_cli csm-stop-app-v1](../../samples/cli/accelbyte_py_sdk_cli/csm/_stop_app_v1.py) |
 | /csm/v1/admin/namespaces/{namespace}/apps/{app} | PATCH | UpdateAppV1 | `true` | [UpdateAppV1](../../accelbyte_py_sdk/api/csm/operations/app/update_app_v1.py) | [update_app_v1](../../accelbyte_py_sdk/api/csm/wrappers/_app.py) | [accelbyte_py_sdk_cli csm-update-app-v1](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_v1.py) |
 
+### App Status Progress V4
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v4/admin/namespaces/{namespace}/apps/{app}/status-progress | GET | GetAppStatusProgressV4 | `false` | [GetAppStatusProgressV4](../../accelbyte_py_sdk/api/csm/operations/app_status_progress_v4/get_app_status_progress_v4.py) | [get_app_status_progress_v4](../../accelbyte_py_sdk/api/csm/wrappers/_app_status_progress_v4.py) | [accelbyte_py_sdk_cli csm-get-app-status-progress-v4](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_app_status_progress_v4.py) |
+
 ### App UI
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -31,7 +36,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/apply | POST | ApplyAppConfigV2 | `false` | [ApplyAppConfigV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/apply_app_config_v2.py) | [apply_app_config_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-apply-app-config-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_apply_app_config_v2.py) |
-| /csm/v2/admin/namespaces/{namespace}/apps/{app} | POST | CreateAppV2 | `false` | [CreateAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/create_app_v2.py) | [create_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-create-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_app_v2.py) |
+| /csm/v2/admin/namespaces/{namespace}/apps/{app} | POST | CreateAppV2 | `true` | [CreateAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/create_app_v2.py) | [create_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-create-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_app_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app} | DELETE | DeleteAppV2 | `false` | [DeleteAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/delete_app_v2.py) | [delete_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-delete-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_app_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps | POST | GetAppListV2 | `false` | [GetAppListV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/get_app_list_v2.py) | [get_app_list_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-get-app-list-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_app_list_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app} | GET | GetAppV2 | `false` | [GetAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/get_app_v2.py) | [get_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-get-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_app_v2.py) |
@@ -40,6 +45,17 @@
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/resources/form | POST | UpdateAppResourcesResourceLimitFormV2 | `false` | [UpdateAppResourcesResourceLimitFormV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/update_app_resources_re_e22dc4.py) | [update_app_resources_resource_limit_form_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-update-app-resources-resource-limit-form-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_resources_resource_limit_form_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/resources | PATCH | UpdateAppResourcesV2 | `false` | [UpdateAppResourcesV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/update_app_resources_v2.py) | [update_app_resources_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-update-app-resources-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_resources_v2.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app} | PATCH | UpdateAppV2 | `false` | [UpdateAppV2](../../accelbyte_py_sdk/api/csm/operations/app_v2/update_app_v2.py) | [update_app_v2](../../accelbyte_py_sdk/api/csm/wrappers/_app_v2.py) | [accelbyte_py_sdk_cli csm-update-app-v2](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_v2.py) |
+
+### App V4
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v4/admin/namespaces/{namespace}/apps/{app}/debuginfo | GET | GetAppDebugInfoV4 | `false` | [GetAppDebugInfoV4](../../accelbyte_py_sdk/api/csm/operations/app_v4/get_app_debug_info_v4.py) | [get_app_debug_info_v4](../../accelbyte_py_sdk/api/csm/wrappers/_app_v4.py) | [accelbyte_py_sdk_cli csm-get-app-debug-info-v4](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_app_debug_info_v4.py) |
+| /csm/v4/admin/namespaces/{namespace}/apps/{app}/debugmode | PUT | UpdateAppDebugModeV4 | `false` | [UpdateAppDebugModeV4](../../accelbyte_py_sdk/api/csm/operations/app_v4/update_app_debug_mode_v4.py) | [update_app_debug_mode_v4](../../accelbyte_py_sdk/api/csm/wrappers/_app_v4.py) | [accelbyte_py_sdk_cli csm-update-app-debug-mode-v4](../../samples/cli/accelbyte_py_sdk_cli/csm/_update_app_debug_mode_v4.py) |
+
+### App V5
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v5/admin/namespaces/{namespace}/apps/{app} | POST | CreateAppV5 | `false` | [CreateAppV5](../../accelbyte_py_sdk/api/csm/operations/app_v5/create_app_v5.py) | [create_app_v5](../../accelbyte_py_sdk/api/csm/wrappers/_app_v5.py) | [accelbyte_py_sdk_cli csm-create-app-v5](../../samples/cli/accelbyte_py_sdk_cli/csm/_create_app_v5.py) |
 
 ### Async Messaging
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -186,7 +202,10 @@
 ## Models
 | Model | Class |
 |---|---|
+| apimodel.AppDebugInfoResponse | [ApimodelAppDebugInfoResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_app_debug_info_response.py) |
 | apimodel.AppItem | [ApimodelAppItem](../../accelbyte_py_sdk/api/csm/models/apimodel_app_item.py) |
+| apimodel.AppItemV5 | [ApimodelAppItemV5](../../accelbyte_py_sdk/api/csm/models/apimodel_app_item_v5.py) |
+| apimodel.AppStatusProgressStep | [ApimodelAppStatusProgressStep](../../accelbyte_py_sdk/api/csm/models/apimodel_app_status_progress_step.py) |
 | apimodel.AppUIResponse | [ApimodelAppUIResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_app_ui_response.py) |
 | apimodel.ApplyAppConfigRequest | [ApimodelApplyAppConfigRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_apply_app_config_request.py) |
 | apimodel.ApplyConfigItem | [ApimodelApplyConfigItem](../../accelbyte_py_sdk/api/csm/models/apimodel_apply_config_item.py) |
@@ -199,6 +218,7 @@
 | apimodel.CPUResponse | [ApimodelCPUResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_cpu_response.py) |
 | apimodel.CreateAppUIRequest | [ApimodelCreateAppUIRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_app_ui_request.py) |
 | apimodel.CreateAppV2Request | [ApimodelCreateAppV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_app_v2_request.py) |
+| apimodel.CreateAppV5Request | [ApimodelCreateAppV5Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_app_v5_request.py) |
 | apimodel.CreateDeploymentV2Request | [ApimodelCreateDeploymentV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_request.py) |
 | apimodel.CreateDeploymentV2Response | [ApimodelCreateDeploymentV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_create_deployment_v2_response.py) |
 | apimodel.CreateKeyValueCredentialRequest | [ApimodelCreateKeyValueCredentialRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_create_key_value_credential_request.py) |
@@ -219,6 +239,7 @@
 | apimodel.GetAppImageListV2Response | [ApimodelGetAppImageListV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_image_list_v2_response.py) |
 | apimodel.GetAppListV2Request | [ApimodelGetAppListV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_list_v2_request.py) |
 | apimodel.GetAppListV2Response | [ApimodelGetAppListV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_list_v2_response.py) |
+| apimodel.GetAppStatusProgressResponse | [ApimodelGetAppStatusProgressResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_get_app_status_progress_response.py) |
 | apimodel.GetDeploymentListV2DataItem | [ApimodelGetDeploymentListV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_deployment_list_v2_data_item.py) |
 | apimodel.GetDeploymentListV2Request | [ApimodelGetDeploymentListV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_get_deployment_list_v2_request.py) |
 | apimodel.GetDeploymentListV2Response | [ApimodelGetDeploymentListV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_get_deployment_list_v2_response.py) |
@@ -278,8 +299,16 @@
 | apimodel.UpdateAppV2Request | [ApimodelUpdateAppV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_app_v2_request.py) |
 | apimodel.UpdateConfigurationV2Request | [ApimodelUpdateConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_configuration_v2_request.py) |
 | apimodel.UpdateConfigurationV2Response | [ApimodelUpdateConfigurationV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_update_configuration_v2_response.py) |
+| apimodel.UpdateDebugModeRequest | [ApimodelUpdateDebugModeRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_update_debug_mode_request.py) |
 | apimodel.UpdateSecretConfigurationV2Request | [ApimodelUpdateSecretConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_update_secret_configuration_v2_request.py) |
 | apimodel.UploadFileResponse | [ApimodelUploadFileResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_upload_file_response.py) |
+| createappparams.AutoscalingRequest | [CreateappparamsAutoscalingRequest](../../accelbyte_py_sdk/api/csm/models/createappparams_autoscaling_request.py) |
+| createappparams.CPURequest | [CreateappparamsCPURequest](../../accelbyte_py_sdk/api/csm/models/createappparams_cpu_request.py) |
+| createappparams.MemoryRequest | [CreateappparamsMemoryRequest](../../accelbyte_py_sdk/api/csm/models/createappparams_memory_request.py) |
+| createappparams.ReplicaRequest | [CreateappparamsReplicaRequest](../../accelbyte_py_sdk/api/csm/models/createappparams_replica_request.py) |
+| domain.AllowedInterceptedPort | [DomainAllowedInterceptedPort](../../accelbyte_py_sdk/api/csm/models/domain_allowed_intercepted_port.py) |
+| domain.DebugPod | [DomainDebugPod](../../accelbyte_py_sdk/api/csm/models/domain_debug_pod.py) |
+| domain.ExposedService | [DomainExposedService](../../accelbyte_py_sdk/api/csm/models/domain_exposed_service.py) |
 | domain.KeyValueClusterConfig | [DomainKeyValueClusterConfig](../../accelbyte_py_sdk/api/csm/models/domain_key_value_cluster_config.py) |
 | domain.KeyValueResourceConfiguration | [DomainKeyValueResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/domain_key_value_resource_configuration.py) |
 | domain.KeyValueUpdateConfiguration | [DomainKeyValueUpdateConfiguration](../../accelbyte_py_sdk/api/csm/models/domain_key_value_update_configuration.py) |
@@ -314,8 +343,6 @@
 | generated.UpdateConfigurationV1Request | [GeneratedUpdateConfigurationV1Request](../../accelbyte_py_sdk/api/csm/models/generated_update_configuration_v1_request.py) |
 | generated.UpdateConfigurationV1Response | [GeneratedUpdateConfigurationV1Response](../../accelbyte_py_sdk/api/csm/models/generated_update_configuration_v1_response.py) |
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/csm/models/log_app_message_declaration.py) |
-| model.AppRedeploymentDetail | [ModelAppRedeploymentDetail](../../accelbyte_py_sdk/api/csm/models/model_app_redeployment_detail.py) |
-| model.AppRedeploymentInfo | [ModelAppRedeploymentInfo](../../accelbyte_py_sdk/api/csm/models/model_app_redeployment_info.py) |
 | model.CSMAutoscalingDefaults | [ModelCSMAutoscalingDefaults](../../accelbyte_py_sdk/api/csm/models/model_csm_autoscaling_defaults.py) |
 | model.ImageScanFinding | [ModelImageScanFinding](../../accelbyte_py_sdk/api/csm/models/model_image_scan_finding.py) |
 | nosqlresource.NoSQLResourceConfiguration | [NosqlresourceNoSQLResourceConfiguration](../../accelbyte_py_sdk/api/csm/models/nosqlresource_no_sql_resource_configuration.py) |

@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class GetDeploymentV1(Operation):
     """Get Deployment by Deployment ID (GetDeploymentV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
     Get Deployment information by given DeploymentID
 
     This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.

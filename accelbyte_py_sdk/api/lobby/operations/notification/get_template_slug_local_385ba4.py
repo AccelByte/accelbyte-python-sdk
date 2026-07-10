@@ -36,9 +36,7 @@ from ...models import RestapiErrorResponseV1
 class GetTemplateSlugLocalizationsTemplateV1Admin(Operation):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
-    Get all templates in a namespace
-
-    Action Code: 50205
+    Get all localization variants for a given notification template slug.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}

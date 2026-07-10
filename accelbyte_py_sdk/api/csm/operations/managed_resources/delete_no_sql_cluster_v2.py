@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class DeleteNoSQLClusterV2(Operation):
     """Delete NoSQL Cluster (DeleteNoSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [DELETE]`
-
     You can only delete the cluster when its status is "available".
 
     Deleting the cluster will:

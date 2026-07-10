@@ -271,7 +271,8 @@ def rule_set_details(
 ):
     """Get details for a specific rule set (RuleSetDetails)
 
-    Get details for a specific rule set
+    Get details for a specific rule set, including its name and the rule data used to
+    configure matchmaking logic.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
@@ -319,7 +320,8 @@ async def rule_set_details_async(
 ):
     """Get details for a specific rule set (RuleSetDetails)
 
-    Get details for a specific rule set
+    Get details for a specific rule set, including its name and the rule data used to
+    configure matchmaking logic.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}

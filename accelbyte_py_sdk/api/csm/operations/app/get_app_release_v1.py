@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetAppReleaseV1(Operation):
     """Gets the Latest Release Version info of this App (GetAppReleaseV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Gets the Latest Release Version info of this App
 
     Properties:

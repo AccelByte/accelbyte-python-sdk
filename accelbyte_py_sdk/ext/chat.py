@@ -162,6 +162,7 @@ def create_api_muted_topic_response_example() -> ApiMutedTopicResponse:
 def create_api_send_chat_params_example() -> ApiSendChatParams:
     instance = ApiSendChatParams()
     instance.message = randomize()
+    instance.metadata = randomize()
     return instance
 
 
@@ -304,6 +305,7 @@ def create_models_chat_message_response_example() -> ModelsChatMessageResponse:
     instance.from_ = randomize()
     instance.id_ = randomize()
     instance.message = randomize()
+    instance.metadata = randomize()
     instance.topic_id = randomize()
     instance.read_at = randomize("int", min_val=1, max_val=1000)
     instance.received_at = randomize("int", min_val=1, max_val=1000)
@@ -365,6 +367,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.enable_manual_topic_creation = randomize("bool")
     instance.enable_pm_send_platform_id = randomize("bool")
     instance.max_chat_message_length = randomize("int", min_val=1, max_val=1000)
+    instance.max_chat_metadata_size = randomize("int", min_val=1, max_val=1000)
     instance.use_default_dictionary = randomize("bool")
     return instance
 
@@ -414,6 +417,7 @@ def create_models_config_response_example() -> ModelsConfigResponse:
     instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.max_chat_message_length = randomize("int", min_val=1, max_val=1000)
+    instance.max_chat_metadata_size = randomize("int", min_val=1, max_val=1000)
     instance.shard_capacity_limit = randomize("int", min_val=1, max_val=1000)
     instance.shard_default_limit = randomize("int", min_val=1, max_val=1000)
     instance.shard_hard_limit = randomize("int", min_val=1, max_val=1000)
@@ -668,6 +672,7 @@ def create_models_public_config_response_example() -> ModelsPublicConfigResponse
     instance.spam_chat_duration = randomize("int", min_val=1, max_val=1000)
     instance.spam_mute_duration = randomize("int", min_val=1, max_val=1000)
     instance.enable_pm_send_platform_id = randomize("bool")
+    instance.max_chat_metadata_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

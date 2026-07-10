@@ -435,6 +435,8 @@ def fleet_create(
 
         403: Forbidden - ResponseErrorResponse (exceeded quota)
 
+        409: Conflict - ResponseErrorResponse (fleet name already exists)
+
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
@@ -486,6 +488,8 @@ async def fleet_create_async(
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (exceeded quota)
+
+        409: Conflict - ResponseErrorResponse (fleet name already exists)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -611,6 +615,7 @@ async def fleet_delete_async(
 @same_doc_as(FleetGet)
 def fleet_get(
     fleet_id: str,
+    include_inactive_regions: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -636,6 +641,8 @@ def fleet_get(
 
         namespace: (namespace) REQUIRED str in path
 
+        include_inactive_regions: (includeInactiveRegions) OPTIONAL bool in query
+
     Responses:
         200: OK - ApiFleetGetResponse (success)
 
@@ -655,6 +662,7 @@ def fleet_get(
             return None, error
     request = FleetGet.create(
         fleet_id=fleet_id,
+        include_inactive_regions=include_inactive_regions,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -663,6 +671,7 @@ def fleet_get(
 @same_doc_as(FleetGet)
 async def fleet_get_async(
     fleet_id: str,
+    include_inactive_regions: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -688,6 +697,8 @@ async def fleet_get_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        include_inactive_regions: (includeInactiveRegions) OPTIONAL bool in query
+
     Responses:
         200: OK - ApiFleetGetResponse (success)
 
@@ -707,6 +718,7 @@ async def fleet_get_async(
             return None, error
     request = FleetGet.create(
         fleet_id=fleet_id,
+        include_inactive_regions=include_inactive_regions,
         namespace=namespace,
     )
     return await run_request_async(
@@ -718,6 +730,7 @@ async def fleet_get_async(
 def fleet_list(
     active: Optional[bool] = None,
     count: Optional[int] = None,
+    include_inactive_regions: Optional[bool] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
@@ -750,6 +763,8 @@ def fleet_list(
 
         count: (count) OPTIONAL int in query
 
+        include_inactive_regions: (includeInactiveRegions) OPTIONAL bool in query
+
         name: (name) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
@@ -772,6 +787,7 @@ def fleet_list(
     request = FleetList.create(
         active=active,
         count=count,
+        include_inactive_regions=include_inactive_regions,
         name=name,
         offset=offset,
         region=region,
@@ -786,6 +802,7 @@ def fleet_list(
 async def fleet_list_async(
     active: Optional[bool] = None,
     count: Optional[int] = None,
+    include_inactive_regions: Optional[bool] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
@@ -818,6 +835,8 @@ async def fleet_list_async(
 
         count: (count) OPTIONAL int in query
 
+        include_inactive_regions: (includeInactiveRegions) OPTIONAL bool in query
+
         name: (name) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
@@ -840,6 +859,7 @@ async def fleet_list_async(
     request = FleetList.create(
         active=active,
         count=count,
+        include_inactive_regions=include_inactive_regions,
         name=name,
         offset=offset,
         region=region,
@@ -1058,6 +1078,8 @@ def fleet_update(
 
         404: Not Found - ResponseErrorResponse (fleet not found)
 
+        409: Conflict - ResponseErrorResponse (fleet name already exists in namespace)
+
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
@@ -1115,6 +1137,8 @@ async def fleet_update_async(
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
 
         404: Not Found - ResponseErrorResponse (fleet not found)
+
+        409: Conflict - ResponseErrorResponse (fleet name already exists in namespace)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """

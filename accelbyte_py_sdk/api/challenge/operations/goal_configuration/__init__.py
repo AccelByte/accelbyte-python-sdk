@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.29.0"
+__version__ = "1.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,7 +16,9 @@ __email__ = "dev@accelbyte.net"
 
 from .admin_create_goal import AdminCreateGoal
 from .admin_delete_goal import AdminDeleteGoal
+from .admin_get_challenge_slots import AdminGetChallengeSlots
 from .admin_get_goal import AdminGetGoal
 from .admin_get_goals import AdminGetGoals
 from .admin_get_goals import SortByEnum as AdminGetGoalsSortByEnum
+from .admin_move_goal_to_slot import AdminMoveGoalToSlot
 from .admin_update_goals import AdminUpdateGoals

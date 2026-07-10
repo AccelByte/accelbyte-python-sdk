@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.29.0"
+__version__ = "1.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,6 @@ __email__ = "dev@accelbyte.net"
 
 from .admin_evaluate_progress import AdminEvaluateProgress
 from .admin_get_user_progression import AdminGetUserProgression
-from .evaluate_my_progress import EvaluateMyProgress
+from .public_evaluate_my_progress import PublicEvaluateMyProgress
 from .public_get_past_user_pr_bbe905 import PublicGetPastUserProgression
 from .public_get_user_progression import PublicGetUserProgression

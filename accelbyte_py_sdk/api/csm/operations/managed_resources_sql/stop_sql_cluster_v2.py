@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class StopSQLClusterV2(Operation):
     """Stop SQL Cluster (StopSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
     Stop SQL cluster.
     You can only start the cluster when its status is "available".
 

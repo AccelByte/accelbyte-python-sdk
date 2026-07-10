@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class ApplyAppConfigV2(Operation):
     """Declaratively create or update an extend app from a spec (ApplyAppConfigV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
-
     Idempotent endpoint that creates or updates an Extend app from a declarative spec.
     Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
 

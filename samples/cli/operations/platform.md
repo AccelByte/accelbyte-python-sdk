@@ -568,10 +568,10 @@ $ python -m accelbyte_py_sdk_cli 'platform-get-entitlement' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-query-fulfillment-histories' \
     'string' \
+    'string' \
     --limit 1 \
     --offset 1 \
     --status 'FAIL' \
-    --user_id 'string' \
     > result.txt
 ```
 

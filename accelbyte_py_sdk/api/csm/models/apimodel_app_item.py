@@ -31,7 +31,6 @@ from ..models.apimodel_autoscaling_response import ApimodelAutoscalingResponse
 from ..models.apimodel_cpu_response import ApimodelCPUResponse
 from ..models.apimodel_memory_response import ApimodelMemoryResponse
 from ..models.apimodel_replica_response import ApimodelReplicaResponse
-from ..models.model_app_redeployment_info import ModelAppRedeploymentInfo
 
 
 class ApimodelAppItem(Model):
@@ -45,6 +44,8 @@ class ApimodelAppItem(Model):
         app_status: (appStatus) REQUIRED str
 
         created_at: (createdAt) REQUIRED str
+
+        enable_debug_mode: (enableDebugMode) REQUIRED bool
 
         game_name: (gameName) REQUIRED str
 
@@ -80,8 +81,6 @@ class ApimodelAppItem(Model):
 
         message: (message) OPTIONAL str
 
-        redeployment_info: (redeploymentInfo) OPTIONAL ModelAppRedeploymentInfo
-
         replica: (replica) OPTIONAL ApimodelReplicaResponse
 
         service_public_url: (servicePublicURL) OPTIONAL str
@@ -95,6 +94,7 @@ class ApimodelAppItem(Model):
     app_name: str  # REQUIRED
     app_status: str  # REQUIRED
     created_at: str  # REQUIRED
+    enable_debug_mode: bool  # REQUIRED
     game_name: str  # REQUIRED
     is_resource_applied: bool  # REQUIRED
     scenario: str  # REQUIRED
@@ -112,7 +112,6 @@ class ApimodelAppItem(Model):
     description: str  # OPTIONAL
     memory: ApimodelMemoryResponse  # OPTIONAL
     message: str  # OPTIONAL
-    redeployment_info: ModelAppRedeploymentInfo  # OPTIONAL
     replica: ApimodelReplicaResponse  # OPTIONAL
     service_public_url: str  # OPTIONAL
     service_url: str  # OPTIONAL
@@ -135,6 +134,10 @@ class ApimodelAppItem(Model):
 
     def with_created_at(self, value: str) -> ApimodelAppItem:
         self.created_at = value
+        return self
+
+    def with_enable_debug_mode(self, value: bool) -> ApimodelAppItem:
+        self.enable_debug_mode = value
         return self
 
     def with_game_name(self, value: str) -> ApimodelAppItem:
@@ -205,12 +208,6 @@ class ApimodelAppItem(Model):
         self.message = value
         return self
 
-    def with_redeployment_info(
-        self, value: ModelAppRedeploymentInfo
-    ) -> ApimodelAppItem:
-        self.redeployment_info = value
-        return self
-
     def with_replica(self, value: ApimodelReplicaResponse) -> ApimodelAppItem:
         self.replica = value
         return self
@@ -245,6 +242,10 @@ class ApimodelAppItem(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "enable_debug_mode"):
+            result["enableDebugMode"] = bool(self.enable_debug_mode)
+        elif include_empty:
+            result["enableDebugMode"] = False
         if hasattr(self, "game_name"):
             result["gameName"] = str(self.game_name)
         elif include_empty:
@@ -315,12 +316,6 @@ class ApimodelAppItem(Model):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = ""
-        if hasattr(self, "redeployment_info"):
-            result["redeploymentInfo"] = self.redeployment_info.to_dict(
-                include_empty=include_empty
-            )
-        elif include_empty:
-            result["redeploymentInfo"] = ModelAppRedeploymentInfo()
         if hasattr(self, "replica"):
             result["replica"] = self.replica.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -346,6 +341,7 @@ class ApimodelAppItem(Model):
         app_name: str,
         app_status: str,
         created_at: str,
+        enable_debug_mode: bool,
         game_name: str,
         is_resource_applied: bool,
         scenario: str,
@@ -363,7 +359,6 @@ class ApimodelAppItem(Model):
         description: Optional[str] = None,
         memory: Optional[ApimodelMemoryResponse] = None,
         message: Optional[str] = None,
-        redeployment_info: Optional[ModelAppRedeploymentInfo] = None,
         replica: Optional[ApimodelReplicaResponse] = None,
         service_public_url: Optional[str] = None,
         service_url: Optional[str] = None,
@@ -374,6 +369,7 @@ class ApimodelAppItem(Model):
         instance.app_name = app_name
         instance.app_status = app_status
         instance.created_at = created_at
+        instance.enable_debug_mode = enable_debug_mode
         instance.game_name = game_name
         instance.is_resource_applied = is_resource_applied
         instance.scenario = scenario
@@ -403,8 +399,6 @@ class ApimodelAppItem(Model):
             instance.memory = memory
         if message is not None:
             instance.message = message
-        if redeployment_info is not None:
-            instance.redeployment_info = redeployment_info
         if replica is not None:
             instance.replica = replica
         if service_public_url is not None:
@@ -436,6 +430,10 @@ class ApimodelAppItem(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "enableDebugMode" in dict_ and dict_["enableDebugMode"] is not None:
+            instance.enable_debug_mode = bool(dict_["enableDebugMode"])
+        elif include_empty:
+            instance.enable_debug_mode = False
         if "gameName" in dict_ and dict_["gameName"] is not None:
             instance.game_name = str(dict_["gameName"])
         elif include_empty:
@@ -513,12 +511,6 @@ class ApimodelAppItem(Model):
             instance.message = str(dict_["message"])
         elif include_empty:
             instance.message = ""
-        if "redeploymentInfo" in dict_ and dict_["redeploymentInfo"] is not None:
-            instance.redeployment_info = ModelAppRedeploymentInfo.create_from_dict(
-                dict_["redeploymentInfo"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.redeployment_info = ModelAppRedeploymentInfo()
         if "replica" in dict_ and dict_["replica"] is not None:
             instance.replica = ApimodelReplicaResponse.create_from_dict(
                 dict_["replica"], include_empty=include_empty
@@ -576,6 +568,7 @@ class ApimodelAppItem(Model):
             "appName": "app_name",
             "appStatus": "app_status",
             "createdAt": "created_at",
+            "enableDebugMode": "enable_debug_mode",
             "gameName": "game_name",
             "isResourceApplied": "is_resource_applied",
             "scenario": "scenario",
@@ -593,7 +586,6 @@ class ApimodelAppItem(Model):
             "description": "description",
             "memory": "memory",
             "message": "message",
-            "redeploymentInfo": "redeployment_info",
             "replica": "replica",
             "servicePublicURL": "service_public_url",
             "serviceURL": "service_url",
@@ -606,6 +598,7 @@ class ApimodelAppItem(Model):
             "appName": True,
             "appStatus": True,
             "createdAt": True,
+            "enableDebugMode": True,
             "gameName": True,
             "isResourceApplied": True,
             "scenario": True,
@@ -623,7 +616,6 @@ class ApimodelAppItem(Model):
             "description": False,
             "memory": False,
             "message": False,
-            "redeploymentInfo": False,
             "replica": False,
             "servicePublicURL": False,
             "serviceURL": False,

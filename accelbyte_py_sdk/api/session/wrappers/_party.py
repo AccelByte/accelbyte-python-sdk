@@ -88,7 +88,7 @@ def admin_delete_bulk_parties(
 ):
     """Delete bulk parties. (adminDeleteBulkParties)
 
-    Delete bulk parties.
+    Permanently deletes multiple party sessions by their IDs. Returns a summary of deleted and failed sessions.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/parties/bulk
@@ -138,7 +138,7 @@ async def admin_delete_bulk_parties_async(
 ):
     """Delete bulk parties. (adminDeleteBulkParties)
 
-    Delete bulk parties.
+    Permanently deletes multiple party sessions by their IDs. Returns a summary of deleted and failed sessions.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/parties/bulk
@@ -204,7 +204,7 @@ def admin_query_parties(
 ):
     """Query parties. (adminQueryParties)
 
-    Query parties.
+    Returns paginated list of party sessions matching the provided filter criteria. Supports filtering by namespace, members, leader, and joinability mode.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/parties
@@ -308,7 +308,7 @@ async def admin_query_parties_async(
 ):
     """Query parties. (adminQueryParties)
 
-    Query parties.
+    Returns paginated list of party sessions matching the provided filter criteria. Supports filtering by namespace, members, leader, and joinability mode.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/parties
@@ -400,7 +400,7 @@ def admin_sync_native_session(
 ):
     """Trigger user's active party session to native platform. (adminSyncNativeSession)
 
-    Trigger user's active party session to native platform.
+    Triggers synchronization of the user's active party session to the native platform (PSN, Xbox). Useful when native session state is out of sync with the AccelByte session state.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync
@@ -450,7 +450,7 @@ async def admin_sync_native_session_async(
 ):
     """Trigger user's active party session to native platform. (adminSyncNativeSession)
 
-    Trigger user's active party session to native platform.
+    Triggers synchronization of the user's active party session to the native platform (PSN, Xbox). Useful when native session state is out of sync with the AccelByte session state.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync
@@ -836,7 +836,7 @@ def public_get_party(
 ):
     """Get party details. (publicGetParty)
 
-    Get party details.
+    Returns party session details including members, configuration, and leader. The caller must be a party member or have admin access.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}
@@ -884,7 +884,7 @@ async def public_get_party_async(
 ):
     """Get party details. (publicGetParty)
 
-    Get party details.
+    Returns party session details including members, configuration, and leader. The caller must be a party member or have admin access.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}
@@ -1041,7 +1041,7 @@ def public_party_cancel(
 ):
     """Cancel a party invitation. (publicPartyCancel)
 
-    Cancel a party invitation.
+    Cancels a pending party invitation sent to the specified user. Only the party leader or the inviting member can cancel the invitation.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/users/{userId}/cancel
@@ -1097,7 +1097,7 @@ async def public_party_cancel_async(
 ):
     """Cancel a party invitation. (publicPartyCancel)
 
-    Cancel a party invitation.
+    Cancels a pending party invitation sent to the specified user. Only the party leader or the inviting member can cancel the invitation.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/users/{userId}/cancel
@@ -1712,7 +1712,7 @@ def public_party_reject(
 ):
     """Reject a party invitation. (publicPartyReject)
 
-    Reject a party invitation.
+    Rejects a pending party invitation. The caller must have INVITED status. Once rejected, the caller must be re-invited to rejoin.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/users/me/reject
@@ -1764,7 +1764,7 @@ async def public_party_reject_async(
 ):
     """Reject a party invitation. (publicPartyReject)
 
-    Reject a party invitation.
+    Rejects a pending party invitation. The caller must have INVITED status. Once rejected, the caller must be re-invited to rejoin.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/users/me/reject

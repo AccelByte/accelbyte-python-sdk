@@ -36,7 +36,8 @@ from ...models import ResponseError
 class MatchTicketDetails(Operation):
     """Get details for a specific match ticket (MatchTicketDetails)
 
-    Get details for a specific match ticket
+    Get details for a specific match ticket, including its current matching status and
+    the session ID if a match has been found.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/{ticketid}

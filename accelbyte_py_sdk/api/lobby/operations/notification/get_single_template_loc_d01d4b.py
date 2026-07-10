@@ -36,9 +36,7 @@ from ...models import RestapiErrorResponseV1
 class GetSingleTemplateLocalizationV1Admin(Operation):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
-    Get a template localization
-
-    Action Code: 50207
+    Get a single notification template localization by slug and language.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}

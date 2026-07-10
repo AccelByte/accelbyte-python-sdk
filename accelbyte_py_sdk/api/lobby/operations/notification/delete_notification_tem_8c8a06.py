@@ -35,9 +35,7 @@ from ...models import RestapiErrorResponseV1
 class DeleteNotificationTemplateSlugV1Admin(Operation):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Delete template slug in notification template
-
-    Action Code: 50206
+    Delete all localizations for the given notification template slug.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}

@@ -35,7 +35,7 @@ from ...models import ResponseError
 class LeaveGameSession(Operation):
     """Leave a game session. (leaveGameSession)
 
-    Leave a game session.
+    Leaves a game session, removing the caller from the member list. If the caller is the leader, leadership transfers to another active member.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave

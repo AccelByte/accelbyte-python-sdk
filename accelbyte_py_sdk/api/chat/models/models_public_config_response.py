@@ -49,6 +49,8 @@ class ModelsPublicConfigResponse(Model):
         spam_mute_duration: (spamMuteDuration) REQUIRED int
 
         enable_pm_send_platform_id: (enablePmSendPlatformId) OPTIONAL bool
+
+        max_chat_metadata_size: (maxChatMetadataSize) OPTIONAL int
     """
 
     # region fields
@@ -62,6 +64,7 @@ class ModelsPublicConfigResponse(Model):
     spam_chat_duration: int  # REQUIRED
     spam_mute_duration: int  # REQUIRED
     enable_pm_send_platform_id: bool  # OPTIONAL
+    max_chat_metadata_size: int  # OPTIONAL
 
     # endregion fields
 
@@ -107,6 +110,10 @@ class ModelsPublicConfigResponse(Model):
         self.enable_pm_send_platform_id = value
         return self
 
+    def with_max_chat_metadata_size(self, value: int) -> ModelsPublicConfigResponse:
+        self.max_chat_metadata_size = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -149,6 +156,10 @@ class ModelsPublicConfigResponse(Model):
             result["enablePmSendPlatformId"] = bool(self.enable_pm_send_platform_id)
         elif include_empty:
             result["enablePmSendPlatformId"] = False
+        if hasattr(self, "max_chat_metadata_size"):
+            result["maxChatMetadataSize"] = int(self.max_chat_metadata_size)
+        elif include_empty:
+            result["maxChatMetadataSize"] = 0
         return result
 
     # endregion to methods
@@ -167,6 +178,7 @@ class ModelsPublicConfigResponse(Model):
         spam_chat_duration: int,
         spam_mute_duration: int,
         enable_pm_send_platform_id: Optional[bool] = None,
+        max_chat_metadata_size: Optional[int] = None,
         **kwargs,
     ) -> ModelsPublicConfigResponse:
         instance = cls()
@@ -180,6 +192,8 @@ class ModelsPublicConfigResponse(Model):
         instance.spam_mute_duration = spam_mute_duration
         if enable_pm_send_platform_id is not None:
             instance.enable_pm_send_platform_id = enable_pm_send_platform_id
+        if max_chat_metadata_size is not None:
+            instance.max_chat_metadata_size = max_chat_metadata_size
         return instance
 
     @classmethod
@@ -242,6 +256,10 @@ class ModelsPublicConfigResponse(Model):
             instance.enable_pm_send_platform_id = bool(dict_["enablePmSendPlatformId"])
         elif include_empty:
             instance.enable_pm_send_platform_id = False
+        if "maxChatMetadataSize" in dict_ and dict_["maxChatMetadataSize"] is not None:
+            instance.max_chat_metadata_size = int(dict_["maxChatMetadataSize"])
+        elif include_empty:
+            instance.max_chat_metadata_size = 0
         return instance
 
     @classmethod
@@ -294,6 +312,7 @@ class ModelsPublicConfigResponse(Model):
             "spamChatDuration": "spam_chat_duration",
             "spamMuteDuration": "spam_mute_duration",
             "enablePmSendPlatformId": "enable_pm_send_platform_id",
+            "maxChatMetadataSize": "max_chat_metadata_size",
         }
 
     @staticmethod
@@ -308,6 +327,7 @@ class ModelsPublicConfigResponse(Model):
             "spamChatDuration": True,
             "spamMuteDuration": True,
             "enablePmSendPlatformId": False,
+            "maxChatMetadataSize": False,
         }
 
     # endregion static methods

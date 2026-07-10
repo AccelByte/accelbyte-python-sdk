@@ -70,6 +70,8 @@ class FleetUpdate(Operation):
 
         404: Not Found - ResponseErrorResponse (fleet not found)
 
+        409: Conflict - ResponseErrorResponse (fleet name already exists in namespace)
+
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
 
@@ -201,6 +203,8 @@ class FleetUpdate(Operation):
 
         404: Not Found - ResponseErrorResponse (fleet not found)
 
+        409: Conflict - ResponseErrorResponse (fleet name already exists in namespace)
+
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -225,6 +229,8 @@ class FleetUpdate(Operation):
         if code == 403:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 409:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

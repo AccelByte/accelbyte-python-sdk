@@ -37,13 +37,9 @@ class SendUsersTemplatedNotificationV1Admin(Operation):
     """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
 
     Sends notification to all connected users in a namespace with predefined template.
-
     In the request body, specify which template slug (template identifier) to use and the template language.
-
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-    Template need to be published before it can be use to send notifications
-
-    Action Code: 50202
+    Template need to be published before it can be used to send notifications.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify

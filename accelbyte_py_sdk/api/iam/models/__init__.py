@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.39.1"
+__version__ = "7.40.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -258,7 +258,7 @@ from .model_link_platform_account_request import ModelLinkPlatformAccountRequest
 from .model_link_platform_account_with_progression_request import (
     ModelLinkPlatformAccountWithProgressionRequest,
 )
-from .model_link_request import ModelLinkRequest
+from .model_link_request_response import ModelLinkRequestResponse
 from .model_linking_history_response_with_pagination_v3 import (
     ModelLinkingHistoryResponseWithPaginationV3,
 )
@@ -306,6 +306,7 @@ from .model_public_user_response import ModelPublicUserResponse
 from .model_public_user_response_v3 import ModelPublicUserResponseV3
 from .model_public_user_update_request_v3 import ModelPublicUserUpdateRequestV3
 from .model_public_users_response import ModelPublicUsersResponse
+from .model_re_auth_request import ModelReAuthRequest
 from .model_remove_user_role_v4_request import ModelRemoveUserRoleV4Request
 from .model_reset_password_request import ModelResetPasswordRequest
 from .model_reset_password_request_v3 import ModelResetPasswordRequestV3
@@ -445,6 +446,7 @@ from .model_validation_detail_public import ModelValidationDetailPublic
 from .model_verification_code_response import ModelVerificationCodeResponse
 from .model_verify_registration_code import ModelVerifyRegistrationCode
 from .model_web_linking_response import ModelWebLinkingResponse
+from .model_web_reauth_process_response import ModelWebReauthProcessResponse
 from .oauthapi_revocation_list import OauthapiRevocationList
 from .oauthcommon_as_metadata_response import OauthcommonASMetadataResponse
 from .oauthcommon_jwk_key import OauthcommonJWKKey

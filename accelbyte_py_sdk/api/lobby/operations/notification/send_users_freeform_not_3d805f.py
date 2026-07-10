@@ -38,8 +38,6 @@ class SendUsersFreeformNotificationV1Admin(Operation):
 
     Sends notification to all connected users in a namespace.
 
-    Action Code: 50201
-
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
 

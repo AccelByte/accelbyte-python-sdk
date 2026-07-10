@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetListOfVariablesV2(Operation):
     """Get list of environment variables (GetListOfVariablesV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
     Get list of environment variables per app
     Available Deployment Status:
     `deployed` = app config is already deployed

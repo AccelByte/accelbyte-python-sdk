@@ -36,7 +36,10 @@ from ...models import ResponseError
 class AdminQueryBackfill(Operation):
     """Admin Query backfill ticket  (AdminQueryBackfill)
 
-    Admin Query backfill ticket
+    Admin Query backfill ticket.
+
+    Supports filtering by session ID, match pool, time range, active status, player ID, and region.
+    Use pagination parameters offset and limit to control result size.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill

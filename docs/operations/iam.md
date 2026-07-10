@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.39.1)
+# AccelByte Gaming Services Iam Service Index (7.40.1)
 
 
 ## Operations
@@ -119,7 +119,7 @@
 | /iam/oauth/authorize | POST | Authorization | `true` | [Authorization](../../accelbyte_py_sdk/api/iam/operations/o_auth/authorization.py) | [authorization](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-authorization](../../samples/cli/accelbyte_py_sdk_cli/iam/_authorization.py) |
 | /iam/oauth/jwks | GET | GetJWKS | `true` | [GetJWKS](../../accelbyte_py_sdk/api/iam/operations/o_auth/get_jwks.py) | [get_jwks](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-get-jwks](../../samples/cli/accelbyte_py_sdk_cli/iam/_get_jwks.py) |
 | /iam/oauth/revocationlist | GET | GetRevocationList | `true` | [GetRevocationList](../../accelbyte_py_sdk/api/iam/operations/o_auth/get_revocation_list.py) | [get_revocation_list](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-get-revocation-list](../../samples/cli/accelbyte_py_sdk_cli/iam/_get_revocation_list.py) |
-| /iam/oauth/namespaces/{namespace}/platforms/{platformId}/token | POST | PlatformTokenRequestHandler | `true` | [PlatformTokenRequestHandler](../../accelbyte_py_sdk/api/iam/operations/o_auth/platform_token_request_handler.py) | [platform_token_request_handler](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-platform-token-request-handler](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_token_request_handler.py) |
+| /iam/oauth/namespaces/{namespace}/platforms/{platformId}/token | POST | NamespaceScopedPlatformTokenGrant | `true` | [NamespaceScopedPlatformTokenGrant](../../accelbyte_py_sdk/api/iam/operations/o_auth/namespace_scoped_platfo_c548f1.py) | [namespace_scoped_platform_token_grant](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-namespace-scoped-platform-token-grant](../../samples/cli/accelbyte_py_sdk_cli/iam/_namespace_scoped_platform_token_grant.py) |
 | /iam/oauth/revoke/user | POST | RevokeAUser | `true` | [RevokeAUser](../../accelbyte_py_sdk/api/iam/operations/o_auth/revoke_a_user.py) | [revoke_a_user](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-revoke-a-user](../../samples/cli/accelbyte_py_sdk_cli/iam/_revoke_a_user.py) |
 | /iam/oauth/revoke/token | POST | RevokeToken | `true` | [RevokeToken](../../accelbyte_py_sdk/api/iam/operations/o_auth/revoke_token.py) | [revoke_token](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-revoke-token](../../samples/cli/accelbyte_py_sdk_cli/iam/_revoke_token.py) |
 | /iam/oauth/namespaces/{namespace}/users/{userId}/revoke | POST | RevokeUser | `true` | [RevokeUser](../../accelbyte_py_sdk/api/iam/operations/o_auth/revoke_user.py) | [revoke_user](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth.py) | [accelbyte_py_sdk_cli iam-revoke-user](../../samples/cli/accelbyte_py_sdk_cli/iam/_revoke_user.py) |
@@ -451,6 +451,9 @@
 | /iam/v3/public/users/verify_link/verify | GET | PublicVerifyUserByLinkV3 | `false` | [PublicVerifyUserByLinkV3](../../accelbyte_py_sdk/api/iam/operations/users/public_verify_user_by_link_v3.py) | [public_verify_user_by_link_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-public-verify-user-by-link-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_verify_user_by_link_v3.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link | GET | PublicWebLinkPlatform | `false` | [PublicWebLinkPlatform](../../accelbyte_py_sdk/api/iam/operations/users/public_web_link_platform.py) | [public_web_link_platform](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-public-web-link-platform](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_web_link_platform.py) |
 | /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish | GET | PublicWebLinkPlatformEstablish | `false` | [PublicWebLinkPlatformEstablish](../../accelbyte_py_sdk/api/iam/operations/users/public_web_link_platfor_667cbd.py) | [public_web_link_platform_establish](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-public-web-link-platform-establish](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_web_link_platform_establish.py) |
+| /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth | GET | PublicWebReauthPlatform | `false` | [PublicWebReauthPlatform](../../accelbyte_py_sdk/api/iam/operations/users/public_web_reauth_platform.py) | [public_web_reauth_platform](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-public-web-reauth-platform](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_web_reauth_platform.py) |
+| /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth/establish | GET | PublicWebReauthPlatformEstablish | `false` | [PublicWebReauthPlatformEstablish](../../accelbyte_py_sdk/api/iam/operations/users/public_web_reauth_platf_0ad092.py) | [public_web_reauth_platform_establish](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-public-web-reauth-platform-establish](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_web_reauth_platform_establish.py) |
+| /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth/process | POST | PublicWebReauthPlatformProcess | `false` | [PublicWebReauthPlatformProcess](../../accelbyte_py_sdk/api/iam/operations/users/public_web_reauth_platf_e14b6f.py) | [public_web_reauth_platform_process](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-public-web-reauth-platform-process](../../samples/cli/accelbyte_py_sdk_cli/iam/_public_web_reauth_platform_process.py) |
 | /iam/namespaces/{namespace}/users/resetPassword | POST | ResetPassword | `true` | [ResetPassword](../../accelbyte_py_sdk/api/iam/operations/users/reset_password.py) | [reset_password](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-reset-password](../../samples/cli/accelbyte_py_sdk_cli/iam/_reset_password.py) |
 | /iam/v3/public/namespaces/{namespace}/users/reset | POST | ResetPasswordV3 | `false` | [ResetPasswordV3](../../accelbyte_py_sdk/api/iam/operations/users/reset_password_v3.py) | [reset_password_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-reset-password-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_reset_password_v3.py) |
 | /iam/namespaces/{namespace}/users/{userId}/permissions | POST | SaveUserPermission | `true` | [SaveUserPermission](../../accelbyte_py_sdk/api/iam/operations/users/save_user_permission.py) | [save_user_permission](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-save-user-permission](../../samples/cli/accelbyte_py_sdk_cli/iam/_save_user_permission.py) |
@@ -722,7 +725,7 @@
 | model.LinkHeadlessAccountRequest | [ModelLinkHeadlessAccountRequest](../../accelbyte_py_sdk/api/iam/models/model_link_headless_account_request.py) |
 | model.LinkPlatformAccountRequest | [ModelLinkPlatformAccountRequest](../../accelbyte_py_sdk/api/iam/models/model_link_platform_account_request.py) |
 | model.LinkPlatformAccountWithProgressionRequest | [ModelLinkPlatformAccountWithProgressionRequest](../../accelbyte_py_sdk/api/iam/models/model_link_platform_account_with_progression_request.py) |
-| model.LinkRequest | [ModelLinkRequest](../../accelbyte_py_sdk/api/iam/models/model_link_request.py) |
+| model.LinkRequestResponse | [ModelLinkRequestResponse](../../accelbyte_py_sdk/api/iam/models/model_link_request_response.py) |
 | model.LinkingHistoryResponseWithPaginationV3 | [ModelLinkingHistoryResponseWithPaginationV3](../../accelbyte_py_sdk/api/iam/models/model_linking_history_response_with_pagination_v3.py) |
 | model.ListAssignedUsersV4Response | [ModelListAssignedUsersV4Response](../../accelbyte_py_sdk/api/iam/models/model_list_assigned_users_v4_response.py) |
 | model.ListBulkUserBanResponseV3 | [ModelListBulkUserBanResponseV3](../../accelbyte_py_sdk/api/iam/models/model_list_bulk_user_ban_response_v3.py) |
@@ -760,6 +763,7 @@
 | model.PublicUserResponseV3 | [ModelPublicUserResponseV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_response_v3.py) |
 | model.PublicUserUpdateRequestV3 | [ModelPublicUserUpdateRequestV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_update_request_v3.py) |
 | model.PublicUsersResponse | [ModelPublicUsersResponse](../../accelbyte_py_sdk/api/iam/models/model_public_users_response.py) |
+| model.ReAuthRequest | [ModelReAuthRequest](../../accelbyte_py_sdk/api/iam/models/model_re_auth_request.py) |
 | model.RemoveUserRoleV4Request | [ModelRemoveUserRoleV4Request](../../accelbyte_py_sdk/api/iam/models/model_remove_user_role_v4_request.py) |
 | model.ResetPasswordRequest | [ModelResetPasswordRequest](../../accelbyte_py_sdk/api/iam/models/model_reset_password_request.py) |
 | model.ResetPasswordRequestV3 | [ModelResetPasswordRequestV3](../../accelbyte_py_sdk/api/iam/models/model_reset_password_request_v3.py) |
@@ -869,6 +873,7 @@
 | model.VerificationCodeResponse | [ModelVerificationCodeResponse](../../accelbyte_py_sdk/api/iam/models/model_verification_code_response.py) |
 | model.VerifyRegistrationCode | [ModelVerifyRegistrationCode](../../accelbyte_py_sdk/api/iam/models/model_verify_registration_code.py) |
 | model.WebLinkingResponse | [ModelWebLinkingResponse](../../accelbyte_py_sdk/api/iam/models/model_web_linking_response.py) |
+| model.WebReauthProcessResponse | [ModelWebReauthProcessResponse](../../accelbyte_py_sdk/api/iam/models/model_web_reauth_process_response.py) |
 | oauthapi.RevocationList | [OauthapiRevocationList](../../accelbyte_py_sdk/api/iam/models/oauthapi_revocation_list.py) |
 | oauthcommon.ASMetadataResponse | [OauthcommonASMetadataResponse](../../accelbyte_py_sdk/api/iam/models/oauthcommon_as_metadata_response.py) |
 | oauthcommon.JWKKey | [OauthcommonJWKKey](../../accelbyte_py_sdk/api/iam/models/oauthcommon_jwk_key.py) |

@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteDeploymentV2(Operation):
     """Delete Deployment by Deployment ID (DeleteDeploymentV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
     Delete Deployment information by given DeploymentID
 
     This endpoint will delete release object for the service deployment in the cluster

@@ -36,7 +36,7 @@ from ...models import ResponseError
 class AdminGetListNativeSession(Operation):
     """List of native sessions. (adminGetListNativeSession)
 
-    List of native sessions.
+    Returns paginated list of native platform sessions. Native sessions are synchronized with PSN, Xbox Live, and Steam platform session systems.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/native-sessions

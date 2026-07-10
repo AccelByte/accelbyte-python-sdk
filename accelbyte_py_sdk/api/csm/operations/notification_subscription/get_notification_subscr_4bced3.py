@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetNotificationSubscriberListV2(Operation):
     """Get a list of the app notification subscriber (GetNotificationSubscriberListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
     Request param:
     - notificationType : type of the subscribed app notification
     - values:

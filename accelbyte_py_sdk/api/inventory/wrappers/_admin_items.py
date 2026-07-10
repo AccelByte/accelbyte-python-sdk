@@ -78,7 +78,7 @@ def admin_bulk_remove_items(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -137,7 +137,7 @@ async def admin_bulk_remove_items_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -212,7 +212,7 @@ def admin_bulk_save_item(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -288,7 +288,7 @@ async def admin_bulk_save_item_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -360,7 +360,7 @@ def admin_bulk_save_item_to_inventory(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -433,7 +433,7 @@ async def admin_bulk_save_item_to_inventory_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -501,7 +501,7 @@ def admin_bulk_update_my_items(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -561,7 +561,7 @@ async def admin_bulk_update_my_items_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -623,7 +623,7 @@ def admin_consume_user_item(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -686,7 +686,7 @@ async def admin_consume_user_item_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -1020,7 +1020,7 @@ def admin_save_item(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -1082,7 +1082,7 @@ async def admin_save_item_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -1145,7 +1145,7 @@ def admin_save_item_to_inventory(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -1215,7 +1215,7 @@ async def admin_save_item_to_inventory_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

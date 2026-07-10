@@ -1035,12 +1035,7 @@ def public_get_player_blocked_by_players_v1(
 ):
     """get players who blocked this player by user id (publicGetPlayerBlockedByPlayersV1)
 
-    Required valid user authorization
-
-
-    load get players who blocked this player in a namespace based on user id
-
-    Action Code: 50101
+    Load players who have blocked the current user in a namespace.
 
     Properties:
         url: /lobby/v1/public/player/namespaces/{namespace}/users/me/blocked-by
@@ -1088,12 +1083,7 @@ async def public_get_player_blocked_by_players_v1_async(
 ):
     """get players who blocked this player by user id (publicGetPlayerBlockedByPlayersV1)
 
-    Required valid user authorization
-
-
-    load get players who blocked this player in a namespace based on user id
-
-    Action Code: 50101
+    Load players who have blocked the current user in a namespace.
 
     Properties:
         url: /lobby/v1/public/player/namespaces/{namespace}/users/me/blocked-by
@@ -1143,12 +1133,7 @@ def public_get_player_blocked_players_v1(
 ):
     """get blocked players by user id (publicGetPlayerBlockedPlayersV1)
 
-    Required valid user authorization
-
-
-    load blocked players in a namespace based on user id
-
-    Action Code: 50101
+    Load blocked players in a namespace for the current user.
 
     Properties:
         url: /lobby/v1/public/player/namespaces/{namespace}/users/me/blocked
@@ -1196,12 +1181,7 @@ async def public_get_player_blocked_players_v1_async(
 ):
     """get blocked players by user id (publicGetPlayerBlockedPlayersV1)
 
-    Required valid user authorization
-
-
-    load blocked players in a namespace based on user id
-
-    Action Code: 50101
+    Load blocked players in a namespace for the current user.
 
     Properties:
         url: /lobby/v1/public/player/namespaces/{namespace}/users/me/blocked

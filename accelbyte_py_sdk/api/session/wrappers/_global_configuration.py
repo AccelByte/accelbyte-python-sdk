@@ -44,7 +44,7 @@ def admin_delete_global_configuration(
 ):
     """Delete of global configuration data. (adminDeleteGlobalConfiguration)
 
-    Delete of global configuration data.
+    Deletes the global configuration. After deletion, the service falls back to default configuration values.
 
     Properties:
         url: /session/v1/admin/global-configurations
@@ -76,7 +76,7 @@ async def admin_delete_global_configuration_async(
 ):
     """Delete of global configuration data. (adminDeleteGlobalConfiguration)
 
-    Delete of global configuration data.
+    Deletes the global configuration. After deletion, the service falls back to default configuration values.
 
     Properties:
         url: /session/v1/admin/global-configurations
@@ -110,7 +110,7 @@ def admin_list_global_configuration(
 ):
     """Record of global configuration data. (adminListGlobalConfiguration)
 
-    Record of global configuration data.
+    Returns the current global configuration shared across all namespaces. Includes settings like maximum active sessions and cleanup intervals.
 
     Properties:
         url: /session/v1/admin/global-configurations
@@ -142,7 +142,7 @@ async def admin_list_global_configuration_async(
 ):
     """Record of global configuration data. (adminListGlobalConfiguration)
 
-    Record of global configuration data.
+    Returns the current global configuration shared across all namespaces. Includes settings like maximum active sessions and cleanup intervals.
 
     Properties:
         url: /session/v1/admin/global-configurations
@@ -178,7 +178,7 @@ def admin_update_global_configuration(
 ):
     """Upsert global configuration data. (adminUpdateGlobalConfiguration)
 
-    Upsert global configuration data.
+    Creates or replaces the global configuration. If no configuration exists, a new one is created. All provided fields are applied.
 
     Properties:
         url: /session/v1/admin/global-configurations
@@ -216,7 +216,7 @@ async def admin_update_global_configuration_async(
 ):
     """Upsert global configuration data. (adminUpdateGlobalConfiguration)
 
-    Upsert global configuration data.
+    Creates or replaces the global configuration. If no configuration exists, a new one is created. All provided fields are applied.
 
     Properties:
         url: /session/v1/admin/global-configurations

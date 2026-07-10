@@ -38,6 +38,8 @@ class ModelsChatMessageResponse(Model):
 
         message: (message) REQUIRED str
 
+        metadata: (metadata) REQUIRED str
+
         topic_id: (topicId) REQUIRED str
 
         read_at: (readAt) OPTIONAL int
@@ -50,6 +52,7 @@ class ModelsChatMessageResponse(Model):
     from_: str  # REQUIRED
     id_: str  # REQUIRED
     message: str  # REQUIRED
+    metadata: str  # REQUIRED
     topic_id: str  # REQUIRED
     read_at: int  # OPTIONAL
     received_at: int  # OPTIONAL
@@ -68,6 +71,10 @@ class ModelsChatMessageResponse(Model):
 
     def with_message(self, value: str) -> ModelsChatMessageResponse:
         self.message = value
+        return self
+
+    def with_metadata(self, value: str) -> ModelsChatMessageResponse:
+        self.metadata = value
         return self
 
     def with_topic_id(self, value: str) -> ModelsChatMessageResponse:
@@ -100,6 +107,10 @@ class ModelsChatMessageResponse(Model):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = str(self.metadata)
+        elif include_empty:
+            result["metadata"] = ""
         if hasattr(self, "topic_id"):
             result["topicId"] = str(self.topic_id)
         elif include_empty:
@@ -124,6 +135,7 @@ class ModelsChatMessageResponse(Model):
         from_: str,
         id_: str,
         message: str,
+        metadata: str,
         topic_id: str,
         read_at: Optional[int] = None,
         received_at: Optional[int] = None,
@@ -133,6 +145,7 @@ class ModelsChatMessageResponse(Model):
         instance.from_ = from_
         instance.id_ = id_
         instance.message = message
+        instance.metadata = metadata
         instance.topic_id = topic_id
         if read_at is not None:
             instance.read_at = read_at
@@ -159,6 +172,10 @@ class ModelsChatMessageResponse(Model):
             instance.message = str(dict_["message"])
         elif include_empty:
             instance.message = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = str(dict_["metadata"])
+        elif include_empty:
+            instance.metadata = ""
         if "topicId" in dict_ and dict_["topicId"] is not None:
             instance.topic_id = str(dict_["topicId"])
         elif include_empty:
@@ -217,6 +234,7 @@ class ModelsChatMessageResponse(Model):
             "from": "from_",
             "id": "id_",
             "message": "message",
+            "metadata": "metadata",
             "topicId": "topic_id",
             "readAt": "read_at",
             "receivedAt": "received_at",
@@ -228,6 +246,7 @@ class ModelsChatMessageResponse(Model):
             "from": True,
             "id": True,
             "message": True,
+            "metadata": True,
             "topicId": True,
             "readAt": False,
             "receivedAt": False,

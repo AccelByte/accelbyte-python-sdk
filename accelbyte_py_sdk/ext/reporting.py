@@ -212,6 +212,7 @@ def create_restapi_moderation_rule_actions_request_example() -> (
     RestapiModerationRuleActionsRequest
 ):
     instance = RestapiModerationRuleActionsRequest()
+    instance.auto_resolve = randomize("bool")
     instance.ban_account = create_restapi_ban_account_action_request_example()
     instance.delete_chat = randomize("bool")
     instance.extension_action_ids = [randomize()]
@@ -223,6 +224,7 @@ def create_restapi_moderation_rule_actions_response_example() -> (
     RestapiModerationRuleActionsResponse
 ):
     instance = RestapiModerationRuleActionsResponse()
+    instance.auto_resolve = randomize("bool")
     instance.ban_account = create_restapi_ban_account_action_response_example()
     instance.delete_chat = randomize("bool")
     instance.extension_action_ids = [randomize()]

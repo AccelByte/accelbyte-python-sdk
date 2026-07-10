@@ -31,8 +31,8 @@ from ....core import same_doc_as
 
 
 from ..operations.fleet_commander import BasicHealthCheck
-from ..operations.fleet_commander import Func1
 from ..operations.fleet_commander import PortalHealthCheck
+from ..operations.fleet_commander import VersionInfo
 
 
 @same_doc_as(BasicHealthCheck)
@@ -87,56 +87,6 @@ async def basic_health_check_async(
     )
 
 
-@same_doc_as(Func1)
-def func1(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    """Version info (func1)
-
-    Properties:
-        url: /ams/version
-
-        method: GET
-
-        tags: ["Fleet Commander"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-    Responses:
-        200: OK - (OK)
-    """
-    request = Func1.create()
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(Func1)
-async def func1_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    """Version info (func1)
-
-    Properties:
-        url: /ams/version
-
-        method: GET
-
-        tags: ["Fleet Commander"]
-
-        consumes: []
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-    Responses:
-        200: OK - (OK)
-    """
-    request = Func1.create()
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
 @same_doc_as(PortalHealthCheck)
 def portal_health_check(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -186,6 +136,58 @@ async def portal_health_check_async(
         200: OK - (OK)
     """
     request = PortalHealthCheck.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(VersionInfo)
+def version_info(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """Version info (VersionInfo)
+
+    Properties:
+        url: /ams/version
+
+        method: GET
+
+        tags: ["Fleet Commander"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
+    request = VersionInfo.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(VersionInfo)
+async def version_info_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Version info (VersionInfo)
+
+    Properties:
+        url: /ams/version
+
+        method: GET
+
+        tags: ["Fleet Commander"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (OK)
+    """
+    request = VersionInfo.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

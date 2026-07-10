@@ -42,6 +42,8 @@ class ModelsGetLeaderboardConfigRespV3(Model):
 
         descending: (descending) REQUIRED bool
 
+        enable_server_hidden_filter: (enableServerHiddenFilter) REQUIRED bool
+
         is_deleted: (isDeleted) REQUIRED bool
 
         leaderboard_code: (leaderboardCode) REQUIRED str
@@ -67,6 +69,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
     created_at: str  # REQUIRED
     cycle_ids: List[str]  # REQUIRED
     descending: bool  # REQUIRED
+    enable_server_hidden_filter: bool  # REQUIRED
     is_deleted: bool  # REQUIRED
     leaderboard_code: str  # REQUIRED
     name: str  # REQUIRED
@@ -95,6 +98,12 @@ class ModelsGetLeaderboardConfigRespV3(Model):
 
     def with_descending(self, value: bool) -> ModelsGetLeaderboardConfigRespV3:
         self.descending = value
+        return self
+
+    def with_enable_server_hidden_filter(
+        self, value: bool
+    ) -> ModelsGetLeaderboardConfigRespV3:
+        self.enable_server_hidden_filter = value
         return self
 
     def with_is_deleted(self, value: bool) -> ModelsGetLeaderboardConfigRespV3:
@@ -157,6 +166,10 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             result["descending"] = bool(self.descending)
         elif include_empty:
             result["descending"] = False
+        if hasattr(self, "enable_server_hidden_filter"):
+            result["enableServerHiddenFilter"] = bool(self.enable_server_hidden_filter)
+        elif include_empty:
+            result["enableServerHiddenFilter"] = False
         if hasattr(self, "is_deleted"):
             result["isDeleted"] = bool(self.is_deleted)
         elif include_empty:
@@ -209,6 +222,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
         created_at: str,
         cycle_ids: List[str],
         descending: bool,
+        enable_server_hidden_filter: bool,
         is_deleted: bool,
         leaderboard_code: str,
         name: str,
@@ -225,6 +239,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
         instance.created_at = created_at
         instance.cycle_ids = cycle_ids
         instance.descending = descending
+        instance.enable_server_hidden_filter = enable_server_hidden_filter
         instance.is_deleted = is_deleted
         instance.leaderboard_code = leaderboard_code
         instance.name = name
@@ -263,6 +278,15 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             instance.descending = bool(dict_["descending"])
         elif include_empty:
             instance.descending = False
+        if (
+            "enableServerHiddenFilter" in dict_
+            and dict_["enableServerHiddenFilter"] is not None
+        ):
+            instance.enable_server_hidden_filter = bool(
+                dict_["enableServerHiddenFilter"]
+            )
+        elif include_empty:
+            instance.enable_server_hidden_filter = False
         if "isDeleted" in dict_ and dict_["isDeleted"] is not None:
             instance.is_deleted = bool(dict_["isDeleted"])
         elif include_empty:
@@ -351,6 +375,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             "createdAt": "created_at",
             "cycleIds": "cycle_ids",
             "descending": "descending",
+            "enableServerHiddenFilter": "enable_server_hidden_filter",
             "isDeleted": "is_deleted",
             "leaderboardCode": "leaderboard_code",
             "name": "name",
@@ -369,6 +394,7 @@ class ModelsGetLeaderboardConfigRespV3(Model):
             "createdAt": True,
             "cycleIds": True,
             "descending": True,
+            "enableServerHiddenFilter": True,
             "isDeleted": True,
             "leaderboardCode": True,
             "name": True,

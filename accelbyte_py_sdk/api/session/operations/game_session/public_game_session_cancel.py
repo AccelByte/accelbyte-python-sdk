@@ -35,7 +35,7 @@ from ...models import ResponseError
 class PublicGameSessionCancel(Operation):
     """cancel a game session invitation. (publicGameSessionCancel)
 
-    cancel a game session invitation.
+    Cancels a pending game session invitation sent to the specified user. Only the session leader or the inviting member can cancel the invitation.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/users/{userId}/cancel

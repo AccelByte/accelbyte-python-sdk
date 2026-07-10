@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Challenge Service
+# AGS Gdpr Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,63 +30,39 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.challenge import get_challenges as get_challenges_internal
-from accelbyte_py_sdk.api.challenge.models import IamErrorResponse
-from accelbyte_py_sdk.api.challenge.models import ModelListChallengeResponse
-from accelbyte_py_sdk.api.challenge.models import ResponseError
+from accelbyte_py_sdk.api.gdpr import (
+    public_submit_my_headless_deletion_request as public_submit_my_headless_deletion_request_internal,
+)
+from accelbyte_py_sdk.api.gdpr.models import ModelsRequestDeleteResponse
+from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
 
 @click.command()
-@click.option("--keyword", "keyword", type=str)
-@click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=int)
-@click.option("--sort_by", "sort_by", type=str)
-@click.option("--status", "status", type=str)
-@click.option("--tags", "tags", type=str)
-@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def get_challenges(
-    keyword: Optional[str] = None,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
-    status: Optional[str] = None,
-    tags: Optional[str] = None,
-    namespace: Optional[str] = None,
+def public_submit_my_headless_deletion_request(
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(get_challenges_internal.__doc__)
+        click.echo(public_submit_my_headless_deletion_request_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if tags is not None:
-        try:
-            tags_json = json.loads(tags)
-            tags = [str(i0) for i0 in tags_json]
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
-    result, error = get_challenges_internal(
-        keyword=keyword,
-        limit=limit,
-        offset=offset,
-        sort_by=sort_by,
-        status=status,
-        tags=tags,
-        namespace=namespace,
+    result, error = public_submit_my_headless_deletion_request_internal(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"GetChallenges failed: {str(error)}")
+        raise Exception(f"PublicSubmitMyHeadlessDeletionRequest failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-get_challenges.operation_id = "GetChallenges"
-get_challenges.is_deprecated = False
+public_submit_my_headless_deletion_request.operation_id = (
+    "PublicSubmitMyHeadlessDeletionRequest"
+)
+public_submit_my_headless_deletion_request.is_deprecated = False

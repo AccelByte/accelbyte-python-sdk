@@ -37,7 +37,6 @@ class SendSpecificUserFreeformNotificationV1Admin(Operation):
     """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
 
     Sends notification to a user.
-    Action Code: 50211
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify

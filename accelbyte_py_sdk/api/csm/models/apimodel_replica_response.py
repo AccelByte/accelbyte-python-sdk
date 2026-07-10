@@ -39,6 +39,8 @@ class ApimodelReplicaResponse(Model):
         min_replica: (minReplica) OPTIONAL int
 
         replica_limit: (replicaLimit) OPTIONAL int
+
+        rollout_ready_replicas: (rolloutReadyReplicas) OPTIONAL int
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ApimodelReplicaResponse(Model):
     max_replica: int  # OPTIONAL
     min_replica: int  # OPTIONAL
     replica_limit: int  # OPTIONAL
+    rollout_ready_replicas: int  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ApimodelReplicaResponse(Model):
 
     def with_replica_limit(self, value: int) -> ApimodelReplicaResponse:
         self.replica_limit = value
+        return self
+
+    def with_rollout_ready_replicas(self, value: int) -> ApimodelReplicaResponse:
+        self.rollout_ready_replicas = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class ApimodelReplicaResponse(Model):
             result["replicaLimit"] = int(self.replica_limit)
         elif include_empty:
             result["replicaLimit"] = 0
+        if hasattr(self, "rollout_ready_replicas"):
+            result["rolloutReadyReplicas"] = int(self.rollout_ready_replicas)
+        elif include_empty:
+            result["rolloutReadyReplicas"] = 0
         return result
 
     # endregion to methods
@@ -103,6 +114,7 @@ class ApimodelReplicaResponse(Model):
         max_replica: Optional[int] = None,
         min_replica: Optional[int] = None,
         replica_limit: Optional[int] = None,
+        rollout_ready_replicas: Optional[int] = None,
         **kwargs,
     ) -> ApimodelReplicaResponse:
         instance = cls()
@@ -114,6 +126,8 @@ class ApimodelReplicaResponse(Model):
             instance.min_replica = min_replica
         if replica_limit is not None:
             instance.replica_limit = replica_limit
+        if rollout_ready_replicas is not None:
+            instance.rollout_ready_replicas = rollout_ready_replicas
         return instance
 
     @classmethod
@@ -139,6 +153,13 @@ class ApimodelReplicaResponse(Model):
             instance.replica_limit = int(dict_["replicaLimit"])
         elif include_empty:
             instance.replica_limit = 0
+        if (
+            "rolloutReadyReplicas" in dict_
+            and dict_["rolloutReadyReplicas"] is not None
+        ):
+            instance.rollout_ready_replicas = int(dict_["rolloutReadyReplicas"])
+        elif include_empty:
+            instance.rollout_ready_replicas = 0
         return instance
 
     @classmethod
@@ -186,6 +207,7 @@ class ApimodelReplicaResponse(Model):
             "maxReplica": "max_replica",
             "minReplica": "min_replica",
             "replicaLimit": "replica_limit",
+            "rolloutReadyReplicas": "rollout_ready_replicas",
         }
 
     @staticmethod
@@ -195,6 +217,7 @@ class ApimodelReplicaResponse(Model):
             "maxReplica": False,
             "minReplica": False,
             "replicaLimit": False,
+            "rolloutReadyReplicas": False,
         }
 
     # endregion static methods

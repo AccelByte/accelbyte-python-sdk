@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.29.0"
+__version__ = "1.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,8 +37,8 @@ from .wrappers import admin_update_tied_challenge_schedule
 from .wrappers import admin_update_tied_challenge_schedule_async
 
 # challenge_list
-from .wrappers import get_challenges
-from .wrappers import get_challenges_async
+from .wrappers import public_get_challenges
+from .wrappers import public_get_challenges_async
 from .wrappers import public_get_scheduled_goals
 from .wrappers import public_get_scheduled_goals_async
 
@@ -47,8 +47,8 @@ from .wrappers import admin_evaluate_progress
 from .wrappers import admin_evaluate_progress_async
 from .wrappers import admin_get_user_progression
 from .wrappers import admin_get_user_progression_async
-from .wrappers import evaluate_my_progress
-from .wrappers import evaluate_my_progress_async
+from .wrappers import public_evaluate_my_progress
+from .wrappers import public_evaluate_my_progress_async
 from .wrappers import public_get_past_user_progression
 from .wrappers import public_get_past_user_progression_async
 from .wrappers import public_get_user_progression
@@ -59,10 +59,14 @@ from .wrappers import admin_create_goal
 from .wrappers import admin_create_goal_async
 from .wrappers import admin_delete_goal
 from .wrappers import admin_delete_goal_async
+from .wrappers import admin_get_challenge_slots
+from .wrappers import admin_get_challenge_slots_async
 from .wrappers import admin_get_goal
 from .wrappers import admin_get_goal_async
 from .wrappers import admin_get_goals
 from .wrappers import admin_get_goals_async
+from .wrappers import admin_move_goal_to_slot
+from .wrappers import admin_move_goal_to_slot_async
 from .wrappers import admin_update_goals
 from .wrappers import admin_update_goals_async
 

@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class UpdateNoSQLClusterV2(Operation):
     """Update NoSQL Cluster Configurations (UpdateNoSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
     Update NoSQL cluster configurations such as min/max DCU (Database Capacity Units) for the NoSQL cluster in the given studio/publisher namespace.
     The cluster must be in an available state to allow configuration updates.
 

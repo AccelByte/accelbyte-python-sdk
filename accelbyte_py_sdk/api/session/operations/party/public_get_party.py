@@ -36,7 +36,7 @@ from ...models import ResponseError
 class PublicGetParty(Operation):
     """Get party details. (publicGetParty)
 
-    Get party details.
+    Returns party session details including members, configuration, and leader. The caller must be a party member or have admin access.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}

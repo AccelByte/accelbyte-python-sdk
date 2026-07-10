@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminDeleteBulkGameSessions(Operation):
     """Delete bulk game sessions. (adminDeleteBulkGameSessions)
 
-    Delete bulk game sessions.
+    Permanently deletes multiple game sessions by their IDs. Returns a summary of deleted and failed sessions. Any allocated dedicated servers are released.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/bulk

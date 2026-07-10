@@ -35,7 +35,7 @@ from ...models import ResponseError
 class AdminDeleteConfigurationAlertV1(Operation):
     """Delete configuration alert. (adminDeleteConfigurationAlertV1)
 
-    Delete configuration alert.
+    Deletes the configuration alert for the specified namespace. After deletion, no alerts are generated for session configuration issues.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/alerts-configuration

@@ -24,7 +24,10 @@
 
 from .utils import randomize
 
+from ..api.csm.models import ApimodelAppDebugInfoResponse
 from ..api.csm.models import ApimodelAppItem
+from ..api.csm.models import ApimodelAppItemV5
+from ..api.csm.models import ApimodelAppStatusProgressStep
 from ..api.csm.models import ApimodelAppUIResponse
 from ..api.csm.models import ApimodelApplyAppConfigRequest
 from ..api.csm.models import ApimodelApplyConfigItem
@@ -38,6 +41,7 @@ from ..api.csm.models import ApimodelCPUResponse
 from ..api.csm.models import ApimodelCSMAppLimitsResponse
 from ..api.csm.models import ApimodelCreateAppUIRequest
 from ..api.csm.models import ApimodelCreateAppV2Request
+from ..api.csm.models import ApimodelCreateAppV5Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Request
 from ..api.csm.models import ApimodelCreateDeploymentV2Response
 from ..api.csm.models import ApimodelCreateKeyValueCredentialRequest
@@ -57,6 +61,7 @@ from ..api.csm.models import ApimodelGetAppImageListV2DataItemImageScanStatus
 from ..api.csm.models import ApimodelGetAppImageListV2Response
 from ..api.csm.models import ApimodelGetAppListV2Request
 from ..api.csm.models import ApimodelGetAppListV2Response
+from ..api.csm.models import ApimodelGetAppStatusProgressResponse
 from ..api.csm.models import ApimodelGetDeploymentListV2DataItem
 from ..api.csm.models import ApimodelGetDeploymentListV2Request
 from ..api.csm.models import ApimodelGetDeploymentListV2Response
@@ -116,8 +121,16 @@ from ..api.csm.models import ApimodelUpdateAppResourceRequest
 from ..api.csm.models import ApimodelUpdateAppV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Response
+from ..api.csm.models import ApimodelUpdateDebugModeRequest
 from ..api.csm.models import ApimodelUpdateSecretConfigurationV2Request
 from ..api.csm.models import ApimodelUploadFileResponse
+from ..api.csm.models import CreateappparamsAutoscalingRequest
+from ..api.csm.models import CreateappparamsCPURequest
+from ..api.csm.models import CreateappparamsMemoryRequest
+from ..api.csm.models import CreateappparamsReplicaRequest
+from ..api.csm.models import DomainAllowedInterceptedPort
+from ..api.csm.models import DomainDebugPod
+from ..api.csm.models import DomainExposedService
 from ..api.csm.models import DomainKeyValueClusterConfig
 from ..api.csm.models import DomainKeyValueResourceConfiguration
 from ..api.csm.models import DomainKeyValueUpdateConfiguration
@@ -152,8 +165,6 @@ from ..api.csm.models import GeneratedUpdateAppV1Response
 from ..api.csm.models import GeneratedUpdateConfigurationV1Request
 from ..api.csm.models import GeneratedUpdateConfigurationV1Response
 from ..api.csm.models import LogAppMessageDeclaration
-from ..api.csm.models import ModelAppRedeploymentDetail
-from ..api.csm.models import ModelAppRedeploymentInfo
 from ..api.csm.models import ModelCSMAutoscalingDefaults
 from ..api.csm.models import ModelImageScanFinding
 from ..api.csm.models import NosqlresourceNoSQLResourceConfiguration
@@ -162,12 +173,26 @@ from ..api.csm.models import ResponseErrorResponse
 from ..api.csm.models import SqlresourceSQLResourceConfiguration
 
 
+def create_apimodel_app_debug_info_response_example() -> ApimodelAppDebugInfoResponse:
+    instance = ApimodelAppDebugInfoResponse()
+    instance.allowed_intercepted_ports = [
+        create_domain_allowed_intercepted_port_example()
+    ]
+    instance.app_status = randomize()
+    instance.debug_pods = [create_domain_debug_pod_example()]
+    instance.exposed_services = [create_domain_exposed_service_example()]
+    instance.is_debug_mode_enabled = randomize("bool")
+    instance.is_debug_session_connected = randomize("bool")
+    return instance
+
+
 def create_apimodel_app_item_example() -> ApimodelAppItem:
     instance = ApimodelAppItem()
     instance.app_id = randomize("uid")
     instance.app_name = randomize()
     instance.app_status = randomize()
     instance.created_at = randomize()
+    instance.enable_debug_mode = randomize("bool")
     instance.game_name = randomize()
     instance.is_resource_applied = randomize("bool")
     instance.scenario = randomize()
@@ -185,10 +210,35 @@ def create_apimodel_app_item_example() -> ApimodelAppItem:
     instance.description = randomize()
     instance.memory = create_apimodel_memory_response_example()
     instance.message = randomize()
-    instance.redeployment_info = create_model_app_redeployment_info_example()
     instance.replica = create_apimodel_replica_response_example()
     instance.service_public_url = randomize("url")
     instance.service_url = randomize("url")
+    return instance
+
+
+def create_apimodel_app_item_v5_example() -> ApimodelAppItemV5:
+    instance = ApimodelAppItemV5()
+    instance.app_id = randomize("uid")
+    instance.app_name = randomize()
+    instance.app_status = randomize()
+    instance.created_at = randomize()
+    instance.game_name = randomize()
+    instance.scenario = randomize()
+    instance.updated_at = randomize()
+    instance.base_path = randomize()
+    instance.description = randomize()
+    instance.vm_sharing_configuration = randomize()
+    return instance
+
+
+def create_apimodel_app_status_progress_step_example() -> ApimodelAppStatusProgressStep:
+    instance = ApimodelAppStatusProgressStep()
+    instance.status = randomize()
+    instance.step = randomize()
+    instance.step_order = randomize("int", min_val=1, max_val=1000)
+    instance.finished_at = randomize("date")
+    instance.started_at = randomize("date")
+    instance.status_message = randomize()
     return instance
 
 
@@ -287,6 +337,19 @@ def create_apimodel_create_app_v2_request_example() -> ApimodelCreateAppV2Reques
     instance.description = randomize()
     instance.memory = create_apimodel_memory_request_example()
     instance.replica = create_apimodel_replica_request_example()
+    instance.vm_sharing_configuration = randomize()
+    return instance
+
+
+def create_apimodel_create_app_v5_request_example() -> ApimodelCreateAppV5Request:
+    instance = ApimodelCreateAppV5Request()
+    instance.scenario = randomize()
+    instance.autoscaling = create_createappparams_autoscaling_request_example()
+    instance.cpu = create_createappparams_cpu_request_example()
+    instance.description = randomize()
+    instance.memory = create_createappparams_memory_request_example()
+    instance.preferred_k8s_namespace = randomize("slug")
+    instance.replica = create_createappparams_replica_request_example()
     instance.vm_sharing_configuration = randomize()
     return instance
 
@@ -503,6 +566,17 @@ def create_apimodel_get_app_list_v2_response_example() -> ApimodelGetAppListV2Re
     instance = ApimodelGetAppListV2Response()
     instance.data = [create_apimodel_app_item_example()]
     instance.paging = create_generated_pagination_example()
+    return instance
+
+
+def create_apimodel_get_app_status_progress_response_example() -> (
+    ApimodelGetAppStatusProgressResponse
+):
+    instance = ApimodelGetAppStatusProgressResponse()
+    instance.app_id = randomize("uid")
+    instance.app_name = randomize()
+    instance.operation_id = randomize()
+    instance.steps = [create_apimodel_app_status_progress_step_example()]
     return instance
 
 
@@ -898,6 +972,7 @@ def create_apimodel_replica_response_example() -> ApimodelReplicaResponse:
     instance.max_replica = randomize("int", min_val=1, max_val=1000)
     instance.min_replica = randomize("int", min_val=1, max_val=1000)
     instance.replica_limit = randomize("int", min_val=1, max_val=1000)
+    instance.rollout_ready_replicas = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1110,6 +1185,7 @@ def create_apimodel_update_app_resource_request_example() -> (
 def create_apimodel_update_app_v2_request_example() -> ApimodelUpdateAppV2Request:
     instance = ApimodelUpdateAppV2Request()
     instance.description = randomize()
+    instance.enable_debug_mode = randomize("bool")
     return instance
 
 
@@ -1136,6 +1212,14 @@ def create_apimodel_update_configuration_v2_response_example() -> (
     return instance
 
 
+def create_apimodel_update_debug_mode_request_example() -> (
+    ApimodelUpdateDebugModeRequest
+):
+    instance = ApimodelUpdateDebugModeRequest()
+    instance.enable_debug_mode = randomize("bool")
+    return instance
+
+
 def create_apimodel_update_secret_configuration_v2_request_example() -> (
     ApimodelUpdateSecretConfigurationV2Request
 ):
@@ -1148,6 +1232,54 @@ def create_apimodel_update_secret_configuration_v2_request_example() -> (
 def create_apimodel_upload_file_response_example() -> ApimodelUploadFileResponse:
     instance = ApimodelUploadFileResponse()
     instance.app_ui = create_apimodel_app_ui_response_example()
+    return instance
+
+
+def create_createappparams_autoscaling_request_example() -> (
+    CreateappparamsAutoscalingRequest
+):
+    instance = CreateappparamsAutoscalingRequest()
+    instance.target_cpu_utilization_percent = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_createappparams_cpu_request_example() -> CreateappparamsCPURequest:
+    instance = CreateappparamsCPURequest()
+    instance.request_cpu = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_createappparams_memory_request_example() -> CreateappparamsMemoryRequest:
+    instance = CreateappparamsMemoryRequest()
+    instance.request_memory = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_createappparams_replica_request_example() -> CreateappparamsReplicaRequest:
+    instance = CreateappparamsReplicaRequest()
+    instance.max_replica = randomize("int", min_val=1, max_val=1000)
+    instance.min_replica = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_domain_allowed_intercepted_port_example() -> DomainAllowedInterceptedPort:
+    instance = DomainAllowedInterceptedPort()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_domain_debug_pod_example() -> DomainDebugPod:
+    instance = DomainDebugPod()
+    instance.pod_name = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_domain_exposed_service_example() -> DomainExposedService:
+    instance = DomainExposedService()
+    instance.host = randomize()
+    instance.name = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1511,20 +1643,6 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     instance.section = randomize()
     instance.service = randomize()
     instance.text = randomize()
-    return instance
-
-
-def create_model_app_redeployment_detail_example() -> ModelAppRedeploymentDetail:
-    instance = ModelAppRedeploymentDetail()
-    instance.reason_id = randomize()
-    instance.message = randomize()
-    return instance
-
-
-def create_model_app_redeployment_info_example() -> ModelAppRedeploymentInfo:
-    instance = ModelAppRedeploymentInfo()
-    instance.should_redeploy = randomize("bool")
-    instance.details = [create_model_app_redeployment_detail_example()]
     return instance
 
 

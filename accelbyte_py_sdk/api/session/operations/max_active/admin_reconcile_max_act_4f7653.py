@@ -37,7 +37,7 @@ class AdminReconcileMaxActiveSession(Operation):
     """Reconcile Max Active Session. (adminReconcileMaxActiveSession)
 
 
-    Reconcile Max Active Session.
+    Reconciles the max active session count for the specified configuration template. Scans active sessions and updates the counter to reflect the actual count.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}/reconcile

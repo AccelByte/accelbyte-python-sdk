@@ -101,6 +101,9 @@ def create_leaderboard_configuration_admin_v3(
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
 
+
+      * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
+
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
 
@@ -178,6 +181,9 @@ async def create_leaderboard_configuration_admin_v3_async(
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+      * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
@@ -1052,6 +1058,9 @@ def update_leaderboard_configuration_admin_v3(
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
 
+
+      * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
+
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
 
@@ -1135,6 +1144,9 @@ async def update_leaderboard_configuration_admin_v3_async(
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
+
+
+      * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

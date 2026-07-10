@@ -67,6 +67,8 @@ class FleetCreate(Operation):
 
         403: Forbidden - ResponseErrorResponse (exceeded quota)
 
+        409: Conflict - ResponseErrorResponse (fleet name already exists)
+
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
 
@@ -188,6 +190,8 @@ class FleetCreate(Operation):
 
         403: Forbidden - ResponseErrorResponse (exceeded quota)
 
+        409: Conflict - ResponseErrorResponse (fleet name already exists)
+
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -210,6 +214,8 @@ class FleetCreate(Operation):
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 409:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

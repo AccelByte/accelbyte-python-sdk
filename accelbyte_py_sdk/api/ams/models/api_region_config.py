@@ -41,6 +41,8 @@ class ApiRegionConfig(Model):
         min_server_count: (minServerCount) REQUIRED int
 
         region: (region) REQUIRED str
+
+        state: (state) OPTIONAL str
     """
 
     # region fields
@@ -50,6 +52,7 @@ class ApiRegionConfig(Model):
     max_server_count: int  # REQUIRED
     min_server_count: int  # REQUIRED
     region: str  # REQUIRED
+    state: str  # OPTIONAL
 
     # endregion fields
 
@@ -73,6 +76,10 @@ class ApiRegionConfig(Model):
 
     def with_region(self, value: str) -> ApiRegionConfig:
         self.region = value
+        return self
+
+    def with_state(self, value: str) -> ApiRegionConfig:
+        self.state = value
         return self
 
     # endregion with_x methods
@@ -101,6 +108,10 @@ class ApiRegionConfig(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "state"):
+            result["state"] = str(self.state)
+        elif include_empty:
+            result["state"] = ""
         return result
 
     # endregion to methods
@@ -115,6 +126,7 @@ class ApiRegionConfig(Model):
         max_server_count: int,
         min_server_count: int,
         region: str,
+        state: Optional[str] = None,
         **kwargs,
     ) -> ApiRegionConfig:
         instance = cls()
@@ -123,6 +135,8 @@ class ApiRegionConfig(Model):
         instance.max_server_count = max_server_count
         instance.min_server_count = min_server_count
         instance.region = region
+        if state is not None:
+            instance.state = state
         return instance
 
     @classmethod
@@ -152,6 +166,10 @@ class ApiRegionConfig(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "state" in dict_ and dict_["state"] is not None:
+            instance.state = str(dict_["state"])
+        elif include_empty:
+            instance.state = ""
         return instance
 
     @classmethod
@@ -196,6 +214,7 @@ class ApiRegionConfig(Model):
             "maxServerCount": "max_server_count",
             "minServerCount": "min_server_count",
             "region": "region",
+            "state": "state",
         }
 
     @staticmethod
@@ -206,6 +225,7 @@ class ApiRegionConfig(Model):
             "maxServerCount": True,
             "minServerCount": True,
             "region": True,
+            "state": False,
         }
 
     # endregion static methods

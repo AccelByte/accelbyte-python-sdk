@@ -37,9 +37,7 @@ from ...models import ResponseErrorResponse
 class UpdateAppV2(Operation):
     """Update app info (UpdateAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
-    Update app info provided on request body
+    Update app info provided on request body%!(EXTRA string=ADMIN:NAMESPACE:{namespace}:EXTEND:APP, string=UPDATE)
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}

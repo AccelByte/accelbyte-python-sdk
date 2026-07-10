@@ -41,9 +41,9 @@ from accelbyte_py_sdk.api.csm.models import ResponseErrorResponse
 @click.argument("resource_id", type=str)
 @click.argument("studio_name", type=str)
 @click.option("--app_name", "app_name", type=str)
+@click.option("--game_namespace", "game_namespace", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
-@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
@@ -51,9 +51,9 @@ def get_no_sql_app_list_v2(
     resource_id: str,
     studio_name: str,
     app_name: Optional[str] = None,
+    game_namespace: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -70,9 +70,9 @@ def get_no_sql_app_list_v2(
         resource_id=resource_id,
         studio_name=studio_name,
         app_name=app_name,
+        game_namespace=game_namespace,
         limit=limit,
         offset=offset,
-        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

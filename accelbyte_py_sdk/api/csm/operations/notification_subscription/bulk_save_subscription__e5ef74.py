@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class BulkSaveSubscriptionAppNotificationV2(Operation):
     """Bulk update of users subscribed to an app's notifications (BulkSaveSubscriptionAppNotificationV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
-
     Bulk update of users subscribed to an app's notifications.
 
     Request body:

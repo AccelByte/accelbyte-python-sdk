@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class DeleteSQLDatabaseV2(Operation):
     """Deletes SQL Database for Extend App (DeleteSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
-
     Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
 
     Properties:

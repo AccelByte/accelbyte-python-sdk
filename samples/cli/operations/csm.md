@@ -76,15 +76,6 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-app-v2' \
     > result.txt
 ```
 
-### Operation `create_app_v2`
-```sh
-$ python -m accelbyte_py_sdk_cli 'csm-create-app-v2' \
-    '{"autoscaling": {}, "cpu": {}, "description": "string", "memory": {}, "replica": {}, "scenario": "string", "vmSharingConfiguration": "string"}' \
-    'string' \
-    'string' \
-    > result.txt
-```
-
 ### Operation `delete_app_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-delete-app-v2' \
@@ -97,7 +88,7 @@ $ python -m accelbyte_py_sdk_cli 'csm-delete-app-v2' \
 ### Operation `update_app_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-update-app-v2' \
-    '{"description": "string"}' \
+    '{"description": "string", "enableDebugMode": false}' \
     'string' \
     'string' \
     > result.txt
@@ -660,8 +651,8 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-no-sql-app-list-v2' \
     'string' \
     'string' \
     --app_name 'string' \
+    --game_namespace 'string' \
     --limit 1 \
-    --namespace 'string' \
     --offset 1 \
     > result.txt
 ```
@@ -682,6 +673,40 @@ $ python -m accelbyte_py_sdk_cli 'csm-delete-subscription-app-notification-v3' \
     'string' \
     --email_address 'string' \
     --user_id 'string' \
+    > result.txt
+```
+
+### Operation `get_app_debug_info_v4`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-app-debug-info-v4' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `update_app_debug_mode_v4`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-update-app-debug-mode-v4' \
+    '{"enableDebugMode": false}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `get_app_status_progress_v4`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-app-status-progress-v4' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `create_app_v5`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-create-app-v5' \
+    '{"autoscaling": {}, "cpu": {}, "description": "string", "memory": {}, "preferred_k8s_namespace": "string", "replica": {}, "scenario": "string", "vmSharingConfiguration": "string"}' \
+    'string' \
+    'string' \
     > result.txt
 ```
 

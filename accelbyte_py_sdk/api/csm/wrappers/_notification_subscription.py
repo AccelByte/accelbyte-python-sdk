@@ -60,8 +60,6 @@ def bulk_save_subscription_app_notification_v2(
 ):
     """Bulk update of users subscribed to an app's notifications (BulkSaveSubscriptionAppNotificationV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
-
     Bulk update of users subscribed to an app's notifications.
 
     Request body:
@@ -123,8 +121,6 @@ async def bulk_save_subscription_app_notification_v2_async(
     **kwargs
 ):
     """Bulk update of users subscribed to an app's notifications (BulkSaveSubscriptionAppNotificationV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
 
     Bulk update of users subscribed to an app's notifications.
 
@@ -190,8 +186,6 @@ def delete_subscription_app_notification_by_user_idv2(
 ):
     """Remove other person subscription by user ID (DeleteSubscriptionAppNotificationByUserIDV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
     Remove a user from the notification subscription by user ID.
 
     Properties:
@@ -245,8 +239,6 @@ async def delete_subscription_app_notification_by_user_idv2_async(
     **kwargs
 ):
     """Remove other person subscription by user ID (DeleteSubscriptionAppNotificationByUserIDV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
 
     Remove a user from the notification subscription by user ID.
 
@@ -305,8 +297,6 @@ def delete_subscription_app_notification_v2(
 ):
     """Remove other person subscription (DeleteSubscriptionAppNotificationV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
     Remove a user from the notification subscription.
 
     Properties:
@@ -361,8 +351,6 @@ async def delete_subscription_app_notification_v2_async(
     **kwargs
 ):
     """Remove other person subscription (DeleteSubscriptionAppNotificationV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
 
     Remove a user from the notification subscription.
 
@@ -419,8 +407,6 @@ def get_notification_subscriber_list_v2(
     **kwargs
 ):
     """Get a list of the app notification subscriber (GetNotificationSubscriberListV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
 
     Request param:
     - notificationType : type of the subscribed app notification
@@ -482,8 +468,6 @@ async def get_notification_subscriber_list_v2_async(
     **kwargs
 ):
     """Get a list of the app notification subscriber (GetNotificationSubscriberListV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
 
     Request param:
     - notificationType : type of the subscribed app notification
@@ -547,8 +531,6 @@ def get_subscription_v2_handler(
 ):
     """Get Subscription status of a user (GetSubscriptionV2Handler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
-
     Get Subscription status of a user
 
     Properties:
@@ -598,8 +580,6 @@ async def get_subscription_v2_handler_async(
     **kwargs
 ):
     """Get Subscription status of a user (GetSubscriptionV2Handler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
 
     Get Subscription status of a user
 
@@ -653,8 +633,6 @@ def subscribe_app_notification_v2(
     **kwargs
 ):
     """Subscribe the user(s) an app notification (SubscribeAppNotificationV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
 
     Subscribe the user(s) an app notification.
 
@@ -717,8 +695,6 @@ async def subscribe_app_notification_v2_async(
     **kwargs
 ):
     """Subscribe the user(s) an app notification (SubscribeAppNotificationV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
 
     Subscribe the user(s) an app notification.
 
@@ -784,8 +760,6 @@ def subscribe_v2_handler(
 ):
     """Subscribe to app notification (SubscribeV2Handler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
-
     Subscribe to app notification
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
@@ -845,8 +819,6 @@ async def subscribe_v2_handler_async(
     **kwargs
 ):
     """Subscribe to app notification (SubscribeV2Handler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
 
     Subscribe to app notification
     Request body:
@@ -909,8 +881,6 @@ def unsubscribe_v2_handler(
 ):
     """Unsubscribe to app notification (UnsubscribeV2Handler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
-
     Unsubscribe to app notification
 
     Properties:
@@ -960,8 +930,6 @@ async def unsubscribe_v2_handler_async(
     **kwargs
 ):
     """Unsubscribe to app notification (UnsubscribeV2Handler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
 
     Unsubscribe to app notification
 

@@ -46,6 +46,8 @@ class ModelsLeaderboardConfigReqV3(Model):
 
         description: (description) OPTIONAL str
 
+        enable_server_hidden_filter: (enableServerHiddenFilter) OPTIONAL bool
+
         icon_url: (iconURL) OPTIONAL str
     """
 
@@ -58,6 +60,7 @@ class ModelsLeaderboardConfigReqV3(Model):
     stat_code: str  # REQUIRED
     cycle_ids: List[str]  # OPTIONAL
     description: str  # OPTIONAL
+    enable_server_hidden_filter: bool  # OPTIONAL
     icon_url: str  # OPTIONAL
 
     # endregion fields
@@ -90,6 +93,12 @@ class ModelsLeaderboardConfigReqV3(Model):
 
     def with_description(self, value: str) -> ModelsLeaderboardConfigReqV3:
         self.description = value
+        return self
+
+    def with_enable_server_hidden_filter(
+        self, value: bool
+    ) -> ModelsLeaderboardConfigReqV3:
+        self.enable_server_hidden_filter = value
         return self
 
     def with_icon_url(self, value: str) -> ModelsLeaderboardConfigReqV3:
@@ -130,6 +139,10 @@ class ModelsLeaderboardConfigReqV3(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "enable_server_hidden_filter"):
+            result["enableServerHiddenFilter"] = bool(self.enable_server_hidden_filter)
+        elif include_empty:
+            result["enableServerHiddenFilter"] = False
         if hasattr(self, "icon_url"):
             result["iconURL"] = str(self.icon_url)
         elif include_empty:
@@ -150,6 +163,7 @@ class ModelsLeaderboardConfigReqV3(Model):
         stat_code: str,
         cycle_ids: Optional[List[str]] = None,
         description: Optional[str] = None,
+        enable_server_hidden_filter: Optional[bool] = None,
         icon_url: Optional[str] = None,
         **kwargs,
     ) -> ModelsLeaderboardConfigReqV3:
@@ -163,6 +177,8 @@ class ModelsLeaderboardConfigReqV3(Model):
             instance.cycle_ids = cycle_ids
         if description is not None:
             instance.description = description
+        if enable_server_hidden_filter is not None:
+            instance.enable_server_hidden_filter = enable_server_hidden_filter
         if icon_url is not None:
             instance.icon_url = icon_url
         return instance
@@ -202,6 +218,15 @@ class ModelsLeaderboardConfigReqV3(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if (
+            "enableServerHiddenFilter" in dict_
+            and dict_["enableServerHiddenFilter"] is not None
+        ):
+            instance.enable_server_hidden_filter = bool(
+                dict_["enableServerHiddenFilter"]
+            )
+        elif include_empty:
+            instance.enable_server_hidden_filter = False
         if "iconURL" in dict_ and dict_["iconURL"] is not None:
             instance.icon_url = str(dict_["iconURL"])
         elif include_empty:
@@ -256,6 +281,7 @@ class ModelsLeaderboardConfigReqV3(Model):
             "statCode": "stat_code",
             "cycleIds": "cycle_ids",
             "description": "description",
+            "enableServerHiddenFilter": "enable_server_hidden_filter",
             "iconURL": "icon_url",
         }
 
@@ -269,6 +295,7 @@ class ModelsLeaderboardConfigReqV3(Model):
             "statCode": True,
             "cycleIds": False,
             "description": False,
+            "enableServerHiddenFilter": False,
             "iconURL": False,
         }
 

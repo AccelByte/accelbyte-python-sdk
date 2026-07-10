@@ -37,8 +37,10 @@ def _new_roles_cache() -> RolesCache:
 
 def _new_namespace_context_cache() -> NamespaceContextCache:
     return NamespaceContextCache(
-        sdk=None, interval=None,
-        raise_on_error=False, namespace_context_fallback=False,
+        sdk=None,
+        interval=None,
+        raise_on_error=False,
+        namespace_context_fallback=False,
     )
 
 
@@ -50,22 +52,28 @@ class CacheConcurrencyTestCase(TestCase):
     """
 
     def setUp(self) -> None:
-        self._saved_iam = _cache_types.iam_service.admin_get_role_namespace_permission_v3
+        self._saved_iam = (
+            _cache_types.iam_service.admin_get_role_namespace_permission_v3
+        )
         self._saved_basic = _cache_types.basic_service.get_namespace_context
 
     def tearDown(self) -> None:
-        _cache_types.iam_service.admin_get_role_namespace_permission_v3 = self._saved_iam
+        _cache_types.iam_service.admin_get_role_namespace_permission_v3 = (
+            self._saved_iam
+        )
         _cache_types.basic_service.get_namespace_context = self._saved_basic
 
     # region helpers
 
-    def _patch_iam(self, latency_s: float = 0.02,
-                   should_fail: bool = False) -> Dict[str, int]:
+    def _patch_iam(
+        self, latency_s: float = 0.02, should_fail: bool = False
+    ) -> Dict[str, int]:
         counters = {"calls": 0}
         lock = threading.Lock()
 
-        def fake(role_id, namespace=None, x_additional_headers=None,
-                 sdk=None, **kwargs):
+        def fake(
+            role_id, namespace=None, x_additional_headers=None, sdk=None, **kwargs
+        ):
             with lock:
                 counters["calls"] += 1
             time.sleep(latency_s)
@@ -76,8 +84,9 @@ class CacheConcurrencyTestCase(TestCase):
         _cache_types.iam_service.admin_get_role_namespace_permission_v3 = fake
         return counters
 
-    def _patch_basic(self, latency_s: float = 0.02,
-                     should_fail: bool = False) -> Dict[str, int]:
+    def _patch_basic(
+        self, latency_s: float = 0.02, should_fail: bool = False
+    ) -> Dict[str, int]:
         counters = {"calls": 0}
         lock = threading.Lock()
 
@@ -92,8 +101,11 @@ class CacheConcurrencyTestCase(TestCase):
         _cache_types.basic_service.get_namespace_context = fake
         return counters
 
-    def _run_concurrent(self, target, args_per_thread: List[Tuple],
-                        ) -> List[Any]:
+    def _run_concurrent(
+        self,
+        target,
+        args_per_thread: List[Tuple],
+    ) -> List[Any]:
         results: List[Any] = []
         results_lock = threading.Lock()
         barrier = Barrier(len(args_per_thread))
@@ -124,11 +136,16 @@ class CacheConcurrencyTestCase(TestCase):
             args_per_thread=[("role-1",)] * 20,
         )
 
-        self.assertEqual(counters["calls"], 1,
-                         "single-flight should coalesce 20 concurrent misses into 1 upstream call")
+        self.assertEqual(
+            counters["calls"],
+            1,
+            "single-flight should coalesce 20 concurrent misses into 1 upstream call",
+        )
         self.assertEqual(len(results), 20)
-        self.assertTrue(all(r is not None for r in results),
-                        "all concurrent callers should receive the role")
+        self.assertTrue(
+            all(r is not None for r in results),
+            "all concurrent callers should receive the role",
+        )
 
     def test_roles_cache_distinct_keys_fetch_independently(self):
         counters = self._patch_iam(latency_s=0.02)
@@ -140,8 +157,11 @@ class CacheConcurrencyTestCase(TestCase):
 
         results = self._run_concurrent(target=cache.get_role, args_per_thread=args)
 
-        self.assertEqual(counters["calls"], len(role_ids),
-                         "single-flight is per-key: one upstream call per distinct role")
+        self.assertEqual(
+            counters["calls"],
+            len(role_ids),
+            "single-flight is per-key: one upstream call per distinct role",
+        )
         self.assertEqual(sum(1 for r in results if r is None), 0)
 
     def test_roles_cache_refresh_preserves_stale_entry_on_upstream_failure(self):
@@ -154,11 +174,16 @@ class CacheConcurrencyTestCase(TestCase):
         self._patch_iam(should_fail=True)
         cache.refresh()
 
-        self.assertIn(("role-1", None), cache._roles,
-                      "refresh must retain prior entry when upstream fetch fails")
+        self.assertIn(
+            ("role-1", None),
+            cache._roles,
+            "refresh must retain prior entry when upstream fetch fails",
+        )
         self.assertIs(cache._roles[("role-1", None)], cached_before)
 
-    def test_roles_cache_concurrent_miss_all_waiters_receive_error_on_initial_failure(self):
+    def test_roles_cache_concurrent_miss_all_waiters_receive_error_on_initial_failure(
+        self,
+    ):
         counters = self._patch_iam(latency_s=0.05, should_fail=True)
         cache = _new_roles_cache()
 
@@ -167,11 +192,16 @@ class CacheConcurrencyTestCase(TestCase):
             args_per_thread=[("role-1",)] * 20,
         )
 
-        self.assertEqual(counters["calls"], 1,
-                         "single-flight should coalesce even when upstream fails")
+        self.assertEqual(
+            counters["calls"],
+            1,
+            "single-flight should coalesce even when upstream fails",
+        )
         self.assertEqual(len(results), 20)
-        self.assertTrue(all(r is not None for r in results),
-                        "every waiter must observe the error, not a silent None")
+        self.assertTrue(
+            all(r is not None for r in results),
+            "every waiter must observe the error, not a silent None",
+        )
 
     def test_roles_cache_waiter_reraises_exception_from_fetcher(self):
         """A raised exception in the fetcher must propagate to waiters with the
@@ -202,8 +232,10 @@ class CacheConcurrencyTestCase(TestCase):
 
         _cache_types._InflightFetch = _ObservableInflight
         try:
-            def fake(role_id, namespace=None, x_additional_headers=None,
-                     sdk=None, **kw):
+
+            def fake(
+                role_id, namespace=None, x_additional_headers=None, sdk=None, **kw
+            ):
                 fetcher_entered.set()
                 release_fetcher.wait()
                 raise BoomError("upstream blew up")
@@ -234,8 +266,10 @@ class CacheConcurrencyTestCase(TestCase):
                 t.start()
             # Block until all 5 waiters have entered event.wait().
             for _ in range(5):
-                self.assertTrue(waiter_at_wait.acquire(timeout=2.0),
-                                "waiter failed to enter event.wait() in time")
+                self.assertTrue(
+                    waiter_at_wait.acquire(timeout=2.0),
+                    "waiter failed to enter event.wait() in time",
+                )
             release_fetcher.set()
             fetcher_thread.join(timeout=2.0)
             for t in waiter_threads:
@@ -244,8 +278,10 @@ class CacheConcurrencyTestCase(TestCase):
             _cache_types._InflightFetch = original_inflight
 
         self.assertEqual(len(results), 6)
-        self.assertTrue(all(isinstance(r, BoomError) for r in results),
-                        f"all callers must re-raise BoomError; got {results!r}")
+        self.assertTrue(
+            all(isinstance(r, BoomError) for r in results),
+            f"all callers must re-raise BoomError; got {results!r}",
+        )
 
     def test_roles_cache_clear_releases_waiters_and_aborts_refresh(self):
         """clear() must signal pending coordinators and bump generation so a
@@ -261,7 +297,9 @@ class CacheConcurrencyTestCase(TestCase):
         fetcher_entered = threading.Event()
         release_fetcher = threading.Event()
 
-        def slow_fake(role_id, namespace=None, x_additional_headers=None, sdk=None, **kw):
+        def slow_fake(
+            role_id, namespace=None, x_additional_headers=None, sdk=None, **kw
+        ):
             fetcher_entered.set()
             release_fetcher.wait()
             return _FakeRole(role_id=role_id), None
@@ -296,8 +334,9 @@ class CacheConcurrencyTestCase(TestCase):
         # Make the IAM call block so refresh stalls between gen-check and write.
         release = threading.Event()
 
-        def slow_fake(role_id, namespace=None, x_additional_headers=None,
-                       sdk=None, **kw):
+        def slow_fake(
+            role_id, namespace=None, x_additional_headers=None, sdk=None, **kw
+        ):
             release.wait()
             return _FakeRole(role_id=role_id), None
 
@@ -316,7 +355,8 @@ class CacheConcurrencyTestCase(TestCase):
         refresh_thread.join(timeout=2.0)
 
         self.assertEqual(
-            cache._roles, {},
+            cache._roles,
+            {},
             "post-fetch generation check should have undone the spurious write",
         )
 
@@ -343,8 +383,11 @@ class CacheConcurrencyTestCase(TestCase):
 
         cache.refresh()
 
-        self.assertEqual(sorted(call_log), ["role-1", "role-2", "role-3"],
-                         "refresh must continue after a per-key exception")
+        self.assertEqual(
+            sorted(call_log),
+            ["role-1", "role-2", "role-3"],
+            "refresh must continue after a per-key exception",
+        )
         # role-2's prior cached entry must be retained (serve-stale on exception).
         self.assertIs(cache._roles[("role-2", None)], before[("role-2", None)])
         # role-1 and role-3 must have been replaced with fresh values.
@@ -361,14 +404,19 @@ class CacheConcurrencyTestCase(TestCase):
         cache.refresh()
 
         self.assertIn(("role-1", None), cache._roles)
-        self.assertIsNot(cache._roles[("role-1", None)], cached_before,
-                         "refresh must replace the entry on successful upstream fetch")
+        self.assertIsNot(
+            cache._roles[("role-1", None)],
+            cached_before,
+            "refresh must replace the entry on successful upstream fetch",
+        )
 
     # endregion RolesCache
 
     # region NamespaceContextCache
 
-    def test_namespace_context_cache_concurrent_miss_coalesces_to_one_upstream_call(self):
+    def test_namespace_context_cache_concurrent_miss_coalesces_to_one_upstream_call(
+        self,
+    ):
         counters = self._patch_basic(latency_s=0.05)
         cache = _new_namespace_context_cache()
 
@@ -389,13 +437,16 @@ class CacheConcurrencyTestCase(TestCase):
         threads_per_ns = 10
         args = [(ns,) for ns in namespaces for _ in range(threads_per_ns)]
 
-        results = self._run_concurrent(target=cache.get_namespace_context,
-                                       args_per_thread=args)
+        results = self._run_concurrent(
+            target=cache.get_namespace_context, args_per_thread=args
+        )
 
         self.assertEqual(counters["calls"], len(namespaces))
         self.assertEqual(sum(1 for r in results if r is None), 0)
 
-    def test_namespace_context_cache_concurrent_miss_all_waiters_receive_error_on_initial_failure(self):
+    def test_namespace_context_cache_concurrent_miss_all_waiters_receive_error_on_initial_failure(
+        self,
+    ):
         counters = self._patch_basic(latency_s=0.05, should_fail=True)
         cache = _new_namespace_context_cache()
 
@@ -406,8 +457,10 @@ class CacheConcurrencyTestCase(TestCase):
 
         self.assertEqual(counters["calls"], 1)
         self.assertEqual(len(results), 20)
-        self.assertTrue(all(r is not None for r in results),
-                        "every waiter must observe the error, not a silent None")
+        self.assertTrue(
+            all(r is not None for r in results),
+            "every waiter must observe the error, not a silent None",
+        )
 
     def test_namespace_context_cache_refresh_replaces_entry_on_success(self):
         cache = _new_namespace_context_cache()
@@ -421,7 +474,9 @@ class CacheConcurrencyTestCase(TestCase):
         self.assertIn("ns-1", cache._namespace_contexts)
         self.assertIsNot(cache._namespace_contexts["ns-1"], cached_before)
 
-    def test_namespace_context_cache_refresh_preserves_stale_entry_on_upstream_failure(self):
+    def test_namespace_context_cache_refresh_preserves_stale_entry_on_upstream_failure(
+        self,
+    ):
         cache = _new_namespace_context_cache()
 
         self._patch_basic()

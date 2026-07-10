@@ -8,12 +8,12 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.45.0"
+__version__ = "1.46.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .basic_health_check import BasicHealthCheck
-from .func1 import Func1
 from .portal_health_check import PortalHealthCheck
+from .version_info import VersionInfo

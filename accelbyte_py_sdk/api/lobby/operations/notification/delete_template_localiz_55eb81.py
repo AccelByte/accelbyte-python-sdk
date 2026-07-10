@@ -35,9 +35,7 @@ from ...models import RestapiErrorResponseV1
 class DeleteTemplateLocalizationV1Admin(Operation):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
-    Delete template localization
-
-    Action Code: 50209
+    Delete a notification template localization by slug and language.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}

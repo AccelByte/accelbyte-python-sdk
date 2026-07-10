@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class StopNoSQLClusterV2(Operation):
     """Stop NoSQL Cluster (StopNoSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [UPDATE]`
-
     Stop NoSQL cluster.
     You can only start the cluster when its status is "available".
 

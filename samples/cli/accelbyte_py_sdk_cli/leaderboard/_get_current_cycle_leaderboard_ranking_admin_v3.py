@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 @click.command()
 @click.argument("cycle_id", type=str)
 @click.argument("leaderboard_code", type=str)
+@click.option("--include_hidden_users", "include_hidden_users", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--previous_version", "previous_version", type=int)
@@ -50,6 +51,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 def get_current_cycle_leaderboard_ranking_admin_v3(
     cycle_id: str,
     leaderboard_code: str,
+    include_hidden_users: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     previous_version: Optional[int] = None,
@@ -69,6 +71,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
     result, error = get_current_cycle_leaderboard_ranking_admin_v3_internal(
         cycle_id=cycle_id,
         leaderboard_code=leaderboard_code,
+        include_hidden_users=include_hidden_users,
         limit=limit,
         offset=offset,
         previous_version=previous_version,

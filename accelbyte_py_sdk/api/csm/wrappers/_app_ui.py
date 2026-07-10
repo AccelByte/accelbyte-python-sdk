@@ -50,8 +50,6 @@ def create_app_ui(
 ):
     """Create a new App UI instance (CreateAppUI)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
-
     Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
 
     Properties:
@@ -99,8 +97,6 @@ async def create_app_ui_async(
     **kwargs
 ):
     """Create a new App UI instance (CreateAppUI)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [CREATE]`
 
     Creates a new App UI configuration. The App UI can be hosted either by AccelByte (default) or externally.
 
@@ -152,8 +148,6 @@ def delete_app_ui(
 ):
     """Delete an App UI instance (DeleteAppUI)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
-
     Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
 
     Properties:
@@ -199,8 +193,6 @@ async def delete_app_ui_async(
     **kwargs
 ):
     """Delete an App UI instance (DeleteAppUI)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
 
     Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
 
@@ -251,8 +243,6 @@ def list_app_ui(
     **kwargs
 ):
     """List all App UI instances in the namespace (ListAppUI)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
 
     Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
 
@@ -307,8 +297,6 @@ async def list_app_ui_async(
     **kwargs
 ):
     """List all App UI instances in the namespace (ListAppUI)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
 
     Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
 
@@ -365,8 +353,6 @@ def upload_app_ui_file(
     **kwargs
 ):
     """Upload App UI assets as a zip file (UploadAppUIFile)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
 
     Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
 
@@ -425,8 +411,6 @@ async def upload_app_ui_file_async(
     **kwargs
 ):
     """Upload App UI assets as a zip file (UploadAppUIFile)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [UPDATE]`
 
     Uploads a ZIP archive containing App UI static assets (HTML, CSS, JS, etc.). Files are stored in S3 and served with immutable caching.
 

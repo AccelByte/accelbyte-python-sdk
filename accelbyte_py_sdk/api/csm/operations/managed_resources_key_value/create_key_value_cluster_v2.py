@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateKeyValueClusterV2(Operation):
     """Creates Key-Value Cluster (CreateKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
-
     Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
 
     Cluster limits:

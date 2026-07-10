@@ -39,7 +39,7 @@ from ..operations.o_auth import Authorization
 from ..operations.o_auth import AuthorizationResponseTypeEnum
 from ..operations.o_auth import GetJWKS
 from ..operations.o_auth import GetRevocationList
-from ..operations.o_auth import PlatformTokenRequestHandler
+from ..operations.o_auth import NamespaceScopedPlatformTokenGrant
 from ..operations.o_auth import RevokeAUser
 from ..operations.o_auth import RevokeToken
 from ..operations.o_auth import RevokeUser
@@ -375,8 +375,8 @@ async def get_revocation_list_async(
 
 
 @deprecated
-@same_doc_as(PlatformTokenRequestHandler)
-def platform_token_request_handler(
+@same_doc_as(NamespaceScopedPlatformTokenGrant)
+def namespace_scoped_platform_token_grant(
     platform_id: str,
     device_id: Optional[str] = None,
     mac_address: Optional[str] = None,
@@ -385,7 +385,7 @@ def platform_token_request_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """OAuth2 access token generation specific to platform (PlatformTokenRequestHandler)
+    """OAuth2 access token generation specific to platform (NamespaceScopedPlatformTokenGrant)
 
     **This endpoint is deprecated.**
     Requires all requests to have Authorization header set with Basic access authentication
@@ -434,7 +434,7 @@ def platform_token_request_handler(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = PlatformTokenRequestHandler.create(
+    request = NamespaceScopedPlatformTokenGrant.create(
         platform_id=platform_id,
         device_id=device_id,
         mac_address=mac_address,
@@ -445,8 +445,8 @@ def platform_token_request_handler(
 
 
 @deprecated
-@same_doc_as(PlatformTokenRequestHandler)
-async def platform_token_request_handler_async(
+@same_doc_as(NamespaceScopedPlatformTokenGrant)
+async def namespace_scoped_platform_token_grant_async(
     platform_id: str,
     device_id: Optional[str] = None,
     mac_address: Optional[str] = None,
@@ -455,7 +455,7 @@ async def platform_token_request_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """OAuth2 access token generation specific to platform (PlatformTokenRequestHandler)
+    """OAuth2 access token generation specific to platform (NamespaceScopedPlatformTokenGrant)
 
     **This endpoint is deprecated.**
     Requires all requests to have Authorization header set with Basic access authentication
@@ -504,7 +504,7 @@ async def platform_token_request_handler_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = PlatformTokenRequestHandler.create(
+    request = NamespaceScopedPlatformTokenGrant.create(
         platform_id=platform_id,
         device_id=device_id,
         mac_address=mac_address,

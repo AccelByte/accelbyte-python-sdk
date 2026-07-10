@@ -423,7 +423,7 @@ def admin_delete_configuration_alert_v1(
 ):
     """Delete configuration alert. (adminDeleteConfigurationAlertV1)
 
-    Delete configuration alert.
+    Deletes the configuration alert for the specified namespace. After deletion, no alerts are generated for session configuration issues.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
@@ -469,7 +469,7 @@ async def admin_delete_configuration_alert_v1_async(
 ):
     """Delete configuration alert. (adminDeleteConfigurationAlertV1)
 
-    Delete configuration alert.
+    Deletes the configuration alert for the specified namespace. After deletion, no alerts are generated for session configuration issues.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/alerts-configuration
@@ -1058,7 +1058,7 @@ def admin_sync_dsmc_configuration(
 ):
     """sync dsmc configuration. (adminSyncDSMCConfiguration)
 
-    sync dsmc configuration.
+    **Deprecated.** Synchronizes the dedicated server manager controller configuration from DSMC. The DSMC config is cached locally for use during session creation.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/dsconfigs/sync
@@ -1107,7 +1107,7 @@ async def admin_sync_dsmc_configuration_async(
 ):
     """sync dsmc configuration. (adminSyncDSMCConfiguration)
 
-    sync dsmc configuration.
+    **Deprecated.** Synchronizes the dedicated server manager controller configuration from DSMC. The DSMC config is cached locally for use during session creation.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/dsconfigs/sync

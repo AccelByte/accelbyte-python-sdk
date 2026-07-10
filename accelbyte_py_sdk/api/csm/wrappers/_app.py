@@ -65,8 +65,6 @@ def create_app_v1(
 ):
     """Creates new App for AB-Extend Customers (CreateAppV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
-
     Creates new App for AB-Extend Customers
 
     Available scenario:
@@ -132,8 +130,6 @@ async def create_app_v1_async(
     **kwargs
 ):
     """Creates new App for AB-Extend Customers (CreateAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
 
     Creates new App for AB-Extend Customers
 
@@ -203,8 +199,6 @@ def delete_app_v1(
 ):
     """Delete App by Åpp Name (DeleteAppV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
     Delete App by given DeploymentID
 
     This endpoint intended to delete ECR repo, ECR manifests, service images, uninstall helm-release,
@@ -266,8 +260,6 @@ async def delete_app_v1_async(
     **kwargs
 ):
     """Delete App by Åpp Name (DeleteAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
 
     Delete App by given DeploymentID
 
@@ -333,8 +325,6 @@ def get_app_list_v1(
     **kwargs
 ):
     """Gets the List of Apps for AB-Extend Customer (GetAppListV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
 
     Gets the List of Apps for AB-Extend Customer
 
@@ -402,8 +392,6 @@ async def get_app_list_v1_async(
 ):
     """Gets the List of Apps for AB-Extend Customer (GetAppListV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Gets the List of Apps for AB-Extend Customer
 
     Available scenario:
@@ -469,8 +457,6 @@ def get_app_release_v1(
 ):
     """Gets the Latest Release Version info of this App (GetAppReleaseV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Gets the Latest Release Version info of this App
 
     Properties:
@@ -520,8 +506,6 @@ async def get_app_release_v1_async(
     **kwargs
 ):
     """Gets the Latest Release Version info of this App (GetAppReleaseV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
 
     Gets the Latest Release Version info of this App
 
@@ -576,8 +560,6 @@ def get_app_v1(
 ):
     """Gets the App By Name (GetAppV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Gets the App By Name
 
     Properties:
@@ -628,8 +610,6 @@ async def get_app_v1_async(
     **kwargs
 ):
     """Gets the App By Name (GetAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
 
     Gets the App By Name
 
@@ -684,8 +664,6 @@ def start_app_v1(
     **kwargs
 ):
     """Starts the Application (StartAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Starts the Application
 
@@ -743,8 +721,6 @@ async def start_app_v1_async(
     **kwargs
 ):
     """Starts the Application (StartAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Starts the Application
 
@@ -805,8 +781,6 @@ def stop_app_v1(
 ):
     """Stops the Application (StopAppV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Stops the Application
 
     Properties:
@@ -863,8 +837,6 @@ async def stop_app_v1_async(
     **kwargs
 ):
     """Stops the Application (StopAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Stops the Application
 
@@ -925,8 +897,6 @@ def update_app_v1(
 ):
     """Update App Partially (UpdateAppV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Update App Partially
 
     Properties:
@@ -983,8 +953,6 @@ async def update_app_v1_async(
     **kwargs
 ):
     """Update App Partially (UpdateAppV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Update App Partially
 

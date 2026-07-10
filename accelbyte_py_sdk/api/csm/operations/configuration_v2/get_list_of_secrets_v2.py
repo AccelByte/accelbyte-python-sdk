@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetListOfSecretsV2(Operation):
     """Get list of environment secrets (GetListOfSecretsV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
-
     Get list of environment secrets per app
     Available Deployment Status:
     `deployed` = app config is already deployed

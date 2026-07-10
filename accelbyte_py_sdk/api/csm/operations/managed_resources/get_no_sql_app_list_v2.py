@@ -36,18 +36,16 @@ from ...models import ResponseErrorResponse
 class GetNoSQLAppListV2(Operation):
     """Get List of Extend App using NoSQL (GetNoSQLAppListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [READ]`
-
     Get List of Extend App using NoSQL database by given studio/publisher namespace and the NoSQL cluster resourceId.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
     - `unknown` : The cluster status is not recognized
     - `available` : The cluster is accessible.
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `failed` : The cluster failed to provision or is in an error state and not accessible.
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max DCU).
+    - `creating` : The cluster or instance is being created and is not yet accessible.
     - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
@@ -69,9 +67,9 @@ class GetNoSQLAppListV2(Operation):
 
         app_name: (appName) OPTIONAL str in query
 
-        limit: (limit) OPTIONAL int in query
+        game_namespace: (gameNamespace) OPTIONAL str in query
 
-        namespace: (namespace) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -99,8 +97,8 @@ class GetNoSQLAppListV2(Operation):
     resource_id: str  # REQUIRED in [path]
     studio_name: str  # REQUIRED in [path]
     app_name: str  # OPTIONAL in [query]
+    game_namespace: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
-    namespace: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
     # endregion fields
@@ -157,10 +155,10 @@ class GetNoSQLAppListV2(Operation):
         result = {}
         if hasattr(self, "app_name"):
             result["appName"] = self.app_name
+        if hasattr(self, "game_namespace"):
+            result["gameNamespace"] = self.game_namespace
         if hasattr(self, "limit"):
             result["limit"] = self.limit
-        if hasattr(self, "namespace"):
-            result["namespace"] = self.namespace
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         return result
@@ -185,12 +183,12 @@ class GetNoSQLAppListV2(Operation):
         self.app_name = value
         return self
 
-    def with_limit(self, value: int) -> GetNoSQLAppListV2:
-        self.limit = value
+    def with_game_namespace(self, value: str) -> GetNoSQLAppListV2:
+        self.game_namespace = value
         return self
 
-    def with_namespace(self, value: str) -> GetNoSQLAppListV2:
-        self.namespace = value
+    def with_limit(self, value: int) -> GetNoSQLAppListV2:
+        self.limit = value
         return self
 
     def with_offset(self, value: int) -> GetNoSQLAppListV2:
@@ -215,14 +213,14 @@ class GetNoSQLAppListV2(Operation):
             result["appName"] = str(self.app_name)
         elif include_empty:
             result["appName"] = ""
+        if hasattr(self, "game_namespace") and self.game_namespace:
+            result["gameNamespace"] = str(self.game_namespace)
+        elif include_empty:
+            result["gameNamespace"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
-        if hasattr(self, "namespace") and self.namespace:
-            result["namespace"] = str(self.namespace)
-        elif include_empty:
-            result["namespace"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -290,8 +288,8 @@ class GetNoSQLAppListV2(Operation):
         resource_id: str,
         studio_name: str,
         app_name: Optional[str] = None,
+        game_namespace: Optional[str] = None,
         limit: Optional[int] = None,
-        namespace: Optional[str] = None,
         offset: Optional[int] = None,
         **kwargs,
     ) -> GetNoSQLAppListV2:
@@ -300,10 +298,10 @@ class GetNoSQLAppListV2(Operation):
         instance.studio_name = studio_name
         if app_name is not None:
             instance.app_name = app_name
+        if game_namespace is not None:
+            instance.game_namespace = game_namespace
         if limit is not None:
             instance.limit = limit
-        if namespace is not None:
-            instance.namespace = namespace
         if offset is not None:
             instance.offset = offset
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -327,14 +325,14 @@ class GetNoSQLAppListV2(Operation):
             instance.app_name = str(dict_["appName"])
         elif include_empty:
             instance.app_name = ""
+        if "gameNamespace" in dict_ and dict_["gameNamespace"] is not None:
+            instance.game_namespace = str(dict_["gameNamespace"])
+        elif include_empty:
+            instance.game_namespace = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
-        if "namespace" in dict_ and dict_["namespace"] is not None:
-            instance.namespace = str(dict_["namespace"])
-        elif include_empty:
-            instance.namespace = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -347,8 +345,8 @@ class GetNoSQLAppListV2(Operation):
             "resourceId": "resource_id",
             "studioName": "studio_name",
             "appName": "app_name",
+            "gameNamespace": "game_namespace",
             "limit": "limit",
-            "namespace": "namespace",
             "offset": "offset",
         }
 
@@ -358,8 +356,8 @@ class GetNoSQLAppListV2(Operation):
             "resourceId": True,
             "studioName": True,
             "appName": False,
+            "gameNamespace": False,
             "limit": False,
-            "namespace": False,
             "offset": False,
         }
 

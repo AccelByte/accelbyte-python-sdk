@@ -21,9 +21,11 @@ from ._admin_get_goal import admin_get_goal
 from ._admin_update_goals import admin_update_goals
 from ._admin_delete_goal import admin_delete_goal
 from ._admin_list_schedules_by_goal import admin_list_schedules_by_goal
+from ._admin_move_goal_to_slot import admin_move_goal_to_slot
 from ._admin_get_periods import admin_get_periods
 from ._admin_randomize_challenge import admin_randomize_challenge
 from ._admin_list_schedules import admin_list_schedules
+from ._admin_get_challenge_slots import admin_get_challenge_slots
 from ._admin_delete_tied_challenge import admin_delete_tied_challenge
 from ._admin_update_tied_challenge_schedule import admin_update_tied_challenge_schedule
 from ._admin_get_assignment_plugin import admin_get_assignment_plugin
@@ -38,14 +40,14 @@ from ._admin_claim_user_rewards_by_goal_code import (
 from ._admin_get_user_progression import admin_get_user_progression
 from ._admin_get_user_rewards import admin_get_user_rewards
 from ._admin_claim_user_rewards import admin_claim_user_rewards
-from ._get_challenges import get_challenges
+from ._public_get_challenges import public_get_challenges
 from ._public_get_scheduled_goals import public_get_scheduled_goals
 from ._public_list_schedules_by_goal import public_list_schedules_by_goal
 from ._public_list_schedules import public_list_schedules
 from ._public_claim_user_rewards_by_goal_code import (
     public_claim_user_rewards_by_goal_code,
 )
-from ._evaluate_my_progress import evaluate_my_progress
+from ._public_evaluate_my_progress import public_evaluate_my_progress
 from ._public_get_user_progression import public_get_user_progression
 from ._public_get_past_user_progression import public_get_past_user_progression
 from ._public_get_user_rewards import public_get_user_rewards
@@ -66,9 +68,11 @@ commands = [
     admin_update_goals,
     admin_delete_goal,
     admin_list_schedules_by_goal,
+    admin_move_goal_to_slot,
     admin_get_periods,
     admin_randomize_challenge,
     admin_list_schedules,
+    admin_get_challenge_slots,
     admin_delete_tied_challenge,
     admin_update_tied_challenge_schedule,
     admin_get_assignment_plugin,
@@ -81,12 +85,12 @@ commands = [
     admin_get_user_progression,
     admin_get_user_rewards,
     admin_claim_user_rewards,
-    get_challenges,
+    public_get_challenges,
     public_get_scheduled_goals,
     public_list_schedules_by_goal,
     public_list_schedules,
     public_claim_user_rewards_by_goal_code,
-    evaluate_my_progress,
+    public_evaluate_my_progress,
     public_get_user_progression,
     public_get_past_user_progression,
     public_get_user_rewards,

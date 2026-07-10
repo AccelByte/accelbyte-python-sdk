@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class StopAppV2(Operation):
     """Stops the Application (StopAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Stops the Application
 
     Properties:

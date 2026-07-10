@@ -62,8 +62,6 @@ def create_sql_cluster_v2(
 ):
     """Creates SQL Cluster (CreateSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
-
     Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
     Only one SQL resource can be created for one studio/publisher namespace.
 
@@ -118,8 +116,6 @@ async def create_sql_cluster_v2_async(
     **kwargs
 ):
     """Creates SQL Cluster (CreateSQLClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [CREATE]`
 
     Provision SQL database cluster and instances that can be used by extend apps in game namespace within the studio.
     Only one SQL resource can be created for one studio/publisher namespace.
@@ -178,8 +174,6 @@ def create_sql_database_credential_v2(
     **kwargs
 ):
     """Creates a new database credential for the customer (CreateSQLDatabaseCredentialV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
 
     Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
@@ -240,8 +234,6 @@ async def create_sql_database_credential_v2_async(
     **kwargs
 ):
     """Creates a new database credential for the customer (CreateSQLDatabaseCredentialV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
 
     Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
@@ -305,8 +297,6 @@ def create_sql_database_v2(
 ):
     """Creates SQL Database for Extend App (CreateSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
-
     Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
 
     Properties:
@@ -366,8 +356,6 @@ async def create_sql_database_v2_async(
     **kwargs
 ):
     """Creates SQL Database for Extend App (CreateSQLDatabaseV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
 
     Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
 
@@ -429,8 +417,6 @@ def delete_sql_cluster_v2(
 ):
     """Delete SQL Cluster (DeleteSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
-
     You can only delete the cluster when its status is "available".
 
     Deleting the cluster will:
@@ -483,8 +469,6 @@ async def delete_sql_cluster_v2_async(
     **kwargs
 ):
     """Delete SQL Cluster (DeleteSQLClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
 
     You can only delete the cluster when its status is "available".
 
@@ -542,8 +526,6 @@ def delete_sql_database_v2(
 ):
     """Deletes SQL Database for Extend App (DeleteSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
-
     Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
 
     Properties:
@@ -597,8 +579,6 @@ async def delete_sql_database_v2_async(
     **kwargs
 ):
     """Deletes SQL Database for Extend App (DeleteSQLDatabaseV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [DELETE]`
 
     Deletes a SQL database and its credentials associated with given extend app and game namespace. The database will be removed from the provisioned SQL cluster.
 
@@ -660,20 +640,18 @@ def get_sql_app_list_v2(
 ):
     """Get List of Extend App using SQL (GetSQLAppListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
     Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
     - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `unknown` : The cluster status is not recognized
-    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `unknown` : The cluster status is not recognized
+    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/sql/{resourceId}/apps
@@ -739,20 +717,18 @@ async def get_sql_app_list_v2_async(
 ):
     """Get List of Extend App using SQL (GetSQLAppListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
     Get List of Extend App using SQL database by given studio/publisher namespace and the SQL cluster resourceId.
     - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `unknown` : The cluster status is not recognized
-    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `unknown` : The cluster status is not recognized
+    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/sql/{resourceId}/apps
@@ -815,22 +791,20 @@ def get_sql_cluster_v2(
 ):
     """Get SQL Cluster Information (GetSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
     Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the SQL cluster status:
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-    - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
     - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `available` : The cluster is accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/sql/clusters
@@ -878,22 +852,20 @@ async def get_sql_cluster_v2_async(
 ):
     """Get SQL Cluster Information (GetSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [READ]`
-
     Get SQL cluster information returns the SQL cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the SQL cluster status:
-    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
-    - `stopped` : The cluster is stopped and not accessible.
     - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-    - `available` : The cluster is accessible.
-    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
     - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
     - `unknown` : The cluster status is not recognized
     - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `available` : The cluster is accessible.
+    - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
+    - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
+    - `stopped` : The cluster is stopped and not accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/sql/clusters
@@ -944,23 +916,21 @@ def get_sql_database_v2(
 ):
     """Get SQL Database for Extend App (GetSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
-
     Get a SQL database information returns the SQL database related information by given game namespace
     and app name.
 
     `resourceStatus` field - indicates the SQL cluster status:
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-    - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `unknown` : The cluster status is not recognized
-    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `unknown` : The cluster status is not recognized
+    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+    - `available` : The cluster is accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/sql/databases
@@ -1010,23 +980,21 @@ async def get_sql_database_v2_async(
 ):
     """Get SQL Database for Extend App (GetSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [READ]`
-
     Get a SQL database information returns the SQL database related information by given game namespace
     and app name.
 
     `resourceStatus` field - indicates the SQL cluster status:
-    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
-    - `available` : The cluster is accessible.
     - `updating` : The cluster is being modified and is not yet accessible (e.g., updating min/max ACU).
-    - `creating` : The cluster or instance is being created and is not yet accessible.
-    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
-    - `unknown` : The cluster status is not recognized
-    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
-    - `deleting` : The cluster is in the process of being deleted and is not accessible.
     - `failed` : The cluster failed to provision or is in an error state and not accessible.
     - `stopping` : The cluster is in the process of stopping and will soon become inaccessible.
     - `stopped` : The cluster is stopped and not accessible.
+    - `starting` : The cluster is transitioning from stopped to running, or is rebooting.
+    - `creating` : The cluster or instance is being created and is not yet accessible.
+    - `deleting` : The cluster is in the process of being deleted and is not accessible.
+    - `maintenance` : The cluster is undergoing maintenance operations and is not accessible.
+    - `unknown` : The cluster status is not recognized
+    - `configuring-replica` : The cluster is configuring replica instances for multi-AZ deployment.
+    - `available` : The cluster is accessible.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/sql/databases
@@ -1076,8 +1044,6 @@ def start_sql_cluster_v2(
     **kwargs
 ):
     """Start SQL Cluster (StartSQLClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
 
     Start SQL cluster.
     You can only start the cluster when its status is "stopped".
@@ -1131,8 +1097,6 @@ async def start_sql_cluster_v2_async(
     **kwargs
 ):
     """Start SQL Cluster (StartSQLClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
 
     Start SQL cluster.
     You can only start the cluster when its status is "stopped".
@@ -1189,8 +1153,6 @@ def stop_sql_cluster_v2(
 ):
     """Stop SQL Cluster (StopSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
     Stop SQL cluster.
     You can only start the cluster when its status is "available".
 
@@ -1243,8 +1205,6 @@ async def stop_sql_cluster_v2_async(
     **kwargs
 ):
     """Stop SQL Cluster (StopSQLClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
 
     Stop SQL cluster.
     You can only start the cluster when its status is "available".
@@ -1302,8 +1262,6 @@ def update_sql_cluster_v2(
 ):
     """Update SQL Cluster Configurations (UpdateSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
     Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
     The cluster must be in an available state to allow configuration updates.
 
@@ -1360,8 +1318,6 @@ async def update_sql_cluster_v2_async(
     **kwargs
 ):
     """Update SQL Cluster Configurations (UpdateSQLClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
 
     Update SQL cluster configurations such as min/max ACU (AuroraDB Capacity Units) for the SQL cluster in the given studio/publisher namespace.
     The cluster must be in an available state to allow configuration updates.

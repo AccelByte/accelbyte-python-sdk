@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteAppUI(Operation):
     """Delete an App UI instance (DeleteAppUI)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [DELETE]`
-
     Permanently deletes an App UI instance and schedules cleanup of associated S3 assets.
 
     Properties:

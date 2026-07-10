@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class DeleteTopicHandler(Operation):
     """Delete Async Messaging Topic (DeleteTopicHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
-
     Delete Async Messaging Topic inside a game namespace given its topic name.
 
     Properties:

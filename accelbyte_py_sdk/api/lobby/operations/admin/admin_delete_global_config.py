@@ -36,7 +36,7 @@ from ...models import RestapiErrorResponseBody
 class AdminDeleteGlobalConfig(Operation):
     """Delete of global configuration data. (adminDeleteGlobalConfig)
 
-    Delete of global configuration data.
+    Remove the global configuration record. This operation is permanent.
 
     Properties:
         url: /lobby/v1/admin/global-configurations

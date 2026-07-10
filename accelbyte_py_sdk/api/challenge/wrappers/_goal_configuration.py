@@ -32,15 +32,19 @@ from ....core import same_doc_as
 from ..models import IamErrorResponse
 from ..models import ModelCreateGoalRequest
 from ..models import ModelGetGoalsResponse
+from ..models import ModelGetSlotsResponse
 from ..models import ModelGoalResponse
+from ..models import ModelMoveGoalToSlotRequest
 from ..models import ModelUpdateGoalRequest
 from ..models import ResponseError
 
 from ..operations.goal_configuration import AdminCreateGoal
 from ..operations.goal_configuration import AdminDeleteGoal
+from ..operations.goal_configuration import AdminGetChallengeSlots
 from ..operations.goal_configuration import AdminGetGoal
 from ..operations.goal_configuration import AdminGetGoals
 from ..operations.goal_configuration import AdminGetGoalsSortByEnum
+from ..operations.goal_configuration import AdminMoveGoalToSlot
 from ..operations.goal_configuration import AdminUpdateGoals
 
 
@@ -348,6 +352,124 @@ async def admin_delete_goal_async(
     )
 
 
+@same_doc_as(AdminGetChallengeSlots)
+def admin_get_challenge_slots(
+    challenge_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Challenge Slots (adminGetChallengeSlots)
+
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    Returns the slot configuration for a FIXED or RANDOMIZED (non-per-rotation) assignment challenge.
+    For repeating challenges (repeatAfter set), the response contains two separate fields:
+    - templateSlots: the authoritative future configuration from TemplateSlots (goals only, no timing).
+    - currentRound: the actual running state of the current (or nearest) round (goals + startTime/endTime from schedule documents).
+    These two may differ when a slot move was deferred because the target slot was active.
+    For non-repeating challenges, only currentRound is returned (templateSlots is absent).
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/slots
+
+        method: GET
+
+        tags: ["Goal Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetSlotsResponse (OK)
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - ResponseError (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminGetChallengeSlots.create(
+        challenge_code=challenge_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetChallengeSlots)
+async def admin_get_challenge_slots_async(
+    challenge_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Challenge Slots (adminGetChallengeSlots)
+
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    Returns the slot configuration for a FIXED or RANDOMIZED (non-per-rotation) assignment challenge.
+    For repeating challenges (repeatAfter set), the response contains two separate fields:
+    - templateSlots: the authoritative future configuration from TemplateSlots (goals only, no timing).
+    - currentRound: the actual running state of the current (or nearest) round (goals + startTime/endTime from schedule documents).
+    These two may differ when a slot move was deferred because the target slot was active.
+    For non-repeating challenges, only currentRound is returned (templateSlots is absent).
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/slots
+
+        method: GET
+
+        tags: ["Goal Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetSlotsResponse (OK)
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - ResponseError (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminGetChallengeSlots.create(
+        challenge_code=challenge_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminGetGoal)
 def admin_get_goal(
     challenge_code: str,
@@ -585,6 +707,146 @@ async def admin_get_goals_async(
         offset=offset,
         sort_by=sort_by,
         tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminMoveGoalToSlot)
+def admin_move_goal_to_slot(
+    body: ModelMoveGoalToSlotRequest,
+    challenge_code: str,
+    code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Move Goal to Another Slot (adminMoveGoalToSlot)
+
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+    Moves a goal to a target slot in a FIXED or non-per-rotation RANDOMIZED challenge with repeatAfter set.
+    slotIndex is 0-based and must be in [0, repeatAfter-1].
+    Pass slotIndex = -1 to remove the goal from all slots; it will no longer appear in future rounds.
+    TemplateSlots and all non-finished schedule documents are updated immediately.
+    The currently active schedule document for the affected slot is skipped to avoid
+    disrupting in-progress user progressions; the change takes effect from the next round.
+    Finished (past) schedule documents are never modified.
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/slots
+
+        method: PUT
+
+        tags: ["Goal Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelMoveGoalToSlotRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (goal moved successfully)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - ResponseError (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminMoveGoalToSlot.create(
+        body=body,
+        challenge_code=challenge_code,
+        code=code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminMoveGoalToSlot)
+async def admin_move_goal_to_slot_async(
+    body: ModelMoveGoalToSlotRequest,
+    challenge_code: str,
+    code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Move Goal to Another Slot (adminMoveGoalToSlot)
+
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+    Moves a goal to a target slot in a FIXED or non-per-rotation RANDOMIZED challenge with repeatAfter set.
+    slotIndex is 0-based and must be in [0, repeatAfter-1].
+    Pass slotIndex = -1 to remove the goal from all slots; it will no longer appear in future rounds.
+    TemplateSlots and all non-finished schedule documents are updated immediately.
+    The currently active schedule document for the affected slot is skipped to avoid
+    disrupting in-progress user progressions; the change takes effect from the next round.
+    Finished (past) schedule documents are never modified.
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/slots
+
+        method: PUT
+
+        tags: ["Goal Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelMoveGoalToSlotRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        code: (code) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (goal moved successfully)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - ResponseError (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminMoveGoalToSlot.create(
+        body=body,
+        challenge_code=challenge_code,
+        code=code,
         namespace=namespace,
     )
     return await run_request_async(

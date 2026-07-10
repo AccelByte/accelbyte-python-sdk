@@ -368,7 +368,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-leaderboard-configurations-adm
 ### Operation `create_leaderboard_configuration_admin_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'leaderboard-create-leaderboard-configuration-admin-v3' \
-    '{"allTime": false, "cycleIds": ["string"], "descending": false, "description": "string", "iconURL": "string", "leaderboardCode": "string", "name": "string", "statCode": "string"}' \
+    '{"allTime": false, "cycleIds": ["string"], "descending": false, "description": "string", "enableServerHiddenFilter": false, "iconURL": "string", "leaderboardCode": "string", "name": "string", "statCode": "string"}' \
     'string' \
     > result.txt
 ```
@@ -392,7 +392,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-leaderboard-configuration-admi
 ### Operation `update_leaderboard_configuration_admin_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'leaderboard-update-leaderboard-configuration-admin-v3' \
-    '{"allTime": false, "cycleIds": ["string"], "descending": false, "description": "string", "iconURL": "string", "name": "string"}' \
+    '{"allTime": false, "cycleIds": ["string"], "descending": false, "description": "string", "enableServerHiddenFilter": false, "iconURL": "string", "name": "string"}' \
     'string' \
     'string' \
     > result.txt
@@ -411,6 +411,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-delete-leaderboard-configuration-a
 $ python -m accelbyte_py_sdk_cli 'leaderboard-get-all-time-leaderboard-ranking-admin-v3' \
     'string' \
     'string' \
+    --include_hidden_users false \
     --limit 1 \
     --offset 1 \
     > result.txt
@@ -422,6 +423,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-current-cycle-leaderboard-rank
     'string' \
     'string' \
     'string' \
+    --include_hidden_users false \
     --limit 1 \
     --offset 1 \
     --previous_version 1 \

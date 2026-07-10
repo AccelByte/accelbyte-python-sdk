@@ -76,7 +76,7 @@ def admin_create_integration_configuration(
 
         tags: ["Admin Integration Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -128,7 +128,7 @@ async def admin_create_integration_configuration_async(
 
         tags: ["Admin Integration Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -301,7 +301,7 @@ def admin_update_integration_configuration(
 
         tags: ["Admin Integration Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -359,7 +359,7 @@ async def admin_update_integration_configuration_async(
 
         tags: ["Admin Integration Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -419,7 +419,7 @@ def admin_update_status_integration_configuration(
 
         tags: ["Admin Integration Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -477,7 +477,7 @@ async def admin_update_status_integration_configuration_async(
 
         tags: ["Admin Integration Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

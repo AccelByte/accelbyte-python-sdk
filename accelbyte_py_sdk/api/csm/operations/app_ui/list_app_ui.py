@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class ListAppUI(Operation):
     """List all App UI instances in the namespace (ListAppUI)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APPUI [READ]`
-
     Retrieves a paginated list of App UI instances. Supports filtering by name and pagination using limit/offset.
 
     Properties:

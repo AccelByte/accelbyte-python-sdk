@@ -295,7 +295,7 @@ def public_get_messages(
 
         tags: ["Lobby Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -325,7 +325,7 @@ async def public_get_messages_async(
 
         tags: ["Lobby Operations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

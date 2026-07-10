@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander
+# AGS Iam Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,33 +30,52 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import func1 as func1_internal
+from accelbyte_py_sdk.api.iam import (
+    namespace_scoped_platform_token_grant as namespace_scoped_platform_token_grant_internal,
+)
+from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
+from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
 
 
 @click.command()
+@click.argument("platform_id", type=str)
+@click.option("--device_id", "device_id", type=str)
+@click.option("--mac_address", "mac_address", type=str)
+@click.option("--platform_token", "platform_token", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def func1(
+def namespace_scoped_platform_token_grant(
+    platform_id: str,
+    device_id: Optional[str] = None,
+    mac_address: Optional[str] = None,
+    platform_token: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(func1_internal.__doc__)
+        click.echo(namespace_scoped_platform_token_grant_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = func1_internal(
+    result, error = namespace_scoped_platform_token_grant_internal(
+        platform_id=platform_id,
+        device_id=device_id,
+        mac_address=mac_address,
+        platform_token=platform_token,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"func1 failed: {str(error)}")
+        raise Exception(f"NamespaceScopedPlatformTokenGrant failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-func1.operation_id = "func1"
-func1.is_deprecated = False
+namespace_scoped_platform_token_grant.operation_id = "NamespaceScopedPlatformTokenGrant"
+namespace_scoped_platform_token_grant.is_deprecated = True

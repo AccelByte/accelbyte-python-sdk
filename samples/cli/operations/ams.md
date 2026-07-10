@@ -148,6 +148,7 @@ $ python -m accelbyte_py_sdk_cli 'ams-fleet-list' \
     'string' \
     --active false \
     --count 1 \
+    --include_inactive_regions false \
     --name 'string' \
     --offset 1 \
     --region 'string' \
@@ -177,6 +178,7 @@ $ python -m accelbyte_py_sdk_cli 'ams-bulk-fleet-delete' \
 $ python -m accelbyte_py_sdk_cli 'ams-fleet-get' \
     'string' \
     'string' \
+    --include_inactive_regions false \
     > result.txt
 ```
 
@@ -402,9 +404,9 @@ $ python -m accelbyte_py_sdk_cli 'ams-upload-url-get' \
     > result.txt
 ```
 
-### Operation `func1`
+### Operation `version_info`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'ams-func1' \
+$ python -m accelbyte_py_sdk_cli 'ams-version-info' \
     > result.txt
 ```
 

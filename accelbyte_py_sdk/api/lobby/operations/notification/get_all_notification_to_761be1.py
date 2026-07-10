@@ -36,9 +36,7 @@ from ...models import RestapiErrorResponseV1
 class GetAllNotificationTopicsV1Admin(Operation):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Get topic by namespace.
-
-    Action Code: 50213
+    Get all notification topics in a namespace.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics

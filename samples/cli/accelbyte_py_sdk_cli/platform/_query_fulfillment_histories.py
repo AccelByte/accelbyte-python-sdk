@@ -37,19 +37,19 @@ from accelbyte_py_sdk.api.platform.models import FulfillmentHistoryPagingSlicedR
 
 
 @click.command()
+@click.argument("user_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--status", "status", type=str)
-@click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def query_fulfillment_histories(
+    user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     status: Optional[str] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -64,10 +64,10 @@ def query_fulfillment_histories(
     else:
         login_as_internal(login_as)
     result, error = query_fulfillment_histories_internal(
+        user_id=user_id,
         limit=limit,
         offset=offset,
         status=status,
-        user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

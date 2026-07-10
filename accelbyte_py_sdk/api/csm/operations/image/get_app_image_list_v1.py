@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class GetAppImageListV1(Operation):
     """Get a list of container images (GetAppImageListV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
     Get a list of container images
 
     Default 'cached' parameter is 'true'

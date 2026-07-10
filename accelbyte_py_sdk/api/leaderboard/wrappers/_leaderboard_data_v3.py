@@ -760,6 +760,7 @@ async def delete_user_rankings_admin_v3_async(
 @same_doc_as(GetAllTimeLeaderboardRankingAdminV3)
 def get_all_time_leaderboard_ranking_admin_v3(
     leaderboard_code: str,
+    include_hidden_users: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -787,6 +788,8 @@ def get_all_time_leaderboard_ranking_admin_v3(
 
         namespace: (namespace) REQUIRED str in path
 
+        include_hidden_users: (includeHiddenUsers) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -810,6 +813,7 @@ def get_all_time_leaderboard_ranking_admin_v3(
             return None, error
     request = GetAllTimeLeaderboardRankingAdminV3.create(
         leaderboard_code=leaderboard_code,
+        include_hidden_users=include_hidden_users,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -820,6 +824,7 @@ def get_all_time_leaderboard_ranking_admin_v3(
 @same_doc_as(GetAllTimeLeaderboardRankingAdminV3)
 async def get_all_time_leaderboard_ranking_admin_v3_async(
     leaderboard_code: str,
+    include_hidden_users: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -847,6 +852,8 @@ async def get_all_time_leaderboard_ranking_admin_v3_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        include_hidden_users: (includeHiddenUsers) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -870,6 +877,7 @@ async def get_all_time_leaderboard_ranking_admin_v3_async(
             return None, error
     request = GetAllTimeLeaderboardRankingAdminV3.create(
         leaderboard_code=leaderboard_code,
+        include_hidden_users=include_hidden_users,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -997,6 +1005,7 @@ async def get_all_time_leaderboard_ranking_public_v3_async(
 def get_current_cycle_leaderboard_ranking_admin_v3(
     cycle_id: str,
     leaderboard_code: str,
+    include_hidden_users: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     previous_version: Optional[int] = None,
@@ -1027,6 +1036,8 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
 
         namespace: (namespace) REQUIRED str in path
 
+        include_hidden_users: (includeHiddenUsers) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -1053,6 +1064,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
     request = GetCurrentCycleLeaderboardRankingAdminV3.create(
         cycle_id=cycle_id,
         leaderboard_code=leaderboard_code,
+        include_hidden_users=include_hidden_users,
         limit=limit,
         offset=offset,
         previous_version=previous_version,
@@ -1065,6 +1077,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
 async def get_current_cycle_leaderboard_ranking_admin_v3_async(
     cycle_id: str,
     leaderboard_code: str,
+    include_hidden_users: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     previous_version: Optional[int] = None,
@@ -1095,6 +1108,8 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        include_hidden_users: (includeHiddenUsers) OPTIONAL bool in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -1121,6 +1136,7 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
     request = GetCurrentCycleLeaderboardRankingAdminV3.create(
         cycle_id=cycle_id,
         leaderboard_code=leaderboard_code,
+        include_hidden_users=include_hidden_users,
         limit=limit,
         offset=offset,
         previous_version=previous_version,

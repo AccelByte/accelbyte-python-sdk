@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Challenge Service
+# Custom Service Manager
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,52 +30,43 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.challenge import (
-    evaluate_my_progress as evaluate_my_progress_internal,
+from accelbyte_py_sdk.api.csm import (
+    get_app_status_progress_v4 as get_app_status_progress_v4_internal,
 )
-from accelbyte_py_sdk.api.challenge.models import IamErrorResponse
-from accelbyte_py_sdk.api.challenge.models import ResponseError
+from accelbyte_py_sdk.api.csm.models import ApimodelGetAppStatusProgressResponse
+from accelbyte_py_sdk.api.csm.models import ResponseErrorResponse
 
 
 @click.command()
-@click.option("--challenge_code", "challenge_code", type=str)
-@click.option("--include_one_time_event", "include_one_time_event", type=str)
+@click.argument("app", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def evaluate_my_progress(
-    challenge_code: Optional[str] = None,
-    include_one_time_event: Optional[str] = None,
+def get_app_status_progress_v4(
+    app: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(evaluate_my_progress_internal.__doc__)
+        click.echo(get_app_status_progress_v4_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if challenge_code is not None:
-        try:
-            challenge_code_json = json.loads(challenge_code)
-            challenge_code = [str(i0) for i0 in challenge_code_json]
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'challengeCode'. {str(e)}") from e
-    result, error = evaluate_my_progress_internal(
-        challenge_code=challenge_code,
-        include_one_time_event=include_one_time_event,
+    result, error = get_app_status_progress_v4_internal(
+        app=app,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"EvaluateMyProgress failed: {str(error)}")
+        raise Exception(f"GetAppStatusProgressV4 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-evaluate_my_progress.operation_id = "EvaluateMyProgress"
-evaluate_my_progress.is_deprecated = False
+get_app_status_progress_v4.operation_id = "GetAppStatusProgressV4"
+get_app_status_progress_v4.is_deprecated = False

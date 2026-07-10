@@ -54,8 +54,6 @@ def create_subscription_handler(
 ):
     """Subscribe To Topic (CreateSubscriptionHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
-
     Subscribe App queue to given Topic name list inside a game namespace.
 
     Properties:
@@ -111,8 +109,6 @@ async def create_subscription_handler_async(
     **kwargs
 ):
     """Subscribe To Topic (CreateSubscriptionHandler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
 
     Subscribe App queue to given Topic name list inside a game namespace.
 
@@ -171,8 +167,6 @@ def create_topic_handler(
 ):
     """Create Async Messaging Topic (CreateTopicHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
-
     Create New Async Messaging Topic, the topic name is unique inside a game namespace.
 
     Properties:
@@ -224,8 +218,6 @@ async def create_topic_handler_async(
     **kwargs
 ):
     """Create Async Messaging Topic (CreateTopicHandler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
 
     Create New Async Messaging Topic, the topic name is unique inside a game namespace.
 
@@ -281,8 +273,6 @@ def delete_topic_handler(
 ):
     """Delete Async Messaging Topic (DeleteTopicHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
-
     Delete Async Messaging Topic inside a game namespace given its topic name.
 
     Properties:
@@ -332,8 +322,6 @@ async def delete_topic_handler_async(
     **kwargs
 ):
     """Delete Async Messaging Topic (DeleteTopicHandler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [DELETE]`
 
     Delete Async Messaging Topic inside a game namespace given its topic name.
 
@@ -390,8 +378,6 @@ def list_topics_handler(
     **kwargs
 ):
     """List Async Messaging Topics (ListTopicsHandler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
 
     List all Async Messaging Topics inside a game namespace.
 
@@ -459,8 +445,6 @@ async def list_topics_handler_async(
 ):
     """List Async Messaging Topics (ListTopicsHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
-
     List all Async Messaging Topics inside a game namespace.
 
     Properties:
@@ -526,8 +510,6 @@ def unsubscribe_topic_handler(
 ):
     """Unsubscribe From Topic (UnsubscribeTopicHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
-
     Unsubscribe App queue from a topic by Topic Name.
 
     Properties:
@@ -581,8 +563,6 @@ async def unsubscribe_topic_handler_async(
     **kwargs
 ):
     """Unsubscribe From Topic (UnsubscribeTopicHandler)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
 
     Unsubscribe App queue from a topic by Topic Name.
 

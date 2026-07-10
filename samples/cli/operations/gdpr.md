@@ -304,6 +304,50 @@ $ python -m accelbyte_py_sdk_cli 'gdpr-public-get-my-account-deletion-status' \
     > result.txt
 ```
 
+### Operation `public_submit_my_headless_deletion_request`
+```sh
+$ python -m accelbyte_py_sdk_cli 'gdpr-public-submit-my-headless-deletion-request' \
+    > result.txt
+```
+
+### Operation `public_submit_my_headless_personal_data_request`
+```sh
+$ python -m accelbyte_py_sdk_cli 'gdpr-public-submit-my-headless-personal-data-request' \
+    --email 'string' \
+    --language_tag 'string' \
+    > result.txt
+```
+
+### Operation `public_generate_my_headless_personal_data_url`
+```sh
+$ python -m accelbyte_py_sdk_cli 'gdpr-public-generate-my-headless-personal-data-url' \
+    'string' \
+    > result.txt
+```
+
+### Operation `public_get_my_personal_data_requests`
+```sh
+$ python -m accelbyte_py_sdk_cli 'gdpr-public-get-my-personal-data-requests' \
+    > result.txt
+```
+
+### Operation `public_submit_my_personal_data_request`
+```sh
+$ python -m accelbyte_py_sdk_cli 'gdpr-public-submit-my-personal-data-request' \
+    'string' \
+    'string' \
+    --email 'string' \
+    --language_tag 'string' \
+    > result.txt
+```
+
+### Operation `public_cancel_my_personal_data_request`
+```sh
+$ python -m accelbyte_py_sdk_cli 'gdpr-public-cancel-my-personal-data-request' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `s2s_get_list_finished_account_deletion_request`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'gdpr-s2s-get-list-finished-account-deletion-request' \

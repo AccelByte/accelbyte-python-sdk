@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.39.1"
+__version__ = "7.40.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,7 +18,7 @@ from .authorization import Authorization
 from .authorization import ResponseTypeEnum as AuthorizationResponseTypeEnum
 from .get_jwks import GetJWKS
 from .get_revocation_list import GetRevocationList
-from .platform_token_request_handler import PlatformTokenRequestHandler
+from .namespace_scoped_platfo_c548f1 import NamespaceScopedPlatformTokenGrant
 from .revoke_a_user import RevokeAUser
 from .revoke_token import RevokeToken
 from .revoke_user import RevokeUser

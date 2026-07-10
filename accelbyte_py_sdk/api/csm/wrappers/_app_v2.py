@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ApimodelAppItem
@@ -60,8 +61,6 @@ def apply_app_config_v2(
     **kwargs
 ):
     """Declaratively create or update an extend app from a spec (ApplyAppConfigV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
 
     Idempotent endpoint that creates or updates an Extend app from a declarative spec.
     Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
@@ -125,8 +124,6 @@ async def apply_app_config_v2_async(
 ):
     """Declaratively create or update an extend app from a spec (ApplyAppConfigV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP []`
-
     Idempotent endpoint that creates or updates an Extend app from a declarative spec.
     Uses three-way merge semantics (kubectl apply) for variables, secrets, and permissions.
 
@@ -181,6 +178,7 @@ async def apply_app_config_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(CreateAppV2)
 def create_app_v2(
     app: str,
@@ -191,14 +189,14 @@ def create_app_v2(
 ):
     """Create new extend app (CreateAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+    [Deprecated] Please use v5 endpoint instead.
 
     Create new extend app with name provided by {app} path parameter and specified scenario type
 
     Available scenario:
-    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
+    - scenario 3: `event-handler`
 
 
     Available app status:
@@ -265,6 +263,7 @@ def create_app_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CreateAppV2)
 async def create_app_v2_async(
     app: str,
@@ -275,14 +274,14 @@ async def create_app_v2_async(
 ):
     """Create new extend app (CreateAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+    [Deprecated] Please use v5 endpoint instead.
 
     Create new extend app with name provided by {app} path parameter and specified scenario type
 
     Available scenario:
-    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
+    - scenario 3: `event-handler`
 
 
     Available app status:
@@ -361,8 +360,6 @@ def delete_app_v2(
 ):
     """Delete extend app by name (DeleteAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
     Delete extend app by given {app} name
 
     This endpoint will delete app information, configuration, deployments and all related manifest from
@@ -421,8 +418,6 @@ async def delete_app_v2_async(
     **kwargs
 ):
     """Delete extend app by name (DeleteAppV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
 
     Delete extend app by given {app} name
 
@@ -486,8 +481,6 @@ def get_app_list_v2(
 ):
     """Get list of extend apps on a given game namespace (GetAppListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Get list of extend apps on a given game namespace
 
     Properties:
@@ -547,8 +540,6 @@ async def get_app_list_v2_async(
     **kwargs
 ):
     """Get list of extend apps on a given game namespace (GetAppListV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
 
     Get list of extend apps on a given game namespace
 
@@ -610,14 +601,12 @@ def get_app_v2(
 ):
     """Get extend app by name (GetAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Get extend app by name
 
     Available scenario:
-    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
+    - scenario 3: `event-handler`
 
 
     Available app status:
@@ -686,14 +675,12 @@ async def get_app_v2_async(
 ):
     """Get extend app by name (GetAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Get extend app by name
 
     Available scenario:
-    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
+    - scenario 3: `event-handler`
 
 
     Available app status:
@@ -764,8 +751,6 @@ def start_app_v2(
 ):
     """Starts the Application (StartAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Starts the Application
 
     Properties:
@@ -817,8 +802,6 @@ async def start_app_v2_async(
     **kwargs
 ):
     """Starts the Application (StartAppV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Starts the Application
 
@@ -874,8 +857,6 @@ def stop_app_v2(
 ):
     """Stops the Application (StopAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Stops the Application
 
     Properties:
@@ -927,8 +908,6 @@ async def stop_app_v2_async(
     **kwargs
 ):
     """Stops the Application (StopAppV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Stops the Application
 
@@ -985,8 +964,6 @@ def update_app_resources_resource_limit_form_v2(
 ):
     """Request Resource Limit to be increased (UpdateAppResourcesResourceLimitFormV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Update app resources provided on request body
 
     Properties:
@@ -1042,8 +1019,6 @@ async def update_app_resources_resource_limit_form_v2_async(
     **kwargs
 ):
     """Request Resource Limit to be increased (UpdateAppResourcesResourceLimitFormV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Update app resources provided on request body
 
@@ -1103,8 +1078,6 @@ def update_app_resources_v2(
 ):
     """Update app info (UpdateAppResourcesV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Update app resources provided on request body
 
     Properties:
@@ -1160,8 +1133,6 @@ async def update_app_resources_v2_async(
     **kwargs
 ):
     """Update app info (UpdateAppResourcesV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
 
     Update app resources provided on request body
 
@@ -1221,9 +1192,7 @@ def update_app_v2(
 ):
     """Update app info (UpdateAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
-    Update app info provided on request body
+    Update app info provided on request body%!(EXTRA string=ADMIN:NAMESPACE:{namespace}:EXTEND:APP, string=UPDATE)
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}
@@ -1279,9 +1248,7 @@ async def update_app_v2_async(
 ):
     """Update app info (UpdateAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
-    Update app info provided on request body
+    Update app info provided on request body%!(EXTRA string=ADMIN:NAMESPACE:{namespace}:EXTEND:APP, string=UPDATE)
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}

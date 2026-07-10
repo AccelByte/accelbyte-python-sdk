@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetSubscriptionV2Handler(Operation):
     """Get Subscription status of a user (GetSubscriptionV2Handler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [READ]`
-
     Get Subscription status of a user
 
     Properties:

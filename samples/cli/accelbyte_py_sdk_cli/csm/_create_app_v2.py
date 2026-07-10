@@ -77,4 +77,4 @@ def create_app_v2(
 
 
 create_app_v2.operation_id = "CreateAppV2"
-create_app_v2.is_deprecated = False
+create_app_v2.is_deprecated = True

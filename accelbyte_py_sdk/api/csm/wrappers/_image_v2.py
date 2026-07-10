@@ -47,8 +47,6 @@ def delete_app_images_v2(
 ):
     """Delete app images (DeleteAppImagesV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
     Deletes list of provided image tags from the app image repository
 
     Properties:
@@ -102,8 +100,6 @@ async def delete_app_images_v2_async(
     **kwargs
 ):
     """Delete app images (DeleteAppImagesV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
 
     Deletes list of provided image tags from the app image repository
 
@@ -161,8 +157,6 @@ def get_app_image_list_v2(
 ):
     """Get a list of container images (GetAppImageListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
-
     Get a list of container images
 
     Default 'cached' parameter is 'true'
@@ -218,8 +212,6 @@ async def get_app_image_list_v2_async(
     **kwargs
 ):
     """Get a list of container images (GetAppImageListV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
 
     Get a list of container images
 

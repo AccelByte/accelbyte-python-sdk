@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class ListKeyValueClusterV2(Operation):
     """List Key-Value Clusters (ListKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     List Key-Value clusters by studio/publisher namespace.
     If `refresh=true`, the service will sync cluster status from the provider (cached).
 

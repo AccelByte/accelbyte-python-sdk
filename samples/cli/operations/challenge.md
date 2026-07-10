@@ -125,6 +125,16 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-list-schedules-by-goal' \
     > result.txt
 ```
 
+### Operation `admin_move_goal_to_slot`
+```sh
+$ python -m accelbyte_py_sdk_cli 'challenge-admin-move-goal-to-slot' \
+    '{"slotIndex": 1}' \
+    'string' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_get_periods`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'challenge-admin-get-periods' \
@@ -152,6 +162,14 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-list-schedules' \
     --limit 1 \
     --offset 1 \
     --user_id 'string' \
+    > result.txt
+```
+
+### Operation `admin_get_challenge_slots`
+```sh
+$ python -m accelbyte_py_sdk_cli 'challenge-admin-get-challenge-slots' \
+    'string' \
+    'string' \
     > result.txt
 ```
 
@@ -268,9 +286,9 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-claim-user-rewards' \
     > result.txt
 ```
 
-### Operation `get_challenges`
+### Operation `public_get_challenges`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'challenge-get-challenges' \
+$ python -m accelbyte_py_sdk_cli 'challenge-public-get-challenges' \
     'string' \
     --keyword 'string' \
     --limit 1 \
@@ -324,9 +342,9 @@ $ python -m accelbyte_py_sdk_cli 'challenge-public-claim-user-rewards-by-goal-co
     > result.txt
 ```
 
-### Operation `evaluate_my_progress`
+### Operation `public_evaluate_my_progress`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'challenge-evaluate-my-progress' \
+$ python -m accelbyte_py_sdk_cli 'challenge-public-evaluate-my-progress' \
     'string' \
     --challenge_code '["string"]' \
     --include_one_time_event 'string' \

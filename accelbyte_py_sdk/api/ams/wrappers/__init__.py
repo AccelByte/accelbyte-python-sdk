@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.45.0"
+__version__ = "1.46.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -68,10 +68,10 @@ from ._development import development_server_configuration_patch_async
 
 from ._fleet_commander import basic_health_check
 from ._fleet_commander import basic_health_check_async
-from ._fleet_commander import func1
-from ._fleet_commander import func1_async
 from ._fleet_commander import portal_health_check
 from ._fleet_commander import portal_health_check_async
+from ._fleet_commander import version_info
+from ._fleet_commander import version_info_async
 
 from ._fleets import bulk_fleet_delete
 from ._fleets import bulk_fleet_delete_async

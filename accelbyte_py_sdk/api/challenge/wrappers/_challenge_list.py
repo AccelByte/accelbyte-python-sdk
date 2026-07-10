@@ -34,25 +34,28 @@ from ..models import ModelGetGoalsResponse
 from ..models import ModelListChallengeResponse
 from ..models import ResponseError
 
-from ..operations.challenge_list import GetChallenges
-from ..operations.challenge_list import GetChallengesSortByEnum, GetChallengesStatusEnum
+from ..operations.challenge_list import PublicGetChallenges
+from ..operations.challenge_list import (
+    PublicGetChallengesSortByEnum,
+    PublicGetChallengesStatusEnum,
+)
 from ..operations.challenge_list import PublicGetScheduledGoals
 from ..operations.challenge_list import PublicGetScheduledGoalsSortByEnum
 
 
-@same_doc_as(GetChallenges)
-def get_challenges(
+@same_doc_as(PublicGetChallenges)
+def public_get_challenges(
     keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[Union[str, GetChallengesSortByEnum]] = None,
-    status: Optional[Union[str, GetChallengesStatusEnum]] = None,
+    sort_by: Optional[Union[str, PublicGetChallengesSortByEnum]] = None,
+    status: Optional[Union[str, PublicGetChallengesStatusEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """List Challenges (GetChallenges)
+    """List Challenges (publicGetChallenges)
 
     - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -98,7 +101,7 @@ def get_challenges(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = GetChallenges.create(
+    request = PublicGetChallenges.create(
         keyword=keyword,
         limit=limit,
         offset=offset,
@@ -110,19 +113,19 @@ def get_challenges(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(GetChallenges)
-async def get_challenges_async(
+@same_doc_as(PublicGetChallenges)
+async def public_get_challenges_async(
     keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[Union[str, GetChallengesSortByEnum]] = None,
-    status: Optional[Union[str, GetChallengesStatusEnum]] = None,
+    sort_by: Optional[Union[str, PublicGetChallengesSortByEnum]] = None,
+    status: Optional[Union[str, PublicGetChallengesStatusEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """List Challenges (GetChallenges)
+    """List Challenges (publicGetChallenges)
 
     - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -168,7 +171,7 @@ async def get_challenges_async(
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
-    request = GetChallenges.create(
+    request = PublicGetChallenges.create(
         keyword=keyword,
         limit=limit,
         offset=offset,

@@ -67,7 +67,7 @@ class StatusV2Enum(StrEnum):
 class AdminQueryGameSessions(Operation):
     """Get all game sessions. (adminQueryGameSessions)
 
-    Get all game sessions.
+    Returns paginated list of game sessions matching the provided filter criteria. Supports filtering by namespace, status, members, and joinability.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions
