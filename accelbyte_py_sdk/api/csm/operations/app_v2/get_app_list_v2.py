@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class GetAppListV2(Operation):
     """Get list of extend apps on a given game namespace (GetAppListV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [READ]`
-
     Get list of extend apps on a given game namespace
 
     Properties:

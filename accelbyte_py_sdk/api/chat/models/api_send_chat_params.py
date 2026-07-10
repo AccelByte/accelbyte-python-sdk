@@ -33,11 +33,14 @@ class ApiSendChatParams(Model):
 
     Properties:
         message: (message) REQUIRED str
+
+        metadata: (metadata) REQUIRED str
     """
 
     # region fields
 
     message: str  # REQUIRED
+    metadata: str  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ApiSendChatParams(Model):
 
     def with_message(self, value: str) -> ApiSendChatParams:
         self.message = value
+        return self
+
+    def with_metadata(self, value: str) -> ApiSendChatParams:
+        self.metadata = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ApiSendChatParams(Model):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = str(self.metadata)
+        elif include_empty:
+            result["metadata"] = ""
         return result
 
     # endregion to methods
@@ -64,9 +75,10 @@ class ApiSendChatParams(Model):
     # region static methods
 
     @classmethod
-    def create(cls, message: str, **kwargs) -> ApiSendChatParams:
+    def create(cls, message: str, metadata: str, **kwargs) -> ApiSendChatParams:
         instance = cls()
         instance.message = message
+        instance.metadata = metadata
         return instance
 
     @classmethod
@@ -80,6 +92,10 @@ class ApiSendChatParams(Model):
             instance.message = str(dict_["message"])
         elif include_empty:
             instance.message = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = str(dict_["metadata"])
+        elif include_empty:
+            instance.metadata = ""
         return instance
 
     @classmethod
@@ -122,12 +138,14 @@ class ApiSendChatParams(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "message": "message",
+            "metadata": "metadata",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "message": True,
+            "metadata": True,
         }
 
     # endregion static methods

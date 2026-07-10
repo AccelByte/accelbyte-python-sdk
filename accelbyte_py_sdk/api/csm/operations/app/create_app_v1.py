@@ -38,8 +38,6 @@ from ...models import ResponseErrorResponse
 class CreateAppV1(Operation):
     """Creates new App for AB-Extend Customers (CreateAppV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
-
     Creates new App for AB-Extend Customers
 
     Available scenario:

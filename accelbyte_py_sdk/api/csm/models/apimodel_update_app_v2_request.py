@@ -33,11 +33,14 @@ class ApimodelUpdateAppV2Request(Model):
 
     Properties:
         description: (description) OPTIONAL str
+
+        enable_debug_mode: (enableDebugMode) OPTIONAL bool
     """
 
     # region fields
 
     description: str  # OPTIONAL
+    enable_debug_mode: bool  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ApimodelUpdateAppV2Request(Model):
 
     def with_description(self, value: str) -> ApimodelUpdateAppV2Request:
         self.description = value
+        return self
+
+    def with_enable_debug_mode(self, value: bool) -> ApimodelUpdateAppV2Request:
+        self.enable_debug_mode = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ApimodelUpdateAppV2Request(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "enable_debug_mode"):
+            result["enableDebugMode"] = bool(self.enable_debug_mode)
+        elif include_empty:
+            result["enableDebugMode"] = False
         return result
 
     # endregion to methods
@@ -65,11 +76,16 @@ class ApimodelUpdateAppV2Request(Model):
 
     @classmethod
     def create(
-        cls, description: Optional[str] = None, **kwargs
+        cls,
+        description: Optional[str] = None,
+        enable_debug_mode: Optional[bool] = None,
+        **kwargs,
     ) -> ApimodelUpdateAppV2Request:
         instance = cls()
         if description is not None:
             instance.description = description
+        if enable_debug_mode is not None:
+            instance.enable_debug_mode = enable_debug_mode
         return instance
 
     @classmethod
@@ -83,6 +99,10 @@ class ApimodelUpdateAppV2Request(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "enableDebugMode" in dict_ and dict_["enableDebugMode"] is not None:
+            instance.enable_debug_mode = bool(dict_["enableDebugMode"])
+        elif include_empty:
+            instance.enable_debug_mode = False
         return instance
 
     @classmethod
@@ -127,12 +147,14 @@ class ApimodelUpdateAppV2Request(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "description": "description",
+            "enableDebugMode": "enable_debug_mode",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "description": False,
+            "enableDebugMode": False,
         }
 
     # endregion static methods

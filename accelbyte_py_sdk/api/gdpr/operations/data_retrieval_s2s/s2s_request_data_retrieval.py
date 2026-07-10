@@ -34,11 +34,11 @@ from ...models import ResponseError
 
 
 class S2SRequestDataRetrieval(Operation):
-    """Submit user personal data retrieval request (S2SRequestDataRetrieval)
+    """Submit user's personal data request (S2SRequestDataRetrieval)
 
     Scope: account
 
-    Submit user personal data retrieval request.
+    Submit user's personal data request.
 
     **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 

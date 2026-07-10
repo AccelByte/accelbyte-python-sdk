@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteSubscriptionAppNotificationByUserIDV2(Operation):
     """Remove other person subscription by user ID (DeleteSubscriptionAppNotificationByUserIDV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
     Remove a user from the notification subscription by user ID.
 
     Properties:

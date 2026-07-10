@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class SaveSecretV2(Operation):
     """Save an environment secret (SaveSecretV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
     Save an environment secret.
     Secret will always be masked.
     Request body:

@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class RemoveIntegrationAppKeyValueClusterV2(Operation):
     """Remove Integration of an Extend App from a Cluster (RemoveIntegrationAppKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
-
     Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
 
     Properties:

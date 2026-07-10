@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class ListTopicsHandler(Operation):
     """List Async Messaging Topics (ListTopicsHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [READ]`
-
     List all Async Messaging Topics inside a game namespace.
 
     Properties:

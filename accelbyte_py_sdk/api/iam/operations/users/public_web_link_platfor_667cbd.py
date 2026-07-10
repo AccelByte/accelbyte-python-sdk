@@ -31,9 +31,11 @@ from .....core import HttpResponse
 
 
 class PublicWebLinkPlatformEstablish(Operation):
-    """Establish Link Progress  (PublicWebLinkPlatformEstablish)
+    """Platform Web Link Callback (PublicWebLinkPlatformEstablish)
 
-    Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+    Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+    After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -47,6 +49,10 @@ class PublicWebLinkPlatformEstablish(Operation):
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish

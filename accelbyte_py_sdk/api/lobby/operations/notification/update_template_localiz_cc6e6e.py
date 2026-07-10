@@ -36,9 +36,7 @@ from ...models import RestapiErrorResponseV1
 class UpdateTemplateLocalizationV1Admin(Operation):
     """update template localization (updateTemplateLocalizationV1Admin)
 
-    Update template localization
-
-    Action Code: 50208
+    Update the content and subject of an existing notification template localization.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}

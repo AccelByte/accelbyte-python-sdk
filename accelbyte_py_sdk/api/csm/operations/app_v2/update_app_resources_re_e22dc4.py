@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class UpdateAppResourcesResourceLimitFormV2(Operation):
     """Request Resource Limit to be increased (UpdateAppResourcesResourceLimitFormV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Update app resources provided on request body
 
     Properties:

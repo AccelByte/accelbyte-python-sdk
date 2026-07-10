@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class UnsubscribeTopicHandler(Operation):
     """Unsubscribe From Topic (UnsubscribeTopicHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [DELETE]`
-
     Unsubscribe App queue from a topic by Topic Name.
 
     Properties:

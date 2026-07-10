@@ -67,21 +67,21 @@ leaderboard-set-user-visibility-status-v2 '{"visibility": true}' 'LiBNrDjqoxcwgG
 leaderboard-get-leaderboard-configurations-public-v2 --login_with_auth "Bearer foo"
 leaderboard-get-all-time-leaderboard-ranking-public-v2 'pUL4pp2ncYAHdNzD' --login_with_auth "Bearer foo"
 leaderboard-get-leaderboard-configurations-admin-v3 --login_with_auth "Bearer foo"
-leaderboard-create-leaderboard-configuration-admin-v3 '{"allTime": false, "cycleIds": ["vmv9gsR5cJcHm3SZ", "LxoRDFuuuySj29a9", "LJE8HoRS1X2PFAAM"], "descending": true, "description": "CmBUqg2SCnqntX9y", "iconURL": "1aZSWMiVi10sG6vx", "leaderboardCode": "kfUcmqRRbceJ5i0E", "name": "eDxOgBnhhqElIaDm", "statCode": "l48wdNFLTm5T50x9"}' --login_with_auth "Bearer foo"
-leaderboard-delete-bulk-leaderboard-configuration-admin-v3 '{"leaderboardCodes": ["WT0GfH2rtOa4EXsX", "zOXQAk4mqrxzTtuL", "l4XlbGL8QOxtjzm8"]}' --login_with_auth "Bearer foo"
-leaderboard-get-leaderboard-configuration-admin-v3 'y2wNhmwoYZyI4EFZ' --login_with_auth "Bearer foo"
-leaderboard-update-leaderboard-configuration-admin-v3 '{"allTime": true, "cycleIds": ["KLCa3xreNDUWehwH", "3q31A806DJgas4b6", "z3LNUj7fdgLA84Z8"], "descending": true, "description": "Yk6QEgJjBbEDoNf3", "iconURL": "n0hEoRCAcf80zfFy", "name": "abWAgIUXiI07A68e"}' 'aqC2J9jyEW6GLbc0' --login_with_auth "Bearer foo"
-leaderboard-delete-leaderboard-configuration-admin-v3 'NaKDUL3sa13lk1dQ' --login_with_auth "Bearer foo"
-leaderboard-get-all-time-leaderboard-ranking-admin-v3 'BHO86IlBhnetU4Rw' --login_with_auth "Bearer foo"
-leaderboard-get-current-cycle-leaderboard-ranking-admin-v3 'TqUXlTDBzOuYsaZA' '2yyd4mbqoOfADMMA' --login_with_auth "Bearer foo"
-leaderboard-delete-all-user-ranking-by-cycle-id-admin-v3 'XFaY9eKa699bRVhy' 'aKwwrAP2aMlu7Wtj' --login_with_auth "Bearer foo"
-leaderboard-delete-user-ranking-by-cycle-id-admin-v3 'CtoYetOO847g8Oud' 'OfjnCuHZ3c46IjGa' '23YvYmmDg7VYPXIu' --login_with_auth "Bearer foo"
-leaderboard-hard-delete-leaderboard-admin-v3 'vUYTZBRujIUE1Tq5' --login_with_auth "Bearer foo"
-leaderboard-delete-user-ranking-by-leaderboard-code-admin-v3 'jyAZvkRCMNFIurjh' --login_with_auth "Bearer foo"
-leaderboard-get-hidden-users-v3 '2imdb4rbkXj0ZwsV' --login_with_auth "Bearer foo"
-leaderboard-get-user-ranking-admin-v3 'C0gL97ZVJSPqJiwv' '1qlYB1RSKs6gQxC3' --login_with_auth "Bearer foo"
-leaderboard-delete-user-ranking-admin-v3 'Gb7S0o4zGYY7KQI1' 'AeFgPqaOkvo1aolB' --login_with_auth "Bearer foo"
-leaderboard-get-user-visibility-status-v3 '4lkKB4EYOkQ1jMD3' 'cym8xIfkOVW2grRE' --login_with_auth "Bearer foo"
+leaderboard-create-leaderboard-configuration-admin-v3 '{"allTime": false, "cycleIds": ["vmv9gsR5cJcHm3SZ", "LxoRDFuuuySj29a9", "LJE8HoRS1X2PFAAM"], "descending": true, "description": "CmBUqg2SCnqntX9y", "enableServerHiddenFilter": true, "iconURL": "aZSWMiVi10sG6vxk", "leaderboardCode": "fUcmqRRbceJ5i0Ee", "name": "DxOgBnhhqElIaDml", "statCode": "48wdNFLTm5T50x9W"}' --login_with_auth "Bearer foo"
+leaderboard-delete-bulk-leaderboard-configuration-admin-v3 '{"leaderboardCodes": ["T0GfH2rtOa4EXsXz", "OXQAk4mqrxzTtuLl", "4XlbGL8QOxtjzm8y"]}' --login_with_auth "Bearer foo"
+leaderboard-get-leaderboard-configuration-admin-v3 '2wNhmwoYZyI4EFZK' --login_with_auth "Bearer foo"
+leaderboard-update-leaderboard-configuration-admin-v3 '{"allTime": true, "cycleIds": ["KLCa3xreNDUWehwH", "3q31A806DJgas4b6", "z3LNUj7fdgLA84Z8"], "descending": true, "description": "Yk6QEgJjBbEDoNf3", "enableServerHiddenFilter": false, "iconURL": "4mnRBkMNxvvKgAT8", "name": "mJrYq6hRkloqxM3g"}' 'pwxcfMy9XzjjI5Yb' --login_with_auth "Bearer foo"
+leaderboard-delete-leaderboard-configuration-admin-v3 'sKoADkzJEN2VHzih' --login_with_auth "Bearer foo"
+leaderboard-get-all-time-leaderboard-ranking-admin-v3 '3bit0VWn3CO39PXD' --login_with_auth "Bearer foo"
+leaderboard-get-current-cycle-leaderboard-ranking-admin-v3 'NxtXgeO3FgkXhjDz' 'aQY3snn2ZkP7cFdP' --login_with_auth "Bearer foo"
+leaderboard-delete-all-user-ranking-by-cycle-id-admin-v3 '43e5dC9XIBudfZgr' 'bHDIDm4hMzF4Txod' --login_with_auth "Bearer foo"
+leaderboard-delete-user-ranking-by-cycle-id-admin-v3 'enSrUTvfqU0bfoMm' '5cTtFWbotQyXJRcQ' 'WsmqPNs92epxk0i8' --login_with_auth "Bearer foo"
+leaderboard-hard-delete-leaderboard-admin-v3 'VxsZNereSvf9699m' --login_with_auth "Bearer foo"
+leaderboard-delete-user-ranking-by-leaderboard-code-admin-v3 'CEHThUJkETAsSp7g' --login_with_auth "Bearer foo"
+leaderboard-get-hidden-users-v3 'h4TeUTkOkAYfJB8A' --login_with_auth "Bearer foo"
+leaderboard-get-user-ranking-admin-v3 'T9t4Tv207Y2QD3oD' '5fLCr3OOlXVv8ZGF' --login_with_auth "Bearer foo"
+leaderboard-delete-user-ranking-admin-v3 '7uYnGzpipNDigNJm' 'a1MbqqZtfNWql4nm' --login_with_auth "Bearer foo"
+leaderboard-get-user-visibility-status-v3 'wAft4gqkNNlWkD9e' 'OziYRFOn0jJLHC9L' --login_with_auth "Bearer foo"
 leaderboard-set-user-leaderboard-visibility-v3 '{"visibility": true}' 'Lx0KOww3HICQLfl7' 'MUBG7qtPu64yAtUR' --login_with_auth "Bearer foo"
 leaderboard-delete-user-rankings-admin-v3 'KLRkb738HGS6rDgM' '["dIIlhS1fSiM9331m", "7Ta1PsKc50Kv6ecn", "EevcAx2K2zkRenmP"]' --login_with_auth "Bearer foo"
 leaderboard-get-user-leaderboard-rankings-admin-v3 'ZnGBt4P7WnbdSJtj' --login_with_auth "Bearer foo"
@@ -397,113 +397,113 @@ eval_tap $? 39 'GetLeaderboardConfigurationsAdminV3' test.out
 
 #- 40 CreateLeaderboardConfigurationAdminV3
 $PYTHON -m $MODULE 'leaderboard-create-leaderboard-configuration-admin-v3' \
-    '{"allTime": false, "cycleIds": ["d6X3viLvtEk4mTIp", "UA9gxo8SV38nEhoX", "mM2W7l6jHMA2rG3n"], "descending": false, "description": "4JUMSHNgqRqCV7us", "iconURL": "amANkZlOX9Sfo95H", "leaderboardCode": "gXqKhTPkwfLM9uSy", "name": "bRzWek2gZvRrvr0n", "statCode": "9d9lvccKMLhrTrcB"}' \
+    '{"allTime": false, "cycleIds": ["d6X3viLvtEk4mTIp", "UA9gxo8SV38nEhoX", "mM2W7l6jHMA2rG3n"], "descending": false, "description": "4JUMSHNgqRqCV7us", "enableServerHiddenFilter": false, "iconURL": "0NqoTow0qiOiC4j0", "leaderboardCode": "iktm0ZPLkLOsp0LZ", "name": "5njN86Hl8kUXzt6b", "statCode": "Sc6bWvgpVyW9dD1k"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 40 'CreateLeaderboardConfigurationAdminV3' test.out
 
 #- 41 DeleteBulkLeaderboardConfigurationAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-bulk-leaderboard-configuration-admin-v3' \
-    '{"leaderboardCodes": ["E2ItBS3KtKZWe8ao", "FzAyBME74HUtipUW", "YhWV1qx8CzPML52f"]}' \
+    '{"leaderboardCodes": ["OmvrAejcq2LgkQua", "S7RBx3vim02jBOxr", "ZDyvpcLYOWA8NjxO"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'DeleteBulkLeaderboardConfigurationAdminV3' test.out
 
 #- 42 GetLeaderboardConfigurationAdminV3
 $PYTHON -m $MODULE 'leaderboard-get-leaderboard-configuration-admin-v3' \
-    'aXUr9Sk4lq2faBcA' \
+    'naEok4nOOCzfsflh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 42 'GetLeaderboardConfigurationAdminV3' test.out
 
 #- 43 UpdateLeaderboardConfigurationAdminV3
 $PYTHON -m $MODULE 'leaderboard-update-leaderboard-configuration-admin-v3' \
-    '{"allTime": false, "cycleIds": ["XKlhvyH8paOJtxqM", "PpcVfRwNj547fH0X", "rKEDpEY8VnocGAjc"], "descending": false, "description": "Zhl0bQxFJ3sWCqQp", "iconURL": "Q2FbKPFMycMSQ4qf", "name": "AacR0LgB5BUXvjcu"}' \
-    '2s6w3VifnKqmTSoG' \
+    '{"allTime": false, "cycleIds": ["XKlhvyH8paOJtxqM", "PpcVfRwNj547fH0X", "rKEDpEY8VnocGAjc"], "descending": false, "description": "Zhl0bQxFJ3sWCqQp", "enableServerHiddenFilter": false, "iconURL": "bKPFMycMSQ4qfAac", "name": "R0LgB5BUXvjcu2s6"}' \
+    'w3VifnKqmTSoGH1X' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 43 'UpdateLeaderboardConfigurationAdminV3' test.out
 
 #- 44 DeleteLeaderboardConfigurationAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-leaderboard-configuration-admin-v3' \
-    'H1XEfY6QAYn6WQ5U' \
+    'EfY6QAYn6WQ5UBEU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 44 'DeleteLeaderboardConfigurationAdminV3' test.out
 
 #- 45 GetAllTimeLeaderboardRankingAdminV3
 $PYTHON -m $MODULE 'leaderboard-get-all-time-leaderboard-ranking-admin-v3' \
-    'BEU1QAOHfZiGhxOd' \
+    '1QAOHfZiGhxOdcuD' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 45 'GetAllTimeLeaderboardRankingAdminV3' test.out
 
 #- 46 GetCurrentCycleLeaderboardRankingAdminV3
 $PYTHON -m $MODULE 'leaderboard-get-current-cycle-leaderboard-ranking-admin-v3' \
-    'cuDXSxSc3aZPV87p' \
-    'na08gxefTYKhuxaE' \
+    'XSxSc3aZPV87pna0' \
+    '8gxefTYKhuxaEc7M' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 46 'GetCurrentCycleLeaderboardRankingAdminV3' test.out
 
 #- 47 DeleteAllUserRankingByCycleIdAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-all-user-ranking-by-cycle-id-admin-v3' \
-    'c7M4P7UckSC6ePeN' \
-    '8i4GrFES9z7xueHp' \
+    '4P7UckSC6ePeN8i4' \
+    'GrFES9z7xueHpATH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 47 'DeleteAllUserRankingByCycleIdAdminV3' test.out
 
 #- 48 DeleteUserRankingByCycleIdAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-user-ranking-by-cycle-id-admin-v3' \
-    'ATHccee9GXhKcjmS' \
-    'EwdrkEnnqKzFsLfY' \
-    'alUlfwEQKjU7eHGe' \
+    'ccee9GXhKcjmSEwd' \
+    'rkEnnqKzFsLfYalU' \
+    'lfwEQKjU7eHGebSV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 48 'DeleteUserRankingByCycleIdAdminV3' test.out
 
 #- 49 HardDeleteLeaderboardAdminV3
 $PYTHON -m $MODULE 'leaderboard-hard-delete-leaderboard-admin-v3' \
-    'bSVu0LQ40kepEaC4' \
+    'u0LQ40kepEaC4dfi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 49 'HardDeleteLeaderboardAdminV3' test.out
 
 #- 50 DeleteUserRankingByLeaderboardCodeAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-user-ranking-by-leaderboard-code-admin-v3' \
-    'dfiOMZfEhHr39pys' \
+    'OMZfEhHr39pysFO3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 50 'DeleteUserRankingByLeaderboardCodeAdminV3' test.out
 
 #- 51 GetHiddenUsersV3
 $PYTHON -m $MODULE 'leaderboard-get-hidden-users-v3' \
-    'FO3Zvc1BZG99Lyvf' \
+    'Zvc1BZG99LyvfvHE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 51 'GetHiddenUsersV3' test.out
 
 #- 52 GetUserRankingAdminV3
 $PYTHON -m $MODULE 'leaderboard-get-user-ranking-admin-v3' \
-    'vHEsJKQQewVLMUoA' \
-    'naRcYp7FUjfIGaff' \
+    'sJKQQewVLMUoAnaR' \
+    'cYp7FUjfIGaffofl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 52 'GetUserRankingAdminV3' test.out
 
 #- 53 DeleteUserRankingAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-user-ranking-admin-v3' \
-    'oflEIByYqeKN0meG' \
-    'elYF5wWaDhukU4kh' \
+    'EIByYqeKN0meGelY' \
+    'F5wWaDhukU4khGG4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 53 'DeleteUserRankingAdminV3' test.out
 
 #- 54 GetUserVisibilityStatusV3
 $PYTHON -m $MODULE 'leaderboard-get-user-visibility-status-v3' \
-    'GG4vZFTYnPkmSu4P' \
-    'Wam1jxR7SETWjteo' \
+    'vZFTYnPkmSu4PWam' \
+    '1jxR7SETWjteoc8f' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 54 'GetUserVisibilityStatusV3' test.out
@@ -511,31 +511,31 @@ eval_tap $? 54 'GetUserVisibilityStatusV3' test.out
 #- 55 SetUserLeaderboardVisibilityV3
 $PYTHON -m $MODULE 'leaderboard-set-user-leaderboard-visibility-v3' \
     '{"visibility": false}' \
-    'VBycvU4PbmRDcrg0' \
-    'DjQjBECXvea7H1m2' \
+    'cvU4PbmRDcrg0DjQ' \
+    'jBECXvea7H1m2lJF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 55 'SetUserLeaderboardVisibilityV3' test.out
 
 #- 56 DeleteUserRankingsAdminV3
 $PYTHON -m $MODULE 'leaderboard-delete-user-rankings-admin-v3' \
-    'lJFRZ3ZprZ60zMjh' \
-    '["THeh94TSenE5hCFk", "If5weqZ18MH57l2Z", "srh90ETtYmGukz3M"]' \
+    'RZ3ZprZ60zMjhTHe' \
+    '["h94TSenE5hCFkIf5", "weqZ18MH57l2Zsrh", "90ETtYmGukz3Mnlr"]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 56 'DeleteUserRankingsAdminV3' test.out
 
 #- 57 GetUserLeaderboardRankingsAdminV3
 $PYTHON -m $MODULE 'leaderboard-get-user-leaderboard-rankings-admin-v3' \
-    'nlrjcHp6B8Vj7rXF' \
+    'jcHp6B8Vj7rXFgDn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 57 'GetUserLeaderboardRankingsAdminV3' test.out
 
 #- 58 SetUserVisibilityV3
 $PYTHON -m $MODULE 'leaderboard-set-user-visibility-v3' \
-    '{"visibility": false}' \
-    '9Ns8eLzYEvwSWTaL' \
+    '{"visibility": true}' \
+    '8eLzYEvwSWTaLQjc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 58 'SetUserVisibilityV3' test.out
@@ -548,38 +548,38 @@ eval_tap $? 59 'GetLeaderboardConfigurationsPublicV3' test.out
 
 #- 60 GetLeaderboardConfigurationPublicV3
 $PYTHON -m $MODULE 'leaderboard-get-leaderboard-configuration-public-v3' \
-    'QjctvrK2jhsYpKPl' \
+    'tvrK2jhsYpKPlXn7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 60 'GetLeaderboardConfigurationPublicV3' test.out
 
 #- 61 GetAllTimeLeaderboardRankingPublicV3
 $PYTHON -m $MODULE 'leaderboard-get-all-time-leaderboard-ranking-public-v3' \
-    'Xn77AtYoFzLAATPY' \
+    '7AtYoFzLAATPY8P8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 61 'GetAllTimeLeaderboardRankingPublicV3' test.out
 
 #- 62 GetCurrentCycleLeaderboardRankingPublicV3
 $PYTHON -m $MODULE 'leaderboard-get-current-cycle-leaderboard-ranking-public-v3' \
-    '8P8P3cfoivvQxeve' \
-    'cWw7Rry0KK5rgAGO' \
+    'P3cfoivvQxevecWw' \
+    '7Rry0KK5rgAGO0dW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 62 'GetCurrentCycleLeaderboardRankingPublicV3' test.out
 
 #- 63 BulkGetUsersRankingPublicV3
 $PYTHON -m $MODULE 'leaderboard-bulk-get-users-ranking-public-v3' \
-    '{"userIds": ["0dW8rX2MVUGKSZ4G", "cLkt4pK32sJxlZcC", "TpTdRtCHvuk6B6XT"]}' \
-    'mSLyn50sigBVZxiK' \
+    '{"userIds": ["8rX2MVUGKSZ4GcLk", "t4pK32sJxlZcCTpT", "dRtCHvuk6B6XTmSL"]}' \
+    'yn50sigBVZxiKdV5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 63 'BulkGetUsersRankingPublicV3' test.out
 
 #- 64 GetUserRankingPublicV3
 $PYTHON -m $MODULE 'leaderboard-get-user-ranking-public-v3' \
-    'dV57GvRyd9UuL02L' \
-    'e8HSCslsDd4M1F5q' \
+    '7GvRyd9UuL02Le8H' \
+    'SCslsDd4M1F5qRIb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 64 'GetUserRankingPublicV3' test.out

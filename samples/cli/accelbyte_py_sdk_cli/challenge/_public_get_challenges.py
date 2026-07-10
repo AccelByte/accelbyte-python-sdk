@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Iam Service
+# AGS Challenge Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,52 +30,65 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.iam import (
-    platform_token_request_handler as platform_token_request_handler_internal,
+from accelbyte_py_sdk.api.challenge import (
+    public_get_challenges as public_get_challenges_internal,
 )
-from accelbyte_py_sdk.api.iam.models import OauthmodelErrorResponse
-from accelbyte_py_sdk.api.iam.models import OauthmodelTokenResponse
+from accelbyte_py_sdk.api.challenge.models import IamErrorResponse
+from accelbyte_py_sdk.api.challenge.models import ModelListChallengeResponse
+from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 
 @click.command()
-@click.argument("platform_id", type=str)
-@click.option("--device_id", "device_id", type=str)
-@click.option("--mac_address", "mac_address", type=str)
-@click.option("--platform_token", "platform_token", type=str)
+@click.option("--keyword", "keyword", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--sort_by", "sort_by", type=str)
+@click.option("--status", "status", type=str)
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def platform_token_request_handler(
-    platform_id: str,
-    device_id: Optional[str] = None,
-    mac_address: Optional[str] = None,
-    platform_token: Optional[str] = None,
+def public_get_challenges(
+    keyword: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    status: Optional[str] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(platform_token_request_handler_internal.__doc__)
+        click.echo(public_get_challenges_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = platform_token_request_handler_internal(
-        platform_id=platform_id,
-        device_id=device_id,
-        mac_address=mac_address,
-        platform_token=platform_token,
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
+    result, error = public_get_challenges_internal(
+        keyword=keyword,
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
+        status=status,
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"PlatformTokenRequestHandler failed: {str(error)}")
+        raise Exception(f"publicGetChallenges failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-platform_token_request_handler.operation_id = "PlatformTokenRequestHandler"
-platform_token_request_handler.is_deprecated = True
+public_get_challenges.operation_id = "publicGetChallenges"
+public_get_challenges.is_deprecated = False

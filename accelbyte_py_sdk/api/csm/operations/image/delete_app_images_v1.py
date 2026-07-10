@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class DeleteAppImagesV1(Operation):
     """Deletes the images (DeleteAppImagesV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
     Deletes the images uploaded to the repository
 
     Properties:

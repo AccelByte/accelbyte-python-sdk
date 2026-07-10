@@ -37,7 +37,7 @@ from ...models import ResponseError
 class JoinGameSession(Operation):
     """Join a game session. (joinGameSession)
 
-    Join a game session.
+    Joins a game session. For PASSWORD_PROTECTED sessions, the request body must include the session password. The session must have OPEN or INVITE_ONLY joinability and available slots.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/join

@@ -34,6 +34,8 @@ class RestapiModerationRuleActionsResponse(Model):
     """Restapi moderation rule actions response (restapi.ModerationRuleActionsResponse)
 
     Properties:
+        auto_resolve: (autoResolve) OPTIONAL bool
+
         ban_account: (banAccount) OPTIONAL RestapiBanAccountActionResponse
 
         delete_chat: (deleteChat) OPTIONAL bool
@@ -45,6 +47,7 @@ class RestapiModerationRuleActionsResponse(Model):
 
     # region fields
 
+    auto_resolve: bool  # OPTIONAL
     ban_account: RestapiBanAccountActionResponse  # OPTIONAL
     delete_chat: bool  # OPTIONAL
     extension_action_ids: List[str]  # OPTIONAL
@@ -53,6 +56,10 @@ class RestapiModerationRuleActionsResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_auto_resolve(self, value: bool) -> RestapiModerationRuleActionsResponse:
+        self.auto_resolve = value
+        return self
 
     def with_ban_account(
         self, value: RestapiBanAccountActionResponse
@@ -80,6 +87,10 @@ class RestapiModerationRuleActionsResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "auto_resolve"):
+            result["autoResolve"] = bool(self.auto_resolve)
+        elif include_empty:
+            result["autoResolve"] = False
         if hasattr(self, "ban_account"):
             result["banAccount"] = self.ban_account.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -105,6 +116,7 @@ class RestapiModerationRuleActionsResponse(Model):
     @classmethod
     def create(
         cls,
+        auto_resolve: Optional[bool] = None,
         ban_account: Optional[RestapiBanAccountActionResponse] = None,
         delete_chat: Optional[bool] = None,
         extension_action_ids: Optional[List[str]] = None,
@@ -112,6 +124,8 @@ class RestapiModerationRuleActionsResponse(Model):
         **kwargs,
     ) -> RestapiModerationRuleActionsResponse:
         instance = cls()
+        if auto_resolve is not None:
+            instance.auto_resolve = auto_resolve
         if ban_account is not None:
             instance.ban_account = ban_account
         if delete_chat is not None:
@@ -129,6 +143,10 @@ class RestapiModerationRuleActionsResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "autoResolve" in dict_ and dict_["autoResolve"] is not None:
+            instance.auto_resolve = bool(dict_["autoResolve"])
+        elif include_empty:
+            instance.auto_resolve = False
         if "banAccount" in dict_ and dict_["banAccount"] is not None:
             instance.ban_account = RestapiBanAccountActionResponse.create_from_dict(
                 dict_["banAccount"], include_empty=include_empty
@@ -192,6 +210,7 @@ class RestapiModerationRuleActionsResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "autoResolve": "auto_resolve",
             "banAccount": "ban_account",
             "deleteChat": "delete_chat",
             "extensionActionIds": "extension_action_ids",
@@ -201,6 +220,7 @@ class RestapiModerationRuleActionsResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "autoResolve": False,
             "banAccount": False,
             "deleteChat": False,
             "extensionActionIds": False,

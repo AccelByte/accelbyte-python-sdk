@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteAppV2(Operation):
     """Delete extend app by name (DeleteAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [DELETE]`
-
     Delete extend app by given {app} name
 
     This endpoint will delete app information, configuration, deployments and all related manifest from

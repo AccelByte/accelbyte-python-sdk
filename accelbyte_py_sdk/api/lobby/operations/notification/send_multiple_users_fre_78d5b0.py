@@ -36,8 +36,7 @@ from ...models import RestapiErrorResponseV1
 class SendMultipleUsersFreeformNotificationV1Admin(Operation):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
-    Sends notification to multiple user.
-    Action Code: 50211
+    Sends freeform notification to multiple users by user ID list.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify

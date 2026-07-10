@@ -169,12 +169,9 @@ def admin_generate_personal_data_url(
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-
-
-
-    If admin request data for themselves, password is need to be set
+    Generate personal data download url.
+    If admin request data for themselves, password is need to be set.
+    Scope: account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -232,12 +229,9 @@ async def admin_generate_personal_data_url_async(
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-
-
-
-    If admin request data for themselves, password is need to be set
+    Generate personal data download url.
+    If admin request data for themselves, password is need to be set.
+    Scope: account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -452,6 +446,8 @@ def admin_get_user_personal_data_requests(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -509,6 +505,8 @@ async def admin_get_user_personal_data_requests_async(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -534,9 +532,9 @@ def admin_request_data_retrieval(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user personal data retrieval request (AdminRequestDataRetrieval)
+    """Submit user's personal data request (AdminRequestDataRetrieval)
 
-    Submit user personal data retrieval request.
+    Submit user's personal data request.
     Scope: account
 
     ### Request Header:
@@ -594,9 +592,9 @@ async def admin_request_data_retrieval_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user personal data retrieval request (AdminRequestDataRetrieval)
+    """Submit user's personal data request (AdminRequestDataRetrieval)
 
-    Submit user personal data retrieval request.
+    Submit user's personal data request.
     Scope: account
 
     ### Request Header:
@@ -1017,9 +1015,9 @@ def public_request_data_retrieval(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit personal data retrieval request (PublicRequestDataRetrieval)
+    """Submit user's personal data request (PublicRequestDataRetrieval)
 
-    Submit personal data retrieval request.
+    Submit user's personal data request.
     Scope: account
 
     ### Request Header:
@@ -1079,9 +1077,9 @@ async def public_request_data_retrieval_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit personal data retrieval request (PublicRequestDataRetrieval)
+    """Submit user's personal data request (PublicRequestDataRetrieval)
 
-    Submit personal data retrieval request.
+    Submit user's personal data request.
     Scope: account
 
     ### Request Header:

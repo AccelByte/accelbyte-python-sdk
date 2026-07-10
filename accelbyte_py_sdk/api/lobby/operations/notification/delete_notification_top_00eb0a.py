@@ -35,12 +35,7 @@ from ...models import RestapiErrorResponseV1
 class DeleteNotificationTopicV1Admin(Operation):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Delete topic information by topic name.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50217
+    Delete a notification topic by topic name.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}

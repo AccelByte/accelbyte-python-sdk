@@ -95,10 +95,7 @@ def create_notification_template_v1_admin(
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
-
     Check model description for detailed input restrictions.
-
-    Action Code: 50204
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -153,10 +150,7 @@ async def create_notification_template_v1_admin_async(
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
-
     Check model description for detailed input restrictions.
-
-    Action Code: 50204
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -211,11 +205,8 @@ def create_notification_topic_v1_admin(
     """create new notification topic (createNotificationTopicV1Admin)
 
     Create new notification topic.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50214
+    Topic name must be uppercase alphabets and underscores only, no spaces or special characters (e.g. TOPIC_TEST).
+    Already existing topics cannot be created again.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -264,11 +255,8 @@ async def create_notification_topic_v1_admin_async(
     """create new notification topic (createNotificationTopicV1Admin)
 
     Create new notification topic.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50214
+    Topic name must be uppercase alphabets and underscores only, no spaces or special characters (e.g. TOPIC_TEST).
+    Already existing topics cannot be created again.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -426,9 +414,7 @@ def delete_notification_template_slug_v1_admin(
 ):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Delete template slug in notification template
-
-    Action Code: 50206
+    Delete all localizations for the given notification template slug.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -478,9 +464,7 @@ async def delete_notification_template_slug_v1_admin_async(
 ):
     """delete template slug in notification template (deleteNotificationTemplateSlugV1Admin)
 
-    Delete template slug in notification template
-
-    Action Code: 50206
+    Delete all localizations for the given notification template slug.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -532,12 +516,7 @@ def delete_notification_topic_v1_admin(
 ):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Delete topic information by topic name.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50217
+    Delete a notification topic by topic name.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -587,12 +566,7 @@ async def delete_notification_topic_v1_admin_async(
 ):
     """delete topic information by topic name (deleteNotificationTopicV1Admin)
 
-    Delete topic information by topic name.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50217
+    Delete a notification topic by topic name.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -645,9 +619,7 @@ def delete_template_localization_v1_admin(
 ):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
-    Delete template localization
-
-    Action Code: 50209
+    Delete a notification template localization by slug and language.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -701,9 +673,7 @@ async def delete_template_localization_v1_admin_async(
 ):
     """delete template localization (deleteTemplateLocalizationV1Admin)
 
-    Delete template localization
-
-    Action Code: 50209
+    Delete a notification template localization by slug and language.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -975,9 +945,7 @@ def get_all_notification_templates_v1_admin(
 ):
     """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
 
-    Get all templates in a namespace
-
-    Action Code: 50203
+    Get all notification templates in a namespace.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -1025,9 +993,7 @@ async def get_all_notification_templates_v1_admin_async(
 ):
     """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
 
-    Get all templates in a namespace
-
-    Action Code: 50203
+    Get all notification templates in a namespace.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates
@@ -1080,9 +1046,7 @@ def get_all_notification_topics_v1_admin(
 ):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Get topic by namespace.
-
-    Action Code: 50213
+    Get all notification topics in a namespace.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -1140,9 +1104,7 @@ async def get_all_notification_topics_v1_admin_async(
 ):
     """get topic by namespace (getAllNotificationTopicsV1Admin)
 
-    Get topic by namespace.
-
-    Action Code: 50213
+    Get all notification topics in a namespace.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics
@@ -1432,9 +1394,7 @@ def get_notification_topic_v1_admin(
 ):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
-    Get topic information by topic name.
-
-    Action Code: 50215
+    Get notification topic information by topic name.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -1484,9 +1444,7 @@ async def get_notification_topic_v1_admin_async(
 ):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
-    Get topic information by topic name.
-
-    Action Code: 50215
+    Get notification topic information by topic name.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -1539,9 +1497,7 @@ def get_single_template_localization_v1_admin(
 ):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
-    Get a template localization
-
-    Action Code: 50207
+    Get a single notification template localization by slug and language.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -1595,9 +1551,7 @@ async def get_single_template_localization_v1_admin_async(
 ):
     """get a template localization (getSingleTemplateLocalizationV1Admin)
 
-    Get a template localization
-
-    Action Code: 50207
+    Get a single notification template localization by slug and language.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -1655,9 +1609,7 @@ def get_template_slug_localizations_template_v1_admin(
 ):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
-    Get all templates in a namespace
-
-    Action Code: 50205
+    Get all localization variants for a given notification template slug.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -1719,9 +1671,7 @@ async def get_template_slug_localizations_template_v1_admin_async(
 ):
     """get all notification template localization in a slug (getTemplateSlugLocalizationsTemplateV1Admin)
 
-    Get all templates in a namespace
-
-    Action Code: 50205
+    Get all localization variants for a given notification template slug.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}
@@ -2123,9 +2073,7 @@ def publish_template_localization_v1_admin(
 ):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
-    Publish notification template draft. Empty draft can not be published.
-
-    Action Code: 50210
+    Publish a notification template draft. Empty drafts cannot be published.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
@@ -2179,9 +2127,7 @@ async def publish_template_localization_v1_admin_async(
 ):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
-    Publish notification template draft. Empty draft can not be published.
-
-    Action Code: 50210
+    Publish a notification template draft. Empty drafts cannot be published.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish
@@ -2236,8 +2182,7 @@ def send_multiple_users_freeform_notification_v1_admin(
 ):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
-    Sends notification to multiple user.
-    Action Code: 50211
+    Sends freeform notification to multiple users by user ID list.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
@@ -2285,8 +2230,7 @@ async def send_multiple_users_freeform_notification_v1_admin_async(
 ):
     """send freeform notification to multiple users (sendMultipleUsersFreeformNotificationV1Admin)
 
-    Sends notification to multiple user.
-    Action Code: 50211
+    Sends freeform notification to multiple users by user ID list.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/bulkUsers/freeform/notify
@@ -2572,7 +2516,6 @@ def send_specific_user_freeform_notification_v1_admin(
     """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
 
     Sends notification to a user.
-    Action Code: 50211
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
@@ -2627,7 +2570,6 @@ async def send_specific_user_freeform_notification_v1_admin_async(
     """send freeform notification to a user (sendSpecificUserFreeformNotificationV1Admin)
 
     Sends notification to a user.
-    Action Code: 50211
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/freeform/notify
@@ -2684,13 +2626,9 @@ def send_specific_user_templated_notification_v1_admin(
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
     Sends templated notification to a user.
-
     In the request body, specify which template slug (template identifier) to use and the template language.
-
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-    Template need to be published before it can be use to send notifications
-
-    Action Code: 50212
+    Template need to be published before it can be used to send notifications.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
@@ -2745,13 +2683,9 @@ async def send_specific_user_templated_notification_v1_admin_async(
     """send templated notification to specific user (sendSpecificUserTemplatedNotificationV1Admin)
 
     Sends templated notification to a user.
-
     In the request body, specify which template slug (template identifier) to use and the template language.
-
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-    Template need to be published before it can be use to send notifications
-
-    Action Code: 50212
+    Template need to be published before it can be used to send notifications.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/users/{userId}/templates/notify
@@ -2808,8 +2742,6 @@ def send_users_freeform_notification_v1_admin(
 
     Sends notification to all connected users in a namespace.
 
-    Action Code: 50201
-
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
 
@@ -2859,8 +2791,6 @@ async def send_users_freeform_notification_v1_admin_async(
     """send freeform notification to connected users (sendUsersFreeformNotificationV1Admin)
 
     Sends notification to all connected users in a namespace.
-
-    Action Code: 50201
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/freeform/notify
@@ -2913,13 +2843,9 @@ def send_users_templated_notification_v1_admin(
     """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
 
     Sends notification to all connected users in a namespace with predefined template.
-
     In the request body, specify which template slug (template identifier) to use and the template language.
-
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-    Template need to be published before it can be use to send notifications
-
-    Action Code: 50202
+    Template need to be published before it can be used to send notifications.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
@@ -2970,13 +2896,9 @@ async def send_users_templated_notification_v1_admin_async(
     """send notification to connected users with template (sendUsersTemplatedNotificationV1Admin)
 
     Sends notification to all connected users in a namespace with predefined template.
-
     In the request body, specify which template slug (template identifier) to use and the template language.
-
     NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content.
-    Template need to be published before it can be use to send notifications
-
-    Action Code: 50202
+    Template need to be published before it can be used to send notifications.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/notify
@@ -3029,12 +2951,8 @@ def update_notification_topic_v1_admin(
 ):
     """update topic information by topic name (updateNotificationTopicV1Admin)
 
-    Update topic information by topic name.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50216
+    Update notification topic information by topic name.
+    Topic name must be uppercase alphabets and underscores only, no spaces or special characters (e.g. TOPIC_TEST).
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -3090,12 +3008,8 @@ async def update_notification_topic_v1_admin_async(
 ):
     """update topic information by topic name (updateNotificationTopicV1Admin)
 
-    Update topic information by topic name.
-
-    topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST.
-    Already existing topic can not be created
-
-    Action Code: 50216
+    Update notification topic information by topic name.
+    Topic name must be uppercase alphabets and underscores only, no spaces or special characters (e.g. TOPIC_TEST).
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}
@@ -3154,9 +3068,7 @@ def update_template_localization_v1_admin(
 ):
     """update template localization (updateTemplateLocalizationV1Admin)
 
-    Update template localization
-
-    Action Code: 50208
+    Update the content and subject of an existing notification template localization.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}
@@ -3216,9 +3128,7 @@ async def update_template_localization_v1_admin_async(
 ):
     """update template localization (updateTemplateLocalizationV1Admin)
 
-    Update template localization
-
-    Action Code: 50208
+    Update the content and subject of an existing notification template localization.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}

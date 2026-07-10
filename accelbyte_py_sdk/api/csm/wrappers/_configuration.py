@@ -58,8 +58,6 @@ def delete_secret_v1(
 ):
     """Delete an environment secret (DeleteSecretV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
     Delete an environment secret.
 
     Properties:
@@ -114,8 +112,6 @@ async def delete_secret_v1_async(
     **kwargs
 ):
     """Delete an environment secret (DeleteSecretV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
 
     Delete an environment secret.
 
@@ -174,8 +170,6 @@ def delete_variable_v1(
 ):
     """Delete an environment variable (DeleteVariableV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
     Delete an environment variable.
 
     Properties:
@@ -230,8 +224,6 @@ async def delete_variable_v1_async(
     **kwargs
 ):
     """Delete an environment variable (DeleteVariableV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
 
     Delete an environment variable.
 
@@ -290,8 +282,6 @@ def get_list_of_secrets_v1(
     **kwargs
 ):
     """Get list of environment secrets (GetListOfSecretsV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
 
     Get list of environment secrets per app
     Available Deployment Status:
@@ -356,8 +346,6 @@ async def get_list_of_secrets_v1_async(
     **kwargs
 ):
     """Get list of environment secrets (GetListOfSecretsV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [READ]`
 
     Get list of environment secrets per app
     Available Deployment Status:
@@ -425,8 +413,6 @@ def get_list_of_variables_v1(
 ):
     """Get list of environment variables (GetListOfVariablesV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
-
     Get list of environment variables per app
     Available Deployment Status:
     `deployed` = app config is already deployed
@@ -490,8 +476,6 @@ async def get_list_of_variables_v1_async(
     **kwargs
 ):
     """Get list of environment variables (GetListOfVariablesV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [READ]`
 
     Get list of environment variables per app
     Available Deployment Status:
@@ -558,8 +542,6 @@ def save_secret_v1(
 ):
     """Save an environment secret (SaveSecretV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
-
     Save an environment secret.
     Request body:
     - configName : environment secret name - Required.
@@ -620,8 +602,6 @@ async def save_secret_v1_async(
     **kwargs
 ):
     """Save an environment secret (SaveSecretV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
 
     Save an environment secret.
     Request body:
@@ -686,8 +666,6 @@ def save_variable_v1(
 ):
     """Save an environment variable (SaveVariableV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
     Save an environment variable.
     Request body:
     - configName : environment variable name - Required.
@@ -748,8 +726,6 @@ async def save_variable_v1_async(
     **kwargs
 ):
     """Save an environment variable (SaveVariableV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
 
     Save an environment variable.
     Request body:
@@ -815,8 +791,6 @@ def update_secret_v1(
 ):
     """Update an environment secret (UpdateSecretV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
     Update an environment secret.
     Request body:
     - value : configuration value - Required.
@@ -879,8 +853,6 @@ async def update_secret_v1_async(
     **kwargs
 ):
     """Update an environment secret (UpdateSecretV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
 
     Update an environment secret.
     Request body:
@@ -947,8 +919,6 @@ def update_variable_v1(
 ):
     """Update an environment variable (UpdateVariableV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
     Update an environment variable.
     Request body:
     - value : configuration value - Required.
@@ -1011,8 +981,6 @@ async def update_variable_v1_async(
     **kwargs
 ):
     """Update an environment variable (UpdateVariableV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
 
     Update an environment variable.
     Request body:

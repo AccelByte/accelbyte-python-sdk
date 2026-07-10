@@ -65,6 +65,9 @@ class CreateLeaderboardConfigurationAdminV3(Operation):
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
 
+
+      * enableServerHiddenFilter: if true, the leaderboard will filter hidden users on server side. If false, the leaderboard will not filter hidden users. default is false. (optional).
+
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
 

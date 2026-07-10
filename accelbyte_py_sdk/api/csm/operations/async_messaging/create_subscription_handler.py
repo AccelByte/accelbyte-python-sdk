@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateSubscriptionHandler(Operation):
     """Subscribe To Topic (CreateSubscriptionHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:SUBSCRIPTIONS [CREATE]`
-
     Subscribe App queue to given Topic name list inside a game namespace.
 
     Properties:

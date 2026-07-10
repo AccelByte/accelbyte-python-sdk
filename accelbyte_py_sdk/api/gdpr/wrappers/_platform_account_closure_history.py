@@ -90,6 +90,8 @@ def admin_get_user_platform_account_closure_histories(
 
         403: Forbidden - ResponseError (Forbidden)
 
+        404: Not Found - ResponseError (Not Found)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -158,6 +160,8 @@ async def admin_get_user_platform_account_closure_histories_async(
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

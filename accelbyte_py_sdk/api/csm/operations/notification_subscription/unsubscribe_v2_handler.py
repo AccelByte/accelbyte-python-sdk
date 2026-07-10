@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class UnsubscribeV2Handler(Operation):
     """Unsubscribe to app notification (UnsubscribeV2Handler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
-
     Unsubscribe to app notification
 
     Properties:

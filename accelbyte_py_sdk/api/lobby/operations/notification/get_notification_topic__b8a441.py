@@ -36,9 +36,7 @@ from ...models import RestapiErrorResponseV1
 class GetNotificationTopicV1Admin(Operation):
     """get topic information by topic name (getNotificationTopicV1Admin)
 
-    Get topic information by topic name.
-
-    Action Code: 50215
+    Get notification topic information by topic name.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName}

@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteSecretV2(Operation):
     """Delete an environment secret (DeleteSecretV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [DELETE]`
-
     Delete an environment secret by its config id
 
     Properties:

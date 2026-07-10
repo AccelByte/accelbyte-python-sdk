@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class DeleteAppImagesV2(Operation):
     """Delete app images (DeleteAppImagesV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
     Deletes list of provided image tags from the app image repository
 
     Properties:

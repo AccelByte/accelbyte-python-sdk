@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateSQLDatabaseV2(Operation):
     """Creates SQL Database for Extend App (CreateSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASES [CREATE]`
-
     Creates a SQL database along with its credentials associated with given extend app. The database will be created in the provisioned SQL cluster.
 
     Properties:

@@ -225,12 +225,14 @@ class NamespaceContextCache(Timer):
                 is_fetcher = False
 
         if not is_fetcher:
-            logger.debug("cache waiter: namespace=%s, waiting for in-flight fetch",
-                         namespace)
+            logger.debug(
+                "cache waiter: namespace=%s, waiting for in-flight fetch", namespace
+            )
             inflight.event.wait()
             err = inflight.error
-            logger.debug("cache waiter: namespace=%s, unblocked, error=%r",
-                         namespace, err)
+            logger.debug(
+                "cache waiter: namespace=%s, unblocked, error=%r", namespace, err
+            )
             if isinstance(err, BaseException):
                 raise err
             return err
@@ -509,12 +511,19 @@ class RolesCache(Timer):
                 is_fetcher = False
 
         if not is_fetcher:
-            logger.debug("cache waiter: role=%s namespace=%s, waiting for in-flight fetch",
-                         role_id, namespace)
+            logger.debug(
+                "cache waiter: role=%s namespace=%s, waiting for in-flight fetch",
+                role_id,
+                namespace,
+            )
             inflight.event.wait()
             err = inflight.error
-            logger.debug("cache waiter: role=%s namespace=%s, unblocked, error=%r",
-                         role_id, namespace, err)
+            logger.debug(
+                "cache waiter: role=%s namespace=%s, unblocked, error=%r",
+                role_id,
+                namespace,
+                err,
+            )
             if isinstance(err, BaseException):
                 raise err
             return err

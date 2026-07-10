@@ -36,7 +36,10 @@ from ...models import ResponseError
 class GetBackfillProposal(Operation):
     """Get backfill proposal (GetBackfillProposal)
 
-    Get backfill proposal
+    Get backfill proposal for the given session.
+
+    Returns the current pending backfill proposal associated with the session ID.
+    Returns 404 if no proposal exists for the session.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/proposal

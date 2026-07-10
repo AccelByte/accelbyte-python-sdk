@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ApimodelAppItem
 from ...models import ApimodelCreateAppV2Request
@@ -37,14 +38,14 @@ from ...models import ResponseErrorResponse
 class CreateAppV2(Operation):
     """Create new extend app (CreateAppV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [CREATE]`
+    [Deprecated] Please use v5 endpoint instead.
 
     Create new extend app with name provided by {app} path parameter and specified scenario type
 
     Available scenario:
-    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
+    - scenario 3: `event-handler`
 
 
     Available app status:

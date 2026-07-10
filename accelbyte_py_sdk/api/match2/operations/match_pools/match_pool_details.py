@@ -36,7 +36,8 @@ from ...models import ResponseError
 class MatchPoolDetails(Operation):
     """Get details for a specific match pool (MatchPoolDetails)
 
-    Get details for a specific match pool
+    Get details for a specific match pool, including its configuration such as match function,
+    ticket expiration, ruleset, and backfill settings.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}

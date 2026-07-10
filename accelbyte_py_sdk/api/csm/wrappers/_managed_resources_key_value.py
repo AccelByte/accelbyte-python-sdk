@@ -68,8 +68,6 @@ def create_key_value_cluster_v2(
 ):
     """Creates Key-Value Cluster (CreateKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
-
     Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
 
     Cluster limits:
@@ -127,8 +125,6 @@ async def create_key_value_cluster_v2_async(
     **kwargs
 ):
     """Creates Key-Value Cluster (CreateKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [CREATE]`
 
     Provision Key-Value cluster using AWS Valkey Serverless that can be used by extend apps in game namespace within the studio.
 
@@ -190,8 +186,6 @@ def create_key_value_credential_v2(
     **kwargs
 ):
     """Generate a new credential for an Extend App integrated with a KeyValue cluster (CreateKeyValueCredentialV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
 
     Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
     Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
@@ -256,8 +250,6 @@ async def create_key_value_credential_v2_async(
     **kwargs
 ):
     """Generate a new credential for an Extend App integrated with a KeyValue cluster (CreateKeyValueCredentialV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CREDENTIALS [CREATE]`
 
     Generates a new credential for an extend app that is already integrated with a KeyValue cluster.
     Replaces the old credential. Integration status will transition to MODIFYING, then READY when complete.
@@ -324,8 +316,6 @@ def delete_key_value_cluster_v2(
 ):
     """Delete Key-Value Cluster (DeleteKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
-
     Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
     Force-deletes all active integrations. Returns resource with status DELETING.
 
@@ -378,8 +368,6 @@ async def delete_key_value_cluster_v2_async(
     **kwargs
 ):
     """Delete Key-Value Cluster (DeleteKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [DELETE]`
 
     Delete Key-Value cluster. Only allowed when cluster status is AVAILABLE or CREATE-FAILED.
     Force-deletes all active integrations. Returns resource with status DELETING.
@@ -436,8 +424,6 @@ def get_integration_app_key_value_cluster_v2(
 ):
     """Get an Extend App Integration (GetIntegrationAppKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
-
     Get integration of an extend app with a cluster.
 
     Properties:
@@ -489,8 +475,6 @@ async def get_integration_app_key_value_cluster_v2_async(
     **kwargs
 ):
     """Get an Extend App Integration (GetIntegrationAppKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
 
     Get integration of an extend app with a cluster.
 
@@ -545,8 +529,6 @@ def get_key_value_cluster_limit_config_v2(
 ):
     """Get Key-Value Cluster Limit Config (GetKeyValueClusterLimitConfigV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     Get Key-Value cluster limit config.
 
     Properties:
@@ -592,8 +574,6 @@ async def get_key_value_cluster_limit_config_v2_async(
     **kwargs
 ):
     """Get Key-Value Cluster Limit Config (GetKeyValueClusterLimitConfigV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
 
     Get Key-Value cluster limit config.
 
@@ -643,8 +623,6 @@ def get_key_value_cluster_v2(
     **kwargs
 ):
     """Get Key-Value Cluster Information (GetKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
 
     Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
 
@@ -699,8 +677,6 @@ async def get_key_value_cluster_v2_async(
     **kwargs
 ):
     """Get Key-Value Cluster Information (GetKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
 
     Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
 
@@ -758,8 +734,6 @@ def get_list_integrated_app_key_value_cluster_v2(
 ):
     """Get List Extend Apps Integrated with a Key-Value Cluster (GetListIntegratedAppKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
 
     Properties:
@@ -809,8 +783,6 @@ async def get_list_integrated_app_key_value_cluster_v2_async(
     **kwargs
 ):
     """Get List Extend Apps Integrated with a Key-Value Cluster (GetListIntegratedAppKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
 
     Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
 
@@ -864,8 +836,6 @@ def integrate_app_key_value_cluster_v2(
     **kwargs
 ):
     """Integrate Extend App with KeyValue Cluster (IntegrateAppKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
 
     Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
 
@@ -924,8 +894,6 @@ async def integrate_app_key_value_cluster_v2_async(
     **kwargs
 ):
     """Integrate Extend App with KeyValue Cluster (IntegrateAppKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [CREATE]`
 
     Integrate an Extend App with an existing KeyValue cluster. Injects REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD to the app config.
 
@@ -986,8 +954,6 @@ def list_key_value_cluster_v2(
 ):
     """List Key-Value Clusters (ListKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     List Key-Value clusters by studio/publisher namespace.
     If `refresh=true`, the service will sync cluster status from the provider (cached).
 
@@ -1038,8 +1004,6 @@ async def list_key_value_cluster_v2_async(
     **kwargs
 ):
     """List Key-Value Clusters (ListKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
 
     List Key-Value clusters by studio/publisher namespace.
     If `refresh=true`, the service will sync cluster status from the provider (cached).
@@ -1094,8 +1058,6 @@ def remove_integration_app_key_value_cluster_v2(
 ):
     """Remove Integration of an Extend App from a Cluster (RemoveIntegrationAppKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
-
     Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
 
     Properties:
@@ -1147,8 +1109,6 @@ async def remove_integration_app_key_value_cluster_v2_async(
     **kwargs
 ):
     """Remove Integration of an Extend App from a Cluster (RemoveIntegrationAppKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [DELETE]`
 
     Remove integration of an extend app with a cluster. Removes key-value env/secret from app, deletes credential and AWS user.
 
@@ -1204,8 +1164,6 @@ def update_key_value_cluster_v2(
     **kwargs
 ):
     """Update Key-Value Cluster Configuration (UpdateKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
 
     Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
     Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.
@@ -1263,8 +1221,6 @@ async def update_key_value_cluster_v2_async(
     **kwargs
 ):
     """Update Key-Value Cluster Configuration (UpdateKeyValueClusterV2)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [UPDATE]`
 
     Update Key-Value cluster configuration (maxDataStorageGB, maxECPUPerSecond, profileName).
     Only allowed when cluster status is AVAILABLE. Process is asynchronous; poll Get Cluster for updated status.

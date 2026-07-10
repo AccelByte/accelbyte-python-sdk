@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateNoSQLClusterV2(Operation):
     """Creates NoSQL Cluster (CreateNoSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:CLUSTERS [CREATE]`
-
     Provision NoSQL database cluster and instances that can be used by extend apps in game namespace within the studio.
     Only one NoSQL resource can be created for one studio/publisher namespace.
 

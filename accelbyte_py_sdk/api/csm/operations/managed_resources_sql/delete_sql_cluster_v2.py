@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class DeleteSQLClusterV2(Operation):
     """Delete SQL Cluster (DeleteSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [DELETE]`
-
     You can only delete the cluster when its status is "available".
 
     Deleting the cluster will:

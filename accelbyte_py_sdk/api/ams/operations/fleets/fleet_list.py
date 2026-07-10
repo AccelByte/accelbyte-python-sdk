@@ -68,6 +68,8 @@ class FleetList(Operation):
 
         count: (count) OPTIONAL int in query
 
+        include_inactive_regions: (includeInactiveRegions) OPTIONAL bool in query
+
         name: (name) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
@@ -96,6 +98,7 @@ class FleetList(Operation):
     namespace: str  # REQUIRED in [path]
     active: bool  # OPTIONAL in [query]
     count: int  # OPTIONAL in [query]
+    include_inactive_regions: bool  # OPTIONAL in [query]
     name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
@@ -156,6 +159,8 @@ class FleetList(Operation):
             result["active"] = self.active
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "include_inactive_regions"):
+            result["includeInactiveRegions"] = self.include_inactive_regions
         if hasattr(self, "name"):
             result["name"] = self.name
         if hasattr(self, "offset"):
@@ -186,6 +191,10 @@ class FleetList(Operation):
 
     def with_count(self, value: int) -> FleetList:
         self.count = value
+        return self
+
+    def with_include_inactive_regions(self, value: bool) -> FleetList:
+        self.include_inactive_regions = value
         return self
 
     def with_name(self, value: str) -> FleetList:
@@ -226,6 +235,10 @@ class FleetList(Operation):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = 0
+        if hasattr(self, "include_inactive_regions") and self.include_inactive_regions:
+            result["includeInactiveRegions"] = bool(self.include_inactive_regions)
+        elif include_empty:
+            result["includeInactiveRegions"] = False
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:
@@ -297,6 +310,7 @@ class FleetList(Operation):
         namespace: str,
         active: Optional[bool] = None,
         count: Optional[int] = None,
+        include_inactive_regions: Optional[bool] = None,
         name: Optional[str] = None,
         offset: Optional[int] = None,
         region: Optional[str] = None,
@@ -310,6 +324,8 @@ class FleetList(Operation):
             instance.active = active
         if count is not None:
             instance.count = count
+        if include_inactive_regions is not None:
+            instance.include_inactive_regions = include_inactive_regions
         if name is not None:
             instance.name = name
         if offset is not None:
@@ -339,6 +355,13 @@ class FleetList(Operation):
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = 0
+        if (
+            "includeInactiveRegions" in dict_
+            and dict_["includeInactiveRegions"] is not None
+        ):
+            instance.include_inactive_regions = bool(dict_["includeInactiveRegions"])
+        elif include_empty:
+            instance.include_inactive_regions = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -367,6 +390,7 @@ class FleetList(Operation):
             "namespace": "namespace",
             "active": "active",
             "count": "count",
+            "includeInactiveRegions": "include_inactive_regions",
             "name": "name",
             "offset": "offset",
             "region": "region",
@@ -380,6 +404,7 @@ class FleetList(Operation):
             "namespace": True,
             "active": False,
             "count": False,
+            "includeInactiveRegions": False,
             "name": False,
             "offset": False,
             "region": False,

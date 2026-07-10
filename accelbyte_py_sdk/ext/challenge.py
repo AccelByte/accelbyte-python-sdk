@@ -28,6 +28,7 @@ from ..api.challenge.models import IamErrorResponse
 from ..api.challenge.models import IamPermission
 from ..api.challenge.models import ModelChallengeReference
 from ..api.challenge.models import ModelChallengeResponse
+from ..api.challenge.models import ModelChallengeSlotResponse
 from ..api.challenge.models import ModelClaimUserRewardsByGoalCodeRequest
 from ..api.challenge.models import ModelClaimUserRewardsReq
 from ..api.challenge.models import ModelClaimUsersRewardsRequest
@@ -35,8 +36,10 @@ from ..api.challenge.models import ModelClaimUsersRewardsResponse
 from ..api.challenge.models import ModelClaimableUserReward
 from ..api.challenge.models import ModelCreateChallengeRequest
 from ..api.challenge.models import ModelCreateGoalRequest
+from ..api.challenge.models import ModelCurrentRoundSlotResponse
 from ..api.challenge.models import ModelEvaluatePlayerProgressionRequest
 from ..api.challenge.models import ModelGetGoalsResponse
+from ..api.challenge.models import ModelGetSlotsResponse
 from ..api.challenge.models import ModelGoalInSchedulesResponse
 from ..api.challenge.models import ModelGoalMeta
 from ..api.challenge.models import ModelGoalOrder
@@ -51,6 +54,7 @@ from ..api.challenge.models import ModelListPeriodsResponse
 from ..api.challenge.models import ModelListScheduleByGoalResponse
 from ..api.challenge.models import ModelListSchedulesResponse
 from ..api.challenge.models import ModelListUserRewardsResponse
+from ..api.challenge.models import ModelMoveGoalToSlotRequest
 from ..api.challenge.models import ModelPagination
 from ..api.challenge.models import ModelPluginAsignmentAppConfig
 from ..api.challenge.models import ModelPluginAssignmentCustomConfig
@@ -64,6 +68,7 @@ from ..api.challenge.models import ModelReward
 from ..api.challenge.models import ModelSchedule
 from ..api.challenge.models import ModelScheduleByGoalResponse
 from ..api.challenge.models import ModelScheduleResponse
+from ..api.challenge.models import ModelTemplateSlotResponse
 from ..api.challenge.models import ModelUpdateChallengeRequest
 from ..api.challenge.models import ModelUpdateChallengeScheduleRequest
 from ..api.challenge.models import ModelUpdateGoalRequest
@@ -116,6 +121,13 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.end_date = randomize()
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     instance.tags = [randomize()]
+    instance.template_slots = [create_model_challenge_slot_response_example()]
+    return instance
+
+
+def create_model_challenge_slot_response_example() -> ModelChallengeSlotResponse:
+    instance = ModelChallengeSlotResponse()
+    instance.goals = [randomize()]
     return instance
 
 
@@ -195,6 +207,15 @@ def create_model_create_goal_request_example() -> ModelCreateGoalRequest:
     return instance
 
 
+def create_model_current_round_slot_response_example() -> ModelCurrentRoundSlotResponse:
+    instance = ModelCurrentRoundSlotResponse()
+    instance.goals = [create_model_goal_in_schedules_response_example()]
+    instance.index = randomize("int", min_val=1, max_val=1000)
+    instance.start_time = randomize("date")
+    instance.end_time = randomize("date")
+    return instance
+
+
 def create_model_evaluate_player_progression_request_example() -> (
     ModelEvaluatePlayerProgressionRequest
 ):
@@ -208,6 +229,13 @@ def create_model_get_goals_response_example() -> ModelGetGoalsResponse:
     instance.data = [create_model_goal_response_example()]
     instance.meta = create_model_challenge_response_example()
     instance.paging = create_model_pagination_example()
+    return instance
+
+
+def create_model_get_slots_response_example() -> ModelGetSlotsResponse:
+    instance = ModelGetSlotsResponse()
+    instance.current_round = [create_model_current_round_slot_response_example()]
+    instance.template_slots = [create_model_template_slot_response_example()]
     return instance
 
 
@@ -343,6 +371,12 @@ def create_model_list_user_rewards_response_example() -> ModelListUserRewardsRes
     return instance
 
 
+def create_model_move_goal_to_slot_request_example() -> ModelMoveGoalToSlotRequest:
+    instance = ModelMoveGoalToSlotRequest()
+    instance.slot_index = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_model_pagination_example() -> ModelPagination:
     instance = ModelPagination()
     instance.first = randomize()
@@ -456,6 +490,13 @@ def create_model_schedule_response_example() -> ModelScheduleResponse:
     instance.end_time = randomize("date")
     instance.goals = [create_model_goal_in_schedules_response_example()]
     instance.start_time = randomize("date")
+    return instance
+
+
+def create_model_template_slot_response_example() -> ModelTemplateSlotResponse:
+    instance = ModelTemplateSlotResponse()
+    instance.goals = [create_model_goal_in_schedules_response_example()]
+    instance.index = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

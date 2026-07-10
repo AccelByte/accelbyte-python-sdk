@@ -37,12 +37,14 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("fleet_id", type=str)
+@click.option("--include_inactive_regions", "include_inactive_regions", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def fleet_get(
     fleet_id: str,
+    include_inactive_regions: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -58,6 +60,7 @@ def fleet_get(
         login_as_internal(login_as)
     result, error = fleet_get_internal(
         fleet_id=fleet_id,
+        include_inactive_regions=include_inactive_regions,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

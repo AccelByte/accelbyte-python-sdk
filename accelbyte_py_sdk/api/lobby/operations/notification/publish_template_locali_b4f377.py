@@ -35,9 +35,7 @@ from ...models import RestapiErrorResponseV1
 class PublishTemplateLocalizationV1Admin(Operation):
     """publish template localization draft (publishTemplateLocalizationV1Admin)
 
-    Publish notification template draft. Empty draft can not be published.
-
-    Action Code: 50210
+    Publish a notification template draft. Empty drafts cannot be published.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage}/publish

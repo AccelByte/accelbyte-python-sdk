@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteVariableV2(Operation):
     """Delete an environment variable (DeleteVariableV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [DELETE]`
-
     Delete an environment variable by its config id
 
     Properties:

@@ -29,15 +29,15 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelLinkRequest
+from ...models import ModelReAuthRequest
 from ...models import RestErrorResponse
 
 
 class PublicProcessWebLinkPlatformV3(Operation):
-    """Process Link Progress  (PublicProcessWebLinkPlatformV3)
+    """Complete Platform Web Link (PublicProcessWebLinkPlatformV3)
 
-    Processes third party account link and returns the link status directly instead of redirecting to the original page.
-    The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+    Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -51,6 +51,10 @@ class PublicProcessWebLinkPlatformV3(Operation):
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/process
@@ -74,9 +78,11 @@ class PublicProcessWebLinkPlatformV3(Operation):
         platform_id: (platformId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelLinkRequest (OK)
+        200: OK - ModelReAuthRequest (OK)
 
-        400: Bad Request - RestErrorResponse (20000: internal server error | 20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -207,13 +213,15 @@ class PublicProcessWebLinkPlatformV3(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelLinkRequest], Union[None, HttpResponse, RestErrorResponse]
+        Union[None, ModelReAuthRequest], Union[None, HttpResponse, RestErrorResponse]
     ]:
         """Parse the given response.
 
-        200: OK - ModelLinkRequest (OK)
+        200: OK - ModelReAuthRequest (OK)
 
-        400: Bad Request - RestErrorResponse (20000: internal server error | 20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -229,8 +237,10 @@ class PublicProcessWebLinkPlatformV3(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelLinkRequest.create_from_dict(content), None
+            return ModelReAuthRequest.create_from_dict(content), None
         if code == 400:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 500:
             return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(

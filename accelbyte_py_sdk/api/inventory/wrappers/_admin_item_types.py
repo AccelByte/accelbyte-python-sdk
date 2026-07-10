@@ -63,7 +63,7 @@ def admin_create_item_type(
 
         tags: ["Admin Item Types"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -116,7 +116,7 @@ async def admin_create_item_type_async(
 
         tags: ["Admin Item Types"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

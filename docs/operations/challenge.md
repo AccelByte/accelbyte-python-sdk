@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.29.0)
+# AccelByte Gaming Services Challenge Service Index (1.30.0)
 
 
 ## Operations
@@ -24,7 +24,7 @@
 ### Challenge List
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /challenge/v1/public/namespaces/{namespace}/challenges | GET | GetChallenges | `false` | [GetChallenges](../../accelbyte_py_sdk/api/challenge/operations/challenge_list/get_challenges.py) | [get_challenges](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_list.py) | [accelbyte_py_sdk_cli challenge-get-challenges](../../samples/cli/accelbyte_py_sdk_cli/challenge/_get_challenges.py) |
+| /challenge/v1/public/namespaces/{namespace}/challenges | GET | publicGetChallenges | `false` | [PublicGetChallenges](../../accelbyte_py_sdk/api/challenge/operations/challenge_list/public_get_challenges.py) | [public_get_challenges](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_list.py) | [accelbyte_py_sdk_cli challenge-public-get-challenges](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_challenges.py) |
 | /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals | GET | publicGetScheduledGoals | `false` | [PublicGetScheduledGoals](../../accelbyte_py_sdk/api/challenge/operations/challenge_list/public_get_scheduled_goals.py) | [public_get_scheduled_goals](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_list.py) | [accelbyte_py_sdk_cli challenge-public-get-scheduled-goals](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_scheduled_goals.py) |
 
 ### Challenge Progression
@@ -32,7 +32,7 @@
 |---|---|---|---|---|---|---|
 | /challenge/v1/admin/namespaces/{namespace}/progress/evaluate | POST | adminEvaluateProgress | `false` | [AdminEvaluateProgress](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/admin_evaluate_progress.py) | [admin_evaluate_progress](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-admin-evaluate-progress](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_evaluate_progress.py) |
 | /challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode} | GET | adminGetUserProgression | `false` | [AdminGetUserProgression](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/admin_get_user_progression.py) | [admin_get_user_progression](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-admin-get-user-progression](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_user_progression.py) |
-| /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate | POST | EvaluateMyProgress | `false` | [EvaluateMyProgress](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/evaluate_my_progress.py) | [evaluate_my_progress](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-evaluate-my-progress](../../samples/cli/accelbyte_py_sdk_cli/challenge/_evaluate_my_progress.py) |
+| /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate | POST | publicEvaluateMyProgress | `false` | [PublicEvaluateMyProgress](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/public_evaluate_my_progress.py) | [public_evaluate_my_progress](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-public-evaluate-my-progress](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_evaluate_my_progress.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index} | GET | publicGetPastUserProgression | `false` | [PublicGetPastUserProgression](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/public_get_past_user_pr_bbe905.py) | [public_get_past_user_progression](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-public-get-past-user-progression](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_past_user_progression.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode} | GET | publicGetUserProgression | `false` | [PublicGetUserProgression](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/public_get_user_progression.py) | [public_get_user_progression](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-public-get-user-progression](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_user_progression.py) |
 
@@ -41,8 +41,10 @@
 |---|---|---|---|---|---|---|
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals | POST | adminCreateGoal | `false` | [AdminCreateGoal](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_create_goal.py) | [admin_create_goal](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-create-goal](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_create_goal.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code} | DELETE | adminDeleteGoal | `false` | [AdminDeleteGoal](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_delete_goal.py) | [admin_delete_goal](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-delete-goal](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_delete_goal.py) |
+| /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/slots | GET | adminGetChallengeSlots | `false` | [AdminGetChallengeSlots](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_get_challenge_slots.py) | [admin_get_challenge_slots](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-get-challenge-slots](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_challenge_slots.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code} | GET | adminGetGoal | `false` | [AdminGetGoal](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_get_goal.py) | [admin_get_goal](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-get-goal](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_goal.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals | GET | adminGetGoals | `false` | [AdminGetGoals](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_get_goals.py) | [admin_get_goals](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-get-goals](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_goals.py) |
+| /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/slots | PUT | adminMoveGoalToSlot | `false` | [AdminMoveGoalToSlot](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_move_goal_to_slot.py) | [admin_move_goal_to_slot](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-move-goal-to-slot](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_move_goal_to_slot.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code} | PUT | adminUpdateGoals | `false` | [AdminUpdateGoals](../../accelbyte_py_sdk/api/challenge/operations/goal_configuration/admin_update_goals.py) | [admin_update_goals](../../accelbyte_py_sdk/api/challenge/wrappers/_goal_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-update-goals](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_update_goals.py) |
 
 ### Player Reward
@@ -85,6 +87,7 @@
 | iam.Permission | [IamPermission](../../accelbyte_py_sdk/api/challenge/models/iam_permission.py) |
 | model.ChallengeReference | [ModelChallengeReference](../../accelbyte_py_sdk/api/challenge/models/model_challenge_reference.py) |
 | model.ChallengeResponse | [ModelChallengeResponse](../../accelbyte_py_sdk/api/challenge/models/model_challenge_response.py) |
+| model.ChallengeSlotResponse | [ModelChallengeSlotResponse](../../accelbyte_py_sdk/api/challenge/models/model_challenge_slot_response.py) |
 | model.ClaimUserRewardsByGoalCodeRequest | [ModelClaimUserRewardsByGoalCodeRequest](../../accelbyte_py_sdk/api/challenge/models/model_claim_user_rewards_by_goal_code_request.py) |
 | model.ClaimUserRewardsReq | [ModelClaimUserRewardsReq](../../accelbyte_py_sdk/api/challenge/models/model_claim_user_rewards_req.py) |
 | model.ClaimUsersRewardsRequest | [ModelClaimUsersRewardsRequest](../../accelbyte_py_sdk/api/challenge/models/model_claim_users_rewards_request.py) |
@@ -92,8 +95,10 @@
 | model.ClaimableUserReward | [ModelClaimableUserReward](../../accelbyte_py_sdk/api/challenge/models/model_claimable_user_reward.py) |
 | model.CreateChallengeRequest | [ModelCreateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/model_create_challenge_request.py) |
 | model.CreateGoalRequest | [ModelCreateGoalRequest](../../accelbyte_py_sdk/api/challenge/models/model_create_goal_request.py) |
+| model.CurrentRoundSlotResponse | [ModelCurrentRoundSlotResponse](../../accelbyte_py_sdk/api/challenge/models/model_current_round_slot_response.py) |
 | model.EvaluatePlayerProgressionRequest | [ModelEvaluatePlayerProgressionRequest](../../accelbyte_py_sdk/api/challenge/models/model_evaluate_player_progression_request.py) |
 | model.GetGoalsResponse | [ModelGetGoalsResponse](../../accelbyte_py_sdk/api/challenge/models/model_get_goals_response.py) |
+| model.GetSlotsResponse | [ModelGetSlotsResponse](../../accelbyte_py_sdk/api/challenge/models/model_get_slots_response.py) |
 | model.GoalInSchedulesResponse | [ModelGoalInSchedulesResponse](../../accelbyte_py_sdk/api/challenge/models/model_goal_in_schedules_response.py) |
 | model.GoalMeta | [ModelGoalMeta](../../accelbyte_py_sdk/api/challenge/models/model_goal_meta.py) |
 | model.GoalOrder | [ModelGoalOrder](../../accelbyte_py_sdk/api/challenge/models/model_goal_order.py) |
@@ -108,6 +113,7 @@
 | model.ListScheduleByGoalResponse | [ModelListScheduleByGoalResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_schedule_by_goal_response.py) |
 | model.ListSchedulesResponse | [ModelListSchedulesResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_schedules_response.py) |
 | model.ListUserRewardsResponse | [ModelListUserRewardsResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_user_rewards_response.py) |
+| model.MoveGoalToSlotRequest | [ModelMoveGoalToSlotRequest](../../accelbyte_py_sdk/api/challenge/models/model_move_goal_to_slot_request.py) |
 | model.Pagination | [ModelPagination](../../accelbyte_py_sdk/api/challenge/models/model_pagination.py) |
 | model.PluginAsignmentAppConfig | [ModelPluginAsignmentAppConfig](../../accelbyte_py_sdk/api/challenge/models/model_plugin_asignment_app_config.py) |
 | model.PluginAssignmentCustomConfig | [ModelPluginAssignmentCustomConfig](../../accelbyte_py_sdk/api/challenge/models/model_plugin_assignment_custom_config.py) |
@@ -121,6 +127,7 @@
 | model.Schedule | [ModelSchedule](../../accelbyte_py_sdk/api/challenge/models/model_schedule.py) |
 | model.ScheduleByGoalResponse | [ModelScheduleByGoalResponse](../../accelbyte_py_sdk/api/challenge/models/model_schedule_by_goal_response.py) |
 | model.ScheduleResponse | [ModelScheduleResponse](../../accelbyte_py_sdk/api/challenge/models/model_schedule_response.py) |
+| model.TemplateSlotResponse | [ModelTemplateSlotResponse](../../accelbyte_py_sdk/api/challenge/models/model_template_slot_response.py) |
 | model.UpdateChallengeRequest | [ModelUpdateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_challenge_request.py) |
 | model.UpdateChallengeScheduleRequest | [ModelUpdateChallengeScheduleRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_challenge_schedule_request.py) |
 | model.UpdateGoalRequest | [ModelUpdateGoalRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_goal_request.py) |

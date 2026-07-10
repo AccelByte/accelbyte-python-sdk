@@ -39,6 +39,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("leaderboard_code", type=str)
+@click.option("--include_hidden_users", "include_hidden_users", type=bool)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 @click.option("--doc", type=bool)
 def get_all_time_leaderboard_ranking_admin_v3(
     leaderboard_code: str,
+    include_hidden_users: Optional[bool] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -64,6 +66,7 @@ def get_all_time_leaderboard_ranking_admin_v3(
         login_as_internal(login_as)
     result, error = get_all_time_leaderboard_ranking_admin_v3_internal(
         leaderboard_code=leaderboard_code,
+        include_hidden_users=include_hidden_users,
         limit=limit,
         offset=offset,
         namespace=namespace,

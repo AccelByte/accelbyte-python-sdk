@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.command()
 @click.option("--active", "active", type=bool)
 @click.option("--count", "count", type=int)
+@click.option("--include_inactive_regions", "include_inactive_regions", type=bool)
 @click.option("--name", "name", type=str)
 @click.option("--offset", "offset", type=int)
 @click.option("--region", "region", type=str)
@@ -50,6 +51,7 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 def fleet_list(
     active: Optional[bool] = None,
     count: Optional[int] = None,
+    include_inactive_regions: Optional[bool] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
@@ -71,6 +73,7 @@ def fleet_list(
     result, error = fleet_list_internal(
         active=active,
         count=count,
+        include_inactive_regions=include_inactive_regions,
         name=name,
         offset=offset,
         region=region,

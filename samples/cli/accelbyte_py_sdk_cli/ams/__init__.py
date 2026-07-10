@@ -61,7 +61,7 @@ from ._local_watchdog_connect import local_watchdog_connect
 from ._fleet_claim_by_keys import fleet_claim_by_keys
 from ._watchdog_connect import watchdog_connect
 from ._upload_url_get import upload_url_get
-from ._func1 import func1
+from ._version_info import version_info
 from ._basic_health_check import basic_health_check
 
 
@@ -111,6 +111,6 @@ commands = [
     fleet_claim_by_keys,
     watchdog_connect,
     upload_url_get,
-    func1,
+    version_info,
     basic_health_check,
 ]

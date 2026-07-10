@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateSQLDatabaseCredentialV2(Operation):
     """Creates a new database credential for the customer (CreateSQLDatabaseCredentialV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:DATABASECREDENTIALS [CREATE]`
-
     Creates a new database credential for the customer. This will soft-delete the old credential and create a new one.
 
     Properties:

@@ -88,6 +88,22 @@ from ._public_cancel_my_account_deletion_request import (
 from ._public_get_my_account_deletion_status import (
     public_get_my_account_deletion_status,
 )
+from ._public_submit_my_headless_deletion_request import (
+    public_submit_my_headless_deletion_request,
+)
+from ._public_submit_my_headless_personal_data_request import (
+    public_submit_my_headless_personal_data_request,
+)
+from ._public_generate_my_headless_personal_data_url import (
+    public_generate_my_headless_personal_data_url,
+)
+from ._public_get_my_personal_data_requests import public_get_my_personal_data_requests
+from ._public_submit_my_personal_data_request import (
+    public_submit_my_personal_data_request,
+)
+from ._public_cancel_my_personal_data_request import (
+    public_cancel_my_personal_data_request,
+)
 from ._s2s_get_list_finished_account_deletion_request import (
     s2s_get_list_finished_account_deletion_request,
 )
@@ -139,6 +155,12 @@ commands = [
     public_submit_my_account_deletion_request,
     public_cancel_my_account_deletion_request,
     public_get_my_account_deletion_status,
+    public_submit_my_headless_deletion_request,
+    public_submit_my_headless_personal_data_request,
+    public_generate_my_headless_personal_data_url,
+    public_get_my_personal_data_requests,
+    public_submit_my_personal_data_request,
+    public_cancel_my_personal_data_request,
     s2s_get_list_finished_account_deletion_request,
     s2s_get_list_finished_personal_data_request,
     s2s_get_data_request_by_request_id,

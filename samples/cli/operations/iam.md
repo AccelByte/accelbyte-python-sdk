@@ -1724,6 +1724,37 @@ $ python -m accelbyte_py_sdk_cli 'iam-public-process-web-link-platform-v3' \
     > result.txt
 ```
 
+### Operation `public_web_reauth_platform`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-web-reauth-platform' \
+    'string' \
+    'string' \
+    'GDPR' \
+    --client_id 'string' \
+    --redirect_uri 'string' \
+    > result.txt
+```
+
+### Operation `public_web_reauth_platform_establish`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-web-reauth-platform-establish' \
+    'string' \
+    'string' \
+    'string' \
+    --code 'string' \
+    > result.txt
+```
+
+### Operation `public_web_reauth_platform_process`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-web-reauth-platform-process' \
+    'string' \
+    'string' \
+    'string' \
+    --code 'string' \
+    > result.txt
+```
+
 ### Operation `public_get_users_platform_infos_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-public-get-users-platform-infos-v3' \

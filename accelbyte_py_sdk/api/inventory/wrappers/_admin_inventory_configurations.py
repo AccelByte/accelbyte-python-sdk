@@ -74,7 +74,7 @@ def admin_create_inventory_configuration(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -126,7 +126,7 @@ async def admin_create_inventory_configuration_async(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -517,7 +517,7 @@ def admin_update_inventory_configuration(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -575,7 +575,7 @@ async def admin_update_inventory_configuration_async(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

@@ -413,11 +413,11 @@ def s2s_request_data_retrieval(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user personal data retrieval request (S2SRequestDataRetrieval)
+    """Submit user's personal data request (S2SRequestDataRetrieval)
 
     Scope: account
 
-    Submit user personal data retrieval request.
+    Submit user's personal data request.
 
     **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 
@@ -474,11 +474,11 @@ async def s2s_request_data_retrieval_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user personal data retrieval request (S2SRequestDataRetrieval)
+    """Submit user's personal data request (S2SRequestDataRetrieval)
 
     Scope: account
 
-    Submit user personal data retrieval request.
+    Submit user's personal data request.
 
     **Limitation:** This API only accepts requests with a publisher userId and does not support game userId requests at this time.
 

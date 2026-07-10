@@ -38,8 +38,6 @@ from ...models import ResponseErrorResponse
 class UpdateVariableV1(Operation):
     """Update an environment variable (UpdateVariableV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [UPDATE]`
-
     Update an environment variable.
     Request body:
     - value : configuration value - Required.

@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class UpdateAppResourcesV2(Operation):
     """Update app info (UpdateAppResourcesV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP [UPDATE]`
-
     Update app resources provided on request body
 
     Properties:

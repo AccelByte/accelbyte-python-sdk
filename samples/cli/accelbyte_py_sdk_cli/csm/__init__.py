@@ -131,6 +131,10 @@ from ._get_notification_subscriber_list_v3 import get_notification_subscriber_li
 from ._delete_subscription_app_notification_v3 import (
     delete_subscription_app_notification_v3,
 )
+from ._get_app_debug_info_v4 import get_app_debug_info_v4
+from ._update_app_debug_mode_v4 import update_app_debug_mode_v4
+from ._get_app_status_progress_v4 import get_app_status_progress_v4
+from ._create_app_v5 import create_app_v5
 
 
 commands = [
@@ -237,4 +241,8 @@ commands = [
     get_no_sql_app_list_v2,
     get_notification_subscriber_list_v3,
     delete_subscription_app_notification_v3,
+    get_app_debug_info_v4,
+    update_app_debug_mode_v4,
+    get_app_status_progress_v4,
+    create_app_v5,
 ]

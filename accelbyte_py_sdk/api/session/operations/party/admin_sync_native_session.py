@@ -35,7 +35,7 @@ from ...models import ResponseError
 class AdminSyncNativeSession(Operation):
     """Trigger user's active party session to native platform. (adminSyncNativeSession)
 
-    Trigger user's active party session to native platform.
+    Triggers synchronization of the user's active party session to the native platform (PSN, Xbox). Useful when native session state is out of sync with the AccelByte session state.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync

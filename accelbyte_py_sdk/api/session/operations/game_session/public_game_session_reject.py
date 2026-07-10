@@ -35,7 +35,7 @@ from ...models import ResponseError
 class PublicGameSessionReject(Operation):
     """Reject a game session invitation. (publicGameSessionReject)
 
-    Reject a game session invitation.
+    Rejects a pending game session invitation. The caller must have INVITED status. The session invitation will be marked as REJECTED.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/reject

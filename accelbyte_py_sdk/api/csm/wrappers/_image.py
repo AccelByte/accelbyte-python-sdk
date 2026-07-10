@@ -49,8 +49,6 @@ def delete_app_images_v1(
 ):
     """Deletes the images (DeleteAppImagesV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
-
     Deletes the images uploaded to the repository
 
     Properties:
@@ -105,8 +103,6 @@ async def delete_app_images_v1_async(
     **kwargs
 ):
     """Deletes the images (DeleteAppImagesV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [DELETE]`
 
     Deletes the images uploaded to the repository
 
@@ -166,8 +162,6 @@ def get_app_image_list_v1(
     **kwargs
 ):
     """Get a list of container images (GetAppImageListV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
 
     Get a list of container images
 
@@ -233,8 +227,6 @@ async def get_app_image_list_v1_async(
     **kwargs
 ):
     """Get a list of container images (GetAppImageListV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:IMAGE [READ]`
 
     Get a list of container images
 

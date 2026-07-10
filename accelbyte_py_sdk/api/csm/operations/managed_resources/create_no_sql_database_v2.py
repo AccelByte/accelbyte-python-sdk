@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateNoSQLDatabaseV2(Operation):
     """Creates NoSQL Database for Extend App (CreateNoSQLDatabaseV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:NOSQL:DATABASES [CREATE]`
-
     Creates a NoSQL database along with its credentials associated with given extend app. The database will be created in the provisioned NoSQL cluster.
 
     `acknowledgements.acceptNosqlSecureCredentialHandling` MUST be set to true to proceed with database creation, indicating the customer accepts the secure credential handling mechanism.

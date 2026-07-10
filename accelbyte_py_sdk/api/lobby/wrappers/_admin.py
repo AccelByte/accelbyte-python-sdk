@@ -63,7 +63,7 @@ def admin_delete_global_config(
 ):
     """Delete of global configuration data. (adminDeleteGlobalConfig)
 
-    Delete of global configuration data.
+    Remove the global configuration record. This operation is permanent.
 
     Properties:
         url: /lobby/v1/admin/global-configurations
@@ -96,7 +96,7 @@ async def admin_delete_global_config_async(
 ):
     """Delete of global configuration data. (adminDeleteGlobalConfig)
 
-    Delete of global configuration data.
+    Remove the global configuration record. This operation is permanent.
 
     Properties:
         url: /lobby/v1/admin/global-configurations
@@ -213,7 +213,7 @@ def admin_update_global_config(
 ):
     """Upsert global configuration data. (adminUpdateGlobalConfig)
 
-    Upsert global configuration data.
+    Overwrite existing global configuration with the provided values. Creates the record if it does not exist.
 
     Properties:
         url: /lobby/v1/admin/global-configurations
@@ -252,7 +252,7 @@ async def admin_update_global_config_async(
 ):
     """Upsert global configuration data. (adminUpdateGlobalConfig)
 
-    Upsert global configuration data.
+    Overwrite existing global configuration with the provided values. Creates the record if it does not exist.
 
     Properties:
         url: /lobby/v1/admin/global-configurations

@@ -72,7 +72,6 @@ from ..models import ModelInviteUserResponseV3
 from ..models import ModelLinkHeadlessAccountRequest
 from ..models import ModelLinkPlatformAccountRequest
 from ..models import ModelLinkPlatformAccountWithProgressionRequest
-from ..models import ModelLinkRequest
 from ..models import ModelLinkingHistoryResponseWithPaginationV3
 from ..models import ModelListBulkUserPlatformsResponse
 from ..models import ModelListBulkUserResponse
@@ -90,6 +89,7 @@ from ..models import ModelPublicUserResponse
 from ..models import ModelPublicUserResponseV3
 from ..models import ModelPublicUserUpdateRequestV3
 from ..models import ModelPublicUsersResponse
+from ..models import ModelReAuthRequest
 from ..models import ModelResetPasswordRequest
 from ..models import ModelResetPasswordRequestV3
 from ..models import ModelSearchUsersByPlatformIDResponse
@@ -139,6 +139,7 @@ from ..models import ModelUsersUpdateRequestV3
 from ..models import ModelVerificationCodeResponse
 from ..models import ModelVerifyRegistrationCode
 from ..models import ModelWebLinkingResponse
+from ..models import ModelWebReauthProcessResponse
 from ..models import RestErrorResponse
 
 from ..operations.users import AddUserPermission
@@ -306,6 +307,10 @@ from ..operations.users import PublicVerifyRegistrationCode
 from ..operations.users import PublicVerifyUserByLinkV3
 from ..operations.users import PublicWebLinkPlatform
 from ..operations.users import PublicWebLinkPlatformEstablish
+from ..operations.users import PublicWebReauthPlatform
+from ..operations.users import PublicWebReauthPlatformOperationEnum
+from ..operations.users import PublicWebReauthPlatformEstablish
+from ..operations.users import PublicWebReauthPlatformProcess
 from ..operations.users import ResetPassword
 from ..operations.users import ResetPasswordV3
 from ..operations.users import SaveUserPermission
@@ -15504,7 +15509,7 @@ def public_get_async_status(
         request_id: (requestId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelLinkRequest (OK)
+        200: OK - ModelReAuthRequest (OK)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -15552,7 +15557,7 @@ async def public_get_async_status_async(
         request_id: (requestId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelLinkRequest (OK)
+        200: OK - ModelReAuthRequest (OK)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -18912,10 +18917,10 @@ def public_process_web_link_platform_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Process Link Progress  (PublicProcessWebLinkPlatformV3)
+    """Complete Platform Web Link (PublicProcessWebLinkPlatformV3)
 
-    Processes third party account link and returns the link status directly instead of redirecting to the original page.
-    The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+    Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -18929,6 +18934,10 @@ def public_process_web_link_platform_v3(
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/process
@@ -18952,9 +18961,11 @@ def public_process_web_link_platform_v3(
         platform_id: (platformId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelLinkRequest (OK)
+        200: OK - ModelReAuthRequest (OK)
 
-        400: Bad Request - RestErrorResponse (20000: internal server error | 20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -18978,10 +18989,10 @@ async def public_process_web_link_platform_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Process Link Progress  (PublicProcessWebLinkPlatformV3)
+    """Complete Platform Web Link (PublicProcessWebLinkPlatformV3)
 
-    Processes third party account link and returns the link status directly instead of redirecting to the original page.
-    The param **state** comes from the response of `/users/me/platforms/{platformId}/web/link`
+    Completes the third party account link and returns the link status directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -18995,6 +19006,10 @@ async def public_process_web_link_platform_v3_async(
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `POST /users/me/platforms/{platformId}/web/reauth/process` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/process
@@ -19018,9 +19033,11 @@ async def public_process_web_link_platform_v3_async(
         platform_id: (platformId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelLinkRequest (OK)
+        200: OK - ModelReAuthRequest (OK)
 
-        400: Bad Request - RestErrorResponse (20000: internal server error | 20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -20898,9 +20915,10 @@ def public_web_link_platform(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create Public Web Linking (PublicWebLinkPlatform)
+    """Initiate Platform Web Linking (PublicWebLinkPlatform)
 
-    Generates a third party login page which will redirect to the establish API.
+    Generates a redirect to a third party login page for account linking authentication.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -20914,6 +20932,10 @@ def public_web_link_platform(
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link
@@ -20943,7 +20965,9 @@ def public_web_link_platform(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10365: client not found | 10174: platform client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -20967,9 +20991,10 @@ async def public_web_link_platform_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create Public Web Linking (PublicWebLinkPlatform)
+    """Initiate Platform Web Linking (PublicWebLinkPlatform)
 
-    Generates a third party login page which will redirect to the establish API.
+    Generates a redirect to a third party login page for account linking authentication.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -20983,6 +21008,10 @@ async def public_web_link_platform_async(
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link
@@ -21012,7 +21041,9 @@ async def public_web_link_platform_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+        404: Not Found - RestErrorResponse (10365: client not found | 10174: platform client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -21038,9 +21069,11 @@ def public_web_link_platform_establish(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Establish Link Progress  (PublicWebLinkPlatformEstablish)
+    """Platform Web Link Callback (PublicWebLinkPlatformEstablish)
 
-    Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+    Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+    After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -21054,6 +21087,10 @@ def public_web_link_platform_establish(
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish
@@ -21103,9 +21140,11 @@ async def public_web_link_platform_establish_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Establish Link Progress  (PublicWebLinkPlatformEstablish)
+    """Platform Web Link Callback (PublicWebLinkPlatformEstablish)
 
-    Used by a third party to redirect the code for the purpose of linking the third party account to an IAM account.
+    Callback endpoint for the third party to redirect to after authentication to complete the linking process for the IAM account.
+    After successfully perform the account linking, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/link` endpoint.
+
     Supported platforms:
     - ps4web
     - xblweb
@@ -21119,6 +21158,10 @@ async def public_web_link_platform_establish_async(
     - discord
     - amazon
     - oculusweb
+
+    ## New API version
+
+    This API remains fully functional, but `GET /users/me/platforms/{platformId}/web/reauth/establish` is recommended for new integrations.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link/establish
@@ -21151,6 +21194,440 @@ async def public_web_link_platform_establish_async(
         if error:
             return None, error
     request = PublicWebLinkPlatformEstablish.create(
+        platform_id=platform_id,
+        state=state,
+        code=code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicWebReauthPlatform)
+def public_web_reauth_platform(
+    operation: Union[str, PublicWebReauthPlatformOperationEnum],
+    platform_id: str,
+    client_id: Optional[str] = None,
+    redirect_uri: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Initiate Platform Web Re-authentication (PublicWebReauthPlatform)
+
+    Generates a redirect to a third party login page for re-authentication purpose.
+
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        client_id: (clientId) OPTIONAL str in query
+
+        redirect_uri: (redirectUri) OPTIONAL str in query
+
+        operation: (operation) REQUIRED Union[str, OperationEnum] in query
+
+    Responses:
+        200: OK - ModelWebLinkingResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicWebReauthPlatform.create(
+        operation=operation,
+        platform_id=platform_id,
+        client_id=client_id,
+        redirect_uri=redirect_uri,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicWebReauthPlatform)
+async def public_web_reauth_platform_async(
+    operation: Union[str, PublicWebReauthPlatformOperationEnum],
+    platform_id: str,
+    client_id: Optional[str] = None,
+    redirect_uri: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Initiate Platform Web Re-authentication (PublicWebReauthPlatform)
+
+    Generates a redirect to a third party login page for re-authentication purpose.
+
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        client_id: (clientId) OPTIONAL str in query
+
+        redirect_uri: (redirectUri) OPTIONAL str in query
+
+        operation: (operation) REQUIRED Union[str, OperationEnum] in query
+
+    Responses:
+        200: OK - ModelWebLinkingResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicWebReauthPlatform.create(
+        operation=operation,
+        platform_id=platform_id,
+        client_id=client_id,
+        redirect_uri=redirect_uri,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicWebReauthPlatformEstablish)
+def public_web_reauth_platform_establish(
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Platform Web Re-auth Callback (PublicWebReauthPlatformEstablish)
+
+    Callback endpoint for the third party to redirect to after authentication to complete the re-auth flow on the IAM side.
+
+    The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+    For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+    After completing the re-auth flow, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth/establish
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        code: (code) OPTIONAL str in query
+
+        state: (state) REQUIRED str in query
+
+    Responses:
+        302: Found - (Handle redirect from third party)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicWebReauthPlatformEstablish.create(
+        platform_id=platform_id,
+        state=state,
+        code=code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicWebReauthPlatformEstablish)
+async def public_web_reauth_platform_establish_async(
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Platform Web Re-auth Callback (PublicWebReauthPlatformEstablish)
+
+    Callback endpoint for the third party to redirect to after authentication to complete the re-auth flow on the IAM side.
+
+    The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+    For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+    After completing the re-auth flow, it will redirect to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth/establish
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        code: (code) OPTIONAL str in query
+
+        state: (state) REQUIRED str in query
+
+    Responses:
+        302: Found - (Handle redirect from third party)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicWebReauthPlatformEstablish.create(
+        platform_id=platform_id,
+        state=state,
+        code=code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicWebReauthPlatformProcess)
+def public_web_reauth_platform_process(
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Complete Platform Web Re-auth (PublicWebReauthPlatformProcess)
+
+    Completes the re-auth flow on the IAM side and returns the result directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+    The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+    For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth/process
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in form_data
+
+        state: (state) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelWebReauthProcessResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10249: platform re-authentication failed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicWebReauthPlatformProcess.create(
+        platform_id=platform_id,
+        state=state,
+        code=code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicWebReauthPlatformProcess)
+async def public_web_reauth_platform_process_async(
+    platform_id: str,
+    state: str,
+    code: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Complete Platform Web Re-auth (PublicWebReauthPlatformProcess)
+
+    Completes the re-auth flow on the IAM side and returns the result directly instead of redirecting to the **redirectUri** defined when calling the `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+
+    The re-auth flow inside IAM depends on the **operation** parameter passed to `GET /users/me/platforms/{platformId}/web/reauth` endpoint.
+    For **operation=GDPR**, the **gdpr_token** cookie is set in the response headers on success.
+
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
+
+    Properties:
+        url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/reauth/process
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in form_data
+
+        state: (state) REQUIRED str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelWebReauthProcessResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 10249: platform re-authentication failed)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicWebReauthPlatformProcess.create(
         platform_id=platform_id,
         state=state,
         code=code,

@@ -39,10 +39,7 @@ class CreateNotificationTemplateV1Admin(Operation):
     Create new notification template. Include handlebars {{key}} for replaceable contexts. The key inside
     handlebars will be the key to be replaced when sending notification. Already existing template with the same
     slug and language can not be created.
-
     Check model description for detailed input restrictions.
-
-    Action Code: 50204
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates

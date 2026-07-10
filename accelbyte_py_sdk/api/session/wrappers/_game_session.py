@@ -106,7 +106,7 @@ def admin_delete_bulk_game_sessions(
 ):
     """Delete bulk game sessions. (adminDeleteBulkGameSessions)
 
-    Delete bulk game sessions.
+    Permanently deletes multiple game sessions by their IDs. Returns a summary of deleted and failed sessions. Any allocated dedicated servers are released.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/bulk
@@ -156,7 +156,7 @@ async def admin_delete_bulk_game_sessions_async(
 ):
     """Delete bulk game sessions. (adminDeleteBulkGameSessions)
 
-    Delete bulk game sessions.
+    Permanently deletes multiple game sessions by their IDs. Returns a summary of deleted and failed sessions. Any allocated dedicated servers are released.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/bulk
@@ -209,7 +209,7 @@ def admin_kick_game_session_member(
 ):
     """Kick member from a game session. (adminKickGameSessionMember)
 
-    Kick member from a game session.
+    Removes the specified member from a game session and sets their status to KICKED. Can be used by admins to forcefully remove members.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
@@ -265,7 +265,7 @@ async def admin_kick_game_session_member_async(
 ):
     """Kick member from a game session. (adminKickGameSessionMember)
 
-    Kick member from a game session.
+    Removes the specified member from a game session and sets their status to KICKED. Can be used by admins to forcefully remove members.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
@@ -338,7 +338,7 @@ def admin_query_game_sessions(
 ):
     """Get all game sessions. (adminQueryGameSessions)
 
-    Get all game sessions.
+    Returns paginated list of game sessions matching the provided filter criteria. Supports filtering by namespace, status, members, and joinability.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions
@@ -452,7 +452,7 @@ async def admin_query_game_sessions_async(
 ):
     """Get all game sessions. (adminQueryGameSessions)
 
-    Get all game sessions.
+    Returns paginated list of game sessions matching the provided filter criteria. Supports filtering by namespace, status, members, and joinability.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions
@@ -1034,7 +1034,7 @@ def append_team_game_session(
 ):
     """Append new member or team to session. Please use patchUpdateGameSession instead (appendTeamGameSession)
 
-    Append new member or team to session. Please use patchUpdateGameSession instead
+    **Deprecated.** Appends new members or teams to a game session. Use PATCH updateGameSession instead, which supports partial updates and is more efficient.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams
@@ -1089,7 +1089,7 @@ async def append_team_game_session_async(
 ):
     """Append new member or team to session. Please use patchUpdateGameSession instead (appendTeamGameSession)
 
-    Append new member or team to session. Please use patchUpdateGameSession instead
+    **Deprecated.** Appends new members or teams to a game session. Use PATCH updateGameSession instead, which supports partial updates and is more efficient.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams
@@ -1396,7 +1396,7 @@ def delete_game_session(
 ):
     """Delete a game session. (deleteGameSession)
 
-    Delete a game session.
+    Permanently deletes a game session. Only the session leader or an admin can delete the session. Any allocated dedicated server will be released.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
@@ -1444,7 +1444,7 @@ async def delete_game_session_async(
 ):
     """Delete a game session. (deleteGameSession)
 
-    Delete a game session.
+    Permanently deletes a game session. Only the session leader or an admin can delete the session. Any allocated dedicated server will be released.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
@@ -2011,7 +2011,7 @@ def join_game_session(
 ):
     """Join a game session. (joinGameSession)
 
-    Join a game session.
+    Joins a game session. For PASSWORD_PROTECTED sessions, the request body must include the session password. The session must have OPEN or INVITE_ONLY joinability and available slots.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/join
@@ -2067,7 +2067,7 @@ async def join_game_session_async(
 ):
     """Join a game session. (joinGameSession)
 
-    Join a game session.
+    Joins a game session. For PASSWORD_PROTECTED sessions, the request body must include the session password. The session must have OPEN or INVITE_ONLY joinability and available slots.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/join
@@ -2124,7 +2124,7 @@ def leave_game_session(
 ):
     """Leave a game session. (leaveGameSession)
 
-    Leave a game session.
+    Leaves a game session, removing the caller from the member list. If the caller is the leader, leadership transfers to another active member.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave
@@ -2176,7 +2176,7 @@ async def leave_game_session_async(
 ):
     """Leave a game session. (leaveGameSession)
 
-    Leave a game session.
+    Leaves a game session, removing the caller from the member list. If the caller is the leader, leadership transfers to another active member.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leave
@@ -2349,7 +2349,7 @@ def public_game_session_cancel(
 ):
     """cancel a game session invitation. (publicGameSessionCancel)
 
-    cancel a game session invitation.
+    Cancels a pending game session invitation sent to the specified user. Only the session leader or the inviting member can cancel the invitation.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/users/{userId}/cancel
@@ -2405,7 +2405,7 @@ async def public_game_session_cancel_async(
 ):
     """cancel a game session invitation. (publicGameSessionCancel)
 
-    cancel a game session invitation.
+    Cancels a pending game session invitation sent to the specified user. Only the session leader or the inviting member can cancel the invitation.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/users/{userId}/cancel
@@ -2588,7 +2588,7 @@ def public_game_session_reject(
 ):
     """Reject a game session invitation. (publicGameSessionReject)
 
-    Reject a game session invitation.
+    Rejects a pending game session invitation. The caller must have INVITED status. The session invitation will be marked as REJECTED.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/reject
@@ -2640,7 +2640,7 @@ async def public_game_session_reject_async(
 ):
     """Reject a game session invitation. (publicGameSessionReject)
 
-    Reject a game session invitation.
+    Rejects a pending game session invitation. The caller must have INVITED status. The session invitation will be marked as REJECTED.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/reject
@@ -2801,7 +2801,7 @@ def public_kick_game_session_member(
 ):
     """Kick member from a game session, only leader can kick member. (publicKickGameSessionMember)
 
-    Kick member from a game session, only leader can kick member.
+    Removes the specified member from a game session. Only the session leader can kick members. The kicked member's status is set to KICKED.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
@@ -2857,7 +2857,7 @@ async def public_kick_game_session_member_async(
 ):
     """Kick member from a game session, only leader can kick member. (publicKickGameSessionMember)
 
-    Kick member from a game session, only leader can kick member.
+    Removes the specified member from a game session. Only the session leader can kick members. The kicked member's status is set to KICKED.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick

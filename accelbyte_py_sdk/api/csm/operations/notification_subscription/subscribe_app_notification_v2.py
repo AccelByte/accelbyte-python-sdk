@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class SubscribeAppNotificationV2(Operation):
     """Subscribe the user(s) an app notification (SubscribeAppNotificationV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [CREATE]`
-
     Subscribe the user(s) an app notification.
 
     Request body:

@@ -55,6 +55,8 @@ class FleetGet(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        include_inactive_regions: (includeInactiveRegions) OPTIONAL bool in query
+
     Responses:
         200: OK - ApiFleetGetResponse (success)
 
@@ -80,6 +82,7 @@ class FleetGet(Operation):
 
     fleet_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
+    include_inactive_regions: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -120,6 +123,7 @@ class FleetGet(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -128,6 +132,12 @@ class FleetGet(Operation):
             result["fleetID"] = self.fleet_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "include_inactive_regions"):
+            result["includeInactiveRegions"] = self.include_inactive_regions
         return result
 
     # endregion get_x_params methods
@@ -146,6 +156,10 @@ class FleetGet(Operation):
         self.namespace = value
         return self
 
+    def with_include_inactive_regions(self, value: bool) -> FleetGet:
+        self.include_inactive_regions = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -160,6 +174,10 @@ class FleetGet(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "include_inactive_regions") and self.include_inactive_regions:
+            result["includeInactiveRegions"] = bool(self.include_inactive_regions)
+        elif include_empty:
+            result["includeInactiveRegions"] = False
         return result
 
     # endregion to methods
@@ -222,10 +240,18 @@ class FleetGet(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, fleet_id: str, namespace: str, **kwargs) -> FleetGet:
+    def create(
+        cls,
+        fleet_id: str,
+        namespace: str,
+        include_inactive_regions: Optional[bool] = None,
+        **kwargs,
+    ) -> FleetGet:
         instance = cls()
         instance.fleet_id = fleet_id
         instance.namespace = namespace
+        if include_inactive_regions is not None:
+            instance.include_inactive_regions = include_inactive_regions
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -241,6 +267,13 @@ class FleetGet(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "includeInactiveRegions" in dict_
+            and dict_["includeInactiveRegions"] is not None
+        ):
+            instance.include_inactive_regions = bool(dict_["includeInactiveRegions"])
+        elif include_empty:
+            instance.include_inactive_regions = False
         return instance
 
     @staticmethod
@@ -248,6 +281,7 @@ class FleetGet(Operation):
         return {
             "fleetID": "fleet_id",
             "namespace": "namespace",
+            "includeInactiveRegions": "include_inactive_regions",
         }
 
     @staticmethod
@@ -255,6 +289,7 @@ class FleetGet(Operation):
         return {
             "fleetID": True,
             "namespace": True,
+            "includeInactiveRegions": False,
         }
 
     # endregion static methods

@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetIntegrationAppKeyValueClusterV2(Operation):
     """Get an Extend App Integration (GetIntegrationAppKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:INTEGRATE [READ]`
-
     Get integration of an extend app with a cluster.
 
     Properties:

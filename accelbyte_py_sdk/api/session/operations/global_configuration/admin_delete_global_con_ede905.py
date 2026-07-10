@@ -35,7 +35,7 @@ from ...models import ResponseError
 class AdminDeleteGlobalConfiguration(Operation):
     """Delete of global configuration data. (adminDeleteGlobalConfiguration)
 
-    Delete of global configuration data.
+    Deletes the global configuration. After deletion, the service falls back to default configuration values.
 
     Properties:
         url: /session/v1/admin/global-configurations

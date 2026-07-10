@@ -74,6 +74,8 @@ class ModelsConfig(Model):
 
         max_chat_message_length: (maxChatMessageLength) OPTIONAL int
 
+        max_chat_metadata_size: (maxChatMetadataSize) OPTIONAL int
+
         use_default_dictionary: (useDefaultDictionary) OPTIONAL bool
     """
 
@@ -100,6 +102,7 @@ class ModelsConfig(Model):
     enable_manual_topic_creation: bool  # OPTIONAL
     enable_pm_send_platform_id: bool  # OPTIONAL
     max_chat_message_length: int  # OPTIONAL
+    max_chat_metadata_size: int  # OPTIONAL
     use_default_dictionary: bool  # OPTIONAL
 
     # endregion fields
@@ -188,6 +191,10 @@ class ModelsConfig(Model):
 
     def with_max_chat_message_length(self, value: int) -> ModelsConfig:
         self.max_chat_message_length = value
+        return self
+
+    def with_max_chat_metadata_size(self, value: int) -> ModelsConfig:
+        self.max_chat_metadata_size = value
         return self
 
     def with_use_default_dictionary(self, value: bool) -> ModelsConfig:
@@ -286,6 +293,10 @@ class ModelsConfig(Model):
             result["maxChatMessageLength"] = int(self.max_chat_message_length)
         elif include_empty:
             result["maxChatMessageLength"] = 0
+        if hasattr(self, "max_chat_metadata_size"):
+            result["maxChatMetadataSize"] = int(self.max_chat_metadata_size)
+        elif include_empty:
+            result["maxChatMetadataSize"] = 0
         if hasattr(self, "use_default_dictionary"):
             result["useDefaultDictionary"] = bool(self.use_default_dictionary)
         elif include_empty:
@@ -320,6 +331,7 @@ class ModelsConfig(Model):
         enable_manual_topic_creation: Optional[bool] = None,
         enable_pm_send_platform_id: Optional[bool] = None,
         max_chat_message_length: Optional[int] = None,
+        max_chat_metadata_size: Optional[int] = None,
         use_default_dictionary: Optional[bool] = None,
         **kwargs,
     ) -> ModelsConfig:
@@ -350,6 +362,8 @@ class ModelsConfig(Model):
             instance.enable_pm_send_platform_id = enable_pm_send_platform_id
         if max_chat_message_length is not None:
             instance.max_chat_message_length = max_chat_message_length
+        if max_chat_metadata_size is not None:
+            instance.max_chat_metadata_size = max_chat_metadata_size
         if use_default_dictionary is not None:
             instance.use_default_dictionary = use_default_dictionary
         return instance
@@ -474,6 +488,10 @@ class ModelsConfig(Model):
             instance.max_chat_message_length = int(dict_["maxChatMessageLength"])
         elif include_empty:
             instance.max_chat_message_length = 0
+        if "maxChatMetadataSize" in dict_ and dict_["maxChatMetadataSize"] is not None:
+            instance.max_chat_metadata_size = int(dict_["maxChatMetadataSize"])
+        elif include_empty:
+            instance.max_chat_metadata_size = 0
         if (
             "useDefaultDictionary" in dict_
             and dict_["useDefaultDictionary"] is not None
@@ -541,6 +559,7 @@ class ModelsConfig(Model):
             "EnableManualTopicCreation": "enable_manual_topic_creation",
             "enablePmSendPlatformId": "enable_pm_send_platform_id",
             "maxChatMessageLength": "max_chat_message_length",
+            "maxChatMetadataSize": "max_chat_metadata_size",
             "useDefaultDictionary": "use_default_dictionary",
         }
 
@@ -568,6 +587,7 @@ class ModelsConfig(Model):
             "EnableManualTopicCreation": False,
             "enablePmSendPlatformId": False,
             "maxChatMessageLength": False,
+            "maxChatMetadataSize": False,
             "useDefaultDictionary": False,
         }
 

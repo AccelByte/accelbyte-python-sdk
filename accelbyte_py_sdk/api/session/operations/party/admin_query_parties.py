@@ -59,7 +59,7 @@ class MemberStatusEnum(StrEnum):
 class AdminQueryParties(Operation):
     """Query parties. (adminQueryParties)
 
-    Query parties.
+    Returns paginated list of party sessions matching the provided filter criteria. Supports filtering by namespace, members, leader, and joinability mode.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/parties

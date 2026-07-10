@@ -38,8 +38,6 @@ from ...models import ResponseErrorResponse
 class SaveVariableV1(Operation):
     """Save an environment variable (SaveVariableV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:VARIABLE [CREATE]`
-
     Save an environment variable.
     Request body:
     - configName : environment variable name - Required.

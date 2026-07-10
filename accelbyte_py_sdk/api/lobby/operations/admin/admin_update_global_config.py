@@ -38,7 +38,7 @@ from ...models import RestapiErrorResponseBody
 class AdminUpdateGlobalConfig(Operation):
     """Upsert global configuration data. (adminUpdateGlobalConfig)
 
-    Upsert global configuration data.
+    Overwrite existing global configuration with the provided values. Creates the record if it does not exist.
 
     Properties:
         url: /lobby/v1/admin/global-configurations

@@ -36,7 +36,7 @@ from ...models import ResponseError
 class AdminListEnvironmentVariables(Operation):
     """List of environment variables. (adminListEnvironmentVariables)
 
-    List of environment variables.
+    Returns all environment variables currently set for the session service. Useful for debugging configuration and verifying runtime settings.
 
     Properties:
         url: /session/v1/admin/environment-variables

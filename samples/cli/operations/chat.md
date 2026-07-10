@@ -122,7 +122,7 @@ $ python -m accelbyte_py_sdk_cli 'chat-admin-channel-topic-info' \
 ### Operation `admin_send_chat`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'chat-admin-send-chat' \
-    '{"message": "string"}' \
+    '{"message": "string", "metadata": "string"}' \
     'string' \
     'string' \
     > result.txt
@@ -317,7 +317,7 @@ $ python -m accelbyte_py_sdk_cli 'chat-admin-get-config-v1' \
 ### Operation `admin_update_config_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'chat-admin-update-config-v1' \
-    '{"chatRateLimitBurst": 1, "chatRateLimitDuration": 1, "concurrentUsersLimit": 1, "enableClanChat": false, "enableManualTopicCreation": false, "enablePmSendPlatformId": false, "enableProfanityFilter": false, "filterAppName": "string", "filterParam": "string", "filterType": "string", "generalRateLimitBurst": 1, "generalRateLimitDuration": 1, "maxChatMessageLength": 1, "shardCapacityLimit": 1, "shardDefaultLimit": 1, "shardHardLimit": 1, "spamChatBurst": 1, "spamChatDuration": 1, "spamMuteDuration": 1}' \
+    '{"chatRateLimitBurst": 1, "chatRateLimitDuration": 1, "concurrentUsersLimit": 1, "enableClanChat": false, "enableManualTopicCreation": false, "enablePmSendPlatformId": false, "enableProfanityFilter": false, "filterAppName": "string", "filterParam": "string", "filterType": "string", "generalRateLimitBurst": 1, "generalRateLimitDuration": 1, "maxChatMessageLength": 1, "maxChatMetadataSize": 1, "shardCapacityLimit": 1, "shardDefaultLimit": 1, "shardHardLimit": 1, "spamChatBurst": 1, "spamChatDuration": 1, "spamMuteDuration": 1}' \
     'string' \
     > result.txt
 ```

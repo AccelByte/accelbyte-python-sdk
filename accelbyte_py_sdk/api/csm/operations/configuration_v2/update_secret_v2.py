@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class UpdateSecretV2(Operation):
     """Update an environment secret (UpdateSecretV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
-
     Update an environment secret.
     Secret will always be masked.
     Request body:

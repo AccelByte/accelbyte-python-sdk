@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class GetListOfDeploymentV2(Operation):
     """Fetches the List of Deployments (GetListOfDeploymentV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
     Filters the List of Deployments
 
     This endpoint intended to get list of Deployment done for the given publisher and game.

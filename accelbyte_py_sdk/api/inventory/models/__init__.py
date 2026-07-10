@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service Early Access."""
 
-__version__ = "0.2.25"
+__version__ = "0.2.27"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -38,6 +38,9 @@ from .apimodels_create_tag_resp import ApimodelsCreateTagResp
 from .apimodels_create_tag_resp import OwnerEnum as ApimodelsCreateTagRespOwnerEnum
 from .apimodels_delete_inventory_req import ApimodelsDeleteInventoryReq
 from .apimodels_error_response import ApimodelsErrorResponse
+from .apimodels_integration_configuration_req import (
+    ApimodelsIntegrationConfigurationReq,
+)
 from .apimodels_integration_configuration_resp import (
     ApimodelsIntegrationConfigurationResp,
 )

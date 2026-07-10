@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.model_challenge_slot_response import ModelChallengeSlotResponse
 from ..models.model_reset_config import ModelResetConfig
 
 
@@ -93,6 +94,8 @@ class ModelChallengeResponse(Model):
         repeat_after: (repeatAfter) OPTIONAL int
 
         tags: (tags) OPTIONAL List[str]
+
+        template_slots: (templateSlots) OPTIONAL List[ModelChallengeSlotResponse]
     """
 
     # region fields
@@ -114,6 +117,7 @@ class ModelChallengeResponse(Model):
     end_date: str  # OPTIONAL
     repeat_after: int  # OPTIONAL
     tags: List[str]  # OPTIONAL
+    template_slots: List[ModelChallengeSlotResponse]  # OPTIONAL
 
     # endregion fields
 
@@ -189,6 +193,12 @@ class ModelChallengeResponse(Model):
 
     def with_tags(self, value: List[str]) -> ModelChallengeResponse:
         self.tags = value
+        return self
+
+    def with_template_slots(
+        self, value: List[ModelChallengeSlotResponse]
+    ) -> ModelChallengeResponse:
+        self.template_slots = value
         return self
 
     # endregion with_x methods
@@ -267,6 +277,12 @@ class ModelChallengeResponse(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
+        if hasattr(self, "template_slots"):
+            result["templateSlots"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.template_slots
+            ]
+        elif include_empty:
+            result["templateSlots"] = []
         return result
 
     # endregion to methods
@@ -293,6 +309,7 @@ class ModelChallengeResponse(Model):
         end_date: Optional[str] = None,
         repeat_after: Optional[int] = None,
         tags: Optional[List[str]] = None,
+        template_slots: Optional[List[ModelChallengeSlotResponse]] = None,
         **kwargs,
     ) -> ModelChallengeResponse:
         instance = cls()
@@ -317,6 +334,8 @@ class ModelChallengeResponse(Model):
             instance.repeat_after = repeat_after
         if tags is not None:
             instance.tags = tags
+        if template_slots is not None:
+            instance.template_slots = template_slots
         return instance
 
     @classmethod
@@ -402,6 +421,15 @@ class ModelChallengeResponse(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
+        if "templateSlots" in dict_ and dict_["templateSlots"] is not None:
+            instance.template_slots = [
+                ModelChallengeSlotResponse.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["templateSlots"]
+            ]
+        elif include_empty:
+            instance.template_slots = []
         return instance
 
     @classmethod
@@ -462,6 +490,7 @@ class ModelChallengeResponse(Model):
             "endDate": "end_date",
             "repeatAfter": "repeat_after",
             "tags": "tags",
+            "templateSlots": "template_slots",
         }
 
     @staticmethod
@@ -484,6 +513,7 @@ class ModelChallengeResponse(Model):
             "endDate": False,
             "repeatAfter": False,
             "tags": False,
+            "templateSlots": False,
         }
 
     @staticmethod

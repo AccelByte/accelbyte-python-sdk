@@ -2466,6 +2466,7 @@ def test_game_session_flow(self):
             self.fail(msg=f"unable to find game session id")
 
         result, error = session_service.join_game_session(
+            body=session_models.ApimodelsJoinSessionRequest.create(),
             session_id=game_session_id,
             sdk=user_sdk2,
         )

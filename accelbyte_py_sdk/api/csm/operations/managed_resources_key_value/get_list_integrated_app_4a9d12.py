@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetListIntegratedAppKeyValueClusterV2(Operation):
     """Get List Extend Apps Integrated with a Key-Value Cluster (GetListIntegratedAppKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     Get the list of Extend Apps integrated with a specific Key-Value cluster. Only active integrations are returned.
 
     Properties:

@@ -36,8 +36,6 @@ from ...models import ResponseErrorResponse
 class GetKeyValueClusterV2(Operation):
     """Get Key-Value Cluster Information (GetKeyValueClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:KEYVALUE:CLUSTERS [READ]`
-
     Get Key-Value cluster information returns the Key-Value cluster related information by given studio/publisher namespace.
 
     `status` field - indicates the Key-Value cluster status.

@@ -38,8 +38,6 @@ from ...models import ResponseErrorResponse
 class CreateDeploymentV1(Operation):
     """Creates Deployment (CreateDeploymentV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
     Creates Deployment for extend service
 
     This endpoint intended to apply the helm release or deploying the custom service image.

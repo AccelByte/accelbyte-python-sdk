@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class StartSQLClusterV2(Operation):
     """Start SQL Cluster (StartSQLClusterV2)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SQL:CLUSTERS [UPDATE]`
-
     Start SQL cluster.
     You can only start the cluster when its status is "stopped".
 

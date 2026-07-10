@@ -35,7 +35,7 @@ from ...models import ResponseError
 class DeleteGameSession(Operation):
     """Delete a game session. (deleteGameSession)
 
-    Delete a game session.
+    Permanently deletes a game session. Only the session leader or an admin can delete the session. Any allocated dedicated server will be released.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}

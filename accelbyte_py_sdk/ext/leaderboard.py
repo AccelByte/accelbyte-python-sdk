@@ -265,6 +265,7 @@ def create_models_get_leaderboard_config_resp_v3_example() -> (
     instance.created_at = randomize("date")
     instance.cycle_ids = [randomize()]
     instance.descending = randomize("bool")
+    instance.enable_server_hidden_filter = randomize("bool")
     instance.is_deleted = randomize("bool")
     instance.leaderboard_code = randomize()
     instance.name = randomize()
@@ -320,6 +321,7 @@ def create_models_leaderboard_config_req_v3_example() -> ModelsLeaderboardConfig
     instance.stat_code = randomize()
     instance.cycle_ids = [randomize()]
     instance.description = randomize()
+    instance.enable_server_hidden_filter = randomize("bool")
     instance.icon_url = randomize("url")
     return instance
 
@@ -382,6 +384,7 @@ def create_models_update_leaderboard_config_req_v3_example() -> (
     instance.name = randomize()
     instance.cycle_ids = [randomize()]
     instance.description = randomize()
+    instance.enable_server_hidden_filter = randomize("bool")
     instance.icon_url = randomize("url")
     return instance
 

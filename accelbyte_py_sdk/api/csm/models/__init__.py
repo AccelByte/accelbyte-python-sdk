@@ -8,13 +8,16 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.33.0"
+__version__ = "1.34.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .apimodel_app_debug_info_response import ApimodelAppDebugInfoResponse
 from .apimodel_app_item import ApimodelAppItem
+from .apimodel_app_item_v5 import ApimodelAppItemV5
+from .apimodel_app_status_progress_step import ApimodelAppStatusProgressStep
 from .apimodel_app_ui_response import ApimodelAppUIResponse
 from .apimodel_apply_app_config_request import ApimodelApplyAppConfigRequest
 from .apimodel_apply_config_item import ApimodelApplyConfigItem
@@ -27,6 +30,7 @@ from .apimodel_cpu_request import ApimodelCPURequest
 from .apimodel_cpu_response import ApimodelCPUResponse
 from .apimodel_create_app_ui_request import ApimodelCreateAppUIRequest
 from .apimodel_create_app_v2_request import ApimodelCreateAppV2Request
+from .apimodel_create_app_v5_request import ApimodelCreateAppV5Request
 from .apimodel_create_deployment_v2_request import ApimodelCreateDeploymentV2Request
 from .apimodel_create_deployment_v2_response import ApimodelCreateDeploymentV2Response
 from .apimodel_create_key_value_credential_request import (
@@ -65,6 +69,9 @@ from .apimodel_get_app_image_list_v2_data_item_image_scan_status import (
 from .apimodel_get_app_image_list_v2_response import ApimodelGetAppImageListV2Response
 from .apimodel_get_app_list_v2_request import ApimodelGetAppListV2Request
 from .apimodel_get_app_list_v2_response import ApimodelGetAppListV2Response
+from .apimodel_get_app_status_progress_response import (
+    ApimodelGetAppStatusProgressResponse,
+)
 from .apimodel_get_deployment_list_v2_data_item import (
     ApimodelGetDeploymentListV2DataItem,
 )
@@ -174,10 +181,18 @@ from .apimodel_update_configuration_v2_request import (
 from .apimodel_update_configuration_v2_response import (
     ApimodelUpdateConfigurationV2Response,
 )
+from .apimodel_update_debug_mode_request import ApimodelUpdateDebugModeRequest
 from .apimodel_update_secret_configuration_v2_request import (
     ApimodelUpdateSecretConfigurationV2Request,
 )
 from .apimodel_upload_file_response import ApimodelUploadFileResponse
+from .createappparams_autoscaling_request import CreateappparamsAutoscalingRequest
+from .createappparams_cpu_request import CreateappparamsCPURequest
+from .createappparams_memory_request import CreateappparamsMemoryRequest
+from .createappparams_replica_request import CreateappparamsReplicaRequest
+from .domain_allowed_intercepted_port import DomainAllowedInterceptedPort
+from .domain_debug_pod import DomainDebugPod
+from .domain_exposed_service import DomainExposedService
 from .domain_key_value_cluster_config import DomainKeyValueClusterConfig
 from .domain_key_value_resource_configuration import DomainKeyValueResourceConfiguration
 from .domain_key_value_update_configuration import DomainKeyValueUpdateConfiguration
@@ -232,8 +247,6 @@ from .generated_update_configuration_v1_response import (
     GeneratedUpdateConfigurationV1Response,
 )
 from .log_app_message_declaration import LogAppMessageDeclaration
-from .model_app_redeployment_detail import ModelAppRedeploymentDetail
-from .model_app_redeployment_info import ModelAppRedeploymentInfo
 from .model_csm_autoscaling_defaults import ModelCSMAutoscalingDefaults
 from .model_image_scan_finding import ModelImageScanFinding
 from .nosqlresource_no_sql_resource_configuration import (

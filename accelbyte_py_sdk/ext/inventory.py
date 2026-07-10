@@ -41,6 +41,7 @@ from ..api.inventory.models import ApimodelsCreateTagReq
 from ..api.inventory.models import ApimodelsCreateTagResp
 from ..api.inventory.models import ApimodelsDeleteInventoryReq
 from ..api.inventory.models import ApimodelsErrorResponse
+from ..api.inventory.models import ApimodelsIntegrationConfigurationReq
 from ..api.inventory.models import ApimodelsIntegrationConfigurationResp
 from ..api.inventory.models import ApimodelsInventoryConfig
 from ..api.inventory.models import ApimodelsInventoryConfigurationReq
@@ -227,6 +228,16 @@ def create_apimodels_error_response_example() -> ApimodelsErrorResponse:
     instance = ApimodelsErrorResponse()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    return instance
+
+
+def create_apimodels_integration_configuration_req_example() -> (
+    ApimodelsIntegrationConfigurationReq
+):
+    instance = ApimodelsIntegrationConfigurationReq()
+    instance.service_name = randomize()
+    instance.target_inventory_code = randomize()
+    instance.map_item_type = [randomize()]
     return instance
 
 

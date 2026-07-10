@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminDeleteBulkParties(Operation):
     """Delete bulk parties. (adminDeleteBulkParties)
 
-    Delete bulk parties.
+    Permanently deletes multiple party sessions by their IDs. Returns a summary of deleted and failed sessions.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/parties/bulk

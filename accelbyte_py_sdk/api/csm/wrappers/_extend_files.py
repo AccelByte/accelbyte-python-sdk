@@ -43,8 +43,6 @@ def get_extend_file(
 ):
     """Retrieve extend hosted static files (GetExtendFile)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
-
     Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
 
     Properties:
@@ -92,8 +90,6 @@ async def get_extend_file_async(
     **kwargs
 ):
     """Retrieve extend hosted static files (GetExtendFile)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:FILES [READ]`
 
     Serves static files provided for extend features, for example: serving App UI files. Files are served with immutable caching headers.
 

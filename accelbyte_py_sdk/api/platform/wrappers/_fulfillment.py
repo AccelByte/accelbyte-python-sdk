@@ -998,10 +998,10 @@ async def public_redeem_code_async(
 
 @same_doc_as(QueryFulfillmentHistories)
 def query_fulfillment_histories(
+    user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1034,7 +1034,7 @@ def query_fulfillment_histories(
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        user_id: (userId) OPTIONAL str in query
+        user_id: (userId) REQUIRED str in query
 
     Responses:
         200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
@@ -1044,10 +1044,10 @@ def query_fulfillment_histories(
         if error:
             return None, error
     request = QueryFulfillmentHistories.create(
+        user_id=user_id,
         limit=limit,
         offset=offset,
         status=status,
-        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1055,10 +1055,10 @@ def query_fulfillment_histories(
 
 @same_doc_as(QueryFulfillmentHistories)
 async def query_fulfillment_histories_async(
+    user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     status: Optional[Union[str, QueryFulfillmentHistoriesStatusEnum]] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1091,7 +1091,7 @@ async def query_fulfillment_histories_async(
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        user_id: (userId) OPTIONAL str in query
+        user_id: (userId) REQUIRED str in query
 
     Responses:
         200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
@@ -1101,10 +1101,10 @@ async def query_fulfillment_histories_async(
         if error:
             return None, error
     request = QueryFulfillmentHistories.create(
+        user_id=user_id,
         limit=limit,
         offset=offset,
         status=status,
-        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

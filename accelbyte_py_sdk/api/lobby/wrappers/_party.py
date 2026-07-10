@@ -268,12 +268,7 @@ def public_get_party_data_v1(
 ):
     """get party data by party id (publicGetPartyDataV1)
 
-    Required valid user authorization
-
-
-    load personal party data in a namespace based on Party ID
-
-    Action Code: 50101
+    Load party data in a namespace by Party ID.
 
     Properties:
         url: /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}
@@ -326,12 +321,7 @@ async def public_get_party_data_v1_async(
 ):
     """get party data by party id (publicGetPartyDataV1)
 
-    Required valid user authorization
-
-
-    load personal party data in a namespace based on Party ID
-
-    Action Code: 50101
+    Load party data in a namespace by Party ID.
 
     Properties:
         url: /lobby/v1/public/party/namespaces/{namespace}/parties/{partyId}

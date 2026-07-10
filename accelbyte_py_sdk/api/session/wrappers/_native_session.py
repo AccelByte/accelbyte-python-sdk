@@ -46,7 +46,7 @@ def admin_get_list_native_session(
 ):
     """List of native sessions. (adminGetListNativeSession)
 
-    List of native sessions.
+    Returns paginated list of native platform sessions. Native sessions are synchronized with PSN, Xbox Live, and Steam platform session systems.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/native-sessions
@@ -100,7 +100,7 @@ async def admin_get_list_native_session_async(
 ):
     """List of native sessions. (adminGetListNativeSession)
 
-    List of native sessions.
+    Returns paginated list of native platform sessions. Native sessions are synchronized with PSN, Xbox Live, and Steam platform session systems.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/native-sessions

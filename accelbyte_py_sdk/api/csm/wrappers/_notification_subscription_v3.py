@@ -49,8 +49,6 @@ def delete_subscription_app_notification_v3(
 ):
     """Remove other person subscription by user ID or email address (DeleteSubscriptionAppNotificationV3)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
     Remove a user from the notification subscription using either user ID or email address.
     Only one of them should be provided.
 
@@ -109,8 +107,6 @@ async def delete_subscription_app_notification_v3_async(
     **kwargs
 ):
     """Remove other person subscription by user ID or email address (DeleteSubscriptionAppNotificationV3)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
 
     Remove a user from the notification subscription using either user ID or email address.
     Only one of them should be provided.
@@ -172,8 +168,6 @@ def get_notification_subscriber_list_v3(
 ):
     """Get a list of the app notification subscriber (GetNotificationSubscriberListV3)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
-
     Request param:
     - notificationType : type of the subscribed app notification
     - values:
@@ -234,8 +228,6 @@ async def get_notification_subscriber_list_v3_async(
     **kwargs
 ):
     """Get a list of the app notification subscriber (GetNotificationSubscriberListV3)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [READ]`
 
     Request param:
     - notificationType : type of the subscribed app notification

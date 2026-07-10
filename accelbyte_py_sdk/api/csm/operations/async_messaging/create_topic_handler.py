@@ -37,8 +37,6 @@ from ...models import ResponseErrorResponse
 class CreateTopicHandler(Operation):
     """Create Async Messaging Topic (CreateTopicHandler)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:ASYNCMESSAGING:TOPICS [CREATE]`
-
     Create New Async Messaging Topic, the topic name is unique inside a game namespace.
 
     Properties:

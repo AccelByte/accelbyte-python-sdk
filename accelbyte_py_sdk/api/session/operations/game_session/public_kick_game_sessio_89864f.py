@@ -35,7 +35,7 @@ from ...models import ResponseError
 class PublicKickGameSessionMember(Operation):
     """Kick member from a game session, only leader can kick member. (publicKickGameSessionMember)
 
-    Kick member from a game session, only leader can kick member.
+    Removes the specified member from a game session. Only the session leader can kick members. The kicked member's status is set to KICKED.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick

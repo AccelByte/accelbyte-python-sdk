@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_get_async_status as public_get_async_status_internal,
 )
-from accelbyte_py_sdk.api.iam.models import ModelLinkRequest
+from accelbyte_py_sdk.api.iam.models import ModelReAuthRequest
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 

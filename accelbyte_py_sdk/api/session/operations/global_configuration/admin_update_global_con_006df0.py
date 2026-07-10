@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminUpdateGlobalConfiguration(Operation):
     """Upsert global configuration data. (adminUpdateGlobalConfiguration)
 
-    Upsert global configuration data.
+    Creates or replaces the global configuration. If no configuration exists, a new one is created. All provided fields are applied.
 
     Properties:
         url: /session/v1/admin/global-configurations

@@ -36,7 +36,7 @@ from ...models import ResponseError
 class AdminListGlobalConfiguration(Operation):
     """Record of global configuration data. (adminListGlobalConfiguration)
 
-    Record of global configuration data.
+    Returns the current global configuration shared across all namespaces. Includes settings like maximum active sessions and cleanup intervals.
 
     Properties:
         url: /session/v1/admin/global-configurations

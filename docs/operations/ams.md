@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.45.0)
+# Fleet Commander Index (1.46.2)
 
 
 ## Operations
@@ -58,8 +58,8 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /healthz | GET | BasicHealthCheck | `false` | [BasicHealthCheck](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/basic_health_check.py) | [basic_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-basic-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_basic_health_check.py) |
-| /ams/version | GET | func1 | `false` | [Func1](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/func1.py) | [func1](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-func1](../../samples/cli/accelbyte_py_sdk_cli/ams/_func1.py) |
 | /ams/healthz | GET | PortalHealthCheck | `false` | [PortalHealthCheck](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/portal_health_check.py) | [portal_health_check](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-portal-health-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_portal_health_check.py) |
+| /ams/version | GET | VersionInfo | `false` | [VersionInfo](../../accelbyte_py_sdk/api/ams/operations/fleet_commander/version_info.py) | [version_info](../../accelbyte_py_sdk/api/ams/wrappers/_fleet_commander.py) | [accelbyte_py_sdk_cli ams-version-info](../../samples/cli/accelbyte_py_sdk_cli/ams/_version_info.py) |
 
 ### Fleets
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

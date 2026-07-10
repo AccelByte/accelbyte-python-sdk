@@ -34,9 +34,9 @@ from ...models import ResponseError
 
 
 class PublicRequestDataRetrieval(Operation):
-    """Submit personal data retrieval request (PublicRequestDataRetrieval)
+    """Submit user's personal data request (PublicRequestDataRetrieval)
 
-    Submit personal data retrieval request.
+    Submit user's personal data request.
     Scope: account
 
     ### Request Header:

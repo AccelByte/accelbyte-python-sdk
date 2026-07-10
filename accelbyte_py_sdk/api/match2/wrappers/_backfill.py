@@ -183,7 +183,10 @@ def admin_query_backfill(
 ):
     """Admin Query backfill ticket  (AdminQueryBackfill)
 
-    Admin Query backfill ticket
+    Admin Query backfill ticket.
+
+    Supports filtering by session ID, match pool, time range, active status, player ID, and region.
+    Use pagination parameters offset and limit to control result size.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill
@@ -267,7 +270,10 @@ async def admin_query_backfill_async(
 ):
     """Admin Query backfill ticket  (AdminQueryBackfill)
 
-    Admin Query backfill ticket
+    Admin Query backfill ticket.
+
+    Supports filtering by session ID, match pool, time range, active status, player ID, and region.
+    Use pagination parameters offset and limit to control result size.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill
@@ -663,7 +669,10 @@ def get_backfill_proposal(
 ):
     """Get backfill proposal (GetBackfillProposal)
 
-    Get backfill proposal
+    Get backfill proposal for the given session.
+
+    Returns the current pending backfill proposal associated with the session ID.
+    Returns 404 if no proposal exists for the session.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/proposal
@@ -715,7 +724,10 @@ async def get_backfill_proposal_async(
 ):
     """Get backfill proposal (GetBackfillProposal)
 
-    Get backfill proposal
+    Get backfill proposal for the given session.
+
+    Returns the current pending backfill proposal associated with the session ID.
+    Returns 404 if no proposal exists for the session.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/proposal

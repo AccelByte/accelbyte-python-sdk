@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.39.1"
+__version__ = "7.40.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -171,8 +171,8 @@ from ._o_auth import get_jwks
 from ._o_auth import get_jwks_async
 from ._o_auth import get_revocation_list
 from ._o_auth import get_revocation_list_async
-from ._o_auth import platform_token_request_handler
-from ._o_auth import platform_token_request_handler_async
+from ._o_auth import namespace_scoped_platform_token_grant
+from ._o_auth import namespace_scoped_platform_token_grant_async
 from ._o_auth import revoke_a_user
 from ._o_auth import revoke_a_user_async
 from ._o_auth import revoke_token
@@ -782,6 +782,12 @@ from ._users import public_web_link_platform
 from ._users import public_web_link_platform_async
 from ._users import public_web_link_platform_establish
 from ._users import public_web_link_platform_establish_async
+from ._users import public_web_reauth_platform
+from ._users import public_web_reauth_platform_async
+from ._users import public_web_reauth_platform_establish
+from ._users import public_web_reauth_platform_establish_async
+from ._users import public_web_reauth_platform_process
+from ._users import public_web_reauth_platform_process_async
 from ._users import reset_password
 from ._users import reset_password_async
 from ._users import reset_password_v3

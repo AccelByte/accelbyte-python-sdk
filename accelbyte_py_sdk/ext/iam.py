@@ -206,7 +206,7 @@ from ..api.iam.models import ModelInviteUserResponseV3
 from ..api.iam.models import ModelLinkHeadlessAccountRequest
 from ..api.iam.models import ModelLinkPlatformAccountRequest
 from ..api.iam.models import ModelLinkPlatformAccountWithProgressionRequest
-from ..api.iam.models import ModelLinkRequest
+from ..api.iam.models import ModelLinkRequestResponse
 from ..api.iam.models import ModelLinkingHistoryResponseWithPaginationV3
 from ..api.iam.models import ModelListAssignedUsersV4Response
 from ..api.iam.models import ModelListBulkUserBanResponseV3
@@ -244,6 +244,7 @@ from ..api.iam.models import ModelPublicUserResponse
 from ..api.iam.models import ModelPublicUserResponseV3
 from ..api.iam.models import ModelPublicUserUpdateRequestV3
 from ..api.iam.models import ModelPublicUsersResponse
+from ..api.iam.models import ModelReAuthRequest
 from ..api.iam.models import ModelRemoveUserRoleV4Request
 from ..api.iam.models import ModelResetPasswordRequest
 from ..api.iam.models import ModelResetPasswordRequestV3
@@ -353,6 +354,7 @@ from ..api.iam.models import ModelValidationDetailPublic
 from ..api.iam.models import ModelVerificationCodeResponse
 from ..api.iam.models import ModelVerifyRegistrationCode
 from ..api.iam.models import ModelWebLinkingResponse
+from ..api.iam.models import ModelWebReauthProcessResponse
 from ..api.iam.models import OauthapiRevocationList
 from ..api.iam.models import OauthcommonASMetadataResponse
 from ..api.iam.models import OauthcommonJWKKey
@@ -2126,11 +2128,10 @@ def create_model_link_platform_account_with_progression_request_example() -> (
     return instance
 
 
-def create_model_link_request_example() -> ModelLinkRequest:
-    instance = ModelLinkRequest()
+def create_model_link_request_response_example() -> ModelLinkRequestResponse:
+    instance = ModelLinkRequestResponse()
     instance.client_id = randomize("uid")
     instance.namespace = randomize("slug")
-    instance.operation_name = randomize()
     instance.payload = {randomize(): randomize()}
     instance.redirect_uri = randomize()
     instance.request_id = randomize()
@@ -2145,7 +2146,6 @@ def create_model_link_request_example() -> ModelLinkRequest:
     instance.platform_display_name = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
-    instance.refresh_token = randomize()
     instance.user_id = randomize("uid")
     return instance
 
@@ -2504,6 +2504,30 @@ def create_model_public_user_update_request_v3_example() -> (
 def create_model_public_users_response_example() -> ModelPublicUsersResponse:
     instance = ModelPublicUsersResponse()
     instance.users = [create_model_public_user_response_example()]
+    return instance
+
+
+def create_model_re_auth_request_example() -> ModelReAuthRequest:
+    instance = ModelReAuthRequest()
+    instance.client_id = randomize("uid")
+    instance.namespace = randomize("slug")
+    instance.operation_name = randomize()
+    instance.payload = {randomize(): randomize()}
+    instance.redirect_uri = randomize()
+    instance.request_id = randomize()
+    instance.status = randomize()
+    instance.conflict_publisher_user_id = randomize()
+    instance.conflict_user_linked_games = [randomize()]
+    instance.current_user_linked_games = [randomize()]
+    instance.error = (
+        create_rest_error_response_with_conflicted_user_platform_accounts_example()
+    )
+    instance.expiration = randomize("int", min_val=1, max_val=1000)
+    instance.platform_display_name = randomize()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    instance.refresh_token = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -3686,6 +3710,14 @@ def create_model_web_linking_response_example() -> ModelWebLinkingResponse:
     instance = ModelWebLinkingResponse()
     instance.state = randomize()
     instance.third_party_url = randomize("url")
+    return instance
+
+
+def create_model_web_reauth_process_response_example() -> ModelWebReauthProcessResponse:
+    instance = ModelWebReauthProcessResponse()
+    instance.operation = randomize()
+    instance.status = randomize()
+    instance.link_response = create_model_link_request_response_example()
     return instance
 
 

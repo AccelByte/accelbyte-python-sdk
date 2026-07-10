@@ -54,8 +54,6 @@ def create_deployment_v1(
 ):
     """Creates Deployment (CreateDeploymentV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
-
     Creates Deployment for extend service
 
     This endpoint intended to apply the helm release or deploying the custom service image.
@@ -123,8 +121,6 @@ async def create_deployment_v1_async(
     **kwargs
 ):
     """Creates Deployment (CreateDeploymentV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [CREATE]`
 
     Creates Deployment for extend service
 
@@ -195,8 +191,6 @@ def delete_deployment_v1(
 ):
     """Delete Deployment by Deployment ID (DeleteDeploymentV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
-
     Delete Deployment information by given DeploymentID
 
     This endpoint intended to delete helm release object and update the deleted_at in DB by given Deployment ID.
@@ -251,8 +245,6 @@ async def delete_deployment_v1_async(
     **kwargs
 ):
     """Delete Deployment by Deployment ID (DeleteDeploymentV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [DELETE]`
 
     Delete Deployment information by given DeploymentID
 
@@ -311,8 +303,6 @@ def get_deployment_v1(
 ):
     """Get Deployment by Deployment ID (GetDeploymentV1)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
-
     Get Deployment information by given DeploymentID
 
     This endpoint intended to get Deployment information by given Deployment ID from Deployment Table.
@@ -367,8 +357,6 @@ async def get_deployment_v1_async(
     **kwargs
 ):
     """Get Deployment by Deployment ID (GetDeploymentV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
 
     Get Deployment information by given DeploymentID
 
@@ -428,8 +416,6 @@ def get_list_of_deployment_v1(
     **kwargs
 ):
     """Fetches the List of Deployments (GetListOfDeploymentV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
 
     Filters the List of Deployments
 
@@ -493,8 +479,6 @@ async def get_list_of_deployment_v1_async(
     **kwargs
 ):
     """Fetches the List of Deployments (GetListOfDeploymentV1)
-
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:DEPLOYMENT [READ]`
 
     Filters the List of Deployments
 

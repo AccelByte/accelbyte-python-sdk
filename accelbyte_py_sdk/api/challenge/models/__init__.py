@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.29.0"
+__version__ = "1.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -24,6 +24,7 @@ from .model_challenge_response import (
     RotationEnum as ModelChallengeResponseRotationEnum,
     StatusEnum as ModelChallengeResponseStatusEnum,
 )
+from .model_challenge_slot_response import ModelChallengeSlotResponse
 from .model_claim_user_rewards_by_goal_code_request import (
     ModelClaimUserRewardsByGoalCodeRequest,
 )
@@ -42,10 +43,12 @@ from .model_create_challenge_request import (
     RotationEnum as ModelCreateChallengeRequestRotationEnum,
 )
 from .model_create_goal_request import ModelCreateGoalRequest
+from .model_current_round_slot_response import ModelCurrentRoundSlotResponse
 from .model_evaluate_player_progression_request import (
     ModelEvaluatePlayerProgressionRequest,
 )
 from .model_get_goals_response import ModelGetGoalsResponse
+from .model_get_slots_response import ModelGetSlotsResponse
 from .model_goal_in_schedules_response import ModelGoalInSchedulesResponse
 from .model_goal_meta import ModelGoalMeta
 from .model_goal_order import ModelGoalOrder
@@ -63,6 +66,7 @@ from .model_list_periods_response import ModelListPeriodsResponse
 from .model_list_schedule_by_goal_response import ModelListScheduleByGoalResponse
 from .model_list_schedules_response import ModelListSchedulesResponse
 from .model_list_user_rewards_response import ModelListUserRewardsResponse
+from .model_move_goal_to_slot_request import ModelMoveGoalToSlotRequest
 from .model_pagination import ModelPagination
 from .model_plugin_asignment_app_config import ModelPluginAsignmentAppConfig
 from .model_plugin_assignment_custom_config import ModelPluginAssignmentCustomConfig
@@ -88,6 +92,7 @@ from .model_reward import TypeEnum as ModelRewardTypeEnum
 from .model_schedule import ModelSchedule
 from .model_schedule_by_goal_response import ModelScheduleByGoalResponse
 from .model_schedule_response import ModelScheduleResponse
+from .model_template_slot_response import ModelTemplateSlotResponse
 from .model_update_challenge_request import ModelUpdateChallengeRequest
 from .model_update_challenge_request import (
     AssignmentRuleEnum as ModelUpdateChallengeRequestAssignmentRuleEnum,

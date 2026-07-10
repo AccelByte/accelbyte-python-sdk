@@ -36,9 +36,7 @@ from ...models import RestapiErrorResponseV1
 class GetAllNotificationTemplatesV1Admin(Operation):
     """get all notification template in a namespace (getAllNotificationTemplatesV1Admin)
 
-    Get all templates in a namespace
-
-    Action Code: 50203
+    Get all notification templates in a namespace.
 
     Properties:
         url: /lobby/v1/admin/notification/namespaces/{namespace}/templates

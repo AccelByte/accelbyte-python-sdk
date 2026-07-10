@@ -35,8 +35,6 @@ from ...models import ResponseErrorResponse
 class DeleteSubscriptionAppNotificationV3(Operation):
     """Remove other person subscription by user ID or email address (DeleteSubscriptionAppNotificationV3)
 
-    Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [DELETE]`
-
     Remove a user from the notification subscription using either user ID or email address.
     Only one of them should be provided.
 

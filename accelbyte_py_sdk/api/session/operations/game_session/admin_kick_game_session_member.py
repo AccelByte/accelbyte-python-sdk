@@ -35,7 +35,7 @@ from ...models import ResponseError
 class AdminKickGameSessionMember(Operation):
     """Kick member from a game session. (adminKickGameSessionMember)
 
-    Kick member from a game session.
+    Removes the specified member from a game session and sets their status to KICKED. Can be used by admins to forcefully remove members.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.23.1"
+__version__ = "2.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,18 +49,21 @@ from ._data_deletion import admin_get_user_account_deletion_request
 from ._data_deletion import admin_get_user_account_deletion_request_async
 from ._data_deletion import admin_submit_user_account_deletion_request
 from ._data_deletion import admin_submit_user_account_deletion_request_async
-from ._data_deletion import public_cancel_my_account_deletion_request
-from ._data_deletion import public_cancel_my_account_deletion_request_async
 from ._data_deletion import public_cancel_user_account_deletion_request
 from ._data_deletion import public_cancel_user_account_deletion_request_async
-from ._data_deletion import public_get_my_account_deletion_status
-from ._data_deletion import public_get_my_account_deletion_status_async
 from ._data_deletion import public_get_user_account_deletion_status
 from ._data_deletion import public_get_user_account_deletion_status_async
-from ._data_deletion import public_submit_my_account_deletion_request
-from ._data_deletion import public_submit_my_account_deletion_request_async
 from ._data_deletion import public_submit_user_account_deletion_request
 from ._data_deletion import public_submit_user_account_deletion_request_async
+
+from ._data_deletion_headless import public_cancel_my_account_deletion_request
+from ._data_deletion_headless import public_cancel_my_account_deletion_request_async
+from ._data_deletion_headless import public_get_my_account_deletion_status
+from ._data_deletion_headless import public_get_my_account_deletion_status_async
+from ._data_deletion_headless import public_submit_my_account_deletion_request
+from ._data_deletion_headless import public_submit_my_account_deletion_request_async
+from ._data_deletion_headless import public_submit_my_headless_deletion_request
+from ._data_deletion_headless import public_submit_my_headless_deletion_request_async
 
 from ._data_deletion_s2s import s2s_get_list_finished_account_deletion_request
 from ._data_deletion_s2s import s2s_get_list_finished_account_deletion_request_async
@@ -85,6 +88,21 @@ from ._data_retrieval import public_get_user_personal_data_requests
 from ._data_retrieval import public_get_user_personal_data_requests_async
 from ._data_retrieval import public_request_data_retrieval
 from ._data_retrieval import public_request_data_retrieval_async
+
+from ._data_retrieval_headless import public_cancel_my_personal_data_request
+from ._data_retrieval_headless import public_cancel_my_personal_data_request_async
+from ._data_retrieval_headless import public_generate_my_headless_personal_data_url
+from ._data_retrieval_headless import (
+    public_generate_my_headless_personal_data_url_async,
+)
+from ._data_retrieval_headless import public_get_my_personal_data_requests
+from ._data_retrieval_headless import public_get_my_personal_data_requests_async
+from ._data_retrieval_headless import public_submit_my_headless_personal_data_request
+from ._data_retrieval_headless import (
+    public_submit_my_headless_personal_data_request_async,
+)
+from ._data_retrieval_headless import public_submit_my_personal_data_request
+from ._data_retrieval_headless import public_submit_my_personal_data_request_async
 
 from ._data_retrieval_s2s import s2s_generate_personal_data_url
 from ._data_retrieval_s2s import s2s_generate_personal_data_url_async

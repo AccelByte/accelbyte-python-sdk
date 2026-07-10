@@ -67,7 +67,9 @@ from ._user_verification import user_verification
 from ._send_verification_code import send_verification_code
 from ._authorization import authorization
 from ._get_jwks import get_jwks
-from ._platform_token_request_handler import platform_token_request_handler
+from ._namespace_scoped_platform_token_grant import (
+    namespace_scoped_platform_token_grant,
+)
 from ._revoke_user import revoke_user
 from ._get_revocation_list import get_revocation_list
 from ._revoke_token import revoke_token
@@ -430,6 +432,9 @@ from ._public_force_platform_link_v3 import public_force_platform_link_v3
 from ._public_web_link_platform import public_web_link_platform
 from ._public_web_link_platform_establish import public_web_link_platform_establish
 from ._public_process_web_link_platform_v3 import public_process_web_link_platform_v3
+from ._public_web_reauth_platform import public_web_reauth_platform
+from ._public_web_reauth_platform_establish import public_web_reauth_platform_establish
+from ._public_web_reauth_platform_process import public_web_reauth_platform_process
 from ._public_get_users_platform_infos_v3 import public_get_users_platform_infos_v3
 from ._reset_password_v3 import reset_password_v3
 from ._public_get_user_by_user_id_v3 import public_get_user_by_user_id_v3
@@ -657,7 +662,7 @@ commands = [
     send_verification_code,
     authorization,
     get_jwks,
-    platform_token_request_handler,
+    namespace_scoped_platform_token_grant,
     revoke_user,
     get_revocation_list,
     revoke_token,
@@ -916,6 +921,9 @@ commands = [
     public_web_link_platform,
     public_web_link_platform_establish,
     public_process_web_link_platform_v3,
+    public_web_reauth_platform,
+    public_web_reauth_platform_establish,
+    public_web_reauth_platform_process,
     public_get_users_platform_infos_v3,
     reset_password_v3,
     public_get_user_by_user_id_v3,

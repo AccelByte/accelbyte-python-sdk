@@ -67,7 +67,7 @@ class QueryFulfillmentHistories(Operation):
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        user_id: (userId) OPTIONAL str in query
+        user_id: (userId) REQUIRED str in query
 
     Responses:
         200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
@@ -86,7 +86,7 @@ class QueryFulfillmentHistories(Operation):
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     status: Union[str, StatusEnum]  # OPTIONAL in [query]
-    user_id: str  # OPTIONAL in [query]
+    user_id: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -246,22 +246,21 @@ class QueryFulfillmentHistories(Operation):
     def create(
         cls,
         namespace: str,
+        user_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         status: Optional[Union[str, StatusEnum]] = None,
-        user_id: Optional[str] = None,
         **kwargs,
     ) -> QueryFulfillmentHistories:
         instance = cls()
         instance.namespace = namespace
+        instance.user_id = user_id
         if limit is not None:
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
         if status is not None:
             instance.status = status
-        if user_id is not None:
-            instance.user_id = user_id
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -310,7 +309,7 @@ class QueryFulfillmentHistories(Operation):
             "limit": False,
             "offset": False,
             "status": False,
-            "userId": False,
+            "userId": True,
         }
 
     @staticmethod
