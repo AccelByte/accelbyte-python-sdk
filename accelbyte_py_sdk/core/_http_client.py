@@ -294,16 +294,20 @@ class HttpxHttpClient(HttpClient):
         max_connections: int = 100,
         max_keepalive_connections: int = 20,
         follow_redirects: bool = False,
+        http2: bool = False,
     ):
         limits = httpx.Limits(
             max_connections=max_connections,
             max_keepalive_connections=max_keepalive_connections,
         )
+        # NOTE: HTTP/2 is off by default; the sync HTTP/2 connection is not safe to share
+        #       between threads (e.g. a LoginClientTimer thread and request handlers) and
+        #       concurrent requests can fail with 'httpx.RemoteProtocolError: Server disconnected'.
         self.transport = httpx.HTTPTransport(
             verify=True,
             cert=None,
             http1=True,
-            http2=True,
+            http2=http2,
             limits=limits,
             trust_env=True,
         )
