@@ -1,3 +1,9 @@
+<a name="v0.85.1"></a>
+## [v0.85.1]
+### fix
+- **core:** disable HTTP/2 on sync HttpxHttpClient by default
+
+
 <a name="v0.85.0"></a>
 ## [v0.85.0]
 
