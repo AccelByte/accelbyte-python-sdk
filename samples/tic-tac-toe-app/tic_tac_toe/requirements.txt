@@ -3,7 +3,7 @@ click>=7.0
 crontab==0.23.0
 httpx>=1.0.0b0
 redis>=4.0.2
-requests==2.33.0
+requests==2.32.4
 PyYAML==6.0
 pyjwt[crypto]==2.15.0
 websockets==10.0
